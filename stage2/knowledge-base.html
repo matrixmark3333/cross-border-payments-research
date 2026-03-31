@@ -58,27 +58,36 @@
   #sidebar::-webkit-scrollbar-track { background: transparent; }
   #sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
   @media (max-width: 900px) { #sidebar { display: none; } #main { margin-left: 0; } #content { padding: 24px 20px 60px; } #topbar { padding: 10px 20px; } }
+
+  /* ── Language Switcher ── */
+  .lang-switcher { position: fixed; top: 16px; right: 20px; z-index: 1000; display: flex; gap: 4px; }
+  .lang-switcher button { padding: 4px 10px; border: 1px solid #e2e8f0; border-radius: 4px; font-size: 12px; cursor: pointer; background: white; color: #64748b; }
+  .lang-switcher button.active { background: #2563eb; color: white; border-color: #2563eb; }
 </style>
 </head>
 <body>
+<div class="lang-switcher">
+  <button id="btn-zh" onclick="switchLang('zh')" class="active">中文</button>
+  <button id="btn-en" onclick="switchLang('en')">EN</button>
+</div>
 
 <nav id="sidebar">
-  <div class="sidebar-header"><h2>跨境支付知识库</h2></div>
+  <div class="sidebar-header"><h2><span data-zh>跨境支付知识库</span><span data-en>Knowledge Base</span></h2></div>
   <div class="sidebar-search">
     <input type="text" id="sidebar-search-input" placeholder="🔍 快速跳转..." oninput="sidebarFilter(this.value)">
   </div>
   <div id="nav-tree">
     <div class="nav-chapter">
-      <div class="nav-chapter-title" onclick="toggleNavChapter(this)"><span class="toggle-icon">▾</span><span>1. 市场总览</span></div>
+      <div class="nav-chapter-title" onclick="toggleNavChapter(this)"><span class="toggle-icon">▾</span><span data-zh>1. 市场总览</span><span data-en>1. Market Overview</span></div>
       <div class="nav-sub-list">
-        <a class="nav-sub-item" href="#sec-1-1" onclick="navClick(this)">1.1 规模增速</a>
-        <a class="nav-sub-item" href="#sec-1-2" onclick="navClick(this)">1.2 生态图</a>
-        <a class="nav-sub-item" href="#sec-1-3" onclick="navClick(this)">1.3 生命周期</a>
-        <a class="nav-sub-item" href="#sec-1-4" onclick="navClick(this)">1.4 驱动因素</a>
+        <a class="nav-sub-item" href="#sec-1-1" onclick="navClick(this)"><span data-zh>1.1 规模增速</span><span data-en>1.1 Market Size &amp; Growth</span></a>
+        <a class="nav-sub-item" href="#sec-1-2" onclick="navClick(this)"><span data-zh>1.2 生态图</span><span data-en>1.2 Market Layers &amp; Ecosystem</span></a>
+        <a class="nav-sub-item" href="#sec-1-3" onclick="navClick(this)"><span data-zh>1.3 生命周期</span><span data-en>1.3 Industry Life Cycle</span></a>
+        <a class="nav-sub-item" href="#sec-1-4" onclick="navClick(this)"><span data-zh>1.4 驱动因素</span><span data-en>1.4 Key Drivers &amp; Risks</span></a>
       </div>
     </div>
     <div class="nav-chapter">
-      <div class="nav-chapter-title" onclick="toggleNavChapter(this)"><span class="toggle-icon">▾</span><span>2. 公司档案</span></div>
+      <div class="nav-chapter-title" onclick="toggleNavChapter(this)"><span class="toggle-icon">▾</span><span data-zh>2. 公司档案</span><span data-en>2. Company Profiles</span></div>
       <div class="nav-sub-list">
         <a class="nav-sub-item" href="#sec-2-1" onclick="navClick(this)">2.1 Wise</a>
         <a class="nav-sub-item" href="#sec-2-2" onclick="navClick(this)">2.2 Airwallex</a>
@@ -91,45 +100,45 @@
       </div>
     </div>
     <div class="nav-chapter">
-      <div class="nav-chapter-title" onclick="toggleNavChapter(this)"><span class="toggle-icon">▾</span><span>3. 商业模式</span></div>
+      <div class="nav-chapter-title" onclick="toggleNavChapter(this)"><span class="toggle-icon">▾</span><span data-zh>3. 商业模式</span><span data-en>3. Business Model</span></div>
       <div class="nav-sub-list">
-        <a class="nav-sub-item" href="#sec-3-1" onclick="navClick(this)">3.1 收入模式</a>
+        <a class="nav-sub-item" href="#sec-3-1" onclick="navClick(this)"><span data-zh>3.1 收入模式</span><span data-en>3.1 Revenue Models</span></a>
         <a class="nav-sub-item" href="#sec-3-2" onclick="navClick(this)">3.2 Take Rate Benchmark</a>
-        <a class="nav-sub-item" href="#sec-3-3" onclick="navClick(this)">3.3 成本结构</a>
-        <a class="nav-sub-item" href="#sec-3-4" onclick="navClick(this)">3.4 演化趋势</a>
+        <a class="nav-sub-item" href="#sec-3-3" onclick="navClick(this)"><span data-zh>3.3 成本结构</span><span data-en>3.3 Cost Structure</span></a>
+        <a class="nav-sub-item" href="#sec-3-4" onclick="navClick(this)"><span data-zh>3.4 演化趋势</span><span data-en>3.4 Model Evolution</span></a>
       </div>
     </div>
     <div class="nav-chapter">
-      <div class="nav-chapter-title" onclick="toggleNavChapter(this)"><span class="toggle-icon">▾</span><span>4. 竞争格局</span></div>
+      <div class="nav-chapter-title" onclick="toggleNavChapter(this)"><span class="toggle-icon">▾</span><span data-zh>4. 竞争格局</span><span data-en>4. Competitive Landscape</span></div>
       <div class="nav-sub-list">
-        <a class="nav-sub-item" href="#sec-4-1" onclick="navClick(this)">4.1 竞争矩阵</a>
-        <a class="nav-sub-item" href="#sec-4-2" onclick="navClick(this)">4.2 护城河</a>
-        <a class="nav-sub-item" href="#sec-4-3" onclick="navClick(this)">4.3 战略动态</a>
+        <a class="nav-sub-item" href="#sec-4-1" onclick="navClick(this)"><span data-zh>4.1 竞争矩阵</span><span data-en>4.1 Competitive Matrix</span></a>
+        <a class="nav-sub-item" href="#sec-4-2" onclick="navClick(this)"><span data-zh>4.2 护城河</span><span data-en>4.2 Moat Analysis</span></a>
+        <a class="nav-sub-item" href="#sec-4-3" onclick="navClick(this)"><span data-zh>4.3 战略动态</span><span data-en>4.3 Strategic Dynamics</span></a>
       </div>
     </div>
     <div class="nav-chapter">
-      <div class="nav-chapter-title" onclick="toggleNavChapter(this)"><span class="toggle-icon">▾</span><span>5. 基础设施</span></div>
+      <div class="nav-chapter-title" onclick="toggleNavChapter(this)"><span class="toggle-icon">▾</span><span data-zh>5. 基础设施</span><span data-en>5. Infrastructure</span></div>
       <div class="nav-sub-list">
-        <a class="nav-sub-item" href="#sec-5-1" onclick="navClick(this)">5.1 清算结算网络</a>
-        <a class="nav-sub-item" href="#sec-5-2" onclick="navClick(this)">5.2 即时跨境支付</a>
-        <a class="nav-sub-item" href="#sec-5-3" onclick="navClick(this)">5.3 稳定币CBDC</a>
+        <a class="nav-sub-item" href="#sec-5-1" onclick="navClick(this)"><span data-zh>5.1 清算结算网络</span><span data-en>5.1 Clearing &amp; Settlement</span></a>
+        <a class="nav-sub-item" href="#sec-5-2" onclick="navClick(this)"><span data-zh>5.2 即时跨境支付</span><span data-en>5.2 Instant Payments</span></a>
+        <a class="nav-sub-item" href="#sec-5-3" onclick="navClick(this)"><span data-zh>5.3 稳定币CBDC</span><span data-en>5.3 Stablecoins/CBDC</span></a>
       </div>
     </div>
     <div class="nav-chapter">
-      <div class="nav-chapter-title" onclick="toggleNavChapter(this)"><span class="toggle-icon">▾</span><span>6. 监管环境</span></div>
+      <div class="nav-chapter-title" onclick="toggleNavChapter(this)"><span class="toggle-icon">▾</span><span data-zh>6. 监管环境</span><span data-en>6. Regulatory Environment</span></div>
       <div class="nav-sub-list">
-        <a class="nav-sub-item" href="#sec-6-1" onclick="navClick(this)">6.1 司法管辖区</a>
-        <a class="nav-sub-item" href="#sec-6-2" onclick="navClick(this)">6.2 牌照体系</a>
+        <a class="nav-sub-item" href="#sec-6-1" onclick="navClick(this)"><span data-zh>6.1 司法管辖区</span><span data-en>6.1 Jurisdictions</span></a>
+        <a class="nav-sub-item" href="#sec-6-2" onclick="navClick(this)"><span data-zh>6.2 牌照体系</span><span data-en>6.2 Licensing</span></a>
         <a class="nav-sub-item" href="#sec-6-3" onclick="navClick(this)">6.3 AML/CFT</a>
-        <a class="nav-sub-item" href="#sec-6-4" onclick="navClick(this)">6.4 G20路线图</a>
+        <a class="nav-sub-item" href="#sec-6-4" onclick="navClick(this)"><span data-zh>6.4 G20路线图</span><span data-en>6.4 G20 Roadmap</span></a>
       </div>
     </div>
     <div class="nav-chapter">
-      <div class="nav-chapter-title" onclick="toggleNavChapter(this)"><span class="toggle-icon">▾</span><span>7. 区域市场</span></div>
+      <div class="nav-chapter-title" onclick="toggleNavChapter(this)"><span class="toggle-icon">▾</span><span data-zh>7. 区域市场</span><span data-en>7. Regional Markets</span></div>
       <div class="nav-sub-list">
-        <a class="nav-sub-item" href="#sec-7-1" onclick="navClick(this)">7.1 亚太</a>
-        <a class="nav-sub-item" href="#sec-7-2" onclick="navClick(this)">7.2 新兴市场</a>
-        <a class="nav-sub-item" href="#sec-7-3" onclick="navClick(this)">7.3 欧洲</a>
+        <a class="nav-sub-item" href="#sec-7-1" onclick="navClick(this)"><span data-zh>7.1 亚太</span><span data-en>7.1 Asia-Pacific</span></a>
+        <a class="nav-sub-item" href="#sec-7-2" onclick="navClick(this)"><span data-zh>7.2 新兴市场</span><span data-en>7.2 Emerging Markets</span></a>
+        <a class="nav-sub-item" href="#sec-7-3" onclick="navClick(this)"><span data-zh>7.3 欧洲</span><span data-en>7.3 Europe</span></a>
       </div>
     </div>
   </div>
@@ -137,9 +146,9 @@
 
 <div id="main">
   <div id="topbar">
-    <h1>🌐 跨境支付行业知识库</h1>
+    <h1>🌐 <span data-zh>跨境支付行业知识库</span><span data-en>Cross-Border Payments Knowledge Base</span></h1>
     <input type="text" id="global-search" placeholder="🔍 搜索知识点..." oninput="globalSearch(this.value)">
-    <div id="stats-bar">知识点 <strong id="stat-items">0</strong> 条 / 章节 <strong id="stat-sections">0</strong> 个</div>
+    <div id="stats-bar"><span data-zh>知识点 </span><span data-en>Knowledge Points </span><strong id="stat-items">0</strong><span data-zh> 条 / 章节 </span><span data-en> / Sections </span><strong id="stat-sections">0</strong><span data-zh> 个</span></div>
   </div>
   <div id="content">
     <div class="chapter-section" id="chapter-1">
@@ -4348,6 +4357,31 @@ document.querySelectorAll('.sub-section[id]').forEach(section => {
 // ===== INIT =====
 updateStats();
 </script>
+
+<script>
+  // ── Language Switcher ──
+  (function() {
+    var _lang = localStorage.getItem('lang') || 'zh';
+    window.switchLang = function(l) {
+      _lang = l;
+      localStorage.setItem('lang', l);
+      document.querySelectorAll('[data-zh]').forEach(function(el) {
+        el.style.display = (l === 'zh') ? '' : 'none';
+      });
+      document.querySelectorAll('[data-en]').forEach(function(el) {
+        el.style.display = (l === 'en') ? '' : 'none';
+      });
+      var bz = document.getElementById('btn-zh');
+      var be = document.getElementById('btn-en');
+      if (bz) bz.classList.toggle('active', l === 'zh');
+      if (be) be.classList.toggle('active', l === 'en');
+      var gs = document.getElementById('global-search');
+      if (gs) gs.placeholder = (l === 'zh') ? '🔍 搜索知识点...' : '🔍 Search knowledge points...';
+    };
+    document.addEventListener('DOMContentLoaded', function() { switchLang(_lang); });
+  })();
+</script>
+
 
 </body>
 </html>
