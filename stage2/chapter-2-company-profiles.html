@@ -139,16 +139,156 @@
   /* ── 比较徽章 ── */
   .vs-tag { display: inline-block; background: #fef3c7; color: #92400e; border: 1px solid #fde68a; border-radius: 4px; padding: 1px 6px; font-size: 11px; font-weight: 600; }
   /* ── Language Switcher ── */
-  .lang-switcher { position: fixed; top: 16px; right: 20px; z-index: 1000; display: flex; gap: 4px; }
-  .lang-switcher button { padding: 4px 10px; border: 1px solid #e2e8f0; border-radius: 4px; font-size: 12px; cursor: pointer; background: white; color: #64748b; }
-  .lang-switcher button.active { background: #2563eb; color: white; border-color: #2563eb; }
+</style>
+<style>
+
+/* === Site Navigation Bar === */
+.site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 48px;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  font-family: -apple-system, 'PingFang SC', sans-serif;
+}
+.site-nav-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+}
+.nav-brand {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+  text-decoration: none;
+  margin-right: 24px;
+  white-space: nowrap;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+  overflow: hidden;
+}
+.nav-link {
+  font-size: 12px;
+  color: #64748b;
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+.nav-link:hover { background: #f1f5f9; color: #1e293b; }
+.nav-link.active { background: #eff6ff; color: #2563eb; font-weight: 600; }
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+.nav-lang-btn {
+  padding: 3px 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  font-size: 11px;
+  cursor: pointer;
+  background: white;
+  color: #64748b;
+}
+.nav-lang-btn.active { background: #2563eb; color: white; border-color: #2563eb; }
+/* Hamburger for mobile */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: 8px;
+}
+.nav-hamburger span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: #64748b;
+  border-radius: 1px;
+}
+.nav-mobile-menu {
+  display: none;
+  position: fixed;
+  top: 48px; left: 0; right: 0;
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 8px 20px;
+  z-index: 9998;
+  flex-direction: column;
+  gap: 4px;
+}
+.nav-mobile-menu.open { display: flex; }
+.nav-mobile-link {
+  font-size: 13px;
+  color: #64748b;
+  text-decoration: none;
+  padding: 6px 8px;
+  border-radius: 4px;
+}
+.nav-mobile-link:hover { background: #f1f5f9; color: #1e293b; }
+.nav-mobile-link.active { background: #eff6ff; color: #2563eb; font-weight: 600; }
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+}
+  body { padding-top: 48px !important; }
+/* === End Site Navigation Bar === */
+
 </style>
 </head>
 <body>
-<div class="lang-switcher">
-  <button id="btn-zh" onclick="switchLang('zh')">中文</button>
-  <button id="btn-en" onclick="switchLang('en')">EN</button>
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="nav-brand">🗺️ <span data-zh>跨境支付研究</span><span data-en>CB Payments</span></a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link"><span data-zh>首页</span><span data-en>Home</span></a>
+      <a href="chapter-1-market-overview.html" class="nav-link"><span data-zh>市场</span><span data-en>Market</span></a>
+      <a href="chapter-2-company-profiles.html" class="nav-link"><span data-zh>公司</span><span data-en>Companies</span></a>
+      <a href="chapter-3-business-model.html" class="nav-link"><span data-zh>商业模式</span><span data-en>BizModel</span></a>
+      <a href="chapter-4-competitive-landscape.html" class="nav-link"><span data-zh>竞争</span><span data-en>Competition</span></a>
+      <a href="chapter-5-infrastructure.html" class="nav-link"><span data-zh>基础设施</span><span data-en>Infra</span></a>
+      <a href="chapter-6-regulatory.html" class="nav-link"><span data-zh>监管</span><span data-en>Regulatory</span></a>
+      <a href="chapter-7-regional-markets.html" class="nav-link"><span data-zh>区域</span><span data-en>Regional</span></a>
+      <a href="vsm-cross-border-payments.html" class="nav-link">VSM</a>
+      <a href="../stage1/index-v4.html" class="nav-link"><span data-zh>索引库</span><span data-en>Index</span></a>
+    </div>
+    <div id="nav-hamburger" class="nav-hamburger" aria-label="菜单">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-right">
+      <button id="btn-zh" class="nav-lang-btn active" onclick="switchLang('zh')">中文</button>
+      <button id="btn-en" class="nav-lang-btn" onclick="switchLang('en')">EN</button>
+    </div>
+  </div>
+</nav>
+<div id="nav-mobile-menu" class="nav-mobile-menu">
+  <a href="index.html" class="nav-mobile-link"><span data-zh>首页</span><span data-en>Home</span></a>
+  <a href="chapter-1-market-overview.html" class="nav-mobile-link"><span data-zh>第1章 市场</span><span data-en>Ch.1 Market</span></a>
+  <a href="chapter-2-company-profiles.html" class="nav-mobile-link"><span data-zh>第2章 公司</span><span data-en>Ch.2 Companies</span></a>
+  <a href="chapter-3-business-model.html" class="nav-mobile-link"><span data-zh>第3章 商业模式</span><span data-en>Ch.3 BizModel</span></a>
+  <a href="chapter-4-competitive-landscape.html" class="nav-mobile-link"><span data-zh>第4章 竞争</span><span data-en>Ch.4 Competition</span></a>
+  <a href="chapter-5-infrastructure.html" class="nav-mobile-link"><span data-zh>第5章 基础设施</span><span data-en>Ch.5 Infra</span></a>
+  <a href="chapter-6-regulatory.html" class="nav-mobile-link"><span data-zh>第6章 监管</span><span data-en>Ch.6 Regulatory</span></a>
+  <a href="chapter-7-regional-markets.html" class="nav-mobile-link"><span data-zh>第7章 区域</span><span data-en>Ch.7 Regional</span></a>
+  <a href="vsm-cross-border-payments.html" class="nav-mobile-link">VSM</a>
+  <a href="../stage1/index-v4.html" class="nav-mobile-link"><span data-zh>索引库</span><span data-en>Index</span></a>
 </div>
+
 
 <!-- ════ 章节头 ════ -->
 <div class="chapter-header">
@@ -1523,5 +1663,28 @@
   // Initialize on page load
   switchLang(lang);
 </script>
+
+<script>
+(function() {
+  // Highlight active nav link
+  var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-link, .nav-mobile-link').forEach(function(link) {
+    var href = link.getAttribute('href') || '';
+    var linkPage = href.split('/').pop();
+    if (linkPage && linkPage === currentPage) {
+      link.classList.add('active');
+    }
+  });
+  // Hamburger toggle
+  var hamburger = document.getElementById('nav-hamburger');
+  var mobileMenu = document.getElementById('nav-mobile-menu');
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', function() {
+      mobileMenu.classList.toggle('open');
+    });
+  }
+})();
+</script>
+
 </body>
 </html>
