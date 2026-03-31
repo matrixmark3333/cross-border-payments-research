@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第1章：跨境支付市场总览</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; line-height: 1.7; }
+
+  /* ── 章节头 ── */
+  .chapter-header {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+    border-radius: 16px;
+    padding: 40px 40px 36px;
+    margin-bottom: 32px;
+    color: white;
+  }
+  .chapter-label { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 8px; }
+  .chapter-title { font-size: 28px; font-weight: 900; color: white; line-height: 1.2; margin: 0 0 12px; }
+  .chapter-subtitle { font-size: 15px; color: rgba(255,255,255,0.75); margin: 0 0 24px; }
+  .chapter-meta { display: flex; gap: 24px; flex-wrap: wrap; }
+  .meta-item { background: rgba(255,255,255,0.12); border-radius: 8px; padding: 8px 14px; font-size: 12px; color: rgba(255,255,255,0.85); }
+  .meta-item strong { color: white; }
+
+  /* ── TOC ── */
+  .toc-box { background: white; border-radius: 12px; padding: 24px 28px; margin-bottom: 32px; border: 1px solid #e2e8f0; }
+  .toc-title { font-size: 13px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+  .toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 32px; }
+  .toc-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155; text-decoration: none; padding: 6px 0; border-bottom: 1px solid #f1f5f9; }
+  .toc-item:hover { color: #2563eb; }
+  .toc-num { background: #eff6ff; color: #2563eb; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; flex-shrink: 0; }
+
+  /* ── 模块 ── */
+  .module { background: white; border-radius: 12px; padding: 32px 36px; margin-bottom: 28px; border: 1px solid #e2e8f0; }
+  .module-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.10em; color: #94a3b8; margin-bottom: 8px; }
+  .module-title { font-size: 20px; font-weight: 800; color: #0f172a; border-left: 4px solid #2563eb; padding-left: 14px; margin: 0 0 20px; line-height: 1.3; }
+  .module-title .num { color: #2563eb; }
+
+  .core-conclusion { background: #eff6ff; border-left: 4px solid #2563eb; padding: 16px 20px; margin: 0 0 24px; font-size: 15px; font-weight: 600; color: #1e293b; border-radius: 0 8px 8px 0; line-height: 1.6; }
+
+  .body-text { font-size: 14px; color: #334155; line-height: 1.8; margin-bottom: 20px; }
+  .body-text p { margin: 0 0 14px; }
+  .body-text strong { color: #1e293b; }
+
+  .insight-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 16px 20px; margin: 24px 0; }
+  .insight-title { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #166534; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+  .insight-list { margin: 0; padding-left: 0; list-style: none; }
+  .insight-list li { font-size: 13px; color: #15803d; padding: 4px 0 4px 18px; position: relative; line-height: 1.6; }
+  .insight-list li::before { content: "💡"; position: absolute; left: 0; }
+
+  .source-row { margin-top: 20px; padding-top: 12px; border-top: 1px solid #f1f5f9; }
+  .source-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; text-decoration: none; }
+  .source-label { font-size: 11px; color: #94a3b8; margin-right: 4px; }
+
+  /* ── 表格 ── */
+  .data-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13px; }
+  .data-table th { background: #f8fafc; padding: 10px 14px; text-align: left; font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; }
+  .data-table td { padding: 10px 14px; border-bottom: 1px solid #f1f5f9; color: #1e293b; }
+  .data-table tr:hover td { background: #fafbff; }
+  .data-table .highlight td { background: #eff6ff; font-weight: 600; }
+  .data-table .leader td { background: #f0fdf4; }
+
+  .badge-tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+  .badge-c { background: #dbeafe; color: #1d4ed8; }
+  .badge-b { background: #dcfce7; color: #166534; }
+  .badge-em { background: #fef3c7; color: #92400e; }
+  .badge-sup { background: #ede9fe; color: #5b21b6; }
+
+  /* ── 模块颜色变体 ── */
+  .module-red .module-title { border-color: #ef4444; }
+  .module-red .core-conclusion { background: #fef2f2; border-color: #ef4444; }
+
+  .module-purple .module-title { border-color: #7c3aed; }
+  .module-purple .core-conclusion { background: #f5f3ff; border-color: #7c3aed; }
+
+  .module-green .module-title { border-color: #059669; }
+  .module-green .core-conclusion { background: #f0fdf4; border-color: #059669; }
+
+  .module-orange .module-title { border-color: #d97706; }
+  .module-orange .core-conclusion { background: #fffbeb; border-color: #d97706; }
+
+  /* ── 警告框 ── */
+  .warn-box { background: #fffbeb; border: 1px solid #fcd34d; border-radius: 8px; padding: 12px 16px; margin: 16px 0; font-size: 13px; color: #92400e; }
+
+  /* ── 数据对比卡片 ── */
+  .compare-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0; }
+  .compare-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; }
+  .compare-card .company { font-size: 12px; font-weight: 700; color: #64748b; margin-bottom: 4px; }
+  .compare-card .value { font-size: 22px; font-weight: 900; color: #2563eb; }
+  .compare-card .label { font-size: 11px; color: #94a3b8; margin-top: 2px; }
+
+  /* ── 章节分隔 ── */
+  .section-divider { text-align: center; padding: 8px 0 24px; color: #cbd5e1; font-size: 20px; }
+
+  /* ── 飞轮图示 ── */
+  .flywheel { background: linear-gradient(135deg, #eff6ff, #f0fdf4); border: 1px solid #bfdbfe; border-radius: 12px; padding: 20px 24px; margin: 20px 0; }
+  .flywheel-title { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #1d4ed8; margin-bottom: 12px; }
+  .flywheel-steps { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .fw-step { background: white; border: 1px solid #bfdbfe; border-radius: 8px; padding: 8px 14px; font-size: 12px; font-weight: 600; color: #1e3a5f; flex: 1; text-align: center; min-width: 100px; }
+  .fw-arrow { color: #2563eb; font-size: 16px; font-weight: 700; }
+
+  /* ── 风险条 ── */
+  .risk-bar { display: flex; align-items: center; gap: 12px; margin: 8px 0; }
+  .risk-label { font-size: 12px; color: #475569; width: 180px; flex-shrink: 0; }
+  .risk-track { flex: 1; height: 8px; background: #e2e8f0; border-radius: 4px; }
+  .risk-fill { height: 8px; border-radius: 4px; }
+  .risk-high { background: #ef4444; }
+  .risk-med { background: #f59e0b; }
+  .risk-low { background: #10b981; }
+  .risk-pct { font-size: 12px; font-weight: 700; color: #475569; width: 40px; text-align: right; }
+
+  /* ── 驱动力卡片 ── */
+  .driver-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 20px 0; }
+  .driver-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; }
+  .driver-rank { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; font-size: 13px; font-weight: 900; margin-bottom: 8px; }
+  .rank-1 { background: #fef3c7; color: #d97706; }
+  .rank-2 { background: #dbeafe; color: #1d4ed8; }
+  .rank-3 { background: #f0fdf4; color: #059669; }
+  .rank-4 { background: #f5f3ff; color: #7c3aed; }
+  .driver-title { font-size: 13px; font-weight: 700; color: #1e293b; margin-bottom: 4px; }
+  .driver-desc { font-size: 12px; color: #64748b; line-height: 1.6; }
+
+  /* ── 生命周期图示 ── */
+  .lifecycle-bar { display: flex; gap: 0; margin: 20px 0; border-radius: 10px; overflow: hidden; height: 48px; }
+  .lc-stage { display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex: 1; }
+  .lc-intro { background: #dbeafe; color: #1d4ed8; }
+  .lc-growth { background: #dcfce7; color: #166534; }
+  .lc-growth-bold { background: #059669; color: white; flex: 1.5; }
+  .lc-mature { background: #fef3c7; color: #92400e; }
+  .lc-decline { background: #fee2e2; color: #dc2626; }
+
+  /* ── 生态地图 ── */
+  .eco-layer { margin: 12px 0; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; }
+  .eco-layer-header { background: #f8fafc; padding: 10px 16px; font-size: 12px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 1px solid #e2e8f0; }
+  .eco-layer-body { padding: 12px 16px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .eco-node { background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: 12px; color: #334155; font-weight: 600; }
+  .eco-node.highlight { background: #eff6ff; border-color: #bfdbfe; color: #1d4ed8; }
+  .eco-node.em { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+  .eco-node.reg { background: #fef3c7; border-color: #fde68a; color: #92400e; }
+</style>
+</head>
+<body>
+
+<!-- ════ 章节头 ════ -->
+<div class="chapter-header">
+  <div class="chapter-label">知识库 · 第1章</div>
+  <div class="chapter-title">跨境支付市场总览</div>
+  <div class="chapter-subtitle">市场规模 · 生态分层 · 生命周期 · 驱动因素与风险 — 基于BCG/McKinsey/BIS/FSB/世界银行等7份权威报告</div>
+  <div class="chapter-meta">
+    <div class="meta-item">来源卡片：<strong>card-057 / 060 / 066 / 068 / 071 / 074 / 248</strong></div>
+    <div class="meta-item">最后更新：<strong>2026-03-30</strong></div>
+    <div class="meta-item">涵盖数据年份：<strong>2023–2024</strong></div>
+    <div class="meta-item">信息点总数：<strong>200+</strong></div>
+  </div>
+</div>
+
+<!-- ════ 目录 ════ -->
+<div class="toc-box">
+  <div class="toc-title">本章目录</div>
+  <div class="toc-grid">
+    <a href="#s11" class="toc-item"><span class="toc-num">1.1</span>市场规模与增速</a>
+    <a href="#s12" class="toc-item"><span class="toc-num">1.2</span>市场分层与生态图</a>
+    <a href="#s13" class="toc-item"><span class="toc-num">1.3</span>行业生命周期判断</a>
+    <a href="#s14" class="toc-item"><span class="toc-num">1.4</span>核心驱动因素与风险</a>
+  </div>
+</div>
+
+<!-- ════ 1.1 市场规模与增速 ════ -->
+<div class="module" id="s11">
+  <div class="module-label">第1.1节</div>
+  <div class="module-title"><span class="num">1.1</span> 市场规模与增速</div>
+
+  <div class="core-conclusion">
+    📌 <strong>核心结论：</strong>跨境支付是全球金融业最大的单一子市场。以交易流量口径，2023年跨境支付总量约 <strong>$190-250T</strong>（各机构口径不同）；以收入池口径，BCG估算 <strong>$1.8T</strong>、McKinsey估算 <strong>$2.4T</strong>——差异源于统计边界。2023-2028年行业整体 CAGR 约 <strong>5%</strong>，较前五年明显放缓，但新兴市场（亚太 +6.3%、拉美 +8.6%）将显著跑赢成熟市场（欧美 +3%）。
+  </div>
+
+  <div class="body-text">
+    <p><strong>一、多机构数据口径辨析</strong></p>
+    <p>理解这个市场首先需要辨清"支付"的统计边界。同一年份（2023年），BCG报告全球支付收入为 <strong>$1.8万亿</strong>，McKinsey报告为 <strong>$2.4万亿</strong>——两者差异约 33%，主要来自以下因素：①BCG采用"支付收入"口径，聚焦直接交易手续费和存款利差收入；②McKinsey口径更宽，将所有支付相关银行业收入（含外汇服务、信用卡年费等）纳入统计；③FXC Intelligence 等机构统计的是<em>交易流量</em>（transaction volume），而非收入，数字自然大几个数量级。
+    <a class="source-tag" href="../analysis-cards/card-057.html">[card-057]</a>
+    <a class="source-tag" href="../analysis-cards/card-060.html">[card-060]</a>
+    </p>
+    <p><strong>这意味着什么？</strong> 投资者和竞争分析需要对齐口径。$1.8T（BCG）vs $2.4T（McKinsey）不是数据错误，而是研究框架不同的必然结果。在判断市场份额时，必须先确认参照系。</p>
+  </div>
+
+  <!-- 多机构对比表 -->
+  <p style="font-size:13px; font-weight:700; color:#475569; margin:16px 0 8px; text-transform:uppercase; letter-spacing:0.06em;">▌ 多机构市场规模数据对比表（核心参考）</p>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>发布机构</th>
+        <th>数据口径</th>
+        <th>2023年规模</th>
+        <th>2028年预测</th>
+        <th>CAGR预测</th>
+        <th>数据年份 / 来源</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td><strong>BCG</strong></td>
+        <td>全球支付收入（含国内+跨境）</td>
+        <td><strong>$1.8万亿</strong></td>
+        <td>$2.3万亿</td>
+        <td><strong>5%</strong></td>
+        <td>2024年10月报告<br><a class="source-tag" href="../analysis-cards/card-057.html">[card-057]</a></td>
+      </tr>
+      <tr class="highlight">
+        <td><strong>McKinsey</strong></td>
+        <td>全球支付行业总收入池（含增值服务）</td>
+        <td><strong>$2.4万亿</strong></td>
+        <td>$3.1万亿</td>
+        <td><strong>~5%</strong></td>
+        <td>2024年报告<br><a class="source-tag" href="../analysis-cards/card-060.html">[card-060]</a></td>
+      </tr>
+      <tr>
+        <td><strong>FXC Intelligence</strong></td>
+        <td>跨境支付交易流量（B2B为主）</td>
+        <td><strong>~$194万亿</strong></td>
+        <td>—</td>
+        <td>行业年均 ~6%+</td>
+        <td>2024年行业报告<br><a class="source-tag" href="../analysis-cards/card-248.html">[card-248]</a></td>
+      </tr>
+      <tr>
+        <td><strong>BIS CPMI</strong></td>
+        <td>覆盖68央行、166支付系统（监测口径）</td>
+        <td>监测数据，非市场规模</td>
+        <td>—</td>
+        <td>—</td>
+        <td>2024年12月监测报告<br><a class="source-tag" href="../analysis-cards/card-071.html">[card-071]</a></td>
+      </tr>
+      <tr>
+        <td><strong>FSB G20</strong></td>
+        <td>零售跨境 B2B/P2P 成本KPI监测</td>
+        <td>B2B成本1.6%，P2P 2.6%</td>
+        <td>目标：所有用例<1%（2027年）</td>
+        <td>—</td>
+        <td>2024年10月进展报告<br><a class="source-tag" href="../analysis-cards/card-066.html">[card-066]</a></td>
+      </tr>
+      <tr>
+        <td><strong>世界银行 RPW</strong></td>
+        <td>C2C跨境汇款价格（367条走廊）</td>
+        <td>全球均成本 6.35%（$200汇款）</td>
+        <td>目标：3%（SDG 2030）</td>
+        <td>年均降 ~0.1pp（缓慢）</td>
+        <td>2024年Q1报告（第49期）<br><a class="source-tag" href="../analysis-cards/card-068.html">[card-068]</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="warn-box">
+    ⚠️ <strong>口径警告：</strong>$194T 是"交易流量"（类似GDP概念），$1.8T/$2.4T 是"收入池"（类似企业销售额）。两者没有直接可比性。B2B跨境交易约占$194T中的80%以上，但B2B收入率仅约0.1-0.5%，而C2C汇款成本高达6%+但体量相对小。
+  </div>
+
+  <div class="body-text">
+    <p><strong>二、跨境支付的分层规模（C2C / B2B / B2C）</strong></p>
+    <p>跨境支付内部结构高度分化。按交易流量估算：<strong>B2B企业间支付</strong>占绝对主体（约85-90%），主要是国际贸易结算、企业间资金划转和跨境并购；<strong>B2C消费者收款</strong>（如跨境电商）约占5-8%；<strong>C2C汇款</strong>（移民汇款、个人转账）约占1-2%但费率最高（6.35%均成本）。
+    <a class="source-tag" href="../analysis-cards/card-068.html">[card-068]</a>
+    <a class="source-tag" href="../analysis-cards/card-066.html">[card-066]</a>
+    </p>
+    <p><strong>这意味着什么？</strong> B2B是体量最大但单位利润率最低的赛道；C2C是体量最小但费率最高、创新活跃度最强的赛道。新兴Fintech（Wise、Remitly等）主攻C2C/SME，切的是高费率市场，而非直接与银行在B2B大体量低费率赛道竞争。</p>
+  </div>
+
+  <!-- 分层规模卡片 -->
+  <div class="compare-grid" style="grid-template-columns: repeat(3, 1fr);">
+    <div class="compare-card">
+      <div class="company">B2B 企业间支付</div>
+      <div class="value">~85%</div>
+      <div class="label">占跨境支付总流量比例<br>代理行体系为主，成本1.6% (FSB)</div>
+    </div>
+    <div class="compare-card">
+      <div class="company">B2C 跨境电商收款</div>
+      <div class="value">~8%</div>
+      <div class="label">占跨境支付总流量比例<br>增速最快，年均20%+</div>
+    </div>
+    <div class="compare-card">
+      <div class="company">C2C 移民汇款</div>
+      <div class="value">~2%</div>
+      <div class="label">占跨境支付总流量比例<br>但费率6.35%，是利润率最高赛道</div>
+    </div>
+  </div>
+
+  <div class="body-text">
+    <p><strong>三、增速放缓是结构性趋势，但新兴市场是例外</strong></p>
+    <p>BCG数据显示，全球支付收入增速从 2018-2023 年的 <strong>9% CAGR 降至 2023-2028 年的 5% CAGR</strong>——增速减半是行业成熟化的最重要信号。
+    <a class="source-tag" href="../analysis-cards/card-057.html">[card-057]</a>
+    放缓主要集中在欧洲（仅3%，非交易收入仅0.9%）和北美（3.3%），受利率下降、A2A支付替代和监管费率压力三重打压。
+    </p>
+    <p>但新兴市场截然不同：<strong>拉丁美洲 CAGR 8.6%</strong>（巴西Pix拉动）、<strong>中东非洲 7.2%</strong>（卡片普及+政府投资）、<strong>亚太 6.3%</strong>（UPI、即时支付生态），亚太是唯一预计增速超过前五年均值的地区。这意味着未来支付收入增长的引擎将从大西洋两岸转移至亚太和拉美。</p>
+  </div>
+
+  <!-- 地区增速对比表 -->
+  <p style="font-size:13px; font-weight:700; color:#475569; margin:16px 0 8px; text-transform:uppercase; letter-spacing:0.06em;">▌ 各地区支付收入增速对比（BCG 2023-2028 CAGR）</p>
+  <table class="data-table">
+    <thead>
+      <tr><th>地区</th><th>交易收入 CAGR</th><th>非交易收入 CAGR</th><th>总体 CAGR</th><th>核心驱动</th></tr>
+    </thead>
+    <tbody>
+      <tr class="leader"><td><strong>拉丁美洲 🚀</strong></td><td>9.3%</td><td>8.3%</td><td><strong>8.6%</strong></td><td>Pix即时支付、数字化</td></tr>
+      <tr class="leader"><td><strong>中东非洲 🚀</strong></td><td>9.0%</td><td>—</td><td><strong>7.2%</strong></td><td>卡片普及、政府投资</td></tr>
+      <tr class="leader"><td><strong>亚太 📈</strong></td><td>—</td><td>—</td><td><strong>6.3%</strong></td><td>UPI、即时支付网络</td></tr>
+      <tr><td>全球均值</td><td>—</td><td>—</td><td><strong>5.0%</strong></td><td>综合</td></tr>
+      <tr><td>北美</td><td>5.4%</td><td>1.8%</td><td><strong>3.3%</strong></td><td>成熟市场，利率下降</td></tr>
+      <tr><td>欧洲 ⚠️</td><td>—</td><td>0.9%</td><td><strong>~3%</strong></td><td>A2A替代+利率下降+监管</td></tr>
+    </tbody>
+  </table>
+  <div class="source-row">
+    <span class="source-label">来源：</span>
+    <a class="source-tag" href="../analysis-cards/card-057.html">[card-057 BCG]</a>
+    <a class="source-tag" href="../analysis-cards/card-060.html">[card-060 McKinsey]</a>
+    <a class="source-tag" href="../analysis-cards/card-074.html">[card-074 IMF拉美]</a>
+  </div>
+</div>
+
+<div class="section-divider">— — —</div>
+
+<!-- ════ 1.2 市场分层与生态图 ════ -->
+<div class="module module-green" id="s12">
+  <div class="module-label">第1.2节</div>
+  <div class="module-title"><span class="num">1.2</span> 市场分层与生态图</div>
+
+  <div class="core-conclusion">
+    📌 <strong>核心结论：</strong>跨境支付价值链由四层参与方构成——清算网络（护城河最深、TSR最高）、传统银行（收入最大但份额受蚕食）、新兴Fintech（增速最快）、基础设施层（监管机构+国际组织）。6%的汇款成本中，<strong>银行代理行体系拿走最大份额（约12.66%用于汇款），而新兴数字渠道可将成本压缩至3.87%-4.96%</strong>。价值链中最有机会的层级是"中间件/连接层"——提供互联互通、合规自动化和数据服务。
+  </div>
+
+  <div class="body-text">
+    <p><strong>一、参与方生态全景：四层架构</strong></p>
+    <p>跨境支付生态系统并非扁平竞争，而是呈现清晰的分层结构。理解各层的角色和利润来源，是判断机会和威胁的前提。</p>
+  </div>
+
+  <!-- 生态层级 -->
+  <div class="eco-layer">
+    <div class="eco-layer-header">🏛️ 第一层：基础设施 / 监管层（定规则者）</div>
+    <div class="eco-layer-body">
+      <div class="eco-node reg">G20 / FSB</div>
+      <div class="eco-node reg">BIS / CPMI</div>
+      <div class="eco-node reg">世界银行 / IMF</div>
+      <div class="eco-node reg">FATF（反洗钱）</div>
+      <div class="eco-node reg">各国央行 / RTGS</div>
+      <div class="eco-node reg">ISO 20022 标准组织</div>
+    </div>
+  </div>
+  <div class="eco-layer">
+    <div class="eco-layer-header">🌐 第二层：清算网络层（护城河最深）</div>
+    <div class="eco-layer-body">
+      <div class="eco-node highlight">Visa / Mastercard（TSR均15%，10年）</div>
+      <div class="eco-node highlight">Swift（批发跨境消息网络）</div>
+      <div class="eco-node highlight">FPS互联（Nexus / PayNow-UPI / PromptPay）</div>
+      <div class="eco-node highlight">SEPA（欧洲即时支付）</div>
+      <div class="eco-node highlight">Pix（巴西，85%成年人覆盖）</div>
+    </div>
+  </div>
+  <div class="eco-layer">
+    <div class="eco-layer-header">🏦 第三层：传统金融机构层（收入最大但受挑战）</div>
+    <div class="eco-layer-body">
+      <div class="eco-node">全球大行（JPMorgan / HSBC / Citi）</div>
+      <div class="eco-node">区域银行（代理行体系）</div>
+      <div class="eco-node">邮局汇款（6.63%均成本）</div>
+      <div class="eco-node">传统MTO（Western Union 95%走廊）</div>
+      <div class="eco-node">MoneyGram（90%走廊）</div>
+    </div>
+  </div>
+  <div class="eco-layer">
+    <div class="eco-layer-header">🚀 第四层：新兴Fintech层（增速最快）</div>
+    <div class="eco-layer-body">
+      <div class="eco-node em">Wise（数字专属MTO）</div>
+      <div class="eco-node em">Remitly（移民汇款）</div>
+      <div class="eco-node em">WorldRemit / Xoom</div>
+      <div class="eco-node em">Airwallex（B2B跨境）</div>
+      <div class="eco-node em">Stripe（支付处理+嵌入式）</div>
+      <div class="eco-node em">Adyen（全球收单）</div>
+      <div class="eco-node em">移动运营商（3.87%均成本，最低）</div>
+    </div>
+  </div>
+
+  <div class="source-row">
+    <span class="source-label">来源：</span>
+    <a class="source-tag" href="../analysis-cards/card-057.html">[card-057 BCG]</a>
+    <a class="source-tag" href="../analysis-cards/card-068.html">[card-068 世界银行]</a>
+    <a class="source-tag" href="../analysis-cards/card-248.html">[card-248 a16z]</a>
+  </div>
+
+  <div class="body-text" style="margin-top:24px;">
+    <p><strong>二、价值链成本分布：谁拿走了那6%？</strong></p>
+    <p>以C2C汇款（发送$200）为例，世界银行RPW数据显示不同渠道的成本结构天壤之别：银行渠道均成本高达 <strong>12.66%</strong>，是移动运营商（3.87%）的3倍以上。
+    <a class="source-tag" href="../analysis-cards/card-068.html">[card-068]</a>
+    这背后是代理行体系的固定成本（合规、流动性预存、手续费分成）无法被数字化消除。</p>
+    <p><strong>这意味着什么？</strong> 银行渠道的高成本不是懒惰，而是结构性成本负担：每一笔代理行支付需要经过5-10个人工接触点，ISO 20022迁移可将E&I（例外与调查）案例人工干预减少 <strong>84%</strong>，预计每年为行业节省超 <strong>6亿美元</strong> 运营和流动性成本。
+    <a class="source-tag" href="../analysis-cards/card-071.html">[card-071]</a>
+    </p>
+  </div>
+
+  <!-- 价值链成本分布表 -->
+  <p style="font-size:13px; font-weight:700; color:#475569; margin:16px 0 8px; text-transform:uppercase; letter-spacing:0.06em;">▌ 价值链成本分布：各渠道/环节均成本对比（发送$200，C2C汇款）</p>
+  <table class="data-table">
+    <thead>
+      <tr><th>渠道 / 环节</th><th>均成本（$200）</th><th>受益方</th><th>主要成本构成</th><th>可压缩性</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>银行汇款</strong></td><td style="color:#dc2626;font-weight:700">12.66%</td><td>银行（代理行体系）</td><td>合规+流动性+手续费</td><td>⚠️ 低（结构性）</td></tr>
+      <tr><td>邮局汇款</td><td>6.63%</td><td>邮政系统</td><td>网点运营+手续费</td><td>🟡 中等</td></tr>
+      <tr><td><strong>全球均值</strong></td><td style="color:#d97706;font-weight:700">6.35%</td><td>混合</td><td>综合</td><td>—</td></tr>
+      <tr><td>传统MTO（WU/MG）</td><td>5.35%</td><td>Western Union等</td><td>网点+汇率差价</td><td>🟡 中等（已下降）</td></tr>
+      <tr class="highlight"><td><strong>数字渠道均值</strong></td><td style="color:#059669;font-weight:700"><strong>4.96%</strong></td><td>数字MTO / 平台</td><td>技术+FX差价</td><td>✅ 高（可继续降）</td></tr>
+      <tr class="highlight"><td><strong>数字专属MTO（Wise等）</strong></td><td style="color:#059669;font-weight:700"><strong>3.97%</strong></td><td>Wise/Remitly等</td><td>主要是FX差价</td><td>✅ 高</td></tr>
+      <tr class="leader"><td><strong>移动运营商 🏆</strong></td><td style="color:#059669;font-weight:700"><strong>3.87%</strong></td><td>电信运营商</td><td>移动钱包接收费用</td><td>✅ 最低（可达3%）</td></tr>
+      <tr><td>SmaRT（最优价格，$200）</td><td style="color:#059669;">3.21%</td><td>信息充足的消费者可获得</td><td>—</td><td>✅ 技术上已可实现</td></tr>
+    </tbody>
+  </table>
+  <div class="source-row">
+    <span class="source-label">来源：</span>
+    <a class="source-tag" href="../analysis-cards/card-068.html">[card-068 世界银行Q1 2024]</a>
+    <a class="source-tag" href="../analysis-cards/card-066.html">[card-066 FSB G20]</a>
+  </div>
+
+  <div class="body-text" style="margin-top:24px;">
+    <p><strong>三、各层利润分布：谁的护城河最深？</strong></p>
+    <p>BCG数据揭示了支付行业各细分层级的长期股东回报（TSR）：<strong>清算网络（Visa/Mastercard）10年TSR 15%，2014-2021年均高达22%</strong>，是整个行业表现最强的细分。其护城河来源是双边市场网络效应+约40%的收入来自增值服务（数据分析、欺诈防控、BaaS）。
+    <a class="source-tag" href="../analysis-cards/card-057.html">[card-057]</a>
+    </p>
+    <p>对比鲜明的是<strong>收单方（Acquirers）</strong>：2014-2021年均TSR高达29%，但2021-2024年均下降16%，10年均仅13%——因为ISV（行业软件供应商）通过嵌入式支付绕开了传统收单商，导致去中间化。<strong>发行方（Issuers）</strong>10年TSR仅5%，远低于行业均值12%，利率敏感性高和监管费率上限双重压制。</p>
+    <p><strong>核心洞察：</strong>价值链中"连接层"（Nexus、API协调、数字身份、ISO 20022中间件）是目前最被低估的机会层——BIS测算ISO 20022可将合规警报误报率降低25-30%（当前误报率高达99%），但这层价值几乎没有独立上市公司。</p>
+  </div>
+
+  <div class="insight-box">
+    <div class="insight-title">💡 价值链机会层分析</div>
+    <ul class="insight-list">
+      <li><strong>护城河最深（现有赢家）：</strong>清算网络（Visa/Mastercard），网络效应+增值服务多元化，TSR 15%（10年均）</li>
+      <li><strong>增速最快（新进入者机会）：</strong>数字MTO（Wise/Remitly两位数增长）、嵌入式支付（McKinsey预测2026年嵌入式支付市场>$1380亿）</li>
+      <li><strong>最被低估（隐形机会）：</strong>合规中间件（99%误报率待解决）、ISO 20022迁移工具（$6亿年化ROI）、FPS互联基础设施（53%系统正在探索）</li>
+      <li><strong>受压最严重（需转型）：</strong>传统收单商（ISV去中间化，TSR -16%）、银行代理行体系（成本12.66% vs 数字3.87%）</li>
+    </ul>
+  </div>
+  <div class="source-row">
+    <span class="source-label">来源：</span>
+    <a class="source-tag" href="../analysis-cards/card-057.html">[card-057 BCG]</a>
+    <a class="source-tag" href="../analysis-cards/card-071.html">[card-071 BIS]</a>
+    <a class="source-tag" href="../analysis-cards/card-060.html">[card-060 McKinsey]</a>
+  </div>
+</div>
+
+<div class="section-divider">— — —</div>
+
+<!-- ════ 1.3 行业生命周期判断 ════ -->
+<div class="module module-purple" id="s13">
+  <div class="module-label">第1.3节</div>
+  <div class="module-title"><span class="num">1.3</span> 行业生命周期判断</div>
+
+  <div class="core-conclusion">
+    📌 <strong>核心结论：</strong>全球支付行业整体处于"成熟期向成熟末期过渡"阶段（BCG CAGR从9%→5%是核心证据），但<strong>跨境支付内部正在经历结构性重组</strong>——旧基础设施（代理行、传统MTO）处于衰退期，新生态（FPS互联、嵌入式支付、数字MTO）仍在高速成长期。当前窗口期（2024-2027年）是关键：G20路线图2027年截止、Swift ISO 20022 2025年11月全切换、Nexus东南亚即将商用，格局将在此期间基本确定。
+  </div>
+
+  <!-- 生命周期图示 -->
+  <div class="lifecycle-bar">
+    <div class="lc-stage lc-intro">导入期</div>
+    <div class="lc-stage lc-growth">成长期</div>
+    <div class="lc-stage lc-growth-bold">⬅ 跨境支付新生态</div>
+    <div class="lc-stage lc-mature">成熟期 ⬅ 全球支付整体</div>
+    <div class="lc-stage lc-decline">衰退期<br>传统渠道</div>
+  </div>
+  <p style="font-size:11px;color:#94a3b8;text-align:center;margin-top:4px;">注：行业内部处于不同阶段，整体增速放缓不等于所有细分均成熟</p>
+
+  <div class="body-text" style="margin-top:20px;">
+    <p><strong>一、判断依据：渗透率 / 增速 / 竞争格局三维分析</strong></p>
+    <p><strong>渗透率指标：</strong>即时支付（FPS）已在超过 <strong>60个国家</strong>上线（BCG）、BIS调查覆盖68央行中有 <strong>45个运营FPS</strong>，其中亚太81%司法区已有FPS，但美洲仅42%。
+    <a class="source-tag" href="../analysis-cards/card-057.html">[card-057]</a>
+    <a class="source-tag" href="../analysis-cards/card-071.html">[card-071]</a>
+    数字汇款仅占世界银行RPW数据库30%，仍有大量空间。这说明基础设施层仍在快速扩张，而不是成熟稳定。</p>
+    <p><strong>增速指标：</strong>新兴Fintech（Wise、Remitly、Ebury等）持续实现两位数收入增长，抢占银行跨境支付份额；全球6,500家活跃支付类金融科技公司，过去25年吸引超 <strong>$1250亿股权融资</strong>，占全部金融科技融资近1/4。
+    <a class="source-tag" href="../analysis-cards/card-057.html">[card-057]</a>
+    这是一个仍有大量新进入者的市场，不是成熟市场的竞争特征。</p>
+    <p><strong>竞争格局：</strong>FSB数据显示零售跨境支付1小时到达率不升反降（降至33.5%），说明竞争改善尚未传导到终端用户，改善空间巨大；BIS监测显示超过50%的FPS系统正在探索互联，但大多数仍在探索阶段。
+    <a class="source-tag" href="../analysis-cards/card-066.html">[card-066]</a>
+    格局未定是成长期的典型特征。</p>
+  </div>
+
+  <div class="body-text">
+    <p><strong>二、横向对比：跨境支付 vs 其他金融科技领域</strong></p>
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>领域</th><th>发展阶段</th><th>标志性指标</th><th>格局状态</th><th>跨境支付差异</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>国内即时支付（Pix/UPI）</strong></td><td><span class="badge-tag badge-sup">高速成长期</span></td><td>Pix覆盖85%成年人</td><td>少数头部主导</td><td>跨境互联仍是空白</td></tr>
+      <tr><td><strong>数字钱包（支付宝/GPay）</strong></td><td><span class="badge-tag badge-b">成熟期</span></td><td>占POS交易30%（亚太更高）</td><td>高度集中</td><td>跨境钱包互联刚起步</td></tr>
+      <tr class="highlight"><td><strong>跨境支付 B2B（现有代理行）</strong></td><td><span class="badge-tag badge-em">成熟转衰</span></td><td>Swift 50%在1小时达到（还在下降）</td><td>寡占但受挑战</td><td>ISO 20022替代期</td></tr>
+      <tr class="leader"><td><strong>跨境支付新生态（FPS互联）</strong></td><td><span class="badge-tag badge-sup">早期成长期 ⭐</span></td><td>45个FPS，53%探索互联</td><td>格局未定</td><td>Nexus等窗口期</td></tr>
+      <tr><td><strong>嵌入式支付</strong></td><td><span class="badge-tag badge-sup">高速成长期</span></td><td>预计2026年>$1380亿市场</td><td>Stripe领跑，竞争激烈</td><td>国际化待解决</td></tr>
+      <tr><td><strong>消费信贷（BNPL/小贷）</strong></td><td><span class="badge-tag badge-b">成熟期</span></td><td>监管收紧，Klarna IPO</td><td>整合阶段</td><td>参考：增速已放缓</td></tr>
+    </tbody>
+  </table>
+
+  <div class="body-text" style="margin-top:20px;">
+    <p><strong>三、当前所处阶段 + 窗口期判断</strong></p>
+    <p>综合来看，跨境支付行业是一个<strong>内部高度分化的"双速市场"</strong>：旧基础设施（代理行体系，构建于1970年代SWIFT协议）正在向成熟/衰退期过渡，而新基础设施（FPS互联、即时跨境结算、嵌入式支付API）仍处于早期成长期，渗透率不足30%。</p>
+    <p><strong>窗口期的三个关键节点：</strong></p>
+    <p>① <strong>2025年11月：</strong>Swift全面切换至ISO 20022，140+司法区已实施，未迁移机构将面临兼容性壁垒——这将重新定价合规能力。
+    <a class="source-tag" href="../analysis-cards/card-066.html">[card-066]</a>
+    </p>
+    <p>② <strong>2025年底：</strong>Project Nexus东南亚5国（印尼、马来西亚、新加坡、菲律宾、泰国）完成第三阶段，FPS多边互联有望实现商用——首个"单次接入、全网到达"的多边零售跨境支付网络。
+    <a class="source-tag" href="../analysis-cards/card-066.html">[card-066]</a>
+    </p>
+    <p>③ <strong>2027年：</strong>G20路线图截止日。FSB目标：零售跨境成本<1%、速度75%在1小时内。当前B2B成本1.6%（距目标40%）、P2P成本2.6%（距目标160%）——仍有巨大改善空间。
+    <a class="source-tag" href="../analysis-cards/card-066.html">[card-066]</a>
+    </p>
+  </div>
+
+  <div class="flywheel">
+    <div class="flywheel-title">⚡ 窗口期飞轮：2024-2027年格局重塑路径</div>
+    <div class="flywheel-steps">
+      <div class="fw-step">ISO 20022<br>全面迁移<br>（2025年11月）</div>
+      <span class="fw-arrow">→</span>
+      <div class="fw-step">结构化数据<br>降低合规成本<br>（误报率-30%）</div>
+      <span class="fw-arrow">→</span>
+      <div class="fw-step">Nexus/FPS互联<br>商用上线<br>（2025年底）</div>
+      <span class="fw-arrow">→</span>
+      <div class="fw-step">零售跨境成本<br>加速下降<br>（向1%目标）</div>
+      <span class="fw-arrow">→</span>
+      <div class="fw-step">Fintech份额<br>进一步扩大<br>（格局确定）</div>
+    </div>
+  </div>
+  <div class="source-row">
+    <span class="source-label">来源：</span>
+    <a class="source-tag" href="../analysis-cards/card-057.html">[card-057]</a>
+    <a class="source-tag" href="../analysis-cards/card-066.html">[card-066]</a>
+    <a class="source-tag" href="../analysis-cards/card-071.html">[card-071]</a>
+    <a class="source-tag" href="../analysis-cards/card-060.html">[card-060]</a>
+  </div>
+</div>
+
+<div class="section-divider">— — —</div>
+
+<!-- ════ 1.4 核心驱动因素与风险 ════ -->
+<div class="module module-orange" id="s14">
+  <div class="module-label">第1.4节</div>
+  <div class="module-title"><span class="num">1.4</span> 核心驱动因素与风险</div>
+
+  <div class="core-conclusion">
+    📌 <strong>核心结论：</strong>最可靠的增长驱动是<strong>跨境电商的数字化渗透</strong>（每年20%+增速，嵌入式支付2026年市场>$1380亿）和<strong>移民汇款的数字化替代</strong>（数字渠道均成本4.96% vs 传统6.94%，2个百分点差价是结构性迁移动力）。<strong>最被低估的风险是监管碎片化</strong>——不是单一监管收紧，而是全球40+司法区AML/CFT规则实施不一致，每年造成数十亿美元无效合规成本，且无法通过技术单独解决。
+  </div>
+
+  <div class="body-text">
+    <p><strong>一、增长驱动因素排序（从可靠到不确定）</strong></p>
+  </div>
+
+  <!-- 驱动力卡片 -->
+  <div class="driver-grid">
+    <div class="driver-card">
+      <div class="driver-rank rank-1">1</div>
+      <div class="driver-title">🛒 跨境电商 + 嵌入式支付（最可靠）</div>
+      <div class="driver-desc">
+        McKinsey预测嵌入式支付市场2026年超 <strong>$1380亿</strong>；平台（Shopify/Square等）已承接全球消费者购买量的30%以上。"默认全球化"企业成为常态（a16z），驱动B2B跨境需求持续增长。
+        <a class="source-tag" href="../analysis-cards/card-060.html">[card-060]</a>
+        <a class="source-tag" href="../analysis-cards/card-248.html">[card-248]</a>
+      </div>
+    </div>
+    <div class="driver-card">
+      <div class="driver-rank rank-2">2</div>
+      <div class="driver-title">💸 移民汇款数字化（高确定性）</div>
+      <div class="driver-desc">
+        全球2.81亿移民每年发送~$8000亿汇款，数字渠道均成本 <strong>4.96%</strong> vs 非数字 <strong>6.94%</strong>，差价是结构性迁移动力。数字服务占RPW数据库仅30%，从30%提升到更高将显著拉低全球均值。
+        <a class="source-tag" href="../analysis-cards/card-068.html">[card-068]</a>
+      </div>
+    </div>
+    <div class="driver-card">
+      <div class="driver-rank rank-3">3</div>
+      <div class="driver-title">🏭 B2B贸易支付数字化（中期确定性）</div>
+      <div class="driver-desc">
+        B2B跨境占总流量85%，但数字化程度最低。传统SWIFT电汇T+2/T+3面临Wise Business、Airwallex等挑战；企业对实时支付的需求与个人用户趋同（McKinsey）。痛点：多国账户管理 + 不透明FX + 对账周期长。
+        <a class="source-tag" href="../analysis-cards/card-060.html">[card-060]</a>
+        <a class="source-tag" href="../analysis-cards/card-248.html">[card-248]</a>
+      </div>
+    </div>
+    <div class="driver-card">
+      <div class="driver-rank rank-4">4</div>
+      <div class="driver-title">🏛️ 新兴市场基础设施建设（长期确定性）</div>
+      <div class="driver-desc">
+        数字支付每提升1个百分点，人均GDP增速增加 <strong>0.10pp</strong>（IMF对90个经济体的研究）。世界银行FASTT项目已向40个国家提供FPS技术援助，目标2027年覆盖50国。亚太和非洲FPS建设推动长期增量需求。
+        <a class="source-tag" href="../analysis-cards/card-074.html">[card-074]</a>
+        <a class="source-tag" href="../analysis-cards/card-066.html">[card-066]</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="body-text" style="margin-top:24px;">
+    <p><strong>二、主要风险清单（从最可量化到最被低估）</strong></p>
+  </div>
+
+  <!-- 风险评估表 -->
+  <table class="data-table">
+    <thead>
+      <tr><th>风险类别</th><th>具体表现</th><th>量化证据</th><th>影响程度</th><th>低估程度</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>监管碎片化</strong><br><span style="font-size:11px;color:#94a3b8;">（最被低估）</span></td>
+        <td>全球40+司法区AML/CFT规则实施不一致；数据本地化要求（FSB识别为最大壁垒）；1-3%支付产生合规查询，99%为误报</td>
+        <td>ISO 20022合规节省 $6亿/年（BIS）；数据本地化被FSB明确列为跨境摩擦主因</td>
+        <td>
+          <div class="risk-bar"><div class="risk-track"><div class="risk-fill risk-high" style="width:85%"></div></div><span class="risk-pct">高</span></div>
+        </td>
+        <td>⚠️⚠️⚠️ 极度被低估</td>
+      </tr>
+      <tr>
+        <td><strong>地缘政治风险</strong></td>
+        <td>制裁阻断支付走廊（俄罗斯服务数量暴跌62%）；尼日利亚央行禁止出境汇款；巴基斯坦限制特定走廊</td>
+        <td>俄罗斯QIWI吊牌后每走廊服务从4.7个降至1.8个；尼日利亚/巴基斯坦走廊数据缺失</td>
+        <td>
+          <div class="risk-bar"><div class="risk-track"><div class="risk-fill risk-high" style="width:75%"></div></div><span class="risk-pct">高</span></div>
+        </td>
+        <td>⚠️⚠️ 较被低估</td>
+      </tr>
+      <tr>
+        <td><strong>利率风险</strong></td>
+        <td>欧洲利率下降10-30bp可导致收入变动2-5%；非交易收入CAGR仅0.9%（欧洲）；资本回报替代收入增长</td>
+        <td>欧洲非交易收入CAGR 0.9%（vs 前五年更高）；资本回报占TSR 36%</td>
+        <td>
+          <div class="risk-bar"><div class="risk-track"><div class="risk-fill risk-med" style="width:60%"></div></div><span class="risk-pct">中</span></div>
+        </td>
+        <td>⚠️ 已被重视</td>
+      </tr>
+      <tr>
+        <td><strong>技术替代风险</strong></td>
+        <td>FPS互联绕开代理行体系；A2A替代信用卡（交换费占49%受双重压力）；CBDC实现跨境结算</td>
+        <td>传统收单商TSR从+29%（2014-2021）→-16%（2021-2024）；卡交换费占交易收入49%</td>
+        <td>
+          <div class="risk-bar"><div class="risk-track"><div class="risk-fill risk-med" style="width:65%"></div></div><span class="risk-pct">中高</span></div>
+        </td>
+        <td>⚠️⚠️ 较被低估</td>
+      </tr>
+      <tr>
+        <td><strong>执行时滞风险</strong></td>
+        <td>G20路线图优先行动超50%完成，但KPI全线未达标；基础设施改进不自动转化为终端用户体验</td>
+        <td>零售支付1小时达到率反降至33.5%；批发支付1小时达到率降至50.6%</td>
+        <td>
+          <div class="risk-bar"><div class="risk-track"><div class="risk-fill risk-low" style="width:45%"></div></div><span class="risk-pct">中</span></div>
+        </td>
+        <td>⚠️ 有认知</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="source-row">
+    <span class="source-label">来源：</span>
+    <a class="source-tag" href="../analysis-cards/card-057.html">[card-057 BCG]</a>
+    <a class="source-tag" href="../analysis-cards/card-066.html">[card-066 FSB]</a>
+    <a class="source-tag" href="../analysis-cards/card-068.html">[card-068 世界银行]</a>
+    <a class="source-tag" href="../analysis-cards/card-071.html">[card-071 BIS]</a>
+    <a class="source-tag" href="../analysis-cards/card-060.html">[card-060 McKinsey]</a>
+  </div>
+
+  <div class="body-text" style="margin-top:24px;">
+    <p><strong>三、最可靠增长驱动 vs 最被低估风险的最终裁判</strong></p>
+    <p><strong>最可靠的增长驱动：跨境电商 + 数字汇款的结构性迁移。</strong> 这两个驱动力的特点是：有真实的价差（数字 vs 非数字相差2个百分点）驱动消费者迁移、有成熟的技术解决方案（Wise等已验证商业可行性）、有政策顺风（G20路线图、SDG目标）。即使监管环境变化，数字化迁移不可逆。</p>
+    <p><strong>最被低估的风险：监管碎片化。</strong> 大多数行业分析关注的是"监管收紧"这一表象，但真正的危险是"多司法区规则不一致"造成的系统性摩擦：每笔B2B跨境支付需要同时满足发款国AML/CFT、收款国AML/CFT、FATF Travel Rule、数据隐私法规、制裁名单筛查——这些规则在全球没有统一标准。FSB的数据框架12项建议（2024年底发布终版）是尝试解决这一问题，但各司法区自愿采纳的节奏难以保证。
+    <a class="source-tag" href="../analysis-cards/card-066.html">[card-066]</a>
+    </p>
+    <p><strong>量化总结：</strong> 如果监管碎片化问题得到改善，仅ISO 20022的E&I优化和误报率降低就可释放约 <strong>$6亿/年</strong> 行业收益（BIS测算）；全球AML/CFT协调如能提升10-20%效率，行业整体节省金额将超过百亿美元量级。这是最大的"待解锁价值"，也是最难快速实现的。
+    <a class="source-tag" href="../analysis-cards/card-071.html">[card-071]</a>
+    </p>
+  </div>
+
+  <div class="insight-box">
+    <div class="insight-title">💡 第1章核心战略推论</div>
+    <ul class="insight-list">
+      <li><strong>市场很大但口径要对齐：</strong>跨境支付$190T+流量、$1.8-2.4T收入池，两种口径服务不同决策需求，混用会造成战略误判</li>
+      <li><strong>成长在边缘，不在中心：</strong>欧美成熟市场CAGR 3%，亚太/拉美 6-8.6%，新生态（FPS互联、嵌入式）仍在高速成长期</li>
+      <li><strong>连接层是最大机会：</strong>ISO 20022中间件、API协调、数字身份、合规自动化——这些"管道"价值被市场严重低估</li>
+      <li><strong>窗口期是2024-2027年：</strong>三个关键节点（ISO 20022截止/Nexus商用/G20路线图截止）将在此期间确定新格局，进入时间比技术方案本身更重要</li>
+      <li><strong>监管碎片化是最大隐患：</strong>不是某一国的收紧，而是全球规则不一致造成的结构性成本，是任何跨境支付玩家都无法单独解决的系统性风险</li>
+    </ul>
+  </div>
+
+  <div class="source-row">
+    <span class="source-label">本章全部来源：</span>
+    <a class="source-tag" href="../analysis-cards/card-057.html">[card-057 BCG 2024]</a>
+    <a class="source-tag" href="../analysis-cards/card-060.html">[card-060 McKinsey 2024]</a>
+    <a class="source-tag" href="../analysis-cards/card-066.html">[card-066 FSB G20]</a>
+    <a class="source-tag" href="../analysis-cards/card-068.html">[card-068 世界银行 Q1 2024]</a>
+    <a class="source-tag" href="../analysis-cards/card-071.html">[card-071 BIS CPMI 2024]</a>
+    <a class="source-tag" href="../analysis-cards/card-074.html">[card-074 IMF 拉美]</a>
+    <a class="source-tag" href="../analysis-cards/card-248.html">[card-248 a16z]</a>
+  </div>
+</div>
+
+<!-- ════ 章节尾注 ════ -->
+<div style="background:white; border-radius:12px; padding:20px 28px; border:1px solid #e2e8f0; margin-top:28px; font-size:12px; color:#94a3b8;">
+  <strong style="color:#475569;">第1章 · 跨境支付市场总览</strong> | 知识库版本 v1.0 | 生成时间：2026-03-30 | 
+  数据来源：BCG Global Payments Report 2024、McKinsey Global Payments 2024、FSB G20 进展报告 2024、世界银行 RPW Q1 2024、BIS CPMI 监测报告 2024、IMF WP/24/119、a16z Global Payments Research |
+  <strong>下一章 →</strong> <a href="chapter-2-competitive-landscape.html" style="color:#2563eb;">第2章：竞争格局分析</a> | 
+  <a href="chapter-3-business-model.html" style="color:#2563eb;">第3章：商业模式分析</a>
+</div>
+
+</body>
+</html>

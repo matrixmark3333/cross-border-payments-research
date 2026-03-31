@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-006 | Wise Capital Markets Day 2025</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier2  { background: #e0e7ff; color: #3730a3; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .group-banner { background: #f8fafc; padding: 8px 0 8px 0; font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 重新提取</span>
+    <span class="badge b-type">财报 / RNS公告</span>
+    <span class="badge b-depth">Capital Markets Day全文提取</span>
+    <span class="badge b-rel">相关度 100%</span>
+  </div>
+  <h1>Wise Capital Markets Day / Owners Day 2025 — 战略指引与财务数据</h1>
+  <div class="source-line">Wise plc (LSE: WISE) | 2025年4月3日 | 来源：<a href="https://www.investegate.co.uk/announcement/rns/wise-class-a--wise/wise-capital-markets-day/8811593" target="_blank">Investegate RNS公告</a> | 索引：#006</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">17</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">6</div><div class="stat-label">核心财务</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">战略指引</div></div>
+  <div class="stat"><div class="stat-num">6</div><div class="stat-label">资本运营</div></div>
+</div>
+<div class="section">
+  <div class="section-title">信息点列表 <span class="count">全文版</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="group-banner">▌ A. 核心财务数据（FY25 初步数据）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY25（初步）活跃客户数 15.5M，同比+21%（FY24：12.8M）<span class="src">来源：Wise Capital Markets Day RNS, 2025-04-03</span></div>
+    <div class="ip-col ip-analysis">客户增速21%，高于行业平均。个人+企业双线扩张，验证多产品留存效应。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">活跃客户</span><span class="tag tag-fin">增长率</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY25 跨境交易量 £145B（约+22% YoY，FY24：£119B）<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">年处理量超过英国年度GDP的5%。连续多年25%+增速，规模效应持续扩大。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">交易量</span><span class="tag tag-comp">规模护城河</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY25 底层收入（Underlying income）£1.36B（+16% YoY，FY24：£1.17B）<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">收入增速16%低于交易量增速22%，反映Take Rate下降趋势——故意以价格换规模的战略选择。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">底层收入</span><span class="tag tag-strat">定价策略</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY25 底层PBT利润率 20%（FY24：21%，下降1pp）<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">利润率从21%微降至20%，反映主动加大投资。CEO表示FY26将在中期目标13-16%区间顶部运营，说明短期有意牺牲利润率以换取长期增长。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">利润率</span><span class="tag tag-strat">增长投资</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">期末客户持仓（Customer holdings）£21B（+30% YoY，FY24：£16.2B）<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">客户余额高速增长，利息收入引擎扩张。余额增速(30%)远超交易量增速(22%)，账户粘性提升。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">客户余额</span><span class="tag tag-fin">利息收入</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">过去14年客户已累计跨境转账超£0.5T（万亿），目前托管超£20B客户资金<span class="src">来源：同上，CEO开场陈述</span></div>
+    <div class="ip-col ip-analysis">累计规模数据凸显历史积累深度，也反映客户信任——在无存款保险的平台持有超£20B，需要极高信任基础。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">累计规模</span><span class="tag tag-comp">品牌信任</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+  <div class="group-banner">▌ B. 战略指引与展望</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY26指引：底层收入增速15-20%，底层PBT利润率预计处于目标区间（13-16%）顶部<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">同时给出FY26具体指引和中期框架，投资者可见度高。"顶部"暗示约16%，隐含短期仍有利润压力。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">FY26指引</span><span class="tag tag-fin">利润率目标</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">中期目标（medium term）：底层收入CAGR 15-20%（固定汇率），底层PBT利润率 13-16%<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">相比FY24的21%利润率，中期目标区间明显压缩，是Wise主动选择"以价格换规模"增长路径的最清晰表述。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">中期框架</span><span class="tag tag-fin">CAGR目标</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">活动主题：展示"强大的财务模型如何支持可持续增长投资，同时保持健康利润率"<span class="src">来源：同上，活动简介</span></div>
+    <div class="ip-col ip-analysis">Wise将"飞轮"（增长→更多交易量→更低成本→更低价格→更多增长）的自我强化逻辑作为核心叙事，区别于单纯利润最大化的公司。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">增长飞轮</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2025年4月3日活动地点：伦敦新总部 Worship Square；提供现场注册+直播两种方式<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">迁入新总部标志公司规模扩张，Worship Square为大型现代办公空间，也是招聘和品牌展示信号。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">公司运营</span></div></div>
+    <div class="ip-col"><div class="score s4"><span class="score-num">4</span><div class="score-bar"><div class="score-fill" style="width:40%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY25全年结果将于2025年6月5日正式公布，Q4交易更新于4月15日<span class="src">来源：同上，财务日历</span></div>
+    <div class="ip-col ip-analysis">财务日历清晰，投资者可据此跟踪最新数据。CMDay数据为初步数据(preliminary)，正式年报将更详细。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">财务日历</span></div></div>
+    <div class="ip-col"><div class="score s3"><span class="score-num">3</span><div class="score-bar"><div class="score-fill" style="width:30%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+  <div class="group-banner">▌ C. 资本运营与上市结构</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">宣布扩大员工福利信托（EBT）股票回购计划：除年度SBC（~900万股）外，还将收购历史SBC约2500万股（占发行股本~2.5%）<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">一次性消除历史SBC稀释风险，向股东传递强烈信心信号。2500万股约值£1.3亿（按彼时股价估算），资金来自强劲现金流。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">股票回购</span><span class="tag tag-fin">SBC稀释</span><span class="tag tag-strat">股东回报</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">上市结构审查：FCA于2024年7月改革英国上市制度后，Wise被自动迁入"股权股份（过渡类）"，需修改章程才能升级为ESCC类别<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">背景铺垫：这正是Wise随后（2025年6月）宣布将主要上市地迁往美国的直接原因——英国新制度过渡安排不符合其长期利益。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">上市结构</span><span class="tag tag-reg">FCA</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">董事会已广泛咨询股东，预计"在未来数周内"公布上市安排审查结论<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">隐含后续双主板上市（伦敦+美国）计划，实际于2025年6月宣布迁往纽约证交所主要上市。预示流动性和机构投资者结构将发生变化。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">上市迁移</span><span class="tag tag-strat">双主板</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">公司定义：全球技术公司（global technology company），而非金融机构，专注"移动和管理全球资金的最佳方式"<span class="src">来源：同上，About Wise段落</span></div>
+    <div class="ip-col ip-analysis">自我定位为科技公司而非银行，影响估值倍数（科技公司享更高PS）、监管策略（尽量避免银行牌照）及人才吸引。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">自我定位</span><span class="tag tag-comp">科技vs金融</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY24（对比基准）：客户12.8M，跨境量£119B（注意：原始公告显示£118bn），底层收入£1.17B，PBT利润率21%<span class="src">来源：同上，对比表格</span></div>
+    <div class="ip-col ip-analysis">FY24→FY25增长对比：客户+21%，交易量+22%，收入+16%。收入增速低于量增速揭示定价下调的规模：Take Rate从约67bps降至约64bps。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">同比对比</span><span class="tag tag-fin">Take Rate趋势</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">今日活动（2025-04-03）将提供Q4 FY25交易更新的初步数据，FY25全年结果官方公告日为2025-06-05<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">Capital Markets Day是Wise专属投资者关系渠道（称"Owners Day"），凸显其强调长期股东文化，也是数据首发场合。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">投资者关系</span></div></div>
+    <div class="ip-col"><div class="score s5"><span class="score-num">5</span><div class="score-bar"><div class="score-fill" style="width:50%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+</div>
+<div class="footer">来源：Wise plc Capital Markets Day RNS公告（2025-04-03）| 索引编号：#006 | 提取版本：Tier2-v1 | 提取时间：2026-03-30</div>
+</body>
+</html>

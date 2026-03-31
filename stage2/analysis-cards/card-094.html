@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-094 | Airwallex B2B Payments Guide — 穷举式信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1  { background: #dbeafe; color: #1d4ed8; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .group-banner { background: #f8fafc; padding: 8px 0 8px 0; font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1 品牌内容</span>
+    <span class="badge b-type">产品指南 / 博客</span>
+    <span class="badge b-depth">Airwallex官方B2B支付全指南</span>
+    <span class="badge b-rel">相关度 90%</span>
+  </div>
+  <h1>Airwallex B2B Payments Guide — B2B支付全景信息点提取</h1>
+  <div class="source-line">Airwallex Blog | 发布：2026-01-29 | 来源：<a href="https://www.airwallex.com/us/blog/b2b-payments-guide" target="_blank">airwallex.com/us/blog/b2b-payments-guide</a> | 索引：#094</div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">28</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">8</div><div class="stat-label">A.市场数据</div></div>
+  <div class="stat"><div class="stat-num">8</div><div class="stat-label">B.产品功能</div></div>
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">C.行业趋势</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">D.竞争对比</div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">信息点列表 <span class="count">穷举版</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="group-banner">▌ A. 市场规模数据（8条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">全球B2B支付市场规模达$109万亿，约为B2C市场规模的5倍<span class="src">来源：airwallex.com/us/blog/b2b-payments-guide，正文关键数据 [引用1: fortunebusinessinsights.com]</span></div>
+    <div class="ip-col ip-analysis">B2B支付是远超C端的超级市场，彰显机构间资金流动的庞大体量，是跨境支付创业公司的核心TAM参考。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">市场规模</span><span class="tag tag-fin">B2B</span><span class="tag tag-mkt">TAM</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">市场规模</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">纸质支票目前占B2B支付总价值不到15%，数字化转型已实质发生<span class="src">来源：Airwallex博客正文 [引用2: capgemini.com World Payments Report]</span></div>
+    <div class="ip-col ip-analysis">纸质支票快速退出B2B支付主流，数字支付加速替代传统方式，为支付科技公司提供市场空间。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">数字化</span><span class="tag tag-biz">支付转型</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">行业趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">B2B交易典型价值$1,000至$1M+，远高于B2C的$10-$500；支付条款延迟（Net-30/60/90天）而非即时<span class="src">来源：Airwallex B2B vs B2C对比表</span></div>
+    <div class="ip-col ip-analysis">B2B高价值+延迟结算特性决定了风控、合规和资金占用管理是核心需求差异点。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">交易特性</span><span class="tag tag-fin">B2B vs B2C</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Airwallex多货币账户支持20+种货币持有，可避免传统银行被动换汇（传统银行收款即强制换汇收3%+）<span class="src">来源：Airwallex产品对比表</span></div>
+    <div class="ip-col ip-analysis">Like-for-like收款结算是核心差异化——消除"双重换汇"损耗（收款时换汇+付款时再换汇），是跨境电商客户的强诉求。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">多货币账户</span><span class="tag tag-fin">FX节省</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品功能</span><span class="kb-tag">Airwallex</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2026年B2B支付主要趋势：AI代理自主处理常规事务、实时支付(RTP)消除浮账期、Level 3数据要求、稳定币跨境结算兴起<span class="src">来源：Airwallex B2B支付未来趋势章节</span></div>
+    <div class="ip-col ip-analysis">稳定币正式进入B2B支付官方视野，与AI代理、RTP并列为2026年四大支付趋势。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">趋势</span><span class="tag tag-tech">稳定币</span><span class="tag tag-tech">AI代理</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">行业趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">ISO 20022标准：2026年全面迁移完成，国际支付现携带完整发票明细和用途代码，将此前26%因信息缺失导致的失败支付大幅减少<span class="src">来源：跨境B2B支付章节</span></div>
+    <div class="ip-col ip-analysis">ISO 20022带来"富数据"支付，失败率大幅降低，同时为AI账单核对和合规监控提供更好数据基础。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">ISO 20022</span><span class="tag tag-tech">标准化</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">行业趋势</span><span class="kb-tag">合规</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">B2B支付关键安全标准：PCI-DSS Level 1合规、3D Secure额外验证层、AI实时欺诈检测<span class="src">来源：B2B支付安全章节</span></div>
+    <div class="ip-col ip-analysis">高价值B2B交易的安全三层体系，也是支付平台合规准入的基础门槛。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">安全合规</span><span class="tag tag-tech">PCI-DSS</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">合规</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">传统银行FX加价3%-6%，Airwallex仅0.5%-1%；传统银行转账速度3-5工作日，Airwallex 90%+当天到账<span class="src">来源：Airwallex vs 传统银行对比表</span></div>
+    <div class="ip-col ip-analysis">成本/速度双维度对比是Airwallex最核心的销售论据，FX加价节省可达80%+。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">竞争对比</span><span class="tag tag-fin">FX费率</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">Airwallex</span><span class="kb-tag">竞争分析</span></div>
+  </div>
+
+  <div class="group-banner">▌ B. 产品功能特性（8条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Airwallex批量付款：单文件上传，向多达1000名收款方以多种货币批量付款，大幅减少行政开销<span class="src">来源：全球收款和本地轨道章节</span></div>
+    <div class="ip-col ip-analysis">批量付款功能直接解决企业出海员工薪资/多供应商付款场景，1000收款方上限是关键技术参数。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">批量付款</span><span class="tag tag-biz">运营效率</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品功能</span><span class="kb-tag">Airwallex</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Airwallex支持160+本地支付方式，包括AliPay、WeChat Pay、iDEAL、Klarna；AI驱动路由优化授权率<span class="src">来源：支付网关与收银台章节</span></div>
+    <div class="ip-col ip-analysis">160+本地支付方式覆盖是与Stripe/Adyen竞争的关键，AI路由进一步优化授权成功率。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">本地支付</span><span class="tag tag-tech">AI路由</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品功能</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Airwallex虚拟企业卡：支持为特定供应商/预算生成专用16位卡号，实时追踪+即时冻结功能，可设置消费限额<span class="src">来源：虚拟卡章节</span></div>
+    <div class="ip-col ip-analysis">虚拟卡为广告/SaaS订阅支出提供精细化管控，是B2B企业支出管理的核心工具。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">虚拟卡</span><span class="tag tag-biz">支出管控</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品功能</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Airwallex本地轨道支付：接入美国ACH、欧洲SEPA、英国Faster Payments等本地清算，93%转账当天到达<span class="src">来源：全球付款章节</span></div>
+    <div class="ip-col ip-analysis">绕过SWIFT使用本地清算轨道是速度优势来源，93%当日到账是重要服务水准承诺。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">本地轨道</span><span class="tag tag-tech">SWIFT替代</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品功能</span><span class="kb-tag">Airwallex</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Airwallex Yield产品：在多货币余额上赚取收益，无锁定期（澳洲已上线，香港扩展中）<span class="src">来源：产品导航/全球账户章节</span></div>
+    <div class="ip-col ip-analysis">Yield功能将支付账户升级为收益账户，解决客户闲置资金管理需求，增强平台粘性。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">Yield</span><span class="tag tag-fin">资金增值</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品功能</span><span class="kb-tag">Airwallex</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Airwallex可在60+个国家像"本地企业"一样运营，提供虚拟本地银行账户（含IBAN、SWIFT/BIC、账号）<span class="src">来源：全球收款章节</span></div>
+    <div class="ip-col ip-analysis">全球本地账户是Airwallex的核心差异化基础设施，避免客户为每个市场单独开设银行账户。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">全球账户</span><span class="tag tag-biz">本地化</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品功能</span><span class="kb-tag">Airwallex</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Airwallex原生集成Xero、QuickBooks、NetSuite等ERP，实时同步多货币交易和银行流水，自动对账<span class="src">来源：自动化对账章节</span></div>
+    <div class="ip-col ip-analysis">ERP集成是B2B客户采购决策的重要因素，自动对账降低财务团队工作量是主要价值主张。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">ERP集成</span><span class="tag tag-biz">自动对账</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品功能</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Airwallex多货币企业卡：若钱包中持有EUR余额并用EUR支付巴黎供应商，FX费用为0%；实时限额管控<span class="src">来源：支出管理章节</span></div>
+    <div class="ip-col ip-analysis">同币种零FX费用是对持有多货币余额客户的极致优化，强化锁客效果。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">零FX费</span><span class="tag tag-tech">企业卡</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品功能</span></div>
+  </div>
+
+  <div class="group-banner">▌ C. 行业趋势判断（7条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">B2B支付正从后台行政功能转变为高风险竞争优势，"去数字化"讨论多年，2026年数据显示已实质发生<span class="src">来源：文章开篇导言</span></div>
+    <div class="ip-col ip-analysis">B2B支付从成本中心转型为竞争武器的叙事框架，是行业定位的重要参考。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">数字化转型</span><span class="tag tag-strat">战略</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">行业趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">AI代理（Agentic Commerce）：2026年，AI代理已能自主管理常规交易、发票匹配、争议解决<span class="src">来源：B2B支付未来趋势章节</span></div>
+    <div class="ip-col ip-analysis">AI代理在支付流程中的应用已从概念走向落地，自动处理高重复性合规任务是突破口。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">AI代理</span><span class="tag tag-mkt">Agentic Commerce</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">行业趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">"本地轨道"策略：使用英国FPS、欧洲SEPA等本地清算系统，将国际转账体验做到与国内转账相同<span class="src">来源：跨境B2B支付章节</span></div>
+    <div class="ip-col ip-analysis">本地轨道策略是新一代跨境支付公司的核心技术路径，SWIFT绕道模式已成主流。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">本地轨道</span><span class="tag tag-strat">技术路径</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">行业趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Virtual Cards对B2B：Level 3处理数据（详细行项目信息）传给卡网络，可获得最低Interchange费率<span class="src">来源：虚拟卡处理章节</span></div>
+    <div class="ip-col ip-analysis">Level 3数据是企业卡降本的核心机制，Visa/Mastercard均要求Product 3数据方可享受最低费率。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">Level 3数据</span><span class="tag tag-fin">Interchange费率</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">行业趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">B2B支付六步流程：采购(PO) → 履约(GRN) → 开票 → 三方核验(PO+GRN+发票) → 付款 → 对账<span class="src">来源：B2B支付周期章节</span></div>
+    <div class="ip-col ip-analysis">三方核验（Three-Way Match）是B2B支付的核心安全控制，AI自动化此环节是效率提升最大机会。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">支付流程</span><span class="tag tag-tech">三方核验</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">直通式处理(STP)自动化B2B支付：Webhook信号触发实时同步，自动对账消除"双重录入"，少数方案提供最低费用路由<span class="src">来源：B2B支付自动化章节</span></div>
+    <div class="ip-col ip-analysis">STP是B2B支付终极形态，关键价值在于消除手工操作和reconciliation headache。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">STP</span><span class="tag tag-biz">自动化</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">行业趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">B2B支付最高安全威胁：高价值欺诈、商业邮件攻击(BEC)；B2C最高风险是大批量拒付和身份盗窃<span class="src">来源：B2B vs B2C对比表</span></div>
+    <div class="ip-col ip-analysis">BEC（商业邮件诈骗）是B2B支付的特有高风险场景，风控产品需针对性设计。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">风险控制</span><span class="tag tag-tech">BEC</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">风险合规</span></div>
+  </div>
+
+  <div class="group-banner">▌ D. 竞争对比（5条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Airwallex定位：跨境业务的最优选择，多货币账户支持20+货币，通过本地轨道向120+国家付款<span class="src">来源：顶级B2B支付处理商对比</span></div>
+    <div class="ip-col ip-analysis">Airwallex在文章中被定位为跨境B2B支付最优选，Stripe定位深度API定制，Adyen定位大型全渠道零售。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">竞争定位</span><span class="tag tag-strat">市场定位</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争分析</span><span class="kb-tag">Airwallex</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Airwallex账户开通：在线几分钟完成；传统银行：需数周+大量文件；月费：Airwallex Explore计划$0 vs 传统银行$20-$100<span class="src">来源：Airwallex vs 传统银行对比表</span></div>
+    <div class="ip-col ip-analysis">开户速度和零月费是Airwallex对传统银行的核心优势，中小企业用户决策成本极低。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">竞争优势</span><span class="tag tag-fin">定价</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">与Amazon、Shopify、eBay等平台直连，以本地货币收取收益，避免平台收取的高额FX费用<span class="src">来源：全球收款章节</span></div>
+    <div class="ip-col ip-analysis">直连主要跨境电商平台是对跨境卖家的强力价值主张，解决平台换汇损耗痛点。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">跨境电商</span><span class="tag tag-comp">平台集成</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品功能</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Airwallex充当网关和收单方双重角色，直接接入全球卡组织，减少第三方处理商中间费用，提高授权成功率<span class="src">来源：电子支付处理章节</span></div>
+    <div class="ip-col ip-analysis">自建收单能力是降低处理成本的关键，也是与依赖第三方收单的竞争者的核心差异。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">垂直整合</span><span class="tag tag-tech">直接收单</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式</span><span class="kb-tag">Airwallex</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">B2B支付最大障碍：多税务管辖区和货币兑换的复杂性、信用卡和国际电汇费用侵蚀利润、高价值交易易成钓鱼攻击目标<span class="src">来源：B2B支付缺点章节</span></div>
+    <div class="ip-col ip-analysis">合规复杂性、费用成本和安全威胁是B2B支付三大核心痛点，也是产品差异化机会。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">客户痛点</span><span class="tag tag-fin">费用</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">市场机会</span></div>
+  </div>
+
+</div>
+
+<div class="footer">
+  card-094 | 来源：Airwallex B2B Payments Guide | 提取时间：2026-03-28 | 信息点总数：28 | 批次：BATCH-4
+</div>
+</body>
+</html>

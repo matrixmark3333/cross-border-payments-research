@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-051 | Western Union Q4 & FY2024业绩报告</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1  { background: #dbeafe; color: #1d4ed8; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .group-banner { background: #f8fafc; padding: 8px 0; font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1 深度分析</span>
+    <span class="badge b-type">企业财报 / 一手数据</span>
+    <span class="badge b-depth">raw PDF 全文逐页提取（20页）</span>
+    <span class="badge b-rel">相关度 95%</span>
+  </div>
+  <h1>Western Union Q4 & 全年2024业绩报告 — 穷举式信息点提取</h1>
+  <div class="source-line">The Western Union Company (NYSE: WU) | 发布：2025年2月4日 | 原文：western-union-q4-2024-results.pdf | 索引：#051</div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">35</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">18</div><div class="stat-label">A.市场数据</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">B.政策监管</div></div>
+  <div class="stat"><div class="stat-num">3</div><div class="stat-label">C.技术基础设施</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">D.地区分析</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">E.趋势预测</div></div>
+</div>
+
+<div class="section">
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="group-banner">▌ A. 市场数据（18条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">WU 2024年全年GAAP收入42.1亿美元，同比-3%（按报告基准）；剔除伊拉克后调整收入+0.5%；Q4收入10.58亿美元，同比+1%<span class="src">WU Q4/FY2024业绩新闻稿, p.1-2</span></div>
+    <div class="ip-col ip-analysis">伊拉克业务异常影响了WU整体收入数字，剔除后实际业务基本持平；行业龙头零增长折射汇款业务成熟压力</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">总收入</span><span class="tag tag-fin">同比增速</span><span class="tag tag-comp">Western Union</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局</span><span class="kb-tag">市场规模</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">品牌数字收入（Branded Digital）：Q4同比+7%（调整后+8%），全年+7%（调整后+8%）；连续7个季度两位数交易量增长<span class="src">WU Q4/FY2024业绩新闻稿, p.1-2</span></div>
+    <div class="ip-col ip-analysis">品牌数字渠道是WU增长的唯一亮点，连续7季双位数交易量增长说明线上渠道的强劲动能</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">数字收入</span><span class="tag tag-fin">增速</span><span class="tag tag-tech">数字化</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局</span><span class="kb-tag">商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">品牌数字收入占CMT总收入25%，占CMT交易量32%（Q4 2024）；全年数字收入占CMT比例达24%<span class="src">WU Q4/FY2024业绩新闻稿, p.2, p.12</span></div>
+    <div class="ip-col ip-analysis">数字渠道交易量占比（32%）高于收入占比（25%），说明数字渠道每笔交易价值低于线下（低送款额/高频次）</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">数字占比</span><span class="tag tag-fin">渠道结构</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式</span><span class="kb-tag">竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">消费者汇款（CMT）Q4交易量7500万笔（同比+3%）；全年交易量2.899亿笔（+4%）；全年跨境本金1029亿美元（+1%，固定汇率+2%）<span class="src">WU Q4/FY2024业绩新闻稿, p.10</span></div>
+    <div class="ip-col ip-analysis">WU年处理约2.9亿笔跨境汇款，本金超1000亿美元，是全球最大单一汇款处理商之一</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">交易量</span><span class="tag tag-fin">跨境本金</span><span class="tag tag-comp">Western Union</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">市场规模</span><span class="kb-tag">汇款</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">品牌数字业务交易量：Q4同比+13%；全年+13%；连续7个季度双位数增长<span class="src">WU Q4/FY2024业绩新闻稿, p.2, p.10</span></div>
+    <div class="ip-col ip-analysis">数字交易量增速（13%）超过实体渠道（整体+3-4%），显示快速份额转移；若持续，5年内数字将超50%</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">数字交易增速</span><span class="tag tag-tech">渠道迁移</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局</span><span class="kb-tag">市场规模</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">消费者服务（CS）段：Q4收入同比+56%（报告基准）/+23%（调整后）；全年+28%/+15%；由新推出的媒体网络业务、零售外汇业务扩展和零售汇票业务持续增长驱动<span class="src">WU Q4/FY2024业绩新闻稿, p.1-2</span></div>
+    <div class="ip-col ip-analysis">CS段的高速增长部分来自新媒体网络业务（新收入来源），调整后15%是更具参考价值的有机增长率</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">消费者服务增速</span><span class="tag tag-strat">多元化</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式</span><span class="kb-tag">竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2024年全年GAAP EBITDA 10.08亿美元；经营活动现金流4.06亿美元（含约2.3亿美元2017税法相关税款和IRS和解款）<span class="src">WU Q4/FY2024业绩新闻稿, p.3, p.15</span></div>
+    <div class="ip-col ip-analysis">EBITDA超10亿但自由现金流受税务支出大幅压缩；剔除一次性税款后经营现金流约6.4亿，展示真实盈利能力</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">EBITDA</span><span class="tag tag-fin">现金流</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2024年向股东返还约4.96亿美元：股息3.18亿美元+回购1.77亿美元；Q1 2025股息0.235美元/股<span class="src">WU Q4/FY2024业绩新闻稿, p.3</span></div>
+    <div class="ip-col ip-analysis">WU大幅资本回报（相当于调整净利的83%）显示管理层优先稳定股东而非内部增长投入</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">股东回报</span><span class="tag tag-fin">股息</span><span class="tag tag-fin">回购</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据</span><span class="kb-tag">投资者趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2025年展望：GAAP收入40.9-41.9亿美元；调整后收入41.15-42.15亿美元；调整后经营利润率19-21%；调整后EPS 1.75-1.85美元<span class="src">WU Q4/FY2024业绩新闻稿, p.3</span></div>
+    <div class="ip-col ip-analysis">2025年预测显示收入基本持平（与2024相比几乎无增长），反映核心汇款业务增长停滞的长期趋势</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">2025展望</span><span class="tag tag-fin">收入预测</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据</span><span class="kb-tag">竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">CMT段全年GAAP收入37.98亿美元（-5%）；段经营利润率19%（与2023持平）；剔除伊拉克后调整收入仅-1%<span class="src">WU Q4/FY2024业绩新闻稿, p.9</span></div>
+    <div class="ip-col ip-analysis">CMT的-5%收入降幅主要是伊拉克因素，剔除后实际业务基本企稳，但增长动力仍然缺失</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">CMT收入</span><span class="tag tag-fin">利润率</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据</span><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2024全年GAAP EPS 2.74美元（vs 2023年1.68美元，+63%）；调整后EPS均为1.74美元；GAAP EPS大幅提升主因：国际运营重组税收优惠0.75美元+IRS和解税收优惠0.40美元<span class="src">WU Q4/FY2024业绩新闻稿, p.3</span></div>
+    <div class="ip-col ip-analysis">GAAP EPS跳升是非经常性税务事项所致，调整后EPS持平（1.74美元）更能反映经营表现</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">EPS</span><span class="tag tag-fin">税务优惠</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">CMT地区收入结构：北美39%、欧洲/独联体26%、中东非洲南亚18%、拉美加勒比12%、亚太5%（FY2024）<span class="src">WU Q4/FY2024业绩新闻稿, p.12</span></div>
+    <div class="ip-col ip-analysis">北美+欧洲/独联体合计65%，说明WU仍高度依赖发达经济体发送方；新兴市场受款端高度集中</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">收入地理结构</span><span class="tag tag-mkt">地区分布</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">欧洲/独联体地区：Q4收入+3%（调整后+4%），全年-2%（调整后-1%）；Q4交易量+8%，全年+5%（量增价降）<span class="src">WU Q4/FY2024业绩新闻稿, p.11</span></div>
+    <div class="ip-col ip-analysis">欧洲/独联体量增价降是定价压力和竞争加剧的信号，尤其是来自Wise等数字竞争对手</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">欧洲区数据</span><span class="tag tag-fin">量价差异</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">中东非洲南亚（MEASA）：全年GAAP收入-19%（调整后-18%）；Q4交易量+7%，但全年持平（+3%）；均受伊拉克大幅拖累<span class="src">WU Q4/FY2024业绩新闻稿, p.11</span></div>
+    <div class="ip-col ip-analysis">MEASA收入暴跌主要由伊拉克政策变化所致，交易量基本稳定表明其他市场正常运转</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">MEASA收入</span><span class="tag tag-mkt">中东</span><span class="tag tag-mkt">伊拉克</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">风险因素</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">亚太地区：全年GAAP收入-7%，调整后-3%；但交易量+8%（Q4也+7%）——最强烈的量增价降现象<span class="src">WU Q4/FY2024业绩新闻稿, p.11</span></div>
+    <div class="ip-col ip-analysis">亚太量增8%但收入-7%是价格/汇率双重压力的写照，也反映Wise/Remitly等竞争对手的价格战冲击</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">亚太区数据</span><span class="tag tag-fin">量价倒挂</span><span class="tag tag-mkt">亚太</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">消费者服务段全年利润率13%（vs 2023年29%，大幅下降16pp）；Q4段利润率11%；新媒体业务虽带来收入增长但初期利润率低<span class="src">WU Q4/FY2024业绩新闻稿, p.12</span></div>
+    <div class="ip-col ip-analysis">CS段利润率腰斩反映新业务扩张的投入阶段，媒体网络和外汇业务的盈利模型尚未成熟</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">CS利润率</span><span class="tag tag-fin">新业务投入</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据</span><span class="kb-tag">商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2024年重新部署计划成本4140万美元（vs 2023年2950万美元）；俄罗斯资产减损和终止成本1480万美元（2024年新增）<span class="src">WU Q4/FY2024业绩新闻稿, p.9</span></div>
+    <div class="ip-col ip-analysis">重新部署成本持续高企反映组织转型阵痛；俄罗斯业务退出是地缘政治对汇款业务的直接冲击</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">重组成本</span><span class="tag tag-mkt">俄罗斯退出</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据</span><span class="kb-tag">风险因素</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">伊拉克业务：2023年3月起突然爆发增长（政策变化），随后受美国财政部2023年7月制裁14家伊拉克银行和中央银行2023年10月暂停WU最大代理商等事件影响大幅萎缩<span class="src">WU Q4/FY2024业绩新闻稿, p.20</span></div>
+    <div class="ip-col ip-analysis">伊拉克事件是WU 2023-2024年业绩波动的核心因素，也说明监管政策变化对汇款业务的即时冲击</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">伊拉克业务</span><span class="tag tag-reg">制裁冲击</span><span class="tag tag-mkt">中东</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">风险因素</span></div>
+  </div>
+
+  <div class="group-banner">▌ B. 政策监管（5条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">美国财政部2023年7月制裁14家伊拉克银行（部分是WU代理），随后伊拉克中央银行2023年10月暂停WU最大代理（后恢复）；2024年WU伊拉克收入大幅下降至1.15亿美元（vs 2023年2.63亿）<span class="src">WU Q4/FY2024业绩新闻稿, p.20</span></div>
+    <div class="ip-col ip-analysis">制裁对WU的直接经济影响：伊拉克收入从2.63亿降至1.15亿，-56%，清晰量化了监管风险的业务冲击</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">制裁风险</span><span class="tag tag-mkt">伊拉克</span><span class="tag tag-fin">收入冲击</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">风险因素</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2024年Q4 WU完成国际运营重组，认定递延税资产（净估值修正后），税务影响2.552亿美元；同年完成与IRS关于2017-2018联邦所得税申报的和解，确认1.378亿美元税务优惠<span class="src">WU Q4/FY2024业绩新闻稿, p.2, p.20</span></div>
+    <div class="ip-col ip-analysis">WU国际运营重组可能涉及合规结构调整，非经常性税务事项合计近4亿美元，严重扭曲了GAAP利润数字</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">税务重组</span><span class="tag tag-reg">IRS和解</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">财务数据</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">WU风险因素包括：货币汇率和阿根廷通胀、贸易中断、移民模式变化、公共卫生紧急情况、美国选举相关变化、内乱、战争、恐怖主义<span class="src">WU Q4/FY2024业绩新闻稿, p.5</span></div>
+    <div class="ip-col ip-analysis">WU的风险因素披露涵盖了2025年可能影响汇款业务的宏观事件，特别点名"美国选举变化"</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">风险披露</span><span class="tag tag-fin">宏观风险</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">风险因素</span><span class="kb-tag">政策监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">阿根廷超级通胀对WU消费者服务段收入有重大影响：消费者服务段阿根廷通胀外币折算影响FY2024为-4120万美元<span class="src">WU Q4/FY2024业绩新闻稿, p.17</span></div>
+    <div class="ip-col ip-analysis">阿根廷超级通胀使比索收入折算成美元时大幅缩水，4120万美元的影响解释了CS段收入增速被低估</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">阿根廷通胀</span><span class="tag tag-fin">汇率风险</span><span class="tag tag-mkt">拉美</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">风险因素</span><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">俄罗斯业务资产减损：2024年新增1480万美元退出相关成本；2024年WU承认俄罗斯业务终止产生的货币重新计量损失<span class="src">WU Q4/FY2024业绩新闻稿, p.9, p.14</span></div>
+    <div class="ip-col ip-analysis">俄罗斯退出的财务代价量化了地缘政治风险对汇款公司的直接损失</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">俄罗斯制裁</span><span class="tag tag-fin">减损</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">风险因素</span><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="group-banner">▌ C. 技术基础设施（3条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">WU"Evolve 2025"战略：正处于最后执行年；重点是提升营销和技术效率改善运营利润率；Q4调整后经营利润率同比提升1个百分点至17%<span class="src">WU Q4/FY2024业绩新闻稿, p.1-2</span></div>
+    <div class="ip-col ip-analysis">Evolve 2025战略标志着WU从增长转向效率优化阶段，科技投入重点在降低单位成本而非产品创新</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">战略执行</span><span class="tag tag-strat">Evolve 2025</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式</span><span class="kb-tag">竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">WU新媒体网络业务：2024年新推出，被归入消费者服务段；与零售外汇业务共同贡献CS段大幅增长<span class="src">WU Q4/FY2024业绩新闻稿, p.2</span></div>
+    <div class="ip-col ip-analysis">媒体网络业务利用WU庞大的客户触达能力进入广告/营销领域，类似Walmart/Amazon的零售媒体模式</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">媒体网络</span><span class="tag tag-strat">多元化</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式</span><span class="kb-tag">技术趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">阿根廷通胀被WU定义为"非交易增长也非价格变化的收入增长"，单独计量排除以保持比较基础；说明WU在超通胀市场有特殊计量需求<span class="src">WU Q4/FY2024业绩新闻稿, p.19</span></div>
+    <div class="ip-col ip-analysis">WU独特的阿根廷通胀计量体现了汇款业务在超通胀环境的复杂性，是分析其他新兴市场收入的方法论参考</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">通胀计量</span><span class="tag tag-tech">财务分析方法</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">研究方法</span></div>
+  </div>
+
+  <div class="group-banner">▌ D. 地区分析（5条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">北美（NA）区域：Q4收入-5%，全年-1%；Q4交易量持平，全年+3%；价格压力明显<span class="src">WU Q4/FY2024业绩新闻稿, p.11</span></div>
+    <div class="ip-col ip-analysis">北美是WU最大市场（39%收入），但2024年Q4收入-5%、交易量持平，说明竞争最激烈区域的价格战白热化</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">北美</span><span class="tag tag-fin">价格竞争</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">拉美加勒比（LACA）：全年GAAP收入+2%（调整后+3%，剔除阿根廷通胀）；Q4收入-3%，Q4交易量-3%（唯一季度性交易量下滑的地区）<span class="src">WU Q4/FY2024业绩新闻稿, p.11</span></div>
+    <div class="ip-col ip-analysis">拉美Q4交易量负增长值得关注，可能与竞争对手（如Remitly）在拉美走廊的积极扩张有关</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">拉美加勒比</span><span class="tag tag-fin">交易量下滑</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2024年伊拉克业务贡献收入分布：Q1 6490万美元→Q2 3430万美元→Q3 950万美元→Q4 660万美元，快速萎缩；全年仅1.15亿美元（vs 2023年2.63亿）<span class="src">WU Q4/FY2024业绩新闻稿, p.17</span></div>
+    <div class="ip-col ip-analysis">伊拉克收入的季度轨迹清晰展示了监管冲击的时间线：Q1高峰后Q2-Q4急剧下滑</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">伊拉克</span><span class="tag tag-fin">季度数据</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">风险因素</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">亚太（APAC）：全年收入-7%，调整后-3%；Q4调整后-4%；但交易量+8%（全年）和+7%（Q4）；价格/汇率双重压制<span class="src">WU Q4/FY2024业绩新闻稿, p.11, p.12</span></div>
+    <div class="ip-col ip-analysis">亚太是量增价降最极端的区域，单笔收入快速下降表明定价权严重削弱，竞争对手侵蚀高价走廊</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">亚太</span><span class="tag tag-fin">量价倒挂</span><span class="tag tag-comp">定价权</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">总跨境本金2024年达1029亿美元（+1%），固定汇率+2%；跨境本金均额约355美元/笔（1029亿/2.899亿笔）<span class="src">WU Q4/FY2024业绩新闻稿, p.10</span></div>
+    <div class="ip-col ip-analysis">355美元的平均汇款金额是传统代理渠道典型水平，远低于纯数字渠道的平均汇款额</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">跨境本金</span><span class="tag tag-fin">平均汇款额</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">市场规模</span><span class="kb-tag">汇款</span></div>
+  </div>
+
+  <div class="group-banner">▌ E. 趋势预测（4条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">WU进入"Evolve 2025"战略最后一年；CEO表示"相信能够继续为投资者和利益相关者创造价值"；但未指出明确的增长驱动来源<span class="src">WU Q4/FY2024业绩新闻稿, p.1</span></div>
+    <div class="ip-col ip-analysis">WU 2025年战略缺乏明确增长路径，核心业务增长乏力，新业务（媒体网络）利润率低，面临战略困境</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">战略展望</span><span class="tag tag-comp">增长困境</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">宏观趋势</span><span class="kb-tag">竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">品牌数字业务连续7季双位数交易量增长，且增速在2024年维持13%；若趋势持续，数字渠道将在5年内超过总交易量的50%<span class="src">WU Q4/FY2024业绩新闻稿, p.2, p.10</span></div>
+    <div class="ip-col ip-analysis">数字化迁移是WU唯一确定的结构性趋势；若品牌数字保持13%增速，整体增速取决于实体渠道下滑速度</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">数字化迁移</span><span class="tag tag-strat">渠道转型</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">技术趋势</span><span class="kb-tag">商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">全球各地区普遍呈现量增价降现象：亚太交易量+8%但收入-7%；欧洲交易量+5%但收入-2%；北美交易量+3%但收入-1%<span class="src">WU Q4/FY2024业绩新闻稿, p.11</span></div>
+    <div class="ip-col ip-analysis">全球普遍性的量增价降是汇款行业定价权持续丧失的铁证，这一趋势在2025年可能加剧</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">定价权丧失</span><span class="tag tag-mkt">全球趋势</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">宏观趋势</span><span class="kb-tag">竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2025年展望假设：无重大宏观经济条件变化（包括汇率或阿根廷通胀）；这也说明宏观和汇率波动是WU业绩最大的不确定因素<span class="src">WU Q4/FY2024业绩新闻稿, p.3</span></div>
+    <div class="ip-col ip-analysis">WU收入对汇率和超通胀高度敏感，展望假设的脆弱性意味着实际结果可能大幅偏离指引</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">宏观假设</span><span class="tag tag-fin">汇率风险</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">风险因素</span><span class="kb-tag">财务数据</span></div>
+  </div>
+
+</div>
+
+<div class="footer">
+  索引编号：card-051 | 来源文件：western-union-q4-2024-results.pdf | 提取方式：pdfplumber全文逐页提取（20页）| 提取日期：2026-03-28 | 信息点总数（grep验证）：35条
+</div>
+
+</body>
+</html>

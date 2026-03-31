@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-018 | Morgan Stanley × Wise Platform</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .b-tier2  { background: #e0e7ff; color: #3730a3; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; }
+  .section { background: white; padding: 0 28px; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 重新提取</span>
+    <span class="badge b-type">官方新闻稿 / Newsroom</span>
+    <span class="badge b-depth">全文提取</span>
+    <span class="badge b-rel">相关度 95%</span>
+  </div>
+  <h1>摩根士丹利选择Wise Platform — 首家投资银行接入跨境支付基础设施</h1>
+  <div class="source-line">Wise Newsroom | 发布：2024年12月17日 | 来源：<a href="https://newsroom.wise.com/en-NAM/245384-morgan-stanley-selects-wise-platform-to-enhance-payments-capabilities-for-corporate-clients/" target="_blank">newsroom.wise.com</a> | 索引：#018</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">15</div><div class="stat-label">信息点总数</div></div>
+</div>
+<div class="section">
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0; margin-top:16px;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">摩根士丹利选择Wise Platform处理其企业客户的外汇国际结算能力（FX international settlement capabilities），成为首家接入Wise Platform的投资银行<span class="src">来源：newsroom.wise.com，2024-12-17</span></div>
+    <div class="ip-col ip-analysis">"首家投资银行"是历史性里程碑。投行的合规门槛极高，通常需要严格的供应商尽调、系统测试和监管批准，摩根士丹利的选择是对Wise技术和合规能力的最高级别背书。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">首家投行</span><span class="tag tag-comp">高端客户背书</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">使用场景：摩根士丹利企业客户通过Wise Platform获得"高速跨境结算"，补充其现有FX交易服务套件（面向企业和机构客户）<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">明确的使用场景——企业FX结算（非个人汇款）。摩根士丹利的企业客户（跨国公司）通过MS Banking App间接使用Wise基础设施进行大额跨境支付。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">企业FX结算</span><span class="tag tag-strat">B2B2C链条</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">摩根士丹利的技术理念："最先进的支付能力 + 金融行业最具成本效益和操作稳健性" — Samer Oweida, Global Head of FX and EM, MS<span class="src">来源：同上，引语</span></div>
+    <div class="ip-col ip-analysis">摩根士丹利强调"成本效益"和"操作稳健性"——这正是Wise长期构建的核心竞争力。传统银行无法内部实现同等成本效益，导致它们选择外包给Wise。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">成本优势</span><span class="tag tag-comp">银行选择逻辑</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Platform的价值主张：65+牌照、6个本地支付系统直连，63%支付即时完成（<20秒），全球工程+合规+24/7支持团队<span class="src">来源：同上，About Wise Platform</span></div>
+    <div class="ip-col ip-analysis">这些数字是Wise Platform的官方"卖点"：牌照网络（合规壁垒）、直连（速度壁垒）、即时率（体验壁垒）。三重壁垒是Wise向合作伙伴的核心价值主张。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">三重壁垒</span><span class="tag tag-strat">Platform价值主张</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">这一合作使摩根士丹利能够"减少实施周期"（reducing implementation timelines），体现Wise标准化API对银行的效率价值<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">传统银行自建跨境支付基础设施通常需要2-5年，通过接入Wise Platform可将时间压缩至数月。"实施周期"优势是Wise Platform相对自建方案的核心竞争力之一。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">实施效率</span><span class="tag tag-comp">Build vs Buy</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">摩根士丹利在全球42个国家设有办公室，服务企业、政府、机构和个人客户；NYSE: MS<span class="src">来源：同上，About Morgan Stanley</span></div>
+    <div class="ip-col ip-analysis">摩根士丹利的全球覆盖范围（42国）和多元客群，意味着通过Wise Platform可服务到全球大量企业的跨境支付需求，Wise的B2B市场覆盖通过这一合作间接扩大。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">合作方规模</span><span class="tag tag-strat">间接覆盖</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Platform MD Steve Naudé："这标志着选择通过Wise Platform驱动跨境支付的信任全球银行群体持续扩大的重要里程碑"<span class="src">来源：同上，引语</span></div>
+    <div class="ip-col ip-analysis">Platform MD的表述中"信任全球银行群体持续扩大"暗示Wise已有多家顶级银行签约但未公开，摩根士丹利只是其中之一的公告。这说明Platform业务管道比公开信息更丰富。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">隐性管道</span><span class="tag tag-comp">平台品牌</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise过去14年专注于构建全球资金网络，"被摩根士丹利选中证明了其过去十年构建的基础设施的速度、规模和可靠性"<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">"14年"是护城河建设时长的量化，说明这不是可以短期复制的基础设施。这一论述也是Wise对投资者的核心叙事：先投入、后收获，基础设施壁垒有14年积累。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">护城河深度</span><span class="tag tag-strat">时间壁垒</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Bloomberg和City AM均对此次合作进行了专题报道，显示市场对Wise进入投行服务领域的高度关注<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">顶级金融媒体（Bloomberg/City AM）的报道说明此次合作的市场影响力，同时也是免费的品牌营销——对Platform业务的其他潜在合作伙伴产生示范效应。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">媒体效应</span><span class="tag tag-strat">示范价值</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">此合作的时间节点（2024年12月）紧接于标准银行（2024年11月）合作之后，展示Q4 2024 Platform合作的"爆发式"增速<span class="src">来源：内部对比</span></div>
+    <div class="ip-col ip-analysis">连续两个月（11月渣打+12月摩根士丹利）签署全球顶级金融机构，说明Wise Platform的销售和谈判成熟度已大幅提升，从"一年一单"进入"季度多单"节奏。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">合作速度加快</span><span class="tag tag-fin">Platform增速</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Platform目标行业：银行和金融机构、教育平台、市场平台、支出管理、旅行平台、劳动力平台<span class="src">来源：wise.com/platform</span></div>
+    <div class="ip-col ip-analysis">Platform覆盖6大行业垂直，远超"银行B2B"的初始定位。劳动力平台（payroll）、教育平台（tuition）都是高频跨境支付场景，是Platform的长期增量来源。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">行业多元化</span><span class="tag tag-strat">垂直扩张</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">摩根士丹利"单一firm、跨部门整合"方式：将Wise的技术能力与MS跨部门方案结合，体现平台价值的乘数效应<span class="src">来源：同上，Press Release</span></div>
+    <div class="ip-col ip-analysis">摩根士丹利所说的"跨部门整合"意味着Wise不只服务一个业务线，而是嵌入MS整体FX服务框架，潜在服务范围比单纯的跨境汇款更广。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">嵌入集成</span><span class="tag tag-strat">乘数效应</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Steve Naudé职位（Managing Director, Wise Platform）的存在本身说明Platform业务已达到独立MD级别的战略重要性，通常表示该业务规模已达相当体量<span class="src">来源：同上，职位信息</span></div>
+    <div class="ip-col ip-analysis">在Wise（~6500名员工）配置专职MD负责Platform，通常对应该业务线已达~£100M+年收入的规模。这侧面验证了Platform业务的财务贡献已达到独立战略地位。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Platform收入规模推断</span><span class="tag tag-strat">战略重要性</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise向MS提供的服务：专业工程团队+合规专家+24/7支持，确保无缝、安全的API集成<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">除了技术基础设施，Wise向合作银行提供的"白手套服务"（专业团队+24/7支持）是平台收费的重要组成部分，也是与单纯API提供商的差异化。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">增值服务</span><span class="tag tag-strat">差异化</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise继续扩大Platform合作（Card-007：2025年Q1加入Raiffeisen和UniCredit），证明摩根士丹利合作之后的飞轮效应<span class="src">来源：Card-007交叉引用</span></div>
+    <div class="ip-col ip-analysis">摩根士丹利→渣打→UniCredit→Raiffeisen的合作链条，每次合作都降低了下一家银行的心理障碍，形成"合作伙伴网络效应"——已有银行使用，为下一家银行提供社会认可。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">合作飞轮</span><span class="tag tag-comp">网络效应</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+</div>
+<div class="footer">来源：Wise Newsroom（2024-12-17）| 索引编号：#018 | 提取版本：Tier2-v1（全文） | 提取时间：2026-03-30</div>
+</body>
+</html>

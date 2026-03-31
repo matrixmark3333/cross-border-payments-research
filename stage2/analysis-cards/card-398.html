@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-398 | Wise HY FY24中期业绩 — 利息收入+848%推动EBITDA+163%</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier2  { background: #e0f2fe; color: #0369a1; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .group-banner { background: #f8fafc; padding: 8px 0 8px 0; font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+  .warn-badge { display: inline-block; background: #fef9c3; color: #854d0e; border: 1px solid #fde047; border-radius: 4px; padding: 1px 6px; font-size: 11px; font-weight: 700; margin-left: 4px; }
+</style>
+</head>
+<body>
+
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 URL分析</span>
+    <span class="badge b-type">财报公告</span>
+    <span class="badge b-depth">全文提取（Investegate RNS公告）</span>
+    <span class="badge b-rel">相关度 90%</span>
+  </div>
+  <h1>Wise HY FY24中期业绩 — 利息收入+848%推动EBITDA+163% </h1>
+  <div class="source-line">Investegate / Wise plc | 索引：#398 | 原文：<a href="https://www.investegate.co.uk/announcement/rns/wise-class-a--wise/wise-plc-hy-fy24-unaudited-interim-results/7878765" target="_blank">https://www.investegate.co.uk/announcement/rns/wise-class-a--wise/wise-plc-hy-fy...</a></div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">8</div><div class="stat-label">信息点总数</div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">信息点列表 <span class="count">8条</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise HY FY24（H1：2023年4-9月）营收4.982亿英镑，同比增长25%；Income（含利息）6.56亿英镑，同比增长58%<span class="src">来源：<a href="https://www.investegate.co.uk/announcement/rns/wise-class-a--wise/wise-plc-hy-fy24-unaudited-interim-results/7878765" target="_blank">Investegate Wise HY FY24#398</a></span></div>
+    <div class="ip-col ip-analysis">H1 FY24收入增长25% vs Income增长58%的巨大差距完全来自利息收入爆发（+848%）。Wise利润结构在高利率期发生结构性变化。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">Wise</span><span class="tag tag-fin">利息收入</span><span class="tag tag-fin">收入结构</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财报/Wise</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">H1 FY24利息收入净额（net of customer benefits）1.578亿英镑，同比暴增848%（H1 FY23仅1870万英镑）<span class="src">来源：<a href="https://www.investegate.co.uk/announcement/rns/wise-class-a--wise/wise-plc-hy-fy24-unaudited-interim-results/7878765" target="_blank">Investegate Wise HY FY24#398</a></span></div>
+    <div class="ip-col ip-analysis">利息收入从1870万暴增至1.578亿是Wise FY24超级盈利的核心原因。但这是利率周期效应，非持续性结构优势。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">利息收入</span><span class="tag tag-fin">高利率</span><span class="tag tag-biz">Wise</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财报/Wise</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">H1 FY24毛利润4.889亿英镑，同比增长86%；毛利率74.5%（vs H1 FY23的63%）<span class="src">来源：<a href="https://www.investegate.co.uk/announcement/rns/wise-class-a--wise/wise-plc-hy-fy24-unaudited-interim-results/7878765" target="_blank">Investegate Wise HY FY24#398</a></span></div>
+    <div class="ip-col ip-analysis">毛利率从63%升至74.5%是Wise的规模经济+利息收入双重效应。核心支付业务毛利率约55-65%，利息收入近100%毛利。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">毛利率</span><span class="tag tag-fin">规模经济</span><span class="tag tag-biz">Wise</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财报/Wise</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">H1 FY24调整后EBITDA 2.411亿英镑，同比增长163%；EBITDA利润率36.7%（vs 22%）<span class="src">来源：<a href="https://www.investegate.co.uk/announcement/rns/wise-class-a--wise/wise-plc-hy-fy24-unaudited-interim-results/7878765" target="_blank">Investegate Wise HY FY24#398</a></span></div>
+    <div class="ip-col ip-analysis">EBITDA利润率36.7%大幅超出中期目标20%，证明Wise盈利模式已高度成熟。但目标维持20%以上，防止市场对峰值业绩定锚。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">EBITDA</span><span class="tag tag-fin">利润率</span><span class="tag tag-biz">Wise</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财报/Wise</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">H1 FY24 Take Rate（佣金率）0.87%，Q2活跃客户720万（+32%），人均交易量增长<span class="src">来源：<a href="https://www.investegate.co.uk/announcement/rns/wise-class-a--wise/wise-plc-hy-fy24-unaudited-interim-results/7878765" target="_blank">Investegate Wise HY FY24#398</a></span></div>
+    <div class="ip-col ip-analysis">Take Rate 0.87%是Wise核心支付盈利能力指标，低于传统银行（2-4%）但高于稳定币通道（<0.1%）。降价空间与商业可持续性的平衡点。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-biz">Wise</span><span class="tag tag-strat">定价策略</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财报/核心指标</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">H1 FY24两亿/三分之二新客户通过口碑获客；Wise Account功能持续增强：多特征（账户+汇款+理财+卡）使用率提升<span class="src">来源：<a href="https://www.investegate.co.uk/announcement/rns/wise-class-a--wise/wise-plc-hy-fy24-unaudited-interim-results/7878765" target="_blank">Investegate Wise HY FY24#398</a></span></div>
+    <div class="ip-col ip-analysis">2/3通过口碑获客是极低CAC的体现——产品力驱动自然增长，无需大量营销投入。多功能使用率提升强化账户粘性。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">口碑获客</span><span class="tag tag-fin">CAC</span><span class="tag tag-comp">账户粘性</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式/增长飞轮</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Platform新增9家合作伙伴（含Interactive Brokers、IndusInd Bank、Saudi Awwal Bank）；与Swift合作推出Correspondent Services<span class="src">来源：<a href="https://www.investegate.co.uk/announcement/rns/wise-class-a--wise/wise-plc-hy-fy24-unaudited-interim-results/7878765" target="_blank">Investegate Wise HY FY24#398</a></span></div>
+    <div class="ip-col ip-analysis">Wise Platform渗透金融机构速度加快，与Swift合作是对传统代理行模式的颠覆——银行不再需要维护庞大代理行网络。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">Wise Platform</span><span class="tag tag-tech">Swift合作</span><span class="tag tag-tech">B2B基础设施</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式/平台</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise中期目标：收入增长>20% CAGR；调整后EBITDA利润率≥20%（利率>1%时保持显著高于此目标）<span class="src">来源：<a href="https://www.investegate.co.uk/announcement/rns/wise-class-a--wise/wise-plc-hy-fy24-unaudited-interim-results/7878765" target="_blank">Investegate Wise HY FY24#398</a></span></div>
+    <div class="ip-col ip-analysis">中期目标20%增长+20%利润率是保守但确定性高的承诺，当前实际（36.7% EBITDA）远超目标，为降价投资预留空间。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">业绩指引</span><span class="tag tag-strat">中期目标</span><span class="tag tag-biz">Wise</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财报/战略规划</span></div>
+  </div>
+</div>
+
+<div class="footer">生成日期：2026-03-30 | 数据来源：Investegate / Wise plc | 编号：#398 | Tier 2 分析卡 | </div>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-399 | Wise FY2024 Analyst Deck — 营收11亿英镑，利润+212%，全面盈利元年</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier2  { background: #e0f2fe; color: #0369a1; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .warn-badge { display: inline-block; background: #fef9c3; color: #854d0e; border: 1px solid #fde047; border-radius: 4px; padding: 1px 6px; font-size: 11px; font-weight: 700; margin-left: 4px; }
+</style>
+</head>
+<body>
+
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 URL分析</span>
+    <span class="badge b-type">财报/分析师演示</span>
+    <span class="badge b-depth">PDF全文提取</span>
+    <span class="badge b-rel">相关度 100%</span>
+  </div>
+  <h1>Wise FY2024 Analyst Deck — 营收11亿英镑，利润+212%，全面盈利元年 </h1>
+  <div class="source-line">Wise plc (官方PDF) | 索引：#399 | 原文：<a href="https://wise.com/imaginary-v2/images/2bbbb368c98fe4aa7b2aa3e133341520-FY24_Analyst_Presentation_.pdf" target="_blank">https://wise.com/imaginary-v2/images/2bbbb368c98fe4aa7b2aa3e133341520-FY24_Analy...</a></div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">8</div><div class="stat-label">信息点总数</div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">信息点列表 <span class="count">8条</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise FY2024全年营收11.04亿英镑（+24% YoY）；Income（含利息）14.28亿英镑（+54% YoY）<span class="src">来源：<a href="https://wise.com/imaginary-v2/images/2bbbb368c98fe4aa7b2aa3e133341520-FY24_Analyst_Presentation_.pdf" target="_blank">Wise FY24 Analyst Deck#399</a></span></div>
+    <div class="ip-col ip-analysis">FY2024是Wise历史性里程碑年：营收突破10亿英镑。收入增速54%远超营收增速24%，差距来自利息收入。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">Wise</span><span class="tag tag-fin">营收</span><span class="tag tag-fin">10亿英镑里程碑</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财报/Wise</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024跨境交易量£118.5B（+25% YoY），Take Rate（跨境佣金率）从0.67%降至0.64%<span class="src">来源：<a href="https://wise.com/imaginary-v2/images/2bbbb368c98fe4aa7b2aa3e133341520-FY24_Analyst_Presentation_.pdf" target="_blank">Wise FY24 Analyst Deck#399</a></span></div>
+    <div class="ip-col ip-analysis">TPV增速25%但Take Rate下降3bp，体现Wise持续降价策略。降价带来的量增长超额补偿了单价下降，飞轮正在转动。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">TPV</span><span class="tag tag-fin">Take Rate</span><span class="tag tag-strat">降价策略</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财报/核心指标</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024利润前税（Profit before tax）4.82亿英镑，同比增长212%（FY2023约1.54亿英镑）<span class="src">来源：<a href="https://wise.com/imaginary-v2/images/2bbbb368c98fe4aa7b2aa3e133341520-FY24_Analyst_Presentation_.pdf" target="_blank">Wise FY24 Analyst Deck#399</a></span></div>
+    <div class="ip-col ip-analysis">利润+212%是Wise从"高增长损失"公司到"高增长盈利"公司的转型完成。利率周期驱动的超额利润为持续降价提供弹药。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">税前利润</span><span class="tag tag-fin">盈利转折</span><span class="tag tag-biz">Wise</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财报/Wise</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024个人业务TPV £81.8B（+22%）；企业业务TPV £36.7B（+32%）；企业增速快于个人<span class="src">来源：<a href="https://wise.com/imaginary-v2/images/2bbbb368c98fe4aa7b2aa3e133341520-FY24_Analyst_Presentation_.pdf" target="_blank">Wise FY24 Analyst Deck#399</a></span></div>
+    <div class="ip-col ip-analysis">B2B增速(+32%)超过B2C(+22%)验证Wise战略转型成功。企业客户ARPU更高、粘性更强，未来营收结构将持续向B2B倾斜。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">B2B增速</span><span class="tag tag-biz">个人业务</span><span class="tag tag-strat">结构优化</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财报/业务结构</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Platform FY2024贡献GPV约19亿英镑，合作伙伴包括Airwallex、Aspire等；渣打银行宣布接入<span class="src">来源：<a href="https://wise.com/imaginary-v2/images/2bbbb368c98fe4aa7b2aa3e133341520-FY24_Analyst_Presentation_.pdf" target="_blank">Wise FY24 Analyst Deck#399</a></span></div>
+    <div class="ip-col ip-analysis">Wise Platform是"基础设施收入"模式：合作伙伴使用Wise网络，Wise收取B端服务费。Airwallex同时是Wise的合作伙伴也是竞争对手，合作共赢胜于对抗。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">Wise Platform</span><span class="tag tag-tech">基础设施</span><span class="tag tag-strat">合作伙伴</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式/平台</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024调整后EBITDA利润率29%（vs FY2023的19%）；中期目标20%+（利率>1%时保持更高水平）<span class="src">来源：<a href="https://wise.com/imaginary-v2/images/2bbbb368c98fe4aa7b2aa3e133341520-FY24_Analyst_Presentation_.pdf" target="_blank">Wise FY24 Analyst Deck#399</a></span></div>
+    <div class="ip-col ip-analysis">EBITDA率29%超越目标9pp，表明Wise在保持高投入增长的同时实现了超额盈利。降价空间充裕且不影响目标达成。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">EBITDA</span><span class="tag tag-fin">利润率</span><span class="tag tag-strat">降价空间</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财报/Wise</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Account功能扩展：Assets（货币市场基金）、Interest（存款利息）；账户持有价值提升，多功能使用率持续增长<span class="src">来源：<a href="https://wise.com/imaginary-v2/images/2bbbb368c98fe4aa7b2aa3e133341520-FY24_Analyst_Presentation_.pdf" target="_blank">Wise FY24 Analyst Deck#399</a></span></div>
+    <div class="ip-col ip-analysis">Wise Account正从支付工具进化为数字银行账户：理财、存息、卡、汇款一体化。账户功能增加直接提升用户留存和ARPU。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">Wise Account</span><span class="tag tag-strat">产品扩展</span><span class="tag tag-comp">账户价值</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品架构</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise计划美国主板上市（保留伦敦次级），美国是最大单一市场，使命是成为全球无边界金融的标准基础设施<span class="src">来源：<a href="https://wise.com/imaginary-v2/images/2bbbb368c98fe4aa7b2aa3e133341520-FY24_Analyst_Presentation_.pdf" target="_blank">Wise FY24 Analyst Deck#399</a></span></div>
+    <div class="ip-col ip-analysis">美国上市将提升流动性和知名度，吸引更多美国机构投资者。美国市场增长潜力（最大英语市场、高汇款需求）是核心驱动力。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">美国上市</span><span class="tag tag-biz">Wise</span><span class="tag tag-fin">资本市场</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">战略/资本</span></div>
+  </div>
+</div>
+
+<div class="footer">生成日期：2026-03-30 | 数据来源：Wise plc (官方PDF) | 编号：#399 | Tier 2 分析卡 | </div>
+</body>
+</html>

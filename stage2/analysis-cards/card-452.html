@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-452 | 第一财经21世纪经济报道：抢滩万亿跨境支付市场 — 外资曲线入华，本土机构加速卡位</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier2  { background: #e0f2fe; color: #0369a1; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .warn-badge { display: inline-block; background: #fef9c3; color: #854d0e; border: 1px solid #fde047; border-radius: 4px; padding: 1px 6px; font-size: 11px; font-weight: 700; margin-left: 4px; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 URL分析</span>
+    <span class="badge b-type">深度报道</span>
+    <span class="badge b-depth">全文提取</span>
+    <span class="badge b-rel">相关度 85%</span>
+  </div>
+  <h1>第一财经21世纪经济报道：抢滩万亿跨境支付市场 — 外资曲线入华，本土机构加速卡位 </h1>
+  <div class="source-line">21世纪经济报道 | 索引：#452 | 原文：<a href="https://www.21jingji.com/article/20251018/de3b0556cfadb822793eb83fdf5aad53.html" target="_blank">https://www.21jingji.com/article/20251018/de3b0556cfadb822793eb83fdf5aad53.html</a></div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">5</div><div class="stat-label">信息点总数</div></div>
+</div>
+<div class="section">
+  <div class="section-title">信息点列表 <span class="count">5条</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">2024年全球跨境支付市场规模$2125.5亿（FXC Intelligence），预计2030年突破$3207.3亿，CAGR 7.1%<span class="src">来源：<a href="https://www.21jingji.com/article/20251018/de3b0556cfadb822793eb83fdf5aad53.html" target="_blank">#452</a></span></div>
+    <div class="ip-col ip-analysis">注意：此处$2125.5亿是"跨境支付收入/费用市场"，而非交易量，与$39.9T非批发交易量是不同口径，前者是行业收入，后者是流水。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">市场收入规模</span><span class="tag tag-fin">CAGR 7.1%</span><span class="tag tag-biz">FXC Intelligence</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">市场规模/收入</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">2024年中国跨境电商进出口总额2.63万亿元（+10.8%）；2020-2024年中国跨境电商CAGR约15%，全球份额50%以上<span class="src">来源：<a href="https://www.21jingji.com/article/20251018/de3b0556cfadb822793eb83fdf5aad53.html" target="_blank">#452</a></span></div>
+    <div class="ip-col ip-analysis">15% CAGR+50%全球份额确立中国为全球跨境电商支付最重要来源国，对应极大的跨境收款和结汇服务需求。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">中国跨境电商</span><span class="tag tag-fin">市场份额</span><span class="tag tag-fin">CAGR</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">市场规模/中国</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">外资入华四大案例：PayPal(2019年收购国付宝)→Airwallex(2023年收购商物通)→Payoneer(2025年收购易联支付)→SUNRATE(2025年获传化支付股权)<span class="src">来源：<a href="https://www.21jingji.com/article/20251018/de3b0556cfadb822793eb83fdf5aad53.html" target="_blank">#452</a></span></div>
+    <div class="ip-col ip-analysis">四大收购事件构成外资入华跨境支付的完整时间线，反映监管政策（《条例》2023年）迫使外资必须持牌运营的战略必要性。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">外资入华</span><span class="tag tag-strat">收购策略</span><span class="tag tag-reg">合规牌照</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局/外资</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">直接持牌vs合作通道的价值差异：直接持牌可掌握清算主动权、降低通道成本、提升风控、增强合规可信度<span class="src">来源：<a href="https://www.21jingji.com/article/20251018/de3b0556cfadb822793eb83fdf5aad53.html" target="_blank">#452</a></span></div>
+    <div class="ip-col ip-analysis">直接持牌的四大优势清晰量化了为什么外资要不惜成本收购持牌机构——每一项优势都对应实际的商业收益。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">持牌价值</span><span class="tag tag-tech">清算控制</span><span class="tag tag-comp">合规优势</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">合规/战略</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">博通咨询王蓬博：跨境支付未来真正增长点在于B2B外贸支付、进口电商、海外本地化收单、供应链金融、游戏、物流等细分赛道<span class="src">来源：<a href="https://www.21jingji.com/article/20251018/de3b0556cfadb822793eb83fdf5aad53.html" target="_blank">#452</a></span></div>
+    <div class="ip-col ip-analysis">"跨境出口电商市场已被头部机构占据"的判断指出了市场红利消退，B2B外贸支付和供应链金融是下一轮增长的实质机会。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">B2B外贸</span><span class="tag tag-fin">供应链金融</span><span class="tag tag-mkt">增长点</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">市场机会/细分</span></div>
+  </div>
+</div>
+<div class="footer">生成日期：2026-03-30 | 21世纪经济报道 | #452 | Tier 2</div>
+</body>
+</html>

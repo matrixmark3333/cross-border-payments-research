@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-005 | Wise FY2024 Preliminary Results — 穷举式信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1  { background: #dbeafe; color: #1d4ed8; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .group-banner { background: #f8fafc; padding: 8px 0 8px 0; font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1 深度分析</span>
+    <span class="badge b-type">财报 / 年度初步业绩</span>
+    <span class="badge b-depth">PDF全文逐页提取（74页）</span>
+    <span class="badge b-rel">相关度 100%</span>
+  </div>
+  <h1>Wise FY2024 初步业绩 — 活跃客户1,280万，跨境量£118.5B，底层利润£242M</h1>
+  <div class="source-line">Wise plc (LSE: WISE) | 截止：2024年3月31日 | 发布：2024年6月13日 | 原文：wise-fy2024-preliminary-results.pdf | 索引：#005 | 版本：穷举A</div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">38</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">14</div><div class="stat-label">A.核心财务</div></div>
+  <div class="stat"><div class="stat-num">9</div><div class="stat-label">B.业务指标</div></div>
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">C.产品运营</div></div>
+  <div class="stat"><div class="stat-num">8</div><div class="stat-label">D.战略展望</div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">信息点列表 <span class="count">穷举版</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="group-banner">▌ A. 核心财务数据（14条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024底层收入（Underlying Income）£1,172.7M，同比+31%（FY2023 £892.0M）<span class="src">来源：Wise FY2024 Preliminary Results, p.2，财务概要</span></div>
+    <div class="ip-col ip-analysis">底层收入为Wise核心KPI，排除高于1%收益率的利息收入，更真实反映业务价值创造；31%增速超过跨境量增速13%，单价有所提升。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">底层收入</span><span class="tag tag-fin">增长率</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024报告营收（Revenue）£1,052.0M，同比+24%（FY2023 £846.1M）<span class="src">来源：Wise FY2024 Preliminary Results, p.2，财务表</span></div>
+    <div class="ip-col ip-analysis">GAAP营收£10.5亿，较底层收入低约12%（约为底层利息收入差），年增长稳健。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">营收</span><span class="tag tag-fin">增长率</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024底层税前利润（Underlying PBT）£241.8M，同比+226%（FY2023 £74.3M）<span class="src">来源：Wise FY2024 Preliminary Results, p.2，财务表</span></div>
+    <div class="ip-col ip-analysis">底层PBT三倍于去年，利润率从8.3%飙升至20.6%，印证规模效应显著。三年CAGR（底层PBT）约83%。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">底层利润</span><span class="tag tag-fin">利润率</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024报告税前利润（Reported PBT）£481.4M，同比+229%（FY2023 £146.5M）<span class="src">来源：Wise FY2024 Preliminary Results, p.2，财务表</span></div>
+    <div class="ip-col ip-analysis">报告PBT大幅超越底层PBT，差值£239.6M主要来自高收益率利息收入£364.5M减去已向客户返还的£124.9M。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">报告利润</span><span class="tag tag-fin">利息收入</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024底层毛利（Underlying Gross Profit）£852.8M，底层毛利率72.7%（FY2023 63.4%，提升9ppts）<span class="src">来源：Wise FY2024 Preliminary Results, p.2，财务表</span></div>
+    <div class="ip-col ip-analysis">毛利率大幅扩张9个百分点，主因：营收增速（31%）远超销售成本增速（0%，几乎持平），FX成本优化贡献显著。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">毛利率</span><span class="tag tag-fin">成本效率</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024销售成本（Cost of Sales）£307.4M，同比持平（FY2023 £308.2M，-0%）；净信用损失£12.5M，同比-30%<span class="src">来源：Wise FY2024 Preliminary Results, p.2，财务表</span></div>
+    <div class="ip-col ip-analysis">收入翻倍但成本持平，来自FX成本大幅优化（低波动率环境）和产品损失减少；此为异常年份，管理层已警示不可复制。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">成本结构</span><span class="tag tag-fin">FX成本</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">成本结构库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024行政费用（Administrative Expenses）£615.9M，同比+25%；员工福利费用£377.3M（+28%）<span class="src">来源：Wise FY2024 Preliminary Results, p.9，CFO更新</span></div>
+    <div class="ip-col ip-analysis">人力成本是最大运营费用项，员工数超5,500人（两年净增2,000人），FY2025计划再增约1,000人，费用增长将持续。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">运营费用</span><span class="tag tag-fin">人力成本</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">成本结构库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024自由现金流（FCF）£486.6M，FCF转化率101%（基于报告PBT）<span class="src">来源：Wise FY2024 Preliminary Results, p.2，财务表</span></div>
+    <div class="ip-col ip-analysis">FCF超100%转化率属极高质量，说明利润几乎全部转化为现金，盈利质量极高，适合持续回购股份。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">自由现金流</span><span class="tag tag-fin">现金转化</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024调整后EBITDA（Underlying Adjusted EBITDA）£333.4M，利润率28.4%（FY2023 £167.3M, 18.7%）<span class="src">来源：Wise FY2024 Preliminary Results, p.2，财务表</span></div>
+    <div class="ip-col ip-analysis">底层调整EBITDA率从18.7%提升至28.4%，已超出中期目标上限（20-23%），FY2025价格下调部分是主动让利。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">EBITDA</span><span class="tag tag-fin">利润率</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024全年基本每股收益34.2便士，同比超3倍（FY2023 11.07便士）<span class="src">来源：Wise FY2024 Preliminary Results, p.13，利润表</span></div>
+    <div class="ip-col ip-analysis">EPS三倍增长，但含高息利率驱动的报告利润（非底层利润），FY2025高利率环境趋缓后EPS增速将放缓。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">EPS</span><span class="tag tag-fin">每股价值</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">截至2024年3月31日，集团持有合规资本（Eligible Capital）£870.4M，显著高于监管最低要求<span class="src">来源：Wise FY2024 Preliminary Results, p.10，资本管理</span></div>
+    <div class="ip-col ip-analysis">资本充足率强劲，支持FY2025员工持股信托购回（约£70M），无需外部融资，体现强大财务韧性。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">资本充足率</span><span class="tag tag-reg">监管合规</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024客户余额（Customer Balances）£13.3B，同比+24%；资产托管（AUC）£2.9B，同比+523%<span class="src">来源：Wise FY2024 Preliminary Results, p.3，增长指标</span></div>
+    <div class="ip-col ip-analysis">客户留存余额快速增长，AUC爆发增长5倍以上（Wise Assets理财产品普及）；余额产生利息收入，是重要收入来源。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">客户余额</span><span class="tag tag-biz">理财产品</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024底层利息收入£120.7M，同比+143%（FY2023 £49.6M）；1%收益率以上利息收入£364.5M（+302%）<span class="src">来源：Wise FY2024 Preliminary Results, p.2+p.10，财务表</span></div>
+    <div class="ip-col ip-analysis">高利率环境叠加客户余额增长带来利息收入爆发；随利率下行，FY2025此项将大幅收缩，对报告PBT影响尤为显著。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">利息收入</span><span class="tag tag-fin">利率风险</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024营收按产品分：跨境汇款£795.2M（+17%），卡及其他£256.8M（+54%）<span class="src">来源：Wise FY2024 Preliminary Results, p.8，CFO更新</span></div>
+    <div class="ip-col ip-analysis">卡收入增速（+54%）远超跨境汇款（+17%），Wise账户采用率提升驱动卡消费，多元化收入结构形成。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">收入分类</span><span class="tag tag-biz">产品组合</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据库</span></div>
+  </div>
+
+  <div class="group-banner">▌ B. 业务指标（9条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024活跃客户1,283.8万（+29% YoY），个人1,221.2万（+29%），企业62.6万（+20%）<span class="src">来源：Wise FY2024 Preliminary Results, p.3，增长指标</span></div>
+    <div class="ip-col ip-analysis">客户总量接近1,300万，企业客户增速略低于个人（受H2临时暂停onboarding影响），三年CAGR约29%。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">活跃客户</span><span class="tag tag-biz">企业客户</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">用户数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024跨境交易量£118.5B，同比+13%（FY2023 £104.5B）；个人£87.2B（+14%），企业£31.3B（+12%）<span class="src">来源：Wise FY2024 Preliminary Results, p.3，增长指标</span></div>
+    <div class="ip-col ip-analysis">跨境量增速（13%）低于客户增速（29%），主因"卡only"客户快速增长拉低人均VPC；固定汇率增速+16%。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">跨境量</span><span class="tag tag-biz">VPC</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">用户数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024平均跨境定价（Take Rate）0.67%，较FY2023提升约2bps；FY2025 Q1已下调2bps+<span class="src">来源：Wise FY2024 Preliminary Results, p.8+p.5，CFO更新</span></div>
+    <div class="ip-col ip-analysis">Wise Take Rate仅0.67%，是西联（~3%）的1/4、Remitly（~2.3%）的1/3，超低价格形成竞争护城河；FY2025主动降费进一步强化定位。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">Take Rate</span><span class="tag tag-comp">价格优势</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">定价数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q4 FY2024即时完成率62%（transfers completed instantly）；FY2021至FY2024全行业最快增速<span class="src">来源：Wise FY2024 Preliminary Results, p.5，CEO更新</span></div>
+    <div class="ip-col ip-analysis">62%即时率是重要产品指标，反映基础设施投资回报；目标持续向100%推进，直接影响客户留存。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">即时率</span><span class="tag tag-tech">基础设施</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">个人Wise账户采用率48%（个人活跃客户中），企业账户采用率60%<span class="src">来源：Wise FY2024 Preliminary Results, p.7，CFO更新</span></div>
+    <div class="ip-col ip-analysis">账户采用率是Wise最重要的黏性指标：账户客户单季底层收入比非账户客户高25%（个人）/100%（企业），且留存率更高。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">账户采用率</span><span class="tag tag-comp">护城河</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">用户数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q4 FY2024 Personal VPC（每客户季度跨境量）约£3,000，同比-11%；剔除"卡only"客户后VPC约高15%<span class="src">来源：Wise FY2024 Preliminary Results, p.8，CFO更新</span></div>
+    <div class="ip-col ip-analysis">VPC下降主要由快速增长的低VPC"卡only"客户（已占17%活跃个人客户）稀释，不代表老客户流失或降频。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">VPC</span><span class="tag tag-biz">用户结构</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">用户数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024营销支出£36.5M，同比持平（FY2023约£36M）；营销团队增加27%但新客获取增加20%（540万）<span class="src">来源：Wise FY2024 Preliminary Results, p.9，CFO更新</span></div>
+    <div class="ip-col ip-analysis">营销费用占收入仅约3.5%（对比Remitly 24%），六个月内回收为核心指标；FY2025计划增加品牌营销（首先在澳大利亚试点）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">获客成本</span><span class="tag tag-mkt">营销效率</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">成本结构库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Platform合作伙伴超85家，FY2024新增Mox、Agoda、Webexpenses等，为Tiger Brokers和Parpera客户提供Wise发行卡<span class="src">来源：Wise FY2024 Preliminary Results, p.5，CEO更新</span></div>
+    <div class="ip-col ip-analysis">Wise Platform B2B2C模式持续扩张，85+合作伙伴贡献无需自主获客的业务量，是未来低CAC增长的重要来源。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">平台合作</span><span class="tag tag-strat">B2B2C</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024全球员工数超5,500人，较两年前净增2,000人；FY2025计划新增约1,000人<span class="src">来源：Wise FY2024 Preliminary Results, p.9，CFO更新</span></div>
+    <div class="ip-col ip-analysis">人员扩张重点在合规/反洗钱/风险管理（应对监管复杂度）和服务团队（应对需求峰值），而非纯技术开发。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">员工规模</span><span class="tag tag-reg">合规投入</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">运营数据库</span></div>
+  </div>
+
+  <div class="group-banner">▌ C. 产品与运营（7条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024直联本地支付系统新增澳大利亚NPP，全球直联本地支付系统达5个<span class="src">来源：Wise FY2024 Preliminary Results, p.4，CEO更新</span></div>
+    <div class="ip-col ip-analysis">直联本地支付系统是即时率和成本优势的关键，5个直联系统覆盖主要市场（英/欧/澳/美/新加坡），持续扩张建立护城河。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">基础设施</span><span class="tag tag-comp">护城河</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024在日本获得Type 1资金转移服务提供商执照，解除100万日元单笔转账限制<span class="src">来源：Wise FY2024 Preliminary Results, p.4~5，CEO更新</span></div>
+    <div class="ip-col ip-analysis">日本Tier 1执照是重大监管里程碑，日本是全球第三大汇款市场，解除限额将显著提升日本业务潜力。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">监管执照</span><span class="tag tag-mkt">日本市场</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">监管数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Assets "利息"功能扩展至5个欧洲新国家；"股票"功能在11个欧洲国家上线<span class="src">来源：Wise FY2024 Preliminary Results, p.5，CEO更新</span></div>
+    <div class="ip-col ip-analysis">Wise Assets（资产托管£2.9B，+523%）快速扩张，将Wise从汇款工具升级为综合财富管理平台，提升ARPU和余额黏性。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">理财产品</span><span class="tag tag-strat">产品扩张</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024推出Wise Tag（唯一链接/二维码收款）和Wise Invoicing（企业多币种发票）<span class="src">来源：Wise FY2024 Preliminary Results, p.5，CEO更新</span></div>
+    <div class="ip-col ip-analysis">这两款功能降低个人和企业用户的收款摩擦，增加Wise账户在日常业务中的必要性，提升使用频率。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">产品功能</span><span class="tag tag-biz">企业客户</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise持有65个全球监管执照；90个银行/支付合作伙伴确保服务可用性<span class="src">来源：Wise FY2024 Preliminary Results, p.4，CEO更新</span></div>
+    <div class="ip-col ip-analysis">65个执照和90个合作伙伴是竞争壁垒，新进入者复制需要数年时间和数亿合规成本，形成强监管护城河。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">监管执照</span><span class="tag tag-comp">护城河</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">监管数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024企业客户H2上半年临时暂停英国/欧盟新客户入网（运营容量约束），分阶段重新开放并设立更严格筛选标准<span class="src">来源：Wise FY2024 Preliminary Results, p.7，CFO更新</span></div>
+    <div class="ip-col ip-analysis">此举显示Wise将运营质量置于短期增长之上，是风控纪律的体现；企业客户增速（+20%）受此影响略低于个人（+29%）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">风控</span><span class="tag tag-biz">企业onboarding</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">运营数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024以技术实现机器学习实时全量监控所有交易，用于检测金融犯罪<span class="src">来源：Wise FY2024 Preliminary Results, p.5，CEO更新</span></div>
+    <div class="ip-col ip-analysis">AI/ML合规是Wise可扩展的竞争优势——随交易量增长，单位合规成本下降，而传统人工模式线性增长。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">AI合规</span><span class="tag tag-comp">技术优势</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品数据库</span></div>
+  </div>
+
+  <div class="group-banner">▌ D. 战略展望与中期指引（8条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">中期底层收入增长目标：15%~20% CAGR（以FY2024为基准）；FY2025预期增长15%~20%（调整FY2024超预期及降价影响后为20%~25%）<span class="src">来源：Wise FY2024 Preliminary Results, p.1+p.11，高亮和CFO更新</span></div>
+    <div class="ip-col ip-analysis">中期增长指引清晰，考虑FY2025主动降价（FX成本改善让利），调整后增速更接近25%，显示内生增长动能依然强劲。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">增长指引</span><span class="tag tag-fin">中期目标</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">战略展望库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">中期底层税前利润率目标：13%~16%（底层调整EBITDA率：20%~23%）<span class="src">来源：Wise FY2024 Preliminary Results, p.1+p.10，高亮和CFO更新</span></div>
+    <div class="ip-col ip-analysis">FY2024已超出目标（底层PBT率21%、EBITDA率28%），主动以价格下调换取更多客户，是市场份额最大化而非利润最大化的战略选择。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">利润率目标</span><span class="tag tag-strat">战略取舍</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">战略展望库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025启动第二次重新定价：基于成本分配方法论改进，高价值交易（主要货币走廊）降费，整体收入中性<span class="src">来源：Wise FY2024 Preliminary Results, p.11，CFO更新</span></div>
+    <div class="ip-col ip-analysis">两次连续降价（FY2025 Q1）是飞轮战略的体现：成本下降→降价→更多客户→更多规模→更低成本，形成正向循环。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">定价策略</span><span class="tag tag-comp">飞轮效应</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">战略展望库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">全球跨境支付市场估算：个人每年移动£2万亿，企业£9万亿，合计约£11万亿；Wise现处理约1%<span class="src">来源：Wise FY2024 Preliminary Results, p.4，CEO更新</span></div>
+    <div class="ip-col ip-analysis">1,280万客户不足有需求人群的5%，不足有需求企业的1%。市场渗透率极低，长期增长空间巨大，规模天花板远未到达。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">市场规模</span><span class="tag tag-comp">渗透率</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">战略展望库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">CEO Kristo："We are still in the beginning of our mission"；计划继续专注使客户成为品牌传播者（evangelical）<span class="src">来源：Wise FY2024 Preliminary Results, p.6，CEO更新</span></div>
+    <div class="ip-col ip-analysis">战略定位明确：优质产品驱动口碑传播，低CAC模式（6个月内回收）维持高增长，拒绝以牺牲体验换取短期利润。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">CEO战略</span><span class="tag tag-mkt">获客模式</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">战略展望库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024向员工持股信托（ESOP Trust）购回£69.9M自有股份（FY2023为£10.1M），覆盖当年新发股权激励<span class="src">来源：Wise FY2024 Preliminary Results, p.10，CFO更新</span></div>
+    <div class="ip-col ip-analysis">主动回购以对冲SBC稀释，是利用充裕现金维护股东价值的体现，FY2025将以类似水平继续执行。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">股份回购</span><span class="tag tag-fin">股东价值</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">EU新监管变化和美国CFPB警告推动跨境支付价格透明度，Wise认为"透明度应成为标配"<span class="src">来源：Wise FY2024 Preliminary Results, p.5~6，CEO更新</span></div>
+    <div class="ip-col ip-analysis">监管趋势有利于Wise：竞争对手（隐性汇率加成模式）将被迫披露真实费率，Wise透明定价成为合规标杆而非例外。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">监管趋势</span><span class="tag tag-comp">竞争优势</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">监管数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise认为长期市场领导者将是"最便宜、最快、最便捷、覆盖最广"的服务商，唯一路径是最佳全球基础设施<span class="src">来源：Wise FY2024 Preliminary Results, p.10，CFO展望</span></div>
+    <div class="ip-col ip-analysis">Wise的护城河理论：规模越大→基础设施越优→价格越低→市场越大，形成自我强化循环，规模是最终壁垒。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">护城河理论</span><span class="tag tag-comp">竞争战略</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">战略展望库</span></div>
+  </div>
+
+</div>
+
+<div class="footer">
+  来源：Wise plc FY2024 Preliminary Results | 截止日期：2024年3月31日 | 发布：2024年6月13日 | 文档：74页 | 提取版本：穷举A | 索引：card-005
+</div>
+</body>
+</html>

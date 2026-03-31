@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-364 | Wise Q1 FY26 Trading Update — 结构化信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .b-tier1 { background: #dbeafe; color: #1d4ed8; } .b-type { background: #f0fdf4; color: #166534; } .b-depth { background: #ede9fe; color: #5b21b6; } .b-rel { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; }
+  .source-line { font-size: 13px; color: #64748b; } .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; } .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; } .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; } .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; padding: 8px 10px; background: #f8fafc; } .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; } .tag-biz { background: #dcfce7; color: #166534; border-color: #bbf7d0; } .tag-mkt { background: #fef3c7; color: #92400e; border-color: #fde68a; } .tag-strat { background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8 { color: #2563eb; } .s7 .score-fill, .s8 .score-fill { background: #2563eb; }
+  .s5, .s6 { color: #d97706; } .s5 .score-fill, .s6 .score-fill { background: #d97706; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1 财报</span>
+    <span class="badge b-type">官方RNS公告 / 季度更新</span>
+    <span class="badge b-depth">web_fetch全文获取</span>
+    <span class="badge b-rel">相关度 100%</span>
+  </div>
+  <h1>Wise Q1 FY26 Trading Update — 跨境量+24%，Take Rate 52bps，收入+11%</h1>
+  <div class="source-line">Wise plc / Investegate RNS | 发布：2025年7月 | 来源：<a href="https://www.investegate.co.uk/announcement/rns/wise-class-a--wise/wise-plc-q1-fy26-trading-update/8983463" target="_blank">investegate.co.uk</a> | 索引：#364</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">17</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">10</div><div class="stat-label">财务数据类</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">战略类</div></div>
+  <div class="stat"><div class="stat-num">9.0</div><div class="stat-label">平均价值评分</div></div>
+</div>
+<div class="section">
+  <div class="section-title">信息点列表</div>
+  <div class="ip-row">
+    <div class="col-header">原文信息点</div><div class="col-header">摘要分析</div><div class="col-header">标签</div><div class="col-header">评分</div><div class="col-header">知识库</div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Q1 FY26跨境量：£41.2bn（Q1 FY25：£33.2bn，+24% YoY，按固定汇率+27%）<span class="src">Wise RNS Q1 FY26，核心数据bullet</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">+24%（+27% 固定汇率）的跨境量增速持续强劲，高于CMDay指引的收入增速（15-20%），说明量增速领先于收入（Take Rate持续下降在拉低货币化率）。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">增长率</span><span class="tag tag-fin">Take Rate</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.3 Wise档案</span><span class="kb-tag">3.2 Take Rate</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Q1 FY26跨境Take Rate：0.52%（Q1 FY25：0.64%，-12 bps YoY；-1 bps QoQ）<span class="src">Wise RNS Q1 FY26，核心数据bullet</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">52bps是历史最低Take Rate，且仍在持续下降（-12bps YoY）。这是Wise"赢得更多用户→量折扣→Take Rate下降→规模扩大→利润率维持"战略的体现。市场对此应视为战略性而非负面信号。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s10"><div class="score-num">10</div><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.2 Take Rate</span><span class="kb-tag">2.3 Wise档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Q1 FY26 Underlying Income：£362.0M（Q1 FY25：£325.4M，+11% YoY；+14% 固定汇率）<span class="src">Wise RNS Q1 FY26，核心数据bullet</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">+11%收入增速（+14% CC）在Take Rate下降12bps、量增长24%的情况下，反映混合效应。关键推动力：卡/账户收入（Card & Other +29% YoY）正在补偿跨境收入放缓。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">增长率</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.1 收入</span><span class="kb-tag">2.3 Wise档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Q1 FY26活跃客户：980万（Q1 FY25：837万，+17%；Personal：932万；Business：47.5万）<span class="src">Wise RNS Q1 FY26，历史数据附录</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">Business客户增速更快（+15% QoQ vs Personal +5% QoQ），且Business每客户贡献量($23K/quarter vs Personal$3.2K/quarter)高7倍。Business客户占比提升是Take Rate下降的主因之一（量折扣更多）。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">增长率</span><span class="tag tag-fin">单位经济</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.2 Take Rate</span><span class="kb-tag">2.3 Wise档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Q1 FY26客户持有余额：£22.9bn（Q1 FY25：£17.5bn，+31%）。Customer Balances（不含AUC）：£18.1bn<span class="src">Wise RNS Q1 FY26，历史数据附录</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">£22.9B总持有（含AUC）+31% YoY。余额增速（31%）> 跨境量增速（24%），说明用户越来越倾向于长期持有余额而非仅用于单次转账，利息收入基础在扩大。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">利息收入</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.1 收入</span><span class="kb-tag">2.3 Wise档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">卡和其他收入：Q1 FY26 £103.3M（Q1 FY25：£80.0M，+29% YoY）。Personal卡收入+29%，Business卡+32%<span class="src">Wise RNS Q1 FY26，历史数据附录</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">卡收入增速（+29%）远超跨境收入增速（+2%），且占总收入比例持续提升（Q1 FY26约29%）。这是Wise从"汇款工具"向"全功能金融账户"转型的关键数据证明。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">增长率</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s10"><div class="score-num">10</div><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.1 收入</span><span class="kb-tag">3.4 趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">跨境收入：Q1 FY26 £214.8M（Q1 FY25：£211.2M，+2% YoY）。Personal +2%，Business +1%（但CC+5%，+4%）<span class="src">Wise RNS Q1 FY26，历史数据附录</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">跨境收入实际仅增长2%（名义），但CC增速5%。Take Rate下降12bps完全吸收了量增长24%的大部分益处。这说明跨境业务货币化率下降非常显著，Wise正在主动"降价促量"。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.2 Take Rate</span><span class="kb-tag">3.4 趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Business量增速持续超过Personal：Q1 FY26 Business量£11.5B（+32% YoY）vs Personal£29.7B（+21% YoY）<span class="src">Wise RNS Q1 FY26，历史数据附录</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">B2B量增速（+32%）持续领先于个人（+21%），且两者差距在扩大。B2B是Wise增长引擎，也是Airwallex的主要阵地，两者在B2B高端客户领域的竞争将逐渐激烈。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">增长率</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.1 收入</span><span class="kb-tag">4.1 矩阵</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Wise Platform：新增合作伙伴Raiffeisen Bank（Q1 FY26公告）+ UniCredit（FY26 Q1 7月宣布），为其个人和企业客户在欧洲提供即时低成本国际转账<span class="src">Wise RNS Q1 FY26，CEO语录</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">Raiffeisen（覆盖中东欧/奥地利）+UniCredit（覆盖意大利/德国/东欧）是欧洲大型银行群体，两者合计触达数千万企业和个人客户。Platform收入是零边际成本的规模化增长来源。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-strat">护城河</span><span class="tag tag-mkt">地理扩张</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.1 收入</span><span class="kb-tag">4.2 护城河</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Wise在菲律宾推出Business服务；持续扩大Wise Platform合作伙伴<span class="src">Wise RNS Q1 FY26，CEO语录</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">菲律宾是东南亚最大的汇款接收国之一（GDP约10%来自汇款），Wise Business进入菲律宾将打通企业跨境汇款通道，与Remitly/MoneyGram的个人汇款竞争形成差异化。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">地理扩张</span><span class="tag tag-strat">护城河</span></div></div>
+    <div class="ip-col"><div class="score s7"><div class="score-num">7</div><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.1 亚太</span><span class="kb-tag">7.2 新兴</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">双主板上市提案：拟在美国和英国双重上市，"战略和资本市场效益被股东积极接受"<span class="src">Wise RNS Q1 FY26，CEO语录</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">双主板（LSE+纳斯达克/NYSE）同步Airwallex的上市意图，美国科技股估值倍数远高于LSE，将为Wise解锁更高市值。"股东积极接受"降低了推进的执行风险。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">融资</span><span class="tag tag-strat">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.3 Wise档案</span><span class="kb-tag">4.3 战略</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Q1 FY26历史对比（完整季度序列）：跨境量从Q1 FY24 £28.2B → Q4 FY25 £39.1B → Q1 FY26 £41.2B；每季度稳步增长无明显季节性<span class="src">Wise RNS Q1 FY26，历史数据附录完整表格</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">跨境量连续8个季度无间断增长，且增速稳定在20%+，无明显季节性波动（不同于C端消费支付），体现企业级B2B需求的结构性特征。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">增长率</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.3 Wise档案</span><span class="kb-tag">3.1 收入</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Take Rate趋势（历史序列）：FY24 Q1-Q4均约0.67%；FY25下降至0.64%→0.59%→0.56%→0.53%；Q1 FY26进一步降至0.52%<span class="src">Wise RNS Q1 FY26，历史附录计算（跨境收入/跨境量）</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">跨境Take Rate从0.67%（FY24）→0.52%（Q1 FY26），2年间下降-15bps（-22%）。下降趋势系统性，且尚无明显减速迹象。但整体Underlying Income Take Rate因利息收入支撑而维持较高。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s10"><div class="score-num">10</div><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.2 Take Rate</span><span class="kb-tag">3.4 趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">FY26中期指引重申：预期Strong growth in underlying income，符合15-20% CC CAGR指引<span class="src">Wise RNS Q1 FY26，指引重申</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">在Q1实现+14% CC的基础上，重申15-20% CC CAGR，说明管理层对全年业绩有信心（可能Q2-Q4加速，或Q1本身偏低）。连续兑现指引是Wise品牌价值的重要组成。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">增长率</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.3 Wise档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Kristo Käärmann（联创兼CEO）语录："我们的目标是成为世界货币网络，让全球更多人和企业通过Wise流动数万亿资金。"<span class="src">Wise RNS Q1 FY26，CEO语录</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">"trillions"的目标与当前"billions"的规模相比，隐含着未来10-100倍的增长空间。成为货币网络而非单一产品的定位，是最高价值的战略叙事。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s7"><div class="score-num">7</div><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.3 战略</span><span class="kb-tag">2.3 Wise档案</span></div>
+  </div>
+
+</div>
+<div class="footer">生成时间：2026-03-24 | 来源：Investegate RNS全文（web_fetch成功）| 索引编号：#364</div>
+</body>
+</html>

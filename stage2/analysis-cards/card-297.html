@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-297 | Wise基础设施布局：从英国FPS到巴西PIX的本地清算接入战略</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier2 { background: #e0e7ff; color: #4338ca; } .b-type { background: #f0fdf4; color: #166534; } .b-rel { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; } .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; } .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; } .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; } .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; } .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; } .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; } .tag-biz { background: #dcfce7; color: #166534; border-color: #bbf7d0; } .tag-mkt { background: #fef3c7; color: #92400e; border-color: #fde68a; } .tag-reg { background: #fee2e2; color: #991b1b; border-color: #fecaca; } .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; } .tag-strat { background: #fff7ed; color: #9a3412; border-color: #fed7aa; } .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; } .score-num { font-size: 20px; font-weight: 800; } .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; } .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; } .s7, .s8 { color: #2563eb; } .s7 .score-fill, .s8 .score-fill { background: #2563eb; } .s5, .s6 { color: #d97706; } .s5 .score-fill, .s6 .score-fill { background: #d97706; } .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 网页提取</span>
+    <span class="badge b-type">深度分析报告</span>
+    <span class="badge b-rel">相关度 90%</span>
+  </div>
+  <h1>Wise基础设施布局：从英国FPS到巴西PIX的本地清算接入战略</h1>
+  <div class="source-line">Popular Fintech (Substack) | <a href="https://www.popularfintech.com/p/from-faster-payments-to-pix-wise-s-infrastructure-play" target="_blank">原文链接</a> | 索引：#297</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">18</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">6</div><div class="stat-label">已接入本地清算网络</div></div>
+  <div class="stat"><div class="stat-num">$174.9B</div><div class="stat-label">Wise 2024年跨境量</div></div>
+  <div class="stat"><div class="stat-num">53%</div><div class="stat-label">Wise Account个人用户占比</div></div>
+</div>
+<div class="section">
+  <div class="section-title">信息点列表</div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div><div class="col-header">摘要分析</div><div class="col-header">标签</div><div class="col-header" style="text-align:center">评分</div><div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise正在构建全球支付网络，目标接入所有国家本地清算系统，消除对代理行的依赖；CEO Kristo Kaarmann："要移动万亿，我们意图直连全球所有支付系统，无需中间商，目前已有6个实时连接，另有2个在推进中"<span class="src">来源：Popular Fintech, From Faster Payments to PIX, Wise HY FY2025 earnings call</span></div>
+    <div class="ip-col ip-analysis">Wise的核心战略不是"更便宜的SWIFT"，而是自建替代SWIFT的清算网络。直连本地清算系统使每笔交易成本从Visa Direct的$0.09-0.10降至本地网络的$0.01以下，是可持续定价护城河。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">清算基础设施</span><span class="tag tag-strat">基础设施战略</span><span class="tag tag-comp">护城河</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">Wise战略</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">巴西PIX已是Wise带入和带出巴西的最大单一支付系统；Wise CEO："在巴西，根据央行统计，我们带入和带出巴西的转账量超过任何其他本地银行"<span class="src">来源：Popular Fintech, Wise HY FY2025 earnings call</span></div>
+    <div class="ip-col ip-analysis">Wise成为巴西最大跨境资金流入流出者，超越所有本地银行。PIX直连（在建中）将进一步压缩成本，同时巩固市场领先地位。说明本地基础设施投入可快速形成规模壁垒。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">巴西</span><span class="tag tag-tech">PIX</span><span class="tag tag-comp">市场地位</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">Wise市场扩张</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise已直连6个本地清算系统（包括英国FPS），正在推进PIX（巴西）和Zengin（日本）的直连。当英国用户发送欧元至欧洲，通过SEPA Instant/CT通过Wise Europe充当代理行，若发送方有Wise Account则资金直接从欧洲账户划转<span class="src">来源：Popular Fintech</span></div>
+    <div class="ip-col ip-analysis">欧洲账户内部转账机制是Wise成本领先的核心：欧洲至欧洲无需任何外汇转换，仅本地清算费用。这一"Wise内部网络"模式是其成本模型的真正秘密武器。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">本地清算</span><span class="tag tag-tech">SEPA</span><span class="tag tag-fin">成本模型</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">Wise基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise与Citigroup的类比：Citi全球网络在95国建立本地存在、获取当地牌照、接入本地清算网络，服务大型企业和银行；Wise正在复制这一模式，但面向消费者和小企业<span class="src">来源：Popular Fintech</span></div>
+    <div class="ip-col ip-analysis">"消费者版Citi"是对Wise商业模式最精准的描述。Citi建立全球网络耗费数十年和数百亿美元；Wise凭借技术能力以更快速度复制，并将服务延伸至传统上被排斥的中小客户群。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">Wise</span><span class="tag tag-comp">Citi</span><span class="tag tag-strat">竞争战略</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">Wise战略</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise与Remitly对比：2024年跨境量Wise $128.6B（仅个人）vs Remitly $54.6B；含企业量Wise $174.9B。Wise还提供Wise Account（持卡+持多币种账户），Remitly刚开始探索企业客户<span class="src">来源：Popular Fintech</span></div>
+    <div class="ip-col ip-analysis">Wise处理量是Remitly的3.2倍（含企业），且产品广度（Account+Business+Platform）远超Remitly。两者目前市场重叠度有限，Wise更偏欧洲/SMB，Remitly偏北美/C2C。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">交易量对比</span><span class="tag tag-comp">Remitly</span><span class="tag tag-comp">Wise</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">跨境支付竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise客户期末持有$20.8B于Wise账户（2024），较一年前$16.4B增长27%；约53%个人客户和60%企业客户使用Wise Account<span class="src">来源：Popular Fintech, Wise HY FY2025 earnings call</span></div>
+    <div class="ip-col ip-analysis">$20.8B客户存款是Wise的重要收入来源（利息）和竞争壁垒（资金粘性）。60%企业客户使用Account说明B2B产品渗透已超过个人，企业粘性更高。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">客户余额</span><span class="tag tag-biz">账户粘性</span><span class="tag tag-fin">利息收入</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">Wise财务</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise采用"成本加成"定价模型："我们期望随时间推移总成本或有效成本下降，我们将从规模效应中获益，降低服务成本，我们在运营一个成本加成模型" — Kaarmann<span class="src">来源：Popular Fintech, Wise FY2024 earnings call</span></div>
+    <div class="ip-col ip-analysis">成本加成模型意味着Wise的利润空间锁定在一定比例，但对客户的价格承诺是可预期的。随着本地清算接入增多，每笔交易成本下降，客户受益同时Wise规模仍可扩大。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">定价策略</span><span class="tag tag-fin">成本模型</span><span class="tag tag-strat">价值主张</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">Wise商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise与竞争对手Remitly/PayPal Xoom不同：后者主要依赖Visa Direct（平均每笔$0.09-0.10）；Wise使用本地清算网络，每笔通常低于$0.01<span class="src">来源：Popular Fintech</span></div>
+    <div class="ip-col ip-analysis">成本差距约10-100倍，这是Wise能以更低费率提供服务的基础。Visa Direct是便于快速起步的工具，但本地清算才是可持续竞争优势。行业成本壁垒正在加深。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">成本对比</span><span class="tag tag-tech">Visa Direct</span><span class="tag tag-comp">竞争优势</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">跨境支付成本</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise已通过Wise Platform向多个新银行（neobanks）提供跨境支付能力，形成B2B基础设施业务（嵌入式支付）<span class="src">来源：Popular Fintech</span></div>
+    <div class="ip-col ip-analysis">Wise Platform是Wise基础设施投资的"第二变现层"：一次建设，多次复用。银行合作伙伴（如Raiffeisen、UniCredit）每处理一笔跨境交易，Wise获取网络费用。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">嵌入式支付</span><span class="tag tag-tech">Wise Platform</span><span class="tag tag-fin">B2B变现</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">Wise平台经济</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">监管环境演变：约5-10年前，非银行机构接入支付系统需要银行牌照；现在多数发达国家监管已允许非银行支付公司直连支付系统 — Kaarmann<span class="src">来源：Popular Fintech, Wise HY FY2025 earnings call</span></div>
+    <div class="ip-col ip-analysis">监管开放是Wise基础设施战略的重要推动因素。欧洲（PSD2）、英国（开放银行）已先行，其他市场逐步跟进。此趋势将加速非银行机构的清算系统直连，改变整个跨境支付格局。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">监管演变</span><span class="tag tag-tech">非银行接入</span><span class="tag tag-strat">监管套利</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">跨境支付监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise收入地理多元化：英国、欧陆、北美、亚太各有贡献；Remitly则高度集中于美加两国客户向印度、墨西哥、菲律宾汇款<span class="src">来源：Popular Fintech</span></div>
+    <div class="ip-col ip-analysis">地理多元化是Wise相对Remitly的关键风险缓释优势。单一走廊依赖（如美加→印度）使Remitly易受政策和汇率冲击，而Wise的分散化收入更具稳定性。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">收入多元化</span><span class="tag tag-comp">Remitly</span><span class="tag tag-comp">Wise</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">Wise竞争优势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise直连清算系统原理：当英国客户发送至欧洲，Wise将支付走SEPA Instant/CT；若客户持有Wise Account，资金从客户的欧洲子账户直接转出，无需Wise欧洲垫付<span class="src">来源：Popular Fintech</span></div>
+    <div class="ip-col ip-analysis">Wise Account充当"预付款项"机制：客户在各地区预存资金，转账时仅做账本划转，Wise无需使用自身资产垫付。这一机制大幅降低流动性风险和资金成本。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">技术架构</span><span class="tag tag-fin">流动性管理</span><span class="tag tag-biz">Wise Account</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">Wise基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise收入地理组成：英国、欧洲大陆、北美、亚太均有贡献，收入多元化程度远超Remitly<span class="src">来源：Popular Fintech</span></div>
+    <div class="ip-col ip-analysis">多地区均衡的收入结构意味着Wise的TAM不受单一走廊限制，且在汇率波动时具备自然对冲能力。这也是Wise能维持相对稳定Take Rate的结构性原因之一。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">收入结构</span><span class="tag tag-mkt">地区分布</span><span class="tag tag-comp">竞争优势</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">Wise财务</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">在美国，接入本地清算系统（FedNow/ACH）需要银行牌照；Wise在美国采用银行合作伙伴模式。美国监管壁垒仍是非银行机构直连清算的核心挑战<span class="src">来源：Popular Fintech</span></div>
+    <div class="ip-col ip-analysis">美国市场是Wise基础设施战略的关键缺口。银行牌照门槛意味着Wise在美国仍需支付合作银行的中间成本，这使美国走廊定价相对较高。FedNow的开放将是重要变量。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">美国监管</span><span class="tag tag-tech">FedNow</span><span class="tag tag-strat">市场障碍</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">Wise合规</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise替代SWIFT的叙事："我们替代遗留代理行系统，用可扩展的替代方案直接连接本地支付系统，无需中介" — Wise官方声明<span class="src">来源：Popular Fintech</span></div>
+    <div class="ip-col ip-analysis">Wise的官方定位是SWIFT的替代者，而非补充者。这一战略声明表明其野心不仅是服务消费者，而是重构全球资金基础设施的叙事。这对机构投资者和B2B客户具有强吸引力。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">战略定位</span><span class="tag tag-tech">SWIFT替代</span><span class="tag tag-comp">市场叙事</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">Wise战略</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise是在更大的机会上追求的Fintech公司：表面是汇款，底层是建设全球支付网络；类似Citi，但更灵活，服务消费者和小企业而非仅大银行和企业<span class="src">来源：Popular Fintech</span></div>
+    <div class="ip-col ip-analysis">作者给出的Wise定位总结：比Remitly更大的机会，比Citi更灵活的执行。这一框架帮助投资者理解Wise的TAM不是汇款市场（约$800B），而是全球跨境支付基础设施市场（数万亿）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">长期愿景</span><span class="tag tag-comp">市场机会</span><span class="tag tag-fin">TAM</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">Wise战略</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise收入结构多元，Wise Platform为银行和Fintech提供跨境支付基础设施；个人和企业账户提供利息收入；传统汇款取率（Take Rate）随规模扩大持续下降<span class="src">来源：Popular Fintech</span></div>
+    <div class="ip-col ip-analysis">Wise商业模式的三大收入来源：汇款Take Rate + 利息收入 + B2B Platform费用，三者形成互补。Take Rate下降被利息和Platform增长抵补，总收入持续增长。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">收入多元化</span><span class="tag tag-biz">商业模式</span><span class="tag tag-biz">Wise Platform</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">Wise商业模式</span></div>
+  </div>
+
+</div>
+<div class="footer">处理时间：2026-03-30 | 来源：Popular Fintech (Substack) | 原文获取：web_fetch成功（截断）| 条目：#297 | 信息点：18条</div>
+</body>
+</html>

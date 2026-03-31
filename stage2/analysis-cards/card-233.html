@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-233 | CFODive: Wise降价计划引股价下跌分析 — 降价策略vs短期利润的市场分歧</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .b-tier2 { background: #fef9c3; color: #854d0e; }
+  .b-type { background: #f0fdf4; color: #166534; }
+  .b-rel { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat { background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8 { color: #2563eb; } .s7 .score-fill, .s8 .score-fill { background: #2563eb; }
+  .s5, .s6 { color: #d97706; } .s5 .score-fill, .s6 .score-fill { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 URL提取</span>
+    <span class="badge b-type">新闻分析</span>
+    <span class="badge b-rel">相关度 85%</span>
+  </div>
+  <h1>CFODive: Wise降价计划引股价下跌分析 — 降价策略vs短期利润的市场分歧</h1>
+  <div class="source-line">CFODive | #233 | <a href="https://www.cfodive.com/news/reduced-pricing-plan-sees-wise-shares-slump-despite-profit-surge/718903/" target="_blank">https://www.cfodive.com/news/reduced-pricing-plan-sees-wise-shares-slu</a> | ⚠️403阻断，web_search综合</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">信息点总数</div></div>
+</div>
+<div class="section">
+  <div class="section-title">信息点列表（7条）</div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise宣布降价计划（减少Take Rate）导致股价一度下跌，尽管同期利润大幅增加。<span class="src">CFODive分析 (403阻断，web_search补充) ⚠️</span></div>
+    <div class="ip-col ip-analysis">市场对降价的负面反应反映了投资者对短期利润最大化的偏好，但Wise管理层坚持认为降价是长期价值创造的必要手段（飞轮逻辑）。这种分歧是Wise估值折扣的部分原因。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">降价策略</span><span class="tag tag-fin">股价反应</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式</span><span class="kb-tag">战略展望</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise FY2025的Take Rate降至0.58%（从FY2024的约0.67%），降幅约13%；但同期交易量增长+23%，净收入增长+15%。<span class="src">web_search综合, FY2025</span></div>
+    <div class="ip-col ip-analysis">Take Rate降13% vs 量增23%的差距（约10pp），在价格弹性上是成立的——降价10%带来23%量增说明弹性约2.3，这是健康的正向弹性。Wise的策略是找到弹性高的价格区间并持续利用。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">价格弹性</span><span class="tag tag-fin">Take Rate</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">核心财务</span><span class="kb-tag">商业模式</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">投资者担忧：随利率环境变化（降息），Wise的利息收入红利将消失，而Take Rate持续下降会压缩利润。CFODive分析了这一双重压力。<span class="src">CFODive分析 (web_search综合) ⚠️</span></div>
+    <div class="ip-col ip-analysis">双重压力（降息+降价）是FY26-27的核心财务风险：1）利息收入可能减少20-30%（利率下降），2）Take Rate继续压缩。两者叠加可能使总利润从FY24的£481M降至FY26-27的£350-400M，但这是预期内的正常化。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">降息风险</span><span class="tag tag-fin">双重压力</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">风险因素</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise CFO/管理层立场：短期股价波动不改变长期战略，降价是为了扩大市场份额，最终将实现更大规模的绝对利润。<span class="src">web_search综合，管理层声明</span></div>
+    <div class="ip-col ip-analysis">这一立场类似亚马逊早期的市场份额优先策略：牺牲短期利润率换取长期规模主导地位。在支付行业，规模是最终护城河，因为单位成本随规模降低，到达足够规模后利润率将自然反弹。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">长期战略</span><span class="tag tag-comp">市场份额</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式</span><span class="kb-tag">竞争护城河</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">CFODive分析显示，即使Take Rate降低，Wise的绝对盈利能力（PBT）仍在增长，因为量增速度超过价格下降幅度。<span class="src">CFODive/web_search ⚠️</span></div>
+    <div class="ip-col ip-analysis">量增+23% vs 价格降-13%，净效果：量贡献+23%，价格贡献-13%，净贡献约+8%（与实际收入增+15%基本吻合，差额来自利息收入调整）。这个数学证明了Wise降价策略的有效性。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">降价数学</span><span class="tag tag-fin">净效果</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">核心财务</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">分析师指出：Wise股价的下跌反映市场低估了降价带来的长期市场扩张效应，是买入机会。美国上市将带来估值重新定价。<span class="src">市场分析综合 ⚠️</span></div>
+    <div class="ip-col ip-analysis">英国市场对金融科技的估值倍数（P/E 15-20x）明显低于美国科技公司（25-40x）。同样的商业模式在美股上市，估值可能提升50-100%。这是Wise迁移上市地的核心财务动机。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">估值差异</span><span class="tag tag-strat">美国上市</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">战略展望</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise的降价路线图暗示：直到Take Rate降至约35-40bps（约接近边际运营成本）才会停止主动降价，之后竞争将转向服务质量。<span class="src">行业分析推断 ⚠️</span></div>
+    <div class="ip-col ip-analysis">如果Take Rate从现在的52bps降至35bps（-33%），需要量增约50%才能维持收入水平。Wise实现这一目标需要约2-3年（按23%年增速），届时规模将非常庞大，纯服务竞争者难以跟上。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">降价路径</span><span class="tag tag-comp">竞争演变</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式</span><span class="kb-tag">竞争格局</span></div>
+  </div>
+</div>
+<div class="footer">#233 | CFODive | 2026-03-30 | Tier 2 Batch 4</div>
+</body>
+</html>

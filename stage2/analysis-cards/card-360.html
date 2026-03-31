@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-360 | 新浪财经 Airwallex G轮 — 结构化信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .b-type { background: #f0fdf4; color: #166534; } .b-depth { background: #fef3c7; color: #92400e; } .b-rel { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; }
+  .source-line { font-size: 13px; color: #64748b; } .source-line a { color: #2563eb; text-decoration: none; }
+  .warn-banner { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 8px; padding: 10px 16px; margin: 12px 0; font-size: 13px; color: #9a3412; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; } .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; } .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; } .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; padding: 8px 10px; background: #f8fafc; } .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; } .tag-mkt { background: #fef3c7; color: #92400e; border-color: #fde68a; } .tag-strat { background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8 { color: #2563eb; } .s7 .score-fill, .s8 .score-fill { background: #2563eb; }
+  .s5, .s6 { color: #d97706; } .s5 .score-fill, .s6 .score-fill { background: #d97706; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-type">中文媒体</span>
+    <span class="badge b-depth">⚠️ 仅摘要（新浪财经内容极少，仅简短提示）</span>
+    <span class="badge b-rel">相关度 80%</span>
+  </div>
+  <h1>新浪财经：Airwallex G轮及全球战略（摘要）</h1>
+  <div class="source-line">新浪财经 | 来源：<a href="https://finance.sina.com.cn/cj/2025-12-08/doc-inhaamff3979912.shtml" target="_blank">sina.com.cn</a> | 索引：#360</div>
+</div>
+<div class="warn-banner">⚠️ 新浪财经页面内容极短（仅标题级别），无实质正文内容。以下信息点基于G轮官方公告（同日发布）和索引摘要整合，与card-357/358形成补充。</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">8</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">7.5</div><div class="stat-label">平均价值评分</div></div>
+</div>
+<div class="section">
+  <div class="section-title">信息点列表（⚠️ 仅摘要）</div>
+  <div class="ip-row">
+    <div class="col-header">原文信息点</div><div class="col-header">摘要分析</div><div class="col-header">标签</div><div class="col-header">评分</div><div class="col-header">知识库</div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">G轮融资时间节点：2025年12月8日宣布完成，与Airwallex成立10周年（2025）时间节点高度重合<span class="src">⚠️ 新浪财经标题+界面新闻快讯</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">创业10周年完成G轮，是Airwallex有意设计的叙事节奏。$3.3亿+$80B估值的G轮是上市前资本准备的最后一里路，也是向市场传递"IPO Ready"的信号。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">融资</span><span class="tag tag-fin">估值</span></div></div>
+    <div class="ip-col"><div class="score s7"><div class="score-num">7</div><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Airwallex档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">G轮估值$80亿，与创立至今融资路径：种子轮（2015）→A轮（2017）→B轮→C轮→D轮→E轮（2021，$5.5B估值）→F轮（2025年5月，$6.2B）→G轮（2025年12月，$8B）<span class="src">⚠️ 索引摘要+公开融资记录</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">10年间估值从零增长至$80亿，IPO后若达到Revenue $1B+ @10x PS，市值可达$100B+。融资轮次密度（2次在2025年）体现了市场对Airwallex加速增长的高度认可。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">融资</span><span class="tag tag-fin">估值</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Airwallex档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">G轮资金用途：加速美国市场扩张（旧金山总部+400人团队）、继续技术创新（AI+数字资产生态）、强化全球支付网络<span class="src">⚠️ 索引摘要+官方公告</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">资金分配体现战略优先级：美国市场>AI技术>网络扩张。美国上市（双主板）需要在当地建立足够的营收规模和品牌知名度，400人团队是最低可见度门槛。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">地理扩张</span><span class="tag tag-strat">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.3 战略</span><span class="kb-tag">2.1 Airwallex档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Airwallex G轮投资方构成：机构长线资金为主（T. Rowe Price、TIAA Ventures等）；区别于早期VC主导轮次<span class="src">⚠️ 界面新闻快讯</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">从VC转向机构长线资本（养老金、主权基金），是Pre-IPO轮次的典型特征。T. Rowe Price等机构通常在Pre-IPO入股，为上市承销奠定基础。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">融资</span></div></div>
+    <div class="ip-col"><div class="score s7"><div class="score-num">7</div><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Airwallex档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">全球战略深度：覆盖180+国家/地区；支持160+支付方式；服务15万+家企业；2025年目标成为"全球银行未来"的构建者<span class="src">⚠️ 索引摘要+公开数据</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">180个国家的覆盖率已接近Payoneer（200+）和Western Union（200+）的网络广度，但服务模式（B2B金融平台）与传统汇款机构截然不同，竞争维度不同。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">地理扩张</span><span class="tag tag-strat">护城河</span></div></div>
+    <div class="ip-col"><div class="score s7"><div class="score-num">7</div><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.1 矩阵</span><span class="kb-tag">2.1 Airwallex档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">双主板上市计划：拟在美国（纽约证交所/纳斯达克）和澳大利亚/英国（原本部市场）双重上市<span class="src">⚠️ 索引摘要+公开报道</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">双主板策略利用美国高估值倍数（科技股PE溢价）为股东创造更大价值，同时保留澳大利亚/亚太投资者基础。2025年末Wise也宣布类似双主板意图（LSE+纳斯达克）。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">融资</span><span class="tag tag-strat">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Airwallex档案</span><span class="kb-tag">4.3 战略</span></div>
+  </div>
+
+</div>
+<div class="footer">生成时间：2026-03-24 | ⚠️ 新浪财经页面内容极少，信息源自官方公告+界面新闻快讯 | 索引编号：#360</div>
+</body>
+</html>

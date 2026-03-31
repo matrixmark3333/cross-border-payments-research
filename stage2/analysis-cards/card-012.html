@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-012 | Wise FY2023 Analyst Presentation</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .b-tier2  { background: #e0e7ff; color: #3730a3; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-warn   { background: #fef3c7; color: #92400e; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; }
+  .section { background: white; padding: 0 28px; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .group-banner { background: #f8fafc; padding: 8px 0; font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+  .warn-note { background: #fef3c7; border: 1px solid #fde68a; border-radius: 6px; padding: 8px 12px; font-size: 12px; color: #92400e; margin: 12px 0; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 重新提取</span>
+    <span class="badge b-type">财报 / 分析师演示</span>
+    <span class="badge b-warn">⚠️ 与Card-011高度相关，补充细项</span>
+    <span class="badge b-rel">相关度 90%</span>
+  </div>
+  <h1>Wise FY2023 Analyst Presentation — Take Rate分解与详细运营数据</h1>
+  <div class="source-line">Wise plc | FY2023 | 原文：<a href="https://wise.com/imaginary-v2/FY23-Mar-23-Analyst-Presentation-(June-27-2023).pdf" target="_blank">FY23 Analyst Presentation PDF</a> | 索引：#012</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">8</div><div class="stat-label">信息点总数</div></div>
+</div>
+<div class="section">
+  <div class="warn-note">⚠️ 与Card-011（FY2023 RNS）内容高度重叠，本卡重点提取分析师演示稿特有的细项数据，避免重复。</div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0; margin-top:16px;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2023 跨境Take Rate 0.65%（+2bps YoY），拆分：FX spread 0.49% + "其他"收入贡献 0.16%<span class="src">来源：web_search基于FY23 Analyst Presentation</span></div>
+    <div class="ip-col ip-analysis">FX spread（核心价格）和"其他"收入（卡/账户）的分拆是评估商业模式多元化进度的关键。"其他"从FY22的0.10%升至FY23的0.16%，加速多元化。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate分拆</span><span class="tag tag-fin">FX vs 卡</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2023 个人客户9.44M(+35% YoY)，企业客户519.8K(+20% YoY)；个人占客户总数95%<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">企业客户占总客户数仅5%，但贡献企业量占比26.7%（£27.9B/£104.5B）。企业客户价值（人均£53.7K）是个人（£8.1K）的6.6倍，是高价值客群。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">客户结构</span><span class="tag tag-fin">企业客户价值</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2023 分析师演示（发布日2023-06-27）展示：Wise 3层产品架构——Personal Account / Business Account / Platform<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">三层产品架构早在FY23就完全成型，Platform（B2B2C）是第三个增长引擎。此后Card-017-019中的Morgan Stanley、Standard Chartered合作验证了Platform模式的成熟。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">产品架构</span><span class="tag tag-strat">Platform战略</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2023 成本结构：Cost of Sales £308.2M（-0% YoY，实际轻微下降），体现强规模效应；管理费用£494.5M(+25%)<span class="src">来源：Wise FY23 RNS财务报表</span></div>
+    <div class="ip-col ip-analysis">收入+51%而CoS仅+0%，是规模效应最直接的证明。每增量£1收入几乎全部流向利润，驱动利润率从3%→8.3%的飞跃。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">成本结构</span><span class="tag tag-fin">规模效应</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2023 新增：Wise Assets利息产品扩展至欧洲多国，客户可通过持有政府支持资产获取类利息回报<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">Wise Assets是FY23关键战略布局——既提高客户余额黏性（降低取现动机），又产生更多利息收入。FY24 AUC £0.5B→FY25 £5B+验证了这一布局的爆发力。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">Wise Assets</span><span class="tag tag-strat">利息产品</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2023直连支付系统：完成欧元区SEPA直连+印度IMPS直连，累计4个直连网络<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">每新增一个直连，覆盖的即时支付比例提升并降低单笔成本。SEPA和IMPS是全球最大规模的即时支付网络，战略价值极高。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">直连网络</span><span class="tag tag-comp">基础设施护城河</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2023 Wise Platform合作伙伴新增：Google Pay（英国跨境汇款）、Standard Bank（南非）等，扩大B2B渠道覆盖<span class="src">来源：web_search综合</span></div>
+    <div class="ip-col ip-analysis">Google Pay合作验证Platform模式可以触达科技巨头流量。Standard Bank打开非洲市场。这些早期Platform合作为后来Morgan Stanley/Standard Chartered更大合作铺路。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">Platform合作</span><span class="tag tag-comp">生态扩张</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2023 Wise员工数约6,000人（"Wisers"），约20个全球办公室，主要科技中心：伦敦/塔林/新加坡/纽约<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">6000人团队规模相较£846M收入（人均£141K）效率极高，体现轻资产、高技术含量的商业模式。此后增至6500人（FY25）但收入翻倍，人效持续提升。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">人效</span><span class="tag tag-comp">效率优势</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+</div>
+<div class="footer">来源：Wise FY2023 Analyst Presentation（PDF搜索补充）| 索引编号：#012 | 提取版本：Tier2-v1 | 提取时间：2026-03-30</div>
+</body>
+</html>

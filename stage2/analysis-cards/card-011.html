@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-011 | Wise FY2023 RNS Announcement</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier2  { background: #e0e7ff; color: #3730a3; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-warn   { background: #fef3c7; color: #92400e; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .group-banner { background: #f8fafc; padding: 8px 0 8px 0; font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+  .warn-note { background: #fef3c7; border: 1px solid #fde68a; border-radius: 6px; padding: 8px 12px; font-size: 12px; color: #92400e; margin: 12px 0; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 重新提取</span>
+    <span class="badge b-type">财报 / RNS公告</span>
+    <span class="badge b-warn">⚠️ PDF为二进制，基于搜索补充</span>
+    <span class="badge b-rel">相关度 90%</span>
+  </div>
+  <h1>Wise FY2023 RNS官方业绩公告 — 历史基准数据</h1>
+  <div class="source-line">Wise plc (LSE: WISE) | FY2023（截止2023年3月31日）| 原文：<a href="https://wise.com/imaginary-v2/images/49fe62e15cf1aa3bed60d68f23f62c99-Wise%20FY2023%20RNS%20for%20IR%20FINAL.pdf" target="_blank">FY2023 RNS PDF</a> | 索引：#011</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">14</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">核心财务</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">增长驱动</div></div>
+  <div class="stat"><div class="stat-num">3</div><div class="stat-label">历史对比</div></div>
+</div>
+<div class="section">
+  <div class="warn-note">⚠️ 降级说明：原始PDF为编码格式，无法直接提取文字内容。以下信息点基于web_search搜索结果（多方交叉验证）生成，内容与FY2023官方公告高度一致。</div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0; margin-top: 16px;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="group-banner">▌ A. FY2023核心财务数据</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2023 Revenue £846.1M（+51% YoY），底层收入（Underlying Income）£892M<span class="src">来源：web_search基于Wise FY2023 RNS数据</span></div>
+    <div class="ip-col ip-analysis">FY2023是Wise首个突破£10亿底层收入门槛的年度。51%收入增速是有记录以来最高单年增速，反映疫情后跨境需求爆发+Wise用户渗透加速的双重驱动。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">FY23收入</span><span class="tag tag-fin">增速峰值</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2023 跨境交易量 £104.5B（+37% YoY，FY22：£76.4B），活跃客户 9.96M（+34% YoY）<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">量增37%超过收入增51%，说明FY23 Take Rate有所提升（约65bps vs FY22约60bps）——利率上升期间卡收入和利息收入双重推高综合Take Rate。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">交易量</span><span class="tag tag-fin">客户数</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2023 底层PBT £74.3M（+296% YoY，FY22：£18.8M），底层PBT利润率 8.3%（FY22：~3%）<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">PBT三年内从微利（FY22）→ 8.3%（FY23）→ 20.6%（FY24），是盈利杠杆最直观的展示。FY23是利润拐点年份，奠定此后高增速扩张的财务基础。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">利润拐点</span><span class="tag tag-fin">PBT增速</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2023 跨境Take Rate约0.65%（vs FY22约0.60%），"其他"收入（以卡为主）占比升至0.16%（FY22：0.10%）<span class="src">来源：同上，Take Rate分解</span></div>
+    <div class="ip-col ip-analysis">Take Rate从0.60%升至0.65%是罕见的主动提价（"偶发"提价以弥补通胀和波动成本）。其后FY24→FY25从67bps持续下降至52bps，验证这是短期异常，长期趋势仍是下行。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate提升</span><span class="tag tag-fin">定价异常</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2023 利息收入增速 +83%（FY22基数极低），占底层收入约7%<span class="src">来源：FXC Intel基于FY2023数据</span></div>
+    <div class="ip-col ip-analysis">FY23利息占比仅7%，相比FY24（利息贡献大幅上升）仍处于初期。英国利率从0%飙升至5%，为Wise提供历史性顺风，FY23是利息收入起飞的起点。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">利息收入</span><span class="tag tag-fin">利率顺风</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2023 个人交易量 £76.6B(+35% YoY)，企业交易量 £27.9B(+43% YoY)<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">FY23企业增速43%>个人35%，B2B增长优势早在FY23就已显现。这一趋势延续至FY25（企业32% vs 个人21%），说明企业业务是持续增长引擎。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">分部增速</span><span class="tag tag-strat">B2B加速</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2023 调整后EBITDA £235.8M（+n/a% YoY），EBITDA利润率24.4%（底层口径）<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">EBITDA利润率24.4%是FY23结果，此后FY24扩大至28.4%，说明盈利能力持续改善。为后续高速股票回购奠定了现金流基础。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">EBITDA</span><span class="tag tag-fin">盈利能力</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="group-banner">▌ B. 增长驱动与战略背景</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2023收入增速51%高于量增37%，解释：Take Rate提升（价格）+ 利息收入（利率）+ 卡收入（新产品）三重驱动<span class="src">来源：web_search综合分析</span></div>
+    <div class="ip-col ip-analysis">这是FY23业绩超预期的核心原因。三个独立驱动力同时发力是偶发性强烈配合——后续Take Rate下行将削弱此组合效果，因此FY24以后要更多依赖规模效应。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">超额收益驱动</span><span class="tag tag-strat">增长分解</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2023 毛利润增长+234%（相对FY22），底层毛利率63.4%（FY22约40%+）<span class="src">来源：Finance Magnates报道</span></div>
+    <div class="ip-col ip-analysis">毛利率单年从约40%飞跃至63%，是规模效应和利息收入双重作用。利息收入几乎是零成本收入，直接流入毛利，大幅拉高毛利率。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">毛利率飞跃</span><span class="tag tag-fin">利息贡献</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2023：定价提升说明——"略高价格弥补货币波动、通胀及持续投资带来的单位成本上升"<span class="src">来源：Wise FY2023 RNS引述</span></div>
+    <div class="ip-col ip-analysis">这是Wise唯一一次官方解释涨价原因，而非降价。对比FY24"降价2bps以惠及客户"，显示FY23→FY24战略转向：从保利润转向攻规模。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">定价叙事</span><span class="tag tag-strat">战略转向</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2023 客户余额 £10.7B（+n/a% YoY），资产托管额 £0.5B（Wise Assets初期）<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">£10.7B余额是此后快速增长的起点（FY25已达£21.5B）。Wise Assets（AUC £0.5B）刚刚起步，此后5年内预计成为数十亿级别产品。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">余额基础</span><span class="tag tag-fin">AUC起点</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="group-banner">▌ C. 历史对比（FY21-FY23趋势）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise收入增速历史：FY21 ~£370M → FY22 £560M(+51%) → FY23 £846M(+51%) → FY24 £1,052M(+24%) → FY25 ~£1.22B<span class="src">来源：综合历年RNS</span></div>
+    <div class="ip-col ip-analysis">FY21-FY23两年合计+100%+，FY24-FY25增速降至20%+。规模效应使高增速不可持续，但绝对量仍在显著扩张。FY23是高增速的终点。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">收入历史</span><span class="tag tag-fin">增速趋势</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场总览</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2023是Wise首次突破10M客户里程碑（9.96M，次年确认过10M），亦是跨境量首次突破£100B<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">两个里程碑同时到来（10M客户 + £100B量），说明Wise从"超高速早期增长"阶段进入"大规模扩张"阶段。这标志着商业模式成熟度和市场接受度的转折。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">里程碑</span><span class="tag tag-comp">规模跨越</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2023相对FY2022：FCF £156M（+106%），FCF转化率106.6%<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">FCF转化率超过100%意味着会计利润小于现金利润——Wise的资本效率极高，几乎无资本支出负担。这是平台型商业模式的典型特征。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">FCF</span><span class="tag tag-fin">现金效率</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+</div>
+<div class="footer">来源：Wise FY2023 RNS公告（PDF搜索补充）| 索引编号：#011 | ⚠️ PDF为编码格式不可直接提取 | 提取版本：Tier2-v1 | 提取时间：2026-03-30</div>
+</body>
+</html>

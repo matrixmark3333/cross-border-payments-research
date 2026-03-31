@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-123 | 万字深度解析跨境支付全局 — 结构化信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1  { background: #dbeafe; color: #1d4ed8; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .group-row { background: #f8fafc; padding: 8px 10px 8px 0; font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; grid-column: 1/-1; }
+</style>
+</head>
+<body>
+
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1 深度分析</span>
+    <span class="badge b-type">中文深度分析</span>
+    <span class="badge b-depth">web_fetch 全文获取</span>
+    <span class="badge b-rel">相关度 95%</span>
+  </div>
+  <h1>万字深度解析跨境支付全局 — 陈天宇宙 / 人人都是产品经理</h1>
+  <div class="source-line">人人都是产品经理 / 陈天宇宙 | 获取时间：2026-03-24 | 原文：<a href="https://www.woshipm.com/pd/6067482.html" target="_blank">woshipm.com/pd/6067482.html</a> | 索引：#123</div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">26</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">10</div><div class="stat-label">基础设施/架构</div></div>
+  <div class="stat"><div class="stat-num">8</div><div class="stat-label">监管合规</div></div>
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">商业模式</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">其他</div></div>
+  <div class="stat"><div class="stat-num">7.6</div><div class="stat-label">平均价值评分</div></div>
+</div>
+
+<div class="section">
+  <div class="ip-row" style="background:#f8fafc;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <!-- Group 1: VA账户与账户体系 -->
+  <div class="ip-row"><div class="group-row" style="padding:8px 0;">▌ VA账户与账户体系</div></div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">VA账户（Virtual Account）：VLA（分类账记录）和VAV（含用户信息、银行代码、虚拟账号的完整虚拟账户）。跨境支付收款使用的基本都是VAV。<span class="src">陈天宇宙，万字解析跨境支付全局</span></span></div>
+    <div class="ip-col ip-analysis">VA账户是跨境电商收款的核心工具，VAV形式让每个商户有独立账户信息（收款即知来源）。这是Airwallex、WorldFirst、PingPong等平台的技术基础，也是区别于传统银行账户的核心差异。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">基础设施</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.基础知识 > 6.1 账户体系</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">OSA账户（离岸账户）：在离岸金融中心开设，不受国内外汇管制，资金可自由兑换调拨（一般不支持人民币），在税收优惠地区还能减税。<span class="src">陈天宇宙，万字解析跨境支付全局</span></span></div>
+    <div class="ip-col ip-analysis">OSA账户是外汇管制下企业进行国际资金调配的关键工具，也是跨境支付机构搭建资金路径的重要一环（香港、开曼等常见OSA注册地）。对于理解跨境支付机构的资金结构非常重要。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">基础设施</span><span class="tag tag-reg">监管</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.基础知识 > 6.1 账户体系</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">FTN账户（上海自贸区非居民自贸账户）：仅限上海自贸区内的境外机构开立，受外汇管制但支持多币种，主要用于跨境代发（资金出境）。<span class="src">陈天宇宙，万字解析跨境支付全局</span></span></div>
+    <div class="ip-col ip-analysis">FTN账户是中国跨境支付企业海外代发的常见工具，专为上海自贸区的境外机构设计。对于理解中国跨境支付的监管架构和合规路径非常重要，是国内独特的制度安排。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">监管</span><span class="tag tag-tech">基础设施</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.监管 > 3.1 中国外汇监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">NRA账户（非居民账户）：境内银行为境外机构开立的境内外汇账户，资金性质视同境外，受外汇管制，与FTN的区别在于无地域限制但偏向境内金融服务。<span class="src">陈天宇宙，万字解析跨境支付全局</span></span></div>
+    <div class="ip-col ip-analysis">NRA账户是境外机构在中国开展人民币结算的工具，与FTN账户的差异（地域限制、使用场景）是理解中国跨境支付合规架构的关键。两者共同构成中国外汇管制下的资金出入通道。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">监管</span><span class="tag tag-tech">基础设施</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.监管 > 3.1 中国外汇监管</span></div>
+  </div>
+
+  <!-- Group 2: 外汇管制与合规 -->
+  <div class="ip-row"><div class="group-row" style="padding:8px 0;">▌ 外汇管制与合规</div></div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">中国外汇管制关键措施：①禁止外币在境内流通；②限制个人年购汇5万美元；③经常项目需真实合法交易背景；④大额交易事后抽查。<span class="src">陈天宇宙，万字解析跨境支付全局</span></span></div>
+    <div class="ip-col ip-analysis">四条外汇管制核心规则是中国跨境支付企业面临的最大合规约束，也是"跨境收款机构"这一业态存在的根本原因。理解这四条规则，是理解中国跨境支付生态的基础。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">监管</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.监管 > 3.1 中国外汇监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">收结汇/购付汇四环节：收汇（外汇入境内银行外币账户）→结汇（外币兑人民币）→购汇（人民币兑外币）→付汇（外汇出境支付）。<span class="src">陈天宇宙，万字解析跨境支付全局</span></span></div>
+    <div class="ip-col ip-analysis">四个环节完整描述了中国外汇进出的全生命周期，是跨境支付机构业务架构的底层逻辑。每个环节都对应特定监管要求（申报、审核、额度）和技术系统（外汇系统、结汇申报通道）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">监管</span><span class="tag tag-tech">基础设施</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.监管 > 3.1 中国外汇监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">国际收支申报：从境外收款须在5个工作日内通过银行申报；向境外付款必须在付款同时完成申报；贸易进出口类不论金额大小逐笔申报。<span class="src">陈天宇宙，万字解析跨境支付全局</span></span></div>
+    <div class="ip-col ip-analysis">申报时限（5个工作日）和逐笔申报要求是跨境支付机构的重大合规负担，需要实时系统支持（结汇申报通道）。这也是为何跨境支付企业在业务架构中单独设立"申报系统"的原因。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">监管</span><span class="tag tag-tech">基础设施</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.监管 > 3.1 中国外汇监管</span></div>
+  </div>
+
+  <!-- Group 3: 清算网络 -->
+  <div class="ip-row"><div class="group-row" style="padding:8px 0;">▌ 清算网络：SWIFT/CIPS/CHIPS</div></div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">SWIFT：成立于1973年，覆盖全球200+国家11000+金融机构，是金融行业通信网络（信息流），而非资金流处理系统。<span class="src">陈天宇宙，万字解析跨境支付全局</span></span></div>
+    <div class="ip-col ip-analysis">SWIFT本质是"通信网络"而非"清算系统"，这一区分至关重要。大量新进入者（含mBridge、Wise的本地网络）实际上是在绕开SWIFT通信网络，而不是绕开银行清算体系本身。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">基础设施</span><span class="tag tag-comp">竞争格局</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.基础知识 > 6.2 清算体系</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">CIPS（跨境人民币支付系统）：中国人民银行主导，33家直接参与者，903家间接参与者，覆盖94国，采用5×24+4运行模式，实时全额+定时净额混合结算。<span class="src">陈天宇宙，万字解析跨境支付全局</span></span></div>
+    <div class="ip-col ip-analysis">CIPS是人民币国际化的核心基础设施，与SWIFT的功能互补（CIPS处理资金流，SWIFT传递报文）。903家间接参与者已覆盖全球主要贸易银行，这一规模是人民币国际化进展的重要指标。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">基础设施</span><span class="tag tag-reg">监管</span><span class="tag tag-strat">地理扩张</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.基础知识 > 6.2 清算体系</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">CHIPS（清算所银行同业支付系统）：处理全球约95%的国际美元交易，私营清算系统，参与者需提前储蓄备付金，是美元国际清算的核心。<span class="src">陈天宇宙，万字解析跨境支付全局</span></span></div>
+    <div class="ip-col ip-analysis">CHIPS处理95%国际美元交易，是美元霸权的技术支撑。理解CHIPS的备付金机制（参与者需预存）有助于理解为何SWIFT/美元渠道成本高昂——备付金占用资金成本。这也是Airwallex/Wise建立本地清算网络的根本动机。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">基础设施</span><span class="tag tag-comp">竞争格局</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.基础知识 > 6.2 清算体系</span></div>
+  </div>
+
+  <!-- Group 4: 代理行体系 -->
+  <div class="ip-row"><div class="group-row" style="padding:8px 0;">▌ 代理行与中间行</div></div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">中间行与代理行区别：代理行是与其他国家建立往来账户的银行；中间行是在某笔具体跨境支付中作为两家银行共同代理的银行。中间行必定同时与收款行和付款行有代理关系。<span class="src">陈天宇宙，万字解析跨境支付全局</span></span></div>
+    <div class="ip-col ip-analysis">理解代理行vs中间行的逻辑，是理解跨境支付手续费叠加（每多一个中间行收取$10-50）的关键。Airwallex/Wise建立本地账户网络的本质，就是用直接合作替代多层代理行关系，消除中间行费用。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">基础设施</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.基础知识 > 6.2 清算体系</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">中间行费用：一般$10-50。跨境支付中可能存在两家中间行，费用叠加，而且往往对付款方透明度不足。<span class="src">陈天宇宙，万字解析跨境支付全局</span></span></div>
+    <div class="ip-col ip-analysis">中间行$10-50/笔的费用是传统SWIFT跨境支付费用高昂的主要原因之一，也是Wise/Airwallex"比传统银行便宜"的最大来源。多层代理行体系在B2B高频小额场景下费率比例极高，是市场痛点。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-comp">竞争格局</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.基础知识 > 6.2 清算体系</span></div>
+  </div>
+
+  <!-- Group 5: 业务架构 -->
+  <div class="ip-row"><div class="group-row" style="padding:8px 0;">▌ 跨境支付机构业务架构</div></div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">跨境支付全局分类：资金入境（含入境消费、外贸出口收款）和资金出境（含出境消费、进口付款、海外代发）。第三层按产品解决方案分类。<span class="src">陈天宇宙，万字解析跨境支付全局</span></span></div>
+    <div class="ip-col ip-analysis">两维分类法（资金方向×业务场景）是理解跨境支付产品矩阵的清晰框架。每个象限都对应不同的监管要求、技术架构和竞争格局。行业研究时可用此框架进行结构化分析。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-tech">基础设施</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.基础知识 > 6.3 业务分类</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">收单 vs 收款：收单（卡组织路径，资金结算到电商平台海外账户）→收款（帮助商户将海外账户资金回流国内，是"最后一公里"）。两者相互补充，不可替代。<span class="src">陈天宇宙，万字解析跨境支付全局</span></span></div>
+    <div class="ip-col ip-analysis">收单+收款的组合是中国出海电商必不可少的两步，这解释了为何WorldFirst/PingPong等中国跨境收款平台能够成功——它们填补了收单之后、资金回流之前的市场空白，而这一空白是由中国外汇管制创造的。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-reg">监管</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.基础知识 > 6.3 业务分类</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">跨境支付机构业务架构中独有中台：外汇系统（外汇汇率获取/报价加点/平盘策略/兑换路由/损益计算）和资金调拨系统（多账户资金归集调配，满足实时业务需求）。<span class="src">陈天宇宙，万字解析跨境支付全局</span></span></div>
+    <div class="ip-col ip-analysis">外汇系统和资金调拨系统是跨境支付机构区别于国内支付机构的核心技术差异。外汇系统直接影响公司利润（汇损/汇益），资金调拨系统关系到备付金效率。这两个系统是重要的竞争壁垒和运营能力体现。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">基础设施</span><span class="tag tag-strat">护城河</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.基础知识 > 6.4 系统架构</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">跨境支付通道层独特性：除常规收单/付款通道外，还有VA账户通道、VCC发卡通道、换汇通道、结汇申报通道、物流订单核验通道。<span class="src">陈天宇宙，万字解析跨境支付全局</span></span></div>
+    <div class="ip-col ip-analysis">丰富的通道层是跨境支付机构产品能力的基础，每个通道类型对应不同的合规要求和商业场景。通道数量和质量决定了机构能做哪些产品——VA通道决定收款能力，换汇通道影响FX成本，物流核验是风控合规关键。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">基础设施</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.基础知识 > 6.4 系统架构</span></div>
+  </div>
+
+  <!-- Group 6: 国内vs跨境支付差异 -->
+  <div class="ip-row"><div class="group-row" style="padding:8px 0;">▌ 国内支付 vs 跨境支付差异</div></div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">清算模式差异：国内（以银联/网联为中心的中心化清算）vs跨境（卡组织中心化、双边清算、去中心化三种并存）。<span class="src">陈天宇宙，万字解析跨境支付全局</span></span></div>
+    <div class="ip-col ip-analysis">跨境支付三种清算模式的并存（中心化/双边/去中心化），解释了为何跨境支付生态更复杂，也说明稳定币/区块链在跨境清算领域的技术路径与传统代理行有根本性不同。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">基础设施</span><span class="tag tag-comp">竞争格局</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.基础知识 > 6.2 清算体系</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">跨境支付交易真实性审核：不仅审核商户合规性，还需审核交易真实合法背景（防洗钱），跨境机构需接入电商平台获取精确订单数据。<span class="src">陈天宇宙，万字解析跨境支付全局</span></span></div>
+    <div class="ip-col ip-analysis">交易真实性审核是跨境支付独有的合规要求，这迫使平台深度整合电商平台数据（CRM/ERP/订单API），形成数据护城河。能够提供精确订单明细的平台（如WorldFirst直连亚马逊）在合规能力上远超竞争对手。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">监管</span><span class="tag tag-strat">护城河</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.监管 > 3.1 中国外汇监管</span></div>
+  </div>
+
+  <!-- Group 7: 案例 -->
+  <div class="ip-row"><div class="group-row" style="padding:8px 0;">▌ 案例：一笔完整的跨境支付流程</div></div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">案例：境内持卡人A向境外大学B付学费（USD）。流程：国内收单（CNY）→购汇（CNY→USD）→SWIFT MT103报文→付汇申报→大学收款。跨越国内收单、外汇兑换、SWIFT传输、监管申报四个系统。<span class="src">陈天宇宙，万字解析跨境支付全局</span></span></div>
+    <div class="ip-col ip-analysis">完整的信息流+资金流案例展示，清晰说明一笔跨境支付涉及哪些机构（发卡行、跨境支付机构、合作银行D、合作银行E、SWIFT、监管机构、大学开户行）和哪些步骤，是理解跨境支付复杂性的最佳教学案例。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">基础设施</span><span class="tag tag-biz">商业模式</span><span class="tag tag-reg">监管</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.基础知识 > 6.5 案例分析</span></div>
+  </div>
+
+  <!-- Group 8: 其他 -->
+  <div class="ip-row"><div class="group-row" style="padding:8px 0;">▌ 风控与产品差异</div></div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">跨境支付企业收银台特殊性：除卡支付、电子钱包外，还包括运营商支付、线下银行转账、先用后付、加密货币支付等多元形式。<span class="src">陈天宇宙，万字解析跨境支付全局</span></span></div>
+    <div class="ip-col ip-analysis">支付方式多样化是跨境支付产品复杂度高于国内的体现。在东南亚/非洲等新兴市场，运营商支付（MPESA、GoPay等）和货到付款是主流，这要求跨境支付平台具备多渠道收银台能力。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-tech">基础设施</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.基础知识 > 6.3 业务分类</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">跨境支付企业开放平台能力：VA账户系列接口、结汇申报接口、外汇兑换接口（含远期锁汇）、VCC发卡接口、海外代发接口等，远多于国内支付机构。<span class="src">陈天宇宙，万字解析跨境支付全局</span></span></div>
+    <div class="ip-col ip-analysis">开放API的广度体现跨境支付机构的底层能力积累，也决定其可以支持的业务场景数量。远期锁汇API对跨国企业管理汇率风险极有价值（可以通过API对冲未来3-6个月的FX风险），这是传统银行服务的重要替代。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">基础设施</span><span class="tag tag-biz">商业模式</span><span class="tag tag-strat">护城河</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.基础知识 > 6.4 系统架构</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">跨境支付风控三层：事前（商户评分预警）、事中（实时风控模型）、事后（差错处理/指标统计/定期报送监管）。还需接入物流核验通道防止虚假订单。<span class="src">陈天宇宙，万字解析跨境支付全局</span></span></div>
+    <div class="ip-col ip-analysis">三层风控架构是合规的核心，"定期向监管报送"这一事后环节是跨境独有的，体现了监管对真实性申报的持续要求。接入物流平台获取订单核验数据（与电商平台直连）是高价值合规技术投入。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">监管</span><span class="tag tag-tech">基础设施</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.监管 > 3.1 中国外汇监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">交易币种差异：跨境支付清算币种可与交易币种不同（如欧洲商户收欧元→美元清算→结算人民币），存在三重货币转换，每次转换产生费用。<span class="src">陈天宇宙，万字解析跨境支付全局</span></span></div>
+    <div class="ip-col ip-analysis">三重货币转换（交易/清算/结算币种）解释了跨境支付的隐性成本结构，也是DCC（动态货币兑换）高额费用的根源。提供"同币种结算"（like-for-like settlement，如Airwallex）的平台，可以帮助商户节省1-2次FX转换成本。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.基础知识 > 6.3 业务分类</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">结算场景差异：跨境支付结算目标多元（虚拟钱包/海外银行/国内银行/加密数字钱包），且结算到国内需要结汇申报（中国外汇管制创造出独特的"跨境收款机构"业态）。<span class="src">陈天宇宙，万字解析跨境支付全局</span></span></div>
+    <div class="ip-col ip-analysis">国内银行结算的合规要求（结汇申报）是中国跨境收款机构存在的根本原因。如果中国没有外汇管制，跨境收款机构将没有存在价值——监管创造了市场，这是中国跨境支付生态独特性的核心。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">监管</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.监管 > 3.1 中国外汇监管</span></div>
+  </div>
+
+</div>
+
+<div class="footer">数据来源：人人都是产品经理 / 陈天宇宙（万字文章，web_fetch全文获取，2026-03-24）| 索引编号 #123 | 生成时间：2026-03-24</div>
+</body>
+</html>

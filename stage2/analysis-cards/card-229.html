@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-229 | ElectroIQ: Wise Stats Comprehensive — 分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .b-tier2 { background: #fef9c3; color: #854d0e; }
+  .b-type { background: #f0fdf4; color: #166534; }
+  .b-rel { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-strat { background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8 { color: #2563eb; } .s7 .score-fill, .s8 .score-fill { background: #2563eb; }
+  .s5, .s6 { color: #d97706; } .s5 .score-fill, .s6 .score-fill { background: #d97706; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 URL提取</span>
+    <span class="badge b-type">分析报告</span>
+    <span class="badge b-rel">相关度 95%</span>
+  </div>
+  <h1>ElectroIQ: Wise Stats Comprehensive — Wise历年关键统计数据综合（用户/TPV/营收/Take Rate）</h1>
+  <div class="source-line">ElectroIQ | 索引：#229 | 原文：<a href="https://electroiq.com/stats/wise-formerly-transferwise-stastistic/" target="_blank">electroiq.com</a> | ✅成功获取</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">16</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">6</div><div class="stat-label">财务趋势</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">用户数据</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">业务洞察</div></div>
+</div>
+<div class="section">
+  <div class="section-title">信息点列表（16条）</div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise FY2025持续显著增长：截至2025年3月，持有15.6M+客户，跨境交易量超£145B，为客户节省约£20亿。<span class="src">来源：electroiq.com，引用Wise FY2025数据</span></div>
+    <div class="ip-col ip-analysis">FY2025是Wise里程碑年：首次超过1500万客户，交易量突破£145B，£20亿节省相当于对传统银行体系的价值重构。客户增速+25%，量增+23%，双轮驱动。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">FY2025</span><span class="tag tag-biz">里程碑</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">核心财务</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise各年底层收入趋势：FY2021 £419.6M → FY2022 £553.2M → FY2023 £892.0M → FY2024 £1,172.7M（+31% YoY）。4年CAGR约29%。<span class="src">来源：electroiq.com，FY2021-FY2024</span></div>
+    <div class="ip-col ip-analysis">FY2023收入加速（+61% YoY）是关键拐点，原因是利率上升带来巨额利息收入叠加交易量增长。4年CAGR 29%，远超行业平均增速（5-9%），护城河显现。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">底层收入</span><span class="tag tag-fin">CAGR</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">核心财务</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024毛利润增长71% YoY至£1,092.4M；核心驱动是收入增长同时销售成本几乎持平（£307.4M vs £308.2M in FY2023），展示强大运营杠杆。<span class="src">来源：electroiq.com，FY2024</span></div>
+    <div class="ip-col ip-analysis">毛利润率从FY2023的~75%提升至FY2024的~104%（毛利润超过原始收入，因为底层收入包含利息）。边际成本接近零说明Wise技术平台已充分折旧，增量收入几乎全入利润。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">毛利润</span><span class="tag tag-biz">运营杠杆</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">核心财务</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024税前利润跳升至£481.4M（FY2023: £146.5M，FY2022: £43.9M，FY2021: £41.1M），4年增长约12倍。<span class="src">来源：electroiq.com，FY2021-FY2024</span></div>
+    <div class="ip-col ip-analysis">PBT从£41M到£481M，12倍增长，是成熟科技平台盈利爆发的典型路径。关键是FY2023突破£100M后加速，利息收入是加速剂，但主业转账的结构性增长才是基础。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">税前利润</span><span class="tag tag-fin">盈利爆发</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">核心财务</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024总收入£1,052.0M（+24% YoY from £846.1M FY2023）；FY2024各区域：欧洲（非UK）£323.9M最大，亚太£216.2M第二。<span class="src">来源：electroiq.com，FY2024地区数据</span></div>
+    <div class="ip-col ip-analysis">欧洲（非UK）最大区域反映了Wise在欧元区的深度渗透；亚太超越北美是2024年最重要的地理格局变化，预示未来增长重心在亚太。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">地区收入</span><span class="tag tag-mkt">亚太增长</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区策略</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise FY2024活跃客户1280万（+29% YoY），其中企业客户63万（+20%）；FY2024新增540万客户。<span class="src">来源：electroiq.com，FY2024</span></div>
+    <div class="ip-col ip-analysis">新增540万/年相当于每天净增约15,000名新用户，且70%+来自口碑推荐（CAC接近零）。这一获客引擎是Wise竞争护城河的核心，口碑驱动使竞争对手难以用营销经费复制。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">用户增长</span><span class="tag tag-comp">口碑护城河</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">用户数据</span><span class="kb-tag">竞争护城河</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024跨境交易量£118.5B（+13% YoY），个人£87.2B（+14%），企业£31.3B（+12%）；每客户平均量£9,232（-12%，卡类用户稀释）。<span class="src">来源：electroiq.com，FY2024</span></div>
+    <div class="ip-col ip-analysis">交易量增速（13%）显著低于用户增速（29%），说明新用户以低频小额的卡类使用者为主，导致人均量下降。这对Take Rate有向下压力——低频小额用户单次交易的相对固定成本占比更高。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">交易量</span><span class="tag tag-biz">用户结构变化</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">用户数据</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Platform（B2B API）在FY2024新增85+合作伙伴，包括Mox、Agoda、Webexpenses；Platform通过支持银行和企业直接接入Wise基础设施获得API收费。<span class="src">来源：electroiq.com，FY2024</span></div>
+    <div class="ip-col ip-analysis">Platform合作伙伴超过85家/年相当于每4天新增一个。每个B2B合作伙伴都将数以万计的最终用户引入Wise网络，使Wise成为其他金融机构的"隐形基础设施"——这是更高价值的B2B2C模式。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">Platform</span><span class="tag tag-strat">B2B2C</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise FY2024 EPS 34.20便士（+197% from 11.07p in FY2023）；FY2025净利润预计继续增长（FY2025 PBT指引：底层利润率13-16%）。<span class="src">来源：electroiq.com，FY2024 EPS数据</span></div>
+    <div class="ip-col ip-analysis">EPS +197%是极强的股东价值创造信号。FY2025指引目标利润率13-16%意味着在£1.2B收入下，税前利润约£156-192M（注：不含利息收入）——主业盈利强劲。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">EPS</span><span class="tag tag-fin">盈利指引</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">核心财务</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise货币账户持有量：FY2024 USD余额最大，从FY2023的£3.89B+增长到FY2024的更高值；多货币账户覆盖40+种货币。<span class="src">来源：electroiq.com，FY2024余额数据（截断）</span></div>
+    <div class="ip-col ip-analysis">USD是最大持有货币，反映Wise用户群的美国+国际贸易走廊特征。多货币账户是核心差异化产品——让用户持有外汇而不需立即换汇，规避汇率损失，同时为Wise提供稳定的利息收入基础。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">多货币账户</span><span class="tag tag-fin">余额</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">用户数据</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise FY2024在中国、巴西、印尼、澳大利亚为侨民推出新服务；同期获得日本牌照（取消百万日元限额）；与SWIFT合作拓展银行渠道。<span class="src">来源：electroiq.com，FY2024创新/扩展</span></div>
+    <div class="ip-col ip-analysis">侨民服务+日本牌照+SWIFT合作是FY2024三大扩张里程碑，方向互补：一是扩大新用户群（侨民），二是突破单笔限额（日本），三是拓展B2B渠道（SWIFT银行合作）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">扩张策略</span><span class="tag tag-mkt">新市场</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区策略</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise女性员工占比51%（全球），但高级领导层仅32%为女性；FY2024新晋总监级别女性占比38%。<span class="src">来源：electroiq.com，FY2024多元化数据</span></div>
+    <div class="ip-col ip-analysis">性别多元化管道正在改善（38%新总监），但现有高层仍有差距。对于计划美国上市的公司而言，ESG合规性越来越重要，董事会多元化是机构投资者考量指标之一。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">ESG</span></div></div>
+    <div class="ip-col"><div class="score s4"><span class="score-num">4</span><div class="score-bar"><div class="score-fill" style="width:40%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">ESG</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise在FY2024推出Wise Assets利息产品（5个欧洲国家）和股票产品（11个欧洲国家），首次进入财富管理领域。<span class="src">来源：electroiq.com，FY2024产品创新</span></div>
+    <div class="ip-col ip-analysis">财富管理产品是Wise提升ARPU和粘性的关键战略。持有股票或债券的用户切换成本更高，且可以为Wise带来佣金和托管费用。但受欧盟MiFID监管限制，扩展较慢。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">财富管理</span><span class="tag tag-strat">产品多元化</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024 Wise Holdings（客户账户持有资金）达£16B，同比+44%；48%个人客户和60%企业客户使用持有功能。<span class="src">来源：electroiq.com，FY2024</span></div>
+    <div class="ip-col ip-analysis">£16B持有量是Wise的"存款基础"，在高利率环境下是重要利润来源。企业客户更高的Holdings使用率（60%）说明B2B客户把Wise作为日常资金管理工具，不仅仅是转账工具。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Holdings</span><span class="tag tag-biz">用户粘性</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">用户数据</span><span class="kb-tag">核心财务</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise总收入历史：FY2022: £846.1M（按历史口径），FY2023: £846.1M→实为FY2023总收入；FY2024: £1,052.0M（+24%）；FY2025: £1,210M（估算，+15%）。<span class="src">来源：electroiq.com综合数据</span></div>
+    <div class="ip-col ip-analysis">FY2022-FY2024收入CAGR约12%（总收入口径），但底层收入口径更接近30%，说明利息分拆前的增速不完全反映业务健康度。FY2025收入增速放缓至15%，反映Take Rate主动下降和利率正常化。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">收入历史</span><span class="tag tag-fin">增速</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">核心财务</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Take Rate历史趋势：FY2022约0.82% → FY2023约0.72% → FY2024约0.67% → FY2025约0.58%，每年平均下降约9-10bps，是系统性降价策略。<span class="src">来源：electroiq.com数据综合推算</span></div>
+    <div class="ip-col ip-analysis">Take Rate每年下降约10bps但交易量保持20%+增长，这是Wise"以量补价"战略的核心数学：降价10%带来20%+量增，净收益正向。长期而言Take Rate存在下限（接近运营成本），需依靠非交易收入补充。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-strat">降价策略</span><span class="tag tag-comp">定价竞争</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">核心财务</span><span class="kb-tag">竞争护城河</span></div>
+  </div>
+</div>
+<div class="footer">索引编号 #229 | 数据来源：electroiq.com (直接获取) | 生成时间：2026-03-30 | Tier 2 Batch 4</div>
+</body>
+</html>

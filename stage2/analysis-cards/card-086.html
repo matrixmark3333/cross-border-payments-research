@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-086 | Nium: SWIFT实时支付网络接入与Partior区块链结算双轨策略</title>
+
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier2  { background: #fef3c7; color: #92400e; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+</style>
+
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 重提取</span>
+    <span class="badge b-type">新闻 / 官方公告</span><span class="badge b-type">2024-10 / 2024-11</span>
+  </div>
+  <h1>Nium: SWIFT实时支付网络接入与Partior区块链结算双轨策略</h1>
+  <div class="source-line">Nium Newsroom / Partior | 索引：#86 | <a href="https://www.nium.com/newsroom/nium-swift-real-time-payments" target="_blank">原文链接</a></div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">16</div><div class="stat-label">信息点总数</div></div>
+</div>
+<div class="section">
+  <div class="section-title">信息点列表</div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+  <div class="ip-row">
+<div class="ip-col ip-original">Nium enables financial institutions to connect to its global real-time payments network via Swift. Cross-border payments initiated via Swift can be completed on Nium's network, resulting in faster settlement, end-to-end transparency, and full traceability.<span class="src">来源：Nium Newsroom, 2024-10-21</span></div>
+<div class="ip-col ip-analysis">消除了FI与Nium之间的API集成壁垒，银行可直接复用现有Swift基础设施接入Nium全球支付网络，大幅降低对接成本。</div>
+<div class="ip-col"><div class="tag-list"><span class="tag">SWIFT互联</span><span class="tag">基础设施</span><span class="tag">FI合作</span></div></div>
+<div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+<div class="ip-col"><span class="kb-tag">竞争格局</span></div>
+</div>
+<div class="ip-row">
+<div class="ip-col ip-original">More than 80% of payments completed on Nium's network will settle within 15 minutes.<span class="src">来源：Nium Newsroom, 2024-10-21</span></div>
+<div class="ip-col ip-analysis">15分钟内结算80%交易，远超SWIFT传统T+1-T+3，直接满足G20跨境支付2027速度目标。</div>
+<div class="ip-col"><div class="tag-list"><span class="tag">结算速度</span><span class="tag">实时支付</span></div></div>
+<div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+<div class="ip-col"><span class="kb-tag">竞争格局</span></div>
+</div>
+<div class="ip-row">
+<div class="ip-col ip-original">This connection supports Swift MT message formats and ISO 20022 messaging, the latter of which the industry is in the process of migrating as the new standard.<span class="src">来源：Nium Newsroom, 2024-10-21</span></div>
+<div class="ip-col ip-analysis">同时支持传统MT格式与ISO 20022，降低迁移摩擦，帮助保守型银行平稳过渡。</div>
+<div class="ip-col"><div class="tag-list"><span class="tag">ISO 20022</span><span class="tag">标准化</span><span class="tag tag-tech">技术</span></div></div>
+<div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+<div class="ip-col"><span class="kb-tag">基础设施</span></div>
+</div>
+<div class="ip-row">
+<div class="ip-col ip-original">Ouribank, one of Brazil's leading foreign exchange banks with more than USD$29 billion in transactions processed, is one of the first financial institutions to implement this connection.<span class="src">来源：Nium Newsroom, 2024-10-21</span></div>
+<div class="ip-col ip-analysis">巴西外汇银行Ouribank首家接入，验证了LatAm走廊的实际落地。</div>
+<div class="ip-col"><div class="tag-list"><span class="tag">案例</span><span class="tag tag-mkt">拉美市场</span><span class="tag">验证</span></div></div>
+<div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+<div class="ip-col"><span class="kb-tag">竞争格局</span></div>
+</div>
+<div class="ip-row">
+<div class="ip-col ip-original">Nium's 'zero-deduction' flows guarantee beneficiaries receive the full amount sent, without additional fees.<span class="src">来源：Nium Newsroom, 2024-10-21</span></div>
+<div class="ip-col ip-analysis">零扣费承诺——收款方到账金额与发送完全一致，无中间行扣费，直击传统SWIFT对手最大痛点。</div>
+<div class="ip-col"><div class="tag-list"><span class="tag">费用透明</span><span class="tag">用户体验</span><span class="tag">差异化</span></div></div>
+<div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+<div class="ip-col"><span class="kb-tag">商业模式</span></div>
+</div>
+<div class="ip-row">
+<div class="ip-col ip-original">The initiative limits integration efforts, streamlines transaction screening and monitoring processes, provides transparency on payment costs, and minimizes intermediaries — resulting in fewer points of failure.<span class="src">来源：Nium Newsroom, 2024-10-21</span></div>
+<div class="ip-col ip-analysis">减少中间节点带来5个核心价值：降集成成本、简化合规、降费、增透明度、减故障点。价值链重塑模式。</div>
+<div class="ip-col"><div class="tag-list"><span class="tag">价值链</span><span class="tag">效率</span><span class="tag">风控</span></div></div>
+<div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+<div class="ip-col"><span class="kb-tag">商业模式</span></div>
+</div>
+<div class="ip-row">
+<div class="ip-col ip-original">Nium's global network includes connections to all popular real-time payment systems. The Swift connection allows FIs to redirect existing payment flows to Nium and benefit almost immediately.<span class="src">来源：Nium Newsroom, 2024-10-21</span></div>
+<div class="ip-col ip-analysis">定位为'全球实时支付网关'：通过Swift接入后立即享受全球100+市场实时支付能力，飞轮效应显著。</div>
+<div class="ip-col"><div class="tag-list"><span class="tag">网络效应</span><span class="tag">全球覆盖</span><span class="tag tag-comp">竞争优势</span></div></div>
+<div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+<div class="ip-col"><span class="kb-tag">竞争格局</span></div>
+</div>
+<div class="ip-row">
+<div class="ip-col ip-original">The connection maintains real-time updates to Swift's GPI tracker, allowing institutions to continue leveraging existing tracking solutions for payment traceability.<span class="src">来源：Nium Newsroom, 2024-10-21</span></div>
+<div class="ip-col ip-analysis">保持与GPI追踪器实时同步，银行无需放弃现有追踪系统，无缝融合现有工作流。</div>
+<div class="ip-col"><div class="tag-list"><span class="tag">互操作性</span><span class="tag">GPI</span><span class="tag">透明度</span></div></div>
+<div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+<div class="ip-col"><span class="kb-tag">基础设施</span></div>
+</div>
+<div class="ip-row">
+<div class="ip-col ip-original">Nium Chief Payments Officer: 'Our global network includes connections to all the popular real-time payment systems. We understand that integrating with a new set of APIs can require significant investment from already resource-constrained teams.'<span class="src">来源：Nium Newsroom, 2024-10-21</span></div>
+<div class="ip-col ip-analysis">直接承认API集成成本是FI扩张痛点，Swift连接策略是针对性解法，体现对B2B销售场景的深度理解。</div>
+<div class="ip-col"><div class="tag-list"><span class="tag">痛点定位</span><span class="tag">B2B策略</span><span class="tag tag-comp">竞争思维</span></div></div>
+<div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+<div class="ip-col"><span class="kb-tag">竞争格局</span></div>
+</div>
+<div class="ip-row">
+<div class="ip-col ip-original">Nium serves as a payment messaging facilitator, supporting existing messaging formats, while bridging the path to new standards.<span class="src">来源：Nium Newsroom, 2024-10-21</span></div>
+<div class="ip-col ip-analysis">Nium定位为'消息格式桥接层'，在MT向ISO 20022迁移过渡期提供兼容层，成为FI基础设施中的粘性中间件。</div>
+<div class="ip-col"><div class="tag-list"><span class="tag tag-strat">过渡期战略</span><span class="tag">粘性</span><span class="tag">基础设施</span></div></div>
+<div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+<div class="ip-col"><span class="kb-tag">商业模式</span></div>
+</div>
+<div class="ip-row">
+<div class="ip-col ip-original">The initiative eliminates need for costly and resource-intensive API integrations for connecting to Nium's global real-time payments network.<span class="src">来源：Nium Newsroom, 2024-10-21</span></div>
+<div class="ip-col ip-analysis">API集成可能耗费数月，Swift路径直接绕过，将获客周期从数月压缩到数周，加速商业落地。</div>
+<div class="ip-col"><div class="tag-list"><span class="tag">销售效率</span><span class="tag">时间成本</span><span class="tag">获客</span></div></div>
+<div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+<div class="ip-col"><span class="kb-tag">商业模式</span></div>
+</div>
+<div class="ip-row">
+<div class="ip-col ip-original">Nium's strategy includes connecting more networks to its real-time payments infrastructure, with Partior blockchain partnership also announced.<span class="src">来源：Nium Newsroom, 2024-10-21</span></div>
+<div class="ip-col ip-analysis">多网络并行策略：同时接入Swift传统网络与Partior区块链网络，覆盖传统银行与数字原生机构，双端布局。</div>
+<div class="ip-col"><div class="tag-list"><span class="tag">多轨道策略</span><span class="tag tag-tech">区块链</span><span class="tag tag-mkt">网络扩张</span></div></div>
+<div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+<div class="ip-col"><span class="kb-tag">竞争格局</span></div>
+</div>
+<div class="ip-row">
+<div class="ip-col ip-original">Beijing China launch event – 2024-10-21; indicates Asia-Pacific market focus for Swift connectivity.<span class="src">来源：Nium Newsroom, 2024-10-21</span></div>
+<div class="ip-col ip-analysis">北京发布会选址暗示中国/亚太FI是主要目标客群，亚洲走廊是Swift接入的核心价值场景。</div>
+<div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">亚太市场</span><span class="tag tag-strat">中国战略</span><span class="tag">走廊</span></div></div>
+<div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+<div class="ip-col"><span class="kb-tag">市场趋势</span></div>
+</div>
+<div class="ip-row">
+<div class="ip-col ip-original">Previously Nium announced partnership with Partior (blockchain-based fintech) for clearing and settlement at Singapore Fintech Festival 2024. Nium is the first fintech PSP on the Partior network.<span class="src">来源：Partior News, 2024-11-06</span></div>
+<div class="ip-col ip-analysis">Nium成为Partior网络首家Fintech PSP，区块链结算覆盖100+市场，无额外API整合。</div>
+<div class="ip-col"><div class="tag-list"><span class="tag tag-tech">区块链</span><span class="tag">Partior</span><span class="tag">结算</span></div></div>
+<div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+<div class="ip-col"><span class="kb-tag">基础设施</span></div>
+</div>
+<div class="ip-row">
+<div class="ip-col ip-original">Partior partnership enables 24x7 transparent real-time payouts, clearing, and settlement including PvP (Payment vs Payment) settlements.<span class="src">来源：Partior News, 2024-11-06</span></div>
+<div class="ip-col ip-analysis">PvP结算消除FX结算风险（Herstatt风险），是B2B跨境结算的重大进步，传统SWIFT不支持。</div>
+<div class="ip-col"><div class="tag-list"><span class="tag">PvP结算</span><span class="tag">FX风险</span><span class="tag tag-tech">技术创新</span></div></div>
+<div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+<div class="ip-col"><span class="kb-tag">基础设施</span></div>
+</div>
+<div class="ip-row">
+<div class="ip-col ip-original">Partior collaboration unlocks intra-day FX swaps, cross-currency repos, programmable enterprise liquidity management, and Just-in-Time multi-bank payments.<span class="src">来源：Partior News, 2024-11-06</span></div>
+<div class="ip-col ip-analysis">日内FX掉期和跨币种回购是机构流动性管理新工具，Nium从支付层进入高价值流动性管理层。</div>
+<div class="ip-col"><div class="tag-list"><span class="tag">流动性管理</span><span class="tag tag-biz">产品升级</span><span class="tag">机构金融</span></div></div>
+<div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+<div class="ip-col"><span class="kb-tag">商业模式</span></div>
+</div>
+</div>
+<div class="footer">索引#86 | Nium: SWIFT实时支付网络接入与Partior区块链结算双轨策略 | 来源：Nium Newsroom / Partior | 生成：2026-03-30 T2-Batch2</div>
+</body>
+</html>

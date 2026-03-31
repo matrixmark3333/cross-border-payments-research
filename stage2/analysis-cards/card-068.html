@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-068 | 世界银行全球汇款价格报告 Q1 2024</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1  { background: #dbeafe; color: #1d4ed8; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .group-banner { background: #f8fafc; padding: 8px 0; font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1 深度分析</span>
+    <span class="badge b-type">监测数据报告 / 国际组织</span>
+    <span class="badge b-depth">raw PDF 全文逐页提取（32页）</span>
+    <span class="badge b-rel">相关度 100%</span>
+  </div>
+  <h1>世界银行全球汇款价格报告（RPW第49期，2024年Q1）— 穷举式信息点提取</h1>
+  <div class="source-line">The World Bank Group — Remittance Prices Worldwide Issue 49 | 发布：2024年3月 | 原文：worldbank-remittance-prices-q1-2024.pdf | 索引：#068</div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">40</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">22</div><div class="stat-label">A.市场数据</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">B.政策监管</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">C.技术基础设施</div></div>
+  <div class="stat"><div class="stat-num">8</div><div class="stat-label">D.地区分析</div></div>
+  <div class="stat"><div class="stat-num">2</div><div class="stat-label">E.趋势预测</div></div>
+</div>
+
+<div class="section">
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="group-banner">▌ A. 市场数据（22条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q1 2024全球平均汇款成本（发送200美元）：6.35%，较Q4 2023的6.39%小幅下降；与Q1 2009的9.67%相比已下降3.32个百分点<span class="src">RPW Issue 49 Q1 2024, p.3, p.7</span></div>
+    <div class="ip-col ip-analysis">6.35%远高于SDG/G20的3%目标，且下降速度放缓；15年来累计降低3.32pp，但最近几年趋于平稳</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">全球平均成本</span><span class="tag tag-fin">200美元汇款</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">汇款</span><span class="kb-tag">成本分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q1 2024数字汇款全球平均成本4.96%；非数字汇款6.94%；数字服务占RPW数据库所有服务的30%<span class="src">RPW Issue 49 Q1 2024, p.7</span></div>
+    <div class="ip-col ip-analysis">数字vs非数字成本差约2pp（4.96% vs 6.94%），这一差距是推动数字化转型最有力的量化依据</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">数字汇款成本</span><span class="tag tag-tech">数字vs实体</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">成本分析</span><span class="kb-tag">竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">国际MTO指数Q1 2024：6.30%（vs Q4 2023的6.45%）；数字专属MTO指数3.97%（vs Q4 2023的4.03%）；Q1 2009首次记录值为10.36%，已下降4.06pp<span class="src">RPW Issue 49 Q1 2024, p.8</span></div>
+    <div class="ip-col ip-analysis">国际MTO指数追踪覆盖85%以上走廊的MTO（即Western Union和MoneyGram）；数字专属MTO（Wise等）保持在全球平均以下</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">MTO指数</span><span class="tag tag-comp">Western Union</span><span class="tag tag-comp">MoneyGram</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局</span><span class="kb-tag">成本分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">数字专属MTO指数成员：Wise、Remitly、WorldRemit、InstaReM、Xoom（5家）；指数一贯低于国际MTO指数和全球平均<span class="src">RPW Issue 49 Q1 2024, p.8（注5）</span></div>
+    <div class="ip-col ip-analysis">这5家数字金融科技汇款公司是传统MTO的直接挑战者，其指数持续低于WU/MoneyGram证明了数字渠道的成本优势</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">数字MTO</span><span class="tag tag-comp">Wise</span><span class="tag tag-comp">Remitly</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局</span><span class="kb-tag">成本分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">全球加权平均成本Q1 2024：4.76%（vs Q4 2023的4.88%）；自Q4 2020起连续低于5%；过去5年下降约0.44pp（vs Q1 2019的5.20%）<span class="src">RPW Issue 49 Q1 2024, p.8-9</span></div>
+    <div class="ip-col ip-analysis">加权平均（反映走廊规模差异）显著低于简单平均（6.35%），说明大走廊（美印、美墨等）竞争充分、成本低</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">加权平均成本</span><span class="tag tag-fin">大走廊</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">成本分析</span><span class="kb-tag">汇款</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">SmaRT（精明汇款人目标）Q1 2024：全球平均3.21%（vs Q4 2023的3.41%）；Q1 2024 25个走廊无SmaRT合规服务<span class="src">RPW Issue 49 Q1 2024, p.9-10</span></div>
+    <div class="ip-col ip-analysis">SmaRT是"如果有信息优势的消费者能找到的最低价"——3.21%接近SDG 3%目标，说明技术上可实现但普及性不足</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">SmaRT指数</span><span class="tag tag-fin">最优价格</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">成本分析</span><span class="kb-tag">政策监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">无SmaRT合规服务的25个走廊分布：14个目的地为撒哈拉以南非洲，5个为中东北非，5个为南亚，1个为拉美加勒比；多数走廊互联网渗透率和账户持有率低<span class="src">RPW Issue 49 Q1 2024, p.10</span></div>
+    <div class="ip-col ip-analysis">无竞争性服务走廊高度集中于非洲，反映金融包容缺失和基础设施投资不足的系统性问题</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">无SmaRT走廊</span><span class="tag tag-mkt">非洲</span><span class="tag tag-fin">金融包容</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">金融包容</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">各RSP类型成本（Q1 2024，发送200美元）：银行12.66%、邮局6.63%、MTO 5.35%、移动运营商3.87%；银行显著高于其他类型，移动运营商最便宜<span class="src">RPW Issue 49 Q1 2024, p.18</span></div>
+    <div class="ip-col ip-analysis">银行12.66%是移动运营商3.87%的3倍以上，清晰量化了银行汇款的高成本；银行持续高于全球平均</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">RSP类型成本</span><span class="tag tag-fin">银行成本</span><span class="tag tag-tech">移动支付</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局</span><span class="kb-tag">成本分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">G8国家发送200美元平均成本Q1 2024：5.87%（vs Q4 2023的5.92%）；最高日本6.94%，最低英国5.69%；美国5.71%<span class="src">RPW Issue 49 Q1 2024, p.11-12</span></div>
+    <div class="ip-col ip-analysis">G8整体低于全球平均（6.35%），反映发达经济体发送方的竞争充分性；日本最贵与其支付体系结构和监管有关</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">G8发送成本</span><span class="tag tag-mkt">发达经济体</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">成本分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">G20发送国成本（200美元）Q1 2024：南非最贵13.18%，韩国最便宜5.20%；澳大利亚5.40%、沙特5.56%、英国5.69%、美国5.71%<span class="src">RPW Issue 49 Q1 2024, p.12-13</span></div>
+    <div class="ip-col ip-analysis">南非13.18%是全球主要发送国中最贵的，超过全球平均的2倍；韩国最便宜与其成熟的数字支付生态相关</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">G20发送成本</span><span class="tag tag-mkt">南非</span><span class="tag tag-mkt">韩国</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">成本分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">G20接收国成本（200美元）Q1 2024：发往南非最贵7.08%，中国6.61%；印度、印尼、墨西哥均低于6%；墨西哥最便宜4.87%<span class="src">RPW Issue 49 Q1 2024, p.13-14</span></div>
+    <div class="ip-col ip-analysis">墨西哥作为全球最大汇款目的地之一，4.87%的成本反映美墨走廊竞争激烈；中国6.61%仍偏高</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">G20接收成本</span><span class="tag tag-mkt">墨西哥</span><span class="tag tag-mkt">中国</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">成本分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q1 2024走廊成本分布显著改善：成本低于10%的走廊占比从2009年Q1的53%升至81%（+28pp）；成本超15%的走廊从18%降至4%<span class="src">RPW Issue 49 Q1 2024, p.11</span></div>
+    <div class="ip-col ip-analysis">15年间全球走廊成本结构大幅改善，高价走廊比例显著降低，但仍有4%走廊成本超15%（主要在非洲）</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">走廊成本分布</span><span class="tag tag-fin">结构改善</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">成本分析</span><span class="kb-tag">宏观趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q1 2024全球加权平均（发送500美元）：4.32%（vs Q1 2009的5.32%，下降1pp）；自Q2 2014起持续低于5%<span class="src">RPW Issue 49 Q1 2024, p.23</span></div>
+    <div class="ip-col ip-analysis">发送500美元成本（4.32%）低于200美元成本（6.35%），固定成本摊薄效应显著</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">500美元成本</span><span class="tag tag-fin">规模效应</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">成本分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">发送500美元SmaRT全球平均：2.35%；G20接收国500美元成本：3.81%（5年下降0.36pp）；G20发送国500美元：4.40%<span class="src">RPW Issue 49 Q1 2024, p.24-25</span></div>
+    <div class="ip-col ip-analysis">SmaRT 2.35%接近理论成本下限，说明如果竞争充分且消费者有足够信息，跨境汇款成本可压缩至极低水平</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">SmaRT 500美元</span><span class="tag tag-fin">最低可行成本</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">成本分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">按支付方式发送200美元成本（Q1 2024）：信用/借记卡5.12%（最便宜，3450个服务）、移动货币5.42%、现金6.77%、银行账户7.94%（2252个服务）<span class="src">RPW Issue 49 Q1 2024, p.19</span></div>
+    <div class="ip-col ip-analysis">信用卡Q1 2024超越移动货币成为最便宜的发送方式，反映卡网络费率竞争和数字支付普及</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">支付方式成本</span><span class="tag tag-tech">卡支付</span><span class="tag tag-tech">移动货币</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">成本分析</span><span class="kb-tag">技术趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">按接收方式成本（Q1 2024）：移动钱包接收4.61%、现金5.97%、一般银行账户7.26%、同一银行账户11.74%；新兴方式借记卡5.00%<span class="src">RPW Issue 49 Q1 2024, p.19-20</span></div>
+    <div class="ip-col ip-analysis">同一银行账户接收11.74%是最贵的，而移动钱包4.61%最便宜；这解释了为什么移动钱包在新兴市场汇款受欢迎</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">接收方式成本</span><span class="tag tag-tech">移动钱包</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">成本分析</span><span class="kb-tag">技术趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">移动运营商汇款平均成本历史趋于3%左右，转账费用约1.5-2%；最近波动主要因外汇差价波动而非转账费<span class="src">RPW Issue 49 Q1 2024, p.19（Box 2）</span></div>
+    <div class="ip-col ip-analysis">移动汇款的真实成本主要来自FX差价而非表面费率，透明度要求揭示了隐性成本</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">移动汇款成本</span><span class="tag tag-fin">FX差价</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">成本分析</span><span class="kb-tag">透明度</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Western Union覆盖RPW数据库95%的走廊；MoneyGram覆盖90%走廊（国际MTO指数成员）<span class="src">RPW Issue 49 Q1 2024, p.8（注4）</span></div>
+    <div class="ip-col ip-analysis">WU/MG的广覆盖是其护城河，但同时也是被纳入指数基准的依据；数字金融科技尚无同等覆盖度</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">Western Union</span><span class="tag tag-comp">MoneyGram</span><span class="tag tag-fin">走廊覆盖</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">RPW数据库范围：48个发送国、105个接收国、367条走廊、每走廊平均监测21.1个服务；Q1 2024实际数据集348条走廊（剔除俄罗斯13条、尼日利亚3条、巴基斯坦2条）<span class="src">RPW Issue 49 Q1 2024, p.3, p.6</span></div>
+    <div class="ip-col ip-analysis">RPW是全球最权威的汇款价格数据库；尼日利亚、巴基斯坦数据缺失是监管管制导致的，为重要数据空白</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">数据库范围</span><span class="tag tag-reg">监管缺口</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">研究方法</span><span class="kb-tag">政策监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q1 2024成本超20%的6个走廊中，3个起点在撒哈拉以南非洲，4个终点在撒哈拉以南非洲（部分重叠）<span class="src">RPW Issue 49 Q1 2024, p.11</span></div>
+    <div class="ip-col ip-analysis">非洲内部和非洲受款走廊是全球最贵的，反映基础设施缺失、竞争不足和监管壁垒的综合作用</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">高成本走廊</span><span class="tag tag-mkt">非洲</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">成本分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Prospects Index（预期指数）：Q1 2024含107个服务（新增38个），平均成本6.63%（高于主指数6.35%）；数字服务占52%（56个），数字平均成本4.31%（低于主指数4.96%）<span class="src">RPW Issue 49 Q1 2024, p.28</span></div>
+    <div class="ip-col ip-analysis">预期指数是新兴服务（移动货币、新金融科技）进入主指数的候选池；数字服务占半数说明新进入者以数字为主</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">预期指数</span><span class="tag tag-tech">新兴服务</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局</span><span class="kb-tag">技术趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">G20 2011年承诺5%目标，SDG 10.c设定3%目标（2030年）；RPW数据库用于监测G20路线图中的汇款成本、速度和透明度目标<span class="src">RPW Issue 49 Q1 2024, p.6</span></div>
+    <div class="ip-col ip-analysis">当前6.35%距3%目标仍有3.35pp差距，按现有速度可能2030年无法达标；G20/SDG双目标体系设定的压力</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">G20目标</span><span class="tag tag-reg">SDG 10.c</span><span class="tag tag-fin">3%目标</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">成本分析</span></div>
+  </div>
+
+  <div class="group-banner">▌ B. 政策监管（4条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">尼日利亚：尼日利亚央行禁止所有出境转账，导致PSP停止出境汇款业务；巴基斯坦：巴基斯坦国家银行限制流出导致孟加拉国转账不可用，阿富汗转账也受限<span class="src">RPW Issue 49 Q1 2024, p.6</span></div>
+    <div class="ip-col ip-analysis">两个主要发展中国家的出境汇款限制影响了数百万海外工人的汇款能力，是"监管合规"如何阻碍金融包容的典型</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">汇款限制</span><span class="tag tag-mkt">尼日利亚</span><span class="tag tag-mkt">巴基斯坦</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">合规风险</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">俄罗斯：2024年2月俄央行吊销QIWI银行（Contact汇款系统所有者）牌照，导致Q1 2024俄罗斯32个服务不可用；俄走廊服务数量从Q4 2023的每走廊4.7个降至Q1 2024的1.8个<span class="src">RPW Issue 49 Q1 2024, p.31</span></div>
+    <div class="ip-col ip-analysis">QIWI吊牌对俄罗斯出境汇款体系造成重大冲击，每走廊服务数量暴跌62%，受款国选择大幅收窄</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">QIWI牌照吊销</span><span class="tag tag-mkt">俄罗斯</span><span class="tag tag-reg">制裁影响</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">风险因素</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">25个无SmaRT合规服务走廊中大多数有"绿灯"移动服务评级（25中18个）；互联网和账户普及率低是最大障碍<span class="src">RPW Issue 49 Q1 2024, p.10</span></div>
+    <div class="ip-col ip-analysis">移动服务基础设施存在但成本仍高，说明价格高不是基础设施问题而是竞争和监管问题</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">竞争缺失</span><span class="tag tag-fin">金融包容</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">金融包容</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">RPW从Q1 2023起更新为同时追踪G8/G20的5%目标和SDG 10.c的3%目标，与G20跨境支付路线图对齐<span class="src">RPW Issue 49 Q1 2024, p.6（注1）</span></div>
+    <div class="ip-col ip-analysis">双目标体系（3% SDG + 5% G20）使报告框架更清晰，3%成为更严格的长期目标</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">监测框架</span><span class="tag tag-reg">G20路线图</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">研究方法</span></div>
+  </div>
+
+  <div class="group-banner">▌ C. 技术基础设施（4条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">数字汇款必须条件：通过在线或自助方式使用支付工具发送，且接收进入交易账户（银行账户、非银行存款机构账户、移动货币或电子货币账户）<span class="src">RPW Issue 49 Q1 2024, p.7（注2）</span></div>
+    <div class="ip-col ip-analysis">RPW的数字汇款定义是行业标准，双端数字化要求使数字渗透率的门槛更高</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">数字汇款定义</span><span class="tag tag-tech">移动货币</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">研究方法</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">各地区数字vs非数字速度比较：所有地区非数字汇款表面上比数字更快；原因是数字汇款包含传统银行账到账（速度慢），而非银行PSP通常预先拨款提供即时服务<span class="src">RPW Issue 49 Q1 2024, p.15</span></div>
+    <div class="ip-col ip-analysis">这一反直觉发现解释了为何银行数字转账并不快：传统银行账到账处理时间拖慢了数字汇款平均速度</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">速度分析</span><span class="tag tag-tech">预拨款</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">技术基础设施</span><span class="kb-tag">竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">银行和邮局服务比MTO和移动运营商明显更慢；同类RSP内数字vs非数字速度差异小于跨RSP类型差异<span class="src">RPW Issue 49 Q1 2024, p.15</span></div>
+    <div class="ip-col ip-analysis">RSP类型是速度差异的主要决定因素，不同类型内数字化影响相对较小，说明业务模式比渠道更重要</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">速度差异</span><span class="tag tag-comp">银行vs MTO</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">技术基础设施</span><span class="kb-tag">竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Prospects Index中移动货币最便宜（2.34%）；主指数中移动钱包接收最便宜（4.61%）；新兴数字服务的成本普遍低于主指数对应的非数字方式<span class="src">RPW Issue 49 Q1 2024, p.28-29</span></div>
+    <div class="ip-col ip-analysis">新兴移动货币和电子钱包服务是未来成本下降的主要驱动力，渗透率提升将拉低全球平均</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">移动货币</span><span class="tag tag-tech">电子钱包</span><span class="tag tag-fin">新兴服务低成本</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">技术趋势</span><span class="kb-tag">成本分析</span></div>
+  </div>
+
+  <div class="group-banner">▌ D. 地区分析（8条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">南亚Q1 2024：5.16%（Q4 2023的5.79%，下降0.63pp，最大降幅）；是全球最接近G20 3%目标的地区<span class="src">RPW Issue 49 Q1 2024, p.14, p.22</span></div>
+    <div class="ip-col ip-analysis">南亚降幅最大可能与印度UPI生态走廊扩展有关，美印、英印走廊竞争最激烈</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">南亚</span><span class="tag tag-fin">成本改善</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">成本分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">欧洲和中亚（不含俄罗斯）Q1 2024：7.39%，季度增幅最大（+0.73pp）；撒哈拉以南非洲7.73%（有所下降），仍是最贵地区<span class="src">RPW Issue 49 Q1 2024, p.14, p.22</span></div>
+    <div class="ip-col ip-analysis">欧洲和中亚成本逆势上升可能与俄罗斯制裁后资金流向重组、部分服务供应商退出有关</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">欧洲中亚</span><span class="tag tag-mkt">非洲</span><span class="tag tag-fin">成本上升</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">俄罗斯走廊数据：Q1 2024仅9条走廊有数据（4条因战争继续中断：爱沙尼亚、拉脱维亚、立陶宛、乌克兰）；走廊成本历史性极低（如俄罗斯-白俄罗斯0.95%）<span class="src">RPW Issue 49 Q1 2024, p.31（附件V）</span></div>
+    <div class="ip-col ip-analysis">俄罗斯内部走廊的极低成本（0.95-2%）说明在竞争充分的市场汇款成本可以极低，是3%目标的存在性证明</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">俄罗斯</span><span class="tag tag-fin">极低成本走廊</span><span class="tag tag-reg">战争影响</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">风险因素</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">拉美加勒比Q1 2024：5.97%（小幅上升）；墨西哥发往4.87%是G20接收中最便宜；巴西发出6.56%<span class="src">RPW Issue 49 Q1 2024, p.14, p.22</span></div>
+    <div class="ip-col ip-analysis">美墨走廊竞争激烈（受Wise、Remitly、Xoom等竞争），墨西哥接收端4.87%说明大走廊价格战效果显著</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">拉美</span><span class="tag tag-mkt">墨西哥</span><span class="tag tag-fin">美墨走廊</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">中东北非Q1 2024：6.07%（小幅上升）；沙特阿拉伯作为重要发送方，G20成本5.56%（中等水平）<span class="src">RPW Issue 49 Q1 2024, p.14, p.22</span></div>
+    <div class="ip-col ip-analysis">中东是全球最大的汇款发送地区之一，沙特/UAE发出成本中等偏高，数字化程度待提升</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">中东北非</span><span class="tag tag-mkt">沙特阿拉伯</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">东亚太平洋Q1 2024：5.96%（小幅上升）；发往中国6.61%是G20接收中第二贵；发往印尼6.00%、印度5.01%<span class="src">RPW Issue 49 Q1 2024, p.14, p.22</span></div>
+    <div class="ip-col ip-analysis">中国接收成本偏高与其支付系统相对封闭有关；印度5.01%反映了大走廊竞争的改善效果</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">东亚太平洋</span><span class="tag tag-mkt">中国</span><span class="tag tag-mkt">印度</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">撒哈拉以南非洲：平均成本7.73%（略有改善），是全球最贵接收地区；多个走廊成本超20%；14个无SmaRT服务走廊目的地在非洲<span class="src">RPW Issue 49 Q1 2024, p.14, p.10</span></div>
+    <div class="ip-col ip-analysis">非洲汇款生态系统亟需改革：基础设施投资、监管开放和竞争促进是降低成本的三大路径</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">非洲</span><span class="tag tag-fin">高成本</span><span class="tag tag-fin">金融包容</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">金融包容</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">G20接收国中：Q2 2017起发往G20的成本持续低于全球平均，说明大流量走廊（美中、美印、美墨等）享受规模竞争红利<span class="src">RPW Issue 49 Q1 2024, p.13-14</span></div>
+    <div class="ip-col ip-analysis">G20接收端成本低于全球平均是"富人走廊"效应：走廊越大竞争越充分，边际成本越低</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">大走廊红利</span><span class="tag tag-fin">规模经济</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">成本分析</span></div>
+  </div>
+
+  <div class="group-banner">▌ E. 趋势预测（2条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">数字服务仅占RPW数据库30%，但平均成本4.96%（vs非数字6.94%）；随着数字渗透率提升，全球平均成本将继续下降<span class="src">RPW Issue 49 Q1 2024, p.7</span></div>
+    <div class="ip-col ip-analysis">数字化渗透是全球汇款成本下降最可预测的驱动力；从30%到更高占比将显著拉低全球加权平均</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">数字化趋势</span><span class="tag tag-fin">成本预测</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">宏观趋势</span><span class="kb-tag">成本分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q1 2024 25个走廊无SmaRT合规服务，多数为低互联网和账户普及率走廊（主要在非洲）；互联网接入和账户覆盖是SDG目标实现的关键前提<span class="src">RPW Issue 49 Q1 2024, p.10</span></div>
+    <div class="ip-col ip-analysis">金融包容和数字基础设施投资是让3%目标在所有走廊可实现的基础条件，纯粹的市场机制无法自动解决</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">金融包容前提</span><span class="tag tag-fin">SDG目标</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">宏观趋势</span><span class="kb-tag">金融包容</span></div>
+  </div>
+
+</div>
+
+<div class="footer">
+  索引编号：card-068 | 来源文件：worldbank-remittance-prices-q1-2024.pdf | 提取方式：pdfplumber全文逐页提取（32页）| 提取日期：2026-03-28 | 信息点总数（grep验证）：40条
+</div>
+
+</body>
+</html>

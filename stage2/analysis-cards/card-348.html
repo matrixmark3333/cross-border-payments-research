@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-348 | FSB G20 2025 跨境支付进展报告 — 结构化信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1  { background: #dbeafe; color: #1d4ed8; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1 权威机构</span>
+    <span class="badge b-type">官方报告</span>
+    <span class="badge b-depth">web_search 综合获取（PDF binary）</span>
+    <span class="badge b-rel">相关度 85%</span>
+  </div>
+  <h1>FSB 2025年G20跨境支付进展报告——目标难达成，挑战依然严峻</h1>
+  <div class="source-line">Financial Stability Board (FSB) | 发布：2025年10月9日 | 原文：<a href="https://www.fsb.org/uploads/P091025-1.pdf" target="_blank">P091025-1.pdf</a> | 索引：#348</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">19</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">8</div><div class="stat-label">进展评估</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">挑战分析</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">政策展望</div></div>
+  <div class="stat"><div class="stat-num">8.2</div><div class="stat-label">平均价值评分</div></div>
+</div>
+<div class="section">
+  <div class="section-title">信息点列表（18条）</div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="ip-row" style="background:#f8fafc; grid-column:1/-1; display:block; padding:6px 0; font-size:11px; font-weight:800; color:#475569; text-transform:uppercase; border-bottom:1px solid #e2e8f0;">▌ A. 进展评估：政策成就 vs 用户实际体验</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FSB 2025报告核心判断：国际政策层面取得重大进展，但这些进展尚未转化为终端用户的实质性体验改善<span class="src">来源：FSB 2025 Progress Report (web_search)</span></div>
+    <div class="ip-col ip-analysis">"政策成功、用户失败"的结论是对G20路线图最直接的批评。说明监管进步与市场现实之间存在巨大的"执行落差"，为Fintech解决方案提供了明确市场缺口</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">政策评估</span><span class="tag tag-mkt">执行落差</span><span class="tag tag-strat">市场机会</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.1 监管政策</span><span class="kb-tag">1.2 趋势预测</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2025年KPI（关键绩效指标）相比2023年初始计算值仅略有改善<span class="src">来源：FSB 2025</span></div>
+    <div class="ip-col ip-analysis">5年行动（2020-2025年），KPI仅"略有改善"——这是对G20路线图执行效率的最直白批评。传统体制改革速度远慢于市场需求</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">KPI进展</span><span class="tag tag-mkt">改善缓慢</span><span class="tag tag-reg">路线图效果</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.1 监管政策</span><span class="kb-tag">1.1 市场规模</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">速度改善：批发跨境支付和汇款的速度有所改善，意味着依赖海外汇款支持的家庭能更快收到资金<span class="src">来源：FSB 2025</span></div>
+    <div class="ip-col ip-analysis">速度是四大目标（快、便宜、透明、普惠）中唯一取得显著进展的维度，主要受益于实时支付系统的扩张（UPI、Pix、FPS等）</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">速度改善</span><span class="tag tag-mkt">汇款</span><span class="tag tag-tech">实时支付</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.1 市场规模</span><span class="kb-tag">5.1 支付基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">成本挑战持续：全球平均零售支付成本仍高于1%目标；撒哈拉以南非洲地区P2P支付成本甚至有所上升<span class="src">来源：FSB 2025</span></div>
+    <div class="ip-col ip-analysis">1%目标未达成且部分市场成本上升，是G20路线图最大的失败。非洲高成本凸显了在没有成熟数字基础设施的地区降费的结构性困难</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">成本目标未达</span><span class="tag tag-mkt">非洲成本上升</span><span class="tag tag-reg">1%目标</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.1 监管政策</span><span class="kb-tag">7.7 非洲</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FSB明确指出：2027年跨境支付目标（更快、更便宜、更透明、更普惠）大概率无法在截止日期前实现<span class="src">来源：FSB 2025</span></div>
+    <div class="ip-col ip-analysis">官方承认目标难以在2027年实现是一个重要信号——跨境支付系统性改革是10-20年工程，而非5年工程，为Fintech持续颠覆提供了长期窗口</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">2027目标落空</span><span class="tag tag-strat">长期改革</span><span class="tag tag-mkt">Fintech机会</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.1 监管政策</span><span class="kb-tag">1.2 趋势预测</span></div>
+  </div>
+
+  <div class="ip-row" style="background:#f8fafc; grid-column:1/-1; display:block; padding:6px 0; font-size:11px; font-weight:800; color:#475569; text-transform:uppercase; border-bottom:1px solid #e2e8f0;">▌ B. G20路线图背景</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">G20路线图：2020年沙特G20主席期间启动，目标使跨境支付更快、更便宜、更透明、更普惠；2021年设定2027年量化目标<span class="src">来源：FSB 2025</span></div>
+    <div class="ip-col ip-analysis">G20路线图是迄今最全面的官方跨境支付改革框架，其KPI设定为行业参照提供了标准，也为评估进展提供了尺度</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">G20路线图</span><span class="tag tag-reg">2027目标</span><span class="tag tag-reg">四大目标</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.1 监管政策</span><span class="kb-tag">1.1 市场规模</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">路线图涵盖范围：汇款、零售、批发三大支付类型；覆盖G20和非G20司法管辖区<span class="src">来源：FSB 2025</span></div>
+    <div class="ip-col ip-analysis">三类支付的全覆盖体现了路线图的系统性，但也说明其复杂性。不同类型支付面临的障碍和解决方案截然不同</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">全类型覆盖</span><span class="tag tag-biz">汇款/零售/批发</span><span class="tag tag-mkt">全球范围</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.1 监管政策</span><span class="kb-tag">1.1 市场规模</span></div>
+  </div>
+
+  <div class="ip-row" style="background:#f8fafc; grid-column:1/-1; display:block; padding:6px 0; font-size:11px; font-weight:800; color:#475569; text-transform:uppercase; border-bottom:1px solid #e2e8f0;">▌ C. 核心障碍与挑战</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">透明度挑战：终端用户获得的支付信息仍不透明，包括费用构成和预计到账时间的不确定性<span class="src">来源：FSB 2025</span></div>
+    <div class="ip-col ip-analysis">透明度是Wise等Fintech的核心差异化点。传统银行体系的不透明性验证了透明度作为竞争优势的持续有效性</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">透明度挑战</span><span class="tag tag-biz">用户体验</span><span class="tag tag-comp">Fintech机会</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.1 监管政策</span><span class="kb-tag">3.2 竞争优势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">成本挑战：尽管有政策努力，零售跨境支付成本仍居高不下，部分走廊成本已超5%（Sub-Saharan Africa P2P）<span class="src">来源：FSB 2025</span></div>
+    <div class="ip-col ip-analysis">非洲P2P超5%的成本意味着每年数百亿美元从低收入家庭流向中间机构。这是Fintech（Chipper Cash、dLocal等）的最大战场</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">成本>5%</span><span class="tag tag-mkt">非洲走廊</span><span class="tag tag-strat">Fintech机会</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.7 非洲</span><span class="kb-tag">1.1 市场规模</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">普惠性挑战：去银行化（De-risking）趋势持续——大型银行出于合规风险关闭与新兴市场的代理行关系，加剧金融排除<span class="src">来源：FSB 2025 综合</span></div>
+    <div class="ip-col ip-analysis">大银行的"去风险化"（关闭高风险代理行关系）制造了金融真空，这个真空正在被Thunes、dLocal等新型基础设施玩家填补</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">去银行化</span><span class="tag tag-mkt">金融排除</span><span class="tag tag-strat">基础设施机会</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.1 市场规模</span><span class="kb-tag">7.7 非洲</span></div>
+  </div>
+
+  <div class="ip-row" style="background:#f8fafc; grid-column:1/-1; display:block; padding:6px 0; font-size:11px; font-weight:800; color:#475569; text-transform:uppercase; border-bottom:1px solid #e2e8f0;">▌ D. 路线图下一步行动</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FSB、CPMI及伙伴机构未来重点：从"政策制定"转向"实施监督"——推动各司法管辖区落地执行已达成的国际政策建议<span class="src">来源：FSB 2025</span></div>
+    <div class="ip-col ip-analysis">政策工作完成后进入执行阶段，预示着未来2-3年将有更多国家开始将全球建议转化为本地法规，推动跨境支付改革真正落地</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">执行阶段</span><span class="tag tag-reg">本地实施</span><span class="tag tag-strat">监管趋势</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.1 监管政策</span><span class="kb-tag">1.2 趋势预测</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">各国政府被敦促采取实际步骤落实FSB和FATF建议，以产生下游的用户体验改善<span class="src">来源：FSB 2025</span></div>
+    <div class="ip-col ip-analysis">FSB将责任"下放"到各国政府，说明全球层面的协调已到位，执行的最后一公里在各国监管机构，形成新一轮合规压力</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">FATF建议</span><span class="tag tag-reg">国家执行</span><span class="tag tag-biz">合规压力</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.1 监管政策</span><span class="kb-tag">6.2 风险监管</span></div>
+  </div>
+
+  <div class="ip-row" style="background:#f8fafc; grid-column:1/-1; display:block; padding:6px 0; font-size:11px; font-weight:800; color:#475569; text-transform:uppercase; border-bottom:1px solid #e2e8f0;">▌ E. 对行业的战略含义</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FSB报告证实：跨境支付系统性改革是长期任务，不会被单一技术解决。这为多种解决方案并行发展（传统+Fintech+区块链）提供了空间<span class="src">来源：综合分析</span></div>
+    <div class="ip-col ip-analysis">没有"银弹"是最重要的战略洞察。不同走廊、不同支付类型需要不同的解决方案，这解释了为什么跨境支付市场中同时存在如此多的专业化玩家</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">多元解决方案</span><span class="tag tag-mkt">市场分化</span><span class="tag tag-strat">战略洞察</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.2 趋势预测</span><span class="kb-tag">4.1 竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FSB路线图的法律、监管和监督障碍清单（消除障碍是关键任务之一）包括：AML/CFT合规差异、数据隐私法规冲突、本地执照要求等<span class="src">来源：FSB 2025 综合</span></div>
+    <div class="ip-col ip-analysis">这三大法律障碍正是Airwallex/Wise等Fintech花费大量资金和精力解决的问题——60+国家牌照布局本质上是在逐一突破这些障碍</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">法律障碍</span><span class="tag tag-reg">AML/CFT</span><span class="tag tag-reg">本地牌照</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.1 监管政策</span><span class="kb-tag">6.2 风险监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FSB报告背景：全球企业每年跨境转移约$23.5万亿，相当于全球GDP的25%；跨境支付年成本超$1200亿（不含FX）<span class="src">来源：OW/JPM研究 + FSB框架综合</span></div>
+    <div class="ip-col ip-analysis">$23.5万亿/年的规模说明即使费率小幅压缩也意味着巨额收入的重新分配。$1200亿成本池是Fintech颠覆的核心价值目标</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">$23.5T规模</span><span class="tag tag-fin">$120B成本</span><span class="tag tag-strat">价值机会</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.1 市场规模</span><span class="kb-tag">3.2 竞争优势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FSB路线图启动背景：G20认识到跨境支付在支持包括汇款在内的全球经济活动中的重要性，2020年正式纳入G20优先议程<span class="src">来源：FSB 2025</span></div>
+    <div class="ip-col ip-analysis">G20将跨境支付列为优先议程，说明这已从金融行业问题升格为地缘政治和经济包容性问题，监管推力将持续强劲</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">G20优先</span><span class="tag tag-mkt">政治重要性</span><span class="tag tag-mkt">金融包容</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.1 监管政策</span><span class="kb-tag">1.1 市场规模</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">路线图的综合方法：同时针对汇款、零售和批发三大支付类别，包括G20和非G20管辖区，反映了跨境支付改革的全球协调必要性<span class="src">来源：FSB 2025</span></div>
+    <div class="ip-col ip-analysis">综合方法强调了跨境支付不是单一国家能解决的问题，需要全球协调才能真正改善。这也解释了改革缓慢的根本原因</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">全球协调</span><span class="tag tag-mkt">多层改革</span><span class="tag tag-strat">系统性问题</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.1 监管政策</span><span class="kb-tag">1.2 趋势预测</span></div>
+  </div>
+</div>
+<div class="footer">生成时间：2026-03-24 | 来源：FSB网站 web_search综合（PDF binary无法直接读取）| 索引编号：#348 | Stage 2 分析卡</div>
+</body>
+</html>

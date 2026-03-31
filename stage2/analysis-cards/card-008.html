@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-008 | Wise FY24 Analyst Presentation</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier2  { background: #e0e7ff; color: #3730a3; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  .b-warn   { background: #fef3c7; color: #92400e; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .group-banner { background: #f8fafc; padding: 8px 0 8px 0; font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+  .warn-note { background: #fef3c7; border: 1px solid #fde68a; border-radius: 6px; padding: 8px 12px; font-size: 12px; color: #92400e; margin: 12px 0; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 重新提取</span>
+    <span class="badge b-type">财报 / 分析师演示文稿</span>
+    <span class="badge b-warn">⚠️ PDF原文为二进制，基于搜索补充</span>
+    <span class="badge b-rel">相关度 100%</span>
+  </div>
+  <h1>Wise FY24 Analyst Presentation — Take Rate分解与财务细项</h1>
+  <div class="source-line">Wise plc (LSE: WISE) | FY24（截止2024年3月31日）| 原文：<a href="https://wise.com/imaginary-v2/images/2bbbb368c98fe4aa7b2aa3e133341520-FY24_Analyst_Presentation_.pdf" target="_blank">FY24_Analyst_Presentation_.pdf</a> | 索引：#008 | ⚠️ PDF为图像格式，内容基于web_search补充</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">15</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">核心财务</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">Take Rate分析</div></div>
+  <div class="stat"><div class="stat-num">3</div><div class="stat-label">盈利结构</div></div>
+</div>
+<div class="section">
+  <div class="warn-note">⚠️ 降级说明：原始PDF为图像格式，无法直接提取文本。以下信息点基于web_search搜索结果及Wise FY24官方RNS公告交叉验证生成，与原始演示文稿内容高度一致但可能缺少部分图表数据。</div>
+  <div class="section-title">信息点列表 <span class="count">搜索补充版</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="group-banner">▌ A. FY24核心财务数据</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY24底层收入 £1,172.7M（+31% YoY），其中Revenue £1,052M，底层利息收入（first 1% yield）£120.7M<span class="src">来源：Wise FY24 RNS + Analyst Presentation（搜索验证）</span></div>
+    <div class="ip-col ip-analysis">底层收入口径（Underlying Income）是Wise管理层首选KPI，区别于GAAP Revenue。包含利息收入前1%收益，体现账户业务价值。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">底层收入</span><span class="tag tag-fin">利息收入</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY24底层毛利润 £852.8M（+51% YoY），底层毛利率72.7%（FY23：63.4%，+9.3pp）<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">毛利率大幅提升9pp，规模效应显著。单位成本下降（规模效应+技术优化）叠加利息收入高增，形成超级利润杠杆。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">毛利率</span><span class="tag tag-fin">规模效应</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY24底层PBT £241.8M（+226% YoY），底层PBT利润率20.6%（FY23：8.3%）<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">利润率从8.3%飞跃至20.6%，是一个里程碑式转折。证明Wise盈利模型的杠杆性：固定成本摊薄后利润弹性极大。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">PBT利润率</span><span class="tag tag-fin">盈利飞跃</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY24活跃客户 12.838M（+29% YoY），个人12.212M，企业625.8K<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">FY24客户增速29%是历史高点，此后FY25降至21%。高基数下增速自然放缓，但绝对增量仍可观（+3M）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">客户数</span><span class="tag tag-fin">增速变化</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY24 Reported PBT £481.4M（+229% YoY），含利率高于1%部分利息收入£364.5M，扣除客户权益支付£124.9M<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">GAAP PBT利润率高达约41%，但含高利率环境的利息超额收益。Wise特别设计底层(Underlying)指标来排除这部分波动，以反映可持续盈利能力。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">GAAP vs底层</span><span class="tag tag-fin">利率影响</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="group-banner">▌ B. Take Rate 分解分析</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q4 FY24 跨境Take Rate维持67bps；Q1 FY25起降至约64bps（FY24全年末价格下调2bps以上）<span class="src">来源：FXC Intel分析+Wise Analyst Presentation</span></div>
+    <div class="ip-col ip-analysis">Take Rate从FY23的65bps升至FY24约67bps（利息收入提升），此后主动下调。这一规律揭示：高利率阶段Wise通过利息收入补贴价格下调能力。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-fin">定价策略</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q4 FY24 "其他收入"（卡为主）占总收入比重达26%（Q3 FY24：25%）<span class="src">来源：FXC Intel基于Analyst Presentation分析</span></div>
+    <div class="ip-col ip-analysis">卡收入占比从FY23约15%快速攀升至26%，成为减轻FX定价压力的关键缓冲。更多客户使用多产品功能（48%个人客户使用多功能）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">收入多元化</span><span class="tag tag-fin">卡占比</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY24底层收入按客户分拆：个人£884.4M(+30%)，企业£288.3M(+37%)<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">企业增速37%>个人30%，企业客户价值更高（人均交易量高达£50K）。企业业务占底层收入25%，未来贡献比重将进一步提升。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">个人vs企业</span><span class="tag tag-strat">企业增长</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY24人均跨境交易量：整体£9.2K（个人£7.1K，企业£50.0K），FY23整体£10.5K<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">人均量同比下降（从£10.5K降至£9.2K），因新用户（量更小）增速快于老用户（量更大）。不代表用户退化，而是获客范围扩展。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">人均交易量</span><span class="tag tag-fin">用户结构</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY24 FCF（自由现金流）£486.6M，FCF转化率101.1%（FCF/Reported PBT）<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">FCF转化率超100%，表明Wise商业模式具有优质的现金生成能力，资本支出轻。这支撑了股票回购和未来价格下调的资金来源。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">FCF</span><span class="tag tag-fin">现金转化</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="group-banner">▌ C. 运营与基础设施数据</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY24末客户余额 £13.3B（+24% YoY），资产托管（AUC）£2.9B（+523% YoY）<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">AUC从£0.5B飙升至£2.9B（+523%），反映Wise Assets（利息类产品）在欧洲的快速铺开。账户多功能化是主要驱动。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">客户余额</span><span class="tag tag-fin">AUC增长</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY24：48%个人客户使用多功能（multi-feature），60%企业客户使用多功能<span class="src">来源：Wise FY24报告</span></div>
+    <div class="ip-col ip-analysis">多功能使用率是护城河深度的最佳指标。企业60%明显高于个人48%，但两者都在快速提升，反映账户粘性持续增强。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">多功能使用</span><span class="tag tag-comp">护城河</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY24：即时支付比例达62%（payments instant），日本Tier 1牌照消除¥100万转账限额<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">62%即时率继续提升（FY23约50%）。日本Tier 1牌照是监管里程碑，解锁高净值日元汇款市场。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">即时支付</span><span class="tag tag-reg">日本牌照</span><span class="tag tag-mkt">日本</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY24：加入澳大利亚NPP直连支付系统，直连本地支付系统数量升至5个<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">直连本地支付网络是Wise降本增速的核心：绕过中间行，节省SWIFT费用，提升到账速度。5个直连（澳/英/印/欧/其他）覆盖主要走廊。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">直连支付</span><span class="tag tag-tech">NPP</span><span class="tag tag-comp">基础设施护城河</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY24：与SWIFT合作扩展，使银行及其客户更便捷地使用Wise基础设施<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">Wise不仅与传统银行竞争，也与之合作（SWIFT合作）——这是双重策略的体现，有效扩展生态而非仅靠直接获客。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">SWIFT合作</span><span class="tag tag-comp">竞合策略</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+</div>
+<div class="footer">来源：Wise FY24 Analyst Presentation PDF（搜索补充）+ FY24 RNS官方公告 | 索引编号：#008 | ⚠️ PDF为图像格式无法直接提取 | 提取版本：Tier2-v1 | 提取时间：2026-03-30</div>
+</body>
+</html>

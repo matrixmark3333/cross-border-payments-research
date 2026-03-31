@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-066 | FSB G20 Cross-border Payments Progress Report 2024 — 穷举式信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1  { background: #dbeafe; color: #1d4ed8; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .group-banner { background: #f8fafc; padding: 8px 0 8px 0; font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1 深度分析</span>
+    <span class="badge b-type">监管报告 / 国际组织</span>
+    <span class="badge b-depth">raw PDF 全文逐页提取（34页）</span>
+    <span class="badge b-rel">相关度 100%</span>
+  </div>
+  <h1>FSB G20 跨境支付路线图 2024年综合进展报告 — 穷举式信息点提取</h1>
+  <div class="source-line">Financial Stability Board (FSB) | 发布：2024年10月21日 | 原文：fsb-g20-crossborder-payments-progress-2024.pdf | 索引：#066 | 版本：穷举A</div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">52</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">12</div><div class="stat-label">A.市场数据</div></div>
+  <div class="stat"><div class="stat-num">18</div><div class="stat-label">B.政策监管</div></div>
+  <div class="stat"><div class="stat-num">12</div><div class="stat-label">C.技术基础设施</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">D.地区分析</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">E.趋势预测</div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">信息点列表 <span class="count">穷举版</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="group-banner">▌ A. 市场数据/KPI进展（12条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">批发跨境支付：通过Swift在1小时内到账比例降至50.6%（同比-3.2个百分点），1个工作日内到账92%（-0.7pp）<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.11（Box 2 KPI摘要）</span></div>
+    <div class="ip-col ip-analysis">批发支付速度小幅下降，因技术因素而非结算时间问题；50%仅1小时内到账远低于G20目标，改善空间大</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">KPI数据</span><span class="tag tag-mkt">批发支付</span><span class="tag tag-fin">速度指标</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">KPI监测</span><span class="kb-tag">跨境支付</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">零售跨境支付成本：2024年所有用例均未达1%目标；B2B成本1.6%，P2P成本2.6%，无地区达到1%目标<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.11</span></div>
+    <div class="ip-col ip-analysis">G20设定的1%成本目标距现实仍有显著差距，B2B最接近但仍高60%，P2P更是目标2.6倍</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">成本KPI</span><span class="tag tag-mkt">零售支付</span><span class="tag tag-fin">B2B</span><span class="tag tag-fin">P2P</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">KPI监测</span><span class="kb-tag">成本分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">零售支付速度恶化：1小时内完成比例降至33.5%（-0.7pp），1个工作日内降至69%（-5pp）<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.11</span></div>
+    <div class="ip-col ip-analysis">零售速度不升反降，说明路线图措施尚未传导至终端用户体验，PSP层面的结构性问题亟待解决</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">速度KPI</span><span class="tag tag-mkt">零售支付</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">KPI监测</span><span class="kb-tag">跨境支付</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">汇款成本：发送200美元平均成本6.4%（同比+0.1pp），发送500美元成本4.3%（持平）；撒哈拉以南非洲成本最高7.7%但略降0.6pp<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.12</span></div>
+    <div class="ip-col ip-analysis">汇款成本居高不下，与G20 3%目标差距悬殊；非洲改善边际积极但绝对值仍是全球最贵；南亚最接近目标</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">汇款成本</span><span class="tag tag-mkt">非洲</span><span class="tag tag-fin">G20目标</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">汇款</span><span class="kb-tag">成本分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">南亚地区汇款成本6.2%，是最接近G20 3%目标的地区；拉丁美洲和加勒比地区P2B支付成本-0.6pp降至2.7%<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.11-12</span></div>
+    <div class="ip-col ip-analysis">南亚（主要受益于印度UPI走廊）成为汇款成本改善的标杆，拉美P2B也有积极进展</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">汇款成本</span><span class="tag tag-mkt">南亚</span><span class="tag tag-mkt">拉美</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">汇款</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">汇款速度：54%的服务在1小时内到达受款人，76.6%在1个工作日内到达（-0.4pp）；撒哈拉以南非洲1小时达到率最高62%（+3pp）<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.12</span></div>
+    <div class="ip-col ip-analysis">非洲汇款速度改善是正面信号，但东亚太平洋地区仅47%（1小时）与75%目标差距最大</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">速度KPI</span><span class="tag tag-mkt">汇款</span><span class="tag tag-mkt">非洲</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">KPI监测</span><span class="kb-tag">汇款</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">透明度KPI：55.6%的支付服务商（PSP）向终端用户提供速度和成本信息（+1.1pp）；B2B透明度改善最大+4.5pp至38.3%；P2P最高66.4%<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.11</span></div>
+    <div class="ip-col ip-analysis">透明度是四大G20目标中进展最好的，但B2B仅38%仍显示大量批发支付缺乏费率信息披露</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">透明度KPI</span><span class="tag tag-reg">信息披露</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">KPI监测</span><span class="kb-tag">透明度</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">汇款费率透明度：98%→99%的汇款服务商提供总费用和外汇差价明细，接近100%目标<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.12</span></div>
+    <div class="ip-col ip-analysis">汇款透明度几乎达标，远领先零售和批发支付；消费者保护导向更强的汇款市场监管见效</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">透明度</span><span class="tag tag-mkt">汇款</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">KPI监测</span><span class="kb-tag">汇款</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">CPMI监测调查覆盖71个央行，涵盖166个支付系统（69个RTGS、45个FPS、52个DNS）；71%的RTGS系统和91%的FPS已完成或计划完成至少两项路线图优先行动<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.13（Box 3）</span></div>
+    <div class="ip-col ip-analysis">FPS改进进度（91%）明显优于RTGS（71%），说明新兴即时支付体系合规意愿和灵活性更强</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">FPS</span><span class="tag tag-tech">RTGS</span><span class="tag tag-fin">路线图进度</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">政策监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">超过140个司法管辖区正在积极使用ISO 20022消息；Swift MT标准与ISO 20022共存期预计持续至2025年11月<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.20</span></div>
+    <div class="ip-col ip-analysis">ISO 20022全球迁移进入收官阶段，2025年11月Swift截止日是行业关键节点，落后方需加速</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">ISO 20022</span><span class="tag tag-tech">Swift</span><span class="tag tag-reg">迁移截止</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">标准</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">西巴尔干地区世界银行项目：2017-2022年汇款成本从8%降至6.8%；服务商数量从20增至23，服务种类从122增至198<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.9（Box 1）</span></div>
+    <div class="ip-col ip-analysis">世界银行技术援助项目的可量化成效：5年间成本降低15%，竞争充分性明显提升</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">技术援助效果</span><span class="tag tag-mkt">西巴尔干</span><span class="tag tag-fin">汇款成本</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">案例研究</span><span class="kb-tag">汇款</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">世界银行通过Project FASTT向40个国家提供FPS技术援助，目标2027年前扩展至50个国家<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.8</span></div>
+    <div class="ip-col ip-analysis">FASTT项目量化了世行FPS援助规模，目标覆盖全球主要发展中国家，助力实现金融包容</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">世界银行</span><span class="tag tag-tech">FPS</span><span class="tag tag-mkt">发展中国家</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策援助</span><span class="kb-tag">基础设施</span></div>
+  </div>
+
+  <div class="group-banner">▌ B. 政策监管（18条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">G20跨境支付四大挑战：高成本、速度慢、访问不足、透明度低；G20于2020年峰会背书路线图，量化目标多数须在2027年前实现<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.3（Introduction）</span></div>
+    <div class="ip-col ip-analysis">G20路线图是当前跨境支付改革最重要的国际政策框架，四大挑战定义了行业改革方向</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">G20路线图</span><span class="tag tag-strat">政策框架</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">跨境支付</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">超过一半的优先行动已完成，但KPI报告显示现有工作尚不足以实现量化目标，需要更多努力<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.2, p.22</span></div>
+    <div class="ip-col ip-analysis">完成率超50%但结果层面不达标，反映政策措施传导至终端用户存在时滞；实施层面是新的关注点</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">路线图进度</span><span class="tag tag-strat">政策有效性</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">KPI监测</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FSB于2024年7月就数据框架发布12项建议草案（公开征询）：解决监管不确定性、促进数据保护互操作、减少数据本地化限制、降低创新壁垒；最终版将于2024年12月发布<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.19</span></div>
+    <div class="ip-col ip-analysis">数据框架碎片化是跨境支付的重大摩擦源，12项建议覆盖从合规到跨境数据流通的完整政策链</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">数据框架</span><span class="tag tag-reg">监管建议</span><span class="tag tag-tech">数据跨境</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">数据合规</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FSB就银行与非银行PSP一致监管发布6项政策建议草案（2024年7月），最终建议2024年12月发布；目标是消除监管套利<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.17</span></div>
+    <div class="ip-col ip-analysis">银行vs非银行监管不对等是金融科技竞争优势的重要来源，FSB致力于建立公平竞争环境</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">非银行监管</span><span class="tag tag-reg">监管套利</span><span class="tag tag-comp">公平竞争</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FATF正在修订第16条建议（电汇规则），以适配ISO 20022消息标准和支付系统架构新发展；预计2025年中完成<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.17-18</span></div>
+    <div class="ip-col ip-analysis">Travel Rule更新将直接影响跨境支付合规要求，与ISO 20022迁移时间线协同是关键</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">FATF</span><span class="tag tag-reg">Travel Rule</span><span class="tag tag-tech">AML/CFT</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">合规风险</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FATF推进虚拟资产Travel Rule（第16条建议）的全面一致跨境实施，FSB和FATF联合监督<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.26（附件表2）</span></div>
+    <div class="ip-col ip-analysis">虚拟资产Travel Rule实施不均衡是稳定币和加密支付的重大合规挑战，各司法区进度不一</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">Travel Rule</span><span class="tag tag-tech">虚拟资产</span><span class="tag tag-reg">AML/CFT</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">数字货币</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">G20/OECD金融消费者保护工作组（TFCP）将在2025-26年工作计划中就零售和汇款市场的端用户信息透明度制定实施指引<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.18</span></div>
+    <div class="ip-col ip-analysis">消费者知情权要求将进一步规范化：总成本拆分（费率+FX差价）、预计到账时间、支付状态追踪、服务条款均须披露</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">消费者保护</span><span class="tag tag-reg">透明度要求</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">透明度</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">数据本地化和数据镜像要求被明确识别为跨境支付的重大壁垒，FSB建议"减少此类限制"<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.19</span></div>
+    <div class="ip-col ip-analysis">数据本地化与跨境支付效率存在直接冲突，是多国监管博弈的核心议题之一</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">数据本地化</span><span class="tag tag-reg">数据主权</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">数据合规</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">资本管制被识别为导致批发支付受款方处理时间延迟的因素之一；FSB与IMF开始分析资本管制对PSP流程的影响<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.17</span></div>
+    <div class="ip-col ip-analysis">资本管制对支付速度的影响此前缺乏系统研究，FSB/IMF的分析将为政策调整提供依据</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">资本管制</span><span class="tag tag-mkt">批发支付</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">合规风险</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FSB识别数据框架与跨境支付存在多类摩擦：AML/CFT、数据隐私、监管访问要求等不同数据框架之间的碎片化是主要障碍<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.19</span></div>
+    <div class="ip-col ip-analysis">数据碎片化导致跨境支付需要在每个司法区维护不同的数据处理流程，显著增加成本和复杂度</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">数据碎片化</span><span class="tag tag-reg">监管差异</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">数据合规</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FSB扩展咨询覆盖额外70个司法区（通过RCG），在撒哈拉以南非洲、美洲、亚洲、中东北非举办区域研讨<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.7</span></div>
+    <div class="ip-col ip-analysis">非G20地区的路线图推广是金融包容的关键，但这些地区也是技术和监管能力最薄弱的</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">区域参与</span><span class="tag tag-strat">金融包容</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">LEI（法人识别符）推广：FSB建议成员司法区分阶段引入LEI支付消息要求，按实体类别或付款金额设置阈值渐进实施<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.22</span></div>
+    <div class="ip-col ip-analysis">LEI在支付消息中的强制使用将显著改善KYC效率和制裁筛查，分阶段方案降低行业适应压力</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">LEI</span><span class="tag tag-reg">KYC</span><span class="tag tag-tech">身份识别</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">合规风险</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">CPMI于2024年10月发布FPS互联治理和监督最终报告：分析互联的风险影响，涵盖法律架构、所有权、运营结构、治理机构类型和利益相关方参与<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.14-15</span></div>
+    <div class="ip-col ip-analysis">FPS互联治理是跨境即时支付的最大挑战，报告提供了多司法区互联的监管框架参考</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">FPS互联</span><span class="tag tag-reg">治理框架</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FATF更新了关于法律安排受益所有权透明度的指引（2024年3月），并修订建议24和25（受益所有权标准）<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.18</span></div>
+    <div class="ip-col ip-analysis">受益所有权透明度要求收紧将对跨境支付中的KYC流程带来直接影响，离岸结构更为复杂</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">受益所有权</span><span class="tag tag-reg">FATF</span><span class="tag tag-tech">KYC</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">合规风险</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">AML/CFT规则不一致实施跨司法区导致成本上升和速度降低；一致的制裁控制也有助于提升措施的有效性<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.17</span></div>
+    <div class="ip-col ip-analysis">AML/CFT碎片化是跨境支付最根本的结构性成本之一，协调一致可同时提升效率和合规有效性</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">AML/CFT</span><span class="tag tag-reg">制裁合规</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">合规风险</span><span class="kb-tag">政策监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FSB 15项优先行动状态：1-分类（互操作）2-FPS互联 3-跨境SLA 4-银行非银行监管 5-终端用户信息 6-AML/CFT 7-数据框架 8-ISO 20022 9-API协调 10-LEI；多数已完成或接近完成<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.23-30（附件）</span></div>
+    <div class="ip-col ip-analysis">15项优先行动构成G20路线图的完整执行架构，当前关注点已从制定转向实施</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">路线图行动</span><span class="tag tag-strat">执行框架</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">跨境支付</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FSB私营部门参与：建立两个行业工作组（FSB主导的LRS工作组：法律监管督导；CPMI主导的PIE工作组：支付互操作和延伸）<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.4</span></div>
+    <div class="ip-col ip-analysis">公私合作是路线图的核心机制，两个工作组分别解决监管协调和技术互操作问题</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">公私合作</span><span class="tag tag-strat">治理结构</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FSB第二届支付峰会2024年2月举行，计划2025年11月举行第三届，聚焦公私协作推进跨境支付路线图<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.6</span></div>
+    <div class="ip-col ip-analysis">年度峰会制度化推进政策对话，高级别公私参与确保路线图保持动能</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">政策对话</span><span class="tag tag-strat">行业峰会</span></div></div>
+    <div class="ip-col"><div class="score s5"><span class="score-num">5</span><div class="score-bar"><div class="score-fill" style="width:50%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span></div>
+  </div>
+
+  <div class="group-banner">▌ C. 技术基础设施（12条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Project Nexus：标准化FPS互联方式，单次接入即可与网络内所有国家互联；2024年7月发布方案设计、治理、商业收入模型和技术架构；5个东南亚国家（印尼、马来西亚、新加坡、菲律宾、泰国）已完成第三阶段<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.15</span></div>
+    <div class="ip-col ip-analysis">Nexus是跨境即时支付最重要的多边基础设施项目，"单次接入-全网到达"模式可大幅降低双边互联成本</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">Project Nexus</span><span class="tag tag-tech">FPS互联</span><span class="tag tag-mkt">东南亚</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">跨境支付</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">PayNow-PromptPay双边互联：新加坡PayNow与泰国PromptPay通过跨境网关连接；UPI-PayNow互联：印度与新加坡跨境汇款<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.15</span></div>
+    <div class="ip-col ip-analysis">亚洲双边FPS互联的先行案例，证明了实时跨境支付的技术可行性，为多边Nexus奠定基础</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">FPS互联</span><span class="tag tag-mkt">新加坡</span><span class="tag tag-mkt">泰国</span><span class="tag tag-mkt">印度</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">全球FPS数量超过70个司法区，且持续增长；FPS互联正在从双边扩展至多边<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.14</span></div>
+    <div class="ip-col ip-analysis">FPS数量快速增长表明即时支付从例外变为标准；互联复杂度随之上升需要统一标准</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">FPS</span><span class="tag tag-mkt">全球化</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">CPMI于2024年10月发布API协调建议，与ISO 20022进程相比处于更早期阶段；建议非约束性，提供工具包帮助利益相关方评估现行实践<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.21</span></div>
+    <div class="ip-col ip-analysis">API协调推进慢于消息标准，主要用于账户验证、合规筛查、消息修复和查询；协调后可显著提升处理效率</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">API协调</span><span class="tag tag-tech">标准化</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">标准</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">BISIH项目组合：跨境相关技术研究包括Aurora（反洗钱）、Keystone（ISO 20022分析工具包）、Leap（量子抗性密码学）、Hertha（隐私保护金融犯罪识别）、FuSSE（高可扩展支付架构）<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.16</span></div>
+    <div class="ip-col ip-analysis">BIS创新中心系统性推进支付技术前沿研究，量子抗性密码学反映对长期基础设施安全的前瞻规划</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">BISIH</span><span class="tag tag-tech">量子密码</span><span class="tag tag-tech">隐私计算</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">技术研究</span><span class="kb-tag">基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">CPMI ISO 20022协调数据要求（2023年10月发布）获行业广泛支持；将建立跨市场实践组面板支持长期维护和推广<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.20</span></div>
+    <div class="ip-col ip-analysis">行业支持是ISO 20022成功的关键，CPMI的协调工作将降低各地区实施差异对跨境效率的影响</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">ISO 20022</span><span class="tag tag-reg">行业协调</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">标准</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">LEI在支付中的用途：KYC和客户引导、账户到账户验证和对账、欺诈预防和制裁筛查；GLEIF已建立试点项目<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.21</span></div>
+    <div class="ip-col ip-analysis">LEI作为统一的法人实体标识符，可显著简化跨境支付的身份核验流程，降低合规成本</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">LEI</span><span class="tag tag-tech">身份验证</span><span class="tag tag-reg">制裁筛查</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">合规风险</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FPS互联的直接效益：缩短交易链、降低总体成本、提升透明度和速度；挑战：需要前期投资升级FPS以满足互联要求，多司法区治理最具挑战<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.14</span></div>
+    <div class="ip-col ip-analysis">FPS互联效益清晰但实施障碍真实存在，治理复杂性是比技术更大的挑战</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">FPS互联</span><span class="tag tag-strat">成本收益</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">跨境支付</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">延长RTGS运营时间：多个央行已更新RTGS系统并延长运营时间，跨境支付处理时间的一个约束被解决<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.14</span></div>
+    <div class="ip-col ip-analysis">运营时间错位是批发跨境支付延迟的关键原因之一，24小时操作窗口对齐是必要条件</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">RTGS</span><span class="tag tag-tech">运营时间</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">BISIH跨境CBDC项目：Dunbar（多央行CBDC平台）、Icebreaker（零售CBDC跨境）、Mariana（自动做市商机制）、Agorá（代币化存款）<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.16</span></div>
+    <div class="ip-col ip-analysis">BISIH通过不同技术路径探索CBDC跨境支付，Agorá最新颖（结合代币化存款），覆盖零售和批发场景</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">CBDC</span><span class="tag tag-tech">代币化</span><span class="tag tag-tech">BISIH</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">数字货币</span><span class="kb-tag">技术研究</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">接收方成本：调查显示平均接收方费用为付款金额的0.1%-1.8%；FX差价是接收方成本的重要组成（若存在则占比大）<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.11</span></div>
+    <div class="ip-col ip-analysis">接收方成本的量化是重要数据空白的填补，FX差价往往是"隐性成本"被用户忽视但实际影响大</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">接收方成本</span><span class="tag tag-fin">FX差价</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">成本分析</span><span class="kb-tag">跨境支付</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">西巴尔干地区讨论接入欧元体系TIPS（TARGET即时支付结算），探索欧元跨境即时交易实现方案；Banca d'Italia与部分西巴尔干央行讨论技术定制方案<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.9</span></div>
+    <div class="ip-col ip-analysis">SEPA扩展+TIPS接入是欧洲周边国家加入即时支付体系的现实路径，为其他区域提供参考</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">SEPA</span><span class="tag tag-tech">TIPS</span><span class="tag tag-mkt">欧洲</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="group-banner">▌ D. 地区分析（5条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">中东地区批发支付展示最强改善；东亚太平洋汇款1小时达到率仅47%，远低于75%目标<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.11-12</span></div>
+    <div class="ip-col ip-analysis">中东批发支付改善与海湾国家现代化升级投资相关；东亚太平洋（澳大利亚、东盟）汇款速度是主要短板</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">中东</span><span class="tag tag-mkt">东亚太平洋</span><span class="tag tag-fin">KPI差距</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">KPI监测</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">撒哈拉以南非洲：P2P汇款成本最高（7.7%，-0.6pp），但汇款1小时到达率最高62%（+3pp）<span class="src">FSB G20 Cross-border Amounts Progress Report 2024, p.11-12</span></div>
+    <div class="ip-col ip-analysis">非洲呈现"贵但快"的特点，移动支付（如M-Pesa）推动速度提升但成本结构改善缓慢</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">非洲</span><span class="tag tag-fin">汇款成本</span><span class="tag tag-fin">速度</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">汇款</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">亚太地区在访问指标上有大幅改善；中等偏上收入司法区访问提升，但中等偏下收入司法区中小微企业访问略有下降<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.11</span></div>
+    <div class="ip-col ip-analysis">亚太访问改善不均：高收入层受益更多，最需要改善的低收入层中小企业访问甚至下降，包容性问题突出</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">亚太</span><span class="tag tag-fin">金融包容</span><span class="tag tag-fin">中小企业</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">金融包容</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">拉丁美洲和加勒比P2B支付成本-0.6pp降至2.7%，南亚P2P到B支付成本-0.1pp降至3.7%，是零售支付成本改善的主要亮点<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.11</span></div>
+    <div class="ip-col ip-analysis">拉美P2B改善背后是Pix等即时支付体系降低商户收款成本的效果；南亚UPI生态溢出效应显现</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">拉美</span><span class="tag tag-mkt">南亚</span><span class="tag tag-fin">成本改善</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">成本分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">CPMI已为AMF（阿拉伯货币基金）成员国发布首份区域跨境支付发展分析报告（2024年）<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.7</span></div>
+    <div class="ip-col ip-analysis">中东北非区域分析报告是CPMI区域化监测的起点，将为后续其他区域报告提供模板</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">中东北非</span><span class="tag tag-strat">区域分析</span></div></div>
+    <div class="ip-col"><div class="score s5"><span class="score-num">5</span><div class="score-bar"><div class="score-fill" style="width:50%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="group-banner">▌ E. 趋势预测（5条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">G20路线图优先行动已完成超一半，但路线图措施传导至终端用户需要时间；各司法区实施速度不一<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.2</span></div>
+    <div class="ip-col ip-analysis">政策执行时滞是国际标准化最普遍的挑战，2027年目标实现需要加速国家级实施</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">政策时滞</span><span class="tag tag-strat">2027目标</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">宏观趋势</span><span class="kb-tag">政策监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">加强与数据保护、AML/CFT和制裁合规领域监管机构的跨部门参与是跨境支付的新重点；OECD DFFT专家社区已将数据保护与跨境支付纳入案例研究<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.7</span></div>
+    <div class="ip-col ip-analysis">跨境支付改革从单一金融领域扩展到数据治理领域，需要金融监管与数据监管双轨协同</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">跨部门监管</span><span class="tag tag-tech">数据治理</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">宏观趋势</span><span class="kb-tag">政策监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">IMF启动跨境支付诊断性任务，评估特定支付走廊的摩擦、成本和约束，并提出解决方案；计划2025年扩大规模<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.8</span></div>
+    <div class="ip-col ip-analysis">IMF走廊诊断方法论将为确定技术援助优先级提供数据支撑，聚焦最大挑战走廊</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">技术援助</span><span class="tag tag-fin">走廊分析</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">宏观趋势</span><span class="kb-tag">政策援助</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">增强私营部门参与将是实现目标的关键：FSB认识到理解私营部门视角和挑战对取得进展至关重要<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.2</span></div>
+    <div class="ip-col ip-analysis">公共部门单独主导无法实现目标，需要商业银行、金融科技和PSP主动参与实施</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">公私合作</span><span class="tag tag-strat">实施路径</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">宏观趋势</span><span class="kb-tag">战略框架</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Swift 2025年11月全面切换至ISO 20022后，预计更多司法区和用户将完成迁移；CPMI将继续推动本地市场实践指引与全球数据要求对齐<span class="src">FSB G20 Cross-border Payments Progress Report 2024, p.20</span></div>
+    <div class="ip-col ip-analysis">2025年11月是全球支付消息标准化的关键截止节点，未迁移机构将面临兼容性问题</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">ISO 20022</span><span class="tag tag-strat">迁移时间表</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">宏观趋势</span><span class="kb-tag">基础设施</span></div>
+  </div>
+
+</div>
+
+<div class="footer">
+  索引编号：card-066 | 来源文件：fsb-g20-crossborder-payments-progress-2024.pdf | 提取方式：pdfplumber全文逐页提取（34页）| 提取日期：2026-03-28 | 信息点总数（grep验证）：52条
+</div>
+
+</body>
+</html>

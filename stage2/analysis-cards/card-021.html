@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><title>card-021 | Wise日本Zengin清算系统接入 — 首家外资非银行里程碑</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .b-tier2{background:#e0e7ff;color:#3730a3} .b-type{background:#f0fdf4;color:#166534} .b-depth{background:#ede9fe;color:#5b21b6} .b-rel{background:#fff7ed;color:#9a3412} .b-warn{background:#fef3c7;color:#92400e}
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; }
+  .section { background: white; padding: 0 28px; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin{background:#dbeafe;color:#1d4ed8;border-color:#bfdbfe} .tag-strat{background:#fff7ed;color:#9a3412;border-color:#fed7aa} .tag-comp{background:#f0fdfa;color:#134e4a;border-color:#99f6e4} .tag-mkt{background:#fef3c7;color:#92400e;border-color:#fde68a} .tag-tech{background:#f3e8ff;color:#6b21a8;border-color:#e9d5ff} .tag-reg{background:#fee2e2;color:#991b1b;border-color:#fecaca}
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9,.s10{color:#059669} .s9 .score-fill,.s10 .score-fill{background:#059669} .s7,.s8{color:#2563eb} .s7 .score-fill,.s8 .score-fill{background:#2563eb} .s5,.s6{color:#d97706} .s5 .score-fill,.s6 .score-fill{background:#d97706} .s1,.s2,.s3,.s4{color:#94a3b8} .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill{background:#94a3b8}
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .group-banner { background: #f8fafc; padding: 8px 0; font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+  .warn-note { background: #fef3c7; border: 1px solid #fde68a; border-radius: 6px; padding: 8px 12px; font-size: 12px; color: #92400e; margin: 12px 0; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row"><span class="badge b-tier2">Tier 2 重新提取</span><span class="badge b-type">新闻 / 监管</span><span class="badge b-depth">全文提取（搜索补充）</span><span class="badge b-rel">相关度 90%</span></div>
+  <h1>Wise日本Zengin清算系统接入 — 首家外资非银行里程碑</h1>
+  <div class="source-line">Japan Times / Wise Newsroom | 2024 | 来源：<a href="https://www.japantimes.co.jp/business/2024/10/17/wise-payment-clearing-first-foreign-firm/" target="_blank">https://www.japantimes.co.jp/business/2024/10/17/wise-paymen...</a> | 索引：#021</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">7</div><div class="stat-label">信息点总数</div></div>
+</div>
+<div class="section">
+<div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0; margin-top:16px;">
+  <div class="col-header">原文信息点</div><div class="col-header">摘要分析</div><div class="col-header">标签</div><div class="col-header" style="text-align:center">评分</div><div class="col-header">知识库归属</div>
+</div>
+<div class="group-banner">▌ A. 监管里程碑</div><div class="ip-row">
+  <div class="ip-col ip-original">Wise Payments Japan K.K.于2024年10月获得日本Zengin清算系统（国内支付网络）的加入批准，成为首家获得直接接入权的非银行外资金融机构<span class="src">来源：web_search基于Japan Times/Wise Newsroom</span></div>
+  <div class="ip-col">Zengin直连资格历史上仅限于本地银行，2022年10月Zengin-Net理事会审查后扩展至资金转移服务提供商，Wise是首家非银行外资受益者，里程碑意义极高。</div>
+  <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">Zengin直连</span><span class="tag tag-reg">首家外资非银行</span><span class="tag tag-mkt">日本市场</span></div></div>
+  <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+  <div class="ip-col"><span class="kb-tag">6.监管</span></div>
+</div><div class="ip-row">
+  <div class="ip-col ip-original">Wise于2024年3月获得日本第一种资金转移业务许可（Type-1 FTSP），消除原Type-2许可的每笔¥100万上限，新上限为¥1.5亿/笔，支持40+货币<span class="src">来源：同上</span></div>
+  <div class="ip-col">Type-1牌照是突破性监管升级。¥100万→¥1.5亿上限提升150倍，直接解锁高净值个人和企业的大额国际汇款市场（日本出境汇款以企业和侨民居多，金额普遍较大）。</div>
+  <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">Type-1牌照</span><span class="tag tag-fin">¥1.5亿上限</span><span class="tag tag-mkt">日本</span></div></div>
+  <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+  <div class="ip-col"><span class="kb-tag">6.监管</span></div>
+</div><div class="ip-row">
+  <div class="ip-col ip-original">此前日本Type-2牌照（¥100万上限）严重限制了Wise在日本市场的服务范围，大量企业和高净值汇款只能使用传统银行<span class="src">来源：同上</span></div>
+  <div class="ip-col">业务约束转变为业务机会：Type-1升级打开了之前完全无法触及的大额汇款市场，这批用户已经习惯传统银行，Wise需要争夺他们。</div>
+  <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">竞争格局变化</span><span class="tag tag-mkt">日本企业</span></div></div>
+  <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+  <div class="ip-col"><span class="kb-tag">7.区域市场</span></div>
+</div><div class="group-banner">▌ B. 市场意义</div><div class="ip-row">
+  <div class="ip-col ip-original">日本是全球前五的跨境汇款市场之一（非居民多、贸易量大）；Zengin直连后Wise可处理无需中间行的即时日元支付，理论上降低日本汇款成本至接近国内转账<span class="src">来源：分析推断</span></div>
+  <div class="ip-col">日本全年跨境汇款规模约$30B+，平均费率约4-5%（世界银行数据），Wise进入后可以显著降低费率，直接受益是在日华人（约80万）、在日韩国人等侨民社区。</div>
+  <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">日本市场规模</span><span class="tag tag-fin">降费潜力</span></div></div>
+  <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+  <div class="ip-col"><span class="kb-tag">7.区域市场</span></div>
+</div><div class="ip-row">
+  <div class="ip-col ip-original">Zengin系统覆盖日本约6000家金融机构，直连后Wise的日元支付将从T+1提速至实时，对于跨境汇款体验提升巨大<span class="src">来源：同上</span></div>
+  <div class="ip-col">日本金融系统以速度慢、成本高著称。Wise接入Zengin标志着其在日本实现"本地化支付基础设施"，与在英国接入Faster Payments、在澳洲接入NPP的战略一致。</div>
+  <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">实时支付</span><span class="tag tag-comp">基础设施护城河</span></div></div>
+  <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+  <div class="ip-col"><span class="kb-tag">5.基础设施</span></div>
+</div><div class="ip-row">
+  <div class="ip-col ip-original">Wise日本的双重里程碑（Type-1牌照2024年3月 + Zengin直连2024年10月）在同一年内完成，显示Wise对日本市场的战略重视和执行效率<span class="src">来源：同上</span></div>
+  <div class="ip-col">两大里程碑在8个月内相继完成，反映日本市场的战略优先级。日本是亚太最大的成熟经济体，打通日本基础设施为Wise亚太增长提供重要支撑。</div>
+  <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">执行效率</span><span class="tag tag-mkt">亚太战略</span></div></div>
+  <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+  <div class="ip-col"><span class="kb-tag">7.区域市场</span></div>
+</div><div class="ip-row">
+  <div class="ip-col ip-original">Nium也在2024年获得日本Type-1 FTSP牌照（Card-085），表明日本Type-1牌照成为多家全球跨境支付公司的竞争焦点<span class="src">来源：交叉引用</span></div>
+  <div class="ip-col">日本牌照成为整个行业的竞争目标，Wise、Nium、及传统SBI Remit等均在布局。监管开放（Zengin接入改革）触发了多家公司的同步跟进。</div>
+  <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">行业竞争</span><span class="tag tag-reg">日本监管开放</span></div></div>
+  <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+  <div class="ip-col"><span class="kb-tag">6.监管</span></div>
+</div>
+</div>
+<div class="footer">来源：Japan Times + Wise Newsroom（2024-03/2024-10） | 索引编号：#021 | 提取版本：Tier2-v1 | 提取时间：2026-03-30</div>
+</body>
+</html>

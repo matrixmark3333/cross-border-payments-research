@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-417 | Forbes Olsen：Wise计划迁往Wall Street上市 — 美国为最大增长市场，保留伦敦次级</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier2  { background: #e0f2fe; color: #0369a1; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .warn-badge { display: inline-block; background: #fef9c3; color: #854d0e; border: 1px solid #fde047; border-radius: 4px; padding: 1px 6px; font-size: 11px; font-weight: 700; margin-left: 4px; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 URL分析</span>
+    <span class="badge b-type">新闻分析</span>
+    <span class="badge b-depth">搜索摘要（Forbes防爬）</span>
+    <span class="badge b-rel">相关度 90%</span>
+  </div>
+  <h1>Forbes Olsen：Wise计划迁往Wall Street上市 — 美国为最大增长市场，保留伦敦次级 <span class="warn-badge">⚠️ 仅摘要</span></h1>
+  <div class="source-line">Forbes / Robert Olsen | 索引：#417 | 原文：<a href="https://www.forbes.com/sites/robertolsen-1/2025/06/05/uk-fintech-wise-looks-to-us-market-to-fuel-its-global-ambitions/" target="_blank">https://www.forbes.com/sites/robertolsen-1/2025/06/05/uk-fintech-wise-looks-to-u...</a></div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">5</div><div class="stat-label">信息点总数</div></div>
+</div>
+<div class="section">
+  <div class="section-title">信息点列表 <span class="count">5条</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise 2025年6月宣布计划将主要上市地从伦敦迁移至美国（Wall Street），保留伦敦次级上市；目标2026年Q2<span class="src">来源：<a href="https://www.forbes.com/sites/robertolsen-1/2025/06/05/uk-fintech-wise-looks-to-us-market-to-fuel-its-global-ambitions/" target="_blank">Forbes Wise US#417</a></span></div>
+    <div class="ip-col ip-analysis">从LSE迁至美国主板是Wise战略升级的标志，美国资本市场深度更高、知名度更广，对机构投资者吸引力显著强于英国。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">美国上市</span><span class="tag tag-biz">Wise</span><span class="tag tag-strat">资本市场</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">资本市场/Wise</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise CEO Kristo Kaarmann：美国上市将增加Wise在美国的知名度，进入全球最深流动性市场<span class="src">来源：<a href="https://www.forbes.com/sites/robertolsen-1/2025/06/05/uk-fintech-wise-looks-to-us-market-to-fuel-its-global-ambitions/" target="_blank">Forbes Wise US#417</a></span></div>
+    <div class="ip-col ip-analysis">美国知名度提升=更多美国用户获取渠道+更多美国机构投资者+更高市值倍数。三重协同效应支持美国优先战略。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">美国知名度</span><span class="tag tag-biz">Wise CEO</span><span class="tag tag-fin">流动性</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">战略/资本</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">美国是Wise最大增长市场：美国用户跨境汇款需求高，但Wise在美国的品牌认知度低于Venmo/PayPal<span class="src">来源：<a href="https://www.forbes.com/sites/robertolsen-1/2025/06/05/uk-fintech-wise-looks-to-us-market-to-fuel-its-global-ambitions/" target="_blank">Forbes Wise US#417</a></span></div>
+    <div class="ip-col ip-analysis">美国市场认知度低是Wise最大未开发机会，上市将带来免费媒体曝光。美国跨境汇款用户（移民社区）是巨大未触达群体。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">美国市场</span><span class="tag tag-biz">品牌认知</span><span class="tag tag-strat">增长机会</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">战略/市场</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise计划提升美国员工人数和营销预算，为Wall Street上市做准备；美国已是最大单一市场<span class="src">来源：<a href="https://www.forbes.com/sites/robertolsen-1/2025/06/05/uk-fintech-wise-looks-to-us-market-to-fuel-its-global-ambitions/" target="_blank">Forbes Wise US#417</a></span></div>
+    <div class="ip-col ip-analysis">上市前提升美国团队规模和营销是常规IP策略，预示FY2026 Wise在美国的销售和营销费用将显著增加。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">美国扩张</span><span class="tag tag-fin">上市准备</span><span class="tag tag-biz">Wise</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">战略/资本</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise核心战略：跨境支付+Wise Account（多币种账户）组合，成为移民和国际化企业的标配金融工具<span class="src">来源：<a href="https://www.forbes.com/sites/robertolsen-1/2025/06/05/uk-fintech-wise-looks-to-us-market-to-fuel-its-global-ambitions/" target="_blank">Forbes Wise US#417</a></span></div>
+    <div class="ip-col ip-analysis">双产品组合（汇款+账户）产生强力协同：汇款引流，账户提升留存。美国市场这两种需求都高度旺盛。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">Wise Account</span><span class="tag tag-strat">双产品战略</span><span class="tag tag-mkt">移民市场</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式/产品</span></div>
+  </div>
+</div>
+<div class="footer">生成日期：2026-03-30 | Forbes / Robert Olsen | #417 | Tier 2 | </div>
+</body>
+</html>

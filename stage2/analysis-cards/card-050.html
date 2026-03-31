@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-050 | Western Union FY2024 Full Year Results — 分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+
+  /* ── 卡头 ── */
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1  { background: #dbeafe; color: #1d4ed8; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  .b-warn   { background: #fef3c7; color: #92400e; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+
+  /* ── 统计栏 ── */
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  /* ── 信息点列表 ── */
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+
+  /* 价值评分 */
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+
+  /* 分组标题行 */
+  .group-banner { background: #f8fafc; padding: 8px 0 8px 0; font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<!-- 卡头 -->
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 2 分析</span>
+    <span class="badge b-type">财报 / 全年业绩</span>
+    <span class="badge b-warn">⚠️ 原始URL 403 — 基于公开新闻/SEC披露重建</span>
+    <span class="badge b-rel">相关度 90%</span>
+  </div>
+  <h1>Western Union FY2024 Full Year Results — 业绩分析</h1>
+  <div class="source-line">The Western Union Company (NYSE: WU) | 财年：2024年1月1日–12月31日 | 发布：2025年2月4日 | 原文：<a href="https://ir.westernunion.com/investor-relations/financial-information/sec-filings/2024/default.aspx" target="_blank">SEC Filings 2024</a> | 索引：#050 | 数据来源：BusinessWire、SEC EDGAR、FXC Intelligence</div>
+</div>
+
+<!-- 统计栏 -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">13</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">A.核心财务</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">B.数字业务</div></div>
+  <div class="stat"><div class="stat-num">2</div><div class="stat-label">C.股东回报</div></div>
+  <div class="stat"><div class="stat-num">2</div><div class="stat-label">D.运营网络</div></div>
+</div>
+
+<!-- 信息点区域 -->
+<div class="section">
+
+  <div class="section-title">信息点列表 <span class="count">13条</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <!-- ▌A. 核心财务数据 -->
+  <div class="group-banner">▌ A. 核心财务数据（5条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024 总收入 $4.2B，同比 -3%（报告口径）；剔除伊拉克影响后调整口径 +0.5%<span class="src">来源：BusinessWire Q4 2024 Press Release, 2025年2月4日</span></div>
+    <div class="ip-col ip-analysis">Western Union总营收持续承压，伊拉克业务萎缩是主要拖累。剔除一次性地理因素后核心业务勉强实现正增长，显示传统汇款业务规模见顶压力。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">总收入</span><span class="tag tag-fin">同比增长</span><span class="tag tag-comp">竞争压力</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">传统汇款</span><span class="kb-tag">竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Consumer Money Transfer (CMT) 分部全年收入 $3.8B，同比 -5%（报告口径）；调整口径剔除伊拉克后基本持平<span class="src">来源：BusinessWire Q4 2024 Press Release；SEC 10-K 2024</span></div>
+    <div class="ip-col ip-analysis">CMT是WU核心业务，占合并总收入90%。该分部收入下滑是整体承压的主因。剔除伊拉克后基本持平说明传统网点业务陷入停滞。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">CMT分部</span><span class="tag tag-biz">主营业务</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">传统汇款</span><span class="kb-tag">商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">全年调整经营利润率 19%（2023年为20%），Q4 CMT经营利润 $170M，同比 +14%<span class="src">来源：BusinessWire Q4 2024 Press Release</span></div>
+    <div class="ip-col ip-analysis">全年利润率受伊拉克贡献减少压缩1pp；Q4 CMT经营利润逆势增长14%，主要来自营销和科技效率改善，显示成本管控能力。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">经营利润率</span><span class="tag tag-strat">成本控制</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">盈利能力</span><span class="kb-tag">运营效率</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">全年 GAAP EPS $2.74（vs 2023年 $1.68），含 $0.75 国际业务重组税收收益 + $0.40 IRS和解收益；调整EPS $1.74（与2023年持平）<span class="src">来源：BusinessWire Q4 2024 Press Release；SEC EDGAR 10-K</span></div>
+    <div class="ip-col ip-analysis">GAAP EPS大幅跳升是一次性税务项目驱动，并非经营改善。调整EPS持平，得益于股份回购减少在外股数和较低调整税率，但被伊拉克贡献下降完全对冲。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">每股收益</span><span class="tag tag-fin">一次性项目</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务质量</span><span class="kb-tag">盈利能力</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">CMT占合并总收入约90%，业务高度集中于消费者跨境汇款<span class="src">来源：SEC EDGAR 10-K 2024（wu-20241231.htm）</span></div>
+    <div class="ip-col ip-analysis">业务集中度极高，消费者汇款占绝对主导，多元化进展缓慢。与Wise、Block等对手比，WU缺乏B端或平台收入支撑，面临结构性脆弱性。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">业务集中</span><span class="tag tag-comp">竞争劣势</span><span class="tag tag-strat">多元化</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式</span><span class="kb-tag">竞争格局</span></div>
+  </div>
+
+  <!-- ▌B. 数字业务数据 -->
+  <div class="group-banner">▌ B. 数字业务数据（4条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Branded Digital全年收入同比 +7%（调整口径 +8%），Q4 Branded Digital收入 $235M，占CMT收入25%（上年同期23%）<span class="src">来源：BusinessWire Q4 2024 Press Release；FXC Intelligence Western Union Q4-24 Earnings</span></div>
+    <div class="ip-col ip-analysis">数字业务是WU少数亮点，但绝对规模仍小（仅占CMT收入25%）。+7%增速远低于纯数字玩家（Wise+24%，Remitly+30%+），差距持续扩大。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">数字业务</span><span class="tag tag-fin">收入结构</span><span class="tag tag-comp">竞争对比</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">数字化转型</span><span class="kb-tag">竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q4 Branded Digital交易笔数同比 +13%，占Q4总交易量32%（上年同期约27-28%）<span class="src">来源：BusinessWire Q4 2024 Press Release</span></div>
+    <div class="ip-col ip-analysis">交易量增速（+13%）显著高于收入增速（+7%），意味着数字渠道的单笔均价在下降（更多小额转账）。这是行业级趋势：数字迁移伴随客单价下滑。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">交易笔数</span><span class="tag tag-fin">客单价</span><span class="tag tag-mkt">结构变化</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">数字化转型</span><span class="kb-tag">单位经济</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">数字渠道（Branded Digital）交易量占比32%，仍有约68%通过传统代理网点完成<span class="src">来源：BusinessWire Q4 2024 Press Release（综合计算）</span></div>
+    <div class="ip-col ip-analysis">WU仍有近七成交易依赖实体网点（54万+个agent locations），体现其在现金汇款市场的独特定位，但也是数字化转型滞后的体现。在无银行账户人群中仍有不可替代性。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">代理网点</span><span class="tag tag-mkt">现金汇款</span><span class="tag tag-strat">转型节奏</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式</span><span class="kb-tag">竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q4 2024总收入同比 +1%（报告口径），主要由Consumer Services和Branded Digital交易增长驱动<span class="src">来源：BusinessWire Q4 2024 Press Release</span></div>
+    <div class="ip-col ip-analysis">Q4改善信号积极：数字和服务端增长抵消了传统CMT下滑。预示2025年若数字渠道占比继续提升，全年收入可能实现转正，需观察后续季度趋势。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">季度数据</span><span class="tag tag-strat">复苏信号</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">传统汇款</span><span class="kb-tag">数字化转型</span></div>
+  </div>
+
+  <!-- ▌C. 股东回报 -->
+  <div class="group-banner">▌ C. 股东回报（2条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2024年全年累计向股东回报约 $496M：$318M股息 + $177M股票回购<span class="src">来源：BusinessWire Q4 2024 Press Release</span></div>
+    <div class="ip-col ip-analysis">在收入承压背景下仍大力回报股东，体现WU的"现金牛"特征。$496M回报约占总收入12%，高回报率靠成熟网络的存量现金流支撑，但也压缩了转型再投资空间。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">股东回报</span><span class="tag tag-strat">资本配置</span><span class="tag tag-biz">现金牛</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">资本效率</span><span class="kb-tag">商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">董事会批准2025年Q1股息 $0.235/股（2025年3月31日支付，登记日3月17日）<span class="src">来源：BusinessWire Q4 2024 Press Release</span></div>
+    <div class="ip-col ip-analysis">季度股息维持稳定，反映管理层对现金流稳定性的信心。当前股息率约5-6%（按$16-18股价估算），是价值投资者吸引点，也显示公司处于"收割期"而非高增长阶段。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">股息</span><span class="tag tag-strat">股东政策</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">资本效率</span></div>
+  </div>
+
+  <!-- ▌D. 运营网络 -->
+  <div class="group-banner">▌ D. 运营网络与市场覆盖（2条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">截至2024年12月31日，WU全球网络覆盖200+个国家和地区，含大量代理网点及品牌官网<span class="src">来源：SEC EDGAR 10-K 2024（wu-20241231.htm）</span></div>
+    <div class="ip-col ip-analysis">200+国家覆盖是WU最核心护城河，尤其在非洲、南亚、拉美等数字基础设施薄弱地区无可替代。这是Wise等纯数字平台短期内无法复制的物理护城河。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">网络效应</span><span class="tag tag-biz">护城河</span><span class="tag tag-mkt">新兴市场</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局</span><span class="kb-tag">护城河评估</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">伊拉克业务萎缩是拖累全年收入-3.5pp的单一最大因素；剔除伊拉克后全年收入约 +0.5%<span class="src">来源：BusinessWire Q4 2024 Press Release；Nasdaq分析</span></div>
+    <div class="ip-col ip-analysis">地缘政治风险高度集中在单一市场（伊拉克）对业绩的冲击，暴露了WU在部分高利润新兴市场的监管/政治脆弱性。该风险在2025年是否持续值得关注。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">地缘政治</span><span class="tag tag-fin">伊拉克因素</span><span class="tag tag-comp">风险</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">风险因素</span><span class="kb-tag">传统汇款</span></div>
+  </div>
+
+</div>
+
+<div class="footer">
+  索引：#050 | 生成日期：2026-03-30 | 原始URL 403（已通过BusinessWire、SEC EDGAR、FXC Intelligence公开信息重建）| 信息点：13条
+</div>
+
+</body>
+</html>

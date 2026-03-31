@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-391 | CIPS Wikipedia Statistics — 结构化信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1  { background: #dbeafe; color: #1d4ed8; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .group-row { background: #f8fafc; padding: 8px 10px 8px 0; font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; grid-column: 1/-1; display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; }
+</style>
+</head>
+<body>
+
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1 权威数据</span>
+    <span class="badge b-type">百科 / 统计数据</span>
+    <span class="badge b-depth">🌐 URL 实时获取</span>
+    <span class="badge b-rel">相关度 80%</span>
+  </div>
+  <h1>CIPS Wikipedia Statistics — 跨境银行间支付清算系统数据汇编</h1>
+  <div class="source-line">Wikipedia (英文) | 更新至2025年6月 | 原文：<a href="https://en.wikipedia.org/wiki/Cross-Border_Interbank_Payment_System" target="_blank">Cross-Border_Interbank_Payment_System</a> | 索引：#391</div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">20</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">8</div><div class="stat-label">历史数据类</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">基础设施类</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">监管/政策类</div></div>
+  <div class="stat"><div class="stat-num">8.3</div><div class="stat-label">平均价值评分</div></div>
+</div>
+
+<div class="section">
+  <div style="display:grid;grid-template-columns:1fr 260px 160px 70px 80px;">
+    <div class="col-header">原文信息点 + 来源</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header">评分</div>
+    <div class="col-header">知识库</div>
+  </div>
+
+  <!-- 历史规模数据组 -->
+  <div class="ip-row">
+    <div class="ip-col ip-original">2024年CIPS处理821.69万笔交易，金额175.49万亿元（约24.47万亿美元），同比分别增长24.25%和42.60%。日均约3.05万笔，金额6524亿元。<span class="src">Wikipedia / CIPS 2024 Annual Data</span></div>
+    <div class="ip-col ip-analysis">2024年是CIPS增长最强劲年份之一，金额增速(43%)远超笔数增速(24%)，说明单笔均值上升，大额B2B/金融市场交易占比提升。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">CIPS规模</span><span class="tag tag-mkt">2024数据</span><span class="tag tag-fin">人民币国际化</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场</span><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2023年CIPS处理661.33万笔，金额123.06万亿元（17.09万亿美元），同比分别增长50.29%和27.27%。日均25,900笔，4826亿元。<span class="src">Wikipedia / CIPS 2023 Annual Data</span></div>
+    <div class="ip-col ip-analysis">2023年笔数增速高达50%，为近年最快，反映更多机构接入CIPS，中小跨境业务渗透率大幅提升。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">CIPS规模</span><span class="tag tag-mkt">2023数据</span><span class="tag tag-fin">增长趋势</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场</span><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2022年CIPS处理约96.7万亿元，约1427家金融机构连接，覆盖109个国家和地区。<span class="src">Wikipedia / CIPS 2022</span></div>
+    <div class="ip-col ip-analysis">2022年是俄乌冲突后的关键年份，SWIFT制裁加速各国布局CIPS替代路径，参与机构数明显增长。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">CIPS规模</span><span class="tag tag-reg">地缘政治</span><span class="tag tag-mkt">2022数据</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场</span><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2021年CIPS处理约80万亿元，约1280家金融机构，覆盖103个国家和地区。<span class="src">Wikipedia / CIPS 2021</span></div>
+    <div class="ip-col ip-analysis">对比2021→2024，金额从80万亿增至175万亿，增长119%，三年复合增长率约30%，增长持续性强。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">历史趋势</span><span class="tag tag-mkt">CAGR</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2022-2024年CIPS业务笔数和金额复合增长率分别约35%和30%（财新引用数据印证）。<span class="src">Wikipedia + 财新交叉验证</span></div>
+    <div class="ip-col ip-analysis">三年持续高增长表明CIPS已从"补充系统"升级为人民币跨境支付主渠道，具有结构性增长动力。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">CAGR</span><span class="tag tag-strat">战略意义</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场</span><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <!-- 参与者规模组 -->
+  <div class="ip-row">
+    <div class="ip-col ip-original">截至2025年6月，CIPS共有176家直接参与者、1514家间接参与者，合计覆盖121个国家和地区，业务触及189个国家和地区约4900家银行机构。<span class="src">Wikipedia / CIPS 2025年6月数据</span></div>
+    <div class="ip-col ip-analysis">参与机构数量持续扩张，覆盖全球189个国家，正在构建与SWIFT竞争的平行网络，护城河在于网络效应。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">网络覆盖</span><span class="tag tag-comp">SWIFT竞争</span><span class="tag tag-strat">护城河</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span><span class="kb-tag">4.竞争</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">间接参与者中：亚洲1102家（境内563家），欧洲261家，非洲61家，北美34家，南美34家，大洋洲22家。<span class="src">Wikipedia / 地区分布2025年6月</span></div>
+    <div class="ip-col ip-analysis">亚洲占间接参与者73%，欧洲17%，反映CIPS的地域重心仍在亚洲，欧洲增长是关键扩张方向（一带一路节点+欧元人民币互换协议驱动）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">地区分布</span><span class="tag tag-strat">国际化</span><span class="tag tag-tech">网络效应</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域</span><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2019年底CIPS有33家直接参与者和903家间接参与者（覆盖94国），较2015年分别增长74%和413%；通过网络触达167个国家3000+银行。<span class="src">Wikipedia / CIPS 2019年数据</span></div>
+    <div class="ip-col ip-analysis">间接参与者413%增速说明接入门槛（依托直接参与行）有效降低，网络外部性显著放大。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">增长历史</span><span class="tag tag-tech">网络效应</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <!-- 技术架构与监管 -->
+  <div class="ip-row">
+    <div class="ip-col ip-original">CIPS超过80%的交易依赖SWIFT报文网络，同时采用ISO 20022标准，支持中文字符。<span class="src">Wikipedia / CIPS架构</span></div>
+    <div class="ip-col ip-analysis">依赖SWIFT报文是CIPS的结构性短板——美国若制裁CIPS报文传输，将产生影响。但直接参与行可绕过SWIFT专线接入，是重要的冗余设计。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">系统架构</span><span class="tag tag-reg">制裁风险</span><span class="tag tag-tech">ISO 20022</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2015年10月CIPS一期上线，最初19家直接参与者、176家间接参与者，覆盖50个国家6大洲，CIPS上线直接助力人民币纳入SDR。<span class="src">Wikipedia / CIPS历史</span></div>
+    <div class="ip-col ip-analysis">CIPS与人民币SDR纳入同步推进，属于国家战略级基础设施，政策与商业双轮驱动是其增长的核心逻辑。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">人民币国际化</span><span class="tag tag-strat">战略</span><span class="tag tag-mkt">SDR</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2018年3月CIPS二期上线，实现DVP（券款对付）结算，支持北向债券通；5月全面运营，扩大直接参与行范围。<span class="src">Wikipedia / CIPS Phase 2</span></div>
+    <div class="ip-col ip-analysis">DVP结算降低结算风险，支持债券通说明CIPS从贸易支付延伸至金融市场，覆盖场景大幅扩展。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">DVP结算</span><span class="tag tag-fin">债券通</span><span class="tag tag-strat">功能扩展</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2016年3月SWIFT与CIPS签署MOU，SWIFT进行ISO 20022实施，支持中文字符；2017年9月SWIFT通过SWIFTRef发布CIPS参与行参考数据，含BIC、LEI、IBAN等。<span class="src">Wikipedia / SWIFT-CIPS合作</span></div>
+    <div class="ip-col ip-analysis">SWIFT与CIPS形成合作-竞争关系，SWIFT接入CIPS有助于扩大海外间接参与者，短期共生但长期存在替代张力。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">SWIFT关系</span><span class="tag tag-tech">标准化</span><span class="tag tag-strat">合作竞争</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争</span><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">CIPS由人民银行批准，上海总部，公司制企业法人（合作社性质），负责跨境人民币清算结算，同时支持离岸人民币业务。<span class="src">Wikipedia / CIPS概述</span></div>
+    <div class="ip-col ip-analysis">CIPS是人民银行主导的国家战略级基础设施，政策连续性强，但也意味着商业化扩张受政策约束。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">央行监管</span><span class="tag tag-strat">国家战略</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">CIPS订阅并维护多项ISO标准的注册机构（RA）资质，包括ISO 9362（BIC）、ISO 10383（MIC）、ISO 13616（IBAN）、ISO 15022、ISO 20022。<span class="src">Wikipedia / ISO标准</span></div>
+    <div class="ip-col ip-analysis">掌握多个ISO标准RA资质，使CIPS在国际金融标准体系中具有制度性话语权，为人民币国际化提供标准支撑。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">ISO标准</span><span class="tag tag-reg">话语权</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">一带一路沿线59个国家和地区（含港澳台）的1017家银行于2019年底通过CIPS开展业务。<span class="src">Wikipedia / 一带一路数据</span></div>
+    <div class="ip-col ip-analysis">一带一路是CIPS扩张的主要地理轴线，沿线国家受SWIFT制裁风险高，替代需求更强，是CIPS增长的结构性支撑。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">一带一路</span><span class="tag tag-mkt">新兴市场</span><span class="tag tag-reg">制裁规避</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域</span><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">去中心化加密货币和美国过度使用SWIFT制裁工具对SWIFT网络造成不利影响，俄罗斯和中国都在努力建立替代网络；SWIFT同时在探索支持加密数字货币。<span class="src">Wikipedia / 人人都是产品经理交叉</span></div>
+    <div class="ip-col ip-analysis">CIPS崛起的外部动因：①地缘政治武器化推动去美元化；②加密货币提供技术性替代路径。SWIFT正通过探索加密货币来维护生态位。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">SWIFT竞争</span><span class="tag tag-reg">去美元化</span><span class="tag tag-tech">加密货币</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争</span><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">中国于1983年加入SWIFT，中国4大国有商业银行均为SWIFT活跃成员；中国在SWIFT董事会只有1个席位，美国、比利时等各有2席，CEO由欧洲人担任。<span class="src">人人都是产品经理 / SWIFT治理结构</span></div>
+    <div class="ip-col ip-analysis">SWIFT治理结构中国话语权有限（1/25席），这是中国发展CIPS替代路径的深层动机——避免依赖西方主导的金融通信基础设施。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">治理结构</span><span class="tag tag-strat">战略自主</span><span class="tag tag-comp">话语权</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span><span class="kb-tag">4.竞争</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">CLS（持续连接结算）每天结算金额数万亿美元，占全球货币日交易总价值90%以上，通过PvP（券款对付）解决赫斯塔特风险。<span class="src">人人都是产品经理 / 清算体系</span></div>
+    <div class="ip-col ip-analysis">CLS是全球外汇结算最重要基础设施，人民币是否纳入CLS是人民币国际化深化的重要衡量指标，目前仍主要通过双边安排解决。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">外汇结算</span><span class="tag tag-fin">赫斯塔特风险</span><span class="tag tag-comp">CLS</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+</div>
+
+<div class="footer">索引编号 #391 | 来源：Wikipedia CIPS词条 + 人人都是产品经理交叉验证 | 获取时间：2026-03-24 | Stage 2 分析卡</div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-457 | 移动支付网：Wise FY25 Q3业绩 — 跨境交易额£378亿（+24%），摩根士丹利、渣打银行接入</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier2  { background: #e0f2fe; color: #0369a1; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .warn-badge { display: inline-block; background: #fef9c3; color: #854d0e; border: 1px solid #fde047; border-radius: 4px; padding: 1px 6px; font-size: 11px; font-weight: 700; margin-left: 4px; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 URL分析</span>
+    <span class="badge b-type">行业新闻</span>
+    <span class="badge b-depth">全文提取</span>
+    <span class="badge b-rel">相关度 85%</span>
+  </div>
+  <h1>移动支付网：Wise FY25 Q3业绩 — 跨境交易额£378亿（+24%），摩根士丹利、渣打银行接入 </h1>
+  <div class="source-line">移动支付网 | 索引：#457 | 原文：<a href="https://m.mpaypass.com.cn/news/202501/20101117.html" target="_blank">https://m.mpaypass.com.cn/news/202501/20101117.html</a></div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">5</div><div class="stat-label">信息点总数</div></div>
+</div>
+<div class="section">
+  <div class="section-title">信息点列表 <span class="count">5条</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise FY25 Q3（2024年10-12月）跨境交易额£378亿（同比+24%），活跃客户超900万（+20% YoY）<span class="src">来源：<a href="https://m.mpaypass.com.cn/news/202501/20101117.html" target="_blank">#457</a></span></div>
+    <div class="ip-col ip-analysis">FY25 Q3延续FY24强劲增速，900万活跃客户和£378亿季度交易量验证了持续增长轨道，符合20%+收入增速指引。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">Wise</span><span class="tag tag-fin">Q3 FY25</span><span class="tag tag-fin">活跃客户</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财报/Wise</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise FY25 Q3基础收入£3.495亿（+13%；固定汇率+20%）；跨境佣金率降至0.56%（vs 上季度0.67%）<span class="src">来源：<a href="https://m.mpaypass.com.cn/news/202501/20101117.html" target="_blank">#457</a></span></div>
+    <div class="ip-col ip-analysis">跨境佣金率从0.67%降至0.56%是11bp的大幅降价，说明Wise FY25上半年降价措施效果显著，加速了市场份额扩张。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">佣金率</span><span class="tag tag-strat">降价</span><span class="tag tag-biz">Wise</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财报/核心指标</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">摩根士丹利已将Wise国际结算基础设施整合到企业客户中；渣打银行将用Wise技术增强SC Remit跨境支付服务<span class="src">来源：<a href="https://m.mpaypass.com.cn/news/202501/20101117.html" target="_blank">#457</a></span></div>
+    <div class="ip-col ip-analysis">两家顶级全球银行（MS+渣打）在同一季度宣布接入Wise是重大信号——机构客户对Wise基础设施的信任度已达到最高级别。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">摩根士丹利</span><span class="tag tag-biz">渣打银行</span><span class="tag tag-biz">Wise Platform</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局/机构合作</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise在巴西推出面向微型企业的服务，并推进与PIX支付系统的集成<span class="src">来源：<a href="https://m.mpaypass.com.cn/news/202501/20101117.html" target="_blank">#457</a></span></div>
+    <div class="ip-col ip-analysis">PIX是巴西全国实时支付系统（类似中国网联），整合PIX意味着Wise可在巴西提供本地化的即时收付款体验，竞争力大幅提升。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">PIX</span><span class="tag tag-mkt">巴西</span><span class="tag tag-biz">Wise</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">战略/市场</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise FY25全年指引：基础收入增长15-20%（固定汇率），报告增长预计处于区间低端（汇率逆风）<span class="src">来源：<a href="https://m.mpaypass.com.cn/news/202501/20101117.html" target="_blank">#457</a></span></div>
+    <div class="ip-col ip-analysis">固定汇率15-20%增速指引 vs 实际报告低端（汇率影响）揭示英镑升值对Wise报告收入的负面影响，但核心业务增长健康。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">业绩指引</span><span class="tag tag-fin">汇率影响</span><span class="tag tag-biz">Wise</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财报/Wise</span></div>
+  </div>
+</div>
+<div class="footer">生成日期：2026-03-30 | 移动支付网 | #457 | Tier 2</div>
+</body>
+</html>

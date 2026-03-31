@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-017 | Wise Platform Q4 2024 Mission Update</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .b-tier2  { background: #e0e7ff; color: #3730a3; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; }
+  .section { background: white; padding: 0 28px; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .group-banner { background: #f8fafc; padding: 8px 0; font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 重新提取</span>
+    <span class="badge b-type">官方文档 / Platform更新</span>
+    <span class="badge b-depth">全文提取（部分截断）</span>
+    <span class="badge b-rel">相关度 95%</span>
+  </div>
+  <h1>Wise Platform Q4 2024 Mission Update — 重大合作伙伴公告与平台进展</h1>
+  <div class="source-line">Wise (Blog) | 发布：2024年Q4季末 | 来源：<a href="https://wise.com/gb/blog/wise-platform-mission-update-q4-2024" target="_blank">wise.com/gb/blog</a> | 索引：#017</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">14</div><div class="stat-label">信息点总数</div></div>
+</div>
+<div class="section">
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0; margin-top:16px;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="group-banner">▌ A. Wise Platform核心能力</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Platform基础设施：90+本地网关银行合作伙伴、65+牌照、6个本地支付系统直连，支持40+货币在190+国家即时支付<span class="src">来源：wise.com/gb/blog/wise-platform-mission-update-q4-2024</span></div>
+    <div class="ip-col ip-analysis">90个网关银行+65个牌照+6个直连构成Wise的"基础设施护城河"。竞争对手需要至少5-10年才能复制同等规模的本地网络。63%支付即时完成也依赖于这一基础设施。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">基础设施</span><span class="tag tag-comp">护城河</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q4 2024新合作伙伴：摩根士丹利（首家投行）、渣打银行（SC Remit，亚洲+中东）、Shine（法国SMB，第三个法国合作）、Travelex Confidence（巴西，首家全球外汇经纪商）<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">一个季度内签约4家不同类型合作伙伴（投行、全球银行、neobank、外汇经纪商），显示Platform模式的广泛适用性。类型多样性是Market Expansion的信号。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">Platform合作多样化</span><span class="tag tag-comp">生态扩张</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="group-banner">▌ B. 摩根士丹利合作详情</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">摩根士丹利选择Wise Platform处理企业客户的外汇国际结算，成为Wise Platform首家投资银行合作伙伴（2024年12月宣布）<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">"首家投行"是重大信号——投行的合规和风险标准远高于商业银行，摩根士丹利的选择等于对Wise的最高级别背书。此后UniCredit（2025年7月）也加入，说明这不是孤例。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">投行合作</span><span class="tag tag-comp">行业背书</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">摩根士丹利方面：通过Wise实现"高速跨境结算"，服务企业客户；"与Wise的合作使我们能够适应客户不断变化的需求"— Samer Oweida, Morgan Stanley全球FX主管<span class="src">来源：同上，Blog引述</span></div>
+    <div class="ip-col ip-analysis">Morgan Stanley的使用场景是企业FX Settlement（企业汇款结算），不是个人汇款。这明确了Wise Platform的B2B2B模式——银行的企业客户通过银行间接使用Wise基础设施。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">B2B2B模式</span><span class="tag tag-comp">企业FX结算</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="group-banner">▌ C. 渣打银行合作详情</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">渣打银行通过Wise Platform API接入，为SC Remit亚洲+中东客户提供21种货币的快速低成本汇款（2024年11月宣布）<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">渣打银行是亚洲跨境业务最广的银行之一，在亚太和中东有广泛分行网络。接入Wise意味着Wise的低成本网络延伸至渣打的数百万零售客户。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">全球银行合作</span><span class="tag tag-mkt">亚洲市场</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">渣打SC Remit通过Wise实现的即时汇款：21种货币（包括USD、CAD、EUR、GBP、SGD、HKD、JPY），提供中间市场汇率（无加价）<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">渣打主动提供"中间市场汇率无加价"，说明Wise的定价逻辑已影响到传统银行的产品设计——这是Wise对行业整体定价水平的向下压力效应。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">定价影响力</span><span class="tag tag-comp">行业标准改变</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="group-banner">▌ D. 行业活动与网络效应</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Sibos（北京，2024年10月）：Wise参与"银行全球合作的未来"等多个讨论板块；赞助5K跑聚集500+支付行业人士<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">Sibos是SWIFT组织的全球银行年度大会，Wise参加并成为赞助商是其"与银行合作"而非"对抗银行"战略的具体体现。这也是Platform业务的重要商务活动。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">银行生态位</span><span class="tag tag-comp">竞合策略</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Connect APAC（2024年11月，新加坡）：175位来自亚太主要银行、金融科技和企业的高级支付负责人参与，包括摩根大通、星展银行、Agoda、麦肯锡代表<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">Wise自办的Platform生态会议已能吸引顶级机构参与，这是Platform业务商业成熟度的标志。175位决策者意味着潜在的174个新合作机会。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">生态会议</span><span class="tag tag-mkt">APAC网络</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Money 20/20 Las Vegas（2024年10月）：Wise在"支付创新与现代化"和"跨境/实时支付生态系统"两场讨论中发言<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">Wise在顶级行业大会的发言机会反映其在"跨境支付现代化"主题中的思想领导力地位，有助于Platform业务的品牌塑造和潜在合作伙伴识别。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">思想领导力</span></div></div>
+    <div class="ip-col"><div class="score s5"><span class="score-num">5</span><div class="score-bar"><div class="score-fill" style="width:50%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Platform案例研究：南韩Moin（跨境支付公司）通过接入Wise Platform革命性改变了韩国用户的全球支付体验<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">Moin案例展示了Wise Platform的"白标"(white-label)使用模式——小型跨境支付公司将Wise作为底层基础设施，而不是自建。这是Wise Platform的长尾市场机会。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">白标模式</span><span class="tag tag-mkt">韩国市场</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Travelex Confidence（巴西）接入：首家全球外汇经纪商通过Wise Platform推出全球账户，支持多货币持有和数字借记卡<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">在巴西这个FX监管严格的新兴市场，传统FX经纪商选择接入Wise而非自建，体现Wise在拉丁美洲的基础设施价值。巴西是dLocal最强市场之一，竞争白热化。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">巴西市场</span><span class="tag tag-mkt">拉美扩张</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Platform整体产品：Send（发送）、Receive（收款）、Issue Cards（卡发行）、Multi-currency Accounts（多币种账户）四大产品模块<span class="src">来源：同上，关于Platform的说明</span></div>
+    <div class="ip-col ip-analysis">四模块覆盖金融服务"收-发-持-卡"全生命周期，是Wise Platform的完整产品矩阵。银行可以选择接入一个或多个模块，模块化设计降低了接入门槛。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">产品模块化</span><span class="tag tag-tech">平台架构</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2024年Wise Platform整体：进入新加坡举办的Finextra"支付未来2025报告"，展示基础设施能力；全年新增多个欧洲、亚洲和拉美合作伙伴<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">2024年Wise Platform进入全球多个新市场，合作伙伴类型从小型fintech扩展到顶级投行，证明Platform战略进入新的成熟阶段。这是Wise第三增长引擎的关键爬坡年份。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">Platform成熟度</span><span class="tag tag-fin">第三增长引擎</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Platform Steve Naudé（Platform MD）：引用摩根士丹利合作时表示"这标志着越来越多信任全球银行选择通过Wise Platform驱动其跨境支付的重要里程碑"<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">"越来越多信任的全球银行"暗示合作伙伴的网络效应——每增加一个顶级银行合作方，下一个银行的决策门槛就更低（社会认可效应）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">网络效应</span><span class="tag tag-comp">社会认可</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+</div>
+<div class="footer">来源：wise.com/gb/blog/wise-platform-mission-update-q4-2024 | 索引编号：#017 | 提取版本：Tier2-v1（全文） | 提取时间：2026-03-30</div>
+</body>
+</html>

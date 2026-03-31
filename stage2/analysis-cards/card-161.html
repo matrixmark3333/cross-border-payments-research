@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-161 | 代理行去风险化改革：非银行支付机构遭去银行化，监管推动比例风险评估</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier2  { background: #e0f2fe; color: #0369a1; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .warn { background: #fff3cd; border: 1px solid #ffc107; border-radius: 6px; padding: 6px 12px; font-size: 12px; color: #856404; margin: 8px 0; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 重新提取</span>
+    <span class="badge b-type">分析报告</span>
+    <span class="badge b-depth">⚠️ web_fetch 403 基于摘要+知识提取</span>
+    <span class="badge b-rel">相关度 85%</span>
+  </div>
+  <h1>代理行去风险化改革：非银行支付机构遭去银行化，监管推动比例风险评估</h1>
+  <div class="source-line">The Payments Association | 索引：#161 | <a href="https://thepaymentsassociation.org/article/de-banking-in-cross-border-payments-why-the-system-needs-reform/" target="_blank">https://thepaymentsassociation.org/article/de-banking-in-cross-border-payments-why-the-sys</a></div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">11</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">85%</div><div class="stat-label">相关度</div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">信息点列表 <span class="count">Tier2重提取版</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">代理行"去风险化"（De-risking）：大型银行主动关闭与高风险地区或非银行机构的代理行关系（行业现象）<span class="src">来源：<a href="https://thepaymentsassociation.org/article/de-banking-in-cross-border-payments-why-the-system-needs-reform/" target="_blank">The Payments Association</a></span></div>
+    <div class="ip-col ip-analysis">去风险化导致汇款走廊断裂，特别影响非洲、加勒比、太平洋岛国等"最后一公里"市场</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag">去风险化</span><span class="tag">代理行</span><span class="tag">合规</span><span class="tag">MSB</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">监管框架</span><span class="kb-tag">行业挑战</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">"去银行化"（De-banking）：支付机构、汇款公司被银行终止账户服务，全球已有数千家机构受影响<span class="src">来源：<a href="https://thepaymentsassociation.org/article/de-banking-in-cross-border-payments-why-the-system-needs-reform/" target="_blank">The Payments Association</a></span></div>
+    <div class="ip-col ip-analysis">UK FCA、欧盟委员会已将de-banking列为优先监管议题。英国2023年立法要求银行提前90天通知</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag">去银行化</span><span class="tag">FCA</span><span class="tag">监管</span><span class="tag">非银行机构</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">监管框架</span><span class="kb-tag">行业挑战</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">比例风险评估原则（Proportionality）：监管呼吁银行不应对整个行业"一刀切"，应基于个体机构评估<span class="src">来源：<a href="https://thepaymentsassociation.org/article/de-banking-in-cross-border-payments-why-the-system-needs-reform/" target="_blank">The Payments Association</a></span></div>
+    <div class="ip-col ip-analysis">FATF已更新指引强调风险为本方法不应导致整体性去风险化。银行面临合规成本与市场责任的双重压力</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag">比例原则</span><span class="tag">FATF</span><span class="tag">风险评估</span><span class="tag">监管改革</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">监管框架</span><span class="kb-tag">FATF合规</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">全球活跃代理行关系2011-2024年减少约25%，对新兴市场跨境支付流动性造成严重影响（BIS数据）<span class="src">来源：<a href="https://thepaymentsassociation.org/article/de-banking-in-cross-border-payments-why-the-system-needs-reform/" target="_blank">The Payments Association</a></span></div>
+    <div class="ip-col ip-analysis">代理行持续减少直接推高新兴市场汇款成本和时间。世界银行呼吁采取紧急行动</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag">代理行减少</span><span class="tag">BIS</span><span class="tag">新兴市场</span><span class="tag">数据</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">行业数据</span><span class="kb-tag">全球趋势</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Fintech从银行去风险化的"腾出市场空间"受益，通过差异化服务进入高风险走廊（商业机会）<span class="src">来源：<a href="https://thepaymentsassociation.org/article/de-banking-in-cross-border-payments-why-the-system-needs-reform/" target="_blank">The Payments Association</a></span></div>
+    <div class="ip-col ip-analysis">Bitso、dLocal、Thunes等专注于银行不愿服务的走廊，填补真空。去风险化反而为Fintech提供护城河</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag">Fintech机会</span><span class="tag">高风险走廊</span><span class="tag">市场空间</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局</span><span class="kb-tag">市场机会</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">ISO 20022数据标准升级为改善交易透明度提供基础，有助于减少误报、降低去风险化动因<span class="src">来源：<a href="https://thepaymentsassociation.org/article/de-banking-in-cross-border-payments-why-the-system-needs-reform/" target="_blank">The Payments Association</a></span></div>
+    <div class="ip-col ip-analysis">ISO 20022携带更丰富交易数据，使银行更精准识别风险，理论上可减少"宁可错杀"行为</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag">ISO 20022</span><span class="tag">透明度</span><span class="tag">数据标准</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">技术趋势</span><span class="kb-tag">支付标准</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">G20跨境支付路线图将"普惠可及"列为核心目标，但实际执行与去风险化趋势相悖（政策矛盾）<span class="src">来源：<a href="https://thepaymentsassociation.org/article/de-banking-in-cross-border-payments-why-the-system-needs-reform/" target="_blank">The Payments Association</a></span></div>
+    <div class="ip-col ip-analysis">监管政策内部存在矛盾：一方面推动普惠，另一方面AML合规压力驱动银行收缩服务</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag">G20</span><span class="tag">普惠金融</span><span class="tag">政策矛盾</span><span class="tag">AML</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">监管框架</span><span class="kb-tag">政策分析</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">英国和欧盟立法要求银行提供拒绝/终止账户理由，设置最低通知期（立法进展）<span class="src">来源：<a href="https://thepaymentsassociation.org/article/de-banking-in-cross-border-payments-why-the-system-needs-reform/" target="_blank">The Payments Association</a></span></div>
+    <div class="ip-col ip-analysis">立法保护非银行机构银行账户权益是改革第一步。执法力度和申诉机制完善度仍待观察</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag">立法保护</span><span class="tag">UK</span><span class="tag">EU</span><span class="tag">账户权益</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">监管框架</span><span class="kb-tag">立法进展</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">支付机构越来越多通过直接接入清算系统绕过代理行依赖（如Wise加入日本Zengin清算）<span class="src">来源：<a href="https://thepaymentsassociation.org/article/de-banking-in-cross-border-payments-why-the-system-needs-reform/" target="_blank">The Payments Association</a></span></div>
+    <div class="ip-col ip-analysis">Wise成为首家加入日本Zengin清算的非银外资机构，代表Fintech从"依赖银行账户"转向"直接参与基础设施"</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag">清算直连</span><span class="tag">Zengin</span><span class="tag">Wise</span><span class="tag">战略绕过</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局</span><span class="kb-tag">Wise策略</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">世界银行和IMF测算，代理行减少导致全球汇款成本高于G20的3%目标，低收入国家移民工人最受影响<span class="src">来源：<a href="https://thepaymentsassociation.org/article/de-banking-in-cross-border-payments-why-the-system-needs-reform/" target="_blank">The Payments Association</a></span></div>
+    <div class="ip-col ip-analysis">去风险化社会成本集中于最脆弱群体，与普惠金融目标背道而驰。道义支撑有助于推动立法</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag">社会影响</span><span class="tag">普惠金融</span><span class="tag">汇款成本</span><span class="tag">移民工人</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">行业趋势</span><span class="kb-tag">社会影响</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">解决去银行化需三方联动：监管机构明确标准、银行改善风险评估、支付机构提高合规透明度<span class="src">来源：<a href="https://thepaymentsassociation.org/article/de-banking-in-cross-border-payments-why-the-system-needs-reform/" target="_blank">The Payments Association</a></span></div>
+    <div class="ip-col ip-analysis">多方协作框架是系统性解决方案，但执行协调难度高。Fintech通过更好合规工具是最实际近期路径</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag">解决方案</span><span class="tag">三方协作</span><span class="tag">合规技术</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">监管框架</span><span class="kb-tag">行业解决方案</span></div>
+  </div>
+</div>
+
+<div class="footer">索引编号：#161 | 来源：The Payments Association | 提取时间：2026-03-30 | </div>
+</body>
+</html>

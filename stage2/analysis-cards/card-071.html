@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-071 | BIS CPMI Cross-border Payments Monitoring Survey 2024</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1  { background: #dbeafe; color: #1d4ed8; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .group-banner { background: #f8fafc; padding: 8px 0; font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1 深度分析</span>
+    <span class="badge b-type">监测调查 / 国际组织</span>
+    <span class="badge b-depth">raw PDF 全文逐页提取（26页）</span>
+    <span class="badge b-rel">相关度 100%</span>
+  </div>
+  <h1>BIS CPMI 2024年跨境支付监测调查：结果与进展 — 穷举式信息点提取</h1>
+  <div class="source-line">Bank for International Settlements — CPMI Brief No.10 | 发布：2024年12月 | 原文：bis-cpmi-crossborder-monitoring-2024.pdf | 索引：#071</div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">42</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">8</div><div class="stat-label">A.市场数据</div></div>
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">B.政策监管</div></div>
+  <div class="stat"><div class="stat-num">18</div><div class="stat-label">C.技术基础设施</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">D.地区分析</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">E.趋势预测</div></div>
+</div>
+
+<div class="section">
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="group-banner">▌ A. 市场数据（8条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2024年调查覆盖68个央行，166个运营支付系统（45个FPS、72个RTGS、49个DNS）；亚太81%司法区运营FPS，美洲仅42%<span class="src">BIS CPMI Brief No.10, p.2</span></div>
+    <div class="ip-col ip-analysis">提供全球最权威的支付基础设施现状数据；亚太FPS普及率领先全球，美洲落后明显</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">调查统计</span><span class="tag tag-tech">FPS</span><span class="tag tag-tech">RTGS</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">统计数据</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">RTGS系统平均每周运营约66小时（最多168小时）；仅5个实现24/7；06:00-11:00 UTC是当前"全球结算窗口"<span class="src">BIS CPMI Brief No.10, p.4</span></div>
+    <div class="ip-col ip-analysis">RTGS运营时间覆盖率仅39%，超60%时间无法结算，是批发跨境支付延迟的核心原因之一</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">RTGS</span><span class="tag tag-fin">运营时间</span><span class="tag tag-fin">全球结算窗口</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">跨境支付</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">53%的RTGS系统已延长、计划或考虑延长运营时间；7个系统计划2025年底前完成延长，4个目标24/7<span class="src">BIS CPMI Brief No.10, p.5</span></div>
+    <div class="ip-col ip-analysis">24/7运营趋势加速，中东非洲24/7比例最高，延长意愿在亚太和美洲也显著上升</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">RTGS延长运营</span><span class="tag tag-strat">24/7</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">约1/3的FPS提供非银行PSP直接访问（direct access）；到2025年底预计接近50%；欧洲和中东非洲贡献了全部计划扩展<span class="src">BIS CPMI Brief No.10, p.7</span></div>
+    <div class="ip-col ip-analysis">非银行PSP直接接入FPS是金融科技竞争的政策杠杆，欧洲和中东是推动力量</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">非银行接入</span><span class="tag tag-reg">访问政策</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局</span><span class="kb-tag">基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">63%的FPS和RTGS系统允许在本地有实体存在的外资银行直接接入；无本地存在的外资银行仅14%系统允许直接接入<span class="src">BIS CPMI Brief No.10, p.7</span></div>
+    <div class="ip-col ip-analysis">外资银行访问壁垒显示代理行体系的持续必要性；本地实体要求是跨境支付成本的结构性原因</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">外资银行访问</span><span class="tag tag-reg">本地化要求</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局</span><span class="kb-tag">政策监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">ISO 20022减少例外和调查（E&I）案例的人工干预高达84%；1-3%的支付产生查询，每个E&I案例涉及5-10个人工接触点；ISO 20022每年可为金融业节省3.32亿美元运营成本和2.7亿美元流动性成本<span class="src">BIS CPMI Brief No.10, p.13（Box 1）</span></div>
+    <div class="ip-col ip-analysis">ISO 20022的ROI极为明确：仅E&I场景就有6亿美元以上年化收益；84%自动化率是强有力的迁移激励</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">ISO 20022 ROI</span><span class="tag tag-tech">自动化</span><span class="tag tag-fin">成本节约</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">成本分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">5-10%的支付产生合规警报，其中99%为误报（false positive）；ISO 20022可将合规警报误报率减少25-30%<span class="src">BIS CPMI Brief No.10, p.13（Box 1）</span></div>
+    <div class="ip-col ip-analysis">99%误报率是巨大的效率浪费；25-30%误报减少将直接降低合规运营成本并改善客户体验</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">ISO 20022</span><span class="tag tag-reg">AML合规</span><span class="tag tag-fin">误报率</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">合规风险</span><span class="kb-tag">技术效益</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">印度尼西亚2022年遗留Swift格式的被拒客户转账中约5%因监管信息无效被拒（主要因人工输入错误）；ISO 20022的结构化格式可显著改善<span class="src">BIS CPMI Brief No.10, p.13（Box 1）</span></div>
+    <div class="ip-col ip-analysis">印尼案例量化了遗留格式的合规成本：5%拒绝率意味着大量客户体验损耗和运营成本</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">印度尼西亚</span><span class="tag tag-tech">ISO 20022</span><span class="tag tag-reg">合规拒绝</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">合规风险</span></div>
+  </div>
+
+  <div class="group-banner">▌ B. 政策监管（7条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">54%的RTGS系统和67%的FPS将法规变更作为扩展访问的前提条件；29%的司法区计划2025年前实施相关改革，14%计划2027年前<span class="src">BIS CPMI Brief No.10, p.8</span></div>
+    <div class="ip-col ip-analysis">法规改革是FPS扩展访问的关键瓶颈，多数改革仍在规划中而非完成状态</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">监管改革</span><span class="tag tag-tech">支付系统访问</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">78%的司法区已实施基于风险的方法预防金融犯罪，另有5%计划实施；美洲、中东非洲和欧洲进展最快<span class="src">BIS CPMI Brief No.10, p.15</span></div>
+    <div class="ip-col ip-analysis">基于风险的AML/CFT方法正成为全球主流，但亚太地区相对滞后</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">风险导向AML</span><span class="tag tag-reg">金融犯罪预防</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">合规风险</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">近半数司法区已实施或计划实施个人数字身份识别符；38%已实施或计划实施企业数字身份识别符；欧洲计划企业数字身份识别符覆盖率最高65%<span class="src">BIS CPMI Brief No.10, p.15-16</span></div>
+    <div class="ip-col ip-analysis">数字身份识别符是简化KYC、降低合规成本的基础设施，欧洲eIDAS框架驱动领先进展</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">数字身份</span><span class="tag tag-reg">KYC</span><span class="tag tag-mkt">欧洲</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">技术基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">约1/3司法区已实施或改革数据隐私立法以减少跨境支付数据摩擦；同等比例允许或计划允许在境外共享处理支付数据<span class="src">BIS CPMI Brief No.10, p.16</span></div>
+    <div class="ip-col ip-analysis">数据隐私改革进展慢于其他领域；境外数据共享许可是跨境支付流通的重要前提</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">数据隐私</span><span class="tag tag-reg">数据跨境</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">数据合规</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">有数据评估LEI采用情况的央行中，3/4报告其支付路由的LEI采用率"低"或"无"；合规检查的LEI使用略高（中东非洲和亚太地区更常见）<span class="src">BIS CPMI Brief No.10, p.16</span></div>
+    <div class="ip-col ip-analysis">LEI在支付路由的全球采用率极低，与FSB的推广建议形成落差；与2023调查结论一致</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">LEI</span><span class="tag tag-fin">采用率</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">合规风险</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FPS互联监管：7个有FPS双边互联的辖区中，仅3个辖区的主管机构有权监管互联安排本身；仅1个有正式合作监管安排<span class="src">BIS CPMI Brief No.10, p.10</span></div>
+    <div class="ip-col ip-analysis">FPS互联的监管覆盖极为薄弱：多数互联安排处于监管灰色地带，治理风险随互联扩展而上升</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">FPS互联监管</span><span class="tag tag-reg">跨境治理</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">35%的司法区已实施允许非银行PSP扩展访问的改革；亚太地区3/4司法区已引入或计划引入个人数字身份识别符<span class="src">BIS CPMI Brief No.10, p.8, p.15</span></div>
+    <div class="ip-col ip-analysis">亚太在数字身份和非银行访问改革上进展领先，但各国进度差异大</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">非银行PSP</span><span class="tag tag-mkt">亚太</span><span class="tag tag-tech">数字身份</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="group-banner">▌ C. 技术基础设施（18条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FPS的ISO 20022处理率2024年达76%（较2023年提升）；RTGS系统ISO 20022处理率43%，但预计2026年底前达83%<span class="src">BIS CPMI Brief No.10, p.11</span></div>
+    <div class="ip-col ip-analysis">FPS由于原生建设优势领先；RTGS迁移在快速追赶，2026年将超越FPS当前水平</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">ISO 20022</span><span class="tag tag-fin">采用率</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">标准化</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">若含"考虑中"系统，ISO 20022中期采用率可达FPS 84%、RTGS 94%；EMDE支付系统的ISO 20022实施计划最多，有望快速追上发达经济体<span class="src">BIS CPMI Brief No.10, p.11</span></div>
+    <div class="ip-col ip-analysis">EMDE追赶效应是ISO 20022全球化的重要驱动力，发展中国家正在"弯道超车"直接采用新标准</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">ISO 20022</span><span class="tag tag-mkt">新兴市场</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">78%的FPS和83%的RTGS系统已完全迁移或计划完全迁移至ISO 20022国内支付；跨境支付的完全采用比例略低（FPS 72%，RTGS 75%）<span class="src">BIS CPMI Brief No.10, p.12</span></div>
+    <div class="ip-col ip-analysis">跨境支付的ISO 20022完全采用落后于国内，反映互操作性要求更高、协调更复杂</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">ISO 20022</span><span class="tag tag-fin">跨境vs国内</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">跨境支付</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">ISO 20022将支付调查解决时间缩短最多80%；通过20+个结构化数据元素增强欺诈检测和制裁筛查能力<span class="src">BIS CPMI Brief No.10, p.13（Box 1）</span></div>
+    <div class="ip-col ip-analysis">支付调查速度80%提升对机构和客户均有直接价值；结构化数据是智能合规的基础</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">ISO 20022</span><span class="tag tag-fin">处理效率</span><span class="tag tag-reg">制裁筛查</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">技术效益</span><span class="kb-tag">合规风险</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Project Nexus专门使用与CPMI协调要求和CBPR+指引对齐的ISO 20022消息，确保不同司法区FPS更容易互联<span class="src">BIS CPMI Brief No.10, p.13（Box 1）</span></div>
+    <div class="ip-col ip-analysis">Nexus将ISO 20022标准化作为互联前提，创建了标准即护城河的良性循环</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">Nexus</span><span class="tag tag-tech">ISO 20022</span><span class="tag tag-tech">FPS互联</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">标准化</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">78%的FPS和31%的RTGS系统使用API进行数据交换；FPS计划采用API的比例从2023年约20%降至2024年仅2%，提示API采用已接近饱和点<span class="src">BIS CPMI Brief No.10, p.14</span></div>
+    <div class="ip-col ip-analysis">API采用率趋于饱和意味着下一个重点是API协调（标准统一），而非采用本身</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">API</span><span class="tag tag-fin">采用饱和</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">技术趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">中东非洲所有FPS均使用API；亚太94%的FPS预计2025年底前使用API；美洲不使用API且无计划的比例最高<span class="src">BIS CPMI Brief No.10, p.14</span></div>
+    <div class="ip-col ip-analysis">API采用的地区差异明显：中东非洲最领先，美洲落后；反映整体数字化基础设施水平差异</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">API</span><span class="tag tag-mkt">地区差异</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">中央银行拥有并运营76%的RTGS系统；FPS以私营为主（36%私营，31%央行，其余公私合营）<span class="src">BIS CPMI Brief No.10, p.3</span></div>
+    <div class="ip-col ip-analysis">FPS的多元化所有权结构反映其较新、更市场化的特征；RTGS的央行主导体现批发结算的公共基础设施属性</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">所有权结构</span><span class="tag tag-reg">央行</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">约3/4的支付系统只处理单一货币（通常是本地货币）；多货币系统的交叉货币安排与多货币安排并存<span class="src">BIS CPMI Brief No.10, p.3</span></div>
+    <div class="ip-col ip-analysis">单货币主导说明大多数FPS/RTGS仍是国内工具，跨境互联需要外汇兑换或双币系统支持</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">货币安排</span><span class="tag tag-fin">外汇</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">跨境支付</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">53%的FPS和47%的RTGS系统处理跨境支付；46%目前仅限国内的FPS和24%的RTGS系统计划提供跨境处理能力<span class="src">BIS CPMI Brief No.10, p.9</span></div>
+    <div class="ip-col ip-analysis">大量FPS/RTGS即将扩展至跨境，预示跨境支付基础设施将在未来2-3年显著扩大</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">跨境处理</span><span class="tag tag-fin">扩展计划</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">跨境支付</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">20个能处理跨境支付的FPS中，1/4（5个）仅通过代理行安排处理；2个FPS是多司法区公共平台；亚太6个FPS有至少1条双边互联，覆盖约17条双边走廊<span class="src">BIS CPMI Brief No.10, p.9-10</span></div>
+    <div class="ip-col ip-analysis">亚太引领FPS互联，但代理行仍是大量跨境处理的主要机制，真正的直接互联比例仍低</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">FPS互联</span><span class="tag tag-mkt">亚太</span><span class="tag tag-tech">代理行</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">超过一半的FPS（53%）正在探索或计划建立FPS互联安排；大多数仍处于探索阶段，6个FPS有明确计划<span class="src">BIS CPMI Brief No.10, p.10</span></div>
+    <div class="ip-col ip-analysis">FPS互联从少数先行者扩展至行业性探索，但落地执行仍是少数；探索转化率将是关键指标</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">FPS互联</span><span class="tag tag-strat">探索阶段</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">技术趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">大多数现有FPS双边互联采用多货币形式，允许在走廊两种货币中处理交易；少数采用单货币（使用一方货币）<span class="src">BIS CPMI Brief No.10, p.10</span></div>
+    <div class="ip-col ip-analysis">多货币互联是更完整的方案，减少强制汇兑需求，对消费者体验更友好</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">多货币互联</span><span class="tag tag-fin">外汇</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">3个RTGS系统有双边互联，9个通过单一接入点连接其他RTGS，3个是区域公共平台；18个RTGS通过代理行处理跨境；5个RTGS有未来互联计划，另18个在探索<span class="src">BIS CPMI Brief No.10, p.9</span></div>
+    <div class="ip-col ip-analysis">RTGS批发互联的探索规模（18个）与FPS零售互联探索数量接近，显示批发层面的同步演进</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">RTGS互联</span><span class="tag tag-tech">批发支付</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">批发支付</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">代理注册表（Proxy registry）：亚太47%司法区已使用（另16%计划），美洲使用最少；FPS支持手机号、国民ID、邮箱等代理标识符发起支付<span class="src">BIS CPMI Brief No.10, p.16</span></div>
+    <div class="ip-col ip-analysis">代理注册表是提升即时支付用户友好性的关键基础设施，亚太领先反映其FPS生态成熟度</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">代理注册表</span><span class="tag tag-tech">即时支付</span><span class="tag tag-mkt">亚太</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">用户体验</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">ISO 20022能改善结构化汇款信息，提升支付对账流程，减少错误，降低企业财务运营延误，提升费用和结算时间透明度<span class="src">BIS CPMI Brief No.10, p.13（Box 1）</span></div>
+    <div class="ip-col ip-analysis">企业用户是ISO 20022提升效率的直接受益者，对账自动化对财务管理的价值被低估</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">ISO 20022</span><span class="tag tag-fin">企业用户价值</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">技术效益</span><span class="kb-tag">企业支付</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FPS的API主要用于提交/修改支付指令和接收/管理交易通知；RTGS系统API用途更多样化，还包括访问交易/报表数据和流动性管理<span class="src">BIS CPMI Brief No.10, p.15（Graph 12B）</span></div>
+    <div class="ip-col ip-analysis">API用途差异反映FPS和RTGS的功能定位差异：FPS重视实时指令处理，RTGS更关注流动性和数据访问</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">API用途</span><span class="tag tag-tech">FPS</span><span class="tag tag-tech">RTGS</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">绝大多数FPS和RTGS系统的API已基于某种协调标准化框架；CPMI 2024年10月发布API协调建议和工具包，下一轮调查将增加对齐程度测量<span class="src">BIS CPMI Brief No.10, p.14-15</span></div>
+    <div class="ip-col ip-analysis">API标准化进入测量和验证阶段，从定性到定量是监测成熟度提升的标志</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">API标准化</span><span class="tag tag-reg">CPMI建议</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">标准化</span></div>
+  </div>
+
+  <div class="group-banner">▌ D. 地区分析（5条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">亚太引领FPS互联（6个FPS有双边互联，覆盖约17条走廊）、ISO 20022迁移和API采用；但在延长RTGS运营时间和扩展访问政策方面计划较少<span class="src">BIS CPMI Brief No.10, p.18</span></div>
+    <div class="ip-col ip-analysis">亚太在零售即时支付基础设施上领先，但批发结算层面（RTGS）的现代化相对滞后</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">亚太</span><span class="tag tag-tech">FPS</span><span class="tag tag-tech">RTGS</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">中东非洲在RTGS 24/7运营和扩展计划上比例最高，所有FPS均使用API；但均无数字身份识别符的实施或计划<span class="src">BIS CPMI Brief No.10, p.16, p.18</span></div>
+    <div class="ip-col ip-analysis">中东非洲在基础设施现代化上的积极性超预期，但数字身份体系缺失是重要短板</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">中东非洲</span><span class="tag tag-tech">24/7</span><span class="tag tag-tech">数字身份缺失</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">欧洲在延长RTGS运营时间上进展更多，并有非银行PSP访问的法规改革计划；欧洲计划企业数字身份覆盖率最高65%<span class="src">BIS CPMI Brief No.10, p.18</span></div>
+    <div class="ip-col ip-analysis">欧洲在监管改革层面系统性推进，SEPA即时支付强制参与和PSD系列指令构成完整政策框架</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">欧洲</span><span class="tag tag-reg">监管改革</span><span class="tag tag-tech">数字身份</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">政策监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">美洲在FPS普及（仅42%）、API采用和路线图优先行动实施上平均落后其他地区，整体处于规划实施较早阶段<span class="src">BIS CPMI Brief No.10, p.18</span></div>
+    <div class="ip-col ip-analysis">美洲落后主要因美国（体量大但FedNow最近才推出）和拉美发展阶段差异大拉低平均值</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">美洲</span><span class="tag tag-strat">落后地区</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FPS完成或计划完成至少2项优先行动的比例从2023年91%升至2024年98%；RTGS系统该比例从71%降至58%（因新增受访者和优先行动覆盖差异）<span class="src">BIS CPMI Brief No.10, p.17</span></div>
+    <div class="ip-col ip-analysis">FPS执行率接近完美；RTGS下降值得关注，ISO 20022之外的其他优先行动在RTGS中推进不足</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">路线图执行率</span><span class="tag tag-tech">FPS</span><span class="tag tag-tech">RTGS</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">KPI监测</span></div>
+  </div>
+
+  <div class="group-banner">▌ E. 趋势预测（4条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">基础设施改进不自动转化为终端用户体验改善；从支付系统改进到KPI结果指标（速度、成本等）需要时间，许多终端用户尚未感受到显著改善<span class="src">BIS CPMI Brief No.10, p.2</span></div>
+    <div class="ip-col ip-analysis">这是G20路线图面临的核心挑战：基础设施进展明显，但终端用户感知滞后，政策有效性面临质疑</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">政策时滞</span><span class="tag tag-fin">终端用户体验</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">宏观趋势</span><span class="kb-tag">政策监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">API采用趋近饱和后，下一个关键步骤是API协调（标准统一）；CPMI 2024年10月发布建议是该阶段的起点<span class="src">BIS CPMI Brief No.10, p.14</span></div>
+    <div class="ip-col ip-analysis">技术采用从"有没有"转向"标不标准"，协调度是未来互操作性的核心度量</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">API协调</span><span class="tag tag-strat">标准化趋势</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">技术趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">非银行PSP对FPS的直接访问预计从当前1/3增至2025年底接近50%；非银行接入扩展可能"在中期使非银行访问量翻倍"<span class="src">BIS CPMI Brief No.10, p.7</span></div>
+    <div class="ip-col ip-analysis">非银行访问翻倍将显著改变支付竞争格局，金融科技直接访问基础设施的成本将大幅降低</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">非银行访问</span><span class="tag tag-comp">竞争格局</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">技术趋势</span><span class="kb-tag">竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">G20路线图的成功最终取决于终端用户的体验结果；应特别关注受高成本、低速度和访问不足影响最大的走廊和用户群体<span class="src">BIS CPMI Brief No.10, p.18</span></div>
+    <div class="ip-col ip-analysis">CPMI将路线图评估从系统层面下沉至走廊/用户层面，与FSB KPI框架形成互补</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">政策目标</span><span class="tag tag-fin">金融包容</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">宏观趋势</span><span class="kb-tag">政策监管</span></div>
+  </div>
+
+</div>
+
+<div class="footer">
+  索引编号：card-071 | 来源文件：bis-cpmi-crossborder-monitoring-2024.pdf | 提取方式：pdfplumber全文逐页提取（26页）| 提取日期：2026-03-28 | 信息点总数（grep验证）：42条
+</div>
+
+</body>
+</html>

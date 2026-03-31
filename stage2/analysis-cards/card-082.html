@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-082 | OFX 1H25 Investor Presentation — 穷举式信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #0891b2; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1  { background: #dbeafe; color: #1d4ed8; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #0891b2; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .group-banner { background: #f8fafc; padding: 8px 0 8px 0; font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1 深度分析</span>
+    <span class="badge b-type">投资者演示 / 半年业绩</span>
+    <span class="badge b-depth">PDF全文逐页提取（28页）</span>
+    <span class="badge b-rel">相关度 100%</span>
+  </div>
+  <h1>OFX Group 1H FY2025 投资者演示 — NOI A$1.11亿，企业+平台双引擎转型</h1>
+  <div class="source-line">OFX Group Limited (ASX: OFX) | 截止：2024年9月30日 | 发布：2024年11月12日 | 原文：ofx-investor-presentation-h1-2025.pdf | 索引：#082 | 版本：穷举A</div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">35</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">10</div><div class="stat-label">A.核心财务</div></div>
+  <div class="stat"><div class="stat-num">8</div><div class="stat-label">B.分业务线</div></div>
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">C.运营指标</div></div>
+  <div class="stat"><div class="stat-num">10</div><div class="stat-label">D.战略展望</div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">信息点列表 <span class="count">穷举版</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="group-banner">▌ A. 核心财务数据（10条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">1H25 手续费及交易收入（Fee and trading income）A$114.5M，同比持平（1H24 A$114.6M，-0.1%）<span class="src">来源：OFX 1H25 Investor Presentation, p.11，财务结果表</span></div>
+    <div class="ip-col ip-analysis">顶线收入持平反映宏观挑战（高利率、强美元抑制企业外汇需求），但非结构性退出；APAC/北美/EMEA三区均略有增长。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">营收</span><span class="tag tag-fin">持平</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">1H25 净经营收入（NOI）A$111.2M，同比-3.5%（1H24 A$115.1M）；NOI利润率0.60%，持平（1H24 0.60%）<span class="src">来源：OFX 1H25 Investor Presentation, p.11，财务结果表</span></div>
+    <div class="ip-col ip-analysis">NOI下降因1H24含A$3.7M托管账户释放（一次性），剔除后NOI仅降-0.2%；NOI率持平于0.60%，显示定价能力稳定。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">NOI</span><span class="tag tag-fin">NOI利润率</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">1H25 底层EBITDA A$29.0M，同比-8.8%（1H24 A$31.8M）；EBITDA利润率26.1%（1H24 27.6%，下降150bps）<span class="src">来源：OFX 1H25 Investor Presentation, p.11，财务结果表</span></div>
+    <div class="ip-col ip-analysis">EBITDA收缩主因收入端软化，运营费用已控制下降1.4%；26%利润率仍属中等水平，中期目标28-30%。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">EBITDA</span><span class="tag tag-fin">利润率</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">1H25 底层税前利润（EBT）A$16.1M，同比-19.2%；底层净利润（NPAT）A$13.5M，同比-20.6%；有效税率11.9%（含A$2.4M R&D税收优惠）<span class="src">来源：OFX 1H25 Investor Presentation, p.11，财务结果表</span></div>
+    <div class="ip-col ip-analysis">净利润下降主因2Q25交易软弱，但R&D税收优惠提供缓冲；剔除一次性税收优惠，正常化NPAT约A$11.1M。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">净利润</span><span class="tag tag-fin">有效税率</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">1H25 法定净利润（Statutory NPAT）A$10.7M，同比-32.3%，含（A$2.2M）或有对价公允价值变动（非现金）<span class="src">来源：OFX 1H25 Investor Presentation, p.11，财务结果表</span></div>
+    <div class="ip-col ip-analysis">法定利润下降幅度更大（32%），主因非现金的或有对价调整拖累，剔除后底层利润下降20%，仍优于法定数据。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">法定利润</span><span class="tag tag-fin">非现金调整</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">1H25 净持有现金（Net Cash Held）A$74.7M，同比-19.5%（1H24 A$92.8M）；可用净现金（Net Available Cash）A$45.9M<span class="src">来源：OFX 1H25 Investor Presentation, p.11+p.14，财务结果</span></div>
+    <div class="ip-col ip-analysis">现金减少因：股份回购A$3.3M + 债务偿还A$11.5M + 运营现金流时效性。净债务正值A$15.2M，债务将于FY26末前全额清偿。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">现金</span><span class="tag tag-fin">去杠杆</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">1H25 运营费用A$82.1M，同比-1.4%（1H24 A$83.3M）；员工成本A$57.4M（-1.7%），促销费用A$9.3M（-4.1%），坏账A$0.7M（-41.7%）<span class="src">来源：OFX 1H25 Investor Presentation, p.13，费用分析</span></div>
+    <div class="ip-col ip-analysis">费用优化成效显著：员工成本通过FTE整合节省约20人，坏账大幅下降反映风控流程改善；整体费率下降为EBITDA扩张创造空间。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">运营费用</span><span class="tag tag-fin">成本控制</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">成本结构库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">1H25 无形资产投资A$10.0M，全年预计约A$19.4M（约为收入8.3%）；加速加拿大/英国NCP上线增量约A$1M<span class="src">来源：OFX 1H25 Investor Presentation, p.13，资本投入</span></div>
+    <div class="ip-col ip-analysis">无形资产（技术平台）投入占收入约8%，属B2B外汇平台正常水平；NCP（新客户平台）是核心战略投资，驱动非FX收入。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">资本投入</span><span class="tag tag-tech">平台建设</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">成本结构库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">1H25 底层经营活动净现金流A$17.1M（EBITDA-现金转化率59%）；税款时效和远期外汇账簿增长影响转化率<span class="src">来源：OFX 1H25 Investor Presentation, p.14，现金流分析</span></div>
+    <div class="ip-col ip-analysis">现金转化率59%低于EBITDA，主因远期外汇账簿（对冲业务）扩张增加了营运资金占用；属周期性非结构性影响。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">现金流</span><span class="tag tag-fin">现金转化</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">1H25 NOI利润率0.60%（同比持平）；定价行动（动态定价、季度定价委员会审查）使NOI率较2H24提升2bps<span class="src">来源：OFX 1H25 Investor Presentation, p.12，NOI利润率走势</span></div>
+    <div class="ip-col ip-analysis">NOI利润率作为核心盈利指标保持稳定，定价委员会机制化运营（季度复盘需求弹性）是差异化管理实践。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">NOI率</span><span class="tag tag-strat">定价管理</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">定价数据库</span></div>
+  </div>
+
+  <div class="group-banner">▌ B. 分业务线表现（8条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">1H25 企业（Corporate）收入A$72.1M，同比+3.5%（1H24 A$69.4M）；新客户收入+26.6%（澳大利亚新客户收入更高达+38.7%含非FX）<span class="src">来源：OFX 1H25 Investor Presentation, p.7，企业板块</span></div>
+    <div class="ip-col ip-analysis">企业板块整体增长受加拿大/英国拖累（ATV分别-9.4%/-19.5%），但新客户收入爆发说明新平台（NCP）获客有效；老市场疲软vs新市场活跃。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">企业业务</span><span class="tag tag-biz">新客户增长</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">业务数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">1H25 高价值个人消费者（High Value Consumer）收入A$38.3M，同比-3.6%（1H24 A$34.5M相比2H24提升+5.9%）；平均交易金额（ATV）A$20.3k<span class="src">来源：OFX 1H25 Investor Presentation, p.8，个人消费者板块</span></div>
+    <div class="ip-col ip-analysis">个人板块环比回升（+5.9% vs 2H24），说明低波动率影响开始消退；77%收入来自复购客户（Recurring Revenue），黏性强。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">个人消费者</span><span class="tag tag-biz">复购率</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">业务数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">1H25 企业板块收入来自远期产品（Forward Products）占比11.4%（1H24 9.6%），显著提升<span class="src">来源：OFX 1H25 Investor Presentation, p.7，企业板块</span></div>
+    <div class="ip-col ip-analysis">远期产品（外汇对冲）比即期交易利润率更高（锁定汇率溢价），占比提升说明企业客户风险管理需求增加，有利改善整体利润率。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">远期产品</span><span class="tag tag-fin">产品组合</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">1H25 企业板块：澳大利亚/美国/欧洲增长显著，但加拿大ATV -9.4%、英国ATV -19.5%，主因库存积压和消费者信心低迷<span class="src">来源：OFX 1H25 Investor Presentation, p.6，宏观分析</span></div>
+    <div class="ip-col ip-analysis">加拿大/英国逆风具有宏观周期性（高利率→企业缩减外汇需求），预计随利率下行改善；OFX地理多元化降低单一市场风险。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">地区分化</span><span class="tag tag-mkt">宏观风险</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">市场覆盖库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">1H25 企业板块交易量（Transactions）+24.8%，交易笔数增长但ATV -12.9%；企业活跃客户3.27万（+24.8%交易）<span class="src">来源：OFX 1H25 Investor Presentation, p.24，运营数据附录</span></div>
+    <div class="ip-col ip-analysis">交易量增加+24.8%但收入仅+3.5%，反映每笔交易金额（ATV）大幅下降，低价值交易占比上升；需关注平均收费效率。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">交易量</span><span class="tag tag-biz">ATV</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">用户数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">1H25 企业板块收入来自非FX产品约50%（出口率）；NCP客户非FX产品采用率约40%；平均每客户活跃卡约7张<span class="src">来源：OFX 1H25 Investor Presentation, p.17，平台转型</span></div>
+    <div class="ip-col ip-analysis">非FX收入占比50%（出口率）是OFX 2.0战略核心成果，卡产品（Visa商业借记卡）驱动使用频率，增强平台黏性。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">非FX收入</span><span class="tag tag-strat">产品多元化</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">1H25 企业板块NCP客户（新客户平台）同比+106%（含NCP企业活跃客户3.34万）；澳大利亚新企业收入+9.4% YoY<span class="src">来源：OFX 1H25 Investor Presentation, p.7+p.16，企业板块+平台采用</span></div>
+    <div class="ip-col ip-analysis">NCP客户同比翻倍反映平台转型成功；NCP首推澳大利亚，2H25扩至加拿大/英国（增量资本投入约A$1M），地理扩展节奏清晰。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">NCP平台</span><span class="tag tag-strat">平台扩张</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">1H25 企业（Enterprise）板块收入A$4.4M，同比+6.0%，3年CAGR+24.5%；活跃合作伙伴20家（较1H24+5），潜在管道84家（+7）<span class="src">来源：OFX 1H25 Investor Presentation, p.9，企业级板块</span></div>
+    <div class="ip-col ip-analysis">Enterprise（B2B2C）板块虽收入小但CAGR高达24.5%，84家潜在合作伙伴显示可观增长储备，是未来低CAC增长的重要补充。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">Enterprise板块</span><span class="tag tag-strat">B2B2C</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">业务数据库</span></div>
+  </div>
+
+  <div class="group-banner">▌ C. 运营指标（7条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">1H25 OFX集团活跃客户13.29万，同比-8.1%（1H24 14.44万）；Transactions 65.9万，同比+7.2%；ATV A$2.79万，同比-3.3%<span class="src">来源：OFX 1H25 Investor Presentation, p.24，运营数据附录</span></div>
+    <div class="ip-col ip-analysis">活跃客户数下降但交易笔数增加，说明留存客户使用更频繁（每客户交易次数LTM达10.0笔，+7.2%）；ATV下降是宏观影响，非客户流失。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">活跃客户</span><span class="tag tag-biz">交易频次</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">用户数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">1H25 总交易量（Turnover）A$184亿，同比-4.0%（1H24 A$192亿）；企业板块A$117亿，个人A$42亿<span class="src">来源：OFX 1H25 Investor Presentation, p.11+p.24，财务表+附录</span></div>
+    <div class="ip-col ip-analysis">Turnover微降，NOI率（0.60%）保持稳定说明定价规律健康；企业板块贡献63%的交易量，是核心流量来源。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">交易量</span><span class="tag tag-biz">业务结构</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">用户数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">1H25 企业板块每活跃客户年化交易次数24.5笔（LTM），是个人客户4.4笔的5.6倍<span class="src">来源：OFX 1H25 Investor Presentation, p.24，运营数据附录</span></div>
+    <div class="ip-col ip-analysis">企业客户使用频率远高于个人，且ATV也更高（企业A$2.88万 vs 个人A$2.03万），是OFX最高价值客户群，持续获取企业客户是核心战略。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">客户价值</span><span class="tag tag-biz">B2B优势</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">用户数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">1H25 企业复购率86%（Existing Clients，较1H24 84%提升），个人复购率77%（略低于1H24 79%）<span class="src">来源：OFX 1H25 Investor Presentation, p.23，收入附录</span></div>
+    <div class="ip-col ip-analysis">企业复购率提升至86%，显示新平台（NCP）产品黏性强；个人复购率小幅下降可能反映低波动率环境减少了换汇需求。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">复购率</span><span class="tag tag-biz">客户黏性</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">用户数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">1H25 APAC/北美/EMEA三区收入分别：A$46.6M(+0.3%)/ A$44.1M(+2.5%)/ A$19.8M(+0.8%)，三区均轻微增长<span class="src">来源：OFX 1H25 Investor Presentation, p.25，地区收入</span></div>
+    <div class="ip-col ip-analysis">三区均录正增长，显示宏观挑战已基本化解；EMEA虽体量小（收入17%）但增速最快，欧洲BDM投资扩张可期。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">地区收入</span><span class="tag tag-mkt">EMEA增长</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">市场覆盖库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">1H25 坏账及可疑债务（Bad and doubtful debts）A$0.7M，同比-41.7%（1H24 A$1.2M），流程改善和欺诈控制增强<span class="src">来源：OFX 1H25 Investor Presentation, p.13，费用分析</span></div>
+    <div class="ip-col ip-analysis">坏账大幅下降41.7%，NOI比率未恶化，反映OFX风控系统优化有效；企业外汇业务信用风险低于消费金融，是B2B模式优势。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">风控</span><span class="tag tag-fin">信用风险</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">运营数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">1H25 商业全球团队150+ FTE覆盖9个国家；Visa商业借记卡协议，Ryan McInerney（Visa CEO）专门提及OFX<span class="src">来源：OFX 1H25 Investor Presentation, p.17，平台更新</span></div>
+    <div class="ip-col ip-analysis">Visa CEO在公开场合提及OFX表明合作升级，多币种商业借记卡是对抗Wise Business的关键产品，提升在美国/澳大利亚的竞争力。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">竞争优势</span><span class="tag tag-strat">战略合作</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">战略展望库</span></div>
+  </div>
+
+  <div class="group-banner">▌ D. 战略展望（10条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2H25展望：NOI超过2H24水平（2H24 A$112.4M）；EBITDA率维持28%<span class="src">来源：OFX 1H25 Investor Presentation, p.20，FY25展望</span></div>
+    <div class="ip-col ip-analysis">2H25将看到利率下行环境改善企业信心，澳大利亚NCP获客动能，以及非FX产品收入增长共同驱动NOI回升。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">业绩指引</span><span class="tag tag-fin">2H25展望</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">战略展望库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">中期目标（FY25结果后更新）：NOI年增长10%+；EBITDA利润率28%-30%<span class="src">来源：OFX 1H25 Investor Presentation, p.20，中期展望</span></div>
+    <div class="ip-col ip-analysis">NOI年增长10%+是合理目标，考虑到宏观逆风减弱和产品扩张；EBITDA率28-30%目标反映规模杠杆释放预期。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">中期目标</span><span class="tag tag-fin">EBITDA率目标</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">战略展望库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">长期目标（3年以上）：NOI年增长15%+；EBITDA利润率约30%<span class="src">来源：OFX 1H25 Investor Presentation, p.20，长期展望</span></div>
+    <div class="ip-col ip-analysis">长期NOI增长15%+对应规模从A$2.2亿（1H25年化）增至A$3亿+，需要非FX产品收入和新地区扩展共同实现。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">长期目标</span><span class="tag tag-fin">增长预期</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">战略展望库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">OFX 2.0战略：从单一FX转向"强大平台"，持续增加产品（会计集成、自动对冲、多货币钱包/卡），驱动非FX收入<span class="src">来源：OFX 1H25 Investor Presentation, p.16~19，战略更新</span></div>
+    <div class="ip-col ip-analysis">OFX 2.0是应对FX商品化趋势的关键战略转型：通过平台黏性和非FX产品提升ARPU，降低对汇率波动的依赖。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">平台战略</span><span class="tag tag-comp">差异化</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">战略展望库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">NCP（新客户平台）FY25全年计划：澳大利亚全面铺开（每周从100个提升至300+部署）；加拿大/英国2H25上线<span class="src">来源：OFX 1H25 Investor Presentation, p.19，NCP部署计划</span></div>
+    <div class="ip-col ip-analysis">NCP部署速度提升3倍（100→300+每周）表明技术稳定性提升，加拿大/英国上线将扩大受影响的企业客户数量，2H25增长催化剂明确。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">NCP部署</span><span class="tag tag-tech">平台扩展</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">动态定价（Dynamic Pricing）已在所有地区部署；季度定价委员会审查需求弹性；NOI率较2H24提升2bps<span class="src">来源：OFX 1H25 Investor Presentation, p.12，NOI率走势</span></div>
+    <div class="ip-col ip-analysis">机制化定价管理是B2B外汇公司少见的竞争优势，允许动态调整价格最大化NOI；远期产品（11.4%占比）贡献更高利润率。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">动态定价</span><span class="tag tag-fin">NOI优化</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">定价数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">竞争对标：对标Competitor A（B2B卡+利息收入约2倍FX营收）、Competitor B（非FX+利息为主要增长）、Competitor C（非FX+利息为主驱动）<span class="src">来源：OFX 1H25 Investor Presentation, p.18，竞争对标</span></div>
+    <div class="ip-col ip-analysis">对标公司（推测Airwallex/Wise/Revolut Business）均已实现非FX收入超越FX，OFX目标复制此路径；若成功，ARPU潜在翻倍空间。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">竞争格局</span><span class="tag tag-strat">非FX增长</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争分析库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY25全年无形资产投资约A$19.4M（占收入约8.3%）；加快加拿大/英国NCP上线增量约A$1M；三到五年摊销<span class="src">来源：OFX 1H25 Investor Presentation, p.13，资本投入图</span></div>
+    <div class="ip-col ip-analysis">技术投入占收入约8%，类似SaaS公司研发占比，是维持平台竞争力的必要投入；三五年摊销周期意味着未来年度D&A将持续上升。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">技术投资</span><span class="tag tag-tech">研发投入</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">成本结构库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">1H25主动股份回购160万股，花费A$3.3M；信贷设施偿还A$11.5M，FY26末前将全额偿还贷款<span class="src">来源：OFX 1H25 Investor Presentation, p.14，资本管理</span></div>
+    <div class="ip-col ip-analysis">同步进行回购和去杠杆表明财务管理纪律强；无债务状态（FY26末）将释放约A$5-6M年利息费用，直接提升净利润。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">股份回购</span><span class="tag tag-fin">去杠杆</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财务数据库</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">1H25赢回2015年流失客户（软件公司），因FX+钱包+卡产品组合；吸引以往不在目标群的新型企业（清洁科技初创公司）<span class="src">来源：OFX 1H25 Investor Presentation, p.16，客户案例</span></div>
+    <div class="ip-col ip-analysis">产品扩展带来全新可寻址市场（此前只针对大企业FX需求），卡+钱包+FX的组合对中小企业（12-3000人）更具吸引力，TAM显著扩大。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">市场扩展</span><span class="tag tag-biz">新客群</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">战略展望库</span></div>
+  </div>
+
+</div>
+
+<div class="footer">
+  来源：OFX Group Limited 1H FY2025 Investor Presentation | 截止日期：2024年9月30日 | 发布：2024年11月12日 | 文档：28页 | 提取版本：穷举A | 索引：card-082
+</div>
+</body>
+</html>

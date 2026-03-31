@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-015 | FXC Intelligence: Interest Income Analysis</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #7c3aed; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .b-tier2  { background: #e0e7ff; color: #3730a3; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #7c3aed; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; }
+  .section { background: white; padding: 0 28px; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .group-banner { background: #f8fafc; padding: 8px 0; font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 重新提取</span>
+    <span class="badge b-type">分析报告</span>
+    <span class="badge b-depth">FXC全文提取（部分免费）</span>
+    <span class="badge b-rel">相关度 100%</span>
+  </div>
+  <h1>FXC Intelligence: 利息收入是否持续增长？— Payoneer/Wise/Revolut跨公司比较</h1>
+  <div class="source-line">FXC Intelligence | 发布：2024年8月 | 来源：<a href="https://www.fxcintel.com/research/analysis/interest-income-payoneer-wise-revolut" target="_blank">fxcintel.com</a> | 索引：#015</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">14</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">6</div><div class="stat-label">三公司对比</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">利息收入趋势</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">前瞻展望</div></div>
+</div>
+<div class="section">
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0; margin-top:16px;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="group-banner">▌ A. 客户余额增长（三公司）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Payoneer 2024年H1余额增+9% YoY，FY2023增+10%；Revolut FY2023余额增+38% YoY；Wise 2024日历H1余额增+23%（个人+31%，企业+12%）<span class="src">来源：FXC Intel 分析文章</span></div>
+    <div class="ip-col ip-analysis">三家公司余额均高速增长，但增速有差异：Revolut最高（38%）&gt; Wise（23%）&gt; Payoneer（9-10%）。增速差异反映产品吸引力和客群结构差异。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">余额增长对比</span><span class="tag tag-comp">三公司比较</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Payoneer超过80%的客户资金为计息资金；Revolut FY2023余额£500M(+38%)；Wise FY24客户余额£13.3B<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">Wise余额规模（£13.3B）是Revolut（£500M）的约26倍，但Wise余额主要是"持仓账户"，Revolut更多是"日常消费账户"——使用场景不同，转化为利息收入的比例也不同。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">余额规模对比</span><span class="tag tag-comp">使用场景差异</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="group-banner">▌ B. 利息收入增速对比（FY2023）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2023利息收入增速：Revolut +502%、Payoneer +320%、Wise +83%<span class="src">来源：FXC Intel，基于各公司年报</span></div>
+    <div class="ip-col ip-analysis">FY2023三家公司利息收入均爆发性增长，反映2022-2023年加息周期（英美利率从0%升至5%+）的历史性顺风。Revolut+502%最高，因其此前利息基数极低。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">利息增速峰值</span><span class="tag tag-fin">加息顺风</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2023利息收入占营收比重：Revolut 28%（最大单一来源）、Payoneer 28%、Wise 7%<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">Wise利息占比仅7%（vs Revolut/Payoneer各28%），说明Wise对利率的依赖度最低，商业模式最稳健。FXC将此作为Wise"低利率韧性"的证据。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">收入结构比较</span><span class="tag tag-fin">利率依赖度</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2022年利息增速更极端：Revolut和Payoneer各+1000%以上<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">2022年利率从零飞速上升期，两家公司利息收入实现10倍增长。这提醒分析师：FY2023-FY2024的高利息收入是结构性利率周期产物，不可持续。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">历史极端数据</span><span class="tag tag-fin">利率周期</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="group-banner">▌ C. 利息收入增速放缓迹象（2024年）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2024日历H1：Payoneer利息收入增速放缓至+5% YoY；Wise放缓至+27% YoY（相比FY2023 +83%）<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">利息收入增速急剧放缓（Payoneer从+320%到+5%！）是加息周期结束的最直接财务体现。英国央行2024年8月开始降息，此后利息压力持续。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">利息增速放缓</span><span class="tag tag-fin">降息影响</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Payoneer FY2024全年利息收入预测$240M（+4% YoY），公司罕见地提供了利息专项全年展望<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">Payoneer愿意主动披露利息预测（仅+4%），表明管理层对低利率环境的提前响应。相比之下，Wise不单独披露利息预测，而是整合在底层收入指引中。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Payoneer利息预测</span><span class="tag tag-comp">披露策略差异</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">英国央行2024年8月做出2020年3月以来首次降息；美联储主席鲍威尔表示"降息时机已到"（2024年8月）<span class="src">来源：同上，FT引述</span></div>
+    <div class="ip-col ip-analysis">双央行降息信号是行业分析的重要宏观背景，预示Revolut/Payoneer/Wise的利息收入将面临持续压力，驱动三家公司加速非利息收入多元化。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">宏观利率</span><span class="tag tag-mkt">货币政策</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场总览</span></div>
+  </div>
+
+  <div class="group-banner">▌ D. 前瞻与竞争含义</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FXC结论："利息收入不会消失，但不太可能再看到如此强劲的增速；对某些公司来说，它实际上可能会下降"<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">行业最重要风险因素之一：利息收入从2020-2023年的高速增长转为低速甚至负增长。对Payoneer（利息占28%）影响最大，对Wise（利息占7%）影响最小。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">利息下行风险</span><span class="tag tag-comp">公司差异化</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">三家公司对多币种账户的共同押注：Payoneer（B2B）、Revolut（消费者）、Wise（个人+企业）均以账户余额为利息引擎<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">三家公司从"交易工具"向"账户平台"的共同转型，既增加了收入多样性，也增加了利率敏感性。这一结构性转变的长期优劣需在不同利率环境下评估。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">账户化转型</span><span class="tag tag-comp">共同战略</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise FY25利息收入£443.9M（Card-001数据，FXC预期数值）；尽管利率下行，但余额持续增长（£21B）部分抵消利率下行影响<span class="src">来源：FXC Intel + Card-001</span></div>
+    <div class="ip-col ip-analysis">FY25实际结果验证了FXC预测：利息收入仍在增长（余额增速>利率降速），但增速明显低于FY23-FY24的爆发期。这是Wise商业模式韧性的体现。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">FY25利息验证</span><span class="tag tag-fin">余额对冲</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FXC还比较了Equals Money、HSBC、Airwallex等也提供多币种账户并受益于利率的公司，指出这是行业性结构变化<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">利息收入多元化不只是Wise/Revolut/Payoneer的"专利"，而是整个多币种账户服务行业的共同特征。这一结构变化正在重塑跨境支付行业的商业模式和估值逻辑。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">行业结构变化</span><span class="tag tag-fin">利息收入普及</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">多币种账户客户余额增长驱动力：消费者通过账户"持有并使用"多种货币（Revolut/Wise个人），企业保留收款后的资金待用（Payoneer/Wise企业）<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">两种不同的余额积累机制：个人是"储蓄/留存"型，企业是"周转/缓冲"型。前者利率敏感性更高（利率下行时个人更倾向取出），后者更稳定。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">余额来源</span><span class="tag tag-comp">B2C vs B2B</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FXC提供跨境支付市场规模数据（2030年预测），为利息收入分析提供整体增长背景<span class="src">来源：同上，文末链接</span></div>
+    <div class="ip-col ip-analysis">FXC的数据产品（市场规模数据库）是行业内最权威的量化数据来源之一，其付费数据集被机构投资者广泛引用，但文章仅提供免费摘要。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">市场规模</span><span class="tag tag-comp">FXC数据</span></div></div>
+    <div class="ip-col"><div class="score s5"><span class="score-num">5</span><div class="score-bar"><div class="score-fill" style="width:50%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场总览</span></div>
+  </div>
+
+</div>
+<div class="footer">来源：FXC Intelligence（2024年8月）| 索引编号：#015 | 提取版本：Tier2-v1（全文） | 提取时间：2026-03-30</div>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-309 | Edgar Dunn: Are Stablecoins the Game Changer for Cross-Border Payments? — 结构化信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1  { background: #dbeafe; color: #1d4ed8; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 2 机构分析</span>
+    <span class="badge b-type">分析报告</span>
+    <span class="badge b-depth">web_fetch 全文读取</span>
+    <span class="badge b-rel">相关度 70%</span>
+  </div>
+  <h1>Edgar Dunn & Co: Are Stablecoins the Game Changer for Cross-Border Payments?</h1>
+  <div class="source-line">Edgar Dunn & Company | 2025年 | 原文：<a href="https://www.edgardunn.com/articles/are-stablecoins-the-game-changer-for-cross-border-payments" target="_blank">edgardunn.com</a> | 索引：#309</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">19</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">6</div><div class="stat-label">市场数据类</div></div>
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">技术分析类</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">风险监管类</div></div>
+  <div class="stat"><div class="stat-num">7.8</div><div class="stat-label">平均价值评分</div></div>
+</div>
+<div class="section">
+  <div class="section-title">信息点列表 <span class="count">19条</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="ip-row" style="background:#f8fafc; grid-column:1/-1; display:block; padding:6px 0; font-size:11px; font-weight:800; color:#475569; text-transform:uppercase; border-bottom:1px solid #e2e8f0;">▌ A. 稳定币市场规模与增长</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">稳定币市值从2020年约$50亿增长至2025年超过$2000亿，其中USDT和USDC合计占90%以上<span class="src">来源：EDC, 2025 Solana Stablecoin Report aggregated</span></div>
+    <div class="ip-col ip-analysis">5年40倍增长，稳定币已从加密边缘工具成为主流支付基础设施。USDT/USDC双寡头格局稳固，其他稳定币难以撼动</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">市值规模</span><span class="tag tag-tech">稳定币</span><span class="tag tag-fin">增长率</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.1 市场规模</span><span class="kb-tag">5.2 新型轨道</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">稳定币2024年交易量超过$26万亿（BCG数据），超越Visa和Mastercard单年处理量<span class="src">来源：BCG Global Payments 2025 via EDC</span></div>
+    <div class="ip-col ip-analysis">稳定币链上交易量已超传统卡组织是支付史上的重要拐点。但需注意其中大量为DeFi协议内部流转，真实跨境支付占比存争议</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">交易量</span><span class="tag tag-comp">与Visa对比</span><span class="tag tag-tech">稳定币</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.1 市场规模</span><span class="kb-tag">5.2 新型轨道</span></div>
+  </div>
+
+  <div class="ip-row" style="background:#f8fafc; grid-column:1/-1; display:block; padding:6px 0; font-size:11px; font-weight:800; color:#475569; text-transform:uppercase; border-bottom:1px solid #e2e8f0;">▌ B. 稳定币跨境支付优势</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">传统国际转账需3-5个工作日，产生多重费用（交易费、中间行费、FX费）；稳定币可在区块链上即时结算、全天候运行<span class="src">来源：Edgar Dunn & Co, 2025</span></div>
+    <div class="ip-col ip-analysis">稳定币跨境支付核心价值：速度（秒级）、时间（7x24）、成本（消除中间行）。这是对传统代理行体系最直接的威胁</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">速度优势</span><span class="tag tag-biz">成本结构</span><span class="tag tag-tech">区块链</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.2 竞争优势</span><span class="kb-tag">5.2 新型轨道</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">区块链网络可承载比传统银行轨道更丰富的支付数据（发票参考、对账信息），增强B2B交易透明度和自动化<span class="src">来源：Edgar Dunn & Co, 2025</span></div>
+    <div class="ip-col ip-analysis">这是稳定币对ISO 20022的互补性：不仅传递金额，还传递结构化商业数据。对企业财务自动化（ERP集成）有重大价值</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">富数据</span><span class="tag tag-biz">B2B自动化</span><span class="tag tag-tech">区块链</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.2 新型轨道</span><span class="kb-tag">3.2 竞争优势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">稳定币为新兴市场提供稳定的支付手段，在货币波动剧烈和通货膨胀严重的经济体中提供替代解决方案<span class="src">来源：Edgar Dunn & Co, 2025</span></div>
+    <div class="ip-col ip-analysis">新兴市场是稳定币最大实际应用场景。在阿根廷、土耳其、尼日利亚等高通胀国家，USDT已成为实质性的"美元替代账户"</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">新兴市场</span><span class="tag tag-mkt">金融包容</span><span class="tag tag-tech">稳定币</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.3 新兴市场</span><span class="kb-tag">5.2 新型轨道</span></div>
+  </div>
+
+  <div class="ip-row" style="background:#f8fafc; grid-column:1/-1; display:block; padding:6px 0; font-size:11px; font-weight:800; color:#475569; text-transform:uppercase; border-bottom:1px solid #e2e8f0;">▌ C. 机构采用：大型支付公司布局</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Stripe以$11亿收购Bridge Network（稳定币API平台），目前对稳定币交易收费0.1%-0.25%，低于Visa/MC刷卡手续费<span class="src">来源：Edgar Dunn & Co / Nilson Report Issue 1280</span></div>
+    <div class="ip-col ip-analysis">Stripe的收购是稳定币商业化的重要里程碑。0.1-0.25%的费率vs传统卡手续费1.5-3%，价格优势显著，但仍高于纯链上交易的Gas费</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">并购</span><span class="tag tag-fin">定价</span><span class="tag tag-comp">Stripe</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.3 Stripe</span><span class="kb-tag">3.1 收入模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Visa、Mastercard、PayPal、Revolut均宣布布局稳定币支付或计划发行自有稳定币<span class="src">来源：Edgar Dunn & Co, 2025</span></div>
+    <div class="ip-col ip-analysis">传统支付巨头全面进场稳定币，说明这已从"实验性"变为"战略性"。竞争将从"是否做"转为"谁做得更好"</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">机构采用</span><span class="tag tag-strat">战略布局</span><span class="tag tag-tech">稳定币</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.1 竞争格局</span><span class="kb-tag">5.2 新型轨道</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Circle推动USDC在巴西和墨西哥接入本地实时支付网络（Pix、SPEI）<span class="src">来源：Edgar Dunn & Co, 2025</span></div>
+    <div class="ip-col ip-analysis">稳定币与本地即时支付网络的融合是关键创新路径，解决了"链上→链下"的最后一公里问题。巴西Pix和墨西哥SPEI是全球最成功的即时支付系统</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">USDC</span><span class="tag tag-mkt">拉丁美洲</span><span class="tag tag-tech">即时支付</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.2 新型轨道</span><span class="kb-tag">7.2 拉丁美洲</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">PayPal完成首笔B2B PYUSD交易；Ripple发布机构稳定币RLUSD<span class="src">来源：Edgar Dunn & Co, 2025</span></div>
+    <div class="ip-col ip-analysis">B2B稳定币支付从概念到实践：PayPal的PYUSD在B2B场景落地，Ripple的RLUSD专注机构市场，说明稳定币正从C端零售扩展到企业端</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">B2B支付</span><span class="tag tag-tech">稳定币</span><span class="tag tag-comp">机构竞争</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.1 竞争格局</span><span class="kb-tag">5.2 新型轨道</span></div>
+  </div>
+
+  <div class="ip-row" style="background:#f8fafc; grid-column:1/-1; display:block; padding:6px 0; font-size:11px; font-weight:800; color:#475569; text-transform:uppercase; border-bottom:1px solid #e2e8f0;">▌ D. 风险与挑战</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Tether(USDT)储备透明度问题持续存在，2022年5月曾短暂脱锚至$0.94；USDT/USDC曾冻结特定地址资产<span class="src">来源：Edgar Dunn & Co, 2025</span></div>
+    <div class="ip-col ip-analysis">储备透明度和中心化风险是稳定币作为支付基础设施的根本性制约。对机构级跨境支付，这可能是不可接受的对手方风险</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">储备风险</span><span class="tag tag-reg">中心化风险</span><span class="tag tag-tech">稳定币</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.2 风险监管</span><span class="kb-tag">5.2 新型轨道</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Terra/UST算法稳定币2022年崩盘是算法型稳定币失败的典型案例，引发加密市场连锁崩溃<span class="src">来源：Edgar Dunn & Co, 2025</span></div>
+    <div class="ip-col ip-analysis">算法稳定币的"死亡螺旋"是其内在缺陷，难以成为可靠的跨境支付轨道。未来可信的稳定币方案需要真实资产储备支撑</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">风险案例</span><span class="tag tag-tech">算法稳定币</span><span class="tag tag-reg">系统性风险</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.2 风险监管</span><span class="kb-tag">5.2 新型轨道</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Tokenized real-world assets（代币化现实资产）市值达约$280亿，两年内近4倍增长<span class="src">来源：BCG 2025 via EDC</span></div>
+    <div class="ip-col ip-analysis">RWA代币化是稳定币的下一发展阶段，货币市场基金、国债等资产上链将创造新型流动性。对跨境支付意味着更多可编程的结算资产选择</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">RWA代币化</span><span class="tag tag-fin">市值</span><span class="tag tag-tech">区块链</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.2 新型轨道</span><span class="kb-tag">1.1 市场规模</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">稳定币监管框架形成中：美国GENIUS法案提供首个联邦框架；欧盟MiCA、新加坡、香港均已建立或正在建立监管框架<span class="src">来源：EDC / Acceleron Bank综合</span></div>
+    <div class="ip-col ip-analysis">监管明确化是稳定币大规模商业应用的前提。GENIUS法案+MiCA的出台标志着主要经济体已从"观望"转向"规范引导"，有利于机构级采用</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">GENIUS法案</span><span class="tag tag-reg">MiCA</span><span class="tag tag-reg">监管框架</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.1 监管政策</span><span class="kb-tag">5.2 新型轨道</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">稳定币跨境支付面临的AML/CFT挑战：传统银行须满足的反洗钱要求在链上难以完全执行<span class="src">来源：Edgar Dunn & Co, 2025</span></div>
+    <div class="ip-col ip-analysis">KYC/AML是稳定币机构化应用的核心合规障碍。解决路径包括链上身份（DID）、受监管的稳定币（如USDC要求合规赎回）、链上数据分析工具（Chainalysis等）</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">AML/KYC</span><span class="tag tag-reg">合规挑战</span><span class="tag tag-tech">稳定币</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.2 风险监管</span><span class="kb-tag">5.2 新型轨道</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">银行和PSP的稳定币战略选项：资产托管、发行稳定币或代币化存款、形成联盟、专注"as-a-service"基础设施<span class="src">来源：BCG / EDC, 2025</span></div>
+    <div class="ip-col ip-analysis">稳定币不是"做还是不做"的问题，而是"怎么做"的战略选择题。各银行根据自身定位选择不同切入点，竞争结构正在重塑</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">银行战略</span><span class="tag tag-biz">商业模式</span><span class="tag tag-comp">竞争战略</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.1 收入模式</span><span class="kb-tag">4.1 竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Fireblocks与Chainlink合作提升稳定币安全性和效率；数字资产基础设施生态正在快速建立<span class="src">来源：Edgar Dunn & Co, 2025</span></div>
+    <div class="ip-col ip-analysis">支撑稳定币支付的基础设施层（托管、预言机、合规、清算）正形成完整生态，降低机构进入门槛</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">基础设施</span><span class="tag tag-tech">数字资产</span><span class="tag tag-biz">生态系统</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.2 新型轨道</span><span class="kb-tag">4.1 竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">传统国际汇款系统效率不足根源：代理行模式复杂、多层中间行费用、低效人工对账、多次货币转换<span class="src">来源：Edgar Dunn & Co, 2025</span></div>
+    <div class="ip-col ip-analysis">稳定币的切入点正是传统系统这四大痛点。理解这些痛点有助于判断哪些场景（新兴市场B2B、高频小额汇款）最先被稳定币渗透</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">痛点分析</span><span class="tag tag-tech">代理行</span><span class="tag tag-comp">竞争替代</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.2 竞争优势</span><span class="kb-tag">5.1 支付基础设施</span></div>
+  </div>
+</div>
+<div class="footer">生成时间：2026-03-24 | 来源：Edgar Dunn & Co web_fetch全文 | 索引编号：#309 | Stage 2 分析卡</div>
+</body>
+</html>

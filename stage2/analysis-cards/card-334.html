@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-334 | ERIA ASEAN Digital Payments PDF (条目334)</title>
+<style>
+* { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1 { background: #dbeafe; color: #1d4ed8; }
+  .b-type { background: #f0fdf4; color: #166534; }
+  .b-depth { background: #ede9fe; color: #5b21b6; }
+  .b-rel { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat { background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8 { color: #2563eb; } .s7 .score-fill, .s8 .score-fill { background: #2563eb; }
+  .s5, .s6 { color: #d97706; } .s5 .score-fill, .s6 .score-fill { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .group-row { background: #f8fafc; padding: 8px 10px 8px 0; font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; grid-column: 1/-1; display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; }
+  .warn-box { background: #fef3c7; border: 1px solid #fde68a; border-radius: 8px; padding: 12px 16px; margin: 12px 0; font-size: 13px; color: #92400e; }
+</style>
+</head>
+<body>
+<div class="warn-box">⚠️ 注意：重复条目，参见card-076.html。</div>
+<div class="card-header">
+  <div class="badge-row"><span class="badge b-tier1">Tier 1 深度分析</span>
+    <span class="badge b-type">官方文档</span>
+    <span class="badge b-depth">raw 全文读取</span>
+    <span class="badge b-rel">相关度 85%</span></div>
+  <h1>ERIA ASEAN Digital Payments PDF (条目334)</h1>
+  <div class="source-line">ERIA | 原文: <a href="https://www.eria.org/uploads/Integrating-Digital-Payments-in-ASEAN.pdf" target="_blank">eria-asean-digital-payments.pdf</a> | 索引: #334</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">3</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">1</div><div class="stat-label">Tier</div></div>
+  <div class="stat"><div class="stat-num">1.0</div><div class="stat-label">平均价值评分</div></div>
+</div>
+<div class="section">
+<div class="section-title">说明 <span class="count">1</span></div>
+<div class="ip-row" style="background:#f8fafc">
+  <div class="ip-col col-header">原文信息点 + 来源</div>
+  <div class="ip-col col-header">摘要分析</div>
+  <div class="ip-col col-header">标签</div>
+  <div class="ip-col col-header">评分</div>
+  <div class="ip-col col-header">知识库归属</div>
+</div>
+<div class="ip-row">
+  <div class="ip-col"><div class="ip-original">条目334与条目76相同，详见card-076.html<span class="src">eria-asean-digital-payments.pdf</span></div></div>
+  <div class="ip-col"><div class="ip-analysis">重复条目</div></div>
+  <div class="ip-col"><div class="tag-list"><span class="tag">重复条目</span></div></div>
+  <div class="ip-col"><div class="score s1"><div class="score-num">1</div><div class="score-bar"><div class="score-fill" style="width:10%"></div></div></div></div>
+  <div class="ip-col"><span class="kb-tag">7.区域市场 > 7.1亚太</span></div>
+</div>
+
+</div>
+<div class="footer">生成时间：2026-03-24 09:51 | 文件来源：/Users/martin/.openclaw/workspace/groups/Business Model/research-v2/stage1/raw/eria-asean-digital-payments.pdf</div>
+</body>
+</html>

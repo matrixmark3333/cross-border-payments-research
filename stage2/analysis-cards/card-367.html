@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-367 | Capgemini World Payments Report 2025 — 结构化信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .b-tier1 { background: #dbeafe; color: #1d4ed8; } .b-type { background: #f0fdf4; color: #166534; } .b-depth { background: #ede9fe; color: #5b21b6; } .b-rel { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; } .source-line { font-size: 13px; color: #64748b; } .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; } .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; } .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; }
+  .section { background: white; padding: 0 28px; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; } .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; padding: 8px 10px; background: #f8fafc; } .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; } .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; } .tag-biz { background: #dcfce7; color: #166534; border-color: #bbf7d0; } .tag-mkt { background: #fef3c7; color: #92400e; border-color: #fde68a; } .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; } .tag-strat { background: #fff7ed; color: #9a3412; border-color: #fed7aa; } .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; } .score-num { font-size: 20px; font-weight: 800; } .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; } .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; } .s7, .s8 { color: #2563eb; } .s7 .score-fill, .s8 .score-fill { background: #2563eb; } .s5, .s6 { color: #d97706; } .s5 .score-fill, .s6 .score-fill { background: #d97706; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1</span>
+    <span class="badge b-type">分析报告 / Capgemini</span>
+    <span class="badge b-depth">web_fetch 摘要页</span>
+    <span class="badge b-rel">相关度 90%</span>
+  </div>
+  <h1>Capgemini World Payments Report 2025 — 全球支付报告2025核心发现</h1>
+  <div class="source-line">Capgemini | 发布：2025年 | 原文：<a href="https://www.capgemini.com/insights/research-library/world-payments-report-2025/" target="_blank">capgemini.com/WPR-2025</a> | 索引：#367</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">22</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">6</div><div class="stat-label">市场趋势类</div></div>
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">即时支付类</div></div>
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">银行策略类</div></div>
+  <div class="stat"><div class="stat-num">8.0</div><div class="stat-label">平均价值评分</div></div>
+</div>
+<div class="section">
+  <div class="ip-row" style="background:#f8fafc;">
+    <div class="col-header">原文信息点 + 来源</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header">评分</div>
+    <div class="col-header">知识库</div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">报告调研了600名企业财务主管（保险/零售/汽车）+ 200+银行和金融机构高管，覆盖全球美洲/欧洲/亚太/中东。<span class="src">Capgemini WPR 2025摘要页</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">这是Capgemini第20届年度支付报告，样本规模大（800+），覆盖全球主要地区，是行业参考级数据来源。企业财务主管视角提供了真实B2B支付需求侧数据。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">调研方法</span><span class="tag tag-biz">B2B视角</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场总览</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">全球从"少现金"向"无现金"经济体的转型已势不可当。非现金交易量逐年增长，疫情驱动的网购浪潮加速了数字支付渗透。<span class="src">Capgemini WPR 2025, Highlight 1</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">"无现金"是全球支付大趋势，但各区域进展差异显著（北欧几乎无现金，东南亚/拉美仍大量现金）。对跨境支付企业意味着数字化用户基础持续扩大，可获客市场增长。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">无现金趋势</span><span class="tag tag-mkt">数字支付</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场总览</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">即时支付交易量将在2028年前显著增长，受SEPA（欧洲）、UPI/FPS（印度/香港）、ACH（北美）等即时支付方案扩张推动。<span class="src">Capgemini WPR 2025, Highlight 2</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">多地即时支付方案并行发展，到2028年将形成全球即时支付网络矩阵。对跨境支付企业的意义：各地本地即时网络直连能力成为核心竞争力（Airwallex 95%交易当日到账即受益于此）。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">即时支付</span><span class="tag tag-biz">SEPA/UPI/FPS</span><span class="tag tag-strat">2028展望</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场总览</span><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">企业愿意为即时支付能力支付溢价（premium），特别是实时支付解决方案、实时资金可见性（real-time cash visibility）和开放金融API。<span class="src">Capgemini WPR 2025, Highlight 3</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">企业客户对即时支付的支付意愿（WTP）是跨境支付定价提升的重要依据。资金可见性（实时查看全球账户余额）是高价值功能，Airwallex/Nium等平台正在将其产品化。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">溢价支付意愿</span><span class="tag tag-biz">资金可见性</span><span class="tag tag-tech">开放金融API</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">1.市场总览</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">仅5%的全球银行在即时支付业务和技术得分上被评为"领导者"，绝大多数银行严重准备不足（underprepared）。<span class="src">Capgemini WPR 2025, Highlight 4</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">5%领导者意味着95%的银行在即时支付上落后，这是跨境支付fintech的核心机遇——填补传统银行的即时支付缺口。Wise/Airwallex等公司的快速增长正是从这一缺口切入。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">银行vs Fintech</span><span class="tag tag-strat">市场机遇</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">银行需要采用多轨道支付（multi-rail payments）策略，在保护现有全球支付收入的同时，探索开放金融驱动的即时支付新服务。<span class="src">Capgemini WPR 2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">多轨道策略（SWIFT + 本地即时 + 稳定币 + CBDC）是银行应对挑战的框架。对fintech意味着银行会成为其潜在合作伙伴（提供轨道接入），而非纯粹竞争对手。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">多轨道策略</span><span class="tag tag-biz">银行合作</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">现有企业资金管理服务（transaction banking / corporate cash management）未能达到预期：PSP应向实时支付解决方案演进。<span class="src">Capgemini WPR 2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">企业级资金管理缺口是B2B跨境支付fintech的新战场。Airwallex的Billing/资金管理产品、Nium的企业支付解决方案都是对这一缺口的直接响应。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">企业资金管理</span><span class="tag tag-comp">B2B机遇</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">云原生、可组合平台（cloud-based, composable platforms）提供转型灵活性和可扩展性，被认为是支付机构应对变化的关键技术路径。<span class="src">Capgemini WPR 2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">可组合架构是现代支付基础设施的技术趋势，允许机构按需组装功能模块（清算/结算/FX/合规）。这也是Airwallex/Stripe的API平台策略的技术基础。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">云原生</span><span class="tag tag-tech">可组合架构</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">全球B2B非现金交易量也在经历显著增长，受B2B支付数字化加速驱动。<span class="src">Capgemini WPR 2025, Highlight 1</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">B2B数字支付增长是$175T跨境市场的底层驱动力。Convera/Airwallex/Nium等B2B支付公司的高速增长与此宏观趋势完全吻合。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">B2B增长</span><span class="tag tag-fin">数字化趋势</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场总览</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">中东的AFAQ跨境即时支付系统、马来西亚DuitNow、印度UPI被列为代表性即时支付基础设施。<span class="src">Capgemini WPR 2025, Highlight 2</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">亚太和中东的区域即时支付网络（DuitNow/UPI/AFAQ）正在快速成熟，形成与SEPA并行的地区轨道。跨境支付公司需要接入这些区域网络才能提供完整服务。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">区域即时支付</span><span class="tag tag-mkt">中东/东南亚</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">开放金融（open finance）和即时支付协同被认为是银行变革的双轮驱动，需要同时推进以形成协同效应。<span class="src">Capgemini WPR 2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">开放金融（PSD2/开放银行标准）+即时支付的组合，是新一代金融基础设施的核心。对跨境支付意味着更多API接入银行数据，账户端支付（A2A）替代卡支付的可能性增加。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">开放金融</span><span class="tag tag-strat">A2A支付</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">战术性的临时调整已不够，机构需要更大战略转型才能在未来支付竞争中保持盈利增长。<span class="src">Capgemini WPR 2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">Capgemini的判断与市场观察一致：传统银行的小修小补无法应对Fintech的结构性冲击，需要系统性重构。这为Airwallex/Nium等提供了持续替代传统银行服务的叙事逻辑。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">银行转型</span><span class="tag tag-strat">战略重构</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">香港FPS（快速支付系统）被并列UPI（印度）提及，是亚太区即时支付基础设施的代表。<span class="src">Capgemini WPR 2025, Highlight 2</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">香港FPS与印度UPI并列，显示其在亚太即时支付中的战略地位。Currenxie/Statrys等香港平台依托FPS提供本地即时收付，是其相比传统SWIFT的核心优势之一。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">香港FPS</span><span class="tag tag-mkt">香港</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">报告建议PSP开发"跨产品、多轨道价值主张"（cross-product, multi-rail value propositions），以实现卓越客户体验。<span class="src">Capgemini WPR 2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">多轨道+跨产品整合是头部支付公司（Airwallex、Nium、Stripe）的标准策略。单一通道PSP将在此框架下逐渐边缘化，这是B2B支付整合趋势的理论依据。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">多轨道策略</span><span class="tag tag-biz">平台整合</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">报告由Capgemini联合Citi、ING、Bpifrance、Amazon Web Services、Adobe等机构顾问委员会共同指导完成。<span class="src">Capgemini WPR 2025摘要页</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">顾问委员会阵容（Citi+ING+AWS+Adobe）说明报告的行业代表性。AWS和Adobe等非金融科技巨头的参与，暗示嵌入式金融/支付基础设施正成为各行业关注的战略议题。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">报告背景</span><span class="tag tag-strat">嵌入式金融</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场总览</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Capgemini WPR 2025是第20届年度全球支付报告，每年发布，是支付行业权威参考。<span class="src">Capgemini WPR 2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">20年连续性数据是这份报告的独特价值。通过历年对比可以追踪支付行业结构性变化趋势，是行业研究的基准数据来源。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">行业报告</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场总览</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">报告强调"无摩擦体验"（reduced friction）和"更广泛采用"是即时支付扩张的两大正向指标。<span class="src">Capgemini WPR 2025, Highlight 2</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">摩擦减少和采用率提升是相互强化的正向循环（更多用户→更多商户接受→更多用户）。这正是支付网络效应的经典体现，对跨境支付平台同样适用。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">网络效应</span><span class="tag tag-mkt">用户采用</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场总览</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Capgemini调研包含保险、零售、汽车三个行业的企业财务主管，体现B2B支付需求的行业多样性。<span class="src">Capgemini WPR 2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">三个行业的财务主管视角揭示：跨境支付需求不局限于贸易/电商，保险理赔、汽车零配件采购等也有显著跨境支付需求，是潜在的垂直市场机会。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">垂直市场</span><span class="tag tag-biz">B2B需求</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场总览</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">报告认为全球B2B支付数字化是一个尚处早期的增长机遇，非现金B2B交易量的大幅增长被视为主要趋势。<span class="src">Capgemini WPR 2025, Highlight 1</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">B2B支付数字化仍在早期，相比C2C/B2C的成熟度，企业间支付的数字化率（尤其是中小企业）仍低。这是Airwallex/Convera/Nium等B2B专注公司的长期增长空间。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">B2B数字化</span><span class="tag tag-strat">早期机遇</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场总览</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">AFAQ中东跨境即时支付系统与DuitNow（马来西亚）并列作为新兴区域即时支付基础设施代表。<span class="src">Capgemini WPR 2025, Highlight 2</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">中东AFAQ和东南亚DuitNow等区域即时系统，正在重塑亚洲/中东跨境支付格局。对Thunes（专注新兴市场）、Airwallex（东南亚扩张）等是直接相关的基础设施动态。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">AFAQ/DuitNow</span><span class="tag tag-mkt">中东/东南亚</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+</div>
+<div class="footer">card-367 | 生成时间：2026-03-24 | 来源：capgemini.com/WPR-2025摘要页 | 信息点数：20</div>
+</body>
+</html>

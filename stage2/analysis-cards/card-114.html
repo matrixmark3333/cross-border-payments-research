@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-114 | Currenxie HK Pricing — 香港跨境企业定价分析 — 结构化信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1  { background: #dbeafe; color: #1d4ed8; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-warn   { background: #fef3c7; color: #92400e; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .warn-banner { background:#fef9c3; border:1px solid #fde047; border-radius:8px; padding:10px 14px; margin:12px 0; font-size:13px; color:#713f12; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1 定价分析</span>
+    <span class="badge b-type">定价页 / 官网</span>
+    <span class="badge b-depth">web_fetch 实时获取</span>
+    <span class="badge b-rel">相关度 95%</span>
+  </div>
+  <h1>Currenxie HK Pricing — 香港跨境企业定价分析</h1>
+  <div class="source-line">Currenxie (Official) | 原文：<a href="https://currenxie.com/pricing" target="_blank">https://currenxie.com/pricing</a> | 索引：#114</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">12</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">FX定价类</div></div>
+  <div class="stat"><div class="stat-num">3</div><div class="stat-label">转账费用类</div></div>
+  <div class="stat"><div class="stat-num">3</div><div class="stat-label">产品功能类</div></div>
+  <div class="stat"><div class="stat-num">8.2</div><div class="stat-label">平均价值评分</div></div>
+</div>
+<div class="section">
+  <div class="section-title">信息点列表 <span class="count">12条</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+    <div class="ip-row">
+    <div class="ip-col ip-original">本地转账（Collect local payments）：USD 0.75/笔；发送本地付款：USD 3.00/笔<span class='src'>来源：currenxie.com/pricing</span></div>
+    <div class="ip-col ip-analysis">Currenxie本地转账$3/笔显著高于Airwallex（免费），但低于传统银行。适合中低频但需要本地清算能力的用户</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">定价策略</span><span class="tag tag-comp">竞争格局</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.x Currenxie</span><span class="kb-tag">3.2 定价</span><span class="kb-tag">4.1 竞争对比</span></div>
+  </div>
+
+    <div class="ip-row">
+    <div class="ip-col ip-original">SWIFT转账：USD 8.00/笔，覆盖120+国家<span class='src'>来源：currenxie.com/pricing</span></div>
+    <div class="ip-col ip-analysis">SWIFT $8/笔是市场最低价之一，对比Airwallex HK（HK$120-200/$15-25）、Statrys（HKD85/$11）、Currenxie最具优势</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">定价策略</span><span class="tag tag-comp">竞争格局</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.x Currenxie</span><span class="kb-tag">3.2 定价</span><span class="kb-tag">4.1 竞争对比</span></div>
+  </div>
+
+    <div class="ip-row">
+    <div class="ip-col ip-original">FX汇率：Tier1（主要货币）0.35%；Tier2（AED、CZK）0.40%；Tier3（IDR、INR等）0.50%；Tier4（MXN等）0.60%<span class='src'>来源：currenxie.com/pricing</span></div>
+    <div class="ip-col ip-analysis">分层FX定价体系清晰，Tier1 0.35%高于Airwallex（0.2%）但低于传统银行。体现货币流动性对FX成本的传导</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-biz">定价策略</span><span class="tag tag-comp">竞争格局</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.x Currenxie</span><span class="kb-tag">3.2 定价</span><span class="kb-tag">4.1 竞争对比</span></div>
+  </div>
+
+    <div class="ip-row">
+    <div class="ip-col ip-original">USD/HKD专属汇率Tier5：仅0.10%，显著低于其他货币对<span class='src'>来源：currenxie.com/pricing</span></div>
+    <div class="ip-col ip-analysis">USD/HKD 0.10%极低费率体现Currenxie的香港本地战略定位——港币联系汇率制度使USD/HKD对冲成本极低，让利给客户以获取粘性</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-biz">定价策略</span><span class="tag tag-strat">护城河</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.x Currenxie</span><span class="kb-tag">3.2 定价</span><span class="kb-tag">7.1 香港市场</span></div>
+  </div>
+
+    <div class="ip-row">
+    <div class="ip-col ip-original">全球账户钱包（Global Account wallet）：免费，支持USD/EUR/HKD/GBP/JPY/CAD/AUD/NZD/CNH/SGD等15+货币<span class='src'>来源：currenxie.com/pricing</span></div>
+    <div class="ip-col ip-analysis">免费多货币钱包是Currenxie核心竞争力，15+货币覆盖主要贸易货币，对中小跨境企业极具吸引力</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-tech">基础设施</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.x Currenxie</span><span class="kb-tag">5.2 VA账户</span></div>
+  </div>
+
+    <div class="ip-row">
+    <div class="ip-col ip-original">虚拟银行收款账户（Virtual bank collection accounts）：免费，覆盖美国、英国、欧盟、香港、澳大利亚、日本、加拿大、墨西哥<span class='src'>来源：currenxie.com/pricing</span></div>
+    <div class="ip-col ip-analysis">8个主要市场的本地虚拟账户免费开立，使企业以本地身份收款，避免跨境手续费。覆盖亚太+欧美主要贸易伙伴</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-tech">基础设施</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.x Currenxie</span><span class="kb-tag">5.2 VA账户</span></div>
+  </div>
+
+    <div class="ip-row">
+    <div class="ip-col ip-original">Visa Business Card：管理员卡免费；最多5张团队卡 HKD 50/月；额外每张 HKD 15/月；1%现金返还<span class='src'>来源：currenxie.com/pricing</span></div>
+    <div class="ip-col ip-analysis">卡产品定价极具竞争力（5卡$50/月≈$6.4，对比Airwallex员工卡HK$40/人/月），1%现金返还增加使用激励</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">卡产品</span><span class="tag tag-fin">定价策略</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.x Currenxie</span><span class="kb-tag">3.1 收入模式</span></div>
+  </div>
+
+    <div class="ip-row">
+    <div class="ip-col ip-original">企业API平台（Platform API）：企业级自定义，按需报价<span class='src'>来源：currenxie.com/pricing</span></div>
+    <div class="ip-col ip-analysis">Enterprise API定价采用定制化模式，针对高频大额企业客户，显示Currenxie不只是零售产品，也有B2B基础设施层能力</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-tech">基础设施</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.x Currenxie</span><span class="kb-tag">5.1 支付网络</span></div>
+  </div>
+
+    <div class="ip-row">
+    <div class="ip-col ip-original">收款账户以USD定价，发送本地付款支持：美国、英国、欧盟、香港、澳大利亚、加拿大、印尼、印度、马来西亚、墨西哥、菲律宾、泰国、越南、南非<span class='src'>来源：currenxie.com/pricing</span></div>
+    <div class="ip-col ip-analysis">14个国家本地发送能力，覆盖东南亚主要新兴市场，与Airwallex（120+国家免费）相比范围更小但专注于高频贸易走廊</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">地理扩张</span><span class="tag tag-tech">基础设施</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.x Currenxie</span><span class="kb-tag">7.3 东南亚</span><span class="kb-tag">7.2 亚太</span></div>
+  </div>
+
+    <div class="ip-row">
+    <div class="ip-col ip-original">竞争定位：Currenxie专注香港注册的跨境企业，提供透明中间价汇率，主打'无隐藏FX差价'<span class='src'>来源：currenxie.com/pricing页面定位描述</span></div>
+    <div class="ip-col ip-analysis">透明定价定位与Wise相似，但Currenxie更聚焦香港B2B企业场景，而非Wise主攻的C2C和小微企业</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">定位</span><span class="tag tag-comp">竞争格局</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.x Currenxie</span><span class="kb-tag">4.2 市场定位</span></div>
+  </div>
+
+</div>
+<div class="footer">数据来源：Currenxie (Official) | 分析时间：2026-03-24 | 索引编号：#114 </div>
+</body>
+</html>

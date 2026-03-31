@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-373 | Remitly Q4 2024 Earnings Call Transcript — 结构化信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1  { background: #dbeafe; color: #1d4ed8; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1 财报</span>
+    <span class="badge b-type">业绩电话会完整记录</span>
+    <span class="badge b-depth">全文获取</span>
+    <span class="badge b-rel">相关度 95%</span>
+  </div>
+  <h1>Remitly Q4 2024 Earnings Call — CEO/CFO完整策略阐述</h1>
+  <div class="source-line">Motley Fool | Remitly Global (NASDAQ:RELY) | 发布：2025-02-20 | 原文：<a href="https://www.fool.com/earnings/call-transcripts/2025/02/20/remitly-global-rely-q4-2024-earnings-call-transcri/" target="_blank">RELY Q4 2024 Earnings Call</a> | 索引：#373</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">29</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">10</div><div class="stat-label">财务数据类</div></div>
+  <div class="stat"><div class="stat-num">10</div><div class="stat-label">商业模式类</div></div>
+  <div class="stat"><div class="stat-num">8</div><div class="stat-label">战略/产品类</div></div>
+  <div class="stat"><div class="stat-num">8.3</div><div class="stat-label">平均价值评分</div></div>
+</div>
+<div class="section">
+  <div class="ip-row" style="background:#f8fafc;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Q4 2024 Revenue：$351.9M，同比增长33%；Adjusted EBITDA：$43.7M，EBITDA Margin：12.4%。<span class="src">来源：Motley Fool Remitly Q4 2024 #373</span></span></div>
+    <div class="ip-col ip-analysis">Q4收入连续强劲增长，33%的增速对于$1.2B规模的公司依然出色；12.4%的EBITDA率较早期大幅提升，表明从增长优先向盈利过渡的进展。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">收入</span><span class="tag tag-fin">增长率</span><span class="tag tag-fin">EBITDA</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.x公司档案(Remitly)</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">FY2024 Revenue：$1.26B，同比增长34%；Adjusted EBITDA：$135M，EBITDA Margin：10.7%。<span class="src">来源：Motley Fool Remitly Q4 2024 #373</span></span></div>
+    <div class="ip-col ip-analysis">FY2024正式突破$1B收入大关，是Remitly发展史上的里程碑。34%增速+10.7% EBITDA率是难得的规模与盈利双达成。超出初始指引（Revenue超出>$25M，EBITDA超出>$50M）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">收入</span><span class="tag tag-fin">增长率</span><span class="tag tag-fin">EBITDA</span></div></div>
+    <div class="ip-col"><div class="score s10"><div class="score-num">10</div><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.x公司档案(Remitly)</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Q4活跃客户：780万，同比增长32%；FY2024客户总量约800万季度活跃；2024年全年用户发送金额超过$500亿。<span class="src">来源：Motley Fool Remitly Q4 2024 #373</span></span></div>
+    <div class="ip-col ip-analysis">$500亿送款量对比$1.26B收入，意味着全年平均Take Rate约为2.5%——高于银行但低于传统汇款商（3-5%），体现了Remitly的竞争性定价。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">用户增长</span><span class="tag tag-fin">TPV</span><span class="tag tag-fin">Take Rate</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.x公司档案(Remitly)</span><span class="kb-tag">3.2商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Remitly服务170+国家，覆盖5100+走廊（corridors），连接50亿移动钱包/银行账户和约47万个现金取款点。<span class="src">来源：Motley Fool Remitly Q4 2024 #373</span></span></div>
+    <div class="ip-col ip-analysis">5100+走廊是Remitly网络效应的核心：每增加一个走廊，整个网络对新用户和发展中国家用户的吸引力就增加，形成"更多走廊→更多用户→更高频率→更多走廊"的飞轮。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">地理扩张</span><span class="tag tag-tech">基础设施</span><span class="tag tag-strat">护城河</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.x公司档案(Remitly)</span><span class="kb-tag">5.2基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">LTV/CAC约6倍，回收期（payback period）持续低于12个月；2024年营销费用/季度活跃用户同比下降近16%，同时新客户增长创历史新高。<span class="src">来源：Motley Fool Remitly Q4 2024 #373</span></span></div>
+    <div class="ip-col ip-analysis">LTV/CAC=6x且回收期<12个月是极为健康的单位经济指标。更重要的是，CAC同比下降16%同时新客增长创新高，说明病毒性传播（口碑效应）在提升。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">单位经济</span><span class="tag tag-biz">商业模式</span><span class="tag tag-strat">护城河</span></div></div>
+    <div class="ip-col"><div class="score s10"><div class="score-num">10</div><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.3商业模式</span><span class="kb-tag">2.x公司档案(Remitly)</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">App Store评分：iOS 4.9星（3M+评价）；Google Play 4.8星（近1M评价）；声称为"品类最高评分"。<span class="src">来源：Motley Fool Remitly Q4 2024 #373</span></span></div>
+    <div class="ip-col ip-analysis">极高的应用评分是Remitly信任品牌建设的有形证明，这也解释了CAC降低同时新客增长加速的现象——口碑传播降低了获客成本。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-strat">护城河</span><span class="tag tag-fin">用户增长</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.x公司档案(Remitly)</span><span class="kb-tag">3.3商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">AI虚拟助手投入使客户支持和运营成本从2022年的收入占比10%以上降至2024年的6.5%。<span class="src">来源：Motley Fool Remitly Q4 2024 #373</span></span></div>
+    <div class="ip-col ip-analysis">3.5个百分点的CS成本降幅直接贡献EBITDA率改善；这是AI投资ROI的直接量化证明，也预示着随着AI进一步成熟，未来仍有压缩空间。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">AI</span><span class="tag tag-fin">单位经济</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.4商业模式</span><span class="kb-tag">2.x公司档案(Remitly)</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Q4创记录比例的交易在1小时内完成，且无需客户支持联系（"zero-touch transactions"）。<span class="src">来源：Motley Fool Remitly Q4 2024 #373</span></span></div>
+    <div class="ip-col ip-analysis">零接触交易率提升是Remitly运营飞轮的关键：更快+更可靠=更少客服=更高利润率+更高用户满意度。这反映了基础设施深度整合的成果。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-tech">基础设施</span><span class="tag tag-fin">单位经济</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.3商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">2025年展望：首个$1B RLTE（Revenue Less Transaction Expense）年；首个完整GAAP净利润盈利年；2020年以来美国和加拿大以外地区收入CAGR达80%。<span class="src">来源：Motley Fool Remitly Q4 2024 #373</span></span></div>
+    <div class="ip-col ip-analysis">$1B RLTE目标和首年GAAP盈利代表Remitly进入成熟盈利阶段；美加外80% CAGR证明全球多元化战略的成功，也表明增长不再依赖单一市场。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">增长率</span><span class="tag tag-fin">盈利能力</span><span class="tag tag-mkt">地理扩张</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.x公司档案(Remitly)</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">走廊扩张策略：在非洲收款国（African receive countries）重点拓展，Q4新增Senegal Wave、Togo TMoney移动钱包，以及Morocco Wafacash/Cash Plus、Tanzania Tigo Pesa等合作伙伴。<span class="src">来源：Motley Fool Remitly Q4 2024 #373</span></span></div>
+    <div class="ip-col ip-analysis">非洲走廊是Remitly增长的新引擎：直接与本地移动钱包整合（绕过银行），降低成本并提升速度。这是"走廊复制手册"的典型应用，也是在非洲与传统汇款商竞争的优势所在。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">地理扩张</span><span class="tag tag-tech">基础设施</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.2区域市场</span><span class="kb-tag">2.x公司档案(Remitly)</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Pay-in创新：在澳大利亚推出PayTo（即时银行账户替代方案）；在德国推出Klarna；美国继续推进更快银行链接支付（针对大额汇款）。<span class="src">来源：Motley Fool Remitly Q4 2024 #373</span></span></div>
+    <div class="ip-col ip-analysis">Pay-in多样化是Remitly的双重战略：降低大额汇款的资金成本（直接银行链接比信用卡便宜），同时提升转化率。澳大利亚PayTo代表新一代即时银行付款方式的早期采用。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">基础设施</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s7"><div class="score-num">7</div><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.2基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">2025年战略新用例：海员（seafarers）、微型企业主（micro-businesses）、大额汇款者（high-amount senders）——三类有差异化需求的新用户群体。<span class="src">来源：Motley Fool Remitly Q4 2024 #373</span></span></div>
+    <div class="ip-col ip-analysis">三类新用例代表Remitly的TAM扩展路径：每类都有不同的用例特征和LTV潜力。海员是全球约180万人的特殊群体，汇款频率高；微型企业则是B2B收入的切入口。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">市场规模</span><span class="tag tag-strat">战略</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.4驱动因素</span><span class="kb-tag">2.x公司档案(Remitly)</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">CEO Matt Oppenheimer将Remitly定位为"跨境金融服务的未来"，目标是超越汇款成为完整的跨境金融平台，服务$2T市场。<span class="src">来源：Motley Fool Remitly Q4 2024 #373</span></span></div>
+    <div class="ip-col ip-analysis">$2T TAM主张涵盖更广的金融服务，是Remitly长期愿景的核心叙事；超越"汇款"的定位将影响估值模型（从单一业务P/S向多产品平台溢价过渡）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">市场规模</span><span class="tag tag-strat">商业模式</span><span class="tag tag-fin">估值</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.1市场规模</span><span class="kb-tag">2.x公司档案(Remitly)</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Pay-in/pay-out直接整合（direct integrations）提供更高可用性、更低异常率、全程可控的用户体验——尤其对于"立即需要用钱"（immediate needs）的汇款场景至关重要。<span class="src">来源：Motley Fool Remitly Q4 2024 #373</span></span></div>
+    <div class="ip-col ip-analysis">直接整合vs依赖第三方聚合器的差异，是Remitly相对于传统汇款机构（Western Union代理网络）的核心技术优势，也是可靠性承诺（"guaranteed delivery"）的基础。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">基础设施</span><span class="tag tag-strat">护城河</span><span class="tag tag-comp">竞争格局</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.2基础设施</span><span class="kb-tag">3.1商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">ML/AI模型帮助将Q4欺诈损失/发送量降至全年最低水平，同时改善客户体验。<span class="src">来源：Motley Fool Remitly Q4 2024 #373</span></span></div>
+    <div class="ip-col ip-analysis">欺诈损失率下降是双重利好：直接改善利润率（减少坏账）+ 提升用户体验（减少被拒绝的合法交易）。AI风控能力的持续改善是Remitly规模化盈利的关键杠杆之一。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">AI</span><span class="tag tag-fin">单位经济</span><span class="tag tag-strat">护城河</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.4商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">2024年大多数收入来自在往年已完成首次交易的老客户（significant majority of revenue from prior-year customers）；深度客户忠诚度驱动强劲留存。<span class="src">来源：Motley Fool Remitly Q4 2024 #373</span></span></div>
+    <div class="ip-col ip-analysis">高留存率是Remitly商业模式最重要的特征之一：汇款属于高频刚需行为，一旦建立信任，用户切换成本极高。这使得Remitly的收入质量远高于一般消费品公司。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-strat">护城河</span><span class="tag tag-fin">用户增长</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.3商业模式</span><span class="kb-tag">2.x公司档案(Remitly)</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">规模效益体现：随着规模增大，与pay-in/pay-out合作伙伴谈判更优惠条款，外汇采购获得更有利条件，使Remitly能持续提供更低价格和更好体验。<span class="src">来源：Motley Fool Remitly Q4 2024 #373</span></span></div>
+    <div class="ip-col ip-analysis">规模→更低成本→更低价格→更多用户→更大规模的正向飞轮已清晰形成。这与Wise的flywheel效应类似，但Remitly更聚焦于C2C汇款场景，而非商业支付。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-strat">护城河</span><span class="tag tag-fin">单位经济</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.3商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">2024年提高了送款限额（raise send limits），基于更精确的个性化风险评估（personalized risk assessments）；大额汇款者成为新的增长机会。<span class="src">来源：Motley Fool Remitly Q4 2024 #373</span></span></div>
+    <div class="ip-col ip-analysis">提高送款限额是双重策略：扩大单用户收入潜力（更高金额=更高Take Rate收入）+ 吸引此前因限额问题流失到竞争对手的高价值用户。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-fin">单位经济</span></div></div>
+    <div class="ip-col"><div class="score s7"><div class="score-num">7</div><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.x公司档案(Remitly)</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">CFO表示：2024年Revenue超出年初指引中点25M+，Adj.EBITDA超出50M+，是"前所未有"的超越幅度。<span class="src">来源：Motley Fool Remitly Q4 2024 #373</span></span></div>
+    <div class="ip-col ip-analysis">管理层指引的系统性保守（consistently conservative guidance）是Remitly的传统；$50M+的EBITDA超预期意味着盈利杠杆比预期更大，利好未来盈利改善。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">盈利能力</span><span class="tag tag-fin">估值</span></div></div>
+    <div class="ip-col"><div class="score s7"><div class="score-num">7</div><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.x公司档案(Remitly)</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">CEO称Remitly正在"重新定义跨境金融服务的未来"并"挑战长期建立的跨境汇款行业玩家"，通过数字优先、透明费用、以客户为中心的创新。<span class="src">来源：Motley Fool Remitly Q4 2024 #373</span></span></div>
+    <div class="ip-col ip-analysis">这一表述揭示了竞争动态：Remitly将Western Union/MoneyGram作为直接替代对象，而非将Wise或其他Fintech视为主要威胁。各玩家在竞争维度上的差异化意味着市场尚未零和。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">竞争格局</span><span class="tag tag-strat">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.1竞争格局</span><span class="kb-tag">2.x公司档案(Remitly)</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">CFO提到，从2025年Q1起，Adjusted EBITDA计算将纳入股权支付相关的工资税（约$6.4M/年），并对历史数据进行追溯调整。<span class="src">来源：Motley Fool Remitly Q4 2024 #373</span></span></div>
+    <div class="ip-col ip-analysis">会计口径变化将使未来EBITDA率略微降低，但这是更保守、更准确的会计方式。投资者需在可比分析中注意此口径调整。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">EBITDA</span></div></div>
+    <div class="ip-col"><div class="score s5"><div class="score-num">5</div><div class="score-bar"><div class="score-fill" style="width:50%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.x公司档案(Remitly)</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">CEO使用印度学生Jigyasa的故事作为客户体验的具体案例：从小额偶发汇款到大额常规储蓄转移，说明客户随时间深化使用（产品扩展）。<span class="src">来源：Motley Fool Remitly Q4 2024 #373</span></span></div>
+    <div class="ip-col ip-analysis">这个案例揭示了Remitly的用户生命周期价值增长模式：从单一使用场景到多样化金融需求，反映了"跨境金融平台"愿景的落地路径。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-fin">用户增长</span></div></div>
+    <div class="ip-col"><div class="score s7"><div class="score-num">7</div><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.3商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">公司承诺"送钱到账时间保证（guaranteed delivery time）"，客户可以在确定的时间节点之前看到资金到账承诺，这是核心差异化服务承诺。<span class="src">来源：Motley Fool Remitly Q4 2024 #373</span></span></div>
+    <div class="ip-col ip-analysis">确定性承诺（而非"尽力而为"）是对传统汇款机构的根本性改进；可预测的到账时间消除了用户最大的焦虑点，是Remitly用户留存率高的重要原因。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-strat">护城河</span><span class="tag tag-comp">竞争格局</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.1商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Remitly的"走廊扩张手册（corridor expansion playbook）"：随着规模增大，进入新地区的效率持续提升，2020年以来美加外收入CAGR高达80%。<span class="src">来源：Motley Fool Remitly Q4 2024 #373</span></span></div>
+    <div class="ip-col ip-analysis">80% CAGR（美加外）是对"走廊复制手册"效果的最有力证明；标准化的走廊进入流程是Remitly国际扩张护城河的核心组成部分，是竞争对手难以快速复制的系统性能力。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">地理扩张</span><span class="tag tag-strat">护城河</span><span class="tag tag-fin">增长率</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.3商业模式</span><span class="kb-tag">2.x公司档案(Remitly)</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Q4 2024 Revenue $351.9M中，大多数来自在2024年之前完成首次交易的留存客户（prior year cohorts），少数来自新客。<span class="src">来源：Motley Fool Remitly Q4 2024 #373</span></span></div>
+    <div class="ip-col ip-analysis">留存为主的收入结构（"a significant majority from prior-year customers"）说明Remitly不依赖激进的新客获取来维持增长，业务质量极高；增量来自老客深化+新客自然增长。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-fin">单位经济</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.3商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Remitly将可靠性（reliability）作为与Wise等竞争对手的核心差异点："我们为那些汇款用于紧急需求（immediate needs）的客户提供服务"。<span class="src">来源：Motley Fool Remitly Q4 2024 #373</span></span></div>
+    <div class="ip-col ip-analysis">细分定位清晰：Remitly聚焦有"紧急需求"的C端汇款用户（如应急资金、医疗费用），而非商业支付。这与Wise的商业支付定位形成互补，解释了为何两者可以在同一市场并存。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-comp">竞争格局</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.2竞争格局</span><span class="kb-tag">3.1商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">CFO Vikas Mehta表示收入每新增$1，RLTE（Revenue Less Transaction Expense）增速更快；RLTE是衡量真实盈利引擎的核心指标，2025年目标首次超$1B。<span class="src">来源：Motley Fool Remitly Q4 2024 #373</span></span></div>
+    <div class="ip-col ip-analysis">RLTE是剔除直接交易成本后的净收入，类似毛利润概念。RLTE增速快于收入，说明Remitly每新增1元收入的盈利贡献在提升——这是规模经济实现的核心证明。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">单位经济</span><span class="tag tag-fin">盈利能力</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.4商业模式</span><span class="kb-tag">2.x公司档案(Remitly)</span></div>
+  </div>
+
+</div>
+<div class="footer">全文获取 | 索引 #373 | 来源：Motley Fool / Remitly官方 | 生成时间：2026-03-24</div>
+</body>
+</html>

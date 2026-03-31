@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-363 | Wise Capital Markets Day FY25 — 结构化信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .b-tier1 { background: #dbeafe; color: #1d4ed8; } .b-type { background: #f0fdf4; color: #166534; } .b-depth { background: #ede9fe; color: #5b21b6; } .b-rel { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; }
+  .source-line { font-size: 13px; color: #64748b; } .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; } .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; } .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; } .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; padding: 8px 10px; background: #f8fafc; } .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; } .tag-biz { background: #dcfce7; color: #166534; border-color: #bbf7d0; } .tag-mkt { background: #fef3c7; color: #92400e; border-color: #fde68a; } .tag-strat { background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8 { color: #2563eb; } .s7 .score-fill, .s8 .score-fill { background: #2563eb; }
+  .s5, .s6 { color: #d97706; } .s5 .score-fill, .s6 .score-fill { background: #d97706; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1 财报</span>
+    <span class="badge b-type">官方RNS公告 / CMDay</span>
+    <span class="badge b-depth">web_fetch全文获取</span>
+    <span class="badge b-rel">相关度 100%</span>
+  </div>
+  <h1>Wise Capital Markets Day（"Owners Day"）— FY25初步数据 + 中期指引</h1>
+  <div class="source-line">Wise plc / Investegate RNS | 发布：2025年4月3日 | 来源：<a href="https://www.investegate.co.uk/announcement/rns/wise-class-a--wise/wise-capital-markets-day/8811593" target="_blank">investegate.co.uk</a> | 索引：#363</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">16</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">9</div><div class="stat-label">财务数据类</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">战略/指引类</div></div>
+  <div class="stat"><div class="stat-num">9.1</div><div class="stat-label">平均价值评分</div></div>
+</div>
+<div class="section">
+  <div class="section-title">信息点列表</div>
+  <div class="ip-row">
+    <div class="col-header">原文信息点</div><div class="col-header">摘要分析</div><div class="col-header">标签</div><div class="col-header">评分</div><div class="col-header">知识库</div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">FY25（初步）活跃客户：1550万（FY24：1280万，同比+21%）<span class="src">Wise RNS, CMDay FY25初步数据表格</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">15.5M活跃用户（FY截至2025年3月），较FY24增长21%。TAM穿透仍早期，但增速保持稳定高位，口碑驱动的有机增长护城河有力。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">增长率</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.3 Wise档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">FY25（初步）跨境交易量：£1450亿（FY24：£1190亿，同比+22%）<span class="src">Wise RNS, CMDay FY25初步数据表格</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">£145B跨境量（约$185B），增速22%。以FY25收入£1.36B计，隐含Take Rate约0.94%（收入/跨境量），反映高价值增值服务逐渐占主体。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">增长率</span><span class="tag tag-fin">Take Rate</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.3 Wise档案</span><span class="kb-tag">3.2 Take Rate</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">FY25（初步）Underlying Income：£13.6亿（FY24：£11.7亿，同比+16%）<span class="src">Wise RNS, CMDay FY25初步数据表格</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">Underlying Income = Revenue + Net Interest Income（净利息收入），是Wise核心盈利能力指标。£1.36B收入+利息=完整盈利图景，16%增速符合15-20%中期指引区间。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">利息收入</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.3 Wise档案</span><span class="kb-tag">3.1 收入</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">FY25（初步）Underlying PBT Margin（税前利润率）：20%（FY24：21%，下降1pp）<span class="src">Wise RNS, CMDay FY25初步数据表格</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">20%的PBT Margin在高科技金融公司中属优秀水平，且在加速增长投资的背景下略微下降（-1pp）符合预期。核心逻辑：先增长后利润，但保持盈利红线。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">单位经济</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.3 成本</span><span class="kb-tag">2.3 Wise档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">FY25（初步）客户持有资金：£210亿（FY24：£162亿，同比+30%）<span class="src">Wise RNS, CMDay FY25初步数据表格</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">£21B客户余额（约$26.8B）是利息收入的基础。余额增速30%超过跨境量增速22%，说明用户"存钱"在Wise的行为正在加速，形成更稳定的利息收入流。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">利息收入</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.1 收入</span><span class="kb-tag">2.3 Wise档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">中期财务指引：Underlying Income CAGR 15-20%；Underlying PBT Margin 13-16%；FY26预期：Underlying Income +15-20%，PBT Margin接近指引上沿<span class="src">Wise RNS, CMDay指引段落</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">15-20% CAGR的中期收入指引是极高质量的增长承诺，且伴随13-16%的健康利润率。FY26 PBT接近上沿（~16%）说明利息收入在高利率环境下仍有支撑。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">增长率</span><span class="tag tag-fin">单位经济</span></div></div>
+    <div class="ip-col"><div class="score s10"><div class="score-num">10</div><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.3 Wise档案</span><span class="kb-tag">3.4 趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">客户持有资金里程碑："Our customers have moved over £0.5 trillion across borders and trust us to now hold more than £20 billion of their money"（14年累计）<span class="src">Wise RNS, CMDay介绍段落</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">£0.5T历史累计跨境量+£20B客户持有资金，是Wise成为"金融操作系统"的里程碑。持有资金增速（+30%）远高于历史累计转账量增速，表明Wise正从转账工具向多功能账户转变。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">护城河</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.3 Wise档案</span><span class="kb-tag">4.2 护城河</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">上市架构优化：将审核双重上市安排；FCA更改上市类别（Equity Shares Transition→Commercial Companies）；宣布扩大EBT股份回购计划（~2.5%已发行股本）<span class="src">Wise RNS, CMDay上市安排段落</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">双主板（LSE+可能的美国上市）与Airwallex战略相似，意在提升流动性和机构持有者多样性。EBT回购消除历史SBC稀释，保护现有股东利益。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">融资</span><span class="tag tag-strat">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.3 Wise档案</span><span class="kb-tag">4.3 战略</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">CMDay时间安排：FY25正式结果2025年6月5日发布；Q4 FY25交易更新2025年4月15日<span class="src">Wise RNS, CMDay日程</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">RNS披露的具体财报日历对于投资者跟踪非常有用。6月5日发布完整年报（含股息/分红决定），是最重要的信息节点。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">增长率</span></div></div>
+    <div class="ip-col"><div class="score s6"><div class="score-num">6</div><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.3 Wise档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Wise平台战略："build the network for the world's money"；大型企业和银行使用Wise技术——Wise Platform；已合作Raiffeisen Bank、UniCredit（FY26Q1宣布）<span class="src">Wise RNS, 公司介绍段落</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">B2B Platform业务将Wise的支付网络白标给银行，以低成本获取大规模交易量（银行客户无需切换，Wise收取基础设施费）。Raiffeisen+UniCredit覆盖中东欧和意大利市场，战略价值极大。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-strat">护城河</span><span class="tag tag-mkt">地理扩张</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.1 收入</span><span class="kb-tag">4.2 护城河</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Wise财务模型定性：拥有"disciplined and sustainable growth investments"能力；同时维持13-16% PBT Margin目标的可持续增长模型<span class="src">Wise RNS, CMDay指引框架</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">盈利且高速增长的组合（Wise的"Rule of 30+"表现：15-20%增速+13-16% PBT = Rule of 28-36）是同类中罕见的财务模型，支撑高估值倍数。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">单位经济</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.1 收入</span><span class="kb-tag">3.3 成本</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">FY24与FY25对比：FY24跨境量£119B→FY25£145B（+22%）；活跃客户12.8M→15.5M（+21%）；收入£1.17B→£1.36B（+16%）<span class="src">Wise RNS, CMDay初步数据表格</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">客户增速（21%）≈ 量增速（22%）> 收入增速（16%），反映两个现象：①量折扣效应（客均量上升→take rate下降）；②利息收入增速开始放缓（利率下调预期）。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-fin">增长率</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.2 Take Rate</span><span class="kb-tag">2.3 Wise档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Wise定义：全球科技公司（global technology company），而非支付公司或银行；核心使命：build the best way to move and manage the world's money<span class="src">Wise RNS, 公司介绍段落</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">Wise坚持"技术公司"定位（而非"支付公司"）的目的是争取更高的科技股估值倍数。同时"移动+管理"的双重定位（而非仅转账）反映产品已演化为全功能金融账户。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">商业模式</span><span class="tag tag-fin">估值</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.3 Wise档案</span><span class="kb-tag">4.3 战略</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">FY24数据（对比基准）：活跃客户约13M；跨境量约£118B；储蓄约£1.8B（来自FY24 About段落："saving customers over £1.8 billion"）<span class="src">Wise RNS, About Wise段落</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">£1.8B年度客户节省是最强有力的营销数据：说明Wise相比传统银行/Western Union为客户节省的绝对金额，也是TTV（Total Transfer Volume）中Wise获取经济价值之外让给客户的部分。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-fin">Take Rate</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.3 Wise档案</span><span class="kb-tag">4.2 护城河</span></div>
+  </div>
+
+</div>
+<div class="footer">生成时间：2026-03-24 | 来源：Investegate RNS全文（web_fetch成功）| 索引编号：#363</div>
+</body>
+</html>

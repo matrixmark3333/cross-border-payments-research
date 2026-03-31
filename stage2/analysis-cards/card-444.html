@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-444 | 人人都是产品经理：跨境支付核心系统设计方法论 — 外汇系统/资金调拨/通道架构</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier2  { background: #e0f2fe; color: #0369a1; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .warn-badge { display: inline-block; background: #fef9c3; color: #854d0e; border: 1px solid #fde047; border-radius: 4px; padding: 1px 6px; font-size: 11px; font-weight: 700; margin-left: 4px; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 URL分析</span>
+    <span class="badge b-type">技术设计文章</span>
+    <span class="badge b-depth">摘要提取（页面加载有限）</span>
+    <span class="badge b-rel">相关度 90%</span>
+  </div>
+  <h1>人人都是产品经理：跨境支付核心系统设计方法论 — 外汇系统/资金调拨/通道架构 <span class="warn-badge">⚠️ 仅摘要</span></h1>
+  <div class="source-line">人人都是产品经理（陈天宇宙） | 索引：#444 | 原文：<a href="https://www.woshipm.com/pd/5434779.html" target="_blank">https://www.woshipm.com/pd/5434779.html</a></div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">5</div><div class="stat-label">信息点总数</div></div>
+</div>
+<div class="section">
+  <div class="section-title">信息点列表 <span class="count">5条</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">跨境支付机构核心中台系统：外汇管理系统（汇率获取/报价/平盘/损益）、资金调拨系统（多账户归集/自动化规则）<span class="src">来源：<a href="https://www.woshipm.com/pd/5434779.html" target="_blank">#444</a></span></div>
+    <div class="ip-col ip-analysis">外汇系统和资金调拨系统是跨境支付机构独有且高度差异化的系统，技术能力直接影响外汇损益，是利润保障的核心。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">外汇系统</span><span class="tag tag-tech">资金调拨</span><span class="tag tag-tech">核心系统</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">技术架构</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">跨境支付机构通道层丰富程度远超国内：收单通道+付款通道+VA账户通道+VCC发卡通道+换汇通道<span class="src">来源：<a href="https://www.woshipm.com/pd/5434779.html" target="_blank">#444</a></span></div>
+    <div class="ip-col ip-analysis">通道层的复杂性（5种而非国内的2种）直接导致跨境支付系统开发和维护成本远高于国内，也是进入门槛的技术壁垒。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">通道层</span><span class="tag tag-tech">支付通道</span><span class="tag tag-tech">系统复杂度</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">技术架构/通道</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">外汇平盘策略：即时平盘（实时对冲FX风险）vs 预期平盘（根据头寸预测合并换汇），两种策略各有优劣<span class="src">来源：<a href="https://www.woshipm.com/pd/5434779.html" target="_blank">#444</a></span></div>
+    <div class="ip-col ip-analysis">外汇平盘策略是影响跨境支付公司盈利的关键决策，大量换汇时的规模经济vs实时对冲的风险管理需要精细化算法支持。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">外汇平盘</span><span class="tag tag-fin">FX策略</span><span class="tag tag-fin">风险管理</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式/外汇</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">跨境支付产品设计原则：业务需求→支付场景→解决方案，从业务出发而非技术出发<span class="src">来源：<a href="https://www.woshipm.com/pd/5434779.html" target="_blank">#444</a></span></div>
+    <div class="ip-col ip-analysis">产品设计原则反映用户视角，跨境支付产品复杂但用户需要简单——这是Wise "汇率透明+简洁体验"战略成功的产品哲学根源。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">产品设计</span><span class="tag tag-biz">用户体验</span><span class="tag tag-strat">业务驱动</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品架构/原则</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">跨境支付系统难点：多时区运营（全球24小时）、多货币管理（50-200种）、合规对接（每国不同）、风控（跨境诈骗高发）<span class="src">来源：<a href="https://www.woshipm.com/pd/5434779.html" target="_blank">#444</a></span></div>
+    <div class="ip-col ip-analysis">四大难点解释了为什么构建跨境支付系统的复杂度是国内支付的10倍以上，也是新进入者面临的高门槛原因。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">系统难点</span><span class="tag tag-tech">多时区</span><span class="tag tag-reg">风控</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">技术架构/挑战</span></div>
+  </div>
+</div>
+<div class="footer">生成日期：2026-03-30 | 人人都是产品经理（陈天宇宙） | #444 | Tier 2</div>
+</body>
+</html>

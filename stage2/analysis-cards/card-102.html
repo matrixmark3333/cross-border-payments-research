@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-102 | Contrary Research: Revolut — 结构化信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #f59e0b; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .b-tier2 { background: #fef9c3; color: #854d0e; }
+  .b-type  { background: #f0fdf4; color: #166534; }
+  .b-status { background: #fee2e2; color: #991b1b; }
+  .b-rel   { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #d97706; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; }
+  .section { background: white; padding: 0 28px; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s3 { color: #94a3b8; } .s3 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .degraded-notice { background: #fef3c7; border: 1px solid #fde68a; border-radius: 8px; padding: 12px 16px; margin: 16px 0; font-size: 13px; color: #92400e; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 · 仅URL</span>
+    <span class="badge b-type">分析报告</span>
+    <span class="badge b-status">⚠️ 内容不可用-仅摘要</span>
+    <span class="badge b-rel">相关度 85%</span>
+  </div>
+  <h1>Contrary Research: Revolut深度分析（JS密集型SPA，无法获取内容）</h1>
+  <div class="source-line">Contrary Research | 索引：#102 | <a href="https://research.contrary.com/company/revolut" target="_blank">原文链接</a></div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">信息点总数（仅摘要）</div></div>
+  <div class="stat"><div class="stat-num">3.0</div><div class="stat-label">平均价值评分</div></div>
+</div>
+<div class="section">
+  <div class="degraded-notice">
+    ⚠️ <strong>内容降级：</strong>Contrary Research采用JavaScript密集型单页应用（SPA），web_fetch无法获取实质内容。以下信息点仅基于索引库摘要（50字以内），明确标注内容来源为索引库摘要。
+  </div>
+  <div class="ip-row" style="background:#f8fafc">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Contrary Research对Revolut进行了深度分析，涵盖商业模式、营收构成、英国银行牌照进展。<span class="src">来源: 索引库摘要（#102）</span></div>
+    <div class="ip-col ip-analysis">Revolut的Contrary Research分析通常包含估值模型和收入分解；该来源的替代数据已通过#32/#33/#34（年报和PYMNTS分析）及#328（HTML摘要）获取，数据缺口较小。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">Revolut</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s3"><span class="score-num">3</span><div class="score-bar"><div class="score-fill" style="width:30%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Contrary Research Revolut分析主题可能包括：FX收入、利息收入、订阅收入、财富管理+298%增长、英国银行牌照影响。<span class="src">来源: 基于已知Revolut公开信息的合理推断，非Contrary原文</span></div>
+    <div class="ip-col ip-analysis">⚠️ 纯推断，无法引用Contrary具体分析。Revolut相关核心数据已通过年报（#32）和PYMNTS（#34）覆盖，此条目主要记录内容来源缺口。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">数据缺口</span></div></div>
+    <div class="ip-col"><div class="score s3"><span class="score-num">3</span><div class="score-bar"><div class="score-fill" style="width:30%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Contrary Research提供深度B2B/金融科技分析，针对其Revolut报告，建议通过研究型订阅平台（如Smartkarma、Tegus）获取替代分析。<span class="src">来源: 获取尝试记录</span></div>
+    <div class="ip-col ip-analysis">Contrary Research报告是JS SPA结构，对所有基于HTTP的爬取工具均不可访问，未来可通过Playwright/人工访问获取；优先级低于其他可访问来源。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">数据缺口</span></div></div>
+    <div class="ip-col"><div class="score s3"><span class="score-num">3</span><div class="score-bar"><div class="score-fill" style="width:30%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+</div>
+<div class="footer">处理时间：2026-03-24 | URL：https://research.contrary.com/company/revolut | ⚠️ JS密集型SPA，内容无法获取，仅基于索引库摘要</div>
+</body>
+</html>

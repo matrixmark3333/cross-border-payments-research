@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-007 | Wise Q1 FY26 Trading Update</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier2  { background: #e0e7ff; color: #3730a3; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .group-banner { background: #f8fafc; padding: 8px 0 8px 0; font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 重新提取</span>
+    <span class="badge b-type">财报 / 季度交易更新</span>
+    <span class="badge b-depth">RNS全文 + 历史季度附录</span>
+    <span class="badge b-rel">相关度 100%</span>
+  </div>
+  <h1>Wise Q1 FY26 Trading Update — 季度运营数据全解析</h1>
+  <div class="source-line">Wise plc (LSE: WISE) | Q1 FY26（2025年4月-6月） | 公告日：2025年7月17日 | 来源：<a href="https://www.investegate.co.uk/announcement/rns/wise-class-a--wise/wise-plc-q1-fy26-trading-update/8983463" target="_blank">Investegate RNS</a> | 索引：#007</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">20</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">8</div><div class="stat-label">核心KPI</div></div>
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">历史趋势</div></div>
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">战略动态</div></div>
+</div>
+<div class="section">
+  <div class="section-title">信息点列表 <span class="count">全文版</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="group-banner">▌ A. Q1 FY26 核心KPI</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q1 FY26 跨境交易量 £41.2B，同比+24%（固定汇率+27%），QoQ+5%<span class="src">来源：Wise Q1 FY26 RNS，2025-07-17</span></div>
+    <div class="ip-col ip-analysis">固定汇率口径增速27%高于报告口径24%，说明英镑升值拖累。两位数增速下，绝对规模季环比稳步扩张。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">交易量</span><span class="tag tag-fin">增长率</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q1 FY26 个人跨境量 £29.7B（+21% YoY），企业跨境量 £11.5B（+32% YoY，固定汇率+35%）<span class="src">来源：同上，附录历史表</span></div>
+    <div class="ip-col ip-analysis">企业(Business)增速32%持续高于个人21%，佐证企业业务成为第二增长引擎。企业量占总量28%，比重持续上升。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">个人vs企业</span><span class="tag tag-strat">分部增速</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q1 FY26 底层收入 £362.0M，同比+11%（固定汇率+14%）<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">收入增速(11%)低于交易量增速(24%)，Take Rate继续下行。量价背离是Wise主动战略（费率下降），但持续性需跟踪。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">底层收入</span><span class="tag tag-strat">量价剪刀差</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q1 FY26 跨境Take Rate 0.52%（52bps），同比下降12bps（Q1 FY25：64bps），其中季内下降1bp<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">Take Rate年降12bps是历史最大单年降幅。原因：①平均价格主动下调；②高量客户占比提升（量大价优）。2年前Take Rate约67bps，显示持续压缩趋势。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-strat">定价下行</span><span class="tag tag-comp">竞争压力</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q1 FY26 活跃客户 9.8M（9,797千），同比+17%，QoQ+5%<span class="src">来源：同上，附录表</span></div>
+    <div class="ip-col ip-analysis">客户增速17%略低于交易量增速24%，意味着人均交易量小幅提升，正向杠杆效应。个人9.3M(+17%)，企业475K(+15%)。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">活跃客户</span><span class="tag tag-fin">人均交易量</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q1 FY26 客户余额（customer balances）£18.1B（+29% YoY，+6% QoQ）；个人£11.3B(+34%)，企业£6.8B(+20%)<span class="src">来源：同上，附录表</span></div>
+    <div class="ip-col ip-analysis">个人余额增速34%远超企业20%，反映个人储蓄/资产功能使用率提升，是利息收入的主要驱动。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">客户余额</span><span class="tag tag-fin">利息收入基础</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q1 FY26 跨境收入（cross-border revenue）£214.8M（+2% YoY）；卡及其他收入 £103.3M（+29% YoY）<span class="src">来源：同上，附录表</span></div>
+    <div class="ip-col ip-analysis">跨境收入增速仅2%（量+24%），卡收入增速29%。卡/账户费用占底层收入比重持续上升，多元化趋势清晰。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">收入结构</span><span class="tag tag-fin">卡收入</span><span class="tag tag-strat">多元化</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY26全年指引维持：底层收入增速15-20%（固定汇率），PBT利润率处于13-16%目标区间顶部<span class="src">来源：同上，CEO陈述</span></div>
+    <div class="ip-col ip-analysis">Q1实际增速11%（reported）/14%（CCY）低于全年中枢，后续季度需加速才能达标。CEO措辞偏审慎但维持指引，表明季度正常波动。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">全年指引</span><span class="tag tag-strat">盈利目标</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+  <div class="group-banner">▌ B. 历史趋势（Q1 FY24 → Q1 FY26 八季度序列）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">跨境量季度序列：Q1 FY24 £28.2B → Q2 £29.2B → Q3 £30.6B → Q4 £30.6B → Q1 FY25 £33.2B → Q2 £35.2B → Q3 £37.8B → Q4 £39.1B → Q1 FY26 £41.2B<span class="src">来源：同上，附录历史财务表</span></div>
+    <div class="ip-col ip-analysis">9个季度连续增长，无单季回撤。季均增量约£1.5B，呈加速趋势（近4季平均增量已超£2B/季）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">季度趋势</span><span class="tag tag-fin">持续增长</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场总览</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">企业跨境量季度增速：Q1 FY24 n/a → Q1 FY25 +17% → Q2 FY25 +20% → Q3 FY25 +25% → Q4 FY25 +33% → Q1 FY26 +32%（固定汇率+35%）<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">企业增速从17%持续加速至32-35%，加速趋势清晰。B2B业务成为Wise第二增长曲线，高于个人业务增速约10-15pp。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">企业增速加速</span><span class="tag tag-strat">B2B增长</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">卡及其他收入季度序列：Q1 FY24 £51.6M → Q4 FY24 £72.6M → Q1 FY25 £80.0M → Q4 FY25 £100.9M → Q1 FY26 £103.3M<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">卡收入从£51.6M增至£103.3M，6个季度翻倍。成为Wise底层收入中增速最快的子项，预计未来占比将超过跨境收入。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">卡收入趋势</span><span class="tag tag-strat">非FX多元化</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">活跃客户季度序列：Q1 FY24 6.67M → Q4 FY24 7.91M → Q1 FY25 8.37M → Q4 FY25 9.29M → Q1 FY26 9.80M<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">客户基数从670万稳步增至980万，9季度+47%。增速有轻微放缓（Q1 FY26同比+17% vs FY24同比+29%），但绝对量仍健康。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">客户增长</span><span class="tag tag-fin">增速变化</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">客户余额季度序列：Q1 FY24 £11.5B → Q4 FY24 £13.3B → Q1 FY25 £14.1B → Q4 FY25 £17.1B → Q1 FY26 £18.1B<span class="src">来源：同上，注：不含AUC（资产托管额）</span></div>
+    <div class="ip-col ip-analysis">余额从£11.5B增至£18.1B，9季度+57%，增速高于客户数(+47%)，人均余额提升，账户深度使用证明。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">余额增长</span><span class="tag tag-fin">人均余额</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">跨境收入增速放缓至+2% YoY（Q1 FY26），对比Q1 FY25的+12% YoY；Take Rate压缩主导<span class="src">来源：同上，自行计算</span></div>
+    <div class="ip-col ip-analysis">跨境FX收入增速从12%骤降至2%，但卡收入+29%弥补缺口。这是Wise收入结构"去FX化"最直接的证据，表明核心FX竞争愈加激烈。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">FX收入减速</span><span class="tag tag-comp">去FX化趋势</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="group-banner">▌ C. 战略动态与合作伙伴</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q1 FY26 新合作伙伴：Raiffeisen Bank（已公告），UniCredit（7月公告），通过Wise Platform提供欧洲即时低成本跨境转账<span class="src">来源：同上，CEO陈述</span></div>
+    <div class="ip-col ip-analysis">连续获得欧洲大型银行接入。UniCredit将从意大利开始推广，逐步扩展至其他国家。Wise Platform的B2B业务加速，银行合作模式成主要增长路径。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">Wise Platform</span><span class="tag tag-comp">银行合作</span><span class="tag tag-mkt">欧洲市场</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Business 在菲律宾推出，持续扩展区域覆盖<span class="src">来源：同上，CEO陈述</span></div>
+    <div class="ip-col ip-analysis">菲律宾是侨汇大市场（2023年流入$38B），Wise Business进入意味着同时挑战C端汇款和B端SME。东南亚扩张战略持续。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">东南亚</span><span class="tag tag-mkt">菲律宾</span><span class="tag tag-strat">地理扩张</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise宣布拟将主要上市地从伦敦迁往美国，维持LSE次要上市；需股东大会投票<span class="src">来源：同上，CEO陈述 + PYMNTS报道</span></div>
+    <div class="ip-col ip-analysis">美国主板上市将扩大机构投资者基础（美国主动基金+指数基金），提升流动性和品牌知名度。有利于吸引美国企业客户和合作银行。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">上市迁移</span><span class="tag tag-reg">NYSE</span><span class="tag tag-fin">资本市场</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">CEO 战略愿景：成为"全球资金网络（the network for the world's money）"，目标"移动数万亿"（moving trillions）<span class="src">来源：同上，CEO Kristo Käärmann陈述</span></div>
+    <div class="ip-col ip-analysis">"网络"定位意味着Wise不仅是C2C汇款服务，而是基础支付网络。类比SWIFT但成本更低、速度更快。此定位支撑高估值倍数。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">网络效应</span><span class="tag tag-strat">战略愿景</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY25全年：处理跨境交易超£145B，服务约15.6M客户，为客户节省约£2B<span class="src">来源：同上，About Wise描述</span></div>
+    <div class="ip-col ip-analysis">"节省£2B"是Wise对价值创造的核心叙事：相对传统银行，客户实际节省的费用等于Wise的"隐性市场营销"。这一指标是品牌差异化关键。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">客户价值主张</span><span class="tag tag-comp">成本节省</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q1 FY26 卡及其他收入：个人£76.7M(+29% YoY)，企业£26.6M（通过附录计算）<span class="src">来源：同上，附录分拆表</span></div>
+    <div class="ip-col ip-analysis">个人卡收入增速29%（QoQ+2%），企业卡增速高于个人。附录提供细粒度分拆，是历史时序分析的基础数据源。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">卡收入分拆</span><span class="tag tag-fin">个人vs企业</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+</div>
+<div class="footer">来源：Wise plc Q1 FY26 Trading Update RNS（2025-07-17）| 含完整历史季度附录 | 索引编号：#007 | 提取版本：Tier2-v1 | 提取时间：2026-03-30</div>
+</body>
+</html>

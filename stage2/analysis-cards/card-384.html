@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-384 | 36氪 Airwallex十周年全球化深度 — 结构化信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .b-tier1 { background: #dbeafe; color: #1d4ed8; } .b-type { background: #f0fdf4; color: #166534; } .b-depth { background: #ede9fe; color: #5b21b6; } .b-rel { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; } .source-line { font-size: 13px; color: #64748b; } .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; } .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; } .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; }
+  .section { background: white; padding: 0 28px; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; } .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; padding: 8px 10px; background: #f8fafc; } .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; } .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; } .tag-biz { background: #dcfce7; color: #166534; border-color: #bbf7d0; } .tag-mkt { background: #fef3c7; color: #92400e; border-color: #fde68a; } .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; } .tag-strat { background: #fff7ed; color: #9a3412; border-color: #fed7aa; } .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; } .score-num { font-size: 20px; font-weight: 800; } .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; } .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; } .s7, .s8 { color: #2563eb; } .s7 .score-fill, .s8 .score-fill { background: #2563eb; } .s5, .s6 { color: #d97706; } .s5 .score-fill, .s6 .score-fill { background: #d97706; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1</span>
+    <span class="badge b-type">中文媒体深度 / 36氪</span>
+    <span class="badge b-depth">web_fetch 全文</span>
+    <span class="badge b-rel">相关度 85%</span>
+  </div>
+  <h1>36氪 — Airwallex十周年：AI让信任在全球流动（全球化路径深度拆解）</h1>
+  <div class="source-line">36氪出海 | 发布：2025年11月 | 原文：<a href="https://36kr.com/p/3527175306369925" target="_blank">36kr.com/p/3527175306369925</a> | 索引：#384</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">22</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">6</div><div class="stat-label">财务指标类</div></div>
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">产品/战略类</div></div>
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">AI/扩张类</div></div>
+  <div class="stat"><div class="stat-num">8.4</div><div class="stat-label">平均价值评分</div></div>
+</div>
+<div class="section">
+  <div class="ip-row" style="background:#f8fafc;">
+    <div class="col-header">原文信息点 + 来源</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header">评分</div>
+    <div class="col-header">知识库</div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Airwallex成立十周年，年化交易额突破2000亿美元；FXC Intelligence预测全球跨境支付市场2030年将超过3200亿美元。<span class="src">36氪，2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">$2000亿年化交易额（相比此前$1300亿进一步提升）与$3200亿市场目标对比，显示Airwallex已占全球跨境支付约6%份额，仍有巨大提升空间。这是十周年重要基准数据。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">$2000亿年化</span><span class="tag tag-mkt">市场份额</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span><span class="kb-tag">1.市场总览</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">英国、法国、荷兰、美国是Airwallex增速最快的四个全球市场；亚太仍是整体份额最重要的市场。<span class="src">36氪，2025（Airwallex CRO吴恺）</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">欧洲（英/法/荷）+美国的高增速说明Airwallex从亚洲基础向全球扩张的地理结构在发生变化。亚太依然是收入主体，但增长引擎已迁移到西方市场——这是成熟化的标志。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">欧洲高增速</span><span class="tag tag-mkt">亚太基本盘</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Airwallex从"解决创始人咖啡馆跨境换汇痛点"，成长为服务全球超15万家企业的跨境金融平台。覆盖180+国家，支持160+种支付方式。<span class="src">36氪，2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">从单一痛点到平台化服务的十年演进路径是Airwallex的标准Founding Story，也是B2B Fintech的典型成长路径（解决创始人自身痛点→产品化→平台化）。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">发展历程</span><span class="tag tag-comp">平台化</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Airwallex推出Billing（计费管理）产品，收购计费平台OpenPay，解决全球SaaS/AI企业的多币种订阅和用量计费挑战。<span class="src">36氪，2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">Billing产品是Airwallex产品线从"收付款"向"完整财务运营"延伸的关键一步。目标市场：全球SaaS和AI企业（特别是"生而全球"的新兴公司）——这是增量市场，不是与现有产品争用户。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">Billing产品</span><span class="tag tag-strat">SaaS市场</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">不当的计费系统可能导致企业营收流失高达17%（Airwallex Billing GM Sean Li数据）。<span class="src">36氪，2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">17%营收流失量化了计费系统问题的经济影响，是Airwallex Billing产品的核心价值诉求。对于高增速AI/SaaS企业，修复这一漏洞可以直接转化为数百万美元的年化收入恢复。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">17%营收流失</span><span class="tag tag-biz">Billing价值</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">中小企业资金周转效率通常比大企业低30-40%，大量资金被困在支付系统中。Airwallex通过技术加速资金流转，帮助SME释放流动性。<span class="src">36氪，2025（Airwallex CRO吴恺）</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">SME流动性低30-40%是Airwallex服务SME的核心价值量化。对于现金流紧张的中小企业，支付效率直接影响经营韧性——这是跨境支付fintech相比传统银行的核心价值差距。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">SME流动性</span><span class="tag tag-biz">核心价值</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Airwallex全球市场策略：与McLaren F1车队合作（每月节省~半周工作时间+£4000）；与Arsenal足球俱乐部合作——B2B品牌差异化。<span class="src">36氪，2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">F1+Arsenal合作是B2B支付公司利用高曝光赞助建立品牌信任的典型策略。McLaren节省数据（4000英镑/月）将品牌赞助与产品价值直接绑定，避免了纯"形象广告"的批评。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">品牌策略</span><span class="tag tag-biz">B2B营销</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Airwallex在中国大陆（持牌）、香港（SVF牌照）、东南亚（新加坡MPI、马来西亚B类）、欧洲（立陶宛+荷兰EMI）、美国（47+州MTL）构建了全球牌照矩阵。<span class="src">36氪，2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">全球牌照矩阵（七个维度覆盖）是Airwallex护城河的量化证明。每个牌照需要投入数百万美元和数年合规建设，这是后来者无法短期复制的竞争壁垒，也是Airwallex估值的核心支撑。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">牌照矩阵</span><span class="tag tag-strat">护城河</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Airwallex"Agentic Finance"（智能体金融）概念：AI将不再是被动副驾，而是能主动分析数据、提出建议、自主执行复杂财务操作的"动态副驾"。<span class="src">36氪，2025（Airwallex AI VP Timothy Wong）</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">Agentic Finance是Airwallex对未来十年战略方向的前瞻性定义。结合BCG报告（#389）和虎嗅（#383）的相关内容，AI代理在支付中的自主决策能力是2025-2030年的行业重要趋势。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">Agentic Finance</span><span class="tag tag-strat">AI战略</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">1.市场总览</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Airwallex Billing支持用量计费（usage-based billing）和"自适应式支付重试"（AI基于历史数据决定最优重试策略），减少支付失败导致的客户流失。<span class="src">36氪，2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">自适应支付重试是AI应用于支付运营的具体案例——不是概念，是可量化的业务价值（减少付款失败/提升用量计费回收率）。用量计费支持让Airwallex能服务AI/API公司的新商业模式。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">AI支付重试</span><span class="tag tag-biz">用量计费</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Airwallex收购越南CTIN Pay、墨西哥MexPago，通过并购进入高监管壁垒市场；以及完成越南+拉美版图布局。<span class="src">36氪，2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">越南（东南亚最后重要缺口）+墨西哥（拉美入口）的并购体现了Airwallex"先证后拓"策略的最新执行。每次并购都是一个新市场的合规准入证，是增量收入的基础。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">并购扩张</span><span class="tag tag-mkt">越南/墨西哥</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">全球订阅经济预计2030年突破1万亿美元，AI原生企业按API调用次数/计算资源等用量方式商业化——这是Airwallex Billing的核心目标市场。<span class="src">36氪，2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">$1T全球订阅经济（2030）是Airwallex Billing产品的市场规模背书。AI原生企业（Anthropic/OpenAI/Cursor等）的用量计费需求正在快速增长，Airwallex是服务这类客户的早期布局者。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">$1T订阅经济</span><span class="tag tag-biz">AI原生企业</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场总览</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Airwallex与Google等AI公司进行生态对接，布局Agent流量（当前Agent流量小，但前景不可低估）。策略："理解现状，同时为未来布局"。<span class="src">36氪，2025（CRO吴恺）</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">与Google的AI生态对接是Airwallex在Agent支付赛道的早期布局。Agent流量目前小但增速快，先进入生态建立标准化接口，是获取未来流量的战略投资（类似PayPal当年与eBay的关系）。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">Agent支付</span><span class="tag tag-strat">Google合作</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Airwallex美国直接成员资格：美国运通/Visa/Mastercard的直接成员机构，可在北美市场发行公司卡和处理卡支付。<span class="src">36氪，2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">三大卡组织直接成员资格是最高级别的支付网络准入，意味着Airwallex可绕过收单行直接处理卡交易，大幅降低北美市场的交易成本。这是绝大多数Fintech无法轻易获得的资质。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">卡组织直接成员</span><span class="tag tag-strat">北美准入</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Airwallex未来十年愿景："连接智能、连接信任"——从基础设施（资金/数据/系统）升级到智能化服务（AI+信任）。<span class="src">36氪，2025（CRO吴恺结束语）</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">"信任"作为核心叙事的选择意义深远——跨境支付的本质是信任传递（跨越国境/货币/法规）。以信任为核心价值的定位，让Airwallex超越了功能竞争，进入品牌和价值观竞争层次。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">品牌叙事</span><span class="tag tag-biz">信任基础设施</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">中国大陆持牌（央行互联网支付牌照，通过收购广州商物通），成为极少数在中国合规运营的外资支付企业之一。<span class="src">36氪，2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">中国牌照是Airwallex在竞争对手中的独特资产（PayPal、Payoneer、Airwallex是仅有的三家）。这一资质允许Airwallex直接接入中国支付基础设施，服务中国出海企业的闭环资金管理需求。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">中国牌照</span><span class="tag tag-reg">唯一优势</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Airwallex B2B营销：与McLaren F1的合作带来的调研显示，更多决策者信任并考虑Airwallex；McLaren每月节省约半周工作时间和£4000费用。<span class="src">36氪，2025（Global Marketing Lead Jon Stona）</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">具体节省数据（时间+金钱）是B2B营销中"案例驱动说服"的典范。将赞助转化为量化商业案例，是B2B Fintech营销区别于B2C品牌广告的核心差异——理性决策者需要数字，不需要情感共鸣。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">案例营销</span><span class="tag tag-strat">B2B信任</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Airwallex核心竞争力演进："点"（解决特定支付痛点）→"网"（技术平台+全球牌照的商业网络）→"智能"（AI驱动的智能化服务）。<span class="src">36氪，2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">三阶段演进框架（点→网→智能）是理解Airwallex商业模式的完整图谱。每个阶段对应不同的护城河：合规牌照（阶段2）→AI数据（阶段3）。这也是评估其他跨境支付公司发展阶段的参考框架。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">演进框架</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Airwallex整体交易量年化增长"接近100%"（CRO吴恺，2025年"未来金融峰会"），各产品线（收单/发卡/全球账户）齐头并进高速扩张。<span class="src">36氪，2025（CRO吴恺）</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">接近100%的年化交易量增速（不同于之前的73%增速数据，可能是更新数据）显示Airwallex的增长在加速而非放缓。各产品线均高速增长说明平台化战略成功，不依赖单一产品驱动。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">~100%增速</span><span class="tag tag-biz">平台化增长</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">旧金融体系为过去的全球化时代而设计（"齿轮逐渐老化的复杂机械"），无法匹配今天产品驱动、实时交付的商业节奏。<span class="src">36氪，2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">Airwallex的竞争定位叙事：不是与PayPal/Wise竞争，而是替代整个传统金融体系（银行+SWIFT）。"老化机械"的比喻非常有力，将Airwallex定位为时代更替的受益者而非行业内的竞争者。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">叙事定位</span><span class="tag tag-comp">vs传统银行</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+</div>
+<div class="footer">card-384 | 生成时间：2026-03-24 | 来源：36氪出海36kr.com | 信息点数：20</div>
+</body>
+</html>

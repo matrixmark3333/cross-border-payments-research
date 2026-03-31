@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-402 | Convera — $170B B2B跨境支付量，$500M营收，企业外汇管理专家</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier2  { background: #e0f2fe; color: #0369a1; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .warn-badge { display: inline-block; background: #fef9c3; color: #854d0e; border: 1px solid #fde047; border-radius: 4px; padding: 1px 6px; font-size: 11px; font-weight: 700; margin-left: 4px; }
+</style>
+</head>
+<body>
+
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 URL分析</span>
+    <span class="badge b-type">公司档案</span>
+    <span class="badge b-depth">全文提取</span>
+    <span class="badge b-rel">相关度 80%</span>
+  </div>
+  <h1>Convera — $170B B2B跨境支付量，$500M营收，企业外汇管理专家 </h1>
+  <div class="source-line">Bitscale AI / Convera | 索引：#402 | 原文：<a href="https://bitscale.ai/directory/convera" target="_blank">https://bitscale.ai/directory/convera</a></div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">5</div><div class="stat-label">信息点总数</div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">信息点列表 <span class="count">5条</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Convera年处理B2B跨境支付量超1700亿美元，年营收约5亿美元，服务26000+企业客户，支持140+货币<span class="src">来源：<a href="https://bitscale.ai/directory/convera" target="_blank">Bitscale AI / Convera#402</a></span></div>
+    <div class="ip-col ip-analysis">Convera $170B处理量在B2B跨境支付市场中位居前列，是机构级大额外汇市场的重要玩家，仅次于银行体量。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">Convera</span><span class="tag tag-biz">B2B</span><span class="tag tag-fin">处理量</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局/Convera</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Convera前身是Western Union Business Solutions，2021年以独立品牌运营，专注企业级外汇及跨境支付<span class="src">来源：<a href="https://bitscale.ai/directory/convera" target="_blank">Bitscale AI / Convera#402</a></span></div>
+    <div class="ip-col ip-analysis">Convera从Western Union分拆专注B2B，是传统汇款机构聚焦战略的典型案例。剥离消费业务使资源集中于高价值企业市场。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">Convera</span><span class="tag tag-biz">企业级</span><span class="tag tag-biz">Western Union</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局/市场定位</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Convera核心产品：国际供应商付款、FX风险管理（对冲）、140+货币访问、跨行业专属解决方案<span class="src">来源：<a href="https://bitscale.ai/directory/convera" target="_blank">Bitscale AI / Convera#402</a></span></div>
+    <div class="ip-col ip-analysis">Convera的FX对冲产品是差异化核心——中小企业难以直接进入外汇市场，Convera作为FX风险管理中介收取溢价。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">FX对冲</span><span class="tag tag-fin">外汇管理</span><span class="tag tag-biz">Convera</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品架构/B2B</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Convera总部西雅图，2021年成立，美国银行协会（ABA）钻石级合作伙伴；技术栈包含SWIFT、Salesforce、Snowflake等<span class="src">来源：<a href="https://bitscale.ai/directory/convera" target="_blank">Bitscale AI / Convera#402</a></span></div>
+    <div class="ip-col ip-analysis">ABA钻石会员身份提升了Convera在北美企业市场的可信度，SWIFT会员资格是大额B2B跨境支付的基础设施接入。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">ABA</span><span class="tag tag-tech">SWIFT</span><span class="tag tag-biz">B2B企业</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局/合规</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Convera竞争定位：专注B2B企业汇款，与Wise Business、Airwallex、Ebury形成竞争，差异在于40年外汇历史和机构信誉<span class="src">来源：<a href="https://bitscale.ai/directory/convera" target="_blank">Bitscale AI / Convera#402</a></span></div>
+    <div class="ip-col ip-analysis">传统机构40年历史在企业市场是信任优势。B2B大额交易更看重可靠性和合规性，历史口碑比费率优惠更重要。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">B2B竞争</span><span class="tag tag-biz">机构信誉</span><span class="tag tag-comp">外汇历史</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局</span></div>
+  </div>
+</div>
+
+<div class="footer">生成日期：2026-03-30 | 数据来源：Bitscale AI / Convera | 编号：#402 | Tier 2 分析卡 | </div>
+</body>
+</html>

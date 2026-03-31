@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-218 | 财新：人民币国际化2024 — 结构化信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1  { background: #dbeafe; color: #1d4ed8; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .warn { background: #fef3c7; color: #92400e; padding: 8px 12px; border-radius: 6px; font-size: 12px; margin: 12px 0; border-left: 3px solid #f59e0b; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">重要数据</span>
+    <span class="badge b-type">中文媒体 / 财新</span>
+    <span class="badge b-depth">⚠️ 付费墙 — 基于摘要+上海金融局官网</span>
+    <span class="badge b-rel">相关度 80%</span>
+  </div>
+  <h1>财新：人民币国际化2024里程碑数据</h1>
+  <div class="source-line">财新 | 发布：2025年1月 | 原文：<a href="https://finance.caixin.com/2025-01-03/102275203.html" target="_blank">finance.caixin.com/2025-01-03/102275203.html</a>（付费）| 索引：#218</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">市场数据类</div></div>
+  <div class="stat"><div class="stat-num">3</div><div class="stat-label">监管政策类</div></div>
+  <div class="stat"><div class="stat-num">8.5</div><div class="stat-label">平均价值评分</div></div>
+</div>
+<div class="warn">⚠️ 仅摘要：财新为付费墙媒体，以下信息点基于索引摘要及上海金融研究院官网（jrj.sh.gov.cn）公开数据，诚实标注。</div>
+<div class="section">
+  <div class="ip-row" style="background:#f8fafc;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><div class="ip-original">2024年跨境人民币收付金额合计64.1万亿元，同比增长23%。<span class="src">上海金融研究院 jrj.sh.gov.cn（2025-04-15）/ 财新摘要 #218</span></div></div>
+    <div class="ip-col"><div class="ip-analysis">64.1万亿元人民币≈约8.8万亿美元，规模已相当可观。23%增速显著高于全球跨境支付市场整体增速，说明人民币国际化加速。这对CIPS、连连、网商银行等中国跨境支付机构是利好。</div></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">市场规模</span><span class="tag tag-mkt">人民币国际化</span><span class="tag tag-fin">增长率</span></div></div>
+    <div class="ip-col"><div class="score s10"><div class="score-num">10</div><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场总览 > 1.1市场规模</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><div class="ip-original">人民币跨境收付在国际收支中的占比首次超过美元，达53%。（财新摘要）<span class="src">财新 #218 摘要</span></div></div>
+    <div class="ip-col"><div class="ip-analysis">里程碑式数据：在中国国际收支交易中，人民币首次超越美元成为第一结算货币（53% vs 美元约47%）。这反映了跨境人民币清算基础设施（CIPS）的成熟以及"去美元化"趋势在双边贸易中的落地。</div></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">人民币国际化</span><span class="tag tag-comp">竞争格局</span><span class="tag tag-mkt">市场总览</span></div></div>
+    <div class="ip-col"><div class="score s10"><div class="score-num">10</div><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场总览 > 1.4驱动因素</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><div class="ip-original">CIPS系统2024年处理跨境人民币支付金额达175万亿元，同比增长43%；覆盖范围已扩展至185个国家和地区（截至2024年12月末）。<span class="src">上海金融研究院 jrj.sh.gov.cn #218验证来源</span></div></div>
+    <div class="ip-col"><div class="ip-analysis">175万亿元≈约24万亿美元，CIPS处理规模已达可观量级。43%的增速远超SWIFT整体增速，反映人民币结算的加速采用。覆盖185国与SWIFT的200+国仍有差距，但正快速接近。</div></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">基础设施</span><span class="tag tag-mkt">人民币国际化</span><span class="tag tag-fin">增长率</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施 > 5.2清算网络</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><div class="ip-original">人民币已成全球第三大贸易融资货币。2024年外资金融机构和企业来华发行熊猫债接近2000亿元(+32% YoY)，离岸人民币债券发行(+150% YoY)。<span class="src">上海金融研究院 jrj.sh.gov.cn #218验证来源</span></div></div>
+    <div class="ip-col"><div class="ip-analysis">人民币在贸易融资（从第四跃升至第三大）和离岸债券市场的双重突破，显示人民币国际化不仅限于结算，已向资本市场扩展。这是CIPS和人民币跨境支付生态长期利好。</div></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">人民币国际化</span><span class="tag tag-fin">融资</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场 > 7.1亚太</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><div class="ip-original">2024年大宗商品贸易人民币跨境结算金额（1-8月）合计1.5万亿元，同比增长22.7%。中国已累计与40+国家和地区央行或货币当局签署双边本币互换协议。<span class="src">上海金融研究院 jrj.sh.gov.cn #218验证来源</span></div></div>
+    <div class="ip-col"><div class="ip-analysis">大宗商品人民币结算的增长（油气、矿产等）是人民币国际化最具战略意义的突破。40+双边互换协议是人民币流动性的基础设施，也为跨境支付创造了更广泛的使用场景。</div></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">人民币国际化</span><span class="tag tag-mkt">驱动因素</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场总览 > 1.4驱动因素</span></div>
+  </div>
+
+</div>
+<div class="footer">索引编号 #218 | 来源：财新（付费）/ 上海金融研究院官网（验证） | 获取方式：摘要+公开数据 | 生成日期：2026-03-24</div>
+</body>
+</html>

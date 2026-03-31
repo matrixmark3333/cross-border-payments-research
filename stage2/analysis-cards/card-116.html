@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-116 | Wise Business Singapore Pricing — 结构化信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1  { background: #dbeafe; color: #1d4ed8; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  .b-warn   { background: #fef9c3; color: #854d0e; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .warn-box { background: #fef9c3; border: 1px solid #fde047; border-radius: 8px; padding: 10px 14px; font-size: 13px; color: #713f12; margin: 12px 0; }
+</style>
+</head>
+<body>
+
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1 深度分析</span>
+    <span class="badge b-type">定价页</span>
+    <span class="badge b-warn">⚠️ 动态渲染，部分数据来自索引库</span>
+    <span class="badge b-rel">相关度 95%</span>
+  </div>
+  <h1>Wise Business Singapore Pricing — 新加坡商业账户定价</h1>
+  <div class="source-line">Wise (Official) | 获取时间：2026-03-24 | 原文：<a href="https://wise.com/sg/pricing/business" target="_blank">wise.com/sg/pricing/business</a> | 索引：#116</div>
+</div>
+
+<div class="warn-box">⚠️ wise.com/sg/pricing/business 页面为动态渲染（React SPA），web_fetch 只获取到部分内容。以下信息点综合已获取内容及索引库摘要（SGD 99一次性开户费，FX from 0.26%，SGD30K以上量折扣）。</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">14</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">定价数据类</div></div>
+  <div class="stat"><div class="stat-num">3</div><div class="stat-label">竞争对比类</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">商业模式类</div></div>
+  <div class="stat"><div class="stat-num">7.5</div><div class="stat-label">平均价值评分</div></div>
+</div>
+
+<div class="section">
+  <div class="ip-row" style="background:#f8fafc;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <!-- 1 -->
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Wise Business Singapore: SGD 99 one-time set-up fee — "All in for 99 SGD: Get every Wise Business feature for one set-up fee"<span class="src">wise.com/sg/pricing/business（web_fetch + 索引库）</span></span></div>
+    <div class="ip-col ip-analysis">SGD 99（≈$74）一次性开户费，覆盖全部功能。这是Wise Business的独特商业模式：不收月费，而是用一次性入门费。对于高频转账企业，ROI极快（1笔转账节省的FX费用可能超过$74）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-fin">单位经济</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案 > 2.1 Wise</span></div>
+  </div>
+
+  <!-- 2 -->
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Wise Business FX: "from 0.26%" for SGD transactions (索引库摘要); "No unexpected extras — All prices upfront, we don't inflate the mid-market exchange rate"<span class="src">wise.com/sg/pricing/business（web_fetch + 索引库）</span></span></div>
+    <div class="ip-col ip-analysis">SGD的FX费率from 0.26%，略高于Airwallex HK的0.20%，但仍远低于传统银行（1-3%）。Wise的"不虚报汇率"承诺是品牌核心。FX收入是Wise最大收入来源（约75-80%的营收来自FX/转账费）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案 > 2.1 Wise</span></div>
+  </div>
+
+  <!-- 3 -->
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">"Spend over 30,000 SGD (or equivalent) and you'll get a volume discount"<span class="src">wise.com/sg/pricing/business（web_fetch）</span></span></div>
+    <div class="ip-col ip-analysis">SGD30K（≈$22.5K）以上获得量折扣，是Wise对高频客户的激励机制。与Airwallex的功能分层（不降价）不同，Wise通过量折扣来锁定大客户，体现不同的客户留存策略。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-fin">单位经济</span><span class="tag tag-comp">竞争格局</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案 > 2.1 Wise</span></div>
+  </div>
+
+  <!-- 4 -->
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Wise Business Singapore定价哲学："Convert, send or spend money worldwide at transparent, competitive prices. We'll never inflate the exchange rate or charge your business unfair fees."<span class="src">wise.com/sg/pricing/business</span></span></div>
+    <div class="ip-col ip-analysis">Wise的核心价值主张是"透明+竞争力"，与Currenxie/Statrys的"no hidden charges"定位一致。整个行业竞争越来越集中在透明定价，这迫使传统银行改变隐性费用做法。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-comp">竞争格局</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案 > 2.1 Wise</span></div>
+  </div>
+
+  <!-- 5 -->
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">【对比】Wise SG开户费SGD99 vs Airwallex HK免费开户（三档套餐）<span class="src">交叉比较（card-093 vs card-116）</span></span></div>
+    <div class="ip-col ip-analysis">Wise收取一次性开户费（无月费），Airwallex免费开户（但功能受限于套餐档位）。Wise模式对轻量用户更友好（不持续收费），Airwallex模式对功能扩展需求旺盛的企业更灵活。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">竞争格局</span><span class="tag tag-biz">商业模式</span><span class="tag tag-fin">单位经济</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局 > 4.3 新加坡市场</span></div>
+  </div>
+
+  <!-- 6 -->
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Wise Business Singapore: MAS-licensed as Major Payment Institution (MPI); regulated under Payment Services Act<span class="src">公开信息</span></span></div>
+    <div class="ip-col ip-analysis">Wise持有MAS主要支付机构（MPI）牌照，是新加坡最严格的支付牌照。PSA监管框架下，Wise需持有客户资金保障、AML合规等。这是在新加坡运营的合规基础。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">监管</span><span class="tag tag-strat">护城河</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.监管 > 3.3 新加坡PSA</span></div>
+  </div>
+
+  <!-- 7 -->
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Wise Business Singapore vs Hong Kong: Singapore has separate pricing (SGD 99 setup + from 0.26% FX) vs HK (no setup fee on personal, business pricing different)<span class="src">比较分析</span></span></div>
+    <div class="ip-col ip-analysis">Wise在不同市场采用差异化定价（新加坡有开户费，香港个人无开户费），表明Wise根据市场竞争情况和监管成本调整定价策略，这是精细化定价管理的体现。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-fin">单位经济</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案 > 2.1 Wise</span></div>
+  </div>
+
+  <!-- 8 -->
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Wise Business: multi-currency account, batch payments, API access, accounting integrations (Xero, QuickBooks), team management<span class="src">公开信息综合</span></span></div>
+    <div class="ip-col ip-analysis">Wise Business功能集（多货币账户+批量支付+API+会计集成+团队管理）与Airwallex高度重叠，但Wise定位更偏"个人+小微企业"，企业级功能深度不及Airwallex。这在高ARPU B2B客户争夺中是Wise的弱点。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-comp">竞争格局</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案 > 2.1 Wise</span></div>
+  </div>
+
+  <!-- 9 -->
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Wise FY2025 Take Rate: ~0.65% (Revenue £1.12B / Volume £118.6B). Singapore FX "from 0.26%" is lower than blended Take Rate.<span class="src">综合Wise FY2025财报与SG定价</span></span></div>
+    <div class="ip-col ip-analysis">"from 0.26%"是起步价，实际混合Take Rate约0.65%（因为含固定费用、高额FX对的溢价等）。新加坡竞争激烈，Wise可能对SG市场定价更具竞争性，接近成本价以争取份额。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案 > 2.1 Wise</span></div>
+  </div>
+
+  <!-- 10 -->
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Wise Business Singapore competing with: Airwallex SG, Aspire, Nium (for higher-end), DBS/OCBC (traditional banks)<span class="src">市场分析</span></span></div>
+    <div class="ip-col ip-analysis">新加坡B2B支付市场竞争激烈，Wise面对Airwallex（更全功能）、Aspire（SME金融平台）、DBS/OCBC（传统银行下场）。新加坡是东南亚金融科技中心，任何全球平台进入东南亚都以新加坡为跳板。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">竞争格局</span><span class="tag tag-strat">地理扩张</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局 > 4.3 新加坡市场</span></div>
+  </div>
+
+  <!-- 11 -->
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Wise Interest (Yield) product available in Singapore — earning on idle SGD balance through Money Market funds<span class="src">公开信息</span></span></div>
+    <div class="ip-col ip-analysis">Wise在新加坡提供SGD余额利息产品（通过货币市场基金），这与Airwallex Yield（3.66% USD）形成竞争。利息收入是跨境支付平台最重要的第二增长引擎，SG监管允许此类产品。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">利息收入</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案 > 2.1 Wise</span></div>
+  </div>
+
+  <!-- 12 -->
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Wise Business SGD volume discount triggers at SGD 30K+ — designed to incentivize SME growth beyond micro-business threshold<span class="src">wise.com/sg/pricing/business</span></span></div>
+    <div class="ip-col ip-analysis">SGD30K月均转账才触发量折扣，约等于每月$22K出入，这是SME而非个人的门槛。折扣激励客户增加在Wise平台上的转账量（而非分散到多平台），是留存大客户的有效工具。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-strat">护城河</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.公司档案 > 2.1 Wise</span></div>
+  </div>
+
+</div>
+
+<div class="footer">⚠️ 数据来源：wise.com/sg/pricing/business（部分动态渲染）+ 索引库摘要 + 公开信息 | 索引编号 #116 | 生成时间：2026-03-24</div>
+</body>
+</html>

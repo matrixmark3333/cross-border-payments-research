@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-077 | Twimbit 东盟跨境支付变革 2024</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1  { background: #dbeafe; color: #1d4ed8; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .group-banner { background: #f8fafc; padding: 8px 0; font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1 深度分析</span>
+    <span class="badge b-type">行业研究报告</span>
+    <span class="badge b-depth">raw PDF 全文逐页提取（24页）</span>
+    <span class="badge b-rel">相关度 98%</span>
+  </div>
+  <h1>Twimbit：东盟跨境支付变革 2024 — 穷举式信息点提取</h1>
+  <div class="source-line">Twimbit Research & Advisory | 发布：2025年（覆盖2024年数据）| 原文：twimbit-asean-crossborder-payment-2024.pdf | 索引：#077</div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">38</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">10</div><div class="stat-label">A.市场数据</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">B.政策监管</div></div>
+  <div class="stat"><div class="stat-num">8</div><div class="stat-label">C.技术基础设施</div></div>
+  <div class="stat"><div class="stat-num">12</div><div class="stat-label">D.地区分析</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">E.趋势预测</div></div>
+</div>
+
+<div class="section">
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="group-banner">▌ A. 市场数据（10条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2024年A2A和电子钱包交易量增长14%，达到1.14万亿美元；预计2030年合计GTV达2100-2400亿美元<span class="src">Twimbit 东盟跨境支付变革2024, p.4</span></div>
+    <div class="ip-col ip-analysis">A2A+电子钱包成为东盟支付主力渠道，2024年已突破万亿规模；2030年预测显示近一倍增长潜力</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">市场规模</span><span class="tag tag-fin">A2A支付</span><span class="tag tag-fin">电子钱包</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">市场规模</span><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">东盟以4.6%的年增长率超越中国、美国和欧盟；东盟数字产业（电商、金融科技等）预计从2024年的3000亿美元增至2030年1万亿美元<span class="src">Twimbit 东盟跨境支付变革2024, p.4</span></div>
+    <div class="ip-col ip-analysis">东盟数字经济增速领先G3，支付作为基础设施将受益于整体数字化进程；规模从3000亿到1万亿是2.3倍增长</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">数字经济规模</span><span class="tag tag-fin">增速</span><span class="tag tag-mkt">东盟</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">市场规模</span><span class="kb-tag">宏观趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">泰国在线交易：2024年6月平均增速53%；POS交易（含电子货币）自2023年中以来保持50-60%增速；境外泰国卡交易H1 2024达194万美元（7亿泰铢）；外卡消费四年增长163%（从H1 2020的48亿增至H1 2024）<span class="src">Twimbit 东盟跨境支付变革2024, p.5</span></div>
+    <div class="ip-col ip-analysis">泰国数字支付高速增长，国际入境和出境卡交易均快速扩张，反映旅游业恢复和数字化双轮驱动</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">泰国支付数据</span><span class="tag tag-fin">交易增速</span><span class="tag tag-mkt">泰国</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">市场规模</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">印度尼西亚跨境QRIS年增长率225.54%（截至Q2 2024）；QRIS用户达5050万消费者；3271万商家提供QRIS支付<span class="src">Twimbit 东盟跨境支付变革2024, p.13</span></div>
+    <div class="ip-col ip-analysis">印尼QRIS数据惊艳：225%年增长+5000万用户+3000万商家，是东盟QR互联的核心市场</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">QRIS增速</span><span class="tag tag-fin">用户规模</span><span class="tag tag-mkt">印度尼西亚</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">市场规模</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">越南NAPAS 2024年每日处理超2600万笔交易（同比+30.8%）；数字支付交易总值增长15.9%；NAPAS 24/7快转交易量增34.7%，价值增16.4%，占NAPAS全系统交易量93.5%<span class="src">Twimbit 东盟跨境支付变革2024, p.14</span></div>
+    <div class="ip-col ip-analysis">越南NAPAS快转主导全系统93.5%，即时支付渗透率极高；每日2600万笔是东盟重要的基础设施数据</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">越南NAPAS</span><span class="tag tag-fin">即时支付渗透</span><span class="tag tag-mkt">越南</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">市场规模</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">越南VietQR支付交易量同比增2.2倍，交易价值增2.6倍<span class="src">Twimbit 东盟跨境支付变革2024, p.14</span></div>
+    <div class="ip-col ip-analysis">VietQR爆发式增长表明越南QR支付进入加速渗透阶段，价值增速超量增速说明高额交易占比上升</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">VietQR</span><span class="tag tag-fin">QR支付增速</span><span class="tag tag-mkt">越南</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">菲律宾：2024年34%的菲律宾网购者每月进行境外购物（vs 2023年27%），视频电商等创新驱动<span class="src">Twimbit 东盟跨境支付变革2024, p.16</span></div>
+    <div class="ip-col ip-analysis">菲律宾跨境电商增速快速，从27%到34%是7pp的大幅跃升，视频电商是新兴驱动力</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">跨境电商</span><span class="tag tag-mkt">菲律宾</span><span class="tag tag-fin">消费者行为</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">市场规模</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">菲律宾跨境汇款平均费率6%；多重验证和合规检查增加延误和成本<span class="src">Twimbit 东盟跨境支付变革2024, p.16</span></div>
+    <div class="ip-col ip-analysis">菲律宾6%汇款费率高于全球平均，是侨汇大国面临的核心痛点；合规负担加剧成本问题</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">汇款费率</span><span class="tag tag-mkt">菲律宾</span><span class="tag tag-fin">跨境成本</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">成本分析</span><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">马来西亚Touch 'n Go电子钱包境外QR支付TPV：2023年3月至2024年3月增长超170倍；DuitNow QR国际游客QR交易量激增550%<span class="src">Twimbit 东盟跨境支付变革2024, p.9</span></div>
+    <div class="ip-col ip-analysis">170倍和550%的增速反映跨境QR在旅游场景的爆炸性渗透，马来西亚是东盟最活跃的跨境QR市场之一</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">TNG电子钱包</span><span class="tag tag-fin">QR增速</span><span class="tag tag-mkt">马来西亚</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">市场规模</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">新加坡：B2B跨境支付仍依赖传统电汇和银行转账，费用每笔10-25美元（不含外汇成本）；不足25%的新加坡企业已为B2B交易完全采用数字技术<span class="src">Twimbit 东盟跨境支付变革2024, p.7</span></div>
+    <div class="ip-col ip-analysis">新加坡B2B支付现代化落后零售，75%企业未完成数字转型，每笔10-25美元固定费用对中小企业显著<span class="src"></span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">B2B跨境成本</span><span class="tag tag-mkt">新加坡</span><span class="tag tag-comp">数字化差距</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">成本分析</span><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="group-banner">▌ B. 政策监管（4条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">印度尼西亚Bank Indonesia自2020年1月起强制要求使用QRIS实现支付互操作性；并允许非银行机构发行电子货币用于零售支付<span class="src">Twimbit 东盟跨境支付变革2024, p.13</span></div>
+    <div class="ip-col ip-analysis">BI强制QRIS是东盟最激进的QR统一政策，同类命令使QRIS迅速成为印尼主流支付方式</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">QRIS强制</span><span class="tag tag-reg">非银行电子货币</span><span class="tag tag-mkt">印度尼西亚</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">新加坡主要支付机构（MPI）许可证推动竞争、支持中小企业国际贸易中的安全高效支付解决方案；数字经济协议简化合规并减少重复KYC<span class="src">Twimbit 东盟跨境支付变革2024, p.7</span></div>
+    <div class="ip-col ip-analysis">MPI制度是新加坡吸引金融科技的关键监管工具；DEA的KYC互认减少摩擦成本</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">MPI许可</span><span class="tag tag-reg">数字经济协议</span><span class="tag tag-mkt">新加坡</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">文莱中央银行（BDCB）2024年2月29日正式加入区域支付互联（RPC）倡议；文莱数字支付中心（DPH）计划2025年后实现完整跨境功能<span class="src">Twimbit 东盟跨境支付变革2024, p.20</span></div>
+    <div class="ip-col ip-analysis">文莱加入RPC是东盟区域支付互联覆盖更完整的里程碑，DPH的公私合作模式是小国整合的参考</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">RPC倡议</span><span class="tag tag-mkt">文莱</span><span class="tag tag-tech">DPH</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">菲律宾计划2029年前推出批发CBDC，以减少对传统银行的依赖，实现更快结算<span class="src">Twimbit 东盟跨境支付变革2024, p.16</span></div>
+    <div class="ip-col ip-analysis">批发CBDC定位在跨境结算层面，是对现有实时零售支付的补充而非替代</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">批发CBDC</span><span class="tag tag-reg">菲律宾央行</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">数字货币</span><span class="kb-tag">政策监管</span></div>
+  </div>
+
+  <div class="group-banner">▌ C. 技术基础设施（8条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Project Nexus旨在标准化FPS连接方式；泰国提及Nexus支持中小企业5分钟内完成交易、每日转账上限25000泰铢（735美元）<span class="src">Twimbit 东盟跨境支付变革2024, p.6, p.22</span></div>
+    <div class="ip-col ip-analysis">Nexus的5分钟目标和735美元/日限额是东盟零售跨境支付的具体运营参数，反映SME支付场景需求</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">Project Nexus</span><span class="tag tag-fin">转账限额</span><span class="tag tag-fin">速度指标</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">泰国SCB联合Lightnet使用稳定币进行跨境汇款，提供价格稳定性（区别于波动性加密货币），适合日常交易和汇款<span class="src">Twimbit 东盟跨境支付变革2024, p.6</span></div>
+    <div class="ip-col ip-analysis">SCB+Lightnet稳定币方案是传统银行积极拥抱区块链技术的典型案例，聚焦汇款成本和速度优化</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">稳定币</span><span class="tag tag-comp">SCB</span><span class="tag tag-mkt">泰国</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">数字货币</span><span class="kb-tag">案例研究</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">PayNow-PromptPay互联：5分钟内完成新泰跨境转账；仅需手机号无需完整银行账户；24/7实时处理；减少银行隐性费用和外汇成本<span class="src">Twimbit 东盟跨境支付变革2024, p.7-8</span></div>
+    <div class="ip-col ip-analysis">PayNow-PromptPay是东盟双边FPS互联的样板：速度（5分钟）、便利性（手机号）、成本（降费）三维优势</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">PayNow-PromptPay</span><span class="tag tag-mkt">新加坡</span><span class="tag tag-mkt">泰国</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">案例研究</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">马来西亚DuitNow QR跨境覆盖：马来西亚游客可在印尼（QRIS）、新加坡（NETS）、泰国（PromptPay）和中国（Alipay）扫码消费；DuitNow实现与新加坡、印尼、泰国、中国、韩国和柬埔寨的实时转账<span class="src">Twimbit 东盟跨境支付变革2024, p.9-10</span></div>
+    <div class="ip-col ip-analysis">DuitNow的六国覆盖是东盟最广泛的单一电子钱包跨境互联网络之一，展示了QR互联的规模效应</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">DuitNow</span><span class="tag tag-mkt">马来西亚</span><span class="tag tag-tech">QR互联</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">马来西亚、印尼、泰国、新加坡和菲律宾五国同意建立QR码互联，促进本地货币跨境结算，主要目标是降低交易成本、理顺支付流程<span class="src">Twimbit 东盟跨境支付变革2024, p.10</span></div>
+    <div class="ip-col ip-analysis">五国QR本地货币结算框架是东盟去美元化跨境支付的具体机制，预计2026年降低交易成本</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">五国QR框架</span><span class="tag tag-fin">本地货币</span><span class="tag tag-mkt">东盟</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础设施</span><span class="kb-tag">外汇机制</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">柬埔寨Bakong与Alipay+合作（2024年10月）：通过Alipay+用户使用12个国际支付APP（Alipay、AlipayHK、TNG、GCash、Kakao Pay等）以KHQR码在柬埔寨进行交易<span class="src">Twimbit 东盟跨境支付变革2024, p.18</span></div>
+    <div class="ip-col ip-analysis">Bakong-Alipay+连接将12个国际支付APP引入柬埔寨，是Alipay+全球支付网络聚合模式的典型案例</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">Bakong</span><span class="tag tag-comp">Alipay+</span><span class="tag tag-mkt">柬埔寨</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">案例研究</span><span class="kb-tag">基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">马来西亚Alipay+合作：使旅行者可在马来西亚180万个商户接触点使用电子钱包消费<span class="src">Twimbit 东盟跨境支付变革2024, p.9</span></div>
+    <div class="ip-col ip-analysis">Alipay+聚合模式通过统一接受所有合作电子钱包，最大化商户接受网络，是创新的B端基础设施</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">Alipay+</span><span class="tag tag-tech">商户网络</span><span class="tag tag-mkt">马来西亚</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局</span><span class="kb-tag">案例研究</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">KASIKORNBANK（泰国）：允许泰国旅行者在新加坡通过银行应用扫描QR码即时支付，使用区块链保障交易安全<span class="src">Twimbit 东盟跨境支付变革2024, p.6</span></div>
+    <div class="ip-col ip-analysis">KBANK将区块链应用于QR跨境支付，是传统商业银行在跨境零售支付场景的技术创新案例</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">区块链支付</span><span class="tag tag-comp">KASIKORNBANK</span><span class="tag tag-mkt">泰国</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">案例研究</span><span class="kb-tag">技术基础设施</span></div>
+  </div>
+
+  <div class="group-banner">▌ D. 地区分析（12条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">泰国跨境支付挑战：14%的泰国银行使用过时遗留系统；各金融机构和邻国监管标准不一；SME面临高费率、银行服务有限和跨境延迟<span class="src">Twimbit 东盟跨境支付变革2024, p.5</span></div>
+    <div class="ip-col ip-analysis">14%银行遗留系统是精确数据点；SME跨境支付痛点在东盟普遍存在，是支付改革的核心用户场景</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">泰国</span><span class="tag tag-tech">遗留系统</span><span class="tag tag-fin">SME支付</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">泰国BOT与香港金管局探索代币化跨境交易（San和Ensemble项目）；与新加坡、马来西亚、印尼整合实时支付网络<span class="src">Twimbit 东盟跨境支付变革2024, p.5</span></div>
+    <div class="ip-col ip-analysis">泰国央行在代币化和FPS互联双线推进，既布局下一代也巩固当下基础设施，战略全面</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">泰国</span><span class="tag tag-tech">代币化</span><span class="tag tag-tech">RTP互联</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">数字货币</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">新加坡PayNow-UPI互联：新加坡和印度用户可在银行账户和电子钱包间即时转账；Wise连接InstaPay实现菲律宾即时跨境支付<span class="src">Twimbit 东盟跨境支付变革2024, p.7, p.16</span></div>
+    <div class="ip-col ip-analysis">新加坡是东盟跨境互联的枢纽节点：PayNow同时连接泰国、马来西亚、印度和印尼，是区域最广泛的互联网络</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">新加坡</span><span class="tag tag-tech">PayNow</span><span class="tag tag-tech">UPI互联</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">跨境支付</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">印尼跨境QRIS：外国游客使用量月环比增速：新加坡+28%（主要热点雅加达、廖内），泰国+13%，马来西亚+8%；印尼人在境外：泰国+9%，马来西亚+4%<span class="src">Twimbit 东盟跨境支付变革2024, p.12</span></div>
+    <div class="ip-col ip-analysis">外来+输出双向数据：新加坡游客领跑印尼QRIS使用，廖内群岛（近新加坡）是地理效应显著的热点</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">印度尼西亚</span><span class="tag tag-fin">QRIS增速</span><span class="tag tag-mkt">旅游支付</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">印尼BRI与Nium合作改善实时国际转账，惠及弱势群体；PingPong在印尼获得支付牌照旨在降低低价值交易成本<span class="src">Twimbit 东盟跨境支付变革2024, p.13</span></div>
+    <div class="ip-col ip-analysis">Nium（B2B即时支付）和PingPong（跨境B2B收款）是专注不同垂直市场的跨境支付金融科技</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">Nium</span><span class="tag tag-comp">PingPong</span><span class="tag tag-mkt">印度尼西亚</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局</span><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">越南与柬埔寨国家银行合作：推出本币QR码跨境支付系统；VIB与Flywire合作让越南学生用本地货币支付海外学费<span class="src">Twimbit 东盟跨境支付变革2024, p.15</span></div>
+    <div class="ip-col ip-analysis">越南的跨境支付创新覆盖B2C（学生留学费用）和B2B（贸易）两端，应用场景多元</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">越南</span><span class="tag tag-tech">本币QR</span><span class="tag tag-comp">Flywire</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">案例研究</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">菲律宾Alipay+与GHL Systems合作开通跨境数字支付；Wise连接InstaPay实现即时跨境支付<span class="src">Twimbit 东盟跨境支付变革2024, p.16</span></div>
+    <div class="ip-col ip-analysis">Wise接入菲律宾InstaPay是西方跨境汇款平台嵌入本地即时支付基础设施的典型案例</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">Wise</span><span class="tag tag-comp">Alipay+</span><span class="tag tag-mkt">菲律宾</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局</span><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">柬埔寨-马来西亚QR互联：第一阶段使柬埔寨消费者可在马来西亚扫DuitNow QR消费；第二阶段马来西亚旅行者可使用KHQR在柬埔寨消费；预计惠及两国超500万商家<span class="src">Twimbit 东盟跨境支付变革2024, p.18</span></div>
+    <div class="ip-col ip-analysis">双向互联的500万商家覆盖量化了QR互联的规模效益，两阶段推进模式也是互联实施的通用模板</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">QR双边互联</span><span class="tag tag-mkt">柬埔寨</span><span class="tag tag-mkt">马来西亚</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">老挝Kip-Dong系统：启用越南-老挝QR支付，推动老挝手机银行和电子钱包采用<span class="src">Twimbit 东盟跨境支付变革2024, p.21</span></div>
+    <div class="ip-col ip-analysis">越老QR互联展示了较小体量双边合作的可行性，可复制至其他低收入国家双边走廊</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">越老QR</span><span class="tag tag-mkt">老挝</span><span class="tag tag-mkt">越南</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">缅甸缺乏全面运营的FPS，是加入Project Nexus的障碍；比尔及梅琳达·盖茨基金会和新加坡金管局正支持其开发即时支付系统；政治危机阻碍基础设施发展<span class="src">Twimbit 东盟跨境支付变革2024, p.22</span></div>
+    <div class="ip-col ip-analysis">缅甸缺席即时支付是东盟互联覆盖的关键缺口，政治因素对金融基础设施的破坏效果显著</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">缅甸</span><span class="tag tag-tech">FPS缺失</span><span class="tag tag-strat">政治风险</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">风险因素</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">柬埔寨-印度支付系统互联：扩展Bakong系统的覆盖范围，加强两国经济活动<span class="src">Twimbit 东盟跨境支付变革2024, p.19</span></div>
+    <div class="ip-col ip-analysis">柬埔寨Bakong作为非主要经济体主动向外扩展，展示小国数字货币/支付战略的开放导向</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">柬埔寨</span><span class="tag tag-mkt">印度</span><span class="tag tag-tech">Bakong</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">柬埔寨、老挝、文莱、缅甸共同挑战：监管/合规障碍、高数字基础设施成本（尤其小银行和农村地区）、金融包容缺口、互操作性问题、数字支付生态系统欠发达<span class="src">Twimbit 东盟跨境支付变革2024, p.17</span></div>
+    <div class="ip-col ip-analysis">东盟欠发展成员国的五大共性障碍，显示基础设施投资和能力建设优先于互联协议</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">东盟落后成员</span><span class="tag tag-strat">发展障碍</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">金融包容</span></div>
+  </div>
+
+  <div class="group-banner">▌ E. 趋势预测（4条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2030年东盟支付市场将达1万亿美元，由创新、区域合作和数字基础设施驱动<span class="src">Twimbit 东盟跨境支付变革2024, p.22（结论）</span></div>
+    <div class="ip-col ip-analysis">1万亿美元目标是整体数字经济（含支付）的总规模预测，较2024年3000亿增长3倍以上</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">市场预测</span><span class="tag tag-mkt">东盟2030</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">宏观趋势</span><span class="kb-tag">市场规模</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">NIPL-Liquid Group合作：通过QR码将UPI支付扩展至10个国家（马来西亚、泰国、菲律宾、越南、柬埔寨、新加坡、韩国、日本、台湾、香港），进一步加强东盟跨境支付整合<span class="src">Twimbit 东盟跨境支付变革2024, p.22</span></div>
+    <div class="ip-col ip-analysis">UPI通过Liquid Group聚合器向东亚+东盟10国扩展是印度支付影响力全球化的重要里程碑</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">UPI扩展</span><span class="tag tag-comp">Liquid Group</span><span class="tag tag-mkt">东亚</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">宏观趋势</span><span class="kb-tag">竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">QR码和A2A支付采用率显著提升，共同GTV预计2030年达2100-2400亿美元（2024年为1.14万亿美元）；东盟以4.6%年增速超越中美欧<span class="src">Twimbit 东盟跨境支付变革2024, p.4</span></div>
+    <div class="ip-col ip-analysis">注意数字：报告前后一致，2030年2100-2400亿GTV是A2A+电子钱包的子集，与1万亿数字经济总量不矛盾</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">A2A增长</span><span class="tag tag-fin">电子钱包</span><span class="tag tag-mkt">东盟</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">市场规模</span><span class="kb-tag">宏观趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">马来西亚QR和快速支付措施预计2026年将降低交易成本、增强贸易并简化东南亚和印度的跨境金融流动<span class="src">Twimbit 东盟跨境支付变革2024, p.11</span></div>
+    <div class="ip-col ip-analysis">2026年作为具体时间节点反映马来西亚-东盟QR互联的实施时间表，印度的纳入扩大了区域覆盖</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">2026路线图</span><span class="tag tag-mkt">马来西亚</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">宏观趋势</span><span class="kb-tag">地区分析</span></div>
+  </div>
+
+</div>
+
+<div class="footer">
+  索引编号：card-077 | 来源文件：twimbit-asean-crossborder-payment-2024.pdf | 提取方式：pdfplumber全文逐页提取（24页）| 提取日期：2026-03-28 | 信息点总数（grep验证）：38条
+</div>
+
+</body>
+</html>

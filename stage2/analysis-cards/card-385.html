@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-385 | 人人都是产品经理 稳定币跨境支付分析 — 结构化信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .b-tier1 { background: #dbeafe; color: #1d4ed8; } .b-type { background: #f0fdf4; color: #166534; } .b-depth { background: #ede9fe; color: #5b21b6; } .b-rel { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; } .source-line { font-size: 13px; color: #64748b; } .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; } .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; } .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; }
+  .section { background: white; padding: 0 28px; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; } .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; padding: 8px 10px; background: #f8fafc; } .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; } .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; } .tag-biz { background: #dcfce7; color: #166534; border-color: #bbf7d0; } .tag-mkt { background: #fef3c7; color: #92400e; border-color: #fde68a; } .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; } .tag-strat { background: #fff7ed; color: #9a3412; border-color: #fed7aa; } .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; } .tag-reg { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; } .score-num { font-size: 22px; font-weight: 800; } .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; } .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; } .s7, .s8 { color: #2563eb; } .s7 .score-fill, .s8 .score-fill { background: #2563eb; } .s5, .s6 { color: #d97706; } .s5 .score-fill, .s6 .score-fill { background: #d97706; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1</span>
+    <span class="badge b-type">中文媒体 / 人人都是产品经理</span>
+    <span class="badge b-depth">web_fetch 全文</span>
+    <span class="badge b-rel">相关度 80%</span>
+  </div>
+  <h1>人人都是产品经理 — 数字稳定币如何重构跨境支付版图（全景分析）</h1>
+  <div class="source-line">人人都是产品经理 | 发布：2025年 | 原文：<a href="https://www.woshipm.com/pd/6189471.html" target="_blank">woshipm.com/pd/6189471</a> | 索引：#385</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">22</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">稳定币技术类</div></div>
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">监管/市场类</div></div>
+  <div class="stat"><div class="stat-num">6</div><div class="stat-label">跨境应用类</div></div>
+  <div class="stat"><div class="stat-num">8.0</div><div class="stat-label">平均价值评分</div></div>
+</div>
+<div class="section">
+  <div class="ip-row" style="background:#f8fafc;">
+    <div class="col-header">原文信息点 + 来源</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header">评分</div>
+    <div class="col-header">知识库</div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">稳定币三大类型：法币抵押型（USDT/USDC中心化）、加密资产抵押型（DAI去中心化）、算法稳定币（TerraUST已崩盘）。<span class="src">woshipm.com/pd/6189471, 2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">三类型框架是理解稳定币市场格局的基础。法币抵押型（USDT/USDC）占据跨境支付实用场景的主导，算法型已基本被市场淘汰。对跨境支付：USDC（合规透明）最适合B2B场景。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">稳定币三类型</span><span class="tag tag-biz">USDT/USDC/DAI</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">2024年，稳定币市值约2100亿美元，交易量超过26万亿美元（BCG数据）；USDT市占率曾高达75%，仍居首位。<span class="src">woshipm.com/pd/6189471, 2025（BCG数据）</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">$26T稳定币交易量（2024）已接近SWIFT的部分跨境结算量，但成本大幅更低。这是稳定币作为跨境支付工具已初步证明规模可行性的关键数据，与BCG报告（#389）数据吻合。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">$26T稳定币交易</span><span class="tag tag-mkt">市场规模</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场总览</span><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">USDC由Circle+Coinbase联合推出，受美国监管，定期审计，储备以现金和美国国债为主，被视为"合规透明"的稳定币选择。<span class="src">woshipm.com/pd/6189471, 2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">USDC的合规属性（受美国监管+透明审计）使其成为B2B跨境支付场景的首选稳定币，而非USDT（透明度争议）。企业合规部门更倾向接受USDC作为结算媒介。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">USDC合规</span><span class="tag tag-biz">B2B结算</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">稳定币跨境支付典型案例：菲律宾务工者使用USDT汇款，香港金管局与泰国央行跨境CBDC支付项目。<span class="src">woshipm.com/pd/6189471, 2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">两个案例体现稳定币在跨境支付中的两个端点：C端汇款（菲律宾务工者，低成本高频）和B端/机构（HK-泰央行，高价值低频）。两端均已有实证，说明稳定币跨境支付不是概念，是现实应用。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">菲律宾汇款</span><span class="tag tag-tech">央行合作</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">稳定币优势vs传统支付：全球用户间快速转移，无需银行中介，像发送邮件一样高效。跨境支付从T+2-5变为实时。<span class="src">woshipm.com/pd/6189471, 2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">稳定币的核心价值：24/7实时结算+无中间行费用。与传统SWIFT（1-5工作日+中间行费）相比，这是颠覆性改善。但KYC/AML合规要求限制了其在受监管市场的大规模商业应用。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">实时结算</span><span class="tag tag-fin">无中间行</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">主要稳定币监管态度：美国（GENIUS法案，2025监管框架）、欧洲（MiCA法规）、新加坡（MAS支付服务法）、香港（许可证制度）、中国大陆（严格限制）。<span class="src">woshipm.com/pd/6189471, 2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">监管分化是稳定币跨境支付采用率差异的根本原因。美国/欧盟/新加坡/香港的合规框架逐步完善，为机构采用提供法律确定性；中国大陆的严格限制是限制人民币数字化的主要障碍。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">监管分化</span><span class="tag tag-mkt">全球监管地图</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">USDT发行方Tether因储备透明度问题受到质疑，但凭借先发优势和广泛的交易所支持，USDT市值长期占据稳定币首位，市场占有率曾高达75%。<span class="src">woshipm.com/pd/6189471, 2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">USDT的75%市占率尽管存在储备争议，体现了网络效应在稳定币市场的压倒性作用。在B2B跨境支付中，交易对手接受度（而非透明度）才是实际采用的关键决定因素。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">USDT 75%市占</span><span class="tag tag-comp">网络效应</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">香港有多个稳定币跨境支付试点，金管局积极推动数字港元和跨境CBDC测试，是全球稳定币监管最开放的中文市场之一。<span class="src">woshipm.com/pd/6189471, 2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">香港的稳定币试点政策与其国际金融中心地位高度匹配，是中国内地企业在监管允许的范围内探索数字资产支付的窗口。这对Currenxie/Statrys等香港平台是潜在的差异化功能增量。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">香港试点</span><span class="tag tag-reg">CBDC测试</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">2025年主要国际支付公司均已支持稳定币（如Stripe支持USDC收款），标志着稳定币从加密世界进入主流支付生态。<span class="src">woshipm.com/pd/6189471, 2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">Stripe对USDC的支持是稳定币进入主流的重要里程碑。跨境支付fintech（Airwallex/Wise）若不提供稳定币支持，将面临来自Stripe+Circle生态的竞争压力。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">Stripe+USDC</span><span class="tag tag-strat">主流化</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">DAI（MakerDAO）的"终极计划"（Endgame Plan）引入真实世界资产（国债）作为储备，并计划推出新稳定币USDS，体现去中心化稳定币的持续演进。<span class="src">woshipm.com/pd/6189471, 2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">DAI向现实世界资产（国债）的锚定是去中心化金融与传统金融基础设施融合的信号。这一演进趋势若成熟，可能为机构跨境支付提供在不依赖单一发行方的同时保持合规的稳定币选项。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">DAI演进</span><span class="tag tag-fin">RWA</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">稳定币可以在区块链上全球范围内用户间快速转移，而无需银行中介——本质上是区块链对传统代理行体系的替代。<span class="src">woshipm.com/pd/6189471, 2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">代理行替代是稳定币对传统跨境支付基础设施最根本的冲击。但替代路径不是直接竞争，而是在合规受限的市场（C2B小额/新兴市场）填补代理行服务不到位的缺口。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">代理行替代</span><span class="tag tag-biz">区块链结算</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">2022年Terra/UST崩盘事件（算法稳定币的失败），导致算法稳定币的信誉受损，推动市场向法币抵押型集中。<span class="src">woshipm.com/pd/6189471, 2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">TerraUST崩盘的教训使市场形成了"稳定币必须有实物/法币储备"的共识，这也是GENIUS法案等监管框架要求稳定币100%法币储备的政策背景。对B2B跨境支付：机构客户只会使用USDC/USDT级别的合规稳定币。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Terra崩盘</span><span class="tag tag-reg">监管教训</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">USDT主要流通在以太坊、Tron等区块链上，Tron网络因低手续费在亚洲/新兴市场跨境汇款中被广泛使用。<span class="src">woshipm.com/pd/6189471, 2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">Tron网络的低手续费优势（每笔约$0.001，相比以太坊$1-10）使其成为小额跨境汇款的首选底层区块链。菲律宾/越南/非洲的务工者汇款大量使用Tron-USDT，是稳定币渗透率最高的应用场景。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">Tron网络</span><span class="tag tag-mkt">新兴市场汇款</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">法币抵押型稳定币发行原理：用户将美元汇给发行方→发行方在链上给用户等量稳定币（1:1锚定）；赎回需KYC审核，USDC官方赎回最低额度要求较高（大额用户）。<span class="src">woshipm.com/pd/6189471, 2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">高额赎回门槛意味着普通企业只能通过交易所等二级市场兑换，增加了成本和复杂性。这是稳定币在B2B跨境支付中大规模应用的主要摩擦点——需要有Circle/Tether的直接合作关系。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">赎回门槛</span><span class="tag tag-biz">机构准入</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">量子计算对稳定币的潜在威胁：未来量子计算机可能破解当前的加密算法，这是长期风险因素。<span class="src">woshipm.com/pd/6189471, 2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">量子计算威胁是长期（10-20年）风险，不影响当前应用。但提醒跨境支付基础设施需要前瞻性地规划量子抗性加密升级路径，这是国际标准化机构（NIST）已在推进的工作。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">量子风险</span><span class="tag tag-strat">长期风险</span></div></div>
+    <div class="ip-col"><div class="score s5"><span class="score-num">5</span><div class="score-bar"><div class="score-fill" style="width:50%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">稳定币在跨境支付的核心优势：全天候运营（无银行工作时间限制）+ 低费用 + 快速到账 + 编程性。<span class="src">woshipm.com/pd/6189471, 2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">四个优势中"可编程性"是最具颠覆性的——智能合约可以实现条件付款（如货物到港自动付款），这是传统支付基础设施无法提供的原生能力。对供应链金融场景价值最大。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">24/7+可编程</span><span class="tag tag-biz">供应链金融</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">CBDC与商业稳定币的关系：两者并非互相替代，而是并行发展。CBDC面向主权支付，商业稳定币面向市场应用。<span class="src">woshipm.com/pd/6189471, 2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">CBDC（央行主权）+商业稳定币（市场自由）的双轨并行是当前全球主流判断。在跨境支付中，批发CBDC（mCBDC）可能处理机构大额结算，商业稳定币（USDC）处理企业日常收付——两者互补。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">CBDC vs稳定币</span><span class="tag tag-strat">并行发展</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">稳定币的"三类比喻"：法币抵押型=星巴克储值卡（有机构信用背书）；加密抵押型=黄金抵押借条（链上自治）；算法型=弹性优惠券（市场信心驱动，高风险）。<span class="src">woshipm.com/pd/6189471, 2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">三类比喻是优质的产品教育框架，简洁传达了不同稳定币的风险/信任结构差异。对于向企业客户解释稳定币跨境支付方案时，这类通俗化框架是有价值的销售工具。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">产品教育</span><span class="tag tag-strat">类比框架</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">稳定币的局限：信任中心化风险（发行方可冻结账户）、KYC/AML合规要求、赎回门槛、法律地位不确定性——与传统银行的可信度差距仍需弥合。<span class="src">woshipm.com/pd/6189471, 2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">稳定币的四个局限解释了为什么即使有技术优势，其在B2B跨境支付的主流采用仍受限——机构客户需要法律清晰度和赎回保障。GENIUS法案等监管框架正是针对这些局限的政策回应。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">稳定币局限</span><span class="tag tag-fin">合规挑战</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">稳定币的可编程性（智能合约）支持条件付款、自动执行协议，为贸易融资（信用证数字化）和供应链金融提供技术基础。<span class="src">woshipm.com/pd/6189471, 2025</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">智能合约驱动的贸易融资（数字信用证）是稳定币超越汇款进入高价值B2B场景的关键路径。这将直接颠覆传统银行的信用证业务（年费数千美元），是稳定币对银行业务最重要的威胁之一。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">智能合约</span><span class="tag tag-biz">贸易融资</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+</div>
+<div class="footer">card-385 | 生成时间：2026-03-24 | 来源：woshipm.com/pd/6189471 | 信息点数：20</div>
+</body>
+</html>

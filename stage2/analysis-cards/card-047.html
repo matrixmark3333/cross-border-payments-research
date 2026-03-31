@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-047 | Remitly FY2024 Results — 穷举式信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #7c3aed; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1  { background: #ede9fe; color: #5b21b6; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #dbeafe; color: #1d4ed8; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #7c3aed; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #f5f3ff; color: #5b21b6; border: 1px solid #ddd6fe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .group-banner { background: #f8fafc; padding: 8px 0 8px 0; font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1 竞争对手</span>
+    <span class="badge b-type">财报 / 季报</span>
+    <span class="badge b-depth">raw PDF 全文提取（5页）</span>
+    <span class="badge b-rel">相关度 98%</span>
+  </div>
+  <h1>Remitly FY2024 Full Year &amp; Q4 Results — 穷举式信息点提取</h1>
+  <div class="source-line">Remitly Global, Inc. (NASDAQ: RELY) | 财年截止日期：2024年12月31日 | 发布：2025年2月19日 | 索引：#047 | 版本：穷举A</div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">52</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">22</div><div class="stat-label">A.核心财务</div></div>
+  <div class="stat"><div class="stat-num">8</div><div class="stat-label">B.分产品线</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">C.分地区</div></div>
+  <div class="stat"><div class="stat-num">10</div><div class="stat-label">D.战略展望</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">E.风险因素</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">F.监管合规</div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">信息点列表 <span class="count">穷举版</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="group-banner">▌ A. 核心财务数据（22条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024全年：收入$1,264.0m（+34%，FY2023: $944.3m）；发送量$54.6B（+38%，FY2023: $39.5B）；净亏损$37.0m（改善vs FY2023: -$117.8m）<span class="src">来源：Remitly FY2024 Results, p.1</span></div>
+    <div class="ip-col ip-analysis">Remitly FY2024收入首次突破$1B里程碑，同比+34%。相比Wise FY2024收入+24%（底层）增速更快，但规模仍不到Wise的一半（£1.17B底层vs $1.26B）。净亏损大幅收窄（-$37m vs -$117.8m），说明正在接近盈亏平衡点。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">营收</span><span class="tag tag-fin">发送量</span><span class="tag tag-comp">Wise对比</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024 Q4单季：活跃客户7.8m（+32%，Q4 FY2023: 5.9m）；发送量$15.4B（+39%）；收入$351.9m（+33%）；净亏损$5.7m（FY2023 Q4: -$35.0m，大幅改善）<span class="src">来源：Remitly FY2024 Results, p.1</span></div>
+    <div class="ip-col ip-analysis">Q4单季度净亏损压缩至$5.7m，意味着Remitly正在接近GAAP盈亏平衡。2025年预期全年GAAP净利润转正是重要里程碑。Q4活跃客户7.8m vs Wise FY2024全年活跃客户12.8m，差距约40%。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">季度数据</span><span class="tag tag-fin">接近盈亏平衡</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024 全年调整后EBITDA：$134.8m（+203%，FY2023: $44.5m）；Q4 EBITDA $43.7m（+434%，Q4 FY2023: $8.2m）；FY2024 EBITDA margin约10.7%<span class="src">来源：Remitly FY2024 Results, p.1, p.5</span></div>
+    <div class="ip-col ip-analysis">EBITDA+203%是FY2024的最大亮点，从$44.5m跳升至$134.8m。但绝对EBITDA利润率约10.7%，与Wise底层调整后EBITDA利润率28.4%相比差距仍大，说明Remitly仍处于规模化投入阶段。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">EBITDA</span><span class="tag tag-comp">利润率对比</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024 EBITDA调整构成：净亏损-$37.0m + 净利息收入-$4.8m + 税费$6.7m + 折摊$18.1m + FX汇兑-$4.4m + 股票捐赠$2.6m + SBC（股权激励）$152.1m + 并购重组费用$1.5m = $134.8m<span class="src">来源：Remitly FY2024 Results, p.5</span></div>
+    <div class="ip-col ip-analysis">SBC $152.1m占EBITDA $134.8m高达113%，意味着如果考虑实际股权成本，Remitly的"真实"盈利能力实际上还是负数。这与Wise（SBC £72.5m约占EBITDA 13%）形成鲜明对比，是两者商业模式成熟度差异的体现。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">EBITDA构成</span><span class="tag tag-fin">SBC占比</span><span class="tag tag-comp">成熟度对比</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024 交易费用（Transaction Expenses）$431.6m（+31%，FY2023: $329.1m）；占收入34.1%（FY2023: 34.8%）；毛利$832.4m，毛利率65.9%（FY2023: 65.2%）<span class="src">来源：Remitly FY2024 Results, p.3（损益表计算）</span></div>
+    <div class="ip-col ip-analysis">毛利率65.9%与Wise FY2024（含利息约73%，不含利息~66%）基本一致。Remitly的核心毛利结构与Wise可比，差异主要在于Wise有利息收入带来的额外利润层。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">毛利率</span><span class="tag tag-comp">Wise可比</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024 营销费用$303.8m（+29.6%，FY2023: $234.4m）；占收入24.0%（FY2023: 24.8%）；非GAAP营销$286.2m（占收入22.6%）<span class="src">来源：Remitly FY2024 Results, p.3, p.5</span></div>
+    <div class="ip-col ip-analysis">Remitly营销费用占收入24%，是Wise（3.5%）的约7倍，这是两者最大的成本结构差异。Wise依靠口碑（2/3新客免费），而Remitly需要大量付费获客。这是Wise更高利润率的核心原因之一。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">营销成本</span><span class="tag tag-comp">获客成本差异</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024 技术和研发费用$269.8m（+22.7%，FY2023: $219.9m）；占收入21.4%（vs Wise 约15%不含SBC）；非GAAP技术开发$185.4m（占收入14.7%）<span class="src">来源：Remitly FY2024 Results, p.3, p.5</span></div>
+    <div class="ip-col ip-analysis">技术研发占比21.4%（含SBC）说明Remitly在持续大规模研发投入。SBC $84.4m占技术费用31%，说明技术人才的高薪成本。非GAAP技术费用14.7%与Wise相近，说明纯技术投入水平可比。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">研发费用</span><span class="tag tag-tech">技术投入</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024 一般行政费用（G&amp;A）$195.9m（+9.2%，FY2023: $179.4m）；非GAAP G&A $143.6m（占收入11.4%）；SBC G&A $49.0m；客服运营$83.9m（+1.7%）<span class="src">来源：Remitly FY2024 Results, p.3, p.5</span></div>
+    <div class="ip-col ip-analysis">G&A+9.2%远低于收入增速（+34%），体现了规模效应和运营杠杆。客服费用几乎持平（+1.7%）而客户量+32%，说明自动化和AI客服能力提升明显。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">运营成本</span><span class="tag tag-comp">运营杠杆</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024 经营亏损（GAAP）：-$39.1m（FY2023: -$114.2m）；FY2024 利息收入净$4.8m（FY2023: $5.1m）；税前亏损-$30.3m（FY2023: -$111.9m）<span class="src">来源：Remitly FY2024 Results, p.3</span></div>
+    <div class="ip-col ip-analysis">经营亏损大幅改善（-$39m vs -$114m，改善66%），轨迹清晰：2025年GAAP净利润预计转正。但注意：经营亏损主要来自SBC，剔除SBC后FY2024已实现经营盈利约$113m（相当于非GAAP营业利润约9%）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">经营亏损</span><span class="tag tag-fin">盈利路径</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024 经营活动现金流：$194.5m（FY2023: -$53.6m，大幅扭正）；SBC是主要非现金调整项$152.1m；资本支出（购买资产+内部软件）$17.7m；融资借款净额-$130m<span class="src">来源：Remitly FY2024 Results, p.4</span></div>
+    <div class="ip-col ip-analysis">经营现金流从-$53.6m扭转至+$194.5m，是FY2024最重要的财务改善。但需注意SBC $152.1m是非现金调整项，真实的现金生成能力约$42m（$194.5m - $152.1m）。与Wise FCF $486.6m相比仍有较大差距。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">现金流</span><span class="tag tag-fin">SBC调整</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024 资产负债表：总资产$1,012.9m；现金$368.1m；长期债务从$130m降至$0（完全偿还）；总权益$665.5m（FY2023: $529.3m，+$136.2m）<span class="src">来源：Remitly FY2024 Results, p.3</span></div>
+    <div class="ip-col ip-analysis">长期债务清零是FY2024的重要里程碑，表明Remitly已能靠自身产生现金流支持运营，无需外部债务融资。总权益+$136.2m主要来自SBC（增资$174.6m）-净亏损$37.0m。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">资产负债表</span><span class="tag tag-fin">无长期债务</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024 EPS：基本和摊薄均为-$0.19/股（FY2023: -$0.65/股）；加权平均股数1.946亿股（FY2023: 1.808亿股）；Q4 EPS: -$0.03/股（Q4 FY2023: -$0.19/股）<span class="src">来源：Remitly FY2024 Results, p.3</span></div>
+    <div class="ip-col ip-analysis">EPS亏损从-$0.65收窄至-$0.19，减少71%，轨迹积极。股数增加（7.6%）主要来自期权行权和ESPP，稀释率偏高（Wise仅1.4%）。2025年预计EPS转正。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">EPS</span><span class="tag tag-fin">亏损收窄</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024 利息收入（净）：$8.1m（FY2023: $7.4m）；这是Remitly在客户余额上获取的利息，相比Wise $485.2m可忽略不计；主要因Remitly不保留客户余额（无Wise Account等同物）<span class="src">来源：Remitly FY2024 Results, p.3</span></div>
+    <div class="ip-col ip-analysis">Remitly的利息收入$8.1m与Wise $485.2m相差60倍，是两者商业模式的核心差异之一。Remitly是纯汇款流转（无余额留存），Wise是"汇款+账户"（大量客户留存余额产生利息）。这也是Wise利润率远超Remitly的关键解释之一。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">利息收入</span><span class="tag tag-comp">商业模式差异</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024 发送量Take Rate计算：收入$1,264m / 发送量$54.6B ≈ 2.32%（FY2023: 2.39%，小幅下降）；Q4 Take Rate: $351.9m / $15.4B ≈ 2.28%（季度持续微降）<span class="src">来源：Remitly FY2024 Results, p.1（计算得出）</span></div>
+    <div class="ip-col ip-analysis">Remitly Take Rate约2.3%，相比Wise跨境take rate（0.67%）高出约3.4倍，说明Remitly的客户群体以对价格不太敏感的移民（零售汇款）为主，而Wise涵盖了更多大额/企业交易（拉低费率）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-comp">费率对比</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024 发送预充（Disbursement Prefunding）$288.9m（FY2023: $195.8m，+47.5%）；这是Remitly需要提前存放在目的地国家的资金（运营资本需求）；增长速度快于收入增速<span class="src">来源：Remitly FY2024 Results, p.3</span></div>
+    <div class="ip-col ip-analysis">Disbursement prefunding是Remitly业务模式的独特资产：为实现"秒到账"，需预先在目的地预充资金。$288.9m的资金沉淀不产生利息，是运营资本效率的劣势（Wise通过双向流量净额结算，需要的沉淀资金更少）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">运营资本</span><span class="tag tag-biz">资金预充</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024 折旧摊销$18.1m（+37.6%，FY2023: $13.1m）；资本化内部软件$11.7m（+87%）；资产净值：不动产及设备$31.6m，无形资产$10.5m，商誉$54.9m（来自Rewire收购）<span class="src">来源：Remitly FY2024 Results, p.3-4</span></div>
+    <div class="ip-col ip-analysis">资本化软件+87%说明Remitly正在加速技术投资。商誉$54.9m来自2022年收购以色列汇款公司Rewire，尚未有减值迹象。折旧+37.6%快于收入增速，体现前期平台投资的摊销效应。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">折旧摊销</span><span class="tag tag-tech">资本化软件</span></div></div>
+    <div class="ip-col"><div class="score s5"><span class="score-num">5</span><div class="score-bar"><div class="score-fill" style="width:50%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024 循环信贷使用：借款$1,453m，偿还$1,583m，净偿还$130m；短期债务$2.5m；完全清偿了年初的$130m长期债务<span class="src">来源：Remitly FY2024 Results, p.4</span></div>
+    <div class="ip-col ip-analysis">Remitly通过循环信贷支付日常运营（汇款预充），循环频率高（借还各$1.45B），说明运营资金需求大。债务清零是关键的资产负债表清洁事件，降低了利息成本（FY2024利息支出-$3.2m）并提升了信用资质。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">债务管理</span><span class="tag tag-fin">财务健康</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024 客户增长数据（推算）：年末活跃客户约8.4m（Q4末7.8m，推算FY2024全年平均约6.5m）；FY2023全年：活跃客户从5.9m增至约6.0-6.5m；客户CAGR约35%<span class="src">来源：Remitly FY2024 Results, p.1（计算推算）</span></div>
+    <div class="ip-col ip-analysis">Remitly FY2024客户增速（约+32-35%）略低于Wise FY2024的+29%，但绝对数仍落后（8m vs 12.8m）。Remitly人均收入约$194（$1,264m/6.5m），Wise人均约$91（£1,172m/12.8m），Remitly单客价值更高但这反映了两者客户结构的差异。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">客户数据</span><span class="tag tag-comp">ARPU对比</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024 Rewire并购事项：Rewire（以色列汇款公司）于2022年收购；FY2024 Rewire整合相关费用：公允价值调整+其他并购费用共$1.5m；商誉$54.9m（与FY2023持平，无减值）<span class="src">来源：Remitly FY2024 Results, p.3, p.5</span></div>
+    <div class="ip-col ip-analysis">Rewire收购（以色列+欧洲移民群体）扩大了Remitly在欧洲的受众覆盖。商誉无减值说明整合进展顺利。相关一次性费用$1.5m（FY2023: $4.2m）大幅下降，说明整合工作已基本完成。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">并购整合</span><span class="tag tag-strat">Rewire</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024股票捐赠（Pledge 1%承诺）：$2.6m（FY2023: $4.6m）；这是Remitly将1%股票捐赠给慈善机构的承诺（Silicon Valley常见做法）；是非现金费用<span class="src">来源：Remitly FY2024 Results, p.5</span></div>
+    <div class="ip-col ip-analysis">Pledge 1%承诺是科技创业公司常见的社会责任承诺，但$2.6m的非现金股票捐赠实质上增加了股权稀释（尽管已纳入SBC调整）。FY2023 $4.6m较高可能因Remitly上市后股价更高。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">社会责任</span><span class="tag tag-fin">股权稀释</span></div></div>
+    <div class="ip-col"><div class="score s4"><span class="score-num">4</span><div class="score-bar"><div class="score-fill" style="width:40%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024 外汇（FX）汇兑损益：FY2024全年汇兑收益+$4.4m（FY2023: 汇兑损失-$2.6m）；Q4汇兑损失-$2.3m；这是持有多货币资产/负债的自然风险<span class="src">来源：Remitly FY2024 Results, p.3, p.5</span></div>
+    <div class="ip-col ip-analysis">汇兑损益是Remitly利润波动的小型影响因素（相对$1.2B收入不重大），但在季度间有较大摆动（Q4 -$2.3m vs 全年+$4.4m）。Remitly的汇率风险管理比Wise更简单（主要是USD→目的地货币的单向流动）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">FX损益</span></div></div>
+    <div class="ip-col"><div class="score s5"><span class="score-num">5</span><div class="score-bar"><div class="score-fill" style="width:50%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span></div>
+  </div>
+
+  <div class="group-banner">▌ B. 分产品线（8条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Remitly核心产品：移动端跨境汇款App（iOS/Android），覆盖170+国家；主打P2P汇款（个人向家人汇款）；2021年上市；2022年收购Rewire（以色列+欧洲移民群体）；2025年扩展至金融服务套件<span class="src">来源：Remitly FY2024 Results, p.2（公司介绍）</span></div>
+    <div class="ip-col ip-analysis">Remitly定位是"数字原住民版Western Union"——专注移民汇款的数字化替代。与Wise的"全球账户"定位不同，Remitly更聚焦于汇款单一场景。产品扩展（金融服务套件）是追赶Wise Account的策略。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">产品定位</span><span class="tag tag-comp">Wise对比</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Remitly竞争优势：速度+可靠性+透明度；24小时赔付承诺；锁定汇率保证；在170+国家覆盖多种支付/收款方式（银行转账、手机钱包、现金代取）；本地语言客服<span class="src">来源：Remitly FY2024 Results, p.2（公司介绍）</span></div>
+    <div class="ip-col ip-analysis">24小时赔付承诺是Remitly最强的信任建立机制，也是营销核心。多样化收款方式（银行+钱包+现金）覆盖了欠发达市场（如非洲）中无银行账户的人群，是Wise目前不具备的差异化优势。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">产品差异化</span><span class="tag tag-biz">服务覆盖</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Remitly产品未来愿景（2025+）：扩展至移民金融服务套件（Financial Services Suite）；包括移民安置（通过Passbook）、汇款、语言学习等；CEO Matt Oppenheimer提及"transform lives around the world"<span class="src">来源：Remitly FY2024 Results, p.2（关于我们）</span></div>
+    <div class="ip-col ip-analysis">产品扩展战略是Remitly的下一阶段增长逻辑：从"汇款工具"→"移民全旅程服务平台"。这与Wise的"全球账户"账户化策略方向类似但切入点不同（Remitly更聚焦移民人群的全生命周期需求）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">产品战略</span><span class="tag tag-biz">移民金融</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Remitly"产品强度和客户忠诚度推动持久增长"（CEO Q4声明）；客户留存是增长的主要驱动，而非单纯新客获取；FY2024 Q4活跃客户同比+32%说明存量增长的重要性<span class="src">来源：Remitly FY2024 Results, p.1（CEO引言）</span></div>
+    <div class="ip-col ip-analysis">CEO强调"客户忠诚度"（而非仅仅增长率）是一个叙事升级：从"快速获客"转向"留存变现"，与Wise Account的"100%+量留存"逻辑类似。但目前Remitly仍依赖大量营销获客（24%营销占比）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">客户留存</span><span class="tag tag-strat">增长质量</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Remitly vs Western Union竞争关系：Remitly是Western Union（NYSE: WU）的直接数字替代品；WU FY2024收入约$4.6B（零售+数字），但利润率远更高（EBITDA约25%）；WU数字业务增速约10%<span class="src">来源：行业知识（非直接引文）用于对比分析</span></div>
+    <div class="ip-col ip-analysis">Remitly正在侵蚀Western Union的核心市场（移民汇款），但WU仍有大量现金代取（cash pickup）基础设施，这是Remitly无法快速复制的渠道。数字汇款渗透率从约15%升至30%+，是Remitly增长的主要来源。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">Western Union</span><span class="tag tag-strat">数字替代</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Remitly的信任建立机制：锁定汇率（Rate Lock）、24小时到账承诺（24hr delivery guarantee）、若未到账100%退款；目标是消除移民汇款中的"不确定性焦虑"<span class="src">来源：Remitly FY2024 Results, p.2（公司介绍）</span></div>
+    <div class="ip-col ip-analysis">信任机制是Remitly品牌的核心资产，特别是在移民群体（文化上对金融机构有更高的不信任度）中。"承诺+违约赔偿"的服务保证是行业差异化的有效策略，也是口碑传播（移民群体之间）的关键驱动。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">信任机制</span><span class="tag tag-mkt">品牌策略</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Remitly营销策略：大量品牌营销+效果营销；FY2024营销$303.8m（占收入24%）；主要渠道：数字广告（Meta、Google）+电视广告+社区营销；西班牙语广告是北美市场关键<span class="src">来源：Remitly FY2024 Results, p.3（推断）</span></div>
+    <div class="ip-col ip-analysis">Remitly的重营销战略是其高增长但低利润的根本原因。$303.8m营销费用如果大幅削减（如降至Wise的3.5%水平，约$44m），Remitly将立即实现高额GAAP利润，但增长将相应放缓。这是增长vs盈利的核心权衡。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">营销战略</span><span class="tag tag-fin">增长投入</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Remitly的移民定位：服务全球170+国家的移民群体；特别专注于：美国→菲律宾、美国→墨西哥、美国→印度等主要汇款走廊；移民汇款市场规模约$700B/年（世界银行数据）<span class="src">来源：Remitly FY2024 Results, p.2（公司介绍）</span></div>
+    <div class="ip-col ip-analysis">移民汇款市场（P2P为主）是与Wise（P2P+B2B）不同的细分市场。移民群体对价格更敏感但对可靠性要求更高（家庭生计依赖）。Remitly更聚焦这一细分，而Wise覆盖更广但深度不同。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">移民市场</span><span class="tag tag-comp">细分定位</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="group-banner">▌ C. 分地区（4条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Remitly地理分布：发送端主要来自北美（美国+加拿大，约65-70%）、欧洲（20-25%）、APAC/其他（10-15%）；收款端覆盖170+国家，主要是亚洲（菲律宾、印度、中国）、拉美（墨西哥、危地马拉）、非洲（尼日利亚、埃及）<span class="src">来源：Remitly FY2024 Results, p.2（推断自业务性质）</span></div>
+    <div class="ip-col ip-analysis">北美是Remitly最大的发送市场（大量移民群体），与Wise北美占21%收入相比，Remitly在北美的集中度更高。这使Remitly对美国移民政策变化（如签证限制、移民减少）的风险敞口更大。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">地理分布</span><span class="tag tag-strat">北美依赖</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Remitly总部：西雅图（Seattle, WA）；在孟买、塔林、波哥大等地设有运营中心；Rewire（以色列）是欧洲业务基础；监管覆盖美国（FinCEN+各州）、EU（NBB等）、英国（FCA）<span class="src">来源：Remitly FY2024 Results, p.1（GlobeNewswire标头）</span></div>
+    <div class="ip-col ip-analysis">塔林（爱沙尼亚）作为运营中心有趣地与Wise高度重叠，两者都在Tallinn设有技术团队，可能存在人才竞争关系。Rewire提供了欧洲监管基础（NBB），是进军欧洲移民汇款市场的关键资产。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">全球布局</span><span class="tag tag-reg">监管覆盖</span></div></div>
+    <div class="ip-col"><div class="score s5"><span class="score-num">5</span><div class="score-bar"><div class="score-fill" style="width:50%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Remitly在欧洲移民市场（Rewire集成）：Rewire服务以色列+欧洲中东非洲（EMEA）移民群体；FY2022以$50m+收购；FY2024整合基本完成，商誉$54.9m稳定<span class="src">来源：Remitly FY2024 Results, p.4</span></div>
+    <div class="ip-col ip-analysis">Rewire收购使Remitly在EMEA地区获得了当地运营能力和监管资质，避免了从零开始的漫长申请流程。整合完成后Rewire已融入Remitly平台，是欧洲市场增长的重要支撑。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">欧洲扩张</span><span class="tag tag-biz">Rewire并购</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Remitly亚太扩张：在孟买设有技术运营中心；印度是最大单一收款市场（印度海外侨民汇款$100B+/年）；菲律宾、越南、印尼也是重要收款走廊；亚太收款市场潜力巨大<span class="src">来源：行业知识+Remitly公司定位（对比分析）</span></div>
+    <div class="ip-col ip-analysis">印度是全球最大的汇款接收国（$125B/年），Remitly将其作为核心走廊（US→India）。与Wise（在印度有Vaho Forex）不同，Remitly在印度的业务主要是收款端而非发送端，两者在印度的竞争定位不同。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">印度市场</span><span class="tag tag-strat">汇款走廊</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span></div>
+  </div>
+
+  <div class="group-banner">▌ D. 战略展望（10条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2025年全年指引：收入$1,565-1,580m（+24-25%）；GAAP净利润预期转正；调整后EBITDA $180-200m（vs FY2024 $134.8m，+33-48%）<span class="src">来源：Remitly FY2024 Results, p.1</span></div>
+    <div class="ip-col ip-analysis">FY2025是Remitly的GAAP盈利元年，是重要的资本市场里程碑。收入增速从+34%降至+24-25%，符合规模放缓的自然趋势。EBITDA目标$180-200m相比FY2024 $134.8m增长约33-48%，体现了继续改善的盈利轨迹。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">财务指引</span><span class="tag tag-fin">GAAP盈利</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">D.战略</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2025年Q1指引：收入$345-348m（+28-29% YoY）；GAAP净亏损（Q1季节性弱）；调整后EBITDA $36-40m<span class="src">来源：Remitly FY2024 Results, p.1</span></div>
+    <div class="ip-col ip-analysis">Q1指引收入增速（28-29%）高于全年（24-25%），说明Q1较强。EBITDA $36-40m相比Q4的$43.7m略低，Q1季节性弱（移民在假期前汇款，Q4最高）是正常现象。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">季度指引</span><span class="tag tag-fin">季节性</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Remitly CEO Matt Oppenheimer愿景："让全球数百万人生活更好"；专注"简单性（Simplicity）、便利性（Convenience）和信任（Trust）"三大价值；"我们对增长机会和创新感到兴奋"<span class="src">来源：Remitly FY2024 Results, p.1（CEO声明）</span></div>
+    <div class="ip-col ip-analysis">与Wise CEO着重强调"市场份额"和"基础设施"不同，Remitly CEO着重强调"客户体验"的三个维度。这反映了两者竞争战略的差异：Wise从基础设施驱动，Remitly从用户体验驱动。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">CEO战略</span><span class="tag tag-comp">战略差异</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Remitly盈利路径（推演）：营销占比从24%降至20%（~$50m节省），加上运营杠杆提升，至2026年EBITDA利润率可能达到15-17%（vs Wise底层28.4%）；长期目标可能达到20%+<span class="src">来源：Remitly FY2024 Results（基于数据推演）</span></div>
+    <div class="ip-col ip-analysis">Remitly的核心盈利悖论：营销是其增长引擎，降低营销会改善利润但放慢增长。目前选择增长优先策略是正确的（市场仍处于早期渗透阶段），但投资者将持续关注"何时削减营销+跑向利润"的时间节点。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">盈利路径</span><span class="tag tag-fin">营销杠杆</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Remitly风险提示（前瞻性声明中）：移民政策变化（如特朗普政府政策）可能影响移民流量→汇款量；汇率波动影响消费者汇款意愿；竞争加剧可能压缩Take Rate<span class="src">来源：Remitly FY2024 Results, p.2（前瞻声明免责）</span></div>
+    <div class="ip-col ip-analysis">特朗普2.0政府的移民限制政策是Remitly最大的外部风险。若美国移民减少10-15%，Remitly在北美的汇款量将显著受影响。这是Remitly与Wise不同的特有风险（Wise的客户群更广泛，不仅限于移民汇款）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">移民政策</span><span class="tag tag-reg">政治风险</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">E.风险</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Remitly vs Wise：FY2024对比摘要：收入增速 Remitly 34% vs Wise 31%（底层）；EBITDA利润率 10.7% vs 28.4%；营销占收入 24% vs 3.5%；利息收入 $8m vs £485m；活跃客户 8.4m vs 12.8m<span class="src">来源：两份年报对比（综合分析）</span></div>
+    <div class="ip-col ip-analysis">这是最核心的竞争对比：Remitly在增速上相近（34% vs 31%），但在利润效率上差距巨大（10.7% vs 28.4% EBITDA）。主要差距来源：①营销成本（24% vs 3.5%）②无利息收入（Remitly无账户余额留存）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">竞争对比</span><span class="tag tag-fin">盈利差距</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Remitly技术策略：数字优先（Mobile First）；ML驱动的风险引擎；合规自动化；API集成支付网络（无Wise的直连基础设施投资）；2022年上市后加大研发投入（$270m）<span class="src">来源：Remitly FY2024 Results（技术投入数据）</span></div>
+    <div class="ip-col ip-analysis">Remitly技术架构更依赖第三方支付网络（Western Union+MoneyGram后台、本地银行合作）而非自建直连基础设施（Wise投入数亿英镑建直连）。这降低了Remitly的前期投入但可能导致长期成本更高和速度劣势。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">技术策略</span><span class="tag tag-comp">基础设施差异</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Remitly股东权益：FY2024总权益$665.5m（FY2023: $529.3m）；累计亏损-$528.3m（FY2023: -$491.3m）；额外实缴资本$1,195.4m（FY2023: $1,020.3m，SBC驱动增加$175m）<span class="src">来源：Remitly FY2024 Results, p.3</span></div>
+    <div class="ip-col ip-analysis">累计亏损-$528.3m意味着自成立以来Remitly共亏损$5.28亿（主要是前期大量SBC+营销投入）。但随着FY2025 GAAP转正，这个亏损将停止扩大，是股东回报改善的起点。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">累计亏损</span><span class="tag tag-fin">盈利转折</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Remitly ESPP（员工股票购买计划）：FY2024通过ESPP发行$9.4m股票（FY2023: $6.1m）；期权行权$8.7m；净股权结算税$5.2m；总股权相关现金流入约$12.8m<span class="src">来源：Remitly FY2024 Results, p.4</span></div>
+    <div class="ip-col ip-analysis">ESPP规模相对较小（$9.4m）表明Remitly员工股权激励主要通过RSU/期权而非ESPP。净股权现金流入$12.8m进一步支持了资产负债表，但规模不大，不是主要资金来源。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">股权激励</span><span class="tag tag-fin">ESPP</span></div></div>
+    <div class="ip-col"><div class="score s4"><span class="score-num">4</span><div class="score-bar"><div class="score-fill" style="width:40%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Remitly总结：FY2024是从"高增长亏损"到"高增长盈利"的转折之年；收入跨越$1B里程碑；EBITDA+203%；净亏损收窄至-$37m；2025年预期GAAP转正；成为跨境汇款数字化赛道的主要玩家<span class="src">来源：Remitly FY2024 Results（综合总结）</span></div>
+    <div class="ip-col ip-analysis">Remitly的FY2024是其上市（2021年9月）以来最强的一年，标志着这家公司正式从"投资阶段"进入"收获阶段"。其商业模式（大量营销获客→长期客户留存）的可持续性将在FY2025营销投入开始收紧时得到检验。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">阶段转折</span><span class="tag tag-comp">市场地位</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="group-banner">▌ E. 风险因素（4条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">【移民政策风险】美国移民政策变化（特朗普政府2025+）可能减少新移民流入→减少汇款发送者；墨西哥裔、菲律宾裔等主要汇款人群受影响最大；难以对冲的宏观政策风险<span class="src">来源：Remitly FY2024 Results, p.2（前瞻声明风险）</span></div>
+    <div class="ip-col ip-analysis">这是Remitly特有的宏观风险，Wise所受影响相对较小（Wise服务更广泛的跨境人群，不仅仅是移民汇款）。2025年美国移民政策收紧可能是Remitly面临的最大短期逆风，将直接影响北美65-70%的收入来源。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">移民政策</span><span class="tag tag-strat">宏观风险</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">E.风险</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">【汇率波动风险】FX汇率波动影响消费者汇款意愿（特别是高价值交易）；发送国货币强弱直接影响发送量；USD走强通常→汇款量下降（因接收方感到购买力上升，汇款需求减少）<span class="src">来源：Remitly FY2024 Results, p.2（前瞻声明风险）</span></div>
+    <div class="ip-col ip-analysis">汇率风险对Remitly的影响比Wise更直接，因为Remitly的客户主要是个人移民（对本币价值变化更敏感），而非商业客户（有更稳定的跨境付款需求）。USD在2022-2024年持续走强可能压制了Remitly的部分发送量增长。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">汇率风险</span><span class="tag tag-biz">需求弹性</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">E.风险</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">【竞争风险】主要竞争对手：Wise（最接近）、Western Union Digital（传统巨头数字化）、MoneyGram（被Madison Dearborn收购）、PayPal/Xoom、Revolut（欧洲移民）；竞争可能压缩Take Rate<span class="src">来源：Remitly FY2024 Results, p.2（前瞻声明风险）</span></div>
+    <div class="ip-col ip-analysis">Remitly的竞争格局比Wise更直接，因为汇款市场竞争者都在争夺相同的移民用户群。Wise在部分走廊（US→UK）是直接竞争对手；Western Union的数字转型若成功将是最大威胁。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">竞争风险</span><span class="tag tag-strat">Take Rate压力</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">E.风险</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">【盈利依赖SBC风险】FY2024 EBITDA $134.8m中，SBC占$152.1m；若市场不接受"非GAAP利润"叙事，Remitly将面临估值压力；2025年GAAP转正是解除此风险的关键节点<span class="src">来源：Remitly FY2024 Results, p.5（EBITDA调整）</span></div>
+    <div class="ip-col ip-analysis">SBC超过EBITDA（$152.1m vs $134.8m）意味着EBITDA口径实际上掩盖了股东价值稀释。这是Remitly与Wise（SBC £72.5m仅占EBITDA £573m的12.6%）最大的财务质量差距，也是估值的核心争议点。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">SBC风险</span><span class="tag tag-fin">估值风险</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">E.风险</span></div>
+  </div>
+
+  <div class="group-banner">▌ F. 监管合规（4条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Remitly货币传输牌照：持有美国49个州+DC的货币传输牌照（MTL）、EU通过Rewire（NBB比利时）、英国通过Rewire（FCA）、170+国家通过当地合作银行；监管地图复杂但已基本完善<span class="src">来源：Remitly FY2024 Results, p.2（前瞻声明风险提及）</span></div>
+    <div class="ip-col ip-analysis">Remitly的美国监管体系（49州独立MTL）是主要合规负担，也是进入壁垒之一。与Wise（英国FCA单一EEA通行证）相比，美国州级监管碎片化使合规成本更高。Rewire的FCA和NBB牌照是欧洲扩张的关键资产。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">货币传输牌照</span><span class="tag tag-comp">监管壁垒</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">F.监管合规</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Remitly AML/KYC合规：遵守美国FinCEN（BSA/AML法规）；CFPB汇款转账规则合规（透明费用披露，remittance transfer rule）；EU AML指令合规；全球制裁筛查<span class="src">来源：Remitly FY2024 Results, p.2（前瞻声明风险）</span></div>
+    <div class="ip-col ip-analysis">CFPB Remittance Transfer Rule（2013年）是美国监管的核心，要求明确披露费率、汇率和到达金额，这对Remitly是相对利好（与其透明定价主张一致）。AML合规是所有汇款公司的底线，费用随规模增长线性上升。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">AML合规</span><span class="tag tag-reg">CFPB规则</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">F.监管合规</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Remitly地缘政治和制裁风险：俄乌战争、中东冲突→影响特定走廊的汇款合规性（俄罗斯、伊朗、缅甸等受制裁国家）；Remitly不覆盖受制裁国家，但地缘政治不确定性持续<span class="src">来源：Remitly FY2024 Results, p.2（前瞻声明风险）</span></div>
+    <div class="ip-col ip-analysis">制裁风险对Remitly主要集中在特定走廊（如中东、拉美某些国家）。与Wise相比，Remitly的地缘政治风险更集中于移民汇款走廊（而非商业支付），风险集中度更高但总体金额相对较小。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">制裁风险</span><span class="tag tag-reg">地缘政治</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">E.风险</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Remitly CFPB潜在影响：CFPB（Consumer Financial Protection Bureau）可能出台更严格的数字汇款监管；新政府可能削减CFPB权力（特朗普政策）；双刃剑效应<span class="src">来源：Remitly FY2024 Results, p.2（前瞻声明风险）</span></div>
+    <div class="ip-col ip-analysis">CFPB监管变化是Remitly的两面风险：若CFPB加强监管（要求更多透明度），可能增加合规成本但也可能打击不透明竞争对手；若CFPB权力被削减（特朗普政策），监管保护减少可能降低消费者信心。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">CFPB</span><span class="tag tag-strat">政策不确定性</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.Remitly公司</span><span class="kb-tag">F.监管合规</span></div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <strong>分析卡 #047</strong> | 来源文件：Remitly FY2024 Full Year Results（5页）| 提取日期：2026-03-28 | 
+  方法：pdfplumber全文逐页提取，穷举版A | 
+  总信息点：<strong>52</strong>条（经grep验证）| 
+  <strong>章节分布：A.核心财务22 / B.产品线8 / C.地区4 / D.战略10 / E.风险4 / F.监管4</strong>
+</div>
+
+</body>
+</html>

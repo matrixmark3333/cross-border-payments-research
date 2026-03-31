@@ -1,0 +1,1788 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>跨境支付行业知识库 — Cross-Border Payments Knowledge Base</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    font-family: 'Inter', 'PingFang SC', 'Helvetica Neue', sans-serif;
+    background: #ffffff;
+    color: #1e293b;
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* ===== LEFT SIDEBAR ===== */
+  #sidebar {
+    width: 240px;
+    min-width: 240px;
+    background: #f8fafc;
+    border-right: 1px solid #e2e8f0;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar-header {
+    padding: 20px 16px 12px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .sidebar-header h2 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .sidebar-search {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .sidebar-search input {
+    width: 100%;
+    padding: 7px 10px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 13px;
+    background: #fff;
+    color: #1e293b;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .sidebar-search input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+  }
+
+  #nav-tree {
+    padding: 8px 0 24px;
+    flex: 1;
+  }
+
+  .nav-chapter {
+    margin-bottom: 2px;
+  }
+
+  .nav-chapter-title {
+    display: flex;
+    align-items: center;
+    padding: 6px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+    cursor: pointer;
+    user-select: none;
+    gap: 6px;
+    transition: background 0.1s;
+  }
+
+  .nav-chapter-title:hover {
+    background: #f1f5f9;
+  }
+
+  .nav-chapter-title .toggle-icon {
+    font-size: 10px;
+    color: #94a3b8;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .nav-chapter-title.collapsed .toggle-icon {
+    transform: rotate(-90deg);
+  }
+
+  .nav-sub-list {
+    padding-left: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+
+  .nav-sub-list.hidden {
+    max-height: 0 !important;
+  }
+
+  .nav-sub-item {
+    display: block;
+    padding: 5px 16px 5px 32px;
+    font-size: 12.5px;
+    color: #64748b;
+    cursor: pointer;
+    transition: background 0.1s, color 0.1s;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .nav-sub-item:hover {
+    background: #f1f5f9;
+    color: #1e293b;
+  }
+
+  .nav-sub-item.active {
+    background: #eff6ff;
+    color: #2563eb;
+    font-weight: 500;
+  }
+
+  /* ===== MAIN CONTENT ===== */
+  #main {
+    margin-left: 240px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ===== TOP BAR ===== */
+  #topbar {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 12px 48px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    z-index: 100;
+  }
+
+  #topbar h1 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1e293b;
+    flex: 1;
+  }
+
+  #global-search {
+    padding: 7px 14px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 13px;
+    width: 260px;
+    outline: none;
+    transition: border-color 0.15s;
+    background: #f8fafc;
+  }
+
+  #global-search:focus {
+    border-color: #2563eb;
+    background: #fff;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+  }
+
+  #stats-bar {
+    font-size: 12px;
+    color: #94a3b8;
+    white-space: nowrap;
+  }
+
+  #stats-bar strong {
+    color: #2563eb;
+  }
+
+  /* ===== CONTENT AREA ===== */
+  #content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 48px 80px;
+    width: 100%;
+  }
+
+  /* ===== CHAPTER SECTIONS ===== */
+  .chapter-section {
+    margin-bottom: 56px;
+  }
+
+  .chapter-heading {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .chapter-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: #2563eb;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* ===== SUB-SECTIONS ===== */
+  .sub-section {
+    margin-bottom: 32px;
+  }
+
+  .sub-heading {
+    font-size: 15px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .sub-heading:hover {
+    color: #2563eb;
+  }
+
+  .sub-heading .collapse-btn {
+    font-size: 11px;
+    color: #94a3b8;
+    transition: transform 0.2s;
+    margin-left: auto;
+    background: #f1f5f9;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .sub-heading.collapsed .collapse-btn {
+    transform: rotate(-180deg);
+  }
+
+  .sub-content {
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .sub-content.hidden {
+    max-height: 0 !important;
+  }
+
+  /* ===== KNOWLEDGE ITEMS ===== */
+  .knowledge-item {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 3px solid #2563eb;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    transition: box-shadow 0.15s, border-color 0.15s;
+  }
+
+  .knowledge-item:hover {
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
+    border-color: #93c5fd;
+  }
+
+  .knowledge-item.hidden {
+    display: none;
+  }
+
+  .ki-content {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #1e293b;
+    margin-bottom: 10px;
+  }
+
+  .ki-content mark {
+    background: #fef9c3;
+    color: #1e293b;
+    border-radius: 2px;
+    padding: 0 2px;
+  }
+
+  .ki-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .ki-tags {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    background: #eff6ff;
+    color: #2563eb;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+    border: 1px solid #bfdbfe;
+  }
+
+  .ki-sources {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+
+  .ki-sources a {
+    color: #64748b;
+    font-size: 11.5px;
+    text-decoration: none;
+    background: #f1f5f9;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+    transition: color 0.1s, background 0.1s;
+  }
+
+  .ki-sources a:hover {
+    color: #2563eb;
+    background: #eff6ff;
+    border-color: #bfdbfe;
+  }
+
+  .ki-score {
+    margin-left: auto;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #f59e0b;
+    background: #fffbeb;
+    padding: 2px 7px;
+    border-radius: 4px;
+    border: 1px solid #fde68a;
+    white-space: nowrap;
+  }
+
+  .empty-section {
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 8px;
+    padding: 20px;
+    color: #94a3b8;
+    font-size: 13px;
+    text-align: center;
+    font-style: italic;
+  }
+
+  /* ===== SCROLLBAR ===== */
+  #sidebar::-webkit-scrollbar { width: 4px; }
+  #sidebar::-webkit-scrollbar-track { background: transparent; }
+  #sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    #sidebar { display: none; }
+    #main { margin-left: 0; }
+    #content { padding: 24px 20px 60px; }
+    #topbar { padding: 10px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== SIDEBAR ===== -->
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <h2>跨境支付知识库</h2>
+  </div>
+  <div class="sidebar-search">
+    <input type="text" id="sidebar-search-input" placeholder="🔍 快速跳转..." oninput="sidebarFilter(this.value)">
+  </div>
+  <div id="nav-tree">
+
+    <div class="nav-chapter">
+      <div class="nav-chapter-title" onclick="toggleNavChapter(this)">
+        <span class="toggle-icon">▾</span>
+        <span>1. 市场总览</span>
+      </div>
+      <div class="nav-sub-list">
+        <a class="nav-sub-item" href="#sec-1-1" onclick="navClick(this)">1.1 规模增速</a>
+        <a class="nav-sub-item" href="#sec-1-2" onclick="navClick(this)">1.2 生态图</a>
+        <a class="nav-sub-item" href="#sec-1-3" onclick="navClick(this)">1.3 生命周期</a>
+        <a class="nav-sub-item" href="#sec-1-4" onclick="navClick(this)">1.4 驱动因素</a>
+      </div>
+    </div>
+
+    <div class="nav-chapter">
+      <div class="nav-chapter-title" onclick="toggleNavChapter(this)">
+        <span class="toggle-icon">▾</span>
+        <span>2. 公司档案</span>
+      </div>
+      <div class="nav-sub-list">
+        <a class="nav-sub-item" href="#sec-2-1" onclick="navClick(this)">2.1 Wise</a>
+        <a class="nav-sub-item" href="#sec-2-2" onclick="navClick(this)">2.2 Airwallex</a>
+        <a class="nav-sub-item" href="#sec-2-3" onclick="navClick(this)">2.3 Revolut</a>
+        <a class="nav-sub-item" href="#sec-2-4" onclick="navClick(this)">2.4 Payoneer</a>
+        <a class="nav-sub-item" href="#sec-2-5" onclick="navClick(this)">2.5 dLocal</a>
+        <a class="nav-sub-item" href="#sec-2-6" onclick="navClick(this)">2.6 Remitly</a>
+        <a class="nav-sub-item" href="#sec-2-7" onclick="navClick(this)">2.7 Western Union</a>
+        <a class="nav-sub-item" href="#sec-2-8" onclick="navClick(this)">2.8 Nium</a>
+        <a class="nav-sub-item" href="#sec-2-9" onclick="navClick(this)">2.9 Thunes</a>
+        <a class="nav-sub-item" href="#sec-2-10" onclick="navClick(this)">2.10 KPay</a>
+        <a class="nav-sub-item" href="#sec-2-11" onclick="navClick(this)">2.11 WorldFirst等</a>
+        <a class="nav-sub-item" href="#sec-2-12" onclick="navClick(this)">2.12 其他</a>
+      </div>
+    </div>
+
+    <div class="nav-chapter">
+      <div class="nav-chapter-title" onclick="toggleNavChapter(this)">
+        <span class="toggle-icon">▾</span>
+        <span>3. 商业模式</span>
+      </div>
+      <div class="nav-sub-list">
+        <a class="nav-sub-item" href="#sec-3-1" onclick="navClick(this)">3.1 收入模式</a>
+        <a class="nav-sub-item" href="#sec-3-2" onclick="navClick(this)">3.2 Take Rate Benchmark</a>
+        <a class="nav-sub-item" href="#sec-3-3" onclick="navClick(this)">3.3 成本结构</a>
+        <a class="nav-sub-item" href="#sec-3-4" onclick="navClick(this)">3.4 演化趋势</a>
+      </div>
+    </div>
+
+    <div class="nav-chapter">
+      <div class="nav-chapter-title" onclick="toggleNavChapter(this)">
+        <span class="toggle-icon">▾</span>
+        <span>4. 竞争格局</span>
+      </div>
+      <div class="nav-sub-list">
+        <a class="nav-sub-item" href="#sec-4-1" onclick="navClick(this)">4.1 竞争矩阵</a>
+        <a class="nav-sub-item" href="#sec-4-2" onclick="navClick(this)">4.2 护城河</a>
+        <a class="nav-sub-item" href="#sec-4-3" onclick="navClick(this)">4.3 战略动态</a>
+      </div>
+    </div>
+
+    <div class="nav-chapter">
+      <div class="nav-chapter-title" onclick="toggleNavChapter(this)">
+        <span class="toggle-icon">▾</span>
+        <span>5. 基础设施</span>
+      </div>
+      <div class="nav-sub-list">
+        <a class="nav-sub-item" href="#sec-5-1" onclick="navClick(this)">5.1 清算网络</a>
+        <a class="nav-sub-item" href="#sec-5-2" onclick="navClick(this)">5.2 即时支付</a>
+        <a class="nav-sub-item" href="#sec-5-3" onclick="navClick(this)">5.3 稳定币CBDC</a>
+      </div>
+    </div>
+
+    <div class="nav-chapter">
+      <div class="nav-chapter-title" onclick="toggleNavChapter(this)">
+        <span class="toggle-icon">▾</span>
+        <span>6. 监管环境</span>
+      </div>
+      <div class="nav-sub-list">
+        <a class="nav-sub-item" href="#sec-6-1" onclick="navClick(this)">6.1 司法管辖</a>
+        <a class="nav-sub-item" href="#sec-6-2" onclick="navClick(this)">6.2 牌照体系</a>
+        <a class="nav-sub-item" href="#sec-6-3" onclick="navClick(this)">6.3 AML</a>
+        <a class="nav-sub-item" href="#sec-6-4" onclick="navClick(this)">6.4 G20路线图</a>
+      </div>
+    </div>
+
+    <div class="nav-chapter">
+      <div class="nav-chapter-title" onclick="toggleNavChapter(this)">
+        <span class="toggle-icon">▾</span>
+        <span>7. 区域市场</span>
+      </div>
+      <div class="nav-sub-list">
+        <a class="nav-sub-item" href="#sec-7-1" onclick="navClick(this)">7.1 亚太</a>
+        <a class="nav-sub-item" href="#sec-7-2" onclick="navClick(this)">7.2 新兴市场</a>
+        <a class="nav-sub-item" href="#sec-7-3" onclick="navClick(this)">7.3 欧洲</a>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<!-- ===== MAIN ===== -->
+<div id="main">
+
+  <!-- TOP BAR -->
+  <div id="topbar">
+    <h1>🌐 跨境支付行业知识库</h1>
+    <input type="text" id="global-search" placeholder="🔍 搜索知识点..." oninput="globalSearch(this.value)">
+    <div id="stats-bar">知识点 <strong id="stat-items">0</strong> 条 / 章节 <strong id="stat-sections">0</strong> 个</div>
+  </div>
+
+  <!-- CONTENT -->
+  <div id="content">
+
+    <!-- ==================== CHAPTER 1 ==================== -->
+    <div class="chapter-section" id="chapter-1">
+      <div class="chapter-heading">
+        <span class="chapter-num">1</span>
+        市场总览
+      </div>
+
+      <!-- 1.1 -->
+      <div class="sub-section" id="sec-1-1">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          1.1 规模增速
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">全球跨境支付市场2025年规模约 <strong>$194.6T</strong>（FXC Intelligence），年复合增速约 5–7%（BCG 2024）；预计2030年超 $290T，是最大金融基础设施赛道之一。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">市场规模</span><span class="tag">增长率</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-057.html" target="_blank">[card-057]</a>
+                <a href="../analysis-cards/card-248.html" target="_blank">[card-248]</a>
+              </span>
+              <span class="ki-score">9/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">B2B跨境支付占总量约 <strong>80%</strong>，但增速慢于C2C的移动钱包渗透；C2C汇款市场2024年达 $0.9T，预计2028年突破 $1.2T（世界银行 Remittances Brief）。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">B2B</span><span class="tag">C2C</span><span class="tag">增长率</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-057.html" target="_blank">[card-057]</a>
+              </span>
+              <span class="ki-score">8/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">全球跨境支付平均交易成本仍高达 <strong>6.25%</strong>（2024 Q3，世界银行），远超G20设定的2027年目标（≤3%）；新兴市场走廊（如非洲-欧洲）成本超10%。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">成本</span><span class="tag">监管</span><span class="tag">G20</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-102.html" target="_blank">[card-102]</a>
+              </span>
+              <span class="ki-score">9/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 1.2 -->
+      <div class="sub-section" id="sec-1-2">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          1.2 生态图
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">跨境支付生态分五层：<strong>①前端发起方</strong>（企业/个人用户）→ <strong>②支付平台</strong>（Wise/Airwallex/Payoneer）→ <strong>③银行/MSB中间层</strong>（代理行网络）→ <strong>④清算基础设施</strong>（SWIFT/本地ACH/即时支付）→ <strong>⑤收款方</strong>；新兴玩家正在压缩②③层利润。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">生态图</span><span class="tag">产业链</span><span class="tag">商业模式</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-003.html" target="_blank">[card-003]</a>
+              </span>
+              <span class="ki-score">8/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">代理行网络（Correspondent Banking）持续萎缩：全球活跃代理行关系2011–2022年缩减 <strong>22%</strong>（BIS 2023），主要因合规成本上升与低利润走廊退出，加速了非银支付玩家的崛起。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">基础设施</span><span class="tag">银行</span><span class="tag">监管</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-089.html" target="_blank">[card-089]</a>
+              </span>
+              <span class="ki-score">8/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 1.3 -->
+      <div class="sub-section" id="sec-1-3">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          1.3 生命周期
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">跨境支付行业整体处于<strong>成长期中段</strong>：银行主导的传统模式（SWIFT MT报文）进入衰退期；基于API的新兴平台处于快速成长期；稳定币/CBDC支付处于萌芽期（2–5年商业规模化预期）。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">生命周期</span><span class="tag">稳定币</span><span class="tag">CBDC</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-201.html" target="_blank">[card-201]</a>
+              </span>
+              <span class="ki-score">7/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">SWIFT ISO 20022迁移2025年完成全球强制切换（MT报文退役），为新玩家接入提供数据标准基础；Wise、Airwallex等已提前适配，传统银行迁移滞后2–3年。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">基础设施</span><span class="tag">SWIFT</span><span class="tag">ISO 20022</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-088.html" target="_blank">[card-088]</a>
+              </span>
+              <span class="ki-score">8/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 1.4 -->
+      <div class="sub-section" id="sec-1-4">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          1.4 驱动因素
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">核心驱动因素（按优先级）：<strong>①电商跨境化</strong>（Shopify/Amazon卖家增长，全球电商跨境交易2024年约$1.5T）；<strong>②全球化雇佣</strong>（远程工作催生工资发放需求）；<strong>③移民汇款</strong>（2.8亿国际移民，年汇款$900B+）；<strong>④SMB国际化</strong>（小企业收款/付款外包）。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">驱动因素</span><span class="tag">电商</span><span class="tag">汇款</span><span class="tag">用户增长</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-057.html" target="_blank">[card-057]</a>
+                <a href="../analysis-cards/card-210.html" target="_blank">[card-210]</a>
+              </span>
+              <span class="ki-score">9/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">即时支付网络的全球扩张是关键基础设施驱动力：截至2024年，<strong>70+国家</strong>已建立或正在建设即时支付系统（FIS Flavors of Fast）；互联互通项目（如东盟ASEAN Nexus、G20 Interlinking）正将这些孤岛连接。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">即时支付</span><span class="tag">基础设施</span><span class="tag">地理扩张</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-175.html" target="_blank">[card-175]</a>
+              </span>
+              <span class="ki-score">8/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /chapter-1 -->
+
+
+    <!-- ==================== CHAPTER 2 ==================== -->
+    <div class="chapter-section" id="chapter-2">
+      <div class="chapter-heading">
+        <span class="chapter-num">2</span>
+        公司档案
+      </div>
+
+      <!-- 2.1 Wise -->
+      <div class="sub-section" id="sec-2-1">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          2.1 Wise
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">Wise FY2024（截至2024年3月）：TPV <strong>£118.5B</strong>（+24% YoY），收入 <strong>£1.04B</strong>（+24% YoY），税后利润 <strong>£481M</strong>（净利润率 46%）。活跃客户数 <strong>1260万</strong>，每客户平均收入 £82.5。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">财务数据</span><span class="tag">TPV</span><span class="tag">增长率</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-011.html" target="_blank">[card-011]</a>
+              </span>
+              <span class="ki-score">10/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">Wise Take Rate FY2024约 <strong>0.67%</strong>（收入/TPV），较FY2022的0.72%持续压缩；公司明确战略是"降价换量"——通过降低费率推动TPV增长，而非维持高利润率。管理层目标：长期Take Rate维持 0.5–0.6% 区间。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">Take Rate</span><span class="tag">定价策略</span><span class="tag">单位经济</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-011.html" target="_blank">[card-011]</a>
+                <a href="../analysis-cards/card-012.html" target="_blank">[card-012]</a>
+              </span>
+              <span class="ki-score">10/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">Wise Platform（B2B API）收入占比FY2024约 <strong>12%</strong>，客户包括Morgan Stanley、Monzo、GoCardless等；平台收入增速（+55% YoY）远超消费者业务（+19%），是主要增长引擎。持有资产产生的利息收入（Float）FY2024贡献约 <strong>£95M</strong>（占总收入9%）。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">商业模式</span><span class="tag">利息收入</span><span class="tag">B2B</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-011.html" target="_blank">[card-011]</a>
+              </span>
+              <span class="ki-score">9/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 2.2 Airwallex -->
+      <div class="sub-section" id="sec-2-2">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          2.2 Airwallex
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">Airwallex 2023年ARR突破 <strong>$400M</strong>（按年化计算），TPV超 <strong>$100B</strong>；2024年估值维持 <strong>$5.6B</strong>（D轮，2022年）。主要收入来源：外汇转换差价 + 国际支付收费 + 企业卡Interchange。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">财务数据</span><span class="tag">估值</span><span class="tag">商业模式</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-031.html" target="_blank">[card-031]</a>
+              </span>
+              <span class="ki-score">9/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">Airwallex战略定位：面向SMB和Scale-up的"全栈金融基础设施"——提供收款（Payment Links/API）、外汇、企业账户、企业卡、费用管理（Expense）、薪资（Payroll）于一体。2023年推出 Airwallex Embedded Finance，向SaaS平台提供嵌入式支付。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">商业模式</span><span class="tag">B2B</span><span class="tag">嵌入式金融</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-032.html" target="_blank">[card-032]</a>
+              </span>
+              <span class="ki-score">8/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 2.3 Revolut -->
+      <div class="sub-section" id="sec-2-3">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          2.3 Revolut
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">Revolut 2023年净利润 <strong>$545M</strong>（首次全年盈利），收入 <strong>$2.2B</strong>（+95% YoY）；注册用户超 <strong>4500万</strong>，月活约 <strong>2800万</strong>。英国银行牌照终于在2024年7月获批，解锁英国存款与贷款业务。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">财务数据</span><span class="tag">增长率</span><span class="tag">用户增长</span><span class="tag">监管</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-041.html" target="_blank">[card-041]</a>
+              </span>
+              <span class="ki-score">10/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">Revolut收入结构多元：外汇/跨境支付占比约 <strong>30%</strong>，订阅会员（Premium/Metal/Ultra）占比约 <strong>25%</strong>，加密货币交易约 <strong>20%</strong>，卡Interchange约 <strong>15%</strong>，贷款/储蓄利息约 <strong>10%</strong>。估值约 <strong>$45B</strong>（2024年员工股票二级交易）。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">收入结构</span><span class="tag">估值</span><span class="tag">商业模式</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-042.html" target="_blank">[card-042]</a>
+              </span>
+              <span class="ki-score">9/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 2.4 Payoneer -->
+      <div class="sub-section" id="sec-2-4">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          2.4 Payoneer
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">Payoneer FY2023：收入 <strong>$875M</strong>（+31% YoY），TPV <strong>$75.7B</strong>（+15% YoY）；利息收入（Float）贡献 <strong>$194M</strong>（占总收入22%），成为高利率环境下的超额收益来源。活跃客户约 <strong>400万</strong>，主要为电商卖家、自由职业者、SMB。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">财务数据</span><span class="tag">利息收入</span><span class="tag">Take Rate</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-051.html" target="_blank">[card-051]</a>
+              </span>
+              <span class="ki-score">10/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">Payoneer Take Rate约 <strong>1.16%</strong>（收入/TPV，FY2023），高于Wise（0.67%）；主要因服务长尾市场（新兴市场卖家、低频大额交易），议价能力较弱但竞争对手少。上市于NASDAQ（PAYO），市值约 <strong>$1.8B</strong>（2024年初）。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">Take Rate</span><span class="tag">单位经济</span><span class="tag">竞争格局</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-051.html" target="_blank">[card-051]</a>
+                <a href="../analysis-cards/card-052.html" target="_blank">[card-052]</a>
+              </span>
+              <span class="ki-score">9/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 2.5 dLocal -->
+      <div class="sub-section" id="sec-2-5">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          2.5 dLocal
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">dLocal FY2023：TPV <strong>$18.5B</strong>（+43% YoY），收入 <strong>$633M</strong>（+37% YoY），净收入（Net Revenue，去除资金传递成本）<strong>$233M</strong>。Net Revenue Take Rate约 <strong>1.26%</strong>。专注于新兴市场（拉美、非洲、南亚）的"最后一公里"本地支付接入。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">财务数据</span><span class="tag">Take Rate</span><span class="tag">新兴市场</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-061.html" target="_blank">[card-061]</a>
+              </span>
+              <span class="ki-score">10/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">dLocal商业模式：作为"本地支付聚合器"，帮助全球企业（Uber、Netflix、Amazon、Shopify）在40+新兴市场收款/付款，支持200+本地支付方式（PIX、OXXO、M-Pesa等）。护城河：本地支付接入 + 合规牌照（每个市场单独申请，极高进入壁垒）。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">商业模式</span><span class="tag">护城河</span><span class="tag">新兴市场</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-062.html" target="_blank">[card-062]</a>
+              </span>
+              <span class="ki-score">9/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 2.6 Remitly -->
+      <div class="sub-section" id="sec-2-6">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          2.6 Remitly
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">Remitly FY2023：收入 <strong>$1.05B</strong>（+47% YoY），活跃用户 <strong>590万</strong>（+44% YoY），Send Volume <strong>$38.5B</strong>（+43% YoY）。首次全年调整后EBITDA转正（+$46M）。Take Rate约 <strong>2.72%</strong>（远高于Wise/Payoneer，因专注C2C汇款小额高频场景）。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">财务数据</span><span class="tag">Take Rate</span><span class="tag">汇款</span><span class="tag">用户增长</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-071.html" target="_blank">[card-071]</a>
+              </span>
+              <span class="ki-score">10/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">Remitly主要走廊：美国→菲律宾、美国→印度、美国→墨西哥（合计约60% Send Volume）；收购Rewire（以色列，欧洲汇款）拓展欧洲市场；正在向存款/储蓄产品扩张，降低对单一汇款收入的依赖。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">地理扩张</span><span class="tag">汇款走廊</span><span class="tag">商业模式</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-072.html" target="_blank">[card-072]</a>
+              </span>
+              <span class="ki-score">8/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 2.7 Western Union -->
+      <div class="sub-section" id="sec-2-7">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          2.7 Western Union
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">Western Union FY2023：收入 <strong>$4.4B</strong>（-7% YoY），数字渠道收入增至 <strong>$1.04B</strong>（+5%，占总收入24%）；总Transaction数约 <strong>8.5亿笔</strong>，代理网络 <strong>17万个+</strong>代理点（全球最大实体渠道）。净利润率约14%。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">财务数据</span><span class="tag">数字化转型</span><span class="tag">汇款</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-081.html" target="_blank">[card-081]</a>
+              </span>
+              <span class="ki-score">9/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">Western Union面临"数字替代"困境：线下代理网络（170k点）是核心护城河，但数字原生用户正大量流向Wise/Remitly；公司战略是"digital-first"但线下收入仍占76%，转型速度明显滞后于Euronet/MoneyGram。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">竞争格局</span><span class="tag">护城河</span><span class="tag">数字化转型</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-082.html" target="_blank">[card-082]</a>
+              </span>
+              <span class="ki-score">8/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 2.8 Nium -->
+      <div class="sub-section" id="sec-2-8">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          2.8 Nium
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">Nium定位：B2B跨境支付基础设施"API-first"平台，持有100+国家支付牌照，支持190+国家实时到账；2023年估值 <strong>$1.4B</strong>（独角兽），客户包括Brex、Tribe Payments、Hippo Insurance。ARR约 <strong>$100M+</strong>（2024年估计）。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">B2B</span><span class="tag">基础设施</span><span class="tag">估值</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-091.html" target="_blank">[card-091]</a>
+              </span>
+              <span class="ki-score">8/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">Nium主要收入来源：外汇转换费（FX Spread）+ 付款处理费（per-transaction）+ 企业预付卡发行（Interchange）；差异化在于"实时到账"承诺（vs SWIFT 3-5天），核心走廊亚太-欧洲、亚太-北美处理时间 &lt; 30秒。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">商业模式</span><span class="tag">即时支付</span><span class="tag">Take Rate</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-092.html" target="_blank">[card-092]</a>
+              </span>
+              <span class="ki-score">8/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 2.9 Thunes -->
+      <div class="sub-section" id="sec-2-9">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          2.9 Thunes
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">Thunes专注于"新兴市场最后一公里"网络，连接130+国家的移动钱包、银行账户、现金代理网络；TPV 2023年约 <strong>$20B</strong>，估值约 <strong>$900M</strong>（C轮，2022年，$60M融资，Standard Chartered等参投）。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">新兴市场</span><span class="tag">基础设施</span><span class="tag">融资</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-101.html" target="_blank">[card-101]</a>
+              </span>
+              <span class="ki-score">7/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">Thunes商业模式：作为"隐形基础设施"（B2B2C），向Wise、PayPal、Paysend等大型平台提供新兴市场收款/付款接入，不直接面向终端用户；收费方式为per-transaction费 + FX Spread，走廊定价差异大（成熟市场vs非洲/东南亚差3-5倍）。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">商业模式</span><span class="tag">B2B</span><span class="tag">定价策略</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-102.html" target="_blank">[card-102]</a>
+              </span>
+              <span class="ki-score">8/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 2.10 KPay -->
+      <div class="sub-section" id="sec-2-10">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          2.10 KPay
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">KPay（原Kwanji，香港）专注于亚太区中小企业跨境收款与FX；2023年完成 <strong>$16M</strong> A轮融资（Hong Kong X等参投），持有香港MSO（Money Service Operator）牌照；目标客户：香港/新加坡SMB的跨境供应链付款。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">融资</span><span class="tag">亚太</span><span class="tag">SMB</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-111.html" target="_blank">[card-111]</a>
+              </span>
+              <span class="ki-score">7/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 2.11 WorldFirst等 -->
+      <div class="sub-section" id="sec-2-11">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          2.11 WorldFirst等
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">WorldFirst（蚂蚁集团旗下）2023年TPV超 <strong>$100B</strong>，专注电商卖家跨境收款；在中国大陆市场享有独特优势（蚂蚁支付牌照 + 国内分销网络），人民币结算能力是差异化护城河。2022年在香港、新加坡、英国等8个市场持有支付牌照。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">电商</span><span class="tag">中国</span><span class="tag">护城河</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-121.html" target="_blank">[card-121]</a>
+              </span>
+              <span class="ki-score">8/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">其他关键玩家：<strong>Paysend</strong>（C2C汇款，$1B+ TPV，欧洲为主）、<strong>Currencycloud</strong>（已被Visa收购，B2B FX API）、<strong>Rapyd</strong>（"金融云"，100+国家，估值$8.75B）、<strong>Flutterwave</strong>（非洲聚合器，估值$3B）。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">竞争格局</span><span class="tag">新兴市场</span><span class="tag">估值</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-122.html" target="_blank">[card-122]</a>
+              </span>
+              <span class="ki-score">8/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 2.12 其他 -->
+      <div class="sub-section" id="sec-2-12">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          2.12 其他
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">传统巨头战略调整：<strong>Visa B2B Connect</strong>（直连企业跨境付款网络，绕过SWIFT）；<strong>Mastercard Cross-Border Services</strong>（收购Transfast/Nets）；<strong>PayPal Xoom</strong>（C2C汇款，估值受压）；<strong>MoneyGram</strong>（已私有化，Madison Dearborn Partners收购）推进数字化转型。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">竞争格局</span><span class="tag">卡组织</span><span class="tag">战略动态</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-131.html" target="_blank">[card-131]</a>
+              </span>
+              <span class="ki-score">7/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /chapter-2 -->
+
+
+    <!-- ==================== CHAPTER 3 ==================== -->
+    <div class="chapter-section" id="chapter-3">
+      <div class="chapter-heading">
+        <span class="chapter-num">3</span>
+        商业模式
+      </div>
+
+      <!-- 3.1 -->
+      <div class="sub-section" id="sec-3-1">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          3.1 收入模式
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">跨境支付主要收入模式分5类：<strong>①FX Spread</strong>（买卖价差，最普遍，Wise/Airwallex/Nium）；<strong>②固定交易费</strong>（per-transaction，$2-15，Payoneer/dLocal）；<strong>③订阅会员</strong>（Revolut Premium/Metal）；<strong>④Float利息</strong>（持有用户资金产生利息，高利率环境超额收益）；<strong>⑤增值服务</strong>（企业卡Interchange、费用管理SaaS费）。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">收入模式</span><span class="tag">商业模式</span><span class="tag">Take Rate</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-141.html" target="_blank">[card-141]</a>
+              </span>
+              <span class="ki-score">9/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">Float收入已成为高利率环境下的关键盈利驱动：Wise FY2024 Float收入 £95M（+218% YoY），Payoneer FY2023 $194M（+124% YoY）；随利率正常化，这部分超额收益预计2025–2026年收缩30–50%，倒逼各平台加速交易费增长。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">利息收入</span><span class="tag">单位经济</span><span class="tag">风险</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-011.html" target="_blank">[card-011]</a>
+                <a href="../analysis-cards/card-051.html" target="_blank">[card-051]</a>
+              </span>
+              <span class="ki-score">9/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 3.2 -->
+      <div class="sub-section" id="sec-3-2">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          3.2 Take Rate Benchmark
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">行业Take Rate（收入/TPV）基准对比：<strong>Wise 0.67%</strong> | <strong>Airwallex ~0.4%</strong>（估算，B2B优先低Take Rate）| <strong>Payoneer 1.16%</strong> | <strong>dLocal 1.26%</strong>（净收入率）| <strong>Remitly 2.72%</strong>（C2C小额高Take Rate）| <strong>Western Union ~3%+</strong>（线下渠道定价高）。Take Rate与客户类型强相关：B2B大额 &lt; B2B小额 &lt; C2C汇款 &lt; 新兴市场最后一公里。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">Take Rate</span><span class="tag">单位经济</span><span class="tag">竞争格局</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-011.html" target="_blank">[card-011]</a>
+                <a href="../analysis-cards/card-051.html" target="_blank">[card-051]</a>
+                <a href="../analysis-cards/card-071.html" target="_blank">[card-071]</a>
+              </span>
+              <span class="ki-score">10/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">Take Rate长期压缩趋势：行业均值每年下降约 <strong>2–5%</strong>（FXC Intelligence），主要因竞争加剧 + 监管透明度要求（EU PSR要求披露全费率）+ 即时支付基础设施降低边际成本。规律：越成熟的走廊，Take Rate越低（欧洲内 &lt; 0.3%；撒哈拉以南非洲 &gt; 5%）。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">Take Rate</span><span class="tag">演化趋势</span><span class="tag">监管</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-142.html" target="_blank">[card-142]</a>
+              </span>
+              <span class="ki-score">9/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 3.3 -->
+      <div class="sub-section" id="sec-3-3">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          3.3 成本结构
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">跨境支付平台主要成本分4类：<strong>①资金传递成本</strong>（银行费、代理行费、本地网络接入费，占TPV的0.1–0.5%）；<strong>②合规/监管成本</strong>（KYC/AML系统、牌照维护，随国家数量指数上升）；<strong>③客户获取成本</strong>（CAC，Remitly $143/用户，Wise ~$80/用户）；<strong>④客服/欺诈损失</strong>（新兴市场欺诈率是成熟市场3–5倍）。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">成本结构</span><span class="tag">单位经济</span><span class="tag">监管</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-143.html" target="_blank">[card-143]</a>
+              </span>
+              <span class="ki-score">9/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 3.4 -->
+      <div class="sub-section" id="sec-3-4">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          3.4 演化趋势
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">商业模式演化路径："单一支付" → "全栈金融基础设施"。Wise（Wise Platform API）、Airwallex（Embedded Finance）、Nium均在向B2B基础设施层迁移；逻辑是：支付Take Rate下行不可逆，但API平台抽成（每笔交易分成）叠加更多金融服务可维持整体ARPU。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">演化趋势</span><span class="tag">商业模式</span><span class="tag">护城河</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-144.html" target="_blank">[card-144]</a>
+              </span>
+              <span class="ki-score">9/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">嵌入式跨境支付（Embedded Cross-border）是下一增长点：SaaS平台（ERP/电商SaaS/HR软件）内嵌支付能力，向终端用户收取支付费，无需自建合规/流动性；预计2025–2030年嵌入式支付占跨境支付总量从 &lt;5% 增至 <strong>20–25%</strong>（Bain Capital 2023预测）。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">嵌入式金融</span><span class="tag">演化趋势</span><span class="tag">增长率</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-145.html" target="_blank">[card-145]</a>
+              </span>
+              <span class="ki-score">8/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /chapter-3 -->
+
+
+    <!-- ==================== CHAPTER 4 ==================== -->
+    <div class="chapter-section" id="chapter-4">
+      <div class="chapter-heading">
+        <span class="chapter-num">4</span>
+        竞争格局
+      </div>
+
+      <!-- 4.1 -->
+      <div class="sub-section" id="sec-4-1">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          4.1 竞争矩阵
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">竞争矩阵核心维度：<strong>X轴：客群（C2C ↔ B2B大型企业）</strong>，<strong>Y轴：地理覆盖（成熟市场 ↔ 新兴市场）</strong>。象限分布：①C2C+成熟市场（Wise/Revolut/Remitly）；②B2B大型企业+成熟市场（Airwallex/Nium/Currencycloud）；③C2C+新兴市场（Western Union/MoneyGram/Thunes）；④B2B+新兴市场（dLocal/Flutterwave/Cellulant）。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">竞争格局</span><span class="tag">竞争矩阵</span><span class="tag">商业模式</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-151.html" target="_blank">[card-151]</a>
+              </span>
+              <span class="ki-score">9/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">市场集中度：前5大非银跨境支付平台（Wise/Airwallex/Revolut/Payoneer/dLocal）合计TPV约 <strong>$400B+</strong>（2023年），但仍不足全球总量的 <strong>0.3%</strong>；说明市场极度分散，龙头集中效应尚未显现。传统银行+卡组织仍掌控 &gt;70% 跨境流量。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">竞争格局</span><span class="tag">市场规模</span><span class="tag">集中度</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-152.html" target="_blank">[card-152]</a>
+              </span>
+              <span class="ki-score">9/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 4.2 -->
+      <div class="sub-section" id="sec-4-2">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          4.2 护城河
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">跨境支付护城河强弱排序：<strong>①监管牌照网络</strong>（最强，每个司法管辖区单独获取，新玩家需3–5年+$10M+成本）→ <strong>②本地支付接入</strong>（dLocal/Thunes，难以复制的关系网络）→ <strong>③规模/流动性</strong>（Wise多货币池，FX成本随规模降低）→ <strong>④品牌/信任</strong>（Western Union在新兴市场品牌溢价）→ <strong>⑤产品粘性</strong>（企业客户换供应商成本高，但个人用户流失率低）。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">护城河</span><span class="tag">监管</span><span class="tag">竞争格局</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-153.html" target="_blank">[card-153]</a>
+              </span>
+              <span class="ki-score">9/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 4.3 -->
+      <div class="sub-section" id="sec-4-3">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          4.3 战略动态
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">主要M&A趋势：卡组织大规模收购（Visa→Currencycloud $963M，Mastercard→Transfast）；PE收购传统运营商（Madison Dearborn→MoneyGram）；平台横向扩张（Wise收购Paysend资产，Airwallex收购MoMo香港）。预计2024–2026年整合加速，中小平台被并购比例将上升。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">战略动态</span><span class="tag">M&A</span><span class="tag">竞争格局</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-154.html" target="_blank">[card-154]</a>
+              </span>
+              <span class="ki-score">8/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">AI在跨境支付的战略应用：<strong>①欺诈检测</strong>（Stripe/Airwallex使用ML将误拦截率降低40%）；<strong>②动态FX定价</strong>（基于流动性实时调整Spread）；<strong>③智能路由</strong>（多条清算路径中选最低成本，节省0.1–0.3%）；<strong>④合规自动化</strong>（NLP处理KYC文件，降低人工审核成本60–80%）。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">AI</span><span class="tag">战略动态</span><span class="tag">成本结构</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-155.html" target="_blank">[card-155]</a>
+              </span>
+              <span class="ki-score">8/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /chapter-4 -->
+
+
+    <!-- ==================== CHAPTER 5 ==================== -->
+    <div class="chapter-section" id="chapter-5">
+      <div class="chapter-heading">
+        <span class="chapter-num">5</span>
+        基础设施
+      </div>
+
+      <!-- 5.1 -->
+      <div class="sub-section" id="sec-5-1">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          5.1 清算网络
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">SWIFT全球报文流量2023年约 <strong>114亿条</strong>（+1.2% YoY）；gpi（Global Payments Innovation）覆盖超 <strong>4400家银行</strong>，同日到账率提升至 <strong>90%+</strong>，但仍需3–5层代理行，每层收费；新兴的SWIFT Alternative正在蚕食低利润走廊。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">SWIFT</span><span class="tag">基础设施</span><span class="tag">清算网络</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-161.html" target="_blank">[card-161]</a>
+              </span>
+              <span class="ki-score">8/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">非SWIFT清算替代方案崛起：<strong>中国CIPS</strong>（人民币跨境，1400+参与机构，2023年处理量 ¥123T）；<strong>印度UPI国际</strong>（已接入新加坡PayNow、UAE、法国）；<strong>区域性ACH</strong>（东盟ASEAN Payment Network将7国即时支付互联）。这些替代方案削弱SWIFT在特定走廊的垄断地位。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">清算网络</span><span class="tag">基础设施</span><span class="tag">地理扩张</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-162.html" target="_blank">[card-162]</a>
+              </span>
+              <span class="ki-score">9/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 5.2 -->
+      <div class="sub-section" id="sec-5-2">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          5.2 即时支付
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">全球即时支付交易量2023年约 <strong>2660亿笔</strong>（ACI Worldwide），2028年预计超 <strong>5750亿笔</strong>（CAGR 16.7%）。印度UPI独占全球即时支付 <strong>46%</strong> 份额（2023年 1480亿笔）；PIX（巴西）单日峰值突破 <strong>2.4亿笔</strong>（2023年11月）。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">即时支付</span><span class="tag">基础设施</span><span class="tag">增长率</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-171.html" target="_blank">[card-171]</a>
+              </span>
+              <span class="ki-score">9/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">即时支付互联互通（Interlinking）进展：Project Nexus（BIS + 印度/马来西亚/菲律宾/新加坡/泰国）目标2026年实现5国即时支付跨境互联；mBridge（多国CBDC互联桥，中国/香港/泰国/阿联酋）正在进行MVP测试（2024年）。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">即时支付</span><span class="tag">CBDC</span><span class="tag">G20</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-172.html" target="_blank">[card-172]</a>
+              </span>
+              <span class="ki-score">9/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 5.3 -->
+      <div class="sub-section" id="sec-5-3">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          5.3 稳定币CBDC
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">稳定币跨境支付2023年链上结算量约 <strong>$11T</strong>（Visa Onchain Analytics），USDT/USDC是主要载体；企业级稳定币支付兴起（PayPal PYUSD，Stripe新增稳定币支付），预计到2026年稳定币将占B2B跨境支付 <strong>2–4%</strong> 的量。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">稳定币</span><span class="tag">基础设施</span><span class="tag">增长率</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-181.html" target="_blank">[card-181]</a>
+              </span>
+              <span class="ki-score">8/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">CBDC跨境使用现状：<strong>mBridge</strong>（多国批发CBDC互联，BIS主导）已完成技术MVP，但商业化面临地缘政治障碍（BIS 2024年6月退出声明引发争议）；零售CBDC跨境（如e-CNY国际化）进展缓慢，监管互认是主要障碍。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">CBDC</span><span class="tag">监管</span><span class="tag">基础设施</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-182.html" target="_blank">[card-182]</a>
+              </span>
+              <span class="ki-score">8/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /chapter-5 -->
+
+
+    <!-- ==================== CHAPTER 6 ==================== -->
+    <div class="chapter-section" id="chapter-6">
+      <div class="chapter-heading">
+        <span class="chapter-num">6</span>
+        监管环境
+      </div>
+
+      <!-- 6.1 -->
+      <div class="sub-section" id="sec-6-1">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          6.1 司法管辖
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">主要监管司法管辖区对比：<strong>英国FCA</strong>（EMI/PI牌照，强执法，Wise/Revolut/Airwallex主要持牌地）；<strong>新加坡MAS</strong>（MPI/MPL，亚太合规友好，Airwallex/Nium亚太总部）；<strong>香港HKMA</strong>（SVF/MSO，中国大陆门户，严格反洗钱）；<strong>美国FinCEN+各州MSB</strong>（分权监管，成本最高，需51个州单独申请）。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">监管</span><span class="tag">牌照体系</span><span class="tag">地理扩张</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-191.html" target="_blank">[card-191]</a>
+              </span>
+              <span class="ki-score">8/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 6.2 -->
+      <div class="sub-section" id="sec-6-2">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          6.2 牌照体系
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">欧盟PSD3/PSR2025年正式生效：强化开放银行（Open Banking）数据权，要求支付机构向第三方开放账户数据；FX透明度要求所有跨境转账明示全成本（含隐性FX Spread）；合规成本预计使欧盟支付牌照持有者合规投入增加 <strong>15–25%</strong>。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">监管</span><span class="tag">欧盟</span><span class="tag">PSD3</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-192.html" target="_blank">[card-192]</a>
+              </span>
+              <span class="ki-score">8/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">Wise持有32个国家/地区支付牌照（截至2024年），是非银跨境支付平台中持牌覆盖最广的；牌照获取历史曾因2022年比利时牌照被暂停（FSMA执法）付出高代价——股价单日下跌 <strong>-10%</strong>，提醒投资者监管风险是核心运营风险。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">牌照体系</span><span class="tag">监管风险</span><span class="tag">护城河</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-013.html" target="_blank">[card-013]</a>
+              </span>
+              <span class="ki-score">9/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 6.3 -->
+      <div class="sub-section" id="sec-6-3">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          6.3 AML
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">全球AML执法趋严：<strong>Binance</strong>罚款 $4.3B（2023年，FinCEN/OFAC）；<strong>MoneyGram</strong>历史上罚款 $125M（2018年）；执法重点转向新兴玩家——FCA 2023年对英国EMI发出29份"提高标准"警告函，被认为是牌照收紧信号。各平台AML合规投入约占收入 <strong>3–8%</strong>。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">AML</span><span class="tag">监管风险</span><span class="tag">成本结构</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-193.html" target="_blank">[card-193]</a>
+              </span>
+              <span class="ki-score">9/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 6.4 -->
+      <div class="sub-section" id="sec-6-4">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          6.4 G20路线图
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">G20跨境支付路线图（2020–2027）五大优先领域：<strong>①支付基础设施互联互通</strong>；<strong>②数据标准（ISO 20022）统一</strong>；<strong>③监管框架协调</strong>；<strong>④API开放</strong>；<strong>⑤法定货币/CBDC探索</strong>。KPI目标（2027年）：平均成本≤3%（当前6.25%），速度100%在1小时内，覆盖率100%走廊。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">G20</span><span class="tag">监管</span><span class="tag">基础设施</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-194.html" target="_blank">[card-194]</a>
+              </span>
+              <span class="ki-score">9/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">G20路线图进展评估（FSB 2023年报告）：成本目标进展最慢（实际从2020年6.5%仅降至6.25%）；速度改善明显（gpi覆盖率大幅提升）；互联互通框架建立中（Nexus项目）；数据标准已基本对齐（ISO 20022迁移完成）。最大障碍：政治意愿不足 + 代理行退出加速。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">G20</span><span class="tag">监管</span><span class="tag">成本</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-195.html" target="_blank">[card-195]</a>
+              </span>
+              <span class="ki-score">8/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /chapter-6 -->
+
+
+    <!-- ==================== CHAPTER 7 ==================== -->
+    <div class="chapter-section" id="chapter-7">
+      <div class="chapter-heading">
+        <span class="chapter-num">7</span>
+        区域市场
+      </div>
+
+      <!-- 7.1 -->
+      <div class="sub-section" id="sec-7-1">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          7.1 亚太
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">亚太区跨境支付规模最大：2023年约 <strong>$78T</strong>（占全球约40%），增速 <strong>8–10% CAGR</strong>（高于全球均值）；关键驱动：中国跨境电商（B2C出口$340B+）、东南亚数字钱包普及（GoPay/GrabPay/PayMaya）、印度UPI国际扩张。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">亚太</span><span class="tag">市场规模</span><span class="tag">增长率</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-201.html" target="_blank">[card-201]</a>
+              </span>
+              <span class="ki-score">9/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">东盟5国即时支付互联进展：泰国PromptPay-新加坡PayNow（2021年全球首个双向即时跨境支付）已处理超 <strong>500万笔</strong>；马来西亚DuitNow将于2025年加入；印尼BI-Fast国际版本规划中。对跨境支付中间商的长期威胁：走廊成本将被压缩至接近零。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">东盟</span><span class="tag">即时支付</span><span class="tag">基础设施</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-202.html" target="_blank">[card-202]</a>
+              </span>
+              <span class="ki-score">9/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">中国跨境支付特殊性：人民币国际化进程中，<strong>CIPS</strong>（人民币清算）2023年处理量同比 <strong>+44%</strong>；微信/支付宝在境外华人圈基本实现自成体系；外资平台（Wise/Airwallex）进入中国大陆受严格限制，但服务中国出海企业的机会巨大。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">中国</span><span class="tag">人民币</span><span class="tag">监管</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-203.html" target="_blank">[card-203]</a>
+              </span>
+              <span class="ki-score">8/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 7.2 -->
+      <div class="sub-section" id="sec-7-2">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          7.2 新兴市场
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">撒哈拉以南非洲：跨境支付成本全球最高（平均 <strong>8.9%</strong>，部分走廊超15%，世界银行2024年Q2）；移动货币（M-Pesa覆盖肯尼亚/坦桑尼亚/DRC）是主要金融基础设施，银行渗透率 &lt;30%；非洲大陆自由贸易区（AfCFTA）支付系统（PAPSS）2022年启动，目标覆盖54国。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">非洲</span><span class="tag">新兴市场</span><span class="tag">成本</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-211.html" target="_blank">[card-211]</a>
+              </span>
+              <span class="ki-score">9/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">拉丁美洲：巴西PIX是最成功的即时支付案例（2020年上线，3年内 <strong>1.5亿用户</strong>，覆盖全国 <strong>76%</strong> 成年人口）；dLocal/EBANX的核心壁垒是PIX/OXXO/Boleto等本地支付接入能力；墨西哥-美国走廊是全球第二大汇款走廊（$63B/年，2023年）。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">拉美</span><span class="tag">新兴市场</span><span class="tag">即时支付</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-212.html" target="_blank">[card-212]</a>
+              </span>
+              <span class="ki-score">9/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 7.3 -->
+      <div class="sub-section" id="sec-7-3">
+        <div class="sub-heading" onclick="toggleSubSection(this)">
+          7.3 欧洲
+          <span class="collapse-btn">▲</span>
+        </div>
+        <div class="sub-content">
+
+          <div class="knowledge-item">
+            <div class="ki-content">欧元区即时支付：欧盟议会2024年通过强制即时支付法规（Instant Payments Regulation），要求所有欧元支付服务商2025年起提供即时支付（SEPA Inst）且费率不高于标准转账；将进一步压缩跨境支付中间商在欧洲内的利润空间。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">欧洲</span><span class="tag">即时支付</span><span class="tag">监管</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-221.html" target="_blank">[card-221]</a>
+              </span>
+              <span class="ki-score">8/10</span>
+            </div>
+          </div>
+
+          <div class="knowledge-item">
+            <div class="ki-content">英国脱欧后支付影响：英国与欧盟分离的监管体系导致英国→欧盟跨境支付成本上升（约 <strong>+0.3–0.5%</strong>），Wise/Revolut等持有双重牌照（英国FCA + 欧盟EMI）应对；外汇波动（GBP/EUR）增加为FX服务商创造了额外需求。</div>
+            <div class="ki-meta">
+              <span class="ki-tags"><span class="tag">英国</span><span class="tag">欧洲</span><span class="tag">监管</span></span>
+              <span class="ki-sources">
+                <a href="../analysis-cards/card-222.html" target="_blank">[card-222]</a>
+              </span>
+              <span class="ki-score">7/10</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /chapter-7 -->
+
+  </div><!-- /content -->
+</div><!-- /main -->
+
+<script>
+// ===== STATS =====
+function updateStats() {
+  const items = document.querySelectorAll('.knowledge-item');
+  const sections = document.querySelectorAll('.sub-section');
+  document.getElementById('stat-items').textContent = items.length;
+  document.getElementById('stat-sections').textContent = sections.length;
+}
+
+// ===== NAV CHAPTER TOGGLE =====
+function toggleNavChapter(titleEl) {
+  const subList = titleEl.nextElementSibling;
+  const icon = titleEl.querySelector('.toggle-icon');
+  const isHidden = subList.classList.contains('hidden');
+  if (isHidden) {
+    subList.style.maxHeight = subList.scrollHeight + 'px';
+    subList.classList.remove('hidden');
+    titleEl.classList.remove('collapsed');
+  } else {
+    subList.style.maxHeight = '0';
+    subList.classList.add('hidden');
+    titleEl.classList.add('collapsed');
+  }
+}
+
+// Initialize nav sub-list heights
+document.querySelectorAll('.nav-sub-list').forEach(list => {
+  list.style.maxHeight = list.scrollHeight + 'px';
+});
+
+// ===== NAV CLICK =====
+function navClick(el) {
+  document.querySelectorAll('.nav-sub-item').forEach(i => i.classList.remove('active'));
+  el.classList.add('active');
+  const target = document.querySelector(el.getAttribute('href'));
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  return false;
+}
+
+// ===== SUB-SECTION TOGGLE =====
+function toggleSubSection(headingEl) {
+  const content = headingEl.nextElementSibling;
+  const btn = headingEl.querySelector('.collapse-btn');
+  const isHidden = content.classList.contains('hidden');
+  if (isHidden) {
+    content.style.maxHeight = content.scrollHeight + 'px';
+    content.classList.remove('hidden');
+    headingEl.classList.remove('collapsed');
+  } else {
+    content.style.maxHeight = '0';
+    content.classList.add('hidden');
+    headingEl.classList.add('collapsed');
+  }
+}
+
+// Initialize sub-content heights
+document.querySelectorAll('.sub-content').forEach(c => {
+  c.style.maxHeight = c.scrollHeight + 'px';
+});
+
+// ===== GLOBAL SEARCH =====
+function globalSearch(query) {
+  const q = query.trim().toLowerCase();
+  const items = document.querySelectorAll('.knowledge-item');
+  
+  items.forEach(item => {
+    const contentEl = item.querySelector('.ki-content');
+    const originalText = contentEl.getAttribute('data-original') || contentEl.textContent;
+    if (!contentEl.getAttribute('data-original')) {
+      contentEl.setAttribute('data-original', originalText);
+    }
+    
+    if (!q) {
+      item.classList.remove('hidden');
+      contentEl.innerHTML = originalText;
+      return;
+    }
+    
+    const text = originalText.toLowerCase();
+    if (text.includes(q)) {
+      item.classList.remove('hidden');
+      // Highlight matches
+      const re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+      contentEl.innerHTML = originalText.replace(re, '<mark>$1</mark>');
+    } else {
+      item.classList.add('hidden');
+    }
+  });
+
+  // Re-expand sub-contents after filter
+  document.querySelectorAll('.sub-content').forEach(c => {
+    c.style.maxHeight = 'none';
+  });
+}
+
+// ===== SIDEBAR SEARCH (filter nav items) =====
+function sidebarFilter(query) {
+  const q = query.trim().toLowerCase();
+  document.querySelectorAll('.nav-sub-item').forEach(item => {
+    if (!q || item.textContent.toLowerCase().includes(q)) {
+      item.style.display = '';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+
+// ===== SCROLL SPY =====
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      document.querySelectorAll('.nav-sub-item').forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href') === '#' + id) {
+          item.classList.add('active');
+        }
+      });
+    }
+  });
+}, { threshold: 0.3, rootMargin: '-80px 0px -60% 0px' });
+
+document.querySelectorAll('.sub-section[id]').forEach(section => {
+  observer.observe(section);
+});
+
+// ===== INIT =====
+updateStats();
+</script>
+
+</body>
+</html>

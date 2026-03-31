@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第7章：区域市场深度分析 — 亚太 / 新兴市场 / 欧洲</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; line-height: 1.7; }
+
+  /* ── 章节头 ── */
+  .chapter-header {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+    border-radius: 16px;
+    padding: 40px 40px 36px;
+    margin-bottom: 32px;
+    color: white;
+  }
+  .chapter-label { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 8px; }
+  .chapter-title { font-size: 28px; font-weight: 900; color: white; line-height: 1.2; margin: 0 0 12px; }
+  .chapter-subtitle { font-size: 15px; color: rgba(255,255,255,0.75); margin: 0 0 24px; }
+  .chapter-meta { display: flex; gap: 24px; flex-wrap: wrap; }
+  .meta-item { background: rgba(255,255,255,0.12); border-radius: 8px; padding: 8px 14px; font-size: 12px; color: rgba(255,255,255,0.85); }
+  .meta-item strong { color: white; }
+
+  /* ── TOC ── */
+  .toc-box { background: white; border-radius: 12px; padding: 24px 28px; margin-bottom: 32px; border: 1px solid #e2e8f0; }
+  .toc-title { font-size: 13px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+  .toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 32px; }
+  .toc-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155; text-decoration: none; padding: 6px 0; border-bottom: 1px solid #f1f5f9; }
+  .toc-item:hover { color: #2563eb; }
+  .toc-num { background: #eff6ff; color: #2563eb; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; flex-shrink: 0; }
+
+  /* ── 模块 ── */
+  .module { background: white; border-radius: 12px; padding: 32px 36px; margin-bottom: 28px; border: 1px solid #e2e8f0; }
+  .module-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.10em; color: #94a3b8; margin-bottom: 8px; }
+  .module-title { font-size: 20px; font-weight: 800; color: #0f172a; border-left: 4px solid #2563eb; padding-left: 14px; margin: 0 0 20px; line-height: 1.3; }
+  .module-title .num { color: #2563eb; }
+
+  .core-conclusion { background: #eff6ff; border-left: 4px solid #2563eb; padding: 16px 20px; margin: 0 0 24px; font-size: 15px; font-weight: 600; color: #1e293b; border-radius: 0 8px 8px 0; line-height: 1.6; }
+
+  .body-text { font-size: 14px; color: #334155; line-height: 1.8; margin-bottom: 20px; }
+  .body-text p { margin: 0 0 14px; }
+  .body-text strong { color: #1e293b; }
+
+  .insight-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 16px 20px; margin: 24px 0; }
+  .insight-title { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #166534; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+  .insight-list { margin: 0; padding-left: 0; list-style: none; }
+  .insight-list li { font-size: 13px; color: #15803d; padding: 4px 0 4px 18px; position: relative; line-height: 1.6; }
+  .insight-list li::before { content: "💡"; position: absolute; left: 0; }
+
+  .source-row { margin-top: 20px; padding-top: 12px; border-top: 1px solid #f1f5f9; }
+  .source-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; text-decoration: none; }
+  .source-label { font-size: 11px; color: #94a3b8; margin-right: 4px; }
+
+  /* ── 表格 ── */
+  .data-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13px; }
+  .data-table th { background: #f8fafc; padding: 10px 14px; text-align: left; font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; }
+  .data-table td { padding: 10px 14px; border-bottom: 1px solid #f1f5f9; color: #1e293b; }
+  .data-table tr:hover td { background: #fafbff; }
+  .data-table .highlight td { background: #eff6ff; font-weight: 600; }
+  .data-table .leader td { background: #f0fdf4; }
+
+  .badge-tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+  .badge-c { background: #dbeafe; color: #1d4ed8; }
+  .badge-b { background: #dcfce7; color: #166534; }
+  .badge-em { background: #fef3c7; color: #92400e; }
+  .badge-sup { background: #ede9fe; color: #5b21b6; }
+  .badge-warn { background: #fee2e2; color: #991b1b; }
+  .badge-ok { background: #dcfce7; color: #166534; }
+  .badge-mid { background: #fef3c7; color: #92400e; }
+
+  /* ── 模块颜色变体 ── */
+  .module-red .module-title { border-color: #ef4444; }
+  .module-red .core-conclusion { background: #fef2f2; border-color: #ef4444; }
+
+  .module-purple .module-title { border-color: #7c3aed; }
+  .module-purple .core-conclusion { background: #f5f3ff; border-color: #7c3aed; }
+
+  .module-green .module-title { border-color: #059669; }
+  .module-green .core-conclusion { background: #f0fdf4; border-color: #059669; }
+
+  .module-orange .module-title { border-color: #d97706; }
+  .module-orange .core-conclusion { background: #fffbeb; border-color: #d97706; }
+
+  .module-teal .module-title { border-color: #0891b2; }
+  .module-teal .core-conclusion { background: #ecfeff; border-color: #0891b2; }
+
+  /* ── 警告框 ── */
+  .warn-box { background: #fffbeb; border: 1px solid #fcd34d; border-radius: 8px; padding: 12px 16px; margin: 16px 0; font-size: 13px; color: #92400e; }
+
+  /* ── 数据对比卡片 ── */
+  .compare-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0; }
+  .compare-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
+  .compare-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; }
+  .compare-card .company { font-size: 12px; font-weight: 700; color: #64748b; margin-bottom: 4px; }
+  .compare-card .value { font-size: 22px; font-weight: 900; color: #2563eb; }
+  .compare-card .label { font-size: 11px; color: #94a3b8; margin-top: 2px; }
+  .compare-card.green-card .value { color: #059669; }
+  .compare-card.orange-card .value { color: #d97706; }
+  .compare-card.red-card .value { color: #dc2626; }
+
+  /* ── 章节分隔 ── */
+  .section-divider { text-align: center; padding: 8px 0 24px; color: #cbd5e1; font-size: 20px; }
+
+  /* ── 飞轮图示 ── */
+  .flywheel { background: linear-gradient(135deg, #eff6ff, #f0fdf4); border: 1px solid #bfdbfe; border-radius: 12px; padding: 20px 24px; margin: 20px 0; }
+  .flywheel-title { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #1d4ed8; margin-bottom: 12px; }
+  .flywheel-steps { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .fw-step { background: white; border: 1px solid #bfdbfe; border-radius: 8px; padding: 8px 14px; font-size: 12px; font-weight: 600; color: #1e3a5f; flex: 1; text-align: center; min-width: 100px; }
+  .fw-arrow { color: #2563eb; font-size: 16px; font-weight: 700; }
+
+  /* ── 风险条 ── */
+  .risk-bar { display: flex; align-items: center; gap: 12px; margin: 8px 0; }
+  .risk-label { font-size: 12px; color: #475569; width: 180px; flex-shrink: 0; }
+  .risk-track { flex: 1; height: 8px; background: #e2e8f0; border-radius: 4px; }
+  .risk-fill { height: 8px; border-radius: 4px; }
+  .risk-high { background: #ef4444; }
+  .risk-med { background: #f59e0b; }
+  .risk-low { background: #10b981; }
+  .risk-pct { font-size: 12px; font-weight: 700; color: #475569; width: 40px; text-align: right; }
+
+  /* ── 进入逻辑框 ── */
+  .entry-logic { background: #fafbff; border: 1px solid #c7d2fe; border-radius: 8px; padding: 16px 20px; margin: 16px 0; }
+  .entry-logic-title { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #4338ca; margin-bottom: 8px; }
+  .entry-logic-content { font-size: 13px; color: #334155; line-height: 1.7; }
+
+  /* ── 地图卡片 ── */
+  .region-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .region-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; }
+  .region-card .region-name { font-size: 13px; font-weight: 800; color: #0f172a; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+  .region-card .region-stat { font-size: 12px; color: #475569; line-height: 1.7; }
+  .region-card .region-stat strong { color: #1e293b; }
+
+  /* 子节标题 */
+  .sub-section { margin: 32px 0 20px; }
+  .sub-section-title { font-size: 16px; font-weight: 800; color: #1e293b; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; margin-bottom: 16px; }
+</style>
+</head>
+<body>
+
+<!-- ════ 章节头 ════ -->
+<div class="chapter-header">
+  <div class="chapter-label">知识库 · 第7章</div>
+  <div class="chapter-title">区域市场深度分析</div>
+  <div class="chapter-subtitle">亚太、新兴市场与欧洲三大区域的进入逻辑、竞争格局与政策演进 — 基于14份原始数据源综合分析</div>
+  <div class="chapter-meta">
+    <div class="meta-item"><strong>7.1</strong> 亚太（HK / SG / JP / ASEAN）</div>
+    <div class="meta-item"><strong>7.2</strong> 新兴市场（拉美 / 非洲）</div>
+    <div class="meta-item"><strong>7.3</strong> 欧洲（SEPA / ISO 20022）</div>
+    <div class="meta-item"><strong>数据基准</strong> 2024年全年</div>
+    <div class="meta-item"><strong>核心问题</strong> 哪个市场最值得进入？</div>
+  </div>
+</div>
+
+<!-- ════ 目录 ════ -->
+<div class="toc-box">
+  <div class="toc-title">📋 本章目录</div>
+  <div class="toc-grid">
+    <a href="#section-71" class="toc-item">
+      <div class="toc-num">7.1</div>亚太主要市场对比与进入逻辑
+    </a>
+    <a href="#section-72" class="toc-item">
+      <div class="toc-num">7.2</div>新兴市场：拉丁美洲与非洲
+    </a>
+    <a href="#section-asean" class="toc-item">
+      <div class="toc-num" style="background:#f0fdf4;color:#059669">→</div>东盟跨境支付互联进展
+    </a>
+    <a href="#section-73" class="toc-item">
+      <div class="toc-num">7.3</div>欧洲：SEPA体系与ISO 20022
+    </a>
+    <a href="#section-china-outbound" class="toc-item">
+      <div class="toc-num" style="background:#f0fdf4;color:#059669">→</div>中国出海企业跨境支付崛起
+    </a>
+    <a href="#section-summary" class="toc-item">
+      <div class="toc-num" style="background:#fef3c7;color:#92400e">★</div>全球区域比较与战略结论
+    </a>
+  </div>
+</div>
+
+<!-- ════ 7.1 亚太 ════ -->
+<div id="section-71" class="module">
+  <div class="module-label">第7.1节</div>
+  <div class="module-title"><span class="num">7.1</span> 亚太区域市场 — 香港 / 新加坡 / 日本 / 东南亚</div>
+
+  <div class="core-conclusion">
+    🎯 <strong>核心结论：</strong>新加坡是亚太首选进入市场（最优监管+B2B基础设施欠缺+增速153%验证），香港是大湾区战略枢纽（FPS-IBPS互联2025年落地），日本是高净值长线机会（Zengin开放重塑竞争格局），东南亚是整体高增速但需按走廊精准布局（印尼QRIS+225%/马来西亚QR+170倍是核心热点）。进入顺序建议：新加坡 → 香港 → 日本 → 东盟优先走廊。
+  </div>
+
+  <!-- 市场对比表 -->
+  <div class="sub-section">
+    <div class="sub-section-title">📊 亚太主要市场量化对比</div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>市场</th>
+          <th>市场规模/增速</th>
+          <th>汇款成本</th>
+          <th>核心痛点</th>
+          <th>监管友好度</th>
+          <th>主要玩家</th>
+          <th>进入评级</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="leader">
+          <td><strong>🇸🇬 新加坡</strong></td>
+          <td>营收+153% (FY2024)<br>Q4+215%</td>
+          <td>B2B $10-25/笔<br>（不含FX成本）</td>
+          <td>75%企业未完全数字化<br>B2B跨境仍依赖电汇</td>
+          <td><span class="badge-tag badge-ok">★★★★★</span><br>MPI牌照体系完善</td>
+          <td>Airwallex (+153%)<br>Wise、Nium<br>DBS、OCBC</td>
+          <td><span class="badge-tag badge-ok">首选</span></td>
+        </tr>
+        <tr class="highlight">
+          <td><strong>🇭🇰 香港</strong></td>
+          <td>SME 35万家<br>96%有跨境支付需求</td>
+          <td>隐性FX损失<br>HKD 257亿/年</td>
+          <td>仅41%了解FX加价<br>85%受支付问题影响</td>
+          <td><span class="badge-tag badge-ok">★★★★☆</span><br>SVF+FPS监管清晰</td>
+          <td>Wise Business<br>Airwallex<br>汇丰、渣打</td>
+          <td><span class="badge-tag badge-ok">优先</span></td>
+        </tr>
+        <tr>
+          <td><strong>🇯🇵 日本</strong></td>
+          <td>跨境汇款$30B+/年<br>平均费率4-5%</td>
+          <td>全球发送国最高之一<br>日本→全球6.94%</td>
+          <td>银行遗留系统<br>非银行牌照限制严格</td>
+          <td><span class="badge-tag badge-mid">★★★☆☆</span><br>改革中（Zengin开放）</td>
+          <td>Wise（首家外资非银行）<br>Nium（Type-1牌照）<br>SBI Remit</td>
+          <td><span class="badge-tag badge-mid">战略进入</span></td>
+        </tr>
+        <tr>
+          <td><strong>🇮🇩 印度尼西亚</strong></td>
+          <td>QRIS年增225%<br>5050万用户</td>
+          <td>跨境QR正在建立<br>东盟互联</td>
+          <td>监管碎片化<br>农村覆盖不足</td>
+          <td><span class="badge-tag badge-mid">★★★☆☆</span><br>BI强制QRIS</td>
+          <td>Gopay、OVO<br>DANA、BRI</td>
+          <td><span class="badge-tag badge-mid">中期</span></td>
+        </tr>
+        <tr>
+          <td><strong>🇲🇾 马来西亚</strong></td>
+          <td>TNG境外QR+170倍<br>外卡+550%</td>
+          <td>DuitNow QR本地货币<br>降低成本</td>
+          <td>跨境资本管制<br>外资所有权限制</td>
+          <td><span class="badge-tag badge-ok">★★★★☆</span><br>数字经济框架先进</td>
+          <td>TNG (Alipay+)<br>DuitNow、Boost</td>
+          <td><span class="badge-tag badge-mid">中期</span></td>
+        </tr>
+        <tr>
+          <td><strong>🇹🇭 泰国</strong></td>
+          <td>在线交易+53%<br>外卡四年+163%</td>
+          <td>Project Nexus<br>$735/日限额</td>
+          <td>14%银行遗留系统<br>SME跨境高费率</td>
+          <td><span class="badge-tag badge-mid">★★★☆☆</span><br>BOT积极推进</td>
+          <td>PromptPay<br>SCB+Lightnet</td>
+          <td><span class="badge-tag badge-mid">中期</span></td>
+        </tr>
+        <tr>
+          <td><strong>🇵🇭 菲律宾</strong></td>
+          <td>跨境电商34%<br>月均境外购物</td>
+          <td>汇款平均6%<br>（高于全球均值）</td>
+          <td>多重验证合规延误<br>侨汇高成本</td>
+          <td><span class="badge-tag badge-mid">★★★☆☆</span><br>BSP积极改革</td>
+          <td>Wise (InstaPay)<br>GCash、Maya</td>
+          <td><span class="badge-tag badge-mid">机会型</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="source-row">
+      <span class="source-label">数据来源：</span>
+      <span class="source-tag">card-097</span>
+      <span class="source-tag">card-077</span>
+      <span class="source-tag">card-076</span>
+      <span class="source-tag">card-020</span>
+      <span class="source-tag">card-068</span>
+    </div>
+  </div>
+
+  <!-- 香港 -->
+  <div id="section-hk" class="sub-section">
+    <div class="sub-section-title">🇭🇰 香港：大湾区枢纽与SME痛点窗口</div>
+    <div class="body-text">
+      <p>香港约有<strong>35万家中小企业</strong>，占企业总数98%以上，且跨境支付需求极为普遍：Wise委托调研的200+香港SME中，<strong>96%在过去6个月内有跨境支付</strong>，52%每周至少一次。这一数据使香港成为跨境支付需求密度最高的市场之一。[card-020]</p>
+      <p>香港企业最大的隐性痛点是<strong>FX加价损失</strong>：仅41%的SME了解汇率加价机制，2024年全年因此损失约<strong>HKD 257亿（约$33亿）</strong>。这是Wise Business于2025年3月进入香港市场的直接市场依据。企业痛点按频率排列：多供应商管理不便（57%）、无法追踪交易（41%）、到账超一天（37%）、高费用（35%）——85%的SME表示支付问题对业务造成实质影响。[card-020]</p>
+      <p>2024年8月，<strong>HKMA与人民银行签署MOU</strong>，启动香港FPS与内地IBPS互联项目，预计2025年中实施。该互联将实现7×24实时、小额跨境汇款，用户只需手机号即可完成跨境支付。这将直接影响大湾区数百万往来人员的支付体验，并为香港金融机构在大湾区布局提供基础设施保障。[card-138]</p>
+    </div>
+    <div class="compare-grid-4">
+      <div class="compare-card">
+        <div class="company">香港SME跨境支付率</div>
+        <div class="value">96%</div>
+        <div class="label">过去6个月有跨境支付</div>
+      </div>
+      <div class="compare-card">
+        <div class="company">SME年均FX隐性损失</div>
+        <div class="value">HKD 257亿</div>
+        <div class="label">≈约$33亿/年</div>
+      </div>
+      <div class="compare-card green-card">
+        <div class="company">HKMA-PBOC MOU</div>
+        <div class="value">2025年中</div>
+        <div class="label">FPS-IBPS预计实施时间</div>
+      </div>
+      <div class="compare-card">
+        <div class="company">Wise平均费率</div>
+        <div class="value">0.59%</div>
+        <div class="label">vs 银行2-4%（节省约70%）</div>
+      </div>
+    </div>
+    <div class="entry-logic">
+      <div class="entry-logic-title">📌 香港进入逻辑</div>
+      <div class="entry-logic-content">
+        <strong>值得进入的理由：</strong>需求密度极高（96%渗透率）+ 痛点量化（$33亿FX损失）+ 监管明确（SVF牌照框架）+ HKMA-PBOC互联带来新基础设施红利。<br>
+        <strong>注意事项：</strong>竞争已经激烈（Wise/Airwallex均已进入），差异化需要聚焦特定走廊（港-内地、港-英国/美国等）或特定行业（跨境电商、贸易融资）。
+      </div>
+    </div>
+  </div>
+
+  <!-- 新加坡 -->
+  <div class="sub-section">
+    <div class="sub-section-title">🇸🇬 新加坡：最优监管环境 + B2B基础设施缺口</div>
+    <div class="body-text">
+      <p>新加坡是亚太区域最重要的金融科技枢纽。Airwallex在新加坡FY2024实现<strong>营收+153%</strong>，Q4加速至+215%，Q4交易量+192%；人员规模+58%至250人，全面验证了新加坡作为东南亚B2B支付市场的高增长潜力。[card-097]</p>
+      <p>然而，新加坡的跨境支付现代化仍存在显著缺口：<strong>不足25%的新加坡企业完全采用数字技术处理B2B跨境交易</strong>，传统电汇每笔固定成本$10-25（不含FX），为中小企业带来显著负担。与此同时，新加坡MPI（主要支付机构）牌照体系完善，数字经济协议（DEA）框架支持KYC互认，降低跨境合规摩擦。[card-077]</p>
+      <p>新加坡还是东盟QR互联网络的中心节点：PayNow同时连接泰国（PromptPay）、马来西亚（DuitNow）、印度（UPI）、菲律宾（InstaPay）等，是整个东盟跨境支付网络中连接度最高的节点。[card-077]</p>
+    </div>
+    <div class="entry-logic">
+      <div class="entry-logic-title">📌 新加坡进入逻辑</div>
+      <div class="entry-logic-content">
+        <strong>值得进入的理由：</strong>验证的增长（Airwallex +153%）+ 巨大B2B数字化空间（75%未完成转型）+ 监管最优（MPI牌照） + 东盟枢纽效应（一国覆盖全区域）+ 中国-东南亚贸易走廊的关键节点（对连连/Airwallex等中国背景公司尤为重要）。<br>
+        <strong>定位建议：</strong>面向中小企业的多货币B2B支付平台，叠加东盟本地货币结算能力，与东盟互联基础设施深度整合。
+      </div>
+    </div>
+  </div>
+
+  <!-- 日本 -->
+  <div class="sub-section">
+    <div class="sub-section-title">🇯🇵 日本：高壁垒市场的监管破冰与B2B机遇</div>
+    <div class="body-text">
+      <p>日本是一个特殊的市场：经济体量全球第三、跨境汇款规模$30B+/年、平均费率4-5%，但历史上对外资金融机构的准入壁垒极高。<strong>2024年是日本支付监管的转折年：</strong></p>
+      <ul style="font-size:14px;color:#334155;line-height:2;">
+        <li><strong>2024年3月</strong>：Wise获得日本Type-1资金转移许可（FTSP），单笔上限从¥100万提升至<strong>¥1.5亿</strong>（提升150倍），解锁大额企业汇款市场</li>
+        <li><strong>2024年10月</strong>：Wise成为<strong>首家获准直接接入Zengin清算系统的外资非银行机构</strong>，覆盖日本6,000家金融机构，日元支付从T+1提速至实时</li>
+        <li>同年，Nium也获得Type-1 FTSP牌照，显示日本监管改革正在触发行业级跟进效应 [card-021]</li>
+      </ul>
+      <p>日本的B2B支付需求具有独特的<strong>劳动力短缺驱动逻辑</strong>：随着日本持续推进外籍劳工政策（2024年外籍劳工数量超过230万），从日本寄钱回越南、菲律宾、中国、印度的汇款需求快速上升；同时，人口老龄化驱动的数字化转型使企业对低摩擦B2B支付工具有强烈需求。</p>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-card">
+        <div class="company">Wise Type-1升级</div>
+        <div class="value">¥1.5亿/笔</div>
+        <div class="label">原¥100万上限提升150倍</div>
+      </div>
+      <div class="compare-card green-card">
+        <div class="company">Zengin覆盖</div>
+        <div class="value">6,000家</div>
+        <div class="label">金融机构直接接入</div>
+      </div>
+      <div class="compare-card orange-card">
+        <div class="company">日本汇款费率</div>
+        <div class="value">6.94%</div>
+        <div class="label">G8国家中最高（世界银行）</div>
+      </div>
+    </div>
+    <div class="entry-logic">
+      <div class="entry-logic-title">📌 日本进入逻辑</div>
+      <div class="entry-logic-content">
+        <strong>值得进入的理由：</strong>高费率（6.94%）创造降费空间 + 监管改革提供窗口（Zengin接入、Type-1牌照）+ 外籍劳工汇款快速增长 + B2B数字化转型需求迫切。<br>
+        <strong>主要挑战：</strong>监管合规成本极高（牌照申请需多年）、本地银行关系壁垒、日语运营要求。<strong>建议战略：</strong>先通过Type-1牌照切入个人汇款（在日华人/越南人/菲律宾人社区），再逐步延伸至B2B。
+      </div>
+    </div>
+  </div>
+
+  <!-- 东盟互联 -->
+  <div id="section-asean" class="sub-section">
+    <div class="sub-section-title">🌏 东盟跨境支付互联进展：从双边到多边</div>
+    <div class="body-text">
+      <p>东盟数字支付市场2024年规模达<strong>2,869亿美元</strong>，预计2028年增至4,166亿美元（年增约10%）；2024年A2A和电子钱包交易量达<strong>1.14万亿美元</strong>（+14%）。东盟数字经济整体以<strong>4.6%年增速领先中国、美国和欧盟</strong>，数字产业预计从2024年3,000亿美元增至2030年<strong>1万亿美元</strong>。[card-076][card-077]</p>
+    </div>
+
+    <div class="flywheel">
+      <div class="flywheel-title">🔗 东盟跨境支付互联层次（从底层到应用层）</div>
+      <div class="flywheel-steps">
+        <div class="fw-step">📋 ISO 20022<br><small>9国已采用零售标准</small></div>
+        <div class="fw-arrow">→</div>
+        <div class="fw-step">📱 国家QR码<br><small>8国建立国家渠道</small></div>
+        <div class="fw-arrow">→</div>
+        <div class="fw-step">🔗 双边QR互联<br><small>6国跨境QR已上线</small></div>
+        <div class="fw-arrow">→</div>
+        <div class="fw-step">⚡ Project Nexus<br><small>FPS多边Hub模式</small></div>
+        <div class="fw-arrow">→</div>
+        <div class="fw-step">💰 本地货币框架<br><small>5国去美元化协议</small></div>
+      </div>
+    </div>
+
+    <div class="body-text">
+      <p><strong>Project Nexus</strong> 是最具战略意义的东盟互联项目：通过标准化API连接各国FPS（快速支付系统），运营商只需一次接入即可触达网络内所有国家。泰国数据显示，Nexus目标实现5分钟内跨境转账，每日上限约$735（约25,000泰铢）。[card-077][card-074]</p>
+      <p><strong>双边QR互联重要案例：</strong>
+        <br>• PayNow-PromptPay（新-泰）：5分钟内到账，手机号寻址，全球首批双边FPS互联样板
+        <br>• 马来西亚DuitNow：已与新加坡、印尼、泰国、中国、韩国、柬埔寨实现实时转账
+        <br>• 印尼QRIS跨境：外国游客使用量月增28%（新加坡）、13%（泰国），年增长225%
+        <br>• 柬埔寨Bakong+Alipay+：12个国际支付APP（AlipayHK、TNG、GCash、Kakao Pay等）可在柬埔寨KHQR消费
+      </p>
+      <p><strong>核心障碍三层（ERIA识别）：</strong>①互操作性（各国标准不完全统一）；②数据安全（各国数据保护规则差异）；③监管碎片化（外资所有权限制、电子钱包上限、最低资本各国各异）。其中，东盟欠发达成员国（缅甸、老挝、柬埔寨）的监管能力不足是区域协调的最大障碍。[card-076]</p>
+    </div>
+    <div class="source-row">
+      <span class="source-label">数据来源：</span>
+      <span class="source-tag">card-076</span>
+      <span class="source-tag">card-077</span>
+    </div>
+  </div>
+
+  <!-- 中国出海 -->
+  <div id="section-china-outbound" class="sub-section">
+    <div class="sub-section-title">🇨🇳 中国出海企业的跨境支付需求：连连/WorldFirst/PingPong的崛起逻辑</div>
+    <div class="body-text">
+      <p>中国跨境电商出海浪潮催生了专门服务中国卖家的跨境支付赛道。以<strong>连连数字</strong>为例：FY2024全年营收估算约<strong>13.2亿元人民币（+28%）</strong>，全球支付TPV约<strong>2,815亿元（+63%）</strong>。关键财务特征：全球支付毛利率<strong>72.6%</strong>远高于国内支付20.1%，跨境业务是核心盈利引擎。[card-108]</p>
+      <p>连连的护城河叙事是"20年积累+全球牌照+合规"，已获卢森堡EMI牌照（覆盖EU全境），与Circle签署稳定币MOU，战略布局下一代跨境基础设施。国企、上市公司等高价值客群采用企业钱包产品，验证了其在企业级合规支付领域的可信度。[card-108]</p>
+    </div>
+
+    <div class="insight-box">
+      <div class="insight-title">💡 中国出海支付公司的共同逻辑</div>
+      <ul class="insight-list">
+        <li>从亚马逊/eBay等平台收款需求切入（降低门槛），逐步延伸至全球支付基础设施</li>
+        <li>跨境业务毛利率远高于国内（连连72.6% vs 20.1%），跨境是核心价值创造区域</li>
+        <li>新加坡是中国出海公司在东南亚的首选落地市场（连接中国-东南亚贸易走廊）</li>
+        <li>合规牌照是护城河——覆盖欧盟/美国/日本的多地牌照组合难以快速复制</li>
+        <li>增值服务（数字营销、融资、税务）是摆脱费率竞争的差异化路径</li>
+      </ul>
+    </div>
+    <div class="source-row">
+      <span class="source-label">数据来源：</span>
+      <span class="source-tag">card-108</span>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider">• • •</div>
+
+<!-- ════ 7.2 新兴市场 ════ -->
+<div id="section-72" class="module module-orange">
+  <div class="module-label">第7.2节</div>
+  <div class="module-title"><span class="num">7.2</span> 新兴市场 — 拉丁美洲与非洲</div>
+
+  <div class="core-conclusion" style="background:#fffbeb;border-color:#d97706;">
+    🎯 <strong>核心结论：</strong>新兴市场是高增长与高风险并存的机会。<strong>拉美：</strong>巴西Pix已创造7000万新支付用户（全球最成功FPS之一），墨西哥走廊是最低成本高流量优先布局点，dLocal以"新兴市场复杂性作为护城河"验证了1.2%净取费率的可持续性。<strong>非洲：</strong>Flutterwave"让非洲像一个国家"，但撒哈拉以南非洲汇款成本7.73%仍是全球最高，结构性原因是基础设施缺失+竞争不足+监管壁垒。<strong>陷阱：</strong>货币波动（阿根廷）、监管突变（尼日利亚汇款禁令）、流动性（小体量走廊）是主要风险来源。
+  </div>
+
+  <!-- 拉美 -->
+  <div class="sub-section">
+    <div class="sub-section-title">🌎 拉丁美洲：Pix的颠覆、dLocal的模式与墨西哥走廊</div>
+    <div class="body-text">
+      <p><strong>巴西Pix：全球最成功的零售即时支付系统</strong>。2020年强制所有PSP参与，P2P免费，覆盖<strong>85%成年巴西人</strong>和1,500万企业，带来<strong>7,000万新增电子转账用户</strong>。商户接受成本约<strong>25个基点</strong>，远低于信用卡2.2%和借记卡1.1%。Pix的开放API设计允许私营部门在其基础上创新，是全球支付政策制定的重要样本。[card-074]</p>
+      <p><strong>dLocal：新兴市场跨境支付的定义者</strong>。Q3 2024 TPV创纪录达$65亿（+41%），毛利润$7,800万，净取费率稳定在<strong>1.2%</strong>。跨境（XB）业务首次单季突破$30亿。其护城河逻辑：<strong>新兴市场复杂性是壁垒，不是障碍</strong>——单一API（One dLocal）覆盖多国多支付方式，切换成本极高；多国支付牌照组合难以快速复制；实时成本优化模型维持取费率稳定。[card-036]</p>
+      <p><strong>墨西哥走廊：流量最大、竞争最激烈</strong>。墨西哥是全球最大汇款接收目的地之一，G20接收国中成本最低（4.87%），反映Wise、Remitly、Xoom等多家竞争者的激烈价格战。墨西哥CoDi即时支付系统（2019年）为跨境汇款接收提供基础设施，但普及率不及Pix（设计更封闭，仅限会员机构）。[card-074][card-068]</p>
+    </div>
+
+    <div class="compare-grid">
+      <div class="compare-card green-card">
+        <div class="company">巴西Pix新增用户</div>
+        <div class="value">7,000万</div>
+        <div class="label">金融包容历史性突破</div>
+      </div>
+      <div class="compare-card">
+        <div class="company">Pix商户成本</div>
+        <div class="value">~25 bp</div>
+        <div class="label">vs 信用卡2.2%（节省88%）</div>
+      </div>
+      <div class="compare-card green-card">
+        <div class="company">dLocal Q3 2024 TPV</div>
+        <div class="value">$65亿</div>
+        <div class="label">同比+41%，季度新高</div>
+      </div>
+    </div>
+
+    <div class="body-text">
+      <p><strong>拉美的特殊挑战：</strong>拉美区域内贸易仅占货物贸易14%（远低于欧亚），初级商品主导出口（美元定价偏好），使本地货币支付体系推广困难重重。Mercosur本地货币支付体系（SML）推广多年，巴西对阿根廷出口使用率仅约5%，主要原因是大宗商品以美元定价、银行缺乏推广动力、高利率环境鼓励美元应收款结构。[card-074]</p>
+    </div>
+
+    <div class="warn-box">
+      ⚠️ <strong>阿根廷风险：</strong>dLocal Q3 2024在"多数新兴市场货币疲软"背景下仍创新高，但阿根廷等高通胀国家的货币波动是永久性风险。dLocal通过本地结算+美元计费并行降低FX风险敞口，但不能完全对冲。
+    </div>
+
+    <div class="entry-logic">
+      <div class="entry-logic-title">📌 拉美进入逻辑</div>
+      <div class="entry-logic-content">
+        <strong>机会在哪里：</strong>①巴西Pix基础设施已成熟，叠加Drex（批发CBDC）形成完整双层框架，是最先进的新兴市场支付生态；②墨西哥走廊流量大、竞争充分但仍有数字化升级空间；③dLocal等平台验证了"一个API多个市场"的可扩展商业模式。<br>
+        <strong>陷阱在哪里：</strong>货币波动（阿根廷、委内瑞拉）、监管突变（资本管制）、政治风险（CCR历史教训：主权信用风险曾导致区域体系崩溃）、大宗商品美元结构阻碍本地货币普及。
+      </div>
+    </div>
+    <div class="source-row">
+      <span class="source-label">数据来源：</span>
+      <span class="source-tag">card-036</span>
+      <span class="source-tag">card-074</span>
+      <span class="source-tag">card-068</span>
+    </div>
+  </div>
+
+  <!-- 非洲 -->
+  <div class="sub-section">
+    <div class="sub-section-title">🌍 非洲：Flutterwave的定位与汇款成本的结构性困境</div>
+    <div class="body-text">
+      <p><strong>Flutterwave</strong>以"让非洲像一个国家"为使命，2024年报告中：48%的平台企业从新地理位置收到付款（+12%提升），PSP/旅行/汇款/酒店是核心行业；48.4%收到的汇款用于基本生活成本（尼日利亚/加纳/南非/肯尼亚调研）；全年获得美国额外31个汇款转让牌照，并与American Express达成合作。[card-107]</p>
+      <p><strong>非洲汇款成本居高不下的结构性原因：</strong>撒哈拉以南非洲Q1 2024平均成本<strong>7.73%</strong>，是全球最高接收地区；有<strong>14个走廊无SmaRT合规服务</strong>（全球25个中的多数）；成本超20%的走廊中，非洲走廊占大多数。背后的结构性原因不是"技术能力不足"（世界银行数据显示多数走廊已有移动服务绿灯评级），而是：<br>
+        ① <strong>金融基础设施缺失</strong>：互联网和账户普及率低，服务提供商选择受限<br>
+        ② <strong>竞争不足</strong>：每走廊平均服务数量远低于发达市场走廊<br>
+        ③ <strong>监管壁垒</strong>：尼日利亚央行禁止出境转账（直接影响Africa最大经济体的汇款），巴基斯坦类似限制<br>
+        ④ <strong>银行依赖</strong>：银行汇款成本12.66%是移动运营商（3.87%）的3倍以上，但许多非洲走廊仍依赖银行渠道 [card-068]
+      </p>
+    </div>
+
+    <div class="compare-grid-4">
+      <div class="compare-card red-card">
+        <div class="company">撒哈拉以南非洲</div>
+        <div class="value">7.73%</div>
+        <div class="label">全球最贵汇款接收地区</div>
+      </div>
+      <div class="compare-card red-card">
+        <div class="company">无SmaRT服务走廊</div>
+        <div class="value">14个</div>
+        <div class="label">全球25个中非洲占多数</div>
+      </div>
+      <div class="compare-card orange-card">
+        <div class="company">Flutterwave汇款用途</div>
+        <div class="value">48.4%</div>
+        <div class="label">用于基本生活成本</div>
+      </div>
+      <div class="compare-card green-card">
+        <div class="company">Flutterwave地理扩张</div>
+        <div class="value">+12%</div>
+        <div class="label">企业新地理位置收款率提升</div>
+      </div>
+    </div>
+
+    <!-- 风险条 -->
+    <div class="sub-section">
+      <div class="sub-section-title" style="font-size:13px;font-weight:700;border-bottom:1px solid #f1f5f9;">新兴市场特殊挑战评估（风险热图）</div>
+      <div style="padding:16px 0;">
+        <div class="risk-bar">
+          <div class="risk-label">货币波动风险</div>
+          <div class="risk-track"><div class="risk-fill risk-high" style="width:90%"></div></div>
+          <div class="risk-pct">极高</div>
+        </div>
+        <div class="risk-bar">
+          <div class="risk-label">监管突变风险（如尼日利亚禁令）</div>
+          <div class="risk-track"><div class="risk-fill risk-high" style="width:85%"></div></div>
+          <div class="risk-pct">极高</div>
+        </div>
+        <div class="risk-bar">
+          <div class="risk-label">流动性风险（小体量走廊）</div>
+          <div class="risk-track"><div class="risk-fill risk-high" style="width:75%"></div></div>
+          <div class="risk-pct">高</div>
+        </div>
+        <div class="risk-bar">
+          <div class="risk-label">合规复杂性（多国KYC/AML）</div>
+          <div class="risk-track"><div class="risk-fill risk-med" style="width:70%"></div></div>
+          <div class="risk-pct">高</div>
+        </div>
+        <div class="risk-bar">
+          <div class="risk-label">政治风险（政权更迭等）</div>
+          <div class="risk-track"><div class="risk-fill risk-med" style="width:60%"></div></div>
+          <div class="risk-pct">中高</div>
+        </div>
+        <div class="risk-bar">
+          <div class="risk-label">基础设施缺失风险</div>
+          <div class="risk-track"><div class="risk-fill risk-med" style="width:65%"></div></div>
+          <div class="risk-pct">中高</div>
+        </div>
+        <div class="risk-bar">
+          <div class="risk-label">竞争加剧风险（dLocal已建壁垒）</div>
+          <div class="risk-track"><div class="risk-fill risk-low" style="width:45%"></div></div>
+          <div class="risk-pct">中</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry-logic">
+      <div class="entry-logic-title">📌 非洲进入逻辑</div>
+      <div class="entry-logic-content">
+        <strong>机会在哪里：</strong>①高汇款成本（7.73%）创造巨大降费空间；②移动货币渗透（M-Pesa等）提供基础设施基础；③Flutterwave验证了"平台聚合+B2B+C2C汇款双轮"模式的可行性；④侨民汇款民生刚需（48.4%用于基本生活），需求稳定。<br>
+        <strong>陷阱在哪里：</strong>监管风险最高（尼日利亚禁令历史案例）、货币贬值侵蚀利润（需要USD计价保护）、单走廊流量不足难以摊销合规成本、当地合作伙伴依赖度高（需深度本地化运营）。<strong>建议策略：</strong>与Flutterwave/dLocal等平台合作而非自建，聚焦南非/肯尼亚等基础设施相对完善的核心市场。
+      </div>
+    </div>
+    <div class="source-row">
+      <span class="source-label">数据来源：</span>
+      <span class="source-tag">card-107</span>
+      <span class="source-tag">card-036</span>
+      <span class="source-tag">card-068</span>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider">• • •</div>
+
+<!-- ════ 7.3 欧洲 ════ -->
+<div id="section-73" class="module module-purple">
+  <div class="module-label">第7.3节</div>
+  <div class="module-title"><span class="num">7.3</span> 欧洲 — SEPA统一区、ISO 20022迁移与数字银行竞争</div>
+
+  <div class="core-conclusion" style="background:#f5f3ff;border-color:#7c3aed;">
+    🎯 <strong>核心结论：</strong>欧洲支付市场的核心逻辑是<strong>SEPA推动欧元区内成本趋零，外汇跨货币支付（EUR→GBP、EUR→USD等）仍有可观空间</strong>。Revolut以欧洲主场优势（立陶宛银行牌照+英国PRA授权）实现FY2024营收$40亿，但跨境汇款专项Wise仍以0.67%的低费率领先。ISO 20022强制迁移（2025年11月）为技术供应商和合规平台创造短期红利，但也将降低传统银行的差异化壁垒。对外资Fintech而言：欧洲是"验证可行性"的理想市场（监管清晰、用户数字化程度高），但主要利润来自外汇走廊而非欧元区内支付。
+  </div>
+
+  <!-- SEPA -->
+  <div class="sub-section">
+    <div class="sub-section-title">🏛️ SEPA：欧元区内支付成本趋零的战略意义</div>
+    <div class="body-text">
+      <p><strong>SEPA（单一欧元支付区）</strong>覆盖36个国家（欧盟27国+英国/瑞士/挪威等），允许欧元区内跨境支付以与国内转账相同的条件和费用处理。SEPA即时转账（SCT Inst）目前已在欧元区逐步普及，目标是使欧元区内支付成本趋向零。</p>
+      <p><strong>对Fintech的含义——双刃剑效应：</strong>
+        <br>① <strong>机会压缩：</strong>SEPA使欧元区内支付几乎消灭了Fintech在欧元→欧元走廊的价值主张，Revolut/Wise在欧元区内的FX收入极为有限
+        <br>② <strong>机会聚焦：</strong>真正的利润空间在<strong>跨货币走廊</strong>（EUR↔GBP、EUR↔USD、EUR↔PLN等非欧元货币）和<strong>欧洲→新兴市场</strong>的侨汇走廊
+        <br>③ <strong>新机遇：</strong>SEPA Instant为欧洲Fintech提供低成本基础设施，降低本地化运营成本；欧洲用户已形成数字支付习惯，新产品采用率高
+      </p>
+      <p>Revolut的欧洲战略印证了这一逻辑：FY2024卡支付收入$8.87亿（交换费，不依赖FX）+ 外汇收入$5.40亿（主要来自跨货币换汇）+ 订阅收入$5.41亿（高质量经常性），三者叠加形成欧洲最强的Fintech营收模式。[card-032]</p>
+    </div>
+  </div>
+
+  <!-- ISO 20022 -->
+  <div class="sub-section">
+    <div class="sub-section-title">📡 ISO 20022迁移：2025年11月强制截止与市场影响</div>
+    <div class="body-text">
+      <p>截至2024年底，SWIFT CBPR+（跨境支付和报告增强标准）的ISO 20022采用率为<strong>32.9%</strong>，仍未过半；日均处理<strong>140万条</strong>CBPR+格式报文。<strong>2025年11月，所有SWIFT跨境支付报文必须切换为ISO 20022格式</strong>，MT格式的共存期正式结束，这是SWIFT 40年来最大的单次技术升级。[card-152]</p>
+      <p><strong>ISO 20022的核心价值：</strong>结构化丰富数据 → 提升直通处理率（STP） → 降低AML误报率 → 改善数据分析。同时实现跨SWIFT gpi、国内即时支付系统（如欧洲TIPS）和CBDC平台的互操作。[card-152]</p>
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>关键指标</th>
+          <th>现状（2024年底）</th>
+          <th>2025年11月后</th>
+          <th>对Fintech的影响</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ISO 20022采用率</td>
+          <td>32.9%</td>
+          <td><strong>强制100%</strong></td>
+          <td>传统银行合规压力 = Fintech机会窗口</td>
+        </tr>
+        <tr>
+          <td>MT/ISO共存期</td>
+          <td>仍可混用</td>
+          <td><strong>MT格式被淘汰</strong></td>
+          <td>需要迁移中间件服务需求激增</td>
+        </tr>
+        <tr class="highlight">
+          <td>CBPR+日均报文</td>
+          <td>140万条</td>
+          <td>将持续增长</td>
+          <td>合规自动化、STP优化服务需求上升</td>
+        </tr>
+        <tr>
+          <td>不合规后果</td>
+          <td>—</td>
+          <td><strong>无法使用SWIFT</strong></td>
+          <td>中小银行转向Fintech处理方</td>
+        </tr>
+        <tr>
+          <td>Fintech机会</td>
+          <td>国内系统先行（FedNow/TIPS）</td>
+          <td>SWIFT迁移完成</td>
+          <td>翻译层、迁移服务、合规工具</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="source-row">
+      <span class="source-label">数据来源：</span>
+      <span class="source-tag">card-152</span>
+    </div>
+  </div>
+
+  <!-- Revolut vs Wise -->
+  <div class="sub-section">
+    <div class="sub-section-title">⚔️ Revolut欧洲主场 vs Wise全球布局：两种战略的竞争</div>
+    <div class="body-text">
+      <p><strong>Revolut：欧洲超级App战略</strong>。FY2024营收$40亿（+72%），税前利润$14亿（+149%），用户5,250万，第四年连续盈利。关键支柱：[card-032]
+        <br>① 立陶宛银行执照（2022年）→ 欧洲单一护照覆盖30+国家
+        <br>② 英国PRA/FCA银行牌照（2024年7月批准）→ 2025年正式运营
+        <br>③ 收入高度多元化：卡支付22% + 财富16% + 订阅13.5% + FX13.5% + 企业15%
+        <br>④ 65%新用户通过口碑获取（低CAC护城河）
+      </p>
+      <p><strong>Wise：跨境专注策略</strong>。Wise选择聚焦于跨境汇款，在日本接入Zengin（首家外资非银行），在香港推出Business账户，2025年全球扩张亚太。核心优势：0.67%全球平均费率（vs 银行2-4%），65%支付20秒内到账，在主要市场直接接入本地FPS（Zengin/NPP/Faster Payments）构成基础设施护城河。</p>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>维度</th>
+          <th>Revolut</th>
+          <th>Wise</th>
+          <th>竞争含义</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>FY2024营收</td>
+          <td><strong>$40亿</strong> (+72%)</td>
+          <td>£10.5亿 (~$13亿)</td>
+          <td>Revolut绝对规模4倍领先</td>
+        </tr>
+        <tr class="highlight">
+          <td>跨境FX专项收入</td>
+          <td>$5.40亿 (13.5%)</td>
+          <td>£7.95亿 (75%+)</td>
+          <td>Wise跨境专项仍领先Revolut 2倍</td>
+        </tr>
+        <tr>
+          <td>战略定位</td>
+          <td>超级App（银行+投资+FX）</td>
+          <td>跨境支付专家</td>
+          <td>客群有重叠但不完全竞争</td>
+        </tr>
+        <tr>
+          <td>欧洲监管</td>
+          <td>立陶宛银行牌照<br>英国银行牌照（2025）</td>
+          <td>比利时EMI牌照<br>FCA授权（英国）</td>
+          <td>Revolut银行化后存贷款竞争力提升</td>
+        </tr>
+        <tr>
+          <td>亚太扩张</td>
+          <td>日本/印度/菲律宾（2025计划）</td>
+          <td>已进入日本/香港/新加坡</td>
+          <td>亚太将成为下一个竞争主战场</td>
+        </tr>
+        <tr class="highlight">
+          <td>盈利结构</td>
+          <td>净利率26%（FY2024）<br>FY2025预计38%</td>
+          <td>约35%+（含利息收入）</td>
+          <td>两者均盈利，但Revolut绝对利润更高</td>
+        </tr>
+        <tr>
+          <td>增长飞轮</td>
+          <td>产品广度→留存→口碑→低CAC</td>
+          <td>低费率→信任→量增→技术投入</td>
+          <td>不同但都成立的增长模型</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="insight-box">
+      <div class="insight-title">💡 对外资Fintech的欧洲机会窗口判断</div>
+      <ul class="insight-list">
+        <li>欧元区内支付成本趋零，但跨货币走廊（EUR↔GBP/USD/NOK/CHF等）仍有显著价值创造空间</li>
+        <li>ISO 20022迁移压力使传统银行寻求Fintech合作，创造B2B基础设施合作机会</li>
+        <li>欧盟单一护照制度：一国获牌即可覆盖30+国家，是欧洲市场的关键进入逻辑（立陶宛/荷兰是热门选择）</li>
+        <li>MiCA（加密资产市场监管）2024年生效后，合规加密/稳定币产品在欧洲有监管确定性红利</li>
+        <li>Revolut FY2025预告营收$75亿（+52%）、净利率38%证明欧洲超级App模式空间仍大，但竞争壁垒也在快速提升</li>
+      </ul>
+    </div>
+    <div class="source-row">
+      <span class="source-label">数据来源：</span>
+      <span class="source-tag">card-032</span>
+      <span class="source-tag">card-152</span>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider">• • •</div>
+
+<!-- ════ 全球区域汇总 ════ -->
+<div id="section-summary" class="module module-green">
+  <div class="module-label">战略汇总</div>
+  <div class="module-title"><span class="num">★</span> 全球区域比较：进入优先级矩阵</div>
+
+  <div class="core-conclusion" style="background:#f0fdf4;border-color:#059669;">
+    📊 <strong>三大区域战略位置：</strong>欧洲是"验证市场"（监管清晰、数字化成熟、竞争激烈但利润可见）；亚太是"优先扩张"（新加坡已验证高增长、日本/香港结构性机会明确）；新兴市场是"长线押注"（高风险高回报，需要专门化能力和耐心资本）。
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>区域/市场</th>
+        <th>市场规模/增速</th>
+        <th>汇款成本基准</th>
+        <th>核心机会</th>
+        <th>主要风险</th>
+        <th>进入优先级</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="leader">
+        <td><strong>新加坡</strong></td>
+        <td>$X亿，营收+153%</td>
+        <td>B2B $10-25/笔</td>
+        <td>B2B数字化缺口（75%）</td>
+        <td>竞争激烈（Airwallex/Wise）</td>
+        <td><span class="badge-tag badge-ok">★★★★★ 首选</span></td>
+      </tr>
+      <tr class="leader">
+        <td><strong>香港</strong></td>
+        <td>35万SME，96%需求率</td>
+        <td>FX损失$33亿/年</td>
+        <td>大湾区FPS互联、SME透明度</td>
+        <td>政策敏感性</td>
+        <td><span class="badge-tag badge-ok">★★★★☆ 优先</span></td>
+      </tr>
+      <tr>
+        <td><strong>欧洲（EUR跨货币）</strong></td>
+        <td>Revolut $40亿验证</td>
+        <td>数字MTO 3.97%</td>
+        <td>跨货币走廊、银行化、MiCA合规</td>
+        <td>SEPA压缩欧元区内空间</td>
+        <td><span class="badge-tag badge-ok">★★★★☆ 优先</span></td>
+      </tr>
+      <tr>
+        <td><strong>日本</strong></td>
+        <td>$30B+，费率4-5%</td>
+        <td>G8最贵（6.94%）</td>
+        <td>Zengin开放、外籍劳工汇款</td>
+        <td>监管合规成本极高</td>
+        <td><span class="badge-tag badge-mid">★★★☆☆ 战略</span></td>
+      </tr>
+      <tr>
+        <td><strong>东盟（印尼/泰国/马来西亚）</strong></td>
+        <td>2024年$2869亿，CAGR~10%</td>
+        <td>菲律宾6%</td>
+        <td>QR互联、A2A增长、旅游场景</td>
+        <td>监管碎片化，FX成本</td>
+        <td><span class="badge-tag badge-mid">★★★☆☆ 中期</span></td>
+      </tr>
+      <tr>
+        <td><strong>巴西/墨西哥</strong></td>
+        <td>Pix 7000万用户</td>
+        <td>墨西哥4.87%（最低之一）</td>
+        <td>Pix生态、dLocal基础设施</td>
+        <td>货币波动（阿根廷溢出）</td>
+        <td><span class="badge-tag badge-mid">★★★☆☆ 中期</span></td>
+      </tr>
+      <tr>
+        <td><strong>非洲（南非/肯尼亚）</strong></td>
+        <td>7.73%成本最高</td>
+        <td>7.73%（撒哈拉以南）</td>
+        <td>降费空间巨大、移动货币基础</td>
+        <td>监管风险最高、货币贬值</td>
+        <td><span class="badge-tag badge-warn">★★☆☆☆ 长线</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="insight-box">
+    <div class="insight-title">💡 跨区域综合战略建议</div>
+    <ul class="insight-list">
+      <li><strong>亚太优先：</strong>新加坡MPI牌照是东南亚扩张的关键起点，辐射效应强；香港FPS-IBPS互联为大湾区战略提供新基础设施窗口（2025年落地）</li>
+      <li><strong>欧洲基础：</strong>欧盟单一护照制度是高效率进入路径；重点放跨货币走廊（非欧元区），SEPA区内让利给用户建立信任而非竞争</li>
+      <li><strong>日本战略性准入：</strong>Zengin改革打开窗口期，Type-1牌照获取是先决条件；外籍劳工汇款是低风险切入点</li>
+      <li><strong>新兴市场借力：</strong>通过dLocal/Flutterwave等专业平台合作而非自建，节省合规成本；关注巴西（Pix生态最成熟）和南非（最稳定非洲市场）</li>
+      <li><strong>ISO 20022时间窗口：</strong>2025年11月强制截止前，迁移服务和合规工具需求激增，是B2B支付基础设施服务商的短期增长催化剂</li>
+    </ul>
+  </div>
+
+  <div class="source-row">
+    <span class="source-label">本章全部数据来源：</span>
+    <span class="source-tag">card-076</span>
+    <span class="source-tag">card-077</span>
+    <span class="source-tag">card-020</span>
+    <span class="source-tag">card-021</span>
+    <span class="source-tag">card-097</span>
+    <span class="source-tag">card-108</span>
+    <span class="source-tag">card-138</span>
+    <span class="source-tag">card-036</span>
+    <span class="source-tag">card-074</span>
+    <span class="source-tag">card-107</span>
+    <span class="source-tag">card-068</span>
+    <span class="source-tag">card-032</span>
+    <span class="source-tag">card-152</span>
+  </div>
+</div>
+
+<!-- ════ 页脚 ════ -->
+<div style="background:white;border-radius:12px;padding:20px 28px;border:1px solid #e2e8f0;margin-top:28px;font-size:12px;color:#94a3b8;">
+  <strong style="color:#475569;">第7章 区域市场深度分析</strong> | 跨境支付行业分析知识库 | 数据截至2024年全年 | 基于13份原始数据源（card-020/021/032/036/068/074/076/077/097/107/108/138/152）综合分析生成 | 生成日期：2026-03-30
+</div>
+
+</body>
+</html>

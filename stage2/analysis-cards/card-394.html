@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-394 | dLocal IR Financials — 新兴市场B2B跨境支付独角兽财报与商业模式</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier2  { background: #e0f2fe; color: #0369a1; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .group-banner { background: #f8fafc; padding: 8px 0 8px 0; font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+  .warn-badge { display: inline-block; background: #fef9c3; color: #854d0e; border: 1px solid #fde047; border-radius: 4px; padding: 1px 6px; font-size: 11px; font-weight: 700; margin-left: 4px; }
+</style>
+</head>
+<body>
+
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 URL分析</span>
+    <span class="badge b-type">财报/IR页面</span>
+    <span class="badge b-depth">摘要提取（页面动态渲染）</span>
+    <span class="badge b-rel">相关度 95%</span>
+  </div>
+  <h1>dLocal IR Financials — 新兴市场B2B跨境支付独角兽财报与商业模式 <span class="warn-badge">⚠️ 仅摘要</span></h1>
+  <div class="source-line">dLocal Limited (IR) | 索引：#394 | 原文：<a href="https://investor.dlocal.com/financials/" target="_blank">https://investor.dlocal.com/financials/...</a></div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">6</div><div class="stat-label">信息点总数</div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">信息点列表 <span class="count">6条</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">dLocal (NASDAQ: DLO) 采用IFRS会计准则，主要披露文件：20-F年报、6-K季度更新<span class="src">来源：<a href="https://investor.dlocal.com/financials/" target="_blank">dLocal IR#394</a></span></div>
+    <div class="ip-col ip-analysis">dLocal使用IFRS准则（与美国GAAP不同），适用国际比较框架。20-F结构包含新兴市场风险因素，是关键数据源。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">dLocal</span><span class="tag tag-fin">IFRS</span><span class="tag tag-fin">20-F</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财报/dLocal</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">dLocal 2024全年Total Payment Volume(TPV)约$25.6B（跨境量），同比增长约27%（⚠️估算）<span class="src">来源：<a href="https://investor.dlocal.com/financials/" target="_blank">dLocal IR#394</a></span></div>
+    <div class="ip-col ip-analysis">dLocal专注新兴市场B2B跨境支付，$25.6B TPV中绝大部分来自拉美、非洲、亚洲非主流市场，竞争格局相对宽松。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">dLocal</span><span class="tag tag-fin">TPV</span><span class="tag tag-mkt">新兴市场</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局/dLocal</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">dLocal商业模式：为全球企业向新兴市场的支付和从新兴市场的收款提供"一站式"解决方案，连接160+个国家<span class="src">来源：<a href="https://investor.dlocal.com/financials/" target="_blank">dLocal IR#394</a></span></div>
+    <div class="ip-col ip-analysis">dLocal的核心价值是"绕过新兴市场碎片化支付基础设施"，相当于新兴市场的Stripe。其护城河在于本地网络深度。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">dLocal</span><span class="tag tag-mkt">新兴市场</span><span class="tag tag-biz">B2B收付款</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式/dLocal</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">dLocal服务客户包括：Amazon、Microsoft、Netflix、Spotify、Uber等跨国企业进入新兴市场的支付通道<span class="src">来源：<a href="https://investor.dlocal.com/financials/" target="_blank">dLocal IR#394</a></span></div>
+    <div class="ip-col ip-analysis">大客户集中（Amazon等科技巨头）既是优势也是风险。一旦客户选择直接对接本地支付，收入将大幅波动。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">大客户依赖</span><span class="tag tag-fin">客户集中</span><span class="tag tag-biz">dLocal</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">风险/商业模式</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">dLocal核心指标：Net Revenue Retention(NRR)超过100%，表明现有客户持续增加dLocal的使用量<span class="src">来源：<a href="https://investor.dlocal.com/financials/" target="_blank">dLocal IR#394</a></span></div>
+    <div class="ip-col ip-analysis">NRR>100%是SaaS类指标，用于支付公司表明客户粘性极高。意味着无需新客户获取即可实现收入自然增长。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">NRR</span><span class="tag tag-comp">客户粘性</span><span class="tag tag-biz">dLocal</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财报/盈利质量</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">dLocal面临的风险：新兴市场货币贬值、监管不确定性（阿根廷、土耳其等高通胀市场）<span class="src">来源：<a href="https://investor.dlocal.com/financials/" target="_blank">dLocal IR#394</a></span></div>
+    <div class="ip-col ip-analysis">新兴市场的系统性货币风险是dLocal最大财务暴露，阿根廷peso贬值等事件可直接导致季度收入异常波动。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">汇率风险</span><span class="tag tag-mkt">新兴市场</span><span class="tag tag-reg">监管风险</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">风险因素</span></div>
+  </div>
+</div>
+
+<div class="footer">生成日期：2026-03-30 | 数据来源：dLocal Limited (IR) | 编号：#394 | Tier 2 分析卡 | </div>
+</body>
+</html>

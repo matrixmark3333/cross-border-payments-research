@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-115 | Statrys HK Pricing — 结构化信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1  { background: #dbeafe; color: #1d4ed8; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+</style>
+</head>
+<body>
+
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1 深度分析</span>
+    <span class="badge b-type">定价页</span>
+    <span class="badge b-depth">web_fetch 实时获取</span>
+    <span class="badge b-rel">相关度 95%</span>
+  </div>
+  <h1>Statrys HK Pricing — 定价全览与竞争分析</h1>
+  <div class="source-line">Statrys (Official) | 获取时间：2026-03-24 | 原文：<a href="https://statrys.com/pricing" target="_blank">statrys.com/pricing</a> | 索引：#115</div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">16</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">6</div><div class="stat-label">定价数据类</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">产品功能类</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">商业模式类</div></div>
+  <div class="stat"><div class="stat-num">7.3</div><div class="stat-label">平均价值评分</div></div>
+</div>
+
+<div class="section">
+  <div class="ip-row" style="background:#f8fafc;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <!-- 1 -->
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">International SWIFT Payments: Collect HKD 60 per inbound; Send HKD 85 per outbound. Supports 120+ countries.<span class="src">Statrys Pricing Page</span></span></div>
+    <div class="ip-col ip-analysis">SWIFT收款HKD60≈$7.7，发款HKD85≈$11。与Currenxie（$8 both）和Airwallex（HK$120-200）比较：Statrys SWIFT发款略贵于Currenxie但远低于Airwallex。体现香港市场激烈的价格竞争。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-comp">竞争格局</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局 > 4.2 香港市场</span></div>
+  </div>
+
+  <!-- 2 -->
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Foreign Exchange (major currencies HKD/USD/EUR/CNY/GBP/SGD/JPY/AUD/CHF/NZD/CAD): from 0.1%<span class="src">Statrys Pricing Page</span></span></div>
+    <div class="ip-col ip-analysis">主货币FX费率"from 0.1%"，是本研究所见香港市场最低费率（Currenxie 0.35%，Airwallex 0.2%）。这是Statrys的核心差异化。但"from 0.1%"可能存在条件（如最低金额或特定货币对），需注意。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-comp">竞争格局</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局 > 4.2 香港市场</span></div>
+  </div>
+
+  <!-- 3 -->
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">FX other currencies (INR/IDR/PHP/KRW/THB/TRY/VND): from 0.15%<span class="src">Statrys Pricing Page</span></span></div>
+    <div class="ip-col ip-analysis">新兴市场货币0.15%，同样低于竞争对手。覆盖韩元（KRW）和土耳其里拉（TRY），这两个货币在其他香港平台不常见，体现Statrys在新兴市场货币覆盖上的野心。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-strat">地理扩张</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局 > 4.2 香港市场</span></div>
+  </div>
+
+  <!-- 4 -->
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Local Payments (send): HKD 25 for USD/AUD/INR/EUR/GBP/SGD/IDR/PHP; HKD 35 for THB/TRY/KRW; HKD 50 for VND<span class="src">Statrys Pricing Page</span></span></div>
+    <div class="ip-col ip-analysis">本地发款分三档（HKD25/35/50），越南盾（VND）最贵（HKD50≈$6.4），但HKD25覆盖大多数主要东南亚货币（IDR/PHP），这对越南之外的东南亚贸易走廊非常有竞争力。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-strat">地理扩张</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局 > 4.2 香港市场</span></div>
+  </div>
+
+  <!-- 5 -->
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Multicurrency business account (HKD/USD/EUR/CNY/GBP/SGD/JPY/AUD/CHF/NZD/CAD): Free, no monthly fee, no minimum deposit, no maximum transaction amount.<span class="src">Statrys Pricing Page</span></span></div>
+    <div class="ip-col ip-analysis">11种货币账户完全免费，无月费、无最低存款、无最高交易额限制。这是非常彻底的"账户免费，靠FX/转账收费"模式，有效降低获客摩擦，适合刚开始国际化的中小企业。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-fin">单位经济</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局 > 4.2 香港市场</span></div>
+  </div>
+
+  <!-- 6 -->
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Domestic HK payments: Collect HKD/CNY/USD/EUR free; Send HKD/CNY free; Send USD/EUR HKD 75<span class="src">Statrys Pricing Page</span></span></div>
+    <div class="ip-col ip-analysis">香港本地HKD/CNY收发完全免费，但USD/EUR发款收HKD75（≈$9.6）。CNY（人民币）的免费处理是Statrys专注香港+大陆企业客户的标志，CNY收发免费是对接大陆供应商的关键功能。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-fin">Take Rate</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局 > 4.2 香港市场</span></div>
+  </div>
+
+  <!-- 7 -->
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">CNY inclusion in both domestic and international payments — Statrys explicitly highlights CNY/RMB handling<span class="src">Statrys Pricing Page</span></span></div>
+    <div class="ip-col ip-analysis">Statrys将CNY作为第一等级货币，同时支持香港本地CNY收发和国际CNY转账，定位为"香港联通大陆"的支付桥梁。在中美脱钩背景下，CNY跨境流动能力是重要竞争维度。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">基础设施</span><span class="tag tag-biz">商业模式</span><span class="tag tag-strat">护城河</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局 > 4.2 香港市场</span></div>
+  </div>
+
+  <!-- 8 -->
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">"100% online application, no account opening fee, no initial deposit, dedicated account manager"<span class="src">Statrys Pricing Page CTA</span></span></div>
+    <div class="ip-col ip-analysis">全线上开户+无开户费+专属账户经理，降低SME开户门槛的同时提供人工服务，这是混合式服务模式。"专属账户经理"暗示Statrys客户成功成本较高，需要高ARPU客户来摊薄。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-fin">单位经济</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局 > 4.2 香港市场</span></div>
+  </div>
+
+  <!-- 9 -->
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Local payment destinations: USA, Canada, UK, EU, Australia, India, Indonesia, Malaysia, Philippines, Thailand, Vietnam, Korea, Turkey (13 countries)<span class="src">Statrys Pricing Page</span></span></div>
+    <div class="ip-col ip-analysis">13个国家本地发款，与Currenxie（14国）相当。韩国（KRW）和土耳其（TRY）的加入是Statrys差异化点。香港→韩国贸易走廊（电子元器件、美妆）是重要场景。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">基础设施</span><span class="tag tag-strat">地理扩张</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局 > 4.2 香港市场</span></div>
+  </div>
+
+  <!-- 10 -->
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">HKD 5 for sending USD or EUR domestically in Hong Kong (within HK banking system)<span class="src">Statrys Pricing Page</span></span></div>
+    <div class="ip-col ip-analysis">香港境内USD/EUR发款收HKD5（≈$0.64），极低收费，主要服务于香港本地企业之间的外币结算场景（如港企向外资企业付款）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s5"><span class="score-num">5</span><div class="score-bar"><div class="score-fill" style="width:50%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局 > 4.2 香港市场</span></div>
+  </div>
+
+  <!-- 11: 三方对比 -->
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">【香港市场三方比较】FX费率：Statrys from 0.1% &lt; Airwallex from 0.2% &lt; Currenxie 0.35%（主货币）<span class="src">交叉分析（card-093/114/115）</span></span></div>
+    <div class="ip-col ip-analysis">Statrys在FX费率上明显最低，但这需要结合转账固定费用综合评估。对于高频小额汇款客户，Statrys最优；对于需要全套财务SaaS的企业，Airwallex最完整；对于SWIFT中大额汇款，Currenxie性价比高。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">竞争格局</span><span class="tag tag-fin">Take Rate</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局 > 4.2 香港市场</span></div>
+  </div>
+
+  <!-- 12 -->
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Statrys "All gain, no pain — understand exactly what your Business Account costs, with no hidden charges" — brand positioning<span class="src">Statrys Pricing Page</span></span></div>
+    <div class="ip-col ip-analysis">Statrys品牌主张透明定价，与Wise"真实汇率+明确费率"的理念一致。这种透明度承诺在香港SME客户中有重要信任价值，尤其在传统银行隐性费用饱受诟病的背景下。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-comp">竞争格局</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局 > 4.2 香港市场</span></div>
+  </div>
+
+  <!-- 13 -->
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Statrys pricing page: No mention of cards, expense management, yield/interest, or payment acceptance<span class="src">Statrys Pricing Page（功能缺失分析）</span></span></div>
+    <div class="ip-col ip-analysis">与Airwallex的全套平台（企业卡+费控+Yield+收单）相比，Statrys定价页仅含账户+转账+FX，产品线极为聚焦（narrow moat）。这限制了其ARPU提升空间，但也降低了运营复杂度。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">竞争格局</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局 > 4.2 香港市场</span></div>
+  </div>
+
+  <!-- 14 -->
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Statrys account opening: a few days timeline (stated in CTA), 100% online — targeting non-resident or newly established companies in Hong Kong<span class="src">Statrys Pricing Page</span></span></div>
+    <div class="ip-col ip-analysis">几天内完成开户，全线上，针对非本地注册企业（不一定需要在港实体）。香港开户难度高（尤其是大陆/外国背景企业），Statrys能快速开户是差异化服务。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-strat">护城河</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局 > 4.2 香港市场</span></div>
+  </div>
+
+</div>
+
+<div class="footer">数据来源：Statrys官网定价页（实时获取，2026-03-24）| 索引编号 #115 | 生成时间：2026-03-24</div>
+</body>
+</html>

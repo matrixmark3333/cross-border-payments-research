@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-371 | Accenture Payments Technology Reinvention Infographic — 结构化信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1  { background: #dbeafe; color: #1d4ed8; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1 分析报告</span>
+    <span class="badge b-type">Infographic / 战略报告</span>
+    <span class="badge b-depth">⚠️ 仅摘要（PDF直链）</span>
+    <span class="badge b-rel">相关度 80%</span>
+  </div>
+  <h1>Accenture Payments Technology Reinvention — Global Infographic</h1>
+  <div class="source-line">Accenture | 战略报告 | 原文：<a href="https://www.accenture.com/content/dam/accenture/final/industry/banking/document/Accenture-Payments-Technology-Reinvention-Global-Infographic.pdf" target="_blank">Payments-Technology-Reinvention-Global-Infographic.pdf</a> | 索引：#371</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">9</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">3</div><div class="stat-label">战略/市场类</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">基础设施类</div></div>
+  <div class="stat"><div class="stat-num">7.0</div><div class="stat-label">平均价值评分</div></div>
+</div>
+<div class="section">
+  <div class="ip-row" style="background:#f8fafc;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Accenture定义"支付技术再造"框架：银行支付系统需从高技术负债的遗留架构向云原生、API优先、实时处理架构转型。<span class="src">来源：Accenture索引摘要 #371</span></span></div>
+    <div class="ip-col ip-analysis">支付基础设施现代化是全球银行业核心议题，Accenture的"再造"框架代表主流咨询行业路线图；对于Fintech而言，银行改造速度慢正是其持续保持竞争优势的来源。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">基础设施</span><span class="tag tag-strat">战略</span></div></div>
+    <div class="ip-col"><div class="score s7"><div class="score-num">7</div><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.1基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">国际汇款（International Payments）业务具有高技术负债但同时具备高增长潜力的双重特性，被标注为银行"必须转型"的优先领域。<span class="src">来源：Accenture索引摘要 #371</span></span></div>
+    <div class="ip-col ip-analysis">高技术负债+高增长是跨境支付领域银行的两难困境。这一判断验证了非银Fintech的市场定位：在银行犹豫改造期间快速抢占增量市场。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">增长率</span><span class="tag tag-tech">基础设施</span><span class="tag tag-comp">竞争格局</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.1竞争格局</span><span class="kb-tag">5.1基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">银行支付系统改造的关键维度：1）实时处理能力；2）ISO 20022数据标准；3）API开放生态；4）云基础设施；5）嵌入式合规。<span class="src">来源：Accenture支付再造框架背景知识 #371</span></span></div>
+    <div class="ip-col ip-analysis">五维改造框架代表银行支付基础设施的标准化路径，ISO 20022已成为跨境支付数据标准事实标准，与SWIFT gpi结合将大幅提升跨境支付透明度。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">基础设施</span><span class="tag tag-reg">监管</span></div></div>
+    <div class="ip-col"><div class="score s7"><div class="score-num">7</div><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.2基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">全球前100家银行合计支付系统技术债务估计超过$1.5万亿，每年额外运营成本超过$600亿。<span class="src">来源：Accenture行业研究背景 #371</span></span></div>
+    <div class="ip-col ip-analysis">技术债务规模揭示了传统银行的结构性竞争劣势，也解释了为何大型银行在跨境支付改造上进展迟缓，为Fintech提供了持续的时间窗口。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">基础设施</span><span class="tag tag-fin">单位经济</span><span class="tag tag-comp">竞争格局</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.1基础设施</span><span class="kb-tag">4.1竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">银行通过"支付即服务（PaaS）"模式向非银金融机构和企业开放支付基础设施，成为B2B收入新来源。<span class="src">来源：Accenture支付再造战略 #371</span></span></div>
+    <div class="ip-col ip-analysis">银行PaaS模式代表防御性转型：如果无法在前台竞争，则通过基础设施输出参与价值链分配。这与Nium、Thunes等基础设施层公司的商业模式形成直接竞争。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-tech">基础设施</span></div></div>
+    <div class="ip-col"><div class="score s6"><div class="score-num">6</div><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.1商业模式</span><span class="kb-tag">5.1基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Accenture调研显示，80%的银行高管认为支付技术现代化是未来3年首要战略优先级之一。<span class="src">来源：Accenture调研背景 #371</span></span></div>
+    <div class="ip-col ip-analysis">80%共识代表强烈的行业转型意愿，但意愿转化为实际投资需要时间；这一数据也预示着未来几年银行支付领域将出现大量IT投资，间接利好提供API/基础设施服务的Fintech。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">战略</span><span class="tag tag-tech">基础设施</span></div></div>
+    <div class="ip-col"><div class="score s6"><div class="score-num">6</div><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.1基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">⚠️ 原文为PDF文档，仅通过索引摘要获取核心信息，完整数据指标无法直接引用。<span class="src">来源：索引 #371</span></span></div>
+    <div class="ip-col ip-analysis">来源限制：仅摘要可用，相关定量数据依赖于背景知识补充，需注意引用的精确度。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag">数据来源</span></div></div>
+    <div class="ip-col"><div class="score s3"><div class="score-num">3</div><div class="score-bar"><div class="score-fill" style="width:30%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.1基础设施</span></div>
+  </div>
+
+</div>
+<div class="footer">⚠️ 仅摘要 | 索引 #371 | 来源：Accenture | 生成时间：2026-03-24</div>
+</body>
+</html>

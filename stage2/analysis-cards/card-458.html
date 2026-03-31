@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-458 | 移动支付网：2019年跨境支付案例分析 — 收单+收款全链路，主要参与者角色解析</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier2  { background: #e0f2fe; color: #0369a1; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .warn-badge { display: inline-block; background: #fef9c3; color: #854d0e; border: 1px solid #fde047; border-radius: 4px; padding: 1px 6px; font-size: 11px; font-weight: 700; margin-left: 4px; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 URL分析</span>
+    <span class="badge b-type">行业案例分析</span>
+    <span class="badge b-depth">摘要提取</span>
+    <span class="badge b-rel">相关度 75%</span>
+  </div>
+  <h1>移动支付网：2019年跨境支付案例分析 — 收单+收款全链路，主要参与者角色解析 <span class="warn-badge">⚠️ 仅摘要</span></h1>
+  <div class="source-line">移动支付网 | 索引：#458 | 原文：<a href="https://jsj.mpaypass.com.cn/2019/mobile/case/09134259.html" target="_blank">https://jsj.mpaypass.com.cn/2019/mobile/case/09134259.html</a></div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">5</div><div class="stat-label">信息点总数</div></div>
+</div>
+<div class="section">
+  <div class="section-title">信息点列表 <span class="count">5条</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">跨境电商收款全链路：境外买家→收单（Visa/MC/PayPal）→结算到境外账户→跨境收款机构（换汇）→国内银行账户（⚠️摘要）<span class="src">来源：<a href="https://jsj.mpaypass.com.cn/2019/mobile/case/09134259.html" target="_blank">#458</a></span></div>
+    <div class="ip-col ip-analysis">2019年基础流程到2025年已有演进，但核心框架不变：收单+换汇+结汇三阶段是中国跨境收款的不变骨架。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">跨境流程</span><span class="tag tag-biz">收单</span><span class="tag tag-fin">换汇</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品架构/流程</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">跨境支付参与者角色：发卡行（发卡，收Interchange）→卡组织（清算，收Network Fee）→收单行/机构（收MDR）→外汇机构（收汇差）<span class="src">来源：<a href="https://jsj.mpaypass.com.cn/2019/mobile/case/09134259.html" target="_blank">#458</a></span></div>
+    <div class="ip-col ip-analysis">四方模型的各角色收费逻辑是理解跨境支付成本结构的基础，每个环节都有标准化费率，Antom的IC++分析就是基于此框架。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">四方模型</span><span class="tag tag-biz">参与者</span><span class="tag tag-fin">费率结构</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品架构/四方模型</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">主要参与者对比（2019年）：PayPal（全球用户基础）、Payoneer（电商卖家专注）、连连支付（中国领先）、PingPong（跨境新锐）<span class="src">来源：<a href="https://jsj.mpaypass.com.cn/2019/mobile/case/09134259.html" target="_blank">#458</a></span></div>
+    <div class="ip-col ip-analysis">2019年竞争格局已明确分工，PayPal全球、Payoneer专注电商、中国机构（连连/PingPong）聚焦出口电商——分工至今仍基本延续。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">竞争格局2019</span><span class="tag tag-biz">PayPal</span><span class="tag tag-biz">连连</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局/历史</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">中国特色跨境收款痛点：外汇管制+结汇合规+到账时间长（T+5-7）是核心障碍，跨境收款机构是解决方案<span class="src">来源：<a href="https://jsj.mpaypass.com.cn/2019/mobile/case/09134259.html" target="_blank">#458</a></span></div>
+    <div class="ip-col ip-analysis">2019年的痛点到2025年已部分改善（实时支付的推广），但外汇管制和合规审核依然是中国特有的挑战，没有根本性改变。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">外汇管制</span><span class="tag tag-reg">合规</span><span class="tag tag-biz">收款痛点</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">市场需求/中国</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">B2B外贸支付（跨境银行电汇T/T）特征：大额（10万+美元）、低频、银行主导、费用相对低（wire transfer约$20-50）<span class="src">来源：<a href="https://jsj.mpaypass.com.cn/2019/mobile/case/09134259.html" target="_blank">#458</a></span></div>
+    <div class="ip-col ip-analysis">B2B大额支付与B2C小额支付是两个完全不同的赛道，B2B更看重到账可靠性和汇率，而非移动端体验——这是XTransfer等B2B专注机构的逻辑。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">B2B外贸</span><span class="tag tag-tech">T/T汇款</span><span class="tag tag-biz">银行主导</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">市场分层/B2B vs B2C</span></div>
+  </div>
+</div>
+<div class="footer">生成日期：2026-03-30 | 移动支付网 | #458 | Tier 2</div>
+</body>
+</html>

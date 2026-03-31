@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-001 | Wise FY2025 Annual Report — 穷举式信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+
+  /* ── 卡头 ── */
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1  { background: #dbeafe; color: #1d4ed8; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+
+  /* ── 统计栏 ── */
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  /* ── 信息点列表 ── */
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+
+  /* 价值评分 */
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+
+  /* 分组标题行 */
+  .group-banner { background: #f8fafc; padding: 8px 0 8px 0; font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<!-- 卡头 -->
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1 深度分析</span>
+    <span class="badge b-type">财报 / 年报</span>
+    <span class="badge b-depth">raw PDF 全文逐页提取（172页）</span>
+    <span class="badge b-rel">相关度 100%</span>
+  </div>
+  <h1>Wise FY2025 Annual Report &amp; Accounts — 穷举式信息点提取</h1>
+  <div class="source-line">Wise plc (LSE: WISE) | 截止日期：2025年3月31日 | 发布：2025年6月5日 | 原文：<a href="https://wise.com/imaginary-v2/images/ad736416f90791dbb49c7e59f1f45d8d-WiseFY2025AnnualReportAccounts.pdf" target="_blank">WiseFY2025AnnualReportAccounts.pdf</a> | 索引：#001 | 版本：穷举A</div>
+</div>
+
+<!-- 统计栏 -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">164</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">55</div><div class="stat-label">A.核心财务</div></div>
+  <div class="stat"><div class="stat-num">25</div><div class="stat-label">B.分产品线</div></div>
+  <div class="stat"><div class="stat-num">18</div><div class="stat-label">C.分地区</div></div>
+  <div class="stat"><div class="stat-num">18</div><div class="stat-label">D.战略展望</div></div>
+  <div class="stat"><div class="stat-num">24</div><div class="stat-label">E.风险因素</div></div>
+  <div class="stat"><div class="stat-num">18</div><div class="stat-label">F.监管合规</div></div>
+  <div class="stat"><div class="stat-num">25</div><div class="stat-label">G.运营数据</div></div>
+</div>
+
+<!-- 信息点区域 -->
+<div class="section">
+
+  <!-- 列头 -->
+  <div class="section-title">信息点列表 <span class="count">穷举版</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <!-- ▌A. 核心财务数据 -->
+  <div class="group-banner">▌ A. 核心财务数据（55条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 跨境交易量（Cross-border volume）£145.2B，同比+23%（固定汇率+25%）<span class="src">来源：Wise FY2025 Annual Report, p.29（KPI页）</span></div>
+    <div class="ip-col ip-analysis">规模约英国GDP的15%量级，增速持续高于行业平均（BCG全行业CAGR约5-9%）。个人 £106.4B (+22%)，企业 £38.8B (+24%)，企业增速略快。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">交易规模</span><span class="tag tag-fin">增长率</span><span class="tag tag-comp">护城河</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">1.市场总览</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 总收入 £1,211.9M，同比+15%（FY2024: £1,052.0M）<span class="src">来源：Wise FY2025 Annual Report, p.126（利润表）</span></div>
+    <div class="ip-col ip-analysis">GAAP收入（不含利息）增速15%，低于交易量增速23%，差距源于取费率持续下降9bps。营收质量高，无单一客户超过10%。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">营收</span><span class="tag tag-fin">增长率</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 底层收入（Underlying Income）£1,362.3M，同比+16%（固定汇率+18%）；FY2024: £1,172.7M<span class="src">来源：Wise FY2025 Annual Report, p.29, p.163</span></div>
+    <div class="ip-col ip-analysis">底层收入 = GAAP收入 + 客户余额利息前1%收益率留存（£150.4M）。此为管理层核心经营指标，比GAAP收入更真实反映业务能力。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">底层收入</span><span class="tag tag-fin">APM指标</span><span class="tag tag-fin">增长率</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 底层税前利润（Underlying PBT）£282.1M，同比+17%，底层利润率21.0%（FY2024: £241.8M，20.6%）<span class="src">来源：Wise FY2025 Annual Report, p.29, p.163</span></div>
+    <div class="ip-col ip-analysis">21%利润率高于中期目标区间13%-16%，说明当前规模效益显现或投资节奏落后预期；CFO明确表示将加大投入。与Adyen（43%利润率）等成熟同类相比，Wise利润率仍有上行空间。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">利润率</span><span class="tag tag-fin">底层利润</span><span class="tag tag-strat">中期目标</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 报告税前利润 £564.8M，同比+17%（FY2024: £481.4M）；报告税前利润率34%<span class="src">来源：Wise FY2025 Annual Report, p.126, p.31</span></div>
+    <div class="ip-col ip-analysis">报告利润包含客户余额利息（超1%留存的额外£443.9M利息+返还客户的£161.2M后的差值）。GAAP利润率34%远高于底层21%，差异来源于利率环境红利。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">税前利润</span><span class="tag tag-fin">利息收入</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 毛利润 £1,307.8M，同比+20%（FY2024: £1,092.4M）；底层毛利润 £1,025.1M，底层毛利润率75%（同比+2ppts）<span class="src">来源：Wise FY2025 Annual Report, p.126, p.32</span></div>
+    <div class="ip-col ip-analysis">毛利增速(20%)高于收入增速(15%)，说明销售成本增速受控（+5%）。底层毛利润率75%体现强大的商业模式，规模效益在成本侧持续体现。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">毛利润</span><span class="tag tag-fin">成本结构</span><span class="tag tag-comp">规模效益</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 基本每股收益（EPS）40.37便士，同比+18%（FY2024: 34.20便士）；稀释EPS 39.73便士<span class="src">来源：Wise FY2025 Annual Report, p.30, p.126</span></div>
+    <div class="ip-col ip-analysis">EPS增速(18%)与利润增速(17%)基本一致，股票回购减少股数效果有限。4年前上市时11.07便士，现40.37便士，增长265%，显示股东价值持续创造。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">EPS</span><span class="tag tag-fin">股东回报</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 跨境取费率（Cross-take rate）0.58%，同比下降9bps（FY2024: 0.67%）；Q4 FY2025降至0.53%（历史最低）<span class="src">来源：Wise FY2025 Annual Report, p.29, p.17, p.19</span></div>
+    <div class="ip-col ip-analysis">过去5年连续降价：70bps(2021)→67bps(2022)→65bps(2023)→67bps(2024，因汇率影响）→58bps(2025)。Q4 0.53%表明FY2026均值将进一步下移。这是Wise核心战略：用价格优势拦截竞争对手。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-strat">价格战略</span><span class="tag tag-comp">竞争优势</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 利息收入（客户余额）£594.3M（FY2024: £485.2M）；构成：银行现金 £220.6M，货币市场基金 £202.4M，债券 £171.3M<span class="src">来源：Wise FY2025 Annual Report, p.126, p.133</span></div>
+    <div class="ip-col ip-analysis">利息收入增长23%，与客户余额增长33%不完全同步，反映收益率压力。三类来源分散，降低单一资产类别风险。这是Wise超高利润率的核心驱动之一，但高利率环境不持续，需关注利率风险。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">利息收入</span><span class="tag tag-fin">客户余额</span><span class="tag tag-fin">利率风险</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 客户余额利益返还（Benefits paid）£161.2M（FY2024: £124.9M）；欧盟cashback £121.3M，美国利息返还 £38.5M<span class="src">来源：Wise FY2025 Annual Report, p.126, p.134</span></div>
+    <div class="ip-col ip-analysis">Wise将超过1%收益率的利息大部分返还给客户（欧盟法规要求）。这是"竞争性银行账户"的核心卖点，也是获客/留客的利器。返还比例高反映监管合规压力，尤其欧盟SEPA区。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">利息返还</span><span class="tag tag-reg">监管合规</span><span class="tag tag-biz">客户价值</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 底层利息收入留存（Underlying interest income，first 1% yield）£150.4M（FY2024: £120.7M），同比+25%<span class="src">来源：Wise FY2025 Annual Report, p.163</span></div>
+    <div class="ip-col ip-analysis">Wise将客户余额利息的前1%收益率纳入底层收入，超过1%部分不计入底层指标（属于高利率红利）。这一分类说明Wise认为1%是"可持续利息收入"，是商业模式的一部分。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">利息收入</span><span class="tag tag-fin">APM指标</span><span class="tag tag-fin">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 分地区收入：欧洲（除英国）£369.6M，亚太 £263.8M，北美 £237.2M，英国 £226.2M，其余 £115.1M<span class="src">来源：Wise FY2025 Annual Report, p.133（Note 3）</span></div>
+    <div class="ip-col ip-analysis">欧洲（非英）是最大市场，占总收入30.5%；亚太增速快（同比+22%）；北美增速+10.6%相对慢（企业客户暂停影响）。地理多元化程度高，降低单一市场风险。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">地区收入</span><span class="tag tag-mkt">地理分布</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 分性质收入：跨境 £840.4M（同比+6%），卡片 £219.8M（+31%），其他 £151.7M（+71%）<span class="src">来源：Wise FY2025 Annual Report, p.133（Note 3）</span></div>
+    <div class="ip-col ip-analysis">跨境收入增速(6%)远低于交易量增速(23%)，差距=取费率下降效果。卡片(+31%)和其他(+71%)高速增长，说明收入来源多元化加速，降低对跨境转账单一业务的依赖。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">收入结构</span><span class="tag tag-fin">Take Rate</span><span class="tag tag-biz">多元化</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 销售成本（Cost of Sales）£328.1M，同比+5%（FY2024: £307.4M）；构成：银行/客户相关费用 £263.1M，外汇及产品成本 £65.0M<span class="src">来源：Wise FY2025 Annual Report, p.126, p.134</span></div>
+    <div class="ip-col ip-analysis">销售成本增速5%远低于收入增速15%，毛利率扩张核心驱动。直连支付系统（6个）是降本关键，菲律宾直连后成本降低8倍是典型案例。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">成本结构</span><span class="tag tag-comp">规模效益</span><span class="tag tag-tech">基础设施</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 净信贷损失 £9.1M（FY2024: £12.5M），同比下降27%；信贷损失拨备余额 £46.6M<span class="src">来源：Wise FY2025 Annual Report, p.126, p.142</span></div>
+    <div class="ip-col ip-analysis">信贷损失率极低（占收入0.75%），且同比下降，体现良好的风控能力和客户质量。相比传统银行信贷损失（通常2-5%），Wise的电子货币属性天然降低信贷风险。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">信贷损失</span><span class="tag tag-fin">风险管理</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 行政费用 £768.6M，同比+25%（FY2024: £615.9M）；构成：员工薪资 £412.7M，外包咨询 £128.1M(+42%)，其他行政 £78.2M，技术 £65.9M(+23%)，营销 £53.8M(+47%)，折旧摊销 £18.4M，房产减值 £11.5M<span class="src">来源：Wise FY2025 Annual Report, p.126, p.134</span></div>
+    <div class="ip-col ip-analysis">行政费用增速(25%)高于收入(15%)但低于底层毛利润(20%)，整体经营杠杆略有压缩。营销费用仅£53.8M（占收入4.4%），极低（同类互联网公司通常10-20%），反映口碑传播的强大效率。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">运营费用</span><span class="tag tag-fin">成本结构</span><span class="tag tag-mkt">营销效率</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 员工薪资总成本 £412.7M（FY2024: £377.3M，+9.4%）；含：工资 £290.5M，股票薪酬 £58.4M，社保 £41.1M，养老金 £10.2M<span class="src">来源：Wise FY2025 Annual Report, p.135（Note 8）</span></div>
+    <div class="ip-col ip-analysis">人均薪资（月均员工6,151人）约£67,100/年，体现全球化人才配置。股票薪酬占总人力成本14%，较FY2024(72.5M)下降，减少稀释压力。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">人力成本</span><span class="tag tag-biz">员工</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 产品工程成本 £129.0M（FY2024: £115.8M，+11%）；包含在行政费用中<span class="src">来源：Wise FY2025 Annual Report, p.134</span></div>
+    <div class="ip-col ip-analysis">研发/工程占总收入约10.6%，处于科技公司中等水平。850+工程师团队是全球最大跨境支付专属工程团队之一，是竞争护城河的重要组成。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">技术投入</span><span class="tag tag-fin">R&D</span><span class="tag tag-comp">护城河</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 营销费用 £53.8M，同比+47%（FY2024: £36.5M），含首次澳大利亚品牌活动<span class="src">来源：Wise FY2025 Annual Report, p.134, p.32</span></div>
+    <div class="ip-col ip-analysis">营销费用绝对值小，但增速快(+47%)是加速投入信号。澳大利亚首次品牌活动覆盖400万人，知名度提升11个百分点。CFO表示中期将三倍营销投入，未来这一比例将大幅提高。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">营销</span><span class="tag tag-strat">增长战略</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 客户存款（Wise Accounts余额）£17,056.4M（FY2024: £13,261.0M，+28.6%）；EUR £6,283.6M，USD £5,862.6M，GBP £2,577.3M<span class="src">来源：Wise FY2025 Annual Report, p.142（Note 16）</span></div>
+    <div class="ip-col ip-analysis">客户余额增速(+28%)快于活跃客户增速(+21%)，说明人均余额在增加，客户对Wise的依赖度加深。EUR和USD合计77%，欧美是核心存款市场。余额增长是利息收入的基础。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">客户余额</span><span class="tag tag-biz">账户粘性</span><span class="tag tag-comp">护城河</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 客户总持仓（含Wise Assets）£21.5B，同比+33%（FY2024约 £16.2B）<span class="src">来源：Wise FY2025 Annual Report, p.6, p.7</span></div>
+    <div class="ip-col ip-analysis">包含账户余额+Wise Assets投资产品，4年增长5.7倍（上市时约 £3.8B）。这是"国际账户"战略成功的最直接证明，客户将Wise作为主要账户使用意愿显著提升。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">AUM</span><span class="tag tag-biz">账户粘性</span><span class="tag tag-strat">飞轮效应</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 公司自有现金（Corporate Cash）£1,430.2M（FY2024: £1,061.1M，+34.8%）；总现金及短期投资 £18,637.5M（含客户资金）<span class="src">来源：Wise FY2025 Annual Report, p.164, p.33</span></div>
+    <div class="ip-col ip-analysis">公司自有现金超14亿英镑，远超正常运营需求，为投资扩张提供充裕弹药。与信用评级BBB/稳定（S&P、Fitch）结合，财务稳健性高。RCF提供额外£230M流动性备用。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">现金</span><span class="tag tag-fin">流动性</span><span class="tag tag-strat">资本配置</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 自由现金流（FCF）£615.4M，FCF转化率108.9%；底层FCF £332.7M，底层FCF转化率117.9%（含一次性合作伙伴付款条款变化£62.8M）<span class="src">来源：Wise FY2025 Annual Report, p.163</span></div>
+    <div class="ip-col ip-analysis">FCF转化率>100%说明会计利润低估了实际现金创造能力。但117.9%的底层FCF转化率部分因合作伙伴应收款一次性减少，管理层预期FY2026恢复正常。真实可持续FCF转化率约100%。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">自由现金流</span><span class="tag tag-fin">现金转化率</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 RCF（循环信贷）：终止旧有担保RCF，新签无担保多货币RCF £330M（六家银行辛迪加：HSBC、JPMorgan、NatWest、Citibank、Barclays、Goldman Sachs），到期2027年12月，附两个一年展期选项；期末已提款 £100M，余 £230M<span class="src">来源：Wise FY2025 Annual Report, p.143（Note 17）</span></div>
+    <div class="ip-col ip-analysis">无担保RCF比旧有担保RCF更有利，体现银行对Wise信用质量的认可。六家顶级银行参与辛迪加，融资来源分散。利率为SONIA+利差（杠杆比率决定），财务杠杆使用保守。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">债务融资</span><span class="tag tag-fin">流动性</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">信用评级：S&P BBB/稳定，Fitch BBB/稳定（均于2025年4月3日公布，在财年结束后）<span class="src">来源：Wise FY2025 Annual Report, p.144（Note 17）</span></div>
+    <div class="ip-col ip-analysis">投资级评级对于金融服务公司意义重大，有助于与大型企业和银行开展业务，并降低融资成本。Wise是首次获得公开信用评级，标志着其在机构投资者圈认可度的提升。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">信用评级</span><span class="tag tag-strat">机构认可</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 利息支出 £15.5M（FY2024: £20.5M）；含RCF利息 £11.8M，租赁利息 £3.6M<span class="src">来源：Wise FY2025 Annual Report, p.126, p.135（Note 9）</span></div>
+    <div class="ip-col ip-analysis">利息支出同比下降（RCF偿还£100M），体现低财务杠杆战略。利息费用占税前利润比例极低（2.7%），财务风险极小。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">融资成本</span><span class="tag tag-fin">财务风险</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 税费 £148.1M，有效税率26.2%（FY2024: £126.8M，26.3%）；英国公司税 £132.5M（FY2024: £78.5M，+69%，主要因英国利润大幅提升）<span class="src">来源：Wise FY2025 Annual Report, p.126, p.136（Note 10）</span></div>
+    <div class="ip-col ip-analysis">有效税率接近英国名义税率25%，海外税率差和不可抵扣费用抵消了部分效益。英国公司税大幅增加(+69%)说明英国实体盈利能力改善，也说明Wise的经济主体在英国。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">税务</span><span class="tag tag-reg">税务合规</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 股票薪酬费用 £58.4M（FY2024: £72.5M，-19%）；期末未行权股权奖励40.8M份（FY2024: 53.6M份）<span class="src">来源：Wise FY2025 Annual Report, p.135, p.152（Note 23）</span></div>
+    <div class="ip-col ip-analysis">股票薪酬费用下降是利好信号，减少了对GAAP利润的拖累。期末未行权股权中部分已归属但未行使（22.8M份），未来存在股权稀释压力，但ESOP信托通过市场购股对冲部分。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">股权激励</span><span class="tag tag-biz">员工激励</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 ESOP信托购股 £71.0M（FY2024: £69.9M），共持有14.6M股（期末，平均成本£8.21/股）<span class="src">来源：Wise FY2025 Annual Report, p.130, p.151</span></div>
+    <div class="ip-col ip-analysis">Wise通过ESOP信托持续买入自家股票对冲员工股权稀释。每年约7,000万英镑买入规模，这是实质性的股东友好行为，而非传统意义的股票回购。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">股票回购</span><span class="tag tag-strat">资本配置</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 资本支出：房产设备 £34.5M（FY2024: £10.6M，+225%，因新长期办公室租约），无形资产 £0.9M（FY2024: £2.4M）<span class="src">来源：Wise FY2025 Annual Report, p.131（现金流量表）</span></div>
+    <div class="ip-col ip-analysis">房产投资大增（+225%）因为签署了多个长期新办公室租约（租约负债从£21.5M增至£86.2M），部分租约期10年。无形资产资本化极少，体现费用化研发模式。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">资本支出</span><span class="tag tag-biz">扩张投入</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">利率风险：1%利率下行将减少年净利息收入 £86.1M（FY2024: £69.0M）；1%上行将增加 £86.7M<span class="src">来源：Wise FY2025 Annual Report, p.147（Note 19）</span></div>
+    <div class="ip-col ip-analysis">Wise对利率的敏感性较高，但双向对称。当前高利率环境下实际多获约£280M超额利息（£443.9M超1%利息收入），利率下行是重大利润风险。这是底层利润和报告利润的核心差异来源。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">利率风险</span><span class="tag tag-fin">敏感性分析</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 法律和监管拨备 £13.6M（FY2024: £2.2M，大增519%），税务拨备 £17.4M，其他拨备 £6.7M<span class="src">来源：Wise FY2025 Annual Report, p.150（Note 20）</span></div>
+    <div class="ip-col ip-analysis">法律监管拨备大幅增加，主要与CFPB同意令相关。这是监管合规成本上升的信号，也反映全球监管环境收紧趋势。需关注未来类似事件的发生概率和成本规模。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">法律拨备</span><span class="tag tag-reg">监管风险</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 短期金融投资（FVOCI债券）£4,654.9M（FY2024: £4,033.9M）；AAA/AA/A级别 100%<span class="src">来源：Wise FY2025 Annual Report, p.129, p.149</span></div>
+    <div class="ip-col ip-analysis">近50亿英镑的高级债券投资，全部为投资级，是安全存放客户资金的核心方式。按公允价值计量，FY2025公允价值收益£10.3M（扣税后）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">投资组合</span><span class="tag tag-fin">资产质量</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 保险担保（Safeguarding Insurance Guarantees）：与9家保险公司签订，担保 £520M客户资金（18个月期），于FY2025年5月签订<span class="src">来源：Wise FY2025 Annual Report, p.146</span></div>
+    <div class="ip-col ip-analysis">通过保险担保释放£520M营运资金，优化资金使用效率。这是创新的流动性管理工具，体现Wise在金融工程方面的能力，同时保持监管合规。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">流动性管理</span><span class="tag tag-fin">金融工程</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 股本结构：Class A股（1票/股）1,025,000,252股；Class B股（9票/股，不可分红、不可转让）243,584,255股；FY2025赎回1.55亿Class B股<span class="src">来源：Wise FY2025 Annual Report, p.151（Note 21）, p.117</span></div>
+    <div class="ip-col ip-analysis">双重股权结构（Dual-class）保持创始人Kristo Käärmann约49.3%投票权（实际拥有约14.7%经济权益），是上市公司中较为特殊的治理安排。随着Class B股持续赎回，创始人控制权逐步释放。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">股权结构</span><span class="tag tag-strat">公司治理</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 外汇敞口（主要货币净头寸）：USD +£258.9M，HUF -£134.2M，BRL +£50.6M，EUR -£45.2M，THB -£40.2M<span class="src">来源：Wise FY2025 Annual Report, p.148（Note 19）</span></div>
+    <div class="ip-col ip-analysis">Wise在多种货币间存在净敞口，通过外汇掉期和远期对冲。美元最大多头头寸反映美元业务规模，匈牙利福林最大空头反映塔林/布达佩斯运营成本敞口。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">外汇风险</span><span class="tag tag-fin">对冲</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">4年增长对比（2021年上市 vs FY2025）：活跃客户翻倍以上，客户持仓增长5.7倍（£3.8B→£21.5B），底层收入增长超三倍，底层税前利润增长近7倍<span class="src">来源：Wise FY2025 Annual Report, p.10（CEO声明）</span></div>
+    <div class="ip-col ip-analysis">四年复合增长率：收入CAGR约33%，利润CAGR约62%。利润增速大幅高于收入说明规模效益显著。与2021年直接上市（英国科技公司最大规模直接上市）相比，基本面已完全兑现乃至超越上市预期。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">历史增长</span><span class="tag tag-comp">护城河</span><span class="tag tag-strat">飞轮效应</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">1.市场总览</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 Q4个人VPC（每活跃客户交易量）£3,200，同比Q4 FY2024 +7%；Q4 FY2025约20%个人活跃客户为"仅用卡"客户，历史VPC £500-1,000/季<span class="src">来源：Wise FY2025 Annual Report, p.31（CFO Review）</span></div>
+    <div class="ip-col ip-analysis">VPC增长表明高价值客户占比提升，定价策略成功吸引大额转账用户（费率0.1%起）。仅用卡20%客户VPC低，但贡献卡片手续费收入，是多元化的补充。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">VPC</span><span class="tag tag-biz">客户分层</span><span class="tag tag-fin">单位经济</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 总体Income（底层收入+超额利息）= £1,645.0M（FY2024: £1,412.3M，+16.5%）<span class="src">来源：Wise FY2025 Annual Report, p.163</span></div>
+    <div class="ip-col ip-analysis">Income = Revenue + 全部利息收入 - 客户利息返还。这反映Wise全部收入能力（含超额利息），FY2025超额利息£443.9M贡献了巨额利润，但利率下行时将大幅收缩。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">全口径收入</span><span class="tag tag-fin">利率依赖</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 OECD Pillar Two最低税：集团执行过渡安全港评估，FY2025无额外顶层税负<span class="src">来源：Wise FY2025 Annual Report, p.138（Note 10）</span></div>
+    <div class="ip-col ip-analysis">Pillar Two（全球最低税15%）过渡期内Wise暂无额外税负，但中期需关注各司法管辖区生效情况。对于在低税率国家（如爱沙尼亚）有较多运营的公司，未来税负可能增加。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">税务合规</span><span class="tag tag-fin">Pillar Two</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 租赁负债 £86.2M（FY2024: £21.5M，+301%），折现率2.2%-14.0%，租约到期2025-2035年<span class="src">来源：Wise FY2025 Annual Report, p.144（Note 18）</span></div>
+    <div class="ip-col ip-analysis">租赁大幅增加因为签订了多个10年期新办公室租约。这与"中期投资加倍"的战略一致，需要更大的物理办公空间来容纳扩张中的团队。隐含的扩张信号比资产负债表本身更重要。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">租赁负债</span><span class="tag tag-strat">扩张信号</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">无分红：FY2025未宣布或支付任何股息（FY2024同样无分红）<span class="src">来源：Wise FY2025 Annual Report, p.115, p.157</span></div>
+    <div class="ip-col ip-analysis">Wise将全部现金用于再投资，符合高增长科技公司的资本配置策略。市值约110亿英镑（基于9.45英镑股价×11.7亿股），PE约24倍（基于税前利润），估值体现增长溢价。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">资本配置</span><span class="tag tag-fin">无分红</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 非当前资产按地区：英国 £87.6M（FY2024: £40.5M），欧洲（除英）£48.9M，其余世界 £15.7M；集团共42个法律实体<span class="src">来源：Wise FY2025 Annual Report, p.132（Note 2）</span></div>
+    <div class="ip-col ip-analysis">资产主要集中在英国，与英国作为全球运营总部一致。FY2025英国非流动资产几乎翻倍（+116%），说明英国本地投资加速（新办公室等）。42个实体遍布全球，治理复杂度高。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">资产分布</span><span class="tag tag-mkt">地理布局</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 年度审计费 £4.3M（PwC），非审计费 £0.9M；审计重要性门槛：集团£28.2M（税前利润5%），公司 £2.6M（总资产1%）<span class="src">来源：Wise FY2025 Annual Report, p.135（Note 8）, p.122</span></div>
+    <div class="ip-col ip-analysis">审计费合理，PwC自2021年上市即为审计机构（4年合作）。审计重要性门槛设置显示财务报告质量标准。大型金融科技公司的合规/审计成本是可观的固定运营成本。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">审计成本</span><span class="tag tag-reg">合规成本</span></div></div>
+    <div class="ip-col"><div class="score s4"><span class="score-num">4</span><div class="score-bar"><div class="score-fill" style="width:40%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 股票平均行权价 £8.71（FY2024: £7.15），行权股期权2024万份；期权公允价值£8.58/份<span class="src">来源：Wise FY2025 Annual Report, p.153（Note 23）</span></div>
+    <div class="ip-col ip-analysis">员工期权行权价格持续上升，跟随股价上涨。新一轮FY2025授权7.5M份（FY2024: 11.5M份），授权量减少说明稀释压力逐步降低。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">股权激励</span><span class="tag tag-biz">员工激励</span></div></div>
+    <div class="ip-col"><div class="score s5"><span class="score-num">5</span><div class="score-bar"><div class="score-fill" style="width:50%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Kristo Käärmann持股：Class A 186,078,489股 + Class B 186,022,590股；Notorious OÜ（创始人关联实体）持有投票权13.1%<span class="src">来源：Wise FY2025 Annual Report, p.117, p.109</span></div>
+    <div class="ip-col ip-analysis">创始人CEO通过A+B股合计约49.3%投票权（但经济权益约14.7%）。这种超级投票权结构保障长期战略稳定性，但对普通股东权利有一定限制。随Class B持续赎回，控制权将自然稀释。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">股权结构</span><span class="tag tag-strat">公司治理</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 营业现金流 £4,494.4M（FY2024: £3,248.9M）；含客户Wise账户余额增加 £4,073.8M（FY2024: £2,788.7M）<span class="src">来源：Wise FY2025 Annual Report, p.131（现金流量表）</span></div>
+    <div class="ip-col ip-analysis">现金流量表中Wise账户余额增加£40.7B是最大的"运营现金"来源，但这是客户负债，并非真正利润。调整后真实运营FCF为£615M。投资者需理解这种特殊的现金流展示方式。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">现金流</span><span class="tag tag-fin">客户余额</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 FY2023 PSP（业绩股份计划）归属结果：相对TSR vs FTSE 250表现100%归属（上四分位），交易量增长CAGR 23%实际 vs 20-30%目标，总体归属73.8%；Matthew Briers将获得166,268股<span class="src">来源：Wise FY2025 Annual Report, p.110</span></div>
+    <div class="ip-col ip-analysis">TSR满分归属，说明Wise股价表现超越富时250指数；交易量CAGR 23%（目标13-25%加权平均）部分达成。前CFO仍可按计划获得奖励，薪酬与股东利益保持一致。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">激励计划</span><span class="tag tag-strat">TSR表现</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">CEO薪酬：基础工资 £197,000（不参与年终奖和LTIP），总薪酬 £208,000；CEO中位数薪酬比2.1:1<span class="src">来源：Wise FY2025 Annual Report, p.107, p.111</span></div>
+    <div class="ip-col ip-analysis">Kristo Käärmann薪资极低（英国上市公司CEO平均约£3-5M），体现创始人精神。其财富与公司创造的股东价值紧密绑定（约£18亿股权价值），是真正的"吃自己的狗粮"实践。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">公司治理</span><span class="tag tag-fin">薪酬结构</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">CFO Emmanuel Thomassin薪酬（FY2025，从2024年10月起）：基础工资 £250K（全年化£500K），LTIP 400%薪资（性能股200%+限制股200%），总固定薪酬 £284K（半年）<span class="src">来源：Wise FY2025 Annual Report, p.107, p.99</span></div>
+    <div class="ip-col ip-analysis">新CFO来自Delivery Hero（带领该公司上市），年薪£500K+400% LTIP，与行业竞争性薪酬一致。LTIP含基于TSR、交易量CAGR、客户NPS的业绩股票，激励结构合理。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">薪酬结构</span><span class="tag tag-strat">激励对齐</span></div></div>
+    <div class="ip-col"><div class="score s5"><span class="score-num">5</span><div class="score-bar"><div class="score-fill" style="width:50%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 基础设施订阅承诺（云服务等）：1年内 £24.2M，1-5年 £40.8M，合计 £65.0M（FY2024: £98.6M）<span class="src">来源：Wise FY2025 Annual Report, p.153（Note 25）</span></div>
+    <div class="ip-col ip-analysis">云基础设施承诺大幅下降（从£98.6M降至£65.0M），说明合同重谈或服务转移。1,000+个云服务、水平扩展架构是技术基础，云成本是重要的可变成本项目。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">云基础设施</span><span class="tag tag-fin">成本承诺</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 关联方披露：关键管理人员（KMP，即董事会）持有Wise账户存款 £4.7M（FY2024: £5.6M）<span class="src">来源：Wise FY2025 Annual Report, p.154（Note 26）</span></div>
+    <div class="ip-col ip-analysis">管理层用自己的产品，是"吃自己的狗粮"的具体体现。虽然金额不大，但信号意义强，说明对产品的信心和认可。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">公司文化</span><span class="tag tag-fin">关联方</span></div></div>
+    <div class="ip-col"><div class="score s5"><span class="score-num">5</span><div class="score-bar"><div class="score-fill" style="width:50%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <!-- ▌B. 分产品线 -->
+  <div class="group-banner">▌ B. 分产品线（25条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Account：活跃个人客户 14.9M，同比+22%（FY2024: 12.2M）；FY2025新增约 340万个人客户<span class="src">来源：Wise FY2025 Annual Report, p.30, p.25</span></div>
+    <div class="ip-col ip-analysis">个人客户基础规模庞大，21%增速显示强劲势头。与上市时（约2021年约6M用户）相比，4年增长超2.5倍。新增340万/年，隐含CAC极低（依靠口碑营销）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">个人产品</span><span class="tag tag-fin">活跃用户</span><span class="tag tag-fin">增长率</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Account个人跨境交易量 £106.4B，同比+22%（FY2024约£87B）；个人账户采用率约50%<span class="src">来源：Wise FY2025 Annual Report, p.29, p.6</span></div>
+    <div class="ip-col ip-analysis">约50%个人客户使用Wise Account（持有余额），另50%主要用于一次性转账。采用率提升是扩大客户终身价值的关键。每账户平均持有约£1,000。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">个人产品</span><span class="tag tag-fin">交易量</span><span class="tag tag-biz">账户采用率</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Account个人取费率：FY2024年均0.67%→FY2025年均0.61%→Q4 FY2025 0.53%；大额转账费率可低至0.1%<span class="src">来源：Wise FY2025 Annual Report, p.25, p.9</span></div>
+    <div class="ip-col ip-analysis">个人取费率每年约降10bps，是Wise价格领导战略的核心体现。吸引高额转账客户的0.1%超低费率，提高了VPC，总收入净额仍可接受。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-strat">价格战略</span><span class="tag tag-biz">个人产品</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Assets（资产功能）：余额超 £4B；已推广至澳大利亚、EEA、新加坡和英国；利息+股票两类产品<span class="src">来源：Wise FY2025 Annual Report, p.25, p.7</span></div>
+    <div class="ip-col ip-analysis">Wise Assets将账户从支付工具升级为财富管理入口，£4B余额是有意义的规模。澳大利亚获监管批准后可提供政府担保资产投资，是监管合规下的创新扩展。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">资产管理</span><span class="tag tag-biz">个人产品</span><span class="tag tag-strat">产品扩展</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Account新功能（FY2025）：Wise Push（替代SMS双因素认证）、智能防诈警告、"与他人一起花费"(Spend with others)、账户汇总、全新计算器、邮件汇款、数字卡片<span class="src">来源：Wise FY2025 Annual Report, p.22（Our Products）</span></div>
+    <div class="ip-col ip-analysis">密集的功能更新体现产品持续迭代能力。Wise Push安全改进降低账户被盗风险，直接影响客户信任度和监管合规。功能丰富化提高了账户粘性和使用频率。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">产品迭代</span><span class="tag tag-tech">安全</span><span class="tag tag-biz">个人产品</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Business：活跃企业客户 690,000+（同比+11%，FY2024约622,000），每月新增 20,000家企业<span class="src">来源：Wise FY2025 Annual Report, p.24/26, p.30</span></div>
+    <div class="ip-col ip-analysis">企业客户增速(+11%)低于个人(+22%)，部分因H2 FY2024的暂停开户影响。随着美国和英国企业客户开户恢复（Q4 FY2025），预计FY2026增速改善。每月2万新企业显示强劲的企业获客能力。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">企业产品</span><span class="tag tag-fin">活跃用户</span><span class="tag tag-fin">增长率</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Business：企业跨境交易量 £38.8B，同比+24%；企业存款 £6.6B；企业账户采用率约60%；月均企业发送/消费 £3.2B<span class="src">来源：Wise FY2025 Annual Report, p.29, p.24, p.6</span></div>
+    <div class="ip-col ip-analysis">企业交易量增速(+24%)超个人(+22%)，且企业账户采用率(60%)高于个人(50%)，显示企业客户粘性更强。企业存款£6.6B占总余额31%，高价值客户群体。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">企业产品</span><span class="tag tag-fin">交易量</span><span class="tag tag-fin">企业存款</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Business H2 FY2024暂停美国和英国企业客户开户，Q4 FY2025恢复；Q4 FY2025企业客户增长环比加速<span class="src">来源：Wise FY2025 Annual Report, p.31（CFO Review）</span></div>
+    <div class="ip-col ip-analysis">暂停开户通常意味着监管或合规问题，Wise未详细披露原因。重新开放是积极信号，FY2026企业客户增速有望超过FY2025的11%。这次暂停可能导致错过的市场份额较难找回。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">企业产品</span><span class="tag tag-reg">合规</span><span class="tag tag-strat">增长信号</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Business新功能（FY2025）：提高SaaS服务支出限额；进入巴西和香港市场；升级USD账户；提供大额企业支付审批功能；24小时电话支持（周一至周五）<span class="src">来源：Wise FY2025 Annual Report, p.24</span></div>
+    <div class="ip-col ip-analysis">企业功能围绕"主账户"定位迭代，高支出限额和审批权限是大型企业的必需功能。巴西和香港两个市场进入，配合Itaú合作，是企业产品地理扩张的组合拳。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">企业产品</span><span class="tag tag-mkt">地理扩张</span><span class="tag tag-biz">产品迭代</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Platform：新增合作伙伴包括 Morgan Stanley（首家投资银行）、Standard Chartered（全球银行）、Nubank（南美最大数字银行）、Itaú Unibanco（拉丁美洲最大银行）<span class="src">来源：Wise FY2025 Annual Report, p.26, p.9</span></div>
+    <div class="ip-col ip-analysis">FY2025是Platform突破性年份：首次触及顶级全球银行（摩根士丹利、渣打）和南美两大银行。这4个合作伙伴代表超过3亿潜在终端用户，Platform商业化进入新阶段。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">Platform合作</span><span class="tag tag-strat">B2B战略</span><span class="tag tag-comp">护城河</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">2.1 Wise</span><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Platform现有合作伙伴（已有或延续）：Nubank、Monzo、Qonto、Brex、AbbeyCross（ABX平台）；支持多币账户、国际收款、汇款、全球薪资、发票和账单支付<span class="src">来源：Wise FY2025 Annual Report, p.26, p.27</span></div>
+    <div class="ip-col ip-analysis">Platform合作伙伴覆盖新兴fintech（Monzo、Qonto、Brex）和传统金融（摩根士丹利、渣打、Itaú）。AbbeyCross的新兴市场外汇平台集成，进一步扩大Platform的使用场景。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">Platform合作</span><span class="tag tag-biz">生态系统</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Platform战略定位：Morgan Stanley整合Wise后大幅削减跨境基础设施资本支出和时间；渣打合作语录：选择Wise因为其"广泛货币覆盖和卓越跨境支付体验"<span class="src">来源：Wise FY2025 Annual Report, p.27</span></div>
+    <div class="ip-col ip-analysis">银行"外包跨境基础设施"是Platform战略的核心价值主张。降低资本支出和缩短上市时间是银行合作的两大驱动因素。这验证了Wise"全球支付基础设施"的定位。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">Platform战略</span><span class="tag tag-comp">价值主张</span><span class="tag tag-strat">B2B</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Platform正在为银行提供简化集成路径：API接入、AbbeyCross合作简化FX透明度；集成周期"几个月内"<span class="src">来源：Wise FY2025 Annual Report, p.27</span></div>
+    <div class="ip-col ip-analysis">降低集成门槛是Platform规模化的关键。"几个月"的集成时间对比自建基础设施的"数年"形成强烈对比。这是典型的平台效应：标准化接口降低边际获客成本。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">Platform产品</span><span class="tag tag-tech">API</span><span class="tag tag-strat">规模化</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">个人活跃客户中超过50%使用多项功能；超过70%新客户来自口碑推荐（word-of-mouth）<span class="src">来源：Wise FY2025 Annual Report, p.6, p.11</span></div>
+    <div class="ip-col ip-analysis">70%口碑获客是营销效率的最直接证明，与营销费用仅占收入4.4%相呼应。多功能使用率>50%说明客户不再仅用于单次转账，账户生态系统价值正在实现。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">口碑营销</span><span class="tag tag-mkt">获客效率</span><span class="tag tag-comp">护城河</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise支持9种货币的本地账户详情（可以像本地人一样被付款）；支持40+种货币；覆盖160+国家<span class="src">来源：Wise FY2025 Annual Report, p.5, p.25</span></div>
+    <div class="ip-col ip-analysis">9种货币本地账户（含GBP、EUR、USD、AUD等）是Wise相对竞争对手的核心差异化功能。拥有本地账号使用户可接收跨国薪资、退休金等高频付款，大幅提高留存率。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">产品功能</span><span class="tag tag-comp">差异化</span><span class="tag tag-mkt">覆盖范围</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">卡片收入 £219.8M（FY2025），同比+31%（FY2024: £168.0M）；含Mastercard和Visa发卡合作；支持全球24/7刷卡<span class="src">来源：Wise FY2025 Annual Report, p.133, p.20</span></div>
+    <div class="ip-col ip-analysis">卡片收入增速(+31%)是所有收入来源中最快的之一。来源于交换费(interchange)和货币转换收入。与Mastercard/Visa的合作提供全球接受度。卡片是账户化战略的关键载体。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">卡片业务</span><span class="tag tag-fin">收入增长</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">其他收入 £151.7M（FY2025），同比+71%（FY2024: £88.8M）；含Wise Assets管理费、企业账户开户费、卡片费用<span class="src">来源：Wise FY2025 Annual Report, p.133</span></div>
+    <div class="ip-col ip-analysis">其他收入高增速(+71%)主要来自Wise Assets快速增长（AUM £21.5B中的Assets部分）。这是非跨境收入快速崛起的标志，有助于在取费率持续下降时维持总收入增速。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">收入多元化</span><span class="tag tag-biz">资产管理</span><span class="tag tag-fin">增长率</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">澳大利亚：FY2025年获投资服务牌照，允许澳大利亚人将Wise账户余额投资于政府担保资产；同年开展首次品牌广告活动，覆盖400万人，品牌认知度提升11个百分点<span class="src">来源：Wise FY2025 Annual Report, p.9, p.32</span></div>
+    <div class="ip-col ip-analysis">澳大利亚是Wise快速增长的市场之一，新牌照进一步深化其账户产品竞争力。首次品牌广告标志着Wise从纯口碑依赖转向主动品牌建设，符合CFO宣布的营销三倍投入战略。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">澳大利亚</span><span class="tag tag-reg">牌照</span><span class="tag tag-mkt">品牌营销</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">巴西市场：FY2025启动Wise Business，并与Itaú Unibanco（拉丁美洲最大银行）的Platform合作；同期也推进Nubank Platform合作<span class="src">来源：Wise FY2025 Annual Report, p.24, p.26</span></div>
+    <div class="ip-col ip-analysis">巴西是Wise重要的新兴市场战略布局：B2C（Business产品上线）+B2B（Platform+Itaú）双轨并进，同时与两家巴西最大金融机构合作，覆盖面广。PIX直连FY2026将进一步加速。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">巴西</span><span class="tag tag-biz">Platform合作</span><span class="tag tag-mkt">新兴市场</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">India：FY2025运营新牌照，移除此前USD 5,000单笔交易上限<span class="src">来源：Wise FY2025 Annual Report, p.9</span></div>
+    <div class="ip-col ip-analysis">印度是全球最大汇款接收市场（约$111B/年），移除5000美元上限解锁了大额汇款场景。这是Wise在印度市场的重大突破，预计FY2026将推动印度交易量显著增加。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">印度</span><span class="tag tag-reg">牌照</span><span class="tag tag-mkt">汇款市场</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise处理市场份额：约5%消费者跨境转账，约1%企业跨境转账（全球）<span class="src">来源：Wise FY2025 Annual Report, p.14（Market Overview）</span></div>
+    <div class="ip-col ip-analysis">在1%企业市场份额和5%消费者市场份额上，都有巨大的市场空间待开拓。全球跨境支付市场CAGR：个人+14%，企业+5%，企业+5%，说明市场本身在增长同时Wise也在抢份额。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">市场份额</span><span class="tag tag-strat">增长机会</span><span class="tag tag-fin">TAM</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场总览</span><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <!-- ▌C. 分地区 -->
+  <div class="group-banner">▌ C. 分地区（18条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">全球跨境支付市场规模预测（2024→2029）：个人市场3→5万亿英镑（CAGR+14%），企业/SMB 14→18万亿英镑（CAGR+5%），企业级 5→20万亿英镑（CAGR+20%）<span class="src">来源：Wise FY2025 Annual Report, p.13（Market Overview）</span></div>
+    <div class="ip-col ip-analysis">企业级市场CAGR+20%是最快增长市场，也是Wise Platform的核心目标市场。总市场2024年约22万亿英镑，预计2029年超43万亿。这为Wise的长期增长提供了巨大的顺风环境。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">市场规模</span><span class="tag tag-strat">TAM</span><span class="tag tag-mkt">行业趋势</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场总览</span><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">竞争格局：传统银行是主要竞争对手，多数跨境交易从银行发起；数字优先汇款商和汇款提供商给银行带来一定压力但少有完全满足客户需求的；银行年收 £2,000亿手续费<span class="src">来源：Wise FY2025 Annual Report, p.13</span></div>
+    <div class="ip-col ip-analysis">Wise定位为对抗传统银行的革命性替代，而非与其他数字汇款商竞争。£2,000亿的银行费用是Wise的"待解放市场"。这一叙事框架吸引对银行不满的个人和企业客户。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">竞争格局</span><span class="tag tag-mkt">市场机会</span><span class="tag tag-strat">差异化</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span><span class="kb-tag">1.市场总览</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">全球移民人口：280万+（在出生国以外居住），且持续增长；移民增长是跨境汇款的核心长期驱动<span class="src">来源：Wise FY2025 Annual Report, p.13</span></div>
+    <div class="ip-col ip-analysis">2.8亿移民每年需要汇款回家，是Wise个人汇款业务的核心客群。移民数量不受经济周期影响（移民存量稳定），提供可预测的需求基础，即使经济衰退也相对稳定。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">汇款市场</span><span class="tag tag-mkt">移民人口</span><span class="tag tag-strat">长期驱动</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场总览</span><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">英国（UK）：主要运营实体Wise Payments Limited；英国收入 £226.2M（FY2025），FCA持牌；Consumer Duty义务适用<span class="src">来源：Wise FY2025 Annual Report, p.133, p.161</span></div>
+    <div class="ip-col ip-analysis">英国是Wise的法律总部和主要监管司法管辖区。Consumer Duty是英国金融监管的新要求，给Wise增加了合规负担。英国收入占比18.7%，是第四大市场。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">英国</span><span class="tag tag-reg">FCA</span><span class="tag tag-reg">Consumer Duty</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">欧洲（除英国）：最大地区收入 £369.6M（占总收入30.5%）；Wise Europe SA负责欧洲业务；欧盟欧元现金返还（EU cashback）£121.3M（FY2025）<span class="src">来源：Wise FY2025 Annual Report, p.133, p.134</span></div>
+    <div class="ip-col ip-analysis">欧洲是最大市场，但欧盟监管要求将超过1%的利息返还给客户，影响利润。欧元SEPA区的快速支付基础设施（如SEPA Instant）是Wise降本的有利环境。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">欧洲</span><span class="tag tag-reg">欧盟监管</span><span class="tag tag-fin">区域收入</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">亚太地区（Asia-Pacific）：收入 £263.8M（FY2025），同比+22%（FY2024: £216.2M）；覆盖新加坡、澳大利亚、日本、菲律宾、印度等市场<span class="src">来源：Wise FY2025 Annual Report, p.133</span></div>
+    <div class="ip-col ip-analysis">亚太是Wise最快增长的地区之一（+22%，与个人客户增速持平），占总收入21.8%。新加坡是亚太总部。菲律宾InstaPay直连使90%支付立即到达，是技术-商业协同的典范。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">亚太</span><span class="tag tag-fin">区域收入</span><span class="tag tag-mkt">地理扩张</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">北美（美国为主）：收入 £237.2M（FY2025），同比+10.6%（FY2024: £214.5M）；美国利息返还 £38.5M；Wise US Inc位于纽约和奥斯汀<span class="src">来源：Wise FY2025 Annual Report, p.133, p.162</span></div>
+    <div class="ip-col ip-analysis">北美增速(+10.6%)相对慢，主要受企业客户暂停影响。美国有巨大市场（全球最大跨境发送国之一），随企业客户开户恢复，FY2026增速有望改善。CFPB同意令是近期主要监管事件。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">北美</span><span class="tag tag-mkt">美国</span><span class="tag tag-reg">CFPB</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">其他市场：收入 £115.1M（FY2025），同比+21%（FY2024: £94.9M）；含拉美、中东、非洲等新兴市场<span class="src">来源：Wise FY2025 Annual Report, p.133</span></div>
+    <div class="ip-col ip-analysis">其他市场增速(+21%)与整体持平，说明新兴市场整体健康。拉美（巴西Itaú合作）和中东（迪拜实体）是重点布局区域。新兴市场增量空间大，竞争比欧美更分散。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">新兴市场</span><span class="tag tag-mkt">地理扩张</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">菲律宾 InstaPay 直连：FY2025开通；直连后90%转账立即完成，成本降低8倍<span class="src">来源：Wise FY2025 Annual Report, p.21</span></div>
+    <div class="ip-col ip-analysis">菲律宾是全球第三大汇款接收国（约£30B/年），InstaPay直连是重大战略里程碑。"成本降低8倍"是量化的基础设施价值，印证了直连支付系统战略的ROI。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">菲律宾</span><span class="tag tag-tech">直连支付</span><span class="tag tag-fin">成本降低</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2026直连计划：巴西 PIX 和日本 Zengin 系统；目前已有6个直连，FY2026将达8个<span class="src">来源：Wise FY2025 Annual Report, p.7, p.20</span></div>
+    <div class="ip-col ip-analysis">PIX是巴西央行推出的即时支付系统（全球使用率最高的即时支付之一），Zengin是日本的核心支付系统。两个市场的直连将显著改善这两个市场的支付速度和成本。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">直连支付</span><span class="tag tag-mkt">巴西</span><span class="tag tag-mkt">日本</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">后资产负债表日事件：Wise计划将主要上市地从伦敦证交所（股票过渡类）迁至美国证交所，保留伦敦二级上市<span class="src">来源：Wise FY2025 Annual Report, p.154（Note 27）</span></div>
+    <div class="ip-col ip-analysis">迁移至美国上市是重大战略决策。美国市场估值通常更高（科技溢价），且主要竞争对手（Remitly、PayPal等）均在美国上市。这将提高股票流动性和国际知名度，可能吸引更多机构投资者。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">上市地迁移</span><span class="tag tag-mkt">美国市场</span><span class="tag tag-strat">资本市场</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">全球子公司分布：UK（5个实体）、澳大利亚、加拿大、智利、中国（上海）、印度（2个）、印度尼西亚、以色列、日本、韩国、马来西亚、墨西哥、新西兰、菲律宾、新加坡（2个）、南非、瑞士、泰国（2个）、UAE（2个）、美国（4个）<span class="src">来源：Wise FY2025 Annual Report, p.161-162（Note 7）</span></div>
+    <div class="ip-col ip-analysis">42个法律实体遍布23个以上国家，是全球布局复杂度的体现。每个实体需要单独的监管合规，运营成本高但也提供了在当地建立监管关系的能力。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">全球布局</span><span class="tag tag-reg">监管复杂度</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">新加坡：ItsRainingRaincoats (IRR) NGO合作，研究移民工人财务情况（30-90%工资寄回家乡）；联合开发教育计划提高汇款额<span class="src">来源：Wise FY2025 Annual Report, p.43, p.49</span></div>
+    <div class="ip-col ip-analysis">新加坡是东南亚重要的移民工人汇款发送地。IRR合作是社会影响力投资，也是理解目标客群的商业调研。数据显示30-90%工资汇回，是高频高需求的汇款人群。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">新加坡</span><span class="tag tag-mkt">汇款市场</span><span class="tag tag-strat">ESG</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2025 Wise Owners Day（股东日）于4月初举行，专注分享长期战略；Board在德州奥斯汀办公室（美国）进行访问，参与当地子公司治理<span class="src">来源：Wise FY2025 Annual Report, p.8, p.79</span></div>
+    <div class="ip-col ip-analysis">奥斯汀是Wise美国运营总部（4个美国实体之一），董事会访问奥斯汀体现对美国市场战略重视度。Owners Day的设立反映Wise独特的创始人文化——将股东视为"所有者"。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">美国</span><span class="tag tag-strat">投资者关系</span></div></div>
+    <div class="ip-col"><div class="score s5"><span class="score-num">5</span><div class="score-bar"><div class="score-fill" style="width:50%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">香港：FY2025 Wise Business上线香港市场<span class="src">来源：Wise FY2025 Annual Report, p.24</span></div>
+    <div class="ip-col ip-analysis">香港是亚太重要的跨境业务中心，企业产品上线有助于服务在港跨国企业和SMB。监管上香港金管局（HKMA）要求支付公司持牌，说明Wise完成了香港的监管准入。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">香港</span><span class="tag tag-biz">企业产品</span><span class="tag tag-reg">牌照</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">塔林（爱沙尼亚）：Wise全球Mission Days旗舰活动在塔林举行（FY2025年6月，4,000+ Wisers参与，9个全球地点及本地watch parties，平均eNPS 75）<span class="src">来源：Wise FY2025 Annual Report, p.35</span></div>
+    <div class="ip-col ip-analysis">塔林是Wise发源地和全球文化中心，欧洲工程和运营重要枢纽。eNPS 75（优秀水平一般定义为50+）显示员工满意度极高。这是吸引和留住欧洲技术人才的核心优势。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">爱沙尼亚</span><span class="tag tag-biz">企业文化</span><span class="tag tag-biz">员工满意度</span></div></div>
+    <div class="ip-col"><div class="score s5"><span class="score-num">5</span><div class="score-bar"><div class="score-fill" style="width:50%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">UAE（迪拜）：Wise Fintech Network LLC和Wise Nuqud Ltd两个实体；位于Dubai World Trade Centre监管区<span class="src">来源：Wise FY2025 Annual Report, p.162</span></div>
+    <div class="ip-col ip-analysis">UAE（迪拜DIFC/ADGM）是中东、南亚、非洲汇款的重要中转点，也是高净值客户密集地区。两个实体显示Wise在UAE布局较完整，是进入中东和非洲的战略桥头堡。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">中东</span><span class="tag tag-mkt">UAE</span><span class="tag tag-mkt">地理扩张</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <!-- ▌D. 战略展望 -->
+  <div class="group-banner">▌ D. 战略展望（18条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">CEO战略愿景：成为"全球货币的网络"（'the' network for the world's money），目标移动数万亿规模资金，成为提供真正国际账户的市场领导者<span class="src">来源：Wise FY2025 Annual Report, p.6（CEO声明）</span></div>
+    <div class="ip-col ip-analysis">这一愿景定义了Wise的终局：不只是汇款公司，而是全球金融基础设施。"数万亿"目标（当前£145B≈0.14万亿）意味着100倍以上的增长空间。这一叙事支撑了公司的高增长溢价估值。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">战略愿景</span><span class="tag tag-strat">长期目标</span><span class="tag tag-comp">护城河</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">中期投资计划：计划在中期将年度运营和增长支出翻倍（doubling annual spend）；含营销支出三倍化（tripling marketing）；将支持客户数量翻倍<span class="src">来源：Wise FY2025 Annual Report, p.12, p.33（CFO Review）</span></div>
+    <div class="ip-col ip-analysis">这是FY2025最重要的战略声明之一。"支出翻倍"意味着从当前约£1.1B运营支出（行政+销售成本）增至£2.2B+，在利润率上会带来压力。营销三倍化（从£54M到约£160M）代表获客战略重大转变。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">投资计划</span><span class="tag tag-fin">利润率压力</span><span class="tag tag-mkt">营销加速</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">中期底层PBT利润率目标：13%-16%（FY2025实际21%，高于目标）；FY2026基础工资不变（CEO £197K，CFO £500K）<span class="src">来源：Wise FY2025 Annual Report, p.31, p.114</span></div>
+    <div class="ip-col ip-analysis">实际利润率(21%)超目标上限(16%)5个百分点，表明投资节奏落后战略规划或效率超预期。管理层明确将把超额利润再投入。中期利润率回落至13-16%是预期内的，不是负面信号，而是主动选择。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">利润率目标</span><span class="tag tag-fin">中期指引</span><span class="tag tag-strat">投资优先</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2026 LTIP业绩指标（CFO性能股票）：相对TSR vs FTSE 100（权重40%，中位数门槛→上四分位最大）；交易量增长CAGR（40%，13%门槛→25%最大）；客户NPS（20%，63门槛→70最大）<span class="src">来源：Wise FY2025 Annual Report, p.108</span></div>
+    <div class="ip-col ip-analysis">LTIP业绩条件揭示管理层对FY2026的内部预期：交易量CAGR中位数预期约13%-25%区间，NPS目标63-70，TSR目标超越FTSE 100中位。这三个指标覆盖了财务、运营和客户满意度的全面平衡。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">FY2026指引</span><span class="tag tag-fin">增长目标</span><span class="tag tag-strat">激励对齐</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2026战略重点：持续提升Wise Account和Wise Business；扩大Wise Platform；新增PIX（巴西）和Zengin（日本）直连；AI驱动运营效率<span class="src">来源：Wise FY2025 Annual Report, p.7, p.62</span></div>
+    <div class="ip-col ip-analysis">三产品协同推进，FY2026看点是Platform突破（更多大型银行合作）和巴西/日本直连（降本）。AI工具已开始在Financial Crime和客户支持部署，未来会扩展至更多运营场景。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">FY2026战略</span><span class="tag tag-tech">AI</span><span class="tag tag-tech">基础设施</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">人才战略：FY2026计划建立共享服务运营模式（centralised processes），并使用AI工具简化员工查询解决；继续招聘Product和Engineering团队<span class="src">来源：Wise FY2025 Annual Report, p.36</span></div>
+    <div class="ip-col ip-analysis">共享服务模式是规模化运营的标准路径，可以提高一致性并降低运营成本。AI工具在HR/员工支持领域的应用是AI赋能内部运营的一个维度，配合外部产品AI（Financial Crime等）形成全面AI战略。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">人才战略</span><span class="tag tag-tech">AI应用</span><span class="tag tag-biz">运营效率</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">可行性声明（Viability Statement）：董事会确认合理预期公司能维持运营至2028年3月31日（未来3年），基于两个压力情景（市场整体压力+网络攻击）测试均通过<span class="src">来源：Wise FY2025 Annual Report, p.70</span></div>
+    <div class="ip-col ip-analysis">3年可行性陈述是对投资者的信心声明。两个压力情景（经济衰退+网络攻击）均通过，说明资产负债表有足够缓冲。英国公司治理要求提供这一声明，Wise选择3年（而非2年）体现信心。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">可行性</span><span class="tag tag-fin">压力测试</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">竞争战略：持续价格领先；"任何能建立最低成本、最高质量基础设施的人将移动世界的货币"——CEO表达的核心竞争逻辑<span class="src">来源：Wise FY2025 Annual Report, p.9</span></div>
+    <div class="ip-col ip-analysis">Wise的竞争战略是"规模+基础设施"的正向飞轮：更多量→更低成本→更低价格→更多量。这与Stripe、Amazon AWS等平台战略一脉相承，是最难被复制的竞争护城河之一。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">竞争战略</span><span class="tag tag-comp">护城河</span><span class="tag tag-strat">飞轮效应</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">ESG战略调整：放弃2030年净零目标（Scope 3.1供应链排放占100%碳足迹，难以在2030年前达成）；改为专注碳移除投资和降低可控范围排放<span class="src">来源：Wise FY2025 Annual Report, p.43-44</span></div>
+    <div class="ip-col ip-analysis">主动放弃不现实的ESG承诺体现了透明度原则（与Wise品牌一致）。Scope 3依赖供应商行动，是科技公司普遍面临的挑战。转向碳移除投资（Opna、NetZero等）是更有效的替代方案。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">ESG</span><span class="tag tag-strat">可持续发展</span><span class="tag tag-strat">透明度</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">资本配置优先级：无分红，再投资为主；ESOP信托买股对冲稀释；获BBB评级后资本灵活性提升；未来可能扩大股票购买计划（"进一步购买历史SBC归属份额"）<span class="src">来源：Wise FY2025 Annual Report, p.7-9, p.33</span></div>
+    <div class="ip-col ip-analysis">Wise有意识地不分红，资本全部用于增长投资和人才激励（SBC对冲）。BBB信用评级后，有能力用更低成本债务融资，但目前未显著增加杠杆。这是财务健全的高增长公司的标准资本配置。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">资本配置</span><span class="tag tag-fin">股东回报</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">AI和模型风险治理：FY2026将重点关注模型风险和AI治理；已部署LLM驱动的Copilot工具用于Financial Crime和客户支持团队<span class="src">来源：Wise FY2025 Annual Report, p.21, p.62</span></div>
+    <div class="ip-col ip-analysis">AI在金融犯罪检测和客户支持的应用是行业趋势。LLM Copilot帮助员工提高精确度和效率，30%自动化率目标将进一步提升。模型风险治理是监管关注点，Wise将其列为FY2026优先事项。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">AI</span><span class="tag tag-strat">技术战略</span><span class="tag tag-reg">模型风险</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2026 LTIP引入底层PBT利润率为业绩指标（权重未披露）；目标与中期指引13%-16%一致<span class="src">来源：Wise FY2025 Annual Report, p.114</span></div>
+    <div class="ip-col ip-analysis">新增盈利能力指标是对股东反馈的回应（91.64%赞成新薪酬政策说明股东普遍支持但也提出了利润问题）。将利润率纳入LTIP提高了管理层对效率的关注，防止过度投资损害股东利益。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">薪酬政策</span><span class="tag tag-fin">利润率指引</span><span class="tag tag-strat">股东对齐</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2026人才投资：增加Product和Engineering团队招聘；建立Leadership Strengths计划（高管一对一教练）；扩大WiseWomenCode等多元化招聘项目<span class="src">来源：Wise FY2025 Annual Report, p.36, p.40</span></div>
+    <div class="ip-col ip-analysis">持续技术人才投入与"营销三倍化"共同构成增长支柱。WiseWomenCode和DEI招聘项目有助于从更广泛的人才库获取优秀工程师。技术团队850+工程师→扩张至更多，是基础设施扩张的人力保障。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">人才战略</span><span class="tag tag-biz">DEI</span><span class="tag tag-strat">增长投资</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">ESG碳移除投资：FY2025 Opna合作投资£50万购买拉美和亚太碳移除积分；FY2026计划在危机融资领域提供£100万（IRC合作）<span class="src">来源：Wise FY2025 Annual Report, p.45, p.49</span></div>
+    <div class="ip-col ip-analysis">碳移除投资和IRC人道主义捐款体现Wise的社会责任，也与其服务移民群体的商业定位协调一致。金额相对收入较小，但持续增长（FY2026翻倍至IRC £100万）显示承诺度提升。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">ESG</span><span class="tag tag-strat">社会责任</span></div></div>
+    <div class="ip-col"><div class="score s5"><span class="score-num">5</span><div class="score-bar"><div class="score-fill" style="width:50%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise中期战略三轴：①扩大直连（支付系统直连）降本提速；②持续降价（成为最低成本提供商）；③扩大Platform合作（银行和企业级）触达更多终端用户<span class="src">来源：Wise FY2025 Annual Report, p.12, p.10</span></div>
+    <div class="ip-col ip-analysis">三轴战略互相强化：直连→降低成本→可以更低价格竞争→更多量→更多直连投资ROI。Platform拓展到银行则提供不通过直接下载App的增量用户触达。这是一个精心设计的系统级战略。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">战略框架</span><span class="tag tag-comp">飞轮效应</span><span class="tag tag-strat">长期增长</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">新CFO Emmanuel Thomassin（2024年10月加入）：来自Delivery Hero（带领IPO）；在加入前领导了对Wise强大资本状况的分析；获得BBB评级；扩大ESOP信托股票购买计划<span class="src">来源：Wise FY2025 Annual Report, p.7, p.80</span></div>
+    <div class="ip-col ip-analysis">新CFO是快速扩张科技公司IPO经验丰富的执行官，上任即推动两项重要资本市场举措（信用评级+扩大股票购买）。CFO更迭本身是重要的公司治理事件，有助于资本配置能力的提升。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">管理层</span><span class="tag tag-strat">资本配置</span><span class="tag tag-fin">信用评级</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <!-- ▌E. 风险因素 -->
+  <div class="group-banner">▌ E. 风险因素（24条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">主要风险①金融犯罪和欺诈风险：AML、洗钱、制裁违反、欺诈；约1/3全球员工专注于金融犯罪防范；未来5年AI将同时赋能犯罪者和防御者<span class="src">来源：Wise FY2025 Annual Report, p.66-67</span></div>
+    <div class="ip-col ip-analysis">金融犯罪是Wise最重要的运营风险，也是监管合规的核心。1/3员工（约2,000人）投入防犯罪是极高的资源占比，是"固定成本"。英国APP强制赔偿制度可能激励第一方欺诈增加，是新的风险点。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">金融犯罪</span><span class="tag tag-reg">AML</span><span class="tag tag-tech">AI风险</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">主要风险②网络安全和数据隐私风险：高度数字化业务使Wise成为更具吸引力的攻击目标；余额增长将进一步提升攻击激励；AI增强的钓鱼攻击、账户接管和大规模入侵威胁加剧<span class="src">来源：Wise FY2025 Annual Report, p.67</span></div>
+    <div class="ip-col ip-analysis">网络安全风险随规模增长呈非线性上升。Wise已有渗透测试、事件响应程序和员工培训体系，但攻击技术持续升级。数据隐私法规（GDPR等）跨司法管辖区复杂性持续增加。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">网络安全</span><span class="tag tag-reg">数据隐私</span><span class="tag tag-tech">AI风险</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">主要风险③流动性管理风险：可能无法在正确时间、地点、币种提供资金；社交媒体驱动的"挤兑"事件是新型流动性风险；即时支付要求使用公司自有现金<span class="src">来源：Wise FY2025 Annual Report, p.68</span></div>
+    <div class="ip-col ip-analysis">社交媒体时代，银行挤兑可在数小时内发生（参考2023年SVB事件）。Wise用公司自有现金（£1.43B）支付即时交易再等待客户资金释放，这是流动性管理的特殊挑战。高流动性缓冲和ILAAP是关键缓解措施。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">流动性风险</span><span class="tag tag-reg">挤兑风险</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">主要风险④监管合规风险：70+牌照分布于40+国家，监管要求不断变化；合规失败可能导致运营暂停、罚款或声誉损失<span class="src">来源：Wise FY2025 Annual Report, p.68-69（隐含）, p.60</span></div>
+    <div class="ip-col ip-analysis">70+牌照意味着70+个监管关系需要维护，合规成本随地理扩张线性增加甚至超线性。CFPB同意令是FY2025的具体案例，证明即使成熟的合规团队也难免疏漏。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">监管风险</span><span class="tag tag-reg">合规成本</span><span class="tag tag-mkt">地理风险</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">主要风险⑤运营韧性风险：系统中断影响所有客户；三方依赖（银行合作伙伴、支付处理商）带来传导风险；99.9%正常运行时间目标<span class="src">来源：Wise FY2025 Annual Report, p.60, p.20</span></div>
+    <div class="ip-col ip-analysis">Wise每日处理350万+笔交易，系统中断每分钟损失约£840（按年收入计算）。100+家银行合作伙伴中的任何关键合作伙伴问题都会影响相应货币路由。业务连续性计划是关键缓解措施。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">运营风险</span><span class="tag tag-tech">系统稳定性</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">新兴风险—地缘政治：军事冲突/紧张局势上升（全球），关税战和贸易战；业务连续性受冲突影响；制裁复杂度上升<span class="src">来源：Wise FY2025 Annual Report, p.65（Emerging Risks）</span></div>
+    <div class="ip-col ip-analysis">Wise在俄乌冲突爆发时已停止对俄服务，体现了地缘政治风险的实际影响。关税战可能影响贸易相关的企业跨境付款量。制裁合规是AML团队的核心工作之一。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">地缘政治</span><span class="tag tag-reg">制裁风险</span><span class="tag tag-reg">贸易风险</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span><span class="kb-tag">1.市场总览</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">新兴风险—经济：全球债务上升、潜在贸易关税战、货币政策不确定性、生产力增长；利率不是交易量的关键驱动，但利率压缩会影响利息收入<span class="src">来源：Wise FY2025 Annual Report, p.65</span></div>
+    <div class="ip-col ip-analysis">管理层表示"利率不是客户交易量的关键驱动"——即经济衰退不会大幅影响汇款需求，这是强有力的防御性特征。但利率下行会直接影响约£594M的利息收入，是盈利风险。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">宏观经济风险</span><span class="tag tag-fin">利率风险</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">1.市场总览</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">新兴风险—技术：AI治理和模型风险是FY2026重点；数据治理需升级；人工智能赋能的网络攻击威胁加剧<span class="src">来源：Wise FY2025 Annual Report, p.62, p.65</span></div>
+    <div class="ip-col ip-analysis">AI既是Wise的战略武器（LLM Copilot、自动化）也是新的风险来源（模型偏差、数据泄露、AI驱动的攻击）。建立AI治理框架是金融监管机构（FCA等）的新要求，合规成本将增加。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">AI风险</span><span class="tag tag-reg">模型风险</span><span class="tag tag-tech">网络安全</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">新兴风险—法律：数字银行监管演变；加密货币和稳定币可能改变支付格局；新兴支付监管（如欧盟即时支付法规）<span class="src">来源：Wise FY2025 Annual Report, p.65（PESTLE分析）</span></div>
+    <div class="ip-col ip-analysis">稳定币和CBDC（央行数字货币）是长期颠覆性因素，但短期影响有限。欧盟即时支付法规（强制银行提供即时支付）实际上对Wise有利，因为提高了整个生态系统的基准速度。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">监管变化</span><span class="tag tag-comp">稳定币</span><span class="tag tag-reg">法规演变</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">气候风险（过渡期风险）：气候报告法规不合规声誉风险；客户ESG合规导致的尽职调查风险；供应商ESG绩效要求提升<span class="src">来源：Wise FY2025 Annual Report, p.53-54</span></div>
+    <div class="ip-col ip-analysis">气候报告风险在中期（非短期）上升，Wise已认识到其供应链是碳足迹主体（Scope 3.1占35%）。ESG尽职调查要求可能增加供应商管理成本。主动放弃净零承诺是以透明度换取合规风险的策略选择。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">气候风险</span><span class="tag tag-strat">ESG</span></div></div>
+    <div class="ip-col"><div class="score s5"><span class="score-num">5</span><div class="score-bar"><div class="score-fill" style="width:50%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">气候风险（物理风险）：EY进行的物理风险评估（IPCC RCP8.5和RCP4.5情景，2030/2040/2050）显示Wise大部分资产物理风险影响较低；洪水风险最初预计最大<span class="src">来源：Wise FY2025 Annual Report, p.55</span></div>
+    <div class="ip-col ip-analysis">物理气候风险对轻资产数字企业（无大量实物基础设施）影响有限。EY第三方评估增强可信度。但极端天气可能影响员工上班和办公室运营，尤其在亚太、东南亚的台风/洪水易发区域。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">气候风险</span><span class="tag tag-reg">物理风险</span></div></div>
+    <div class="ip-col"><div class="score s4"><span class="score-num">4</span><div class="score-bar"><div class="score-fill" style="width:40%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">压力情景1（市场整体压力）：全球经济衰退→主要货币市场波动→低增长导致竞争对手倒闭→客户对Wise信心下降→低需求；测试结果：仍能满足资本和流动性要求<span class="src">来源：Wise FY2025 Annual Report, p.70</span></div>
+    <div class="ip-col ip-analysis">即使在竞争对手倒闭场景下，Wise仍保持偿付能力，证明商业模式的强韧性。实际上，竞争对手倒闭对Wise可能是利好（市场份额增加）；真正风险是客户信心下降时可能的挤兑。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">压力测试</span><span class="tag tag-fin">偿付能力</span><span class="tag tag-strat">韧性</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">压力情景2（特定风险—网络攻击）：网络攻击导致客户数据泄露→大量提款→监管审查和罚款→FY2026市场信心和业务量下降；测试结果：仍满足资本和流动性要求<span class="src">来源：Wise FY2025 Annual Report, p.70</span></div>
+    <div class="ip-col ip-analysis">网络攻击场景包含了最严重的组合：声誉损失+挤兑+监管罚款，是金融机构最担心的组合风险。Wise有足够资本缓冲通过此测试，表明£1.43B公司自有现金提供了有意义的安全边际。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">网络安全</span><span class="tag tag-fin">压力测试</span><span class="tag tag-fin">流动性</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">竞争风险：传统银行是主要竞争对手；成熟fintech（Revolut、Remitly等）直接竞争；数字原生银行可能直接竞争；Board明确提到"成熟的fintech可能直接竞争"<span class="src">来源：Wise FY2025 Annual Report, p.77（Chair声明）</span></div>
+    <div class="ip-col ip-analysis">Chair明确提及竞争格局变化，尤其是大型fintech（Revolut体量已超Wise，估值约$45B）可能更直接竞争。这是之前报告中较少明确表述的风险。传统银行仍是主要对手，但体量更大的新兴玩家威胁上升。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">竞争风险</span><span class="tag tag-comp">竞争格局</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">信用评级相关风险：BBB信用评级中无触发条款（截止2025年3月31日，RCF不含信用评级触发条款）；但降级可能影响合作伙伴关系和融资成本<span class="src">来源：Wise FY2025 Annual Report, p.144</span></div>
+    <div class="ip-col ip-analysis">评级触发条款的缺失是重要的积极信息——即使信用评级下调，现有融资安排不会立即受影响。但商业关系（银行合作、Platform客户）可能受声誉影响。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">信用风险</span><span class="tag tag-fin">融资风险</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Pillar Two税务风险：OECD全球最低税（15%）在部分司法管辖区可能导致未来额外税负；FY2025通过过渡安全港豁免，中期仍需评估<span class="src">来源：Wise FY2025 Annual Report, p.138</span></div>
+    <div class="ip-col ip-analysis">Pillar Two是所有跨国公司面临的系统性税务风险。Wise在爱沙尼亚（企业税率0%，仅分红时缴税）有重要业务，Pillar Two可能增加爱沙尼亚有效税率。中期潜在税负增加需关注。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">税务风险</span><span class="tag tag-reg">Pillar Two</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">房产减值损失 £11.5M（FY2025）：因部分办公室搬迁，旧使用权资产和办公室改善设施被认定减值<span class="src">来源：Wise FY2025 Annual Report, p.139, p.134</span></div>
+    <div class="ip-col ip-analysis">11.5M减值说明Wise在FY2025大规模升级了办公室空间（新长期租约），且退出了部分旧空间。这一一次性损失拖累了GAAP利润但不影响底层利润指标（Underlying PBT不含此项）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">资产减值</span><span class="tag tag-strat">扩张成本</span></div></div>
+    <div class="ip-col"><div class="score s5"><span class="score-num">5</span><div class="score-bar"><div class="score-fill" style="width:50%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">英国APP（Authorized Push Payment）强制赔偿法规风险：英国PSR强制赔偿机制可能激励第一方欺诈；Wise ARC已审阅公司对APP赔偿方案的准备情况<span class="src">来源：Wise FY2025 Annual Report, p.66, p.96</span></div>
+    <div class="ip-col ip-analysis">APP强制赔偿是英国特有的监管要求（2024年10月生效），银行和支付机构必须赔偿诈骗受害者（每笔最高£85,000）。这增加了Wise的损失风险，尤其在诈骗较高发的场景下。需要加强客户教育和欺诈识别。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">APP欺诈</span><span class="tag tag-reg">英国监管</span><span class="tag tag-fin">赔偿风险</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">外汇风险管理：使用外汇掉期、远期合约和不可交割远期（NDF）对冲FX敞口；报告期末所有开仓头寸已结清或交割<span class="src">来源：Wise FY2025 Annual Report, p.147-148</span></div>
+    <div class="ip-col ip-analysis">Wise对客户承诺汇率时即面临FX敞口，必须及时对冲。衍生品头寸规模相对较小（FV资产£2.5M，负债£3.7M），表明对冲效率高、残余敞口小。这是降低运营风险的关键风控机制。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">外汇风险</span><span class="tag tag-fin">对冲</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <!-- ▌F. 监管合规 -->
+  <div class="group-banner">▌ F. 监管合规（18条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">全球牌照数量：70+个（FY2025年末），FY2025新增巴西、澳大利亚（投资服务）、印度（运营升级）牌照<span class="src">来源：Wise FY2025 Annual Report, p.9, p.27</span></div>
+    <div class="ip-col ip-analysis">70+牌照是极高的监管准入门槛，是Wise护城河的重要组成部分。每个牌照需要资本要求、人员配置、本地运营，对挑战者是极高的复制成本。每年新增几个牌照显示持续的地理扩张。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">监管牌照</span><span class="tag tag-comp">护城河</span><span class="tag tag-mkt">地理扩张</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">CFPB同意令（Consent Order）：FY2025年末，Wise与美国CFPB就历史技术问题达成同意令；相关技术问题在同意令签订时已完全修复<span class="src">来源：Wise FY2025 Annual Report, p.33</span></div>
+    <div class="ip-col ip-analysis">CFPB同意令是重大监管事件，显示美国监管机构对Wise的历史合规问题的关注。同意令内容（罚款金额、整改要求）未详细披露，是一个信息不透明点。这推动了法律拨备大幅增加（£13.6M）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">CFPB</span><span class="tag tag-reg">监管处罚</span><span class="tag tag-mkt">美国监管</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">英国监管框架：FCA授权下的电子货币机构；Consumer Duty义务（2024年新要求）；英国上市规则UKLR；遵守2018 UK Corporate Governance Code<span class="src">来源：Wise FY2025 Annual Report, p.78, p.96</span></div>
+    <div class="ip-col ip-analysis">英国是最严格、最完善的监管环境之一。Consumer Duty要求Wise证明产品对客户真正有价值，强化了Wise透明度优势。FCA的持续监管要求（如ICARA、ILAAP）是重要的合规负担。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">FCA</span><span class="tag tag-reg">英国监管</span><span class="tag tag-reg">Consumer Duty</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">欧洲监管：Wise Europe SA（比利时国家银行NBB监管）；欧盟电子货币指令（E-Money Directive）；PSD2（支付服务指令）；GDPR数据保护<span class="src">来源：Wise FY2025 Annual Report, p.124（审计师报告提及）</span></div>
+    <div class="ip-col ip-analysis">欧洲用Wise Europe SA作为欧盟单一通行证持牌实体（NBB发牌）。欧盟强制即时支付法规（2023年通过）将进一步推动欧洲市场的速度提升，对Wise有利。GDPR合规是重大运营负担。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">欧盟监管</span><span class="tag tag-reg">NBB</span><span class="tag tag-reg">GDPR</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">澳大利亚监管：FY2025获APRA（澳大利亚审慎监管局）批准投资服务牌照；审计师（PwC）报告中明确提及APRA为审计范围内的监管机构<span class="src">来源：Wise FY2025 Annual Report, p.124, p.9</span></div>
+    <div class="ip-col ip-analysis">APRA监管是严格的金融监管标准，获得此牌照意义重大，允许Wise在澳大利亚提供政府担保资产的投资产品，使Wise账户真正成为竞争性储蓄/投资账户。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">澳大利亚</span><span class="tag tag-reg">APRA</span><span class="tag tag-reg">牌照</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">AML/KYC框架：客户尽职调查（CDD）；制裁筛查；交易监控；加强尽职调查（EDD）手册；政治公众人物（PEP）手册；区域AML政策<span class="src">来源：Wise FY2025 Annual Report, p.73（Non-Financial Info Statement）</span></div>
+    <div class="ip-col ip-analysis">Wise的AML框架是多层次的，从政策到手册到日常监控全面覆盖。PEP手册的存在说明Wise处理高风险客户（政治人物）需要专门程序。制裁筛查是实时的，确保无违禁方使用Wise。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">AML</span><span class="tag tag-reg">KYC</span><span class="tag tag-reg">制裁合规</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">MIFIDPRU监管：Wise集团作为MiFID投资集团（因Wise Assets UK Ltd投资业务），受MIFIDPRU资本要求约束；非小型非互联互通投资机构（Non-SNI）<span class="src">来源：Wise FY2025 Annual Report, p.148（Note 19）</span></div>
+    <div class="ip-col ip-analysis">MIFIDPRU是英国FCA实施的MiFID II投资公司框架，要求更复杂的资本充足评估（ICARA代替传统ICAAP）。Wise因投资业务被纳入投资公司监管框架，增加了监管复杂度。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">MIFIDPRU</span><span class="tag tag-reg">资本要求</span><span class="tag tag-reg">投资监管</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">ICARA（内部资本充足评估）和ILAAP（内部流动性充足评估）：每年提交FCA审阅；含极端压力情景测试；FY2025 ARC专门审查了ICARA/ILAAP和处置计划<span class="src">来源：Wise FY2025 Annual Report, p.92, p.35</span></div>
+    <div class="ip-col ip-analysis">ICARA和ILAAP是Wise年度监管合规的重要文件，类似于银行的ICAAP/ILAAP，证明Wise有能力承受压力情景。这些文件向FCA报告，是监管者对Wise财务稳健性的重要评估依据。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">监管报告</span><span class="tag tag-fin">资本充足</span><span class="tag tag-fin">流动性评估</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">制裁合规：FY2025完成制裁合规全球审计，监管机构建立了专门治理机构监督整改；ARC持续审查制裁合规控制<span class="src">来源：Wise FY2025 Annual Report, p.96</span></div>
+    <div class="ip-col ip-analysis">制裁合规是金融机构最严重的合规风险之一（违规可能导致几十亿美元罚款，参考HSBC、BNP Paribas等案例）。Wise主动进行全球审计并建立专门治理机构，显示对风险的重视程度。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">制裁</span><span class="tag tag-reg">合规治理</span><span class="tag tag-reg">金融犯罪</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">反腐和反贿赂：反腐败政策、举报人政策、利益冲突政策、增强版客户尽职调查（EDD）手册、金融犯罪监督升级和审批政策<span class="src">来源：Wise FY2025 Annual Report, p.73</span></div>
+    <div class="ip-col ip-analysis">完善的反腐败框架是国际监管合规的基础要求（UK Bribery Act、FCPA等）。举报人政策是内部治理机制，允许员工安全举报不当行为。这些政策的完善程度反映了Wise在合规文化建设上的成熟度。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">反腐</span><span class="tag tag-reg">合规文化</span><span class="tag tag-reg">治理</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">印度监管：FY2025新牌照运营化，移除USD 5,000单笔交易上限；Wise Payments India Private Limited和Vaho Forex Private Limited两个实体<span class="src">来源：Wise FY2025 Annual Report, p.9, p.162</span></div>
+    <div class="ip-col ip-analysis">印度RBI（央行）对跨境支付有严格管制，之前5,000美元上限限制了Wise对大额B2B汇款的覆盖。移除上限与Wise进攻印度市场的战略一致，预计将显著提升印度交易量。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">印度监管</span><span class="tag tag-reg">RBI</span><span class="tag tag-mkt">市场准入</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">IFRS 18新准则（2027年1月生效）：新准则将取代IAS 1，影响收入和费用的分类与列报；Wise认为应用将对财务报表列报产生影响<span class="src">来源：Wise FY2025 Annual Report, p.131</span></div>
+    <div class="ip-col ip-analysis">IFRS 18将改变利润表分类（如Wise的利息收入如何呈现），可能影响Wise披露其"底层收入"等APM指标的方式。这是FY2027开始需要提前准备的重要会计变化，会影响分析师模型。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">会计准则</span><span class="tag tag-fin">IFRS变化</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">现代奴隶法：Wise每年发布现代奴隶声明，由ARC审批；供应链管理政策覆盖新供应商入驻、管理和退出全周期<span class="src">来源：Wise FY2025 Annual Report, p.72</span></div>
+    <div class="ip-col ip-analysis">现代奴隶法合规是英国大型企业的法定要求。供应链管理复杂性随全球化扩张而增加，需要持续监控。这也是ESG评分的重要组成部分，影响机构投资者的投资决策。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">现代奴隶</span><span class="tag tag-strat">供应链</span><span class="tag tag-strat">ESG</span></div></div>
+    <div class="ip-col"><div class="score s4"><span class="score-num">4</span><div class="score-bar"><div class="score-fill" style="width:40%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">TCFD（气候相关财务披露）披露：遵循FCA上市规则UKLR 6.6.6R(8)要求；已完成治理、战略、风险管理和指标&目标四大支柱的初步披露；暂未完成中长期气候机会识别<span class="src">来源：Wise FY2025 Annual Report, p.51</span></div>
+    <div class="ip-col ip-analysis">TCFD是英国和欧盟强制要求，Wise已基本符合要求。中长期气候机会识别的缺失是下一步改进方向，FY2026将通过情景分析填补。ESG披露质量是ESG投资者的重要评估维度。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">TCFD</span><span class="tag tag-strat">ESG披露</span><span class="tag tag-reg">英国监管</span></div></div>
+    <div class="ip-col"><div class="score s5"><span class="score-num">5</span><div class="score-bar"><div class="score-fill" style="width:50%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">英国公司治理守则（UK CGC 2018）：Wise自愿采纳（非强制）；不合规条款：Provision 17（提名委员会独立性），Provision 36（归属和持有期），Provision 41（员工薪酬咨询）<span class="src">来源：Wise FY2025 Annual Report, p.78</span></div>
+    <div class="ip-col ip-analysis">自愿采纳英国公司治理守则是良好治理的体现，但存在三个不合规点，需要"遵守或解释"。这些偏差主要与股权激励设计和提名委员会构成有关，属于创始人控制的早期阶段公司的常见安排。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">公司治理</span><span class="tag tag-strat">治理合规</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">气候风险治理：FY2025建立气候风险论坛（13名成员，每半年开会）；ESG委员会（前社会影响委员会）改组，扩大至12名成员，新增亚太和北美代表<span class="src">来源：Wise FY2025 Annual Report, p.50</span></div>
+    <div class="ip-col ip-analysis">气候风险论坛和ESG委员会的建立是监管要求（TCFD）和自愿治理改善的结合。从"社会影响"到"ESG"的改名反映了环境议题重要性提升。FY2026将新增拉美代表，与业务重心一致。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">气候治理</span><span class="tag tag-strat">ESG</span><span class="tag tag-reg">治理架构</span></div></div>
+    <div class="ip-col"><div class="score s5"><span class="score-num">5</span><div class="score-bar"><div class="score-fill" style="width:50%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <!-- ▌G. 运营数据 -->
+  <div class="group-banner">▌ G. 运营数据（25条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">即时转账率：Q4 FY2025达65%（即20秒内）；历史趋势：36%(2021)→49%(2022)→55%(2023)→62%(2024)→65%(Q4 2025）；86%在1小时内；96%在24小时内<span class="src">来源：Wise FY2025 Annual Report, p.7, p.17, p.21</span></div>
+    <div class="ip-col ip-analysis">即时率从36%提升到65%用了4年，反映基础设施投资的长期累积效果。96%的24小时完成率比传统银行（3-5天）快了约75-95倍。这是Wise最强有力的产品差异化指标之一。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">即时支付</span><span class="tag tag-biz">产品质量</span><span class="tag tag-comp">差异化</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">技术基础设施：850+工程师，120+团队，1,000+云服务，水平扩展架构，每天处理350万+笔（2,000笔/分钟），99.9%正常运行时间，每天120+次代码发布<span class="src">来源：Wise FY2025 Annual Report, p.21（What makes us unique）</span></div>
+    <div class="ip-col ip-analysis">每天120次代码发布是极高的工程速度（大多数金融机构是每周或每月），显示DevOps成熟度。350万笔/天说明高吞吐量能力。99.9%正常运行时间（约每年8.7小时停机）对于金融服务是可接受但需持续改进的目标。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">技术指标</span><span class="tag tag-tech">工程能力</span><span class="tag tag-comp">护城河</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">客服运营：7,000+强（内部+外包）；覆盖26个站点；每月处理180万个服务案例；客户联系率 c.7%（季度末）；联系率下降中<span class="src">来源：Wise FY2025 Annual Report, p.20, p.21</span></div>
+    <div class="ip-col ip-analysis">联系率7%是衡量服务摩擦的核心指标，下降趋势（从8.0降至6.93，见p.17图表）说明产品体验改善。26个服务站点保证全球24/7覆盖。180万月度服务案例÷1550万活跃客户=约1次/年/客户。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">客服运营</span><span class="tag tag-biz">服务质量</span><span class="tag tag-fin">运营效率</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">自动化率：30%（手动工作量的自动化比例）；每月使用自动化和AI处理100万+份文件；LLM驱动的Copilot已部署至Financial Crime和客户支持团队<span class="src">来源：Wise FY2025 Annual Report, p.21, p.23</span></div>
+    <div class="ip-col ip-analysis">30%自动化率对于金融服务来说是有意义的起点，目标显然更高。文件处理AI（KYC文件、合规文件）是减少人工合规工作的关键。LLM Copilot部署说明Wise在生产环境应用AI，而非仅实验阶段。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">AI应用</span><span class="tag tag-tech">自动化</span><span class="tag tag-fin">效率提升</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">60秒内服务客户比例：覆盖云端，目标一分钟内提供实时支持；月度服务案例中正在提升自动化处理比例<span class="src">来源：Wise FY2025 Annual Report, p.20</span></div>
+    <div class="ip-col ip-analysis">60秒服务目标（类似于Amazon的1分钟客服标准）是极高的服务承诺。与传统银行（电话等待30-60分钟）相比，这是颠覆性的服务体验改变，是客户口碑推荐的重要驱动因素。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">服务目标</span><span class="tag tag-comp">差异化</span><span class="tag tag-biz">客户体验</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">员工总数：FY2025月均员工6,151人（FY2024: 5,499人，+11.9%）；6,500+ Wisers全球（截至报告期末）；分布：服务运营3,915，产品开发1,411，其他534，营销291<span class="src">来源：Wise FY2025 Annual Report, p.5, p.135</span></div>
+    <div class="ip-col ip-analysis">员工增长11.9%低于收入增长15%，体现运营杠杆。服务运营团队(3,915人)是最大部门，占总员工约64%，说明Wise是劳动密集型（合规+客服+运营）企业。产品开发(1,411)和营销(291)相对精干。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">员工规模</span><span class="tag tag-fin">运营杠杆</span><span class="tag tag-biz">人力结构</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">员工构成多元化：124个国籍；43%员工在与出生国不同的国家工作；女性占比52%（总体），45%（管理层），32%（高级职位），30%（领导团队）<span class="src">来源：Wise FY2025 Annual Report, p.38, p.40</span></div>
+    <div class="ip-col ip-analysis">124个国籍是全球化运营最直观的体现，也是理解多元化跨境用户的能力基础。女性在高级职位32%低于总体52%，存在改善空间（已是Women in Finance Charter签署方）。这与Wise服务全球移民客群的定位一致。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">多元化</span><span class="tag tag-biz">DEI</span><span class="tag tag-biz">全球团队</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">员工敬业度：员工推荐Wise作为工作场所：位于科技公司基准Top 25%；包容性得分Top 5%（全球科技公司中）；eNPS在Mission Days中平均75分<span class="src">来源：Wise FY2025 Annual Report, p.34, p.35</span></div>
+    <div class="ip-col ip-analysis">员工推荐Wise是内部版本的"口碑获客"——满意的员工更有可能成为优秀的大使，吸引更多优秀人才。Top 25%在大型科技公司中是良好表现，Top 5%的包容性评分是突出的竞争优势。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">员工满意度</span><span class="tag tag-biz">企业文化</span><span class="tag tag-comp">人才竞争力</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">直连支付系统：6个（FY2025年末）；菲律宾InstaPay（新增于FY2025）；FY2026将新增巴西PIX和日本Zengin（共8个）；100+银行和支付合作伙伴全球<span class="src">来源：Wise FY2025 Annual Report, p.7, p.20, p.21</span></div>
+    <div class="ip-col ip-analysis">6个直连处理近一半的交易量，是竞争对手极难复制的护城河。每新增一个直连系统，Wise在该市场的成本下降、速度提升，形成价格竞争优势。100+银行合作伙伴是对冲直连未覆盖市场的补充。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">直连支付</span><span class="tag tag-comp">护城河</span><span class="tag tag-tech">基础设施</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">净推荐值（NPS）：个人和企业客户平均NPS 65+；FY2026 LTIP目标NPS 63（门槛）-70（最高）<span class="src">来源：Wise FY2025 Annual Report, p.7, p.108</span></div>
+    <div class="ip-col ip-analysis">NPS 65+是金融服务行业的卓越水平（行业平均约30-40）。这直接驱动了70%的口碑新客户获取。NPS纳入LTIP业绩指标，确保管理层持续关注客户满意度而非仅追求财务指标。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">NPS</span><span class="tag tag-biz">客户满意度</span><span class="tag tag-comp">护城河</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">碳足迹（FY2025）：净排放112,279 tCO₂e（市场基准），同比+108%（因重述FY2024数据）；Scope 1: 113 tCO₂e，Scope 2（位置基准）: 1,023 tCO₂e，Scope 3: 112,143 tCO₂e<span class="src">来源：Wise FY2025 Annual Report, p.57-58</span></div>
+    <div class="ip-col ip-analysis">Scope 3占碳足迹99.9%（主要是采购商品和服务），这是典型的轻资产科技公司碳结构。收入强度73 tCO₂e/USD百万（FY2024重述后41，增长78%）部分因方法论变化。绝对排放量对比£1.6B收入来说相对较小。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">碳排放</span><span class="tag tag-strat">ESG指标</span></div></div>
+    <div class="ip-col"><div class="score s5"><span class="score-num">5</span><div class="score-bar"><div class="score-fill" style="width:50%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FCA、NBB、APRA、CFPB是审计范围内的关键监管机构；PwC（Wise审计师）明确列举这四家为需要审查监管通信的监管机构<span class="src">来源：Wise FY2025 Annual Report, p.124</span></div>
+    <div class="ip-col ip-analysis">这四家是Wise最重要的监管机构：英国(FCA)、欧盟(NBB比利时)、澳大利亚(APRA)、美国(CFPB)。这四个司法管辖区占Wise收入约85%，是监管风险最集中的地区。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">监管机构</span><span class="tag tag-reg">关键市场</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Mission Days（全公司大会）：FY2025年6月塔林，4,000+ Wisers参与，9个全球地点；2025年1月在奥斯汀、布达佩斯、伦敦、新加坡、塔林同步举行；每次eNPS约75<span class="src">来源：Wise FY2025 Annual Report, p.35</span></div>
+    <div class="ip-col ip-analysis">Mission Days是Wise独特文化机制，每半年一次帮助分布全球的6500+员工对齐使命感。eNPS 75分（远超50分的优秀标准）证明活动有效。这种文化机制对Wise的品牌内聚力和人才保留具有实际价值。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">企业文化</span><span class="tag tag-biz">员工参与</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise拯救客户费用：FY2025约为客户节省£20亿费用（与传统银行相比）<span class="src">来源：Wise FY2025 Annual Report, p.10（CEO声明）</span></div>
+    <div class="ip-col ip-analysis">£20亿节省是一个强有力的使命影响力数字，相当于Wise年收入的165%。这一数字基于与银行收费对比，说明Wise创造的客户价值远超其自身收入。这是Wise"为什么继续降价"的最直接论据。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">客户价值</span><span class="tag tag-strat">使命影响</span><span class="tag tag-comp">差异化</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">个人账户数字卡片功能：支持多张虚拟卡，各有不同用途（消费、订阅、旅行）；支持全球80个国家ATM取现；本地账户可在9种货币中使用<span class="src">来源：Wise FY2025 Annual Report, p.22</span></div>
+    <div class="ip-col ip-analysis">多张虚拟卡和9种货币本地账户是真正的"国际账户"功能，传统银行难以提供等效服务（需要在多国开户）。这些功能大幅提高了日常生活场景的使用频率，从而提升了账户粘性和卡片收入。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">卡片功能</span><span class="tag tag-biz">产品功能</span><span class="tag tag-comp">差异化</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">全球物理风险评估：FY2025与EY合作完成11处资产的物理风险评估；同时聘请Colliers为可持续发展顾问优化办公室绿色设计<span class="src">来源：Wise FY2025 Annual Report, p.55</span></div>
+    <div class="ip-col ip-analysis">聘请EY和Colliers进行物理风险评估是专业ESG治理的体现，同时为TCFD合规提供支持。11处资产覆盖了Wise主要办公室，结论是物理风险总体较低，符合预期（轻资产企业）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">ESG</span><span class="tag tag-strat">物理风险</span><span class="tag tag-reg">TCFD</span></div></div>
+    <div class="ip-col"><div class="score s4"><span class="score-num">4</span><div class="score-bar"><div class="score-fill" style="width:40%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise上市信息：2021年7月在伦敦证交所直接上市（最大科技公司直接上市）；股票代码LSE:WISE；ISIN: GB00BL9YR756；ADR可在美国市场以WIZEY代码交易；2025年AGM日期: 2025年9月25日<span class="src">来源：Wise FY2025 Annual Report, p.168</span></div>
+    <div class="ip-col ip-analysis">计划迁移至美国主要上市地（Note 27）意味着WISE代码将转为美国主要交易所代码，LSE保留二级上市。这将改变Wise的投资者构成，增加美国机构投资者比例，可能带来估值重评。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">上市信息</span><span class="tag tag-strat">资本市场</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">主要股东披露（>3%投票权）：Kristo Käärmann (CEO) 49.3%；Notorious OÜ 13.1%<span class="src">来源：Wise FY2025 Annual Report, p.117</span></div>
+    <div class="ip-col ip-analysis">Kristo Käärmann通过Class B股持有约49.3%投票权（经济权益约14.7%），是高度集中的创始人控制结构。Notorious OÜ是另一个早期创始人/投资方的实体。高创始人控制权保障长期战略连贯性但削弱少数股东保护。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">股权集中</span><span class="tag tag-fin">大股东</span><span class="tag tag-strat">公司治理</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">整个企业风险管理框架（ERMF）FY2025年刷新：三线防御模型；风险分类（运营、合规、金融三大域四级分类）；建立风控工具平台（GRC系统）；改进事件管理系统<span class="src">来源：Wise FY2025 Annual Report, p.62, p.64</span></div>
+    <div class="ip-col ip-analysis">全面的ERMF刷新说明风险管理能力持续提升。三线防御是金融行业标准框架，GRC系统整合提高了风险可见性。随着Wise规模扩大，风险管理的系统化和自动化是保持合规同时不过度增加成本的关键。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">风险管理</span><span class="tag tag-reg">ERMF</span><span class="tag tag-tech">GRC系统</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">领导团队构成（10人）：CEO（Kristo Käärmann）、CFO（Emmanuel Thomassin）、Chief Banking and Expansion Officer（Diana Avila）、CPO（Nilan Peiris）、CTO（Harsh Sinha）、CMO（Cian Weeresinghe）、General Counsel（Jessica Winter）、CPeople（Isabel Naidoo）、Head of Global Ops（Rohan Basu）、Interim CCO（SerJin Lee）<span class="src">来源：Wise FY2025 Annual Report, p.82-85</span></div>
+    <div class="ip-col ip-analysis">领导团队平均任期约3.4年，说明一定的稳定性但也有新鲜血液（CFO新加入，Interim CCO）。全球化背景明显（多位来自PayPal、Monzo等）。CCO仍为临时任命，说明合规团队仍在建设中，与金融犯罪风险高度吻合。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">管理团队</span><span class="tag tag-biz">领导力</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">保险担保覆盖客户资金 £520M（9家保险公司），可释放对应运营流动性；此外RCF未提款额度£230M可用于流动性<span class="src">来源：Wise FY2025 Annual Report, p.146</span></div>
+    <div class="ip-col ip-analysis">£520M保险担保+£230M RCF未提款额度=总备用流动性£750M+，这在压力情景下提供了有意义的缓冲。这种多层次流动性管理体现了金融工程的成熟度，是区别于简单初创公司的标志。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">流动性备用</span><span class="tag tag-fin">保险担保</span><span class="tag tag-strat">风险管理</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Wise</span><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+</div><!-- /section -->
+
+<div class="footer">
+  <p>📄 <strong>Wise FY2025 Annual Report — 穷举式信息点分析卡 (card-001)</strong></p>
+  <p>数据来源：Wise plc FY2025 Annual Report and Accounts（172页），全文逐页提取。提取日期：2025年3月28日。</p>
+  <p>审计机构：PricewaterhouseCoopers LLP | 财年截止：2025年3月31日 | 发布日期：2025年6月5日</p>
+  <p>免责声明：本分析卡基于公开信息，仅供研究参考，不构成投资建议。</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-353 | Statrys HK Pricing — 结构化信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .b-tier1 { background: #dbeafe; color: #1d4ed8; } .b-type { background: #f0fdf4; color: #166534; } .b-depth { background: #ede9fe; color: #5b21b6; } .b-rel { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; } .source-line { font-size: 13px; color: #64748b; } .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; } .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; } .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; }
+  .section { background: white; padding: 0 28px; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; } .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; padding: 8px 10px; background: #f8fafc; } .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; } .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; } .tag-biz { background: #dcfce7; color: #166534; border-color: #bbf7d0; } .tag-mkt { background: #fef3c7; color: #92400e; border-color: #fde68a; } .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; } .tag-strat { background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; } .score-num { font-size: 20px; font-weight: 800; } .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; } .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; } .s7, .s8 { color: #2563eb; } .s7 .score-fill, .s8 .score-fill { background: #2563eb; } .s5, .s6 { color: #d97706; } .s5 .score-fill, .s6 .score-fill { background: #d97706; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1</span>
+    <span class="badge b-type">定价页 / 竞品数据</span>
+    <span class="badge b-depth">web_fetch 全文</span>
+    <span class="badge b-rel">相关度 95%</span>
+  </div>
+  <h1>Statrys HK Pricing — 香港B2B多币种账户定价结构</h1>
+  <div class="source-line">Statrys | 定价页 | 原文：<a href="https://statrys.com/pricing" target="_blank">statrys.com/pricing</a> | 索引：#353</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">18</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">9</div><div class="stat-label">定价/费率类</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">产品功能类</div></div>
+  <div class="stat"><div class="stat-num">3</div><div class="stat-label">竞争分析类</div></div>
+  <div class="stat"><div class="stat-num">8.1</div><div class="stat-label">平均价值评分</div></div>
+</div>
+<div class="section">
+  <div class="ip-row" style="background:#f8fafc;">
+    <div class="col-header">原文信息点 + 来源</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header">评分</div>
+    <div class="col-header">知识库</div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">多币种商业账户：支持HKD/USD/EUR/CNY/GBP/SGD/JPY/AUD/CHF/NZD/CAD，共11种货币，免费开户，无月费，无最低存款，无最大交易金额。<span class="src">statrys.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">11种主要货币、零门槛、无限额——Statrys的账户产品高度标准化，极低摩擦。CNY的包含是对香港企业独特价值，因为大多数欧美neobank不提供CNY账户。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">多币种账户</span><span class="tag tag-fin">免费开户</span><span class="tag tag-mkt">CNY支持</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">香港境内HKD收款/发送HKD：免费（HKD 0）。境内发送CNY：HKD 5/笔。<span class="src">statrys.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">香港本地HKD收付免费是吸引本地企业的核心策略。CNY本地支付HKD 5/笔（约$0.64）也极其低廉，服务香港本地人民币业务（如与内地贸易商结算）。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">HKD本地免费</span><span class="tag tag-mkt">香港</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">境内USD/EUR收款：免费；发送USD/EUR：HKD 75/笔（约$9.6）。<span class="src">statrys.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">HKD 75发送USD/EUR（约$9.6）略高于Currenxie的$8 SWIFT费，但Statrys的FX费率更低（0.1%起），对大额交易整体成本可能更低。定价策略针对大额B2B场景。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">HKD 75/笔</span><span class="tag tag-comp">vs Currenxie</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">SWIFT国际收款：HKD 60/笔；SWIFT国际发款：HKD 85/笔。覆盖120+国家。<span class="src">statrys.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">SWIFT收款HKD 60（约$7.7）、发款HKD 85（约$10.9）。发款比Currenxie（$8）贵约36%，但FX费率更具竞争力。整体看Statrys更适合需要大量收款的企业。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">HKD 60/85</span><span class="tag tag-biz">SWIFT</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">本地付款（Local Payments）：发送USD/AUD/INR/EUR/GBP/SGD/IDR/PHP：HKD 25/笔；发送THB/TRY/KRW：HKD 35/笔；发送VND：HKD 50/笔。<span class="src">statrys.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">三级本地付款费率（HKD 25/35/50）反映不同地区网络直连程度。东南亚6国（IDR/PHP/THB/VND）覆盖完整，越南最贵（HKD 50）显示VND网络接入成本高。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">HKD 25-50</span><span class="tag tag-mkt">东南亚</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">主要货币（HKD/USD/EUR/CNY/GBP/SGD/JPY/AUD/CHF/NZD/CAD）外汇费率：from 0.1%。<span class="src">statrys.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">0.1%起是市场上最低的FX费率之一（Currenxie 0.35%，Wise约0.3-0.5%，传统银行1-3%）。对大额换汇（如$100K以上）可节省显著费用，是Statrys的核心竞争力。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">FX from 0.1%</span><span class="tag tag-comp">行业最低</span><span class="tag tag-strat">大额换汇</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">其他货币（INR/IDR/PHP/KRW/THB/TRY/VND）外汇费率：from 0.15%。<span class="src">statrys.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">0.15%的新兴市场FX费率也极具竞争力（Currenxie同类为0.50-0.60%）。Statrys在FX侧有明显成本优势，可能依赖于更直接的银行间接入或对冲策略。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">FX 0.15%</span><span class="tag tag-mkt">新兴市场</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Statrys支持本地付款：韩国（KRW）和土耳其（TRY）——这是香港竞争对手中较少见的。<span class="src">statrys.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">KRW和TRY覆盖是差异化功能。韩国是中国企业重要采购市场；土耳其是新兴市场高增长地区。体现Statrys的全球覆盖比Currenxie更广。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">韩国</span><span class="tag tag-mkt">土耳其</span><span class="tag tag-comp">差异化</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Statrys强调"100%在线申请，无开户费，无初始存款，有专属客户经理"。<span class="src">statrys.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">专属客户经理（Dedicated Account Manager）是香港本地SME服务的差异化要素，与纯数字化产品（Wise/Airwallex）相比，增加了人工服务层，适合需要合规建议的企业。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">客户服务</span><span class="tag tag-strat">本地化</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Statrys本地付款支持印度（INR）。<span class="src">statrys.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">INR直接付款能力对服务印度供应商的香港贸易公司非常重要。印度支付网络（UPI生态）的接入是技术门槛，Statrys和Currenxie均提供，说明香港-印度贸易走廊需求显著。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">印度 INR</span><span class="tag tag-biz">贸易走廊</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Statrys盈利模型：主要靠FX差价（0.1-0.15%）+ 固定交易费（HKD 25-85）——与Currenxie相比，FX费率更低但交易费略高。<span class="src">statrys.com/pricing 综合</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">Statrys的定价策略是"低FX费率+中等交易费"，瞄准大额、少频次的B2B企业（每笔金额大，FX差价更重要）。Currenxie则更适合高频小额（低固定费）。两者客群有自然分层。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">盈利模型</span><span class="tag tag-comp">B2B大额</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Statrys vs Currenxie 香港市场定价对比：Statrys FX从0.1%（优）vs Currenxie 0.35%（劣）；Statrys SWIFT发款HKD 85（劣）vs Currenxie $8≈HKD 62（优）。<span class="src">综合对比#352、#353</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">两家香港平台的竞争格局：换汇成本上Statrys更低，但SWIFT费用Currenxie更低。选择取决于业务模式：汇款频繁者选Currenxie，大额换汇选Statrys。差异化定位减少正面竞争。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">Statrys vs Currenxie</span><span class="tag tag-fin">竞争对比</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Statrys账户全免费（无月费，无最低余额），吸引中小企业"轻资产"使用。<span class="src">statrys.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">零成本账户是标准的fintech获客策略，通过交易量实现货币化。对于香港新兴中小企业，零门槛降低了测试新平台的风险，提高了多平台并行使用率。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">Freemium</span><span class="tag tag-strat">获客策略</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Statrys聚焦香港市场，提供CNY账户和本地付款，深度服务香港-中国大陆贸易走廊。<span class="src">综合推断</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">香港-中国大陆是全球最大贸易走廊之一。Statrys提供CNY账户+人民币本地支付，是专为服务这条走廊的香港SME设计的，与纯国际化平台有根本差异。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">港中走廊</span><span class="tag tag-strat">差异化定位</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">香港本地支付：收取HKD免费，发送HKD免费，发送USD/EUR HKD 75——香港本地支付几乎零成本。<span class="src">statrys.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">香港本地HKD免费是与传统银行（收取HKD 50-100本地转账费）的颠覆性竞争。Statrys将本地支付作为引流工具，在保留客户关系后通过跨境/FX服务获利。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">本地免费</span><span class="tag tag-comp">vs 传统银行</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Statrys本地付款涵盖美国（USD）、澳大利亚（AUD）、印度（INR）、欧盟（EUR）、英国（GBP）、新加坡（SGD）、印尼（IDR）、菲律宾（PHP）、泰国（THB）、土耳其（TRY）、韩国（KRW）、越南（VND），共12个市场。<span class="src">statrys.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">12个本地市场（Currenxie 14个）基本相当。Statrys不含中国大陆CNY境外付款和南非ZAR/墨西哥MXN，但增加了KRW和TRY。两家香港平台的网络覆盖趋于同质化，差异化聚焦在费率结构。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">本地网络</span><span class="tag tag-comp">覆盖对比</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+</div>
+<div class="footer">card-353 | 生成时间：2026-03-24 | 来源：statrys.com/pricing | 信息点数：16</div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-109 | LianLian H1 2024财务报告 — 信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .b-tier1  { background: #dbeafe; color: #1d4ed8; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .group-banner { background: #f8fafc; padding: 8px 0; font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; border-bottom: 2px solid #e2e8f0; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1 财务数据</span>
+    <span class="badge b-type">公司公告 / 港股中报</span>
+    <span class="badge b-depth">H1 2024中期业绩发布</span>
+    <span class="badge b-rel">相关度 95%</span>
+  </div>
+  <h1>LianLian 2024年H1收入6.17亿元 同比增长40.1% — 财务数据穷举提取</h1>
+  <div class="source-line">PR Newswire / LianLian公告 | 发布：2024-08-21 | 来源：<a href="https://www.prnewswire.com/news-releases/lianlian-reports-617-million-yuan-in-h1-2024-revenue-up-over-40-year-over-year" target="_blank">prnewswire.com</a> | 索引：#109</div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">17</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">8</div><div class="stat-label">A.核心财务</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">B.业务分析</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">C.战略合规</div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">信息点列表</div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="group-banner">▌ A. 核心财务数据（8条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">LianLian 2024年H1总收入：6.17亿元人民币，同比增长40.1%<span class="src">来源：PR Newswire/LianLian公告，2024-08-21</span></div>
+    <div class="ip-col ip-analysis">40.1%收入增速是中国跨境支付上市公司中的强劲表现，证明跨境支付赛道在全球逆风中仍保持高增长。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">收入</span><span class="tag tag-fin">增速40%</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">LianLian</span><span class="kb-tag">财务数据</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">LianLian 2024年H1总TPV：1.57万亿元人民币，同比增长120.1%<span class="src">来源：LianLian中报公告</span></div>
+    <div class="ip-col ip-analysis">TPV 120.1%增速远高于收入40.1%增速，说明Take Rate在收缩（规模换利润的早期成长策略）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">TPV</span><span class="tag tag-fin">增速120%</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">LianLian</span><span class="kb-tag">财务数据</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">毛利润同比增长20.3%至3.25亿元，整体毛利率52.6%<span class="src">来源：LianLian中报公告</span></div>
+    <div class="ip-col ip-analysis">52.6%毛利率代表支付服务公司正常水平，但毛利增速(20.3%)低于收入增速(40.1%)说明增量业务毛利率低于平均。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">毛利率</span><span class="tag tag-fin">52.6%</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">LianLian</span><span class="kb-tag">财务数据</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">非GAAP经营利润：1666万元，展示盈利能力改善（调整后口径）<span class="src">来源：LianLian中报公告</span></div>
+    <div class="ip-col ip-analysis">非GAAP口径盈利代表经营层面已实现转正，是公司走向持续盈利的积极信号，但规模仍小（约占收入2.7%）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">盈利能力</span><span class="tag tag-fin">非GAAP</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">LianLian</span><span class="kb-tag">财务数据</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">全球支付业务H1 TPV：1023亿元人民币，同比增长35.4%；收入3.72亿元，同比增长21.9%<span class="src">来源：LianLian中报，业务线分拆</span></div>
+    <div class="ip-col ip-analysis">全球支付（跨境业务）TPV增速35.4%，Take Rate约3.6bp，为成熟外贸支付业务的典型水平。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">全球支付</span><span class="tag tag-fin">跨境业务</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">LianLian</span><span class="kb-tag">业务分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">国内支付业务H1 TPV：1.47万亿元，同比增长130.1%；收入1.70亿元，同比增长117.8%<span class="src">来源：LianLian中报</span></div>
+    <div class="ip-col ip-analysis">国内支付业务超高速增长（130%）是总体TPV120%高增速的主要来源，但国内业务收入贡献(1.7亿)低于全球支付(3.72亿)，说明利润率差异显著。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">国内支付</span><span class="tag tag-fin">增速130%</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">LianLian</span><span class="kb-tag">业务分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">增值服务H1收入：6700万元，同比增长41.2%（受数字支付业务流量增长带动）<span class="src">来源：LianLian中报</span></div>
+    <div class="ip-col ip-analysis">增值服务与支付业务量正相关，说明已建立围绕支付的生态价值链，这是向平台转型的关键路径。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">增值服务</span><span class="tag tag-fin">交叉销售</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">LianLian</span><span class="kb-tag">商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">LianLian业务类型：数字支付服务（含全球+国内）和增值服务两大板块，成立于2009年<span class="src">来源：LianLian公告背景段落</span></div>
+    <div class="ip-col ip-analysis">成立于2009年说明LianLian是中国最早进入跨境支付的玩家之一，积累了超15年行业经验。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-mkt">历史</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">LianLian</span></div>
+  </div>
+
+  <div class="group-banner">▌ B. 业务分析（5条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">H1 2024期间，LianLian进一步拓展全球布局，强化产品创新，推动各业务线综合性增长<span class="src">来源：LianLian公告经营概述</span></div>
+    <div class="ip-col ip-analysis">多业务线同步增长说明公司增长不依赖单一业务，运营质量较高，是上市公司评级的积极因子。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">增长质量</span><span class="tag tag-biz">多元化</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">LianLian</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">LianLian在港交所上市（股票代码2598.HK），是中国跨境支付赛道为数不多的港股上市公司<span class="src">来源：标题和公告</span></div>
+    <div class="ip-col ip-analysis">港股上市提供了公开财务透明度，使LianLian成为中国跨境支付赛道的重要参照标杆。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">港股上市</span><span class="tag tag-fin">2598.HK</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">LianLian</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">分析：TPV增速(120.1%)远高于收入增速(40.1%)意味着Take Rate从约5bp下降，说明规模扩张伴随定价竞争<span class="src">来源：自行推算（公告数据）</span></div>
+    <div class="ip-col ip-analysis">中国跨境支付赛道的价格竞争正在压缩Take Rate，对所有参与者都是盈利压力的体现。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-fin">价格竞争</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争分析</span><span class="kb-tag">LianLian</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">国内支付TPV 1.47万亿元，远大于全球支付TPV 1023亿元，但收入贡献相反（全球:3.72亿 vs 国内:1.70亿）<span class="src">来源：LianLian中报数据对比</span></div>
+    <div class="ip-col ip-analysis">全球支付Take Rate约3.6bp vs 国内支付约1.2bp，说明跨境支付利润率约3倍于国内支付，是核心价值业务。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">利润率对比</span><span class="tag tag-biz">业务结构</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">LianLian</span><span class="kb-tag">商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">LianLian中报发布日期为2024年8月20日，本新闻稿同日由杭州发布，属中国法定中期报告披露<span class="src">来源：公告元数据</span></div>
+    <div class="ip-col ip-analysis">上市公司合规信息披露，数据可信度高，适合作为竞品分析和行业对标的基准数据。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">信息可信度</span><span class="tag tag-fin">正式公告</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">数据来源</span></div>
+  </div>
+
+  <div class="group-banner">▌ C. 战略与合规（4条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2024年5月获卢森堡EMI（电子货币机构）牌照，截至2024年6月30日已持有65个支付牌照及相关资质<span class="src">来源：LianLian中报公告</span></div>
+    <div class="ip-col ip-analysis">65个全球牌照是LianLian的合规护城河，EMI牌照尤其重要，可覆盖整个欧盟/EEA市场服务。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">牌照</span><span class="tag tag-tech">EMI</span><span class="tag tag-mkt">欧洲</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">LianLian</span><span class="kb-tag">合规牌照</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">LianLian可在100+个国家和地区提供服务，支持130+种货币交易<span class="src">来源：LianLian公告</span></div>
+    <div class="ip-col ip-analysis">100+国/130+货币覆盖是中国跨境支付公司中的顶级规模，可与Airwallex和Wise对标。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">覆盖范围</span><span class="tag tag-fin">130种货币</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">LianLian</span><span class="kb-tag">产品功能</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">LianLian与PAYS0签署合作协议，革新海外菲律宾劳工(OFW)跨境汇款服务（2025年香港金融科技周公布）<span class="src">来源：LianLian后续公告（相关来源）</span></div>
+    <div class="ip-col ip-analysis">针对海外菲律宾劳工的专项汇款合作体现LianLian正向C端汇款场景延伸，与B2B主业形成互补。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">汇款</span><span class="tag tag-mkt">菲律宾</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">LianLian</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">LianLian在H1 2024进一步扩展全球布局，强化产品创新，全面实现各业务线综合性增长<span class="src">来源：公告经营亮点</span></div>
+    <div class="ip-col ip-analysis">全业务线同步增长说明LianLian在竞争激烈的跨境支付赛道仍保持增长动能和产品迭代能力。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">战略</span><span class="tag tag-biz">增长</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">LianLian</span></div>
+  </div>
+
+</div>
+
+<div class="footer">
+  card-109 | 来源：LianLian H1 2024中报公告 | 提取时间：2026-03-28 | 信息点总数：17 | 批次：BATCH-4
+</div>
+</body>
+</html>

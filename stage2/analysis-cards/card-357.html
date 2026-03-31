@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-357 | 36氪EU Airwallex G轮报道 — 结构化信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .b-tier1 { background: #dbeafe; color: #1d4ed8; } .b-type { background: #f0fdf4; color: #166534; } .b-depth { background: #ede9fe; color: #5b21b6; } .b-rel { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; }
+  .source-line { font-size: 13px; color: #64748b; } .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; } .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; } .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; } .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; padding: 8px 10px; background: #f8fafc; } .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; } .tag-mkt { background: #fef3c7; color: #92400e; border-color: #fde68a; } .tag-strat { background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8 { color: #2563eb; } .s7 .score-fill, .s8 .score-fill { background: #2563eb; }
+  .s5, .s6 { color: #d97706; } .s5 .score-fill, .s6 .score-fill { background: #d97706; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .warn-banner { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 8px; padding: 10px 16px; margin: 12px 0; font-size: 13px; color: #9a3412; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-type">中文媒体 / G轮融资报道</span>
+    <span class="badge b-depth">⚠️ 仅摘要（URL重定向至同一F轮报道）</span>
+    <span class="badge b-rel">相关度 85%</span>
+  </div>
+  <h1>Airwallex G轮融资：$3.3亿，估值$80亿（界面新闻）</h1>
+  <div class="source-line">36氪EU | 来源：<a href="https://eu.36kr.com/zh/p/3302382387911175" target="_blank">eu.36kr.com</a> + 界面新闻独立报道 | 索引：#357</div>
+</div>
+<div class="warn-banner">⚠️ 注：36氪EU版URL与F轮报道为同一文章。G轮数据来源于界面新闻（card-358）的快讯内容：Airwallex完成G轮融资$3.3亿，Addition领投，估值$80亿，设立旧金山第二全球总部。</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">10</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">8.0</div><div class="stat-label">平均价值评分</div></div>
+</div>
+<div class="section">
+  <div class="section-title">信息点列表（⚠️ 摘要级 — 基于界面新闻快讯+可靠引用）</div>
+  <div class="ip-row">
+    <div class="col-header">原文信息点</div><div class="col-header">摘要分析</div><div class="col-header">标签</div><div class="col-header">评分</div><div class="col-header">知识库</div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">G轮融资：3.3亿美元，由Addition领投，T. Rowe Price、Activant、Lingotto、Robinhood Ventures、TIAA Ventures共同投资<span class="src">界面新闻 jiemian.com/article/13732954.html，快讯</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">Addition（前T. Rowe Price私募部门）领投，叠加T. Rowe Price本身，体现机构级长期资本入局，为IPO准备构建稳定股东基础。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">融资</span><span class="tag tag-fin">估值</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Airwallex档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">G轮估值：80亿美元（较F轮62亿上涨29%）<span class="src">界面新闻快讯，估值数据</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">从$62B（F轮，2025年5月）到$80B（G轮，2025年12月），6个月估值上涨29%，反映ARR从$720M增长至>$1B的收入加速。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">估值</span><span class="tag tag-fin">增长率</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Airwallex档案</span><span class="kb-tag">4.1 矩阵</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">旧金山设立第二全球总部（继新加坡之后），计划12个月内将美国团队扩充一倍至400余人，扩大旧金山办公室<span class="src">界面新闻快讯，G轮公告内容</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">双总部战略（新加坡+旧金山）配合双主板上市意图，同时信号美洲市场是下一增长引擎。400人美国团队规模暗示在美营收目标的量级。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">地理扩张</span><span class="tag tag-strat">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Airwallex档案</span><span class="kb-tag">4.3 战略</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">2025年美洲市场预计增长超两倍；欧洲中东非洲（EMEA）预计持续增长、规模扩大一倍（来自界面新闻引用的CEO年度展望）<span class="src">界面新闻/Airwallex CEO 2025年展望</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">美洲3x增长（若实现）意味着该区域从接近零基础达到约$200M+营收量级，EMEA 2x增长也是重要证据，验证全球化战略成效。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">地理扩张</span><span class="tag tag-fin">增长率</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.3 欧洲</span><span class="kb-tag">2.1 Airwallex档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">2024年Airwallex获巴西央行批准支付机构牌照；完成对墨西哥IFPE牌照持有者MexPago的收购<span class="src">界面新闻 CEO年度信函内容</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">拉丁美洲双市场（巴西+墨西哥）同时落地，覆盖拉美两大经济体，对标PIX（巴西即时支付系统占网上支付40%预期）等本地基础设施。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">地理扩张</span><span class="tag tag-strat">护城河</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.2 牌照</span><span class="kb-tag">7.2 新兴</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">2024年ARR $5亿美元（8月），同年11月进一步达到$6亿美元；客户数15万家（同比+50%）<span class="src">界面新闻 CEO年度信函</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">3个月内ARR从$5亿到$6亿（+20%），季度速度极快。15万家客户+50%增速，以及F轮时的ARR=$720M（2025年3月），构成完整的增长曲线。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">ARR</span><span class="tag tag-fin">增长率</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.1 Airwallex档案</span><span class="kb-tag">3.1 收入</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">季度毛利同比增长率：从Q1 2024年的40%快速攀升至78%；企业卡和收单产品商业毛利占比已超50%<span class="src">界面新闻/Airwallex CEO年度信函，财务数据</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">毛利增速78% >> ARR增速，说明产品组合优化（高毛利卡业务占比提升）驱动了超出收入增速的盈利扩张。单位经济正在改善。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">单位经济</span><span class="tag tag-fin">Take Rate</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.2 Take Rate</span><span class="kb-tag">3.3 成本</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">迈凯伦F1合作伙伴关系：通过Airwallex端到端支付系统，迈凯伦车队可节省具有竞争力的汇率+覆盖全球的支付网络，每月节省半天全球付款处理时间<span class="src">界面新闻/Airwallex CEO年度信函，品牌合作</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">F1合作兼具品牌曝光（全球顶级赛事）和产品实证（每月节省0.5天工时）双重价值。B2B营销中以真实ROI数据背书是高效的企业获客策略。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">商业模式</span><span class="tag tag-fin">单位经济</span></div></div>
+    <div class="ip-col"><div class="score s7"><div class="score-num">7</div><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.3 战略</span><span class="kb-tag">2.1 Airwallex档案</span></div>
+  </div>
+
+</div>
+<div class="footer">生成时间：2026-03-24 | 来源：界面新闻快讯 + CEO年度信函（部分⚠️摘要）| 索引编号：#357</div>
+</body>
+</html>

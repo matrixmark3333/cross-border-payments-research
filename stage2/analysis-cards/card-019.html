@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-019 | Standard Chartered × Wise Platform</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .b-tier2 { background: #e0e7ff; color: #3730a3; }
+  .b-type  { background: #f0fdf4; color: #166534; }
+  .b-depth { background: #ede9fe; color: #5b21b6; }
+  .b-rel   { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; }
+  .section { background: white; padding: 0 28px; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 重新提取</span>
+    <span class="badge b-type">官方新闻稿 / SC Newsroom</span>
+    <span class="badge b-depth">全文提取</span>
+    <span class="badge b-rel">相关度 95%</span>
+  </div>
+  <h1>渣打银行 × Wise Platform合作 — SC Remit亚洲中东即时汇款</h1>
+  <div class="source-line">Standard Chartered | 发布：2024年11月5日 | 来源：<a href="https://www.sc.com/en/press-release/standard-chartered-has-partnered-with-wise-platform-to-transform-international-payments-experience/" target="_blank">sc.com/en/press-release</a> | 索引：#019</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">15</div><div class="stat-label">信息点总数</div></div>
+</div>
+<div class="section">
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0; margin-top:16px;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">渣打银行与Wise Platform合作，为SC Remit用户提供21种货币的快速低成本国际汇款（2024年11月5日，亚洲和中东市场）<span class="src">来源：sc.com/en/press-release，2024-11-05</span></div>
+    <div class="ip-col ip-analysis">渣打银行是亚洲最重要的国际银行之一（业务遍及59个市场），SC Remit是其数字汇款产品。接入Wise意味着亚太和中东数百万SC客户将通过Wise基础设施进行跨境汇款。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">全球银行接入</span><span class="tag tag-mkt">亚太/中东</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">SC Remit支持21种货币（USD、CAD、EUR、GBP、SGD、HKD、JPY等），通过Wise Platform API提供服务，客户获得中间市场汇率无加价<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">渣打主动提供"中间市场汇率无加价"是关键让步——传统银行通常靠FX加价盈利，渣打选择让利给Wise来保持竞争力，说明不改变定价将流失客户。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">零加价汇率</span><span class="tag tag-comp">行业定价压力</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">渣打计划进一步扩展：更多货币+更多渣打营运市场；SC Remit未来扩展路线图已规划<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">这不是一次性合作，而是多阶段扩展。21种货币是第一阶段，后续将扩展到渣打在非洲、中亚等更多市场。这意味着Wise的覆盖将进一步扩大。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">扩展路线图</span><span class="tag tag-mkt">多阶段</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">渣打选择Wise的理由（Samir Subberwal，全球财富管理、存款和按揭主管）："广泛的货币覆盖和卓越的跨境支付体验"<span class="src">来源：同上，引语</span></div>
+    <div class="ip-col ip-analysis">渣打银行高层的引语明确了选择标准：货币覆盖广度+用户体验。这两点恰恰是Wise多年来的核心投资方向，验证了基础设施投资的商业价值。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">选择标准</span><span class="tag tag-comp">核心优势验证</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise为合作伙伴提供：全球牌照网络+6个直连+支付运营专业知识+稳健合规能力+24/7支持+财资管理能力<span class="src">来源：同上，Steve Naudé引语</span></div>
+    <div class="ip-col ip-analysis">Wise列举了6项核心能力，远不止"技术API"。这些能力组合（牌照+直连+合规+财资管理）是传统支付公司无法快速复制的综合性护城河。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">综合护城河</span><span class="tag tag-strat">Platform能力</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Platform的市场定位：加入"强大的合作伙伴阵容（strong roster of partners）"，选择通过Wise Platform提升跨境支付效率并驱动客户忠诚度<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">"驱动客户忠诚度"是一个重要的定位表述——SC认为更快、更便宜的汇款不只节省成本，更是客户留存和获客的工具。这将Wise Platform定位为"留客工具"而非单纯成本优化。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">留客工具</span><span class="tag tag-comp">忠诚度驱动</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">渣打银行规模：全球领先银行，59个市场（亚非欧中东），重点在亚太/非洲；通过SC Remit数字渠道服务跨境汇款<span class="src">来源：渣打官网</span></div>
+    <div class="ip-col ip-analysis">渣打59个市场覆盖与Wise的190+国家覆盖互补——渣打在非洲和南亚有深厚分行网络，这些市场可能是Wise直连较弱但有实际需求的地方，两者形成互补。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">59国覆盖</span><span class="tag tag-comp">互补关系</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">渣打与Wise的合作背景：渣打承诺"持续改善为客户提供卓越的银行体验"，跨境支付是其数字化战略重要组成<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">渣打作为传统大型银行选择外包核心的跨境支付能力（而非自建），是传统银行面对Wise的竞争压力被迫采用"接入策略"的典型案例。监管和技术护城河的结合让自建不划算。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">银行外包趋势</span><span class="tag tag-comp">竞争压力</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">从Forbes和Bloomberg也对渣打×Wise合作进行报道，关注焦点是"亚洲和中东跨境支付现代化"主题<span class="src">来源：Blog-017交叉引用</span></div>
+    <div class="ip-col ip-analysis">Forbes/Bloomberg的报道主题聚焦"亚洲和中东现代化"，这两个地区是跨境支付最不透明、成本最高的区域之一，渣打×Wise的合作直接针对这一痛点。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">亚中东市场</span><span class="tag tag-comp">区域现代化</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">合作后渣打SC Remit的定位：与GrabPay、PayNow等数字钱包竞争的"升级版银行汇款服务"<span class="src">来源：分析推断</span></div>
+    <div class="ip-col ip-analysis">通过接入Wise，SC Remit从"慢速昂贵银行汇款"升级为可与数字原生钱包竞争的产品，这是传统银行数字转型的典型路径——不自建，而是接入最好的基础设施。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">银行数字转型</span><span class="tag tag-mkt">新加坡</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise为SC提供：稳健财资管理能力（treasury management capability）——这超出了传统支付基础设施范畴<span class="src">来源：sc.com Press Release</span></div>
+    <div class="ip-col ip-analysis">Wise提供财资管理（Treasury Management）暗示其服务已超出简单的支付处理，进入流动性管理和货币对冲等更复杂的财务服务。这是Wise Platform向银行中后台服务演进的信号。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">财资管理</span><span class="tag tag-strat">服务升级</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Platform针对银行/金融机构的核心价值主张：速度（63%即时<20秒）、透明（全程可见）、可靠性（24/7运营保障）<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">这三个要素（速度/透明/可靠）是银行客户在评估支付供应商时最核心的3个标准，Wise以数字化（63%即时）来量化这三点，是有效的销售工具。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">核心价值量化</span><span class="tag tag-strat">销售工具</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">渣打与Wise合作的战略信号：标志着"金融机构投资建立更好国际支付体验的重要里程碑"——不只是个别合作，而是行业趋势<span class="src">来源：Steve Naudé引语</span></div>
+    <div class="ip-col ip-analysis">Wise将单一合作叙事升华为"行业趋势"——大型全球银行将跨境支付基础设施外包给Wise是结构性转变，而非偶然。这一叙事如果成立，Platform的长期收入天花板将大幅提升。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">行业趋势叙事</span><span class="tag tag-comp">结构性转变</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场总览</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">渣打开始接入，服务将在未来数个季度逐步推出（roll out over the coming quarters），是分阶段实施而非一次性上线<span class="src">来源：同上</span></div>
+    <div class="ip-col ip-analysis">分阶段实施（按季度推出）是大型银行集成项目的标准路径，同时也说明Wise从合同签署到收入实现有3-6个月的滞后期，反映在Platform收入的季度滞后性。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">收入滞后</span><span class="tag tag-strat">实施周期</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">标准银行（Standard Chartered）与美国标准银行（Standard Bank, South Africa）不同；后者是非洲最大银行，Wise在FY2023年已开始与Standard Bank合作（另一案例）<span class="src">来源：公开信息澄清</span></div>
+    <div class="ip-col ip-analysis">容易混淆但重要的区别：Standard Chartered（英国/亚太）和Standard Bank（南非/非洲）是完全不同的机构。两者均已与Wise合作，进一步证明Platform覆盖多个全球银行品牌。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">概念澄清</span><span class="tag tag-mkt">非洲vs亚太</span></div></div>
+    <div class="ip-col"><div class="score s5"><span class="score-num">5</span><div class="score-bar"><div class="score-fill" style="width:50%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+</div>
+<div class="footer">来源：Standard Chartered Press Release（2024-11-05）| 索引编号：#019 | 提取版本：Tier2-v1（全文） | 提取时间：2026-03-30</div>
+</body>
+</html>

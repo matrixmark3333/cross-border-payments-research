@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-400 | 界面新闻：Airwallex G轮$3.3亿融资 估值$80亿 旧金山双总部</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier2  { background: #e0f2fe; color: #0369a1; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .warn-badge { display: inline-block; background: #fef9c3; color: #854d0e; border: 1px solid #fde047; border-radius: 4px; padding: 1px 6px; font-size: 11px; font-weight: 700; margin-left: 4px; }
+</style>
+</head>
+<body>
+
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 URL分析</span>
+    <span class="badge b-type">中文媒体/新闻</span>
+    <span class="badge b-depth">全文提取</span>
+    <span class="badge b-rel">相关度 85%</span>
+  </div>
+  <h1>界面新闻：Airwallex G轮$3.3亿融资 估值$80亿 旧金山双总部 </h1>
+  <div class="source-line">界面新闻 | 索引：#400 | 原文：<a href="https://www.jiemian.com/article/13732954.html" target="_blank">https://www.jiemian.com/article/13732954.html</a></div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">7</div><div class="stat-label">信息点总数</div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">信息点列表 <span class="count">7条</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Airwallex（空中云汇）完成G轮3.3亿美元融资，估值达80亿美元；由Addition领投，T. Rowe Price、Activant等参与<span class="src">来源：<a href="https://www.jiemian.com/article/13732954.html" target="_blank">界面新闻#400</a></span></div>
+    <div class="ip-col ip-analysis">G轮融资后估值$80亿，较F轮$62亿增长29%。在Fintech寒冬中持续增值证明商业模式韧性强，投资者认可度高。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">Airwallex</span><span class="tag tag-fin">G轮</span><span class="tag tag-fin">估值</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局/Airwallex</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">G轮融资同步宣布：在美国旧金山设立第二全球总部（继新加坡后），12个月内美国团队规模扩充一倍至400余人<span class="src">来源：<a href="https://www.jiemian.com/article/13732954.html" target="_blank">界面新闻#400</a></span></div>
+    <div class="ip-col ip-analysis">双总部战略（新加坡+旧金山）标志Airwallex从亚太公司向真正全球公司转型。美国市场战略地位全面提升。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">双总部</span><span class="tag tag-mkt">美国市场</span><span class="tag tag-biz">Airwallex</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">战略/全球化</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">G轮（2025年10月ARR）目标：实现10亿美元年化收入；2024年11月已达年化交易量1300亿美元，同比飙升73%<span class="src">来源：<a href="https://www.jiemian.com/article/13732954.html" target="_blank">界面新闻#400</a></span></div>
+    <div class="ip-col ip-analysis">$10亿ARR目标若达成将使Airwallex跻身全球最大独立跨境支付平台之列。1300亿美元年化交易量增长73%已验证规模。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">ARR</span><span class="tag tag-fin">年化收入</span><span class="tag tag-biz">Airwallex</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财报/Airwallex</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Airwallex 2024年全年收入达6亿美元（年化），服务企业超15万家，客户数量较2023年增长50%<span class="src">来源：<a href="https://www.jiemian.com/article/13732954.html" target="_blank">界面新闻#400</a></span></div>
+    <div class="ip-col ip-analysis">收入$6亿+客户+50%是高质量增长的标志。平均每家客户年贡献约$4000，远高于传统跨境电商收款工具客户。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">收入</span><span class="tag tag-biz">客户增长</span><span class="tag tag-biz">Airwallex</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">财报/Airwallex</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Airwallex全球布局：60+国家支付牌照和许可；95%交易在几小时内或同一天完成，68%实时处理<span class="src">来源：<a href="https://www.jiemian.com/article/13732954.html" target="_blank">界面新闻#400</a></span></div>
+    <div class="ip-col ip-analysis">60+牌照+95%日内到账是支付基础设施竞争力的核心指标。68%实时处理率接近国内实时支付标准，体现网络深度。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">牌照</span><span class="tag tag-tech">支付速度</span><span class="tag tag-tech">基础设施</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局/技术</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Airwallex支持在60多个国家即时生成本地账号，在150多个国家之间进行资金收付<span class="src">来源：<a href="https://www.jiemian.com/article/13732954.html" target="_blank">界面新闻#400</a></span></div>
+    <div class="ip-col ip-analysis">60国本地账号+150国收付款网络是比Wise（40种货币）更广的全球覆盖，但深度未必同等，覆盖广度是关键竞争参数。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">本地账号</span><span class="tag tag-mkt">全球覆盖</span><span class="tag tag-biz">Airwallex</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品架构</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Airwallex宣布进军拉丁美洲：获得巴西支付机构牌照，完成对墨西哥MexPago的收购获得IFPE牌照<span class="src">来源：<a href="https://www.jiemian.com/article/13732954.html" target="_blank">界面新闻#400</a></span></div>
+    <div class="ip-col ip-analysis">通过收购获取拉美牌照是Airwallex"买牌+快速复制"策略的持续执行，巴西+墨西哥是拉美最大两个市场，战略优先级高。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">拉丁美洲</span><span class="tag tag-strat">收购</span><span class="tag tag-biz">Airwallex</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">战略/市场扩张</span></div>
+  </div>
+</div>
+
+<div class="footer">生成日期：2026-03-30 | 数据来源：界面新闻 | 编号：#400 | Tier 2 分析卡 | </div>
+</body>
+</html>

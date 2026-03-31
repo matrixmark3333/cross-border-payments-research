@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-111 | WorldFirst TPV $300B 2024 — 信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1  { background: #dbeafe; color: #1d4ed8; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .group-banner { background: #f8fafc; padding: 8px 0 8px 0; font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1 行业新闻</span>
+    <span class="badge b-type">新闻 / 公司公告</span>
+    <span class="badge b-depth">TNGlobal独家报道</span>
+    <span class="badge b-rel">相关度 90%</span>
+  </div>
+  <h1>Ant International WorldFirst TPV突破$3000亿里程碑 — 信息点提取</h1>
+  <div class="source-line">TechNode Global | 发布：2024-10-17 | 作者：Yimie Yong | 来源：<a href="https://technode.global/2024/10/17/ant-internationals-worldfirst-sees-total-transaction-volume-soars-to-300b/" target="_blank">technode.global</a> | 索引：#111</div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">16</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">6</div><div class="stat-label">A.公司数据</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">B.市场趋势</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">C.产品战略</div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">信息点列表 <span class="count">穷举版</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="group-banner">▌ A. 公司核心数据（6条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">WorldFirst累计交易额（TPV）突破$3000亿里程碑，蚂蚁国际旗下品牌<span class="src">来源：technode.global，2024-10-17，标题及正文首段</span></div>
+    <div class="ip-col ip-analysis">$300B累计TPV是跨境SME支付平台的重要规模里程碑，是蚂蚁国际拓展境外业务的核心指标。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">TPV</span><span class="tag tag-fin">里程碑</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">WorldFirst</span><span class="kb-tag">规模数据</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">WorldFirst TPV加速特征：从$2000亿到$3000亿所用时间，不到从$1000亿增至$2000亿所需时间的一半<span class="src">来源：TNGlobal正文第二段</span></div>
+    <div class="ip-col ip-analysis">增速加速印证平台网络效应正在显现——随规模扩大增速反而加快，是平台型商业模式的强健信号。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">增速加速</span><span class="tag tag-biz">网络效应</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">WorldFirst</span><span class="kb-tag">商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">中国和东南亚是WorldFirst核心区域市场中增长最快的，其他核心市场包括英国、欧洲和澳大利亚<span class="src">来源：TNGlobal正文第三段</span></div>
+    <div class="ip-col ip-analysis">中国+东南亚双轮驱动增长，与跨境电商规模增长高度相关，UK/EU/AU是成熟基本盘。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">区域分布</span><span class="tag tag-mkt">中国</span><span class="tag tag-mkt">东南亚</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">WorldFirst</span><span class="kb-tag">地理扩张</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">World Account产品：一站式跨境支付和金融服务平台，支持从约130个全球电商网站收款（含亚马逊、沃尔玛市场）<span class="src">来源：TNGlobal正文第四段</span></div>
+    <div class="ip-col ip-analysis">130个电商平台对接是WorldFirst的核心护城河，直接服务出口型跨境卖家的收款需求。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">World Account</span><span class="tag tag-biz">跨境电商</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">WorldFirst</span><span class="kb-tag">产品功能</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">WorldFirst全球采购支付解决方案驱动东南亚、欧洲等区域增长：帮助买家从中国和国际市场采购电子产品、家具、厨具、服装等<span class="src">来源：TNGlobal正文第五段</span></div>
+    <div class="ip-col ip-analysis">全球采购支付（买家侧）是WorldFirst重要增长引擎，与传统跨境电商卖家侧方向互补。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">全球采购</span><span class="tag tag-biz">B2B贸易</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">WorldFirst</span><span class="kb-tag">商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">SME在全球贸易中贡献估计$6.7万亿，占2023年价值$24万亿的全球商品贸易<span class="src">来源：TNGlobal正文引用CEO讲话</span></div>
+    <div class="ip-col ip-analysis">SME占全球贸易约28%，是跨境支付平台的核心目标市场。WorldFirst聚焦SME的战略具备明确的市场基础。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">市场规模</span><span class="tag tag-mkt">SME</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">市场规模</span></div>
+  </div>
+
+  <div class="group-banner">▌ B. 市场趋势判断（5条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">东南亚跨境电商市场预计到2025年年增长率超过20%<span class="src">来源：TNGlobal正文CEO引言段落</span></div>
+    <div class="ip-col ip-analysis">东南亚20%+年增速是WorldFirst重点布局区域的核心逻辑，也是中国平台出海优先考虑东南亚的依据。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">东南亚</span><span class="tag tag-mkt">增长率</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">市场趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">越来越多的SME正在全球扩张，特别是通过跨境电商开展贸易；采用数字支付平台来支持复杂跨境运营<span class="src">来源：TNGlobal正文CEO讲话第一要点</span></div>
+    <div class="ip-col ip-analysis">SME数字化跨境支付采用率上升是整个行业增长的根本驱动因素，验证WorldFirst的目标市场假设。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">SME数字化</span><span class="tag tag-biz">跨境贸易</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">行业趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">越来越多SME跨多个电商市场分散业务，并在国际市场建立本地存在；寻求提供上下游全链条支持的支付提供商<span class="src">来源：TNGlobal正文CEO讲话第二要点</span></div>
+    <div class="ip-col ip-analysis">SME需求从"单点支付"升级为"全链条支持"，推动支付平台向金融服务平台演进。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">平台化</span><span class="tag tag-biz">全链条服务</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">行业趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">WorldFirst在新东南亚市场的拓展是区域强劲表现的重要推动因素（新市场进入策略）<span class="src">来源：TNGlobal正文第五段</span></div>
+    <div class="ip-col ip-analysis">主动进入新东南亚市场而非被动等待，说明WorldFirst区域扩张采用积极进攻战略。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">扩张战略</span><span class="tag tag-mkt">东南亚</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">WorldFirst</span><span class="kb-tag">地理扩张</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">中国出口商使用WorldFirst安全接收海外商业买家付款，促进跨境贸易<span class="src">来源：TNGlobal正文第四段</span></div>
+    <div class="ip-col ip-analysis">中国出口商是WorldFirst核心用户群体，B2B买卖双向都在平台上运转。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">中国出口</span><span class="tag tag-biz">B2B收款</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">WorldFirst</span></div>
+  </div>
+
+  <div class="group-banner">▌ C. 产品战略（5条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">WorldFirst定位：专为国际贸易中的全球业务（尤其是SME）提供的数字支付和金融服务平台<span class="src">来源：TNGlobal正文定义段落</span></div>
+    <div class="ip-col ip-analysis">SME跨境贸易专属定位是明确的差异化策略，不同于Airwallex的"全业务规模"定位。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">市场定位</span><span class="tag tag-biz">SME</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">WorldFirst</span><span class="kb-tag">竞争分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">WorldFirst帮助中国跨境电商SME连接主要国际市场，赋能全球拓展<span class="src">来源：TNGlobal正文第四段</span></div>
+    <div class="ip-col ip-analysis">中国电商SME出海是WorldFirst最核心的使用场景，蚂蚁国际背景提供了天然的中国市场渗透优势。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">中国出海</span><span class="tag tag-strat">核心场景</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">WorldFirst</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">WorldFirst全球采购支付解决方案：覆盖电子、家具、厨具、服装等多品类采购支付<span class="src">来源：TNGlobal正文第五段</span></div>
+    <div class="ip-col ip-analysis">买家侧全球采购支付是WorldFirst差异化产品线，服务从中国采购的全球买家，形成双边市场。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">全球采购支付</span><span class="tag tag-biz">双边市场</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">WorldFirst</span><span class="kb-tag">产品功能</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">WorldFirst是蚂蚁国际旗下品牌（Ant International），提供跨境支付和金融服务<span class="src">来源：TNGlobal标题和正文</span></div>
+    <div class="ip-col ip-analysis">蚂蚁国际作为母公司，提供监管背书、技术基础设施和全球网络资源，是WorldFirst竞争优势来源之一。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">蚂蚁国际</span><span class="tag tag-strat">母公司关系</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">WorldFirst</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Clara Shi，蚂蚁国际副总裁兼WorldFirst CEO，指出TPV加速印证两大全球SME贸易趋势<span class="src">来源：TNGlobal正文引用CEO声明</span></div>
+    <div class="ip-col ip-analysis">CEO直接将TPV增速与行业结构性趋势挂钩，是公司向投资者传递增长逻辑的核心叙事。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">管理层观点</span><span class="tag tag-biz">增长叙事</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">WorldFirst</span></div>
+  </div>
+
+</div>
+
+<div class="footer">
+  card-111 | 来源：TNGlobal WorldFirst $300B报道 | 提取时间：2026-03-28 | 信息点总数：16 | 批次：BATCH-4
+</div>
+</body>
+</html>

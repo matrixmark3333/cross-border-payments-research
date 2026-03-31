@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-354 | Wise SG Business Pricing — 结构化信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1 { background: #dbeafe; color: #1d4ed8; } .b-type { background: #f0fdf4; color: #166534; } .b-depth { background: #ede9fe; color: #5b21b6; } .b-rel { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; } .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; } .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; } .tag-biz { background: #dcfce7; color: #166534; border-color: #bbf7d0; } .tag-mkt { background: #fef3c7; color: #92400e; border-color: #fde68a; } .tag-reg { background: #fee2e2; color: #991b1b; border-color: #fecaca; } .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; } .tag-strat { background: #fff7ed; color: #9a3412; border-color: #fed7aa; } .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8 { color: #2563eb; } .s7 .score-fill, .s8 .score-fill { background: #2563eb; }
+  .s5, .s6 { color: #d97706; } .s5 .score-fill, .s6 .score-fill { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1</span>
+    <span class="badge b-type">定价页 / 官方文档</span>
+    <span class="badge b-depth">web_fetch 实时获取</span>
+    <span class="badge b-rel">相关度 95%</span>
+  </div>
+  <h1>Wise SG Business Pricing — 新加坡商业账户定价页</h1>
+  <div class="source-line">Wise (Official) | 来源：<a href="https://wise.com/sg/pricing/business" target="_blank">wise.com/sg/pricing/business</a> | 索引：#354</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">8</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">3</div><div class="stat-label">定价类</div></div>
+  <div class="stat"><div class="stat-num">3</div><div class="stat-label">商业模式类</div></div>
+  <div class="stat"><div class="stat-num">7.0</div><div class="stat-label">平均价值评分</div></div>
+</div>
+<div class="section">
+  <div class="section-title">信息点列表</div>
+  <div class="ip-row">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header">评分</div>
+    <div class="col-header">知识库</div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Wise Business SG一次性设置费用：All in for 99 SGD（Get every Wise Business feature for one set-up fee）<span class="src">wise.com/sg/pricing/business，页面主体文案</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">SGD 99（约$74美元）一次性开户费，而非月费。低门槛入场策略吸引中小企业，与银行高门槛形成对比，强化薄利高量商业模式。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-biz">商业模式</span><span class="tag tag-mkt">定价策略</span></div></div>
+    <div class="ip-col"><div class="score s7"><div class="score-num">7</div><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.2 Take Rate</span><span class="kb-tag">2.3 Wise档案</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">FX汇率加价：FX from 0.26%（Never inflate the exchange rate or charge your business unfair fees）<span class="src">wise.com/sg/pricing/business，定价说明区块</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">FX费率低至0.26%起，显著低于银行（通常2-3%）和PayPal。强调中间市场汇率+透明收费，是Wise核心竞争力和护城河。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-biz">护城河</span><span class="tag tag-mkt">竞争格局</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.2 Take Rate</span><span class="kb-tag">4.2 护城河</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">量折扣政策：Spend over 30,000 SGD (or equivalent) and you'll get a volume discount<span class="src">wise.com/sg/pricing/business，定价说明区块</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">SGD 30,000（约$22K美元）以上享量折扣，绑定高价值客户，降低churning率。典型的阶梯定价护城河，客户规模越大切换成本越高。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-biz">单位经济</span><span class="tag tag-strat">护城河</span></div></div>
+    <div class="ip-col"><div class="score s7"><div class="score-num">7</div><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.2 Take Rate</span><span class="kb-tag">3.3 成本</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">定价透明承诺：No unexpected extras, All our prices are upfront, and we don't inflate the mid-market exchange rate<span class="src">wise.com/sg/pricing/business，价值主张区块</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">透明定价是Wise品牌核心差异化。银行常通过隐藏汇差获利，Wise"无额外费用"承诺直击用户痛点，形成强烈品牌信任度。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-strat">护城河</span><span class="tag tag-comp">竞争格局</span></div></div>
+    <div class="ip-col"><div class="score s7"><div class="score-num">7</div><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.1 收入</span><span class="kb-tag">4.2 护城河</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">单一开户费包含所有功能：one set-up fee for every Wise Business feature<span class="src">wise.com/sg/pricing/business，页面标题区</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">一次性开户费获取全部功能，无月租模式，降低SMB试用门槛。与SaaS订阅模式不同，收入主要来自交易量而非订阅，体现高量薄利逻辑。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-fin">Take Rate</span></div></div>
+    <div class="ip-col"><div class="score s6"><div class="score-num">6</div><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.1 收入</span><span class="kb-tag">3.2 Take Rate</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">地区定价策略：SG版定价页独立于其他市场（wise.com/sg/pricing/business vs wise.com/us/pricing/business等）<span class="src">wise.com/sg/pricing/business，URL结构</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">Wise针对不同市场设立独立定价页面，反映地区监管差异、市场竞争格局及用户购买力差异。本地化定价策略是全球化金融科技公司的标配。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">地理扩张</span><span class="tag tag-strat">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s6"><div class="score-num">6</div><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.1 亚太</span><span class="kb-tag">3.1 收入</span></div>
+  </div>
+
+</div>
+<div class="footer">生成时间：2026-03-24 | 来源：web_fetch实时获取 | 索引编号：#354</div>
+</body>
+</html>

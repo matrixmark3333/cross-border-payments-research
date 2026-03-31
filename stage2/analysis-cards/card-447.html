@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-447 | 人人都是产品经理：国际清算外清内结双体系 — CIPS+HVPS运行机制详解</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier2  { background: #e0f2fe; color: #0369a1; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .warn-badge { display: inline-block; background: #fef9c3; color: #854d0e; border: 1px solid #fde047; border-radius: 4px; padding: 1px 6px; font-size: 11px; font-weight: 700; margin-left: 4px; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 URL分析</span>
+    <span class="badge b-type">基础知识文章</span>
+    <span class="badge b-depth">全文提取</span>
+    <span class="badge b-rel">相关度 85%</span>
+  </div>
+  <h1>人人都是产品经理：国际清算外清内结双体系 — CIPS+HVPS运行机制详解 </h1>
+  <div class="source-line">人人都是产品经理 | 索引：#447 | 原文：<a href="https://www.woshipm.com/it/3075644.html" target="_blank">https://www.woshipm.com/it/3075644.html</a></div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">5</div><div class="stat-label">信息点总数</div></div>
+</div>
+<div class="section">
+  <div class="section-title">信息点列表 <span class="count">5条</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">跨境支付核心定义：支付行为+清结算过程在两个及以上国家/地区之间，实现资金跨国转移的行为<span class="src">来源：<a href="https://www.woshipm.com/it/3075644.html" target="_blank">#447</a></span></div>
+    <div class="ip-col ip-analysis">定义明确了跨境支付的本质是"跨国境资金转移"，包含收单+结算两个环节，两个环节可以由不同机构处理。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">跨境支付定义</span><span class="tag tag-tech">清结算</span><span class="tag tag-tech">基础知识</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础知识</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">跨境支付四个核心属性：收汇（外汇入境）→结汇（外汇换人民币）→购汇（人民币换外汇）→付汇（外汇出境）<span class="src">来源：<a href="https://www.woshipm.com/it/3075644.html" target="_blank">#447</a></span></div>
+    <div class="ip-col ip-analysis">四个环节的顺序和区分是中国外汇管制体系的基础，理解这四个概念对于设计中国特色跨境支付产品至关重要。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">收结汇</span><span class="tag tag-reg">购付汇</span><span class="tag tag-reg">外汇管制</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础知识/外汇</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">出口模式（以Shopee为例）：境外收单→资金结算到平台海外账户→跨境收款机构换汇→国内商户银行账户<span class="src">来源：<a href="https://www.woshipm.com/it/3075644.html" target="_blank">#447</a></span></div>
+    <div class="ip-col ip-analysis">Shopee收款全流程揭示了"收单"和"收款"是两个独立环节，跨境收款机构（连连、PingPong）专注的是资金回国的"最后一公里"。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">收款流程</span><span class="tag tag-biz">Shopee</span><span class="tag tag-biz">最后一公里</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品架构/流程</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">进口模式（支付宝跨境）：即时到账支付，不提供担保，人民币→购汇→清算到境外商户账户<span class="src">来源：<a href="https://www.woshipm.com/it/3075644.html" target="_blank">#447</a></span></div>
+    <div class="ip-col ip-analysis">支付宝跨境进口采用即时到账（非担保）是合规选择，境外商户不接受需要等待的担保交易模式，速度优先。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">进口支付</span><span class="tag tag-biz">支付宝</span><span class="tag tag-tech">即时到账</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品架构/进口</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">东南亚低银行卡普及率的根源：商业银行覆盖不足（缺乏国家级推广），与中国国有银行全覆盖模式形成对比<span class="src">来源：<a href="https://www.woshipm.com/it/3075644.html" target="_blank">#447</a></span></div>
+    <div class="ip-col ip-analysis">东南亚银行卡普及率低是东南亚支付市场特殊性的根源，直接催生了GoPay、GrabPay等电子钱包和现金/货到付款的重要性。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">东南亚</span><span class="tag tag-biz">金融包容</span><span class="tag tag-mkt">银行普及率</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">市场特征/东南亚</span></div>
+  </div>
+</div>
+<div class="footer">生成日期：2026-03-30 | 人人都是产品经理 | #447 | Tier 2</div>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-036 | dLocal Q3 2024 Financial Results — 结构化信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1  { background: #dbeafe; color: #1d4ed8; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .group-row { background: #f8fafc; padding: 8px 10px 8px 0; font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; grid-column: 1/-1; display: block; }
+</style>
+</head>
+<body>
+
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1 深度分析</span>
+    <span class="badge b-type">财报 / 季报</span>
+    <span class="badge b-depth">HTML 全文读取</span>
+    <span class="badge b-rel">相关度 100%</span>
+  </div>
+  <h1>dLocal Q3 2024 Financial Results — 新兴市场跨境支付季报</h1>
+  <div class="source-line">dLocal Limited (NASDAQ: DLO) | 发布：2024年11月13日 | 原文：dlocal.gcs-web.com | 索引：#036</div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">33</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">15</div><div class="stat-label">财务数据类</div></div>
+  <div class="stat"><div class="stat-num">10</div><div class="stat-label">商业模式类</div></div>
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">战略/市场类</div></div>
+  <div class="stat"><div class="stat-num">8.2</div><div class="stat-label">平均价值评分</div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">信息点列表 <span style="background:#e2e8f0;color:#475569;border-radius:10px;padding:1px 8px;font-size:11px;font-weight:700;">32条</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="group-row">▌ A. 核心财务数据</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q3 2024 TPV达创纪录的US$65亿，同比增长41%、环比增长8%，由多个垂直行业和国家的强劲表现驱动<span class="src">来源：Q3 2024新闻稿，摘要</span></div>
+    <div class="ip-col ip-analysis">TPV重回40%+同比高增速，标志着从Q1低迷中完全恢复，单季度规模超$6.5B首次突破$60亿大关</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">TPV</span><span class="tag tag-fin">增长率</span><span class="tag tag-mkt">新兴市场</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2. dLocal</span><span class="kb-tag">1.市场规模</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q3 2024毛利润达创纪录的$7800万，净取费率自Q1 2024以来稳定在1.2%<span class="src">来源：Q3 2024新闻稿，摘要</span></div>
+    <div class="ip-col ip-analysis">毛利新高，同时费率稳定说明定价权稳固；新兴市场复杂性支撑dLocal区别于发达市场商品化支付的定价能力</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">毛利润</span><span class="tag tag-fin">取费率</span><span class="tag tag-strat">定价权</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">2. dLocal</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Adjusted EBITDA达$5200万，Adjusted EBITDA/毛利润比率（运营杠杆）连续第二季度扩大，Q3 2024达67%（环比+6个百分点）<span class="src">来源：Q3 2024新闻稿，摘要</span></div>
+    <div class="ip-col ip-analysis">运营杠杆连续改善验证了业务模式可扩展性；每增加1美元毛利，有67美分转化为EBITDA，说明边际成本递减</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">EBITDA</span><span class="tag tag-biz">运营杠杆</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">过去3个月净经营活动现金（扣除商户资金）减去资本支出为$2600万，现金转化率几乎达100%净利润<span class="src">来源：Q3 2024新闻稿</span></div>
+    <div class="ip-col ip-analysis">接近100%的净利润现金转化率是高质量盈利的重要标志，体现轻资产平台模式优越性</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">现金流</span><span class="tag tag-biz">轻资产</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">跨境(XB)业务本季度创下历史新高，单季度流量首次突破$30亿大关<span class="src">来源：Q3 2024新闻稿</span></div>
+    <div class="ip-col ip-analysis">XB业务享有更高取费率，此突破意味着高利润率业务占比提升，有助于未来净取费率改善</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">跨境TPV</span><span class="tag tag-biz">高取费率</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">2. dLocal</span></div>
+  </div>
+
+  <div class="group-row">▌ B. 地区表现与业务多样性</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">阿根廷、墨西哥、埃及、其他拉美（主要是哥伦比亚和秘鲁）以及其他非洲和亚洲均增加支付量，南非表现强劲<span class="src">来源：Q3 2024新闻稿</span></div>
+    <div class="ip-col ip-analysis">地理多元化是抵御单一市场风险的护城河；南非作为非洲最大经济体的强势表现说明非洲市场正在成熟</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">地区多元化</span><span class="tag tag-mkt">非洲</span><span class="tag tag-mkt">拉美</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">在拉美、非洲和亚洲的多个国家成功集成MoneyGram（全球最大汇款和支付服务提供商之一）等主要机构<span class="src">来源：Q3 2024新闻稿</span></div>
+    <div class="ip-col ip-analysis">MoneyGram接入证明dLocal已成为汇款巨头拓展新兴市场的首选基础设施，彰显平台定位</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">B2B合作</span><span class="tag tag-comp">MoneyGram</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">继续扩大与一家主要亚洲电商平台的交易量，拓展服务地区，并已在巴西与全球最大金融科技公司之一上线<span class="src">来源：Q3 2024新闻稿</span></div>
+    <div class="ip-col ip-analysis">头部亚洲电商（可能指TikTok/字节或Shopee）拓展反映dLocal作为东南亚-拉美通道的战略价值</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">电商合作</span><span class="tag tag-mkt">亚洲</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="group-row">▌ C. 商业模式与竞争优势</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">净取费率稳定在1.2%源于差异化价值主张、持续的成本效率追求，以及解决新兴市场复杂性所带来的定价权，区别于发达市场商品化支付<span class="src">来源：Q3 2024新闻稿，管理层评述</span></div>
+    <div class="ip-col ip-analysis">这段话直接解释了dLocal的定价护城河来源：新兴市场复杂性创造了专业价值，而非简单竞价</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">护城河</span><span class="tag tag-strat">定价权</span><span class="tag tag-comp">竞争优势</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">One dLocal解决方案的全面性允许商户以边际增量实施成本添加新市场和支付方式，提供成本高效且快速的地理扩张<span class="src">来源：Q3 2024新闻稿，管理层评述</span></div>
+    <div class="ip-col ip-analysis">单一API覆盖多市场多支付方式形成飞轮效应：客户越依赖One dLocal平台，切换成本越高</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">单一API</span><span class="tag tag-biz">平台粘性</span><span class="tag tag-strat">飞轮</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">行业预测零售跨境支付市场将在2030年达到$65万亿，dLocal的目标是合理占据这一巨大可寻址市场的增长份额<span class="src">来源：Q3 2024新闻稿，管理层展望</span></div>
+    <div class="ip-col ip-analysis">$65T到2030年的TAM数字锚定了dLocal的长期成长空间，与其专注新兴市场的定位高度契合</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">TAM</span><span class="tag tag-mkt">跨境支付</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场总览</span></div>
+  </div>
+
+  <div class="group-row">▌ D. 技术创新与产品发展</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">推出Smart Requests功能，提升交易处理性能，改善转化率<span class="src">来源：Q3 2024新闻稿，技术更新</span></div>
+    <div class="ip-col ip-analysis">转化率提升直接影响商户GMV，是dLocal平台价值主张的核心，也是区别于银行直连的关键</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">智能路由</span><span class="tag tag-tech">转化率</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">开发了越来越先进的实时成本计算模型，优化处理成本，也促成毛利润实现和净取费率稳定<span class="src">来源：Q3 2024新闻稿，技术更新</span></div>
+    <div class="ip-col ip-analysis">实时成本优化是新兴市场处理器维持取费率稳定的技术护城河之一</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">成本优化</span><span class="tag tag-tech">AI/ML</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">成功在巴西部署Nupay集成，为全球商户提供新的替代支付方式（APM）<span class="src">来源：Q3 2024新闻稿，产品更新</span></div>
+    <div class="ip-col ip-analysis">Nupay是巴西Nubank的BNPL产品，集成反映dLocal持续跟进本地APM趋势的能力</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">APM</span><span class="tag tag-mkt">巴西</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">推出独立支付编排（Payment Orchestration）产品，允许商户保留Smart Routing等功能同时自己持牌直连处理商，净取费率可能更低但可扩大钱包份额<span class="src">来源：Q3 2024新闻稿，产品更新</span></div>
+    <div class="ip-col ip-analysis">Payment Orchestration是防御性产品策略：即使商户想自持牌，也无法完全离开dLocal的技术层，维护平台粘性</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">产品策略</span><span class="tag tag-tech">支付编排</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="group-row">▌ E. 宏观环境与展望</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">尽管大多数新兴市场货币疲软，仍实现了上述结果，显示业务对货币波动的韧性<span class="src">来源：Q3 2024新闻稿，管理层评述</span></div>
+    <div class="ip-col ip-analysis">新兴市场货币贬值通常不利于以美元计价的TPV；dLocal的韧性表明其部分收入来自本地结算，降低了FX风险敞口</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">FX风险</span><span class="tag tag-biz">韧性</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q4结果很大程度上取决于接下来3-4周的业绩，考虑到黑色星期五期间预期的季节性电商量提升<span class="src">来源：Q3 2024新闻稿，管理层展望</span></div>
+    <div class="ip-col ip-analysis">黑五影响说明dLocal的商户基础中电商垂直占重要比例；季节性特征与Shopify等平台收入结构类似</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">季节性</span><span class="tag tag-mkt">电商</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2. dLocal</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2024年总体来看是一个先软后强的年份，第一季度出现疲软，Q2以来持续获得动能<span class="src">来源：Q3 2024新闻稿，管理层评述</span></div>
+    <div class="ip-col ip-analysis">Q1疲软源于多个核心商户重新谈判价格，管理层坦承后改善表明执行力恢复</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">全年轨迹</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2. dLocal</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">在金融服务、SaaS、按需配送、广告、网约车和商务垂直中扩大主要账户的钱包份额，并引入新商户<span class="src">来源：Q3 2024新闻稿，管理层评述</span></div>
+    <div class="ip-col ip-analysis">垂直多元化减少了对单一行业的依赖，也反映了Uber、Meta等全球科技公司在新兴市场的快速扩张</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">垂直多元化</span><span class="tag tag-biz">客户扩展</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2. dLocal</span></div>
+  </div>
+
+  <div class="group-row">▌ F. 平台规模与行业地位</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">dLocal不到8岁，但已建立起全球最完整的新兴市场处理生态系统之一<span class="src">来源：Q3 2024新闻稿，管理层评述</span></div>
+    <div class="ip-col ip-analysis">成立时间短但规模大说明数字化跨境支付存在强烈的网络效应和先发优势</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">平台规模</span><span class="tag tag-comp">市场定位</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">我们在全球相关新兴市场的支付数字化转型、新兴和前沿市场重要性增长、跨境和即时支付方式需求激增等长期趋势的推动下获益<span class="src">来源：Q3 2024新闻稿，管理层评述</span></div>
+    <div class="ip-col ip-analysis">dLocal管理层将自身定位为新兴市场数字化支付的结构性受益者，而非周期性玩家</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">长期趋势</span><span class="tag tag-strat">战略定位</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.市场总览</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">继续在更多国家扩大运营，提供更多支付方式，并在金融服务、SaaS等垂直中获得重要账户的钱包份额<span class="src">来源：Q3 2024新闻稿</span></div>
+    <div class="ip-col ip-analysis">持续地理和APM扩张是dLocal的核心增长飞轮：更多国家→更多商户→更多TPV→更多投资能力</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">扩张策略</span><span class="tag tag-biz">飞轮</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="group-row">▌ G. 业务韧性与风险</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">尽管持续投资工程团队、后台能力和证照组合，Adjusted EBITDA同比仍下降<span class="src">来源：Q3 2024新闻稿</span></div>
+    <div class="ip-col ip-analysis">战略性投资期导致EBITDA短期同比下降，但管理层强调这对长期成功至关重要</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">成本投资</span><span class="tag tag-strat">合规许可</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2. dLocal</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">管道仍然强劲，包括现有商户的增长机会以及新商户，公司成功整合多家主要汇款公司以跨越拉美、非洲和亚洲国家服务<span class="src">来源：Q3 2024新闻稿</span></div>
+    <div class="ip-col ip-analysis">管道强劲和新客引进并举说明dLocal既有存量深化又有增量拓展，增长结构健康</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">业务管道</span><span class="tag tag-strat">增长结构</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2. dLocal</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">财务模型特征：运营杠杆和高现金转化的财务模型将助力长期价值创造<span class="src">来源：Q3 2024新闻稿，管理层评述</span></div>
+    <div class="ip-col ip-analysis">dLocal的商业模式本质是"技术平台+新兴市场合规许可基础设施"，具备典型平台软件的规模经济特征</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-fin">规模经济</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="group-row">▌ H. 监管与合规</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">持续投资证照组合（license portfolio），这对长期成功至关重要<span class="src">来源：Q3 2024新闻稿</span></div>
+    <div class="ip-col ip-analysis">在新兴市场多国维护支付牌照是极高的合规壁垒，是后来者难以复制的竞争优势</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">支付牌照</span><span class="tag tag-biz">合规壁垒</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">在新兴和前沿市场驾驭高度复杂且不断变化的支付格局和监管环境，拥有最完整的新兴市场处理生态系统之一<span class="src">来源：Q3 2024新闻稿，管理层评述</span></div>
+    <div class="ip-col ip-analysis">监管复杂性是dLocal的护城河而非障碍：跨多国多变监管的运营能力是难以复制的资产</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">监管复杂性</span><span class="tag tag-biz">护城河</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">dLocal在全球"南方"（Global South）的波动性中运营，需要驾驭这些新兴市场的复杂性<span class="src">来源：Q3 2024新闻稿，管理层评述</span></div>
+    <div class="ip-col ip-analysis">"Global South"定位直接区分了dLocal与Adyen/Stripe等主攻发达市场的竞争对手，垂直化深耕策略</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">新兴市场</span><span class="tag tag-comp">差异化定位</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="group-row">▌ I. 补充数据</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">全年预期指引维持不变（截至Q3结果和Q4至今所见情况）<span class="src">来源：Q3 2024新闻稿，展望</span></div>
+    <div class="ip-col ip-analysis">维持全年指引是信心信号，配合Q3的强劲改善，说明管理层对全年结果有充分信心</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">业绩指引</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2. dLocal</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">新兴市场货币普遍疲软的背景下，支付量和利润率均创新高，体现业务的韧性<span class="src">来源：Q3 2024新闻稿</span></div>
+    <div class="ip-col ip-analysis">dLocal的实质性货币风险对冲机制（可能通过本地结算+美元收费并行）值得深入研究</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">货币风险</span><span class="tag tag-biz">韧性</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">平台创新的改进和新解决方案的开发旨在加深竞争优势、增强产品粘性，并带来未来的收入流<span class="src">来源：Q3 2024新闻稿，管理层评述</span></div>
+    <div class="ip-col ip-analysis">持续产品创新是dLocal在竞争激烈的新兴市场维持领先地位的核心战略</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">产品创新</span><span class="tag tag-biz">粘性</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+</div>
+<div class="footer">
+  数据来源：dLocal Limited Q3 2024新闻稿（2024年11月13日）| 深度提取：Stage 2 批次3 | 信息点总数：32条
+</div>
+</body>
+</html>

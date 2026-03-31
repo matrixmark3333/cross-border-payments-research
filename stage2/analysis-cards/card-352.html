@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-352 | Currenxie Pricing — 结构化信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1 { background: #dbeafe; color: #1d4ed8; } .b-type { background: #f0fdf4; color: #166534; } .b-depth { background: #ede9fe; color: #5b21b6; } .b-rel { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; } .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; } .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; } .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; } .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; } .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; } .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; } .tag-biz { background: #dcfce7; color: #166534; border-color: #bbf7d0; } .tag-mkt { background: #fef3c7; color: #92400e; border-color: #fde68a; } .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; } .tag-strat { background: #fff7ed; color: #9a3412; border-color: #fed7aa; } .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; } .score-num { font-size: 20px; font-weight: 800; } .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; } .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; } .s7, .s8 { color: #2563eb; } .s7 .score-fill, .s8 .score-fill { background: #2563eb; } .s5, .s6 { color: #d97706; } .s5 .score-fill, .s6 .score-fill { background: #d97706; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1</span>
+    <span class="badge b-type">定价页 / 竞品数据</span>
+    <span class="badge b-depth">web_fetch 全文</span>
+    <span class="badge b-rel">相关度 95%</span>
+  </div>
+  <h1>Currenxie Pricing — 香港跨境支付平台定价结构</h1>
+  <div class="source-line">Currenxie | 定价页 | 原文：<a href="https://currenxie.com/pricing" target="_blank">currenxie.com/pricing</a> | 索引：#352</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">20</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">10</div><div class="stat-label">定价/费率类</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">产品功能类</div></div>
+  <div class="stat"><div class="stat-num">3</div><div class="stat-label">竞争分析类</div></div>
+  <div class="stat"><div class="stat-num">8.3</div><div class="stat-label">平均价值评分</div></div>
+</div>
+<div class="section">
+  <div class="ip-row" style="background:#f8fafc;">
+    <div class="col-header">原文信息点 + 来源</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header">评分</div>
+    <div class="col-header">知识库</div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">多币种钱包（Global Account）：免费，支持USD/EUR/HKD/GBP/JPY/CAD/AUD/NZD/CNH/SGD/CHF/NOK/SEK/ZAR/MXN，共15种货币。<span class="src">currenxie.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">15种货币覆盖主要G10+新兴市场，免费账户是获客钩子。与Wise/Airwallex对比，覆盖范围相当，但ZAR/MXN的包含体现对新兴市场的关注。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">多币种账户</span><span class="tag tag-fin">免费产品</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">虚拟银行收款账户（Virtual Bank Collection Accounts）：免费，支持美国、英国、欧盟、香港、澳大利亚、日本、加拿大、墨西哥本地收款。<span class="src">currenxie.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">8个主要经济体的本地账户免费提供，这是核心竞争力。让企业像本地公司一样收款，避开SWIFT费用。与Wise/Airwallex类似但免费门槛更低。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">本地账户</span><span class="tag tag-comp">核心优势</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">本地收款（Collect local payments）：每笔USD 0.75。资金即时到账钱包。<span class="src">currenxie.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">$0.75/笔本地收款费极低，适合高频小额交易。对于月处理量大的跨境电商卖家，此固定费模式比百分比费率更划算（低单价订单优势显著）。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">$0.75/笔</span><span class="tag tag-biz">本地收款</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">本地付款（Send local payments）：每笔USD 3.00，支持美国/英国/欧盟/香港/澳大利亚/加拿大/印尼/印度/马来西亚/墨西哥/菲律宾/泰国/越南/南非。<span class="src">currenxie.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">14个本地付款市场覆盖主要贸易走廊，$3/笔固定费在低汇率差环境下极具竞争力。尤其对比SWIFT（$8/笔），本地付款省去了70%+的汇款成本。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">$3/笔</span><span class="tag tag-biz">本地付款</span><span class="tag tag-comp">vs SWIFT</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">SWIFT收发款：每笔USD 8.00，覆盖全球120+国家。<span class="src">currenxie.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">$8/笔SWIFT是行业标准定价，Statrys（HKD 60-85）、传统银行（$15-50）均更贵。SWIFT作为长尾市场兜底选项，定价相对公允。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">$8/笔 SWIFT</span><span class="tag tag-comp">市场对比</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">外汇汇率：采用真实中间汇率（mid-market rate），无隐藏FX价差。Tier 1主要货币（AUD/CAD/CHF/CNH/DKK/EUR/GBP/HKD/JPY/NOK/NZD/PLN/SEK/SGD/USD）收费0.35%。<span class="src">currenxie.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">0.35%是主流定价，与Wise（约0.3-0.5%）接近，高于Statrys（from 0.1%）。"真实中间汇率"是Wise开创的透明化定价策略，Currenxie跟进。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">FX 0.35%</span><span class="tag tag-biz">透明定价</span><span class="tag tag-comp">Tier1货币</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">FX Tier 2（AED/CZK）：0.40%；Tier 3（HUF/IDR/ILS/INR/PHP/THB/VND/ZAR）：0.50%；Tier 4（MXN/MYR/RON/SAR）：0.60%。<span class="src">currenxie.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">分层FX费率结构揭示：货币流动性越差（新兴市场）、点差越大，反映真实市场成本。INR/IDR/PHP/THB/VND涵盖东南亚主要币种，0.50%对跨境电商仍具竞争力。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">FX分级</span><span class="tag tag-mkt">新兴市场</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">USD/HKD兑换特惠：仅0.10%，是所有货币对中最低费率。<span class="src">currenxie.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">USD/HKD是香港企业最常用货币对，0.10%定价（低于其他Tier的3-6倍）显示Currenxie深耕香港本土市场的战略选择，可能是流量引流工具。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">USD/HKD 0.10%</span><span class="tag tag-mkt">香港</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">企业Visa卡（Currenxie Visa Business Card）：Admin卡免费；最多5张团队卡每月HKD 50统一费用；每张额外卡HKD 15/月；所有消费享1%现金返还。<span class="src">currenxie.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">企业卡模块是跨境支付平台的增值黏性工具。1%现金返还是竞争亮点，HKD 50统一费用对小团队友好。这将帮助Currenxie从收款工具升级为完整企业支出平台。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">企业卡</span><span class="tag tag-fin">1%返现</span><span class="tag tag-strat">支出管理</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Platform API：企业用户可通过API访问Currenxie支付网络，实现规模化收款、换汇、付款。定制报价。<span class="src">currenxie.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">API层面向中大型企业客户，提供嵌入式金融能力。定制报价模式意味着大客户可获更优费率，是Currenxie向上游企业市场（如Airwallex B2B API）渗透的路径。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">Platform API</span><span class="tag tag-biz">企业客户</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Currenxie定价以美元计费（支付端），卡片以港元计费——双计费体系。<span class="src">currenxie.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">双货币计费体系（USD支付+HKD卡片）反映Currenxie同时服务国际客户和香港本地客户，是双市场定位的产品设计选择。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">定价架构</span><span class="tag tag-mkt">双市场</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">本地付款市场包含越南（VND）、印度（INR）、印尼（IDR）、马来西亚、菲律宾、泰国——覆盖东南亚主要贸易市场。<span class="src">currenxie.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">东南亚6国本地网络覆盖是Currenxie服务"中国出海企业"的核心基础设施。这些市场的本地付款网络是进入壁垒，Currenxie通过直接对接本地清算提供竞争力。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">东南亚</span><span class="tag tag-biz">本地网络</span><span class="tag tag-strat">出海服务</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span><span class="kb-tag">5.基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Currenxie强调"完全透明费用，无隐藏FX价差"（Never worry about hidden FX spreads）。<span class="src">currenxie.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">透明定价是后Wise时代的行业标准要求。Currenxie的主动声明显示市场教育已到位，用户对隐藏费用敏感度提升，透明度本身成为差异化诉求。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">透明定价</span><span class="tag tag-comp">竞争定位</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Currenxie定价结构：账户免费 + 低固定收款费（$0.75）+ 低固定付款费（$3） + 透明FX差价（0.35%起）+ 卡片订阅（HKD50/月）。<span class="src">currenxie.com/pricing 综合</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">Currenxie的盈利模型 = FX差价（主要）+ 固定交易费（次要）+ 卡片订阅（黏性收入）。典型的FinTech三层货币化架构，FX差价是核心收入驱动，类似Wise/Revolut。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">盈利模型</span><span class="tag tag-fin">FX为主</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Currenxie对比Statrys（同为香港平台）：FX费率相近（0.35% vs 0.1%起），SWIFT费用Currenxie $8 vs Statrys HKD 60-85收 + HKD 85发。<span class="src">对比#353</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">Currenxie的SWIFT费用（$8≈HKD 62）略低于Statrys发款（HKD 85），但FX费率Statrys从0.1%起更低（大额换汇优势明显）。两者竞争激烈，目标客群重叠度高。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">Currenxie vs Statrys</span><span class="tag tag-mkt">香港市场</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Currenxie提供有额外非标准费用说明页面（non-standard fees），显示定价结构的完整性。<span class="src">currenxie.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">额外费用透明披露是成熟定价策略的一部分，避免因隐藏费用引发客户投诉。对比传统银行完全不透明，这是neobank/fintech的监管合规和品牌信誉投资。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">费用透明</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Currenxie本地付款覆盖南非（ZAR）和墨西哥（MXN），超出典型亚洲平台覆盖范围。<span class="src">currenxie.com/pricing</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">ZAR/MXN的包含是差异化功能，反映Currenxie服务全球贸易走廊（非仅亚洲）的定位。对于有非洲/拉美供应商的香港贸易公司是独特价值点。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">新兴市场</span><span class="tag tag-comp">差异化功能</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.区域市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Currenxie所有账户免月费、零最低余额要求——极低门槛的入门策略。<span class="src">currenxie.com/pricing 推断</span></span></div>
+    <div class="ip-col"><span class="ip-analysis">零门槛获客（不收月费、无最低余额）的freemium模式：吸引大量SME用户注册，通过FX和交易费变现。这种PLG（Product-Led Growth）策略在香港市场有效。</span></div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">Freemium</span><span class="tag tag-strat">PLG</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.商业模式</span></div>
+  </div>
+
+</div>
+<div class="footer">card-352 | 生成时间：2026-03-24 | 来源：currenxie.com/pricing | 信息点数：18</div>
+</body>
+</html>

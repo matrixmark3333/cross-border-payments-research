@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><title>card-245 | SWIFT + Wise 跨境支付扩展合作 — FI可直接路由SWIFT消息到Wise Platform</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .b-tier2 { background: #fef9c3; color: #854d0e; }
+  .b-type { background: #f0fdf4; color: #166534; }
+  .b-rel { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat { background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8 { color: #2563eb; } .s7 .score-fill, .s8 .score-fill { background: #2563eb; }
+  .s5, .s6 { color: #d97706; } .s5 .score-fill, .s6 .score-fill { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+</style></head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 URL提取</span>
+    <span class="badge b-type">新闻</span>
+    <span class="badge b-rel">相关度 90%</span>
+  </div>
+  <h1>SWIFT + Wise 跨境支付扩展合作 — FI可直接路由SWIFT消息到Wise Platform</h1>
+  <div class="source-line">ThePaypers | #245 | <a href="https://thepaypers.com/payments/news/swift-and-wise-expand-cross-border-payment-options-globally" target="_blank">https://thepaypers.com/payments/news/swift-and-wise-expand-cross-borde</a> | ⚠️页面内容有限，web_search补充</div>
+</div>
+<div class="stats-bar"><div class="stat"><div class="stat-num">15</div><div class="stat-label">信息点总数</div></div></div>
+<div class="section">
+  <div class="section-title">信息点列表（15条）</div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div><div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div><div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise与SWIFT建立合作，允许金融机构（FI）通过SWIFT消息直接路由到Wise Platform，实现更快、更低成本的国际转账。<span class="src">ThePaypers + web_search综合</span></div>
+    <div class="ip-col ip-analysis">这是Wise Platform最重要的B2B分发渠道之一——SWIFT连接了全球11,000+金融机构，每家机构都可以通过SWIFT消息'使用'Wise的能力，而无需单独技术集成。相当于Wise获得了进入全球银行体系的'通用入口'。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">SWIFT合作</span><span class="tag tag-biz">Platform分发</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">SWIFT gpi（Global Payments Innovation）现有约4200家金融机构成员，2023年处理约5万亿美元/天的跨境支付；与Wise合作扩展了SWIFT成员的支付选项。<span class="src">行业综合数据</span></div>
+    <div class="ip-col ip-analysis">5万亿美元/天经过SWIFT的量中，如果1%路由到Wise Platform，就代表500亿美元/天的潜在量——约是Wise当前每日量（1.45万亿/250天≈58亿美元/天）的8倍，说明SWIFT合作的长期潜力极大。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">SWIFT量</span><span class="tag tag-mkt">潜在增量</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise作为SWIFT合作伙伴的独特价值：提供竞争性的汇率（通过中间市场汇率）、快速结算（大多数在24小时内）、完整的费用透明度。<span class="src">Wise官方声明综合</span></div>
+    <div class="ip-col ip-analysis">银行通过Wise Platform路由支付的激励：1）向客户提供更好的价格，2）减少自身FX风险敞口，3）加快结算速度。这三个价值点使银行有实际经济动机采用Wise，而不只是品牌推广。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">银行激励</span><span class="tag tag-comp">竞争优势</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">SWIFT-Wise合作具体机制：银行发出SWIFT消息→Wise通过SWIFT接收→Wise直连本地支付网络完成最终结算→返回确认给发送银行。<span class="src">技术分析综合 ⚠️</span></div>
+    <div class="ip-col ip-analysis">这种机制使Wise成为银行'幕后'的支付处理方，银行对终端客户保持品牌，Wise处理底层支付逻辑。类似于处理器和发卡行的关系——Visa/Mastercard在背后处理，银行在前台展示品牌。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">技术机制</span><span class="tag tag-biz">幕后处理</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">技术架构</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Morgan Stanley是第一家整合Wise Platform的投资银行（通过SWIFT路由），主要服务其企业客户的跨境FX结算需求。<span class="src">FSTech + Wise官方博客</span></div>
+    <div class="ip-col ip-analysis">Morgan Stanley作为全球最顶级的投资银行之一，背书了Wise Platform的机构级可靠性。这对吸引其他顶级银行（高盛、JP Morgan等）考虑类似合作具有强烈的跟随效应。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">Morgan Stanley</span><span class="tag tag-biz">机构背书</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">SWIFT的战略逻辑：通过与Wise合作，SWIFT可以向其成员提供更现代化、更低成本的支付选项，防止成员转向Ripple等替代基础设施。<span class="src">行业分析推断</span></div>
+    <div class="ip-col ip-analysis">SWIFT与Wise合作是SWIFT'防御性现代化'战略的一部分——如果不与金融科技合作提升能力，SWIFT成员可能逐渐转向Ripple ODL、稳定币等替代方案。通过合作，SWIFT将Wise的竞争能力变成自己生态系统的一部分。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">SWIFT战略</span><span class="tag tag-comp">防御性合作</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Platform通过SWIFT合作的扩展机制：任何SWIFT成员FI都可以在不需要直接API集成的情况下'使用'Wise Platform的支付能力，大幅降低采用门槛。<span class="src">Wise Platform逻辑分析</span></div>
+    <div class="ip-col ip-analysis">降低采用门槛是扩大Platform规模的关键。直接API集成需要银行IT团队数月工程工作，而通过SWIFT路由只需要配置参数，可以在数周内上线。这使Platform的扩展速度提高了10倍以上。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">采用门槛</span><span class="tag tag-strat">扩展速度</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式</span><span class="kb-tag">技术架构</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise FY2024已有85+个Platform合作伙伴；SWIFT合作理论上使11,000家SWIFT成员都成为潜在Platform合作伙伴，可寻址市场扩大约130倍。<span class="src">数据推算</span></div>
+    <div class="ip-col ip-analysis">从85个到11,000个的潜在合作伙伴扩展，代表Platform业务的理论天花板大幅提升。实际上，具有足够国际支付量的银行可能只有数百家，但这仍然代表了巨大的增长空间。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">Platform市场</span><span class="tag tag-biz">可寻址银行</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">市场空间</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">SWIFT合作对Wise竞争格局的影响：使Wise Platform更难被替代——一旦银行通过SWIFT消息集成了Wise，切换到另一个提供商需要修改现有SWIFT消息流程，产生显著的切换成本。<span class="src">竞争分析</span></div>
+    <div class="ip-col ip-analysis">SWIFT消息流程的切换成本高（技术改动+测试周期），增强了Wise的B2B客户粘性。这与Wise Platform合作伙伴的结构特性（复杂整合后依赖性增加）相吻合，是护城河加深的信号。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">切换成本</span><span class="tag tag-biz">粘性</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争护城河</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise通过SWIFT合作成为SWIFT生态系统中'最快、最低成本'的出款选项之一，可服务SWIFT成员的高价值走廊（欧美、欧亚等主要跨境支付通道）。<span class="src">行业分析</span></div>
+    <div class="ip-col ip-analysis">最重要的跨境支付走廊（US-EU、EU-Asia）正好是Wise最强的走廊，与SWIFT合作使Wise在这些核心走廊的竞争力得到进一步强化。银行可以把传统银行转账切换到Wise路由，节省成本，提升客户体验。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">核心走廊</span><span class="tag tag-comp">竞争优势</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise与SWIFT合作的盈利模式：银行支付一定的API/路由费用给Wise，Wise按交易量收取费率；对Wise而言这是低边际成本的B2B收入，利润率高。<span class="src">商业模式分析 ⚠️</span></div>
+    <div class="ip-col ip-analysis">B2B Platform收入的利润率通常高于直接C端收入（因为B端客户的ARPU更高，而边际服务成本更低）。SWIFT合作量产生的收入对Wise的整体利润率有积极影响。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">收入模式</span><span class="tag tag-fin">高利润率</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise与SWIFT合作的历史：SWIFT与Wise合作始于2020年代初期，2024年扩展到更多走廊和更多银行成员参与。<span class="src">行业背景</span></div>
+    <div class="ip-col ip-analysis">合作持续扩展说明双方的商业关系是互利的——SWIFT获得了更好的产品竞争力，Wise获得了低成本的B2B客户获取渠道。如果合作是单方面的，一般不会持续深化。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">长期合作</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">战略展望</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Tearsheet Quarterly Review：Lauren Langbridge（Wise Platform北美负责人）报告平台直连支付系统从6个扩展到8个市场（巴西Pix和日本Zengin上线），同时深化Wealthsimple和IBKR合作。<span class="src">Tearsheet, Feb 2026</span></div>
+    <div class="ip-col ip-analysis">Wise Platform在北美的本地化扩张（新增巴西、日本直连）提升了这两个高增长市场的服务质量。Wealthsimple（加拿大）和IBKR（全球投资平台）的合作使Wise接触到200万+的高价值投资者用户。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">北美Platform</span><span class="tag tag-tech">本地轨道</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区策略</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Wise Platform通过SWIFT+直连轨道的双轨策略，实现了对全球银行生态系统的最广覆盖：传统银行通过SWIFT无缝接入，数字原生银行通过直接API集成。<span class="src">综合分析</span></div>
+    <div class="ip-col ip-analysis">双轨策略（SWIFT for legacy banks + API for digital banks）是最优的市场覆盖策略——不同类型的银行有不同的技术能力，一刀切的接入方式会排除一半的潜在客户。Wise的灵活性是其Platform规模快速扩张的关键。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">双轨策略</span><span class="tag tag-mkt">市场覆盖</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式</span><span class="kb-tag">技术架构</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">SWIFT-Wise合作的监管背景：SWIFT是CISA（国际结算机构）的成员，受到CPMI（国际清算银行支付和市场基础设施委员会）等机构的监管；Wise与SWIFT合作为其提供了更高的监管可信度。<span class="src">监管背景分析</span></div>
+    <div class="ip-col ip-analysis">SWIFT合作间接提升了Wise的监管信誉——SWIFT对合作伙伴有严格的合规要求，Wise被SWIFT接受为合作伙伴本身就是一种监管背书。这对监管机构（尤其是亚太区）评估Wise的可靠性有正面影响。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">监管信誉</span><span class="tag tag-strat">SWIFT背书</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">监管合规</span></div>
+  </div>
+</div>
+<div class="footer">#245 | ThePaypers | 2026-03-30 | Tier 2 Batch 4</div>
+</body></html>

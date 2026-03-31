@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-404 | Nium Series E $5000万融资 — GIC领投，估值$14亿，实时B2B支付基础设施</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier2  { background: #e0f2fe; color: #0369a1; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .warn-badge { display: inline-block; background: #fef9c3; color: #854d0e; border: 1px solid #fde047; border-radius: 4px; padding: 1px 6px; font-size: 11px; font-weight: 700; margin-left: 4px; }
+</style>
+</head>
+<body>
+
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 URL分析</span>
+    <span class="badge b-type">融资新闻</span>
+    <span class="badge b-depth">全文提取</span>
+    <span class="badge b-rel">相关度 85%</span>
+  </div>
+  <h1>Nium Series E $5000万融资 — GIC领投，估值$14亿，实时B2B支付基础设施 </h1>
+  <div class="source-line">Nium / PRNewswire | 索引：#404 | 原文：<a href="https://www.prnewswire.com/news-releases/nium-raises-us50-million-in-series-e-round-to-expand-real-time-payments-global-infrastructure-302163987.html" target="_blank">https://www.prnewswire.com/news-releases/nium-raises-us50-million-in-series-e-ro...</a></div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">7</div><div class="stat-label">信息点总数</div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">信息点列表 <span class="count">7条</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Nium 2024年6月完成Series E $5000万融资，由东南亚主权财富基金（GIC背景）领投，估值14亿美元（独角兽）<span class="src">来源：<a href="https://www.prnewswire.com/news-releases/nium-raises-us50-million-in-series-e-round-to-expand-real-time-payments-global-infrastructure-302163987.html" target="_blank">PRNewswire Nium#404</a></span></div>
+    <div class="ip-col ip-analysis">GIC（新加坡主权基金）背书赋予Nium在东南亚市场的政策可信度，独角兽地位吸引更多机构合作伙伴。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">Nium</span><span class="tag tag-fin">Series E</span><span class="tag tag-fin">独角兽</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局/Nium</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Nium B2B支付市场目标：预计到2030年达到1750亿美元（Fortune Business Insights数据），Nium专注实时B2B支付基础设施<span class="src">来源：<a href="https://www.prnewswire.com/news-releases/nium-raises-us50-million-in-series-e-round-to-expand-real-time-payments-global-infrastructure-302163987.html" target="_blank">PRNewswire Nium#404</a></span></div>
+    <div class="ip-col ip-analysis">B2B支付市场$175T（2030）目标TAM巨大。Nium定位为B2B支付基础设施供应商（而非直接面向终端用户），B2B SaaS模式。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">B2B支付</span><span class="tag tag-mkt">TAM</span><span class="tag tag-tech">实时支付</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">市场规模/B2B</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Nium 2023年收入增长50%+；实时出金网络覆盖220+国家，100个国家实时到账；发卡业务覆盖34国<span class="src">来源：<a href="https://www.prnewswire.com/news-releases/nium-raises-us50-million-in-series-e-round-to-expand-real-time-payments-global-infrastructure-302163987.html" target="_blank">PRNewswire Nium#404</a></span></div>
+    <div class="ip-col ip-analysis">220国覆盖+100国实时是Nium的核心竞争指标，在覆盖广度上与Airwallex、Wise相当，在实时比例上领先。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">Nium</span><span class="tag tag-tech">实时到账</span><span class="tag tag-mkt">全球覆盖</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局/技术</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Nium持有40+国监管牌照，支持100种货币出金，35个市场本地收款；最近获得日本Type 1 FTSP牌照（全球Fintech首例）<span class="src">来源：<a href="https://www.prnewswire.com/news-releases/nium-raises-us50-million-in-series-e-round-to-expand-real-time-payments-global-infrastructure-302163987.html" target="_blank">PRNewswire Nium#404</a></span></div>
+    <div class="ip-col ip-analysis">日本Type 1 FTSP是Fintech史上首次，意味着Nium在日本市场可以合规处理高价值跨境支付。日本作为全球汇款主要来源国战略价值高。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">日本</span><span class="tag tag-biz">Nium</span><span class="tag tag-reg">监管牌照</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">合规/市场扩张</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Nium近期赢得标志性客户：Weel（澳大利亚费控SaaS）和Emirates NBD（阿联酋领先银行），B2B基础设施模式验证<span class="src">来源：<a href="https://www.prnewswire.com/news-releases/nium-raises-us50-million-in-series-e-round-to-expand-real-time-payments-global-infrastructure-302163987.html" target="_blank">PRNewswire Nium#404</a></span></div>
+    <div class="ip-col ip-analysis">Nium同时赢得Fintech（Weel）和传统银行（Emirates NBD）客户，证明其B2B基础设施模式对两类客群的吸引力。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">机构客户</span><span class="tag tag-biz">Nium</span><span class="tag tag-tech">B2B基础设施</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式/客户</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Nium聘请前美国银行高管Alexandra Johnson为首席支付官，前PayPal高管为CHO，前Revolut高管为VP Finance<span class="src">来源：<a href="https://www.prnewswire.com/news-releases/nium-raises-us50-million-in-series-e-round-to-expand-real-time-payments-global-infrastructure-302163987.html" target="_blank">PRNewswire Nium#404</a></span></div>
+    <div class="ip-col ip-analysis">引进Bank of America、PayPal、Revolut高管是典型的从FinTech向机构化转型的信号，为机构客户获取提供信任基础。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">人才战略</span><span class="tag tag-biz">机构化</span><span class="tag tag-biz">Nium</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局/管理团队</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Nium用募资资金：扩展全球网络、加速产品创新、招募顶尖人才、进行M&A收购活动<span class="src">来源：<a href="https://www.prnewswire.com/news-releases/nium-raises-us50-million-in-series-e-round-to-expand-real-time-payments-global-infrastructure-302163987.html" target="_blank">PRNewswire Nium#404</a></span></div>
+    <div class="ip-col ip-analysis">资金用途明确包含M&A，与Airwallex"买牌"策略相似。通过收购实现快速市场进入是当前跨境支付市场的主流扩张路径。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">M&A</span><span class="tag tag-biz">Nium</span><span class="tag tag-strat">扩张策略</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">战略/扩张</span></div>
+  </div>
+</div>
+
+<div class="footer">生成日期：2026-03-30 | 数据来源：Nium / PRNewswire | 编号：#404 | Tier 2 分析卡 | </div>
+</body>
+</html>

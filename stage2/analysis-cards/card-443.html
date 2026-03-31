@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-443 | 人人都是产品经理：详解SWIFT — 全球布局、跨境支付模式、GPI支付创新</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier2  { background: #e0f2fe; color: #0369a1; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .warn-badge { display: inline-block; background: #fef9c3; color: #854d0e; border: 1px solid #fde047; border-radius: 4px; padding: 1px 6px; font-size: 11px; font-weight: 700; margin-left: 4px; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 URL分析</span>
+    <span class="badge b-type">技术深度文章</span>
+    <span class="badge b-depth">全文提取</span>
+    <span class="badge b-rel">相关度 90%</span>
+  </div>
+  <h1>人人都是产品经理：详解SWIFT — 全球布局、跨境支付模式、GPI支付创新 </h1>
+  <div class="source-line">人人都是产品经理（陈天宇宙） | 索引：#443 | 原文：<a href="https://www.woshipm.com/share/6229324.html" target="_blank">https://www.woshipm.com/share/6229324.html</a></div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">6</div><div class="stat-label">信息点总数</div></div>
+</div>
+<div class="section">
+  <div class="section-title">信息点列表 <span class="count">6条</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">SWIFT仅负责信息流传递，不处理资金流；CHIPS/Fedwire等本地清算系统处理实际资金流动<span class="src">来源：<a href="https://www.woshipm.com/share/6229324.html" target="_blank">#443</a></span></div>
+    <div class="ip-col ip-analysis">SWIFT是"金融互联网"，只传递支付指令；真正的资金流动通过各国本地清算系统完成。这个区别是理解国际支付的关键。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">SWIFT</span><span class="tag tag-tech">信息流</span><span class="tag tag-tech">清算体系</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础知识/SWIFT</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">SWIFT覆盖200+国家11000+金融机构；美元和欧元在SWIFT处理业务量中合计超过70%，中国持有一个董事席位<span class="src">来源：<a href="https://www.woshipm.com/share/6229324.html" target="_blank">#443</a></span></div>
+    <div class="ip-col ip-analysis">美元+欧元占70%意味着美国和欧洲对SWIFT有实质性控制权，这是SWIFT被用于制裁（俄罗斯）的根本原因。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">SWIFT治理</span><span class="tag tag-fin">美元主导</span><span class="tag tag-reg">制裁工具</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政治经济/SWIFT</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">CIPS Phase1（2015年）→Phase2（2018年）：从信息+清算双功能，到"5×24+4"运行时间覆盖全球时区<span class="src">来源：<a href="https://www.woshipm.com/share/6229324.html" target="_blank">#443</a></span></div>
+    <div class="ip-col ip-analysis">CIPS"5×24+4"运行模式（每天21小时+4小时净额结算）是人民币国际化的重要基础设施升级，减少跨时区清算断层。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">CIPS运行</span><span class="tag tag-reg">人民币</span><span class="tag tag-tech">基础设施</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">清算体系/CIPS</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">一笔从中国到美国的汇款路径：CIPS清算人民币→中国银行美国分行换汇→CHIPS转给花旗→花旗入账Bob<span class="src">来源：<a href="https://www.woshipm.com/share/6229324.html" target="_blank">#443</a></span></div>
+    <div class="ip-col ip-analysis">完整汇款示例揭示跨境支付"信息流+资金流"双流转机制，以及中国银行在CHIPS中的直接参与者地位（中、建、工、招、交5家）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">汇款路径</span><span class="tag tag-biz">中银美国</span><span class="tag tag-tech">实例分析</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">技术架构/实例</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">CLS（持续连接结算）：解决外汇赫斯塔特风险（一方支付后对方违约），日处理金额数万亿美元（全球外汇日交易量90%+）<span class="src">来源：<a href="https://www.woshipm.com/share/6229324.html" target="_blank">#443</a></span></div>
+    <div class="ip-col ip-analysis">CLS的PvP机制（同步交收）是全球外汇市场安全运行的基础，$6.6万亿/天的外汇市场依赖CLS消除结算风险。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">CLS</span><span class="tag tag-fin">外汇清算</span><span class="tag tag-fin">赫斯塔特风险</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">清算体系/外汇</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">全球清算体系格局：美国（Fedwire+CHIPS）、欧元区（TARGET2+SEPA）、中国（HVPS+CIPS）、多币种（CLS）<span class="src">来源：<a href="https://www.woshipm.com/share/6229324.html" target="_blank">#443</a></span></div>
+    <div class="ip-col ip-analysis">四大清算中心对应四个货币区，未来人民币国际化的关键是CIPS覆盖扩大和直接参与者增加，最终达到SWIFT/CHIPS可类比规模。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">全球清算格局</span><span class="tag tag-reg">货币区</span><span class="tag tag-reg">人民币国际化</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">清算体系/全球格局</span></div>
+  </div>
+</div>
+<div class="footer">生成日期：2026-03-30 | 人人都是产品经理（陈天宇宙） | #443 | Tier 2</div>
+</body>
+</html>

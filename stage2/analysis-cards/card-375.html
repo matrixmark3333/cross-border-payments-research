@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-375 | Airwallex Series G $330M — 结构化信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1 { background: #dbeafe; color: #1d4ed8; }
+  .b-type { background: #f0fdf4; color: #166534; }
+  .b-depth { background: #ede9fe; color: #5b21b6; }
+  .b-rel { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1 新闻</span>
+    <span class="badge b-type">融资新闻</span>
+    <span class="badge b-depth">全文获取</span>
+    <span class="badge b-rel">相关度 95%</span>
+  </div>
+  <h1>Airwallex Series G $330M — 估值$8B，旧金山第二总部，印尼牌照收购</h1>
+  <div class="source-line">Business Times SG | 发布：2025-12-08 | 原文：<a href="https://www.businesstimes.com.sg/startups-tech/startups/airwallex-raises-us330-million-series-g-funding-round-led-addition" target="_blank">Series G Announcement</a> | 索引：#375</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">14</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">融资/估值类</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">战略类</div></div>
+  <div class="stat"><div class="stat-num">3</div><div class="stat-label">市场扩张类</div></div>
+  <div class="stat"><div class="stat-num">8.2</div><div class="stat-label">平均价值评分</div></div>
+</div>
+<div class="section">
+  <div class="ip-row" style="background:#f8fafc;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Series G融资$330M，由Addition领投，T. Rowe Price和Robinhood Ventures参与；本轮完成后估值$8B（较Series F的$6.2B上涨约30%）。<span class="src">来源：Business Times SG #375</span></span></div>
+    <div class="ip-col ip-analysis">6个月内估值从$6.2B升至$8B（+29%），在融资困难的2025年市场中极具说服力。Addition、T. Rowe Price等顶级投资者的背书加强了市场信心。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">融资</span><span class="tag tag-fin">估值</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.x公司档案(Airwallex)</span><span class="kb-tag">4.3竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">在旧金山设立第二全球总部（继新加坡之后），12个月内美国团队规模翻倍至400人，主要集中在旧金山。<span class="src">来源：Business Times SG #375</span></span></div>
+    <div class="ip-col ip-analysis">双总部战略（新加坡+旧金山）代表Airwallex向美国市场全面进攻：旧金山是科技人才和投资者的核心枢纽，双总部有助于吸引顶级美国工程和销售人才，同时维护亚太业务根基。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">战略</span><span class="tag tag-mkt">地理扩张</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.x公司档案(Airwallex)</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">2025年10月年化交易量翻倍至$235B+（同比翻倍），ARR同时突破$1B，YoY增速约90%。<span class="src">来源：Business Times SG #375</span></span></div>
+    <div class="ip-col ip-analysis">$235B年化交易量是规模化的重要标志；对比$1B ARR意味着Airwallex的Take Rate约为0.43%，属于企业支付平台的正常区间（低于C2C汇款但高于银行批发）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">TPV</span><span class="tag tag-fin">Take Rate</span><span class="tag tag-fin">增长率</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.x公司档案(Airwallex)</span><span class="kb-tag">3.2商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">收购印度尼西亚Skye Sab Indonesia，获得Category 1支付许可证（Penyedia Jasa Pembayaran Category 1），可提供全部核心支付活动。<span class="src">来源：Business Times SG #375</span></span></div>
+    <div class="ip-col ip-analysis">印尼是东南亚最大经济体（2.7亿人口），Category 1牌照是最全面的许可类别。通过收购而非自申请，快速进入这一关键市场，继续"先证后拓"战略。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">地理扩张</span><span class="tag tag-strat">战略</span><span class="tag tag-comp">竞争格局</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.1区域市场</span><span class="kb-tag">6.1监管环境</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">AI仍是首要优先级：Expense Submission Agent上线（自动收据收集、对账、分类费用并填写提交字段）；后端已将AI整合入运营工作流提升效率和准确性。<span class="src">来源：Business Times SG #375</span></span></div>
+    <div class="ip-col ip-analysis">AI Agent的具体落地案例（费用管理自动化）显示Airwallex正将AI转化为产品功能而非仅是营销叙事；这将是其相对于传统银行和早期Fintech竞争者的差异化优势。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">AI</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.1商业模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Lucy Liu（联创&总裁）表示："美国业务增长很快，需要更多本地支持"；美国市场被视为最重要的单一增长市场。<span class="src">来源：Business Times SG #375</span></span></div>
+    <div class="ip-col ip-analysis">管理层将美国定位为最优先的单一市场，而非多市场均衡扩张。这与Wise同期将美国列为主要IPO目标市场的战略完全一致，说明美国B2B跨境支付市场是当前最大的竞争战场。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">战略</span><span class="tag tag-mkt">地理扩张</span><span class="tag tag-comp">竞争格局</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">7.3区域市场</span><span class="kb-tag">4.1竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Series G投资者阵容：Addition（领投）、T. Rowe Price、Activant、Lingotto、Robinhood Ventures（新增），以及TIAA Ventures（界面新闻补充）。<span class="src">来源：Business Times SG #375，界面新闻 #400</span></span></div>
+    <div class="ip-col ip-analysis">T. Rowe Price（传统资管巨头）的参与是重要信号：机构级长线资本进入表明Airwallex已具备IPO前期质量；Robinhood Ventures参与可能预示未来消费金融产品的协同探索。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">融资</span><span class="tag tag-fin">估值</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.x公司档案(Airwallex)</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Airwallex于2025年扩展到12个新市场，全球牌照已达80个，覆盖200+国家/地区。<span class="src">来源：Business Times SG #375</span></span></div>
+    <div class="ip-col ip-analysis">一年12个新市场+累计80牌照，以每年约10-15个新牌照的速度扩张，意味着Airwallex需要持续的法律/合规团队投入；但这也是其他竞争者无法快速复制的护城河。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">地理扩张</span><span class="tag tag-strat">护城河</span></div></div>
+    <div class="ip-col"><div class="score s7"><div class="score-num">7</div><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">6.1监管环境</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">新加坡保留亚洲总部地位，定位为亚洲地区枢纽。"Everywhere all at once"是Lucy Liu对全球化战略的描述。<span class="src">来源：Business Times SG #375</span></span></div>
+    <div class="ip-col ip-analysis">双总部+强调亚洲总部留存，是对亚太投资者和客户的重要信号：Airwallex不会因美国扩张而放弃其亚太基础。但管理注意力分散是双总部模式的潜在挑战。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">战略</span><span class="tag tag-mkt">地理扩张</span></div></div>
+    <div class="ip-col"><div class="score s6"><div class="score-num">6</div><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.x公司档案(Airwallex)</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Airwallex背后股东包括腾讯（Tencent），是其早期战略投资者之一。<span class="src">来源：Business Times SG #375</span></span></div>
+    <div class="ip-col ip-analysis">腾讯背书为Airwallex在中国市场的信誉和关系网络提供了重要支撑，也是其获得中国支付牌照（通过商物通收购）的隐性有利条件。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">融资</span><span class="tag tag-strat">战略</span></div></div>
+    <div class="ip-col"><div class="score s7"><div class="score-num">7</div><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.x公司档案(Airwallex)</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">2025年Airwallex融资时间线：Series F $300M（2025年5月，估值$6.2B）→ Series G $330M（2025年12月，估值$8B）；半年内连续两轮共融资$630M。<span class="src">来源：Business Times SG #375，Forbes信息 #412</span></span></div>
+    <div class="ip-col ip-analysis">半年内连续两轮融资$630M是对极高增长速度的资本配合；这表明公司在加速扩张同时维持了资本效率，而非陷入"烧钱换增长"模式。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">融资</span><span class="tag tag-fin">估值</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.x公司档案(Airwallex)</span><span class="kb-tag">4.3竞争格局</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Airwallex已实现对200,000+全球客户的服务，其中超过一半使用多个产品（per EOY blog）。<span class="src">来源：Airwallex EOY Blog #377，Business Times确认 #375</span></span></div>
+    <div class="ip-col ip-analysis">200K+客户中超50%多产品使用，ARPU潜力巨大；多产品渗透率提升是Airwallex ARPU增长和收入可见度提升的核心驱动。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">用户增长</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.x公司档案(Airwallex)</span><span class="kb-tag">3.3商业模式</span></div>
+  </div>
+
+</div>
+<div class="footer">全文获取 | 索引 #375 | 来源：Business Times SG | 生成时间：2026-03-24</div>
+</body>
+</html>

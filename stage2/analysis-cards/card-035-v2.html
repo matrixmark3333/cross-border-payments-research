@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-035-v2 | dLocal Q4 2024 Full Year Results — 结构化信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #d97706; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier2  { background: #fef3c7; color: #92400e; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  .b-warn   { background: #fee2e2; color: #991b1b; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #d97706; text-decoration: none; }
+  .stats-bar { background: #fffbeb; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #fde68a; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #d97706; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .warning-strip { background: #fef3c7; padding: 10px 28px; font-size: 12px; color: #92400e; border-bottom: 1px solid #fde68a; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fffbf0; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #fffbeb; color: #92400e; border: 1px solid #fde68a; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+</style>
+</head>
+<body>
+
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 摘要级</span>
+    <span class="badge b-type">财报 / 业绩发布</span>
+    <span class="badge b-depth">web_fetch 成功</span>
+    <span class="badge b-rel">相关度 100%</span>
+  </div>
+  <h1>dLocal Q4 &amp; FY2024 Financial Results</h1>
+  <div class="source-line">GlobeNewswire / dLocal (NASDAQ: DLO) | 发布：2025年2月27日 | 原文：<a href="https://www.globenewswire.com/news-release/2025/02/27/3034284/0/en/dLocal-Reports-2024-Fourth-Quarter-Financial-Results.html" target="_blank">globenewswire.com</a> | 索引：#035</div>
+</div>
+
+<div class="warning-strip">
+  ⚠️ Tier 2 摘要级 — 原文为新闻稿（非完整年报/SEC 20-F），部分运营明细（如分国别数据、完整财务报表附注）未在新闻稿中披露。建议结合 dLocal SEC 20-F（索引#38）做深度分析。
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">18</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">10</div><div class="stat-label">财务数据类</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">战略/观点类</div></div>
+  <div class="stat"><div class="stat-num">3</div><div class="stat-label">市场/行业类</div></div>
+  <div class="stat"><div class="stat-num">7.8</div><div class="stat-label">平均价值评分</div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">信息点列表 — 18条</div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <!-- A. 核心财务数据 -->
+  <div class="ip-row" style="background:#f8fafc; grid-column:1/-1; display:block; padding:6px 0 6px 0; font-size:11px; font-weight:800; color:#475569; letter-spacing:.06em; text-transform:uppercase; border-bottom:1px solid #e2e8f0;">▌ A. FY2024 全年数据</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024 TPV（总支付量）$25.6B，同比+45%；Q4 TPV $7.7B，+51% YoY，+18% QoQ<span class="src">来源：GlobeNewswire业绩新闻稿</span></div>
+    <div class="ip-col ip-analysis">TPV增速（+45%）远超Revenue增速（+15%），反映Take Rate压缩趋势显著。但Q4 TPV环比+18%（季度加速）说明业务动能在下半年持续改善，与"从Q1弱势到Q4强劲"的全年叙事一致</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">TPV</span><span class="tag tag-fin">增长率</span><span class="tag tag-biz">交易量</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.5 dLocal</span><span class="kb-tag">1.1 市场规模</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024 Revenue $746M，+15% YoY；Q4 Revenue $204M（首次单季破$200M），+9% YoY，+10% QoQ<span class="src">来源：业绩新闻稿</span></div>
+    <div class="ip-col ip-analysis">Revenue增速（+15%）远低于TPV（+45%），差距反映Take Rate压缩。固定汇率下Q4营收增速约+40%（vs报告的+9%），说明新兴市场货币贬值是主要扭曲因素——是理解dLocal必须区分的关键变量</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">营收</span><span class="tag tag-fin">汇率影响</span><span class="tag tag-mkt">新兴市场</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.5 dLocal</span><span class="kb-tag">3.1 收入模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024 Gross Profit $295M，+6% YoY；Q4 GP $84M（创季度新高），+20% YoY，+7% QoQ<span class="src">来源：业绩新闻稿</span></div>
+    <div class="ip-col ip-analysis">全年GP仅+6%（低于营收+15%），毛利率受Take Rate下降压缩。但Q4 GP+20%（高于营收+9%），说明Q4毛利率在反弹——这是最重要的正面信号，指向Take Rate下降趋势的可能企稳</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">毛利润</span><span class="tag tag-fin">毛利率</span><span class="tag tag-biz">Take Rate</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.5 dLocal</span><span class="kb-tag">3.3 成本结构</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024 Adjusted EBITDA $189M，-7% YoY；Q4 EBITDA $57M，+16% YoY，+9% QoQ；EBITDA/GP margin全年64%，Q4达68%<span class="src">来源：业绩新闻稿</span></div>
+    <div class="ip-col ip-analysis">全年EBITDA同比下降（-7%）是因为全年GP增速低+规模投入大；但Q4 EBITDA+16%且margin回升至68%，说明利润质量在改善。68%的EBITDA/GP是极高水平（轻资产基础设施特征）</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">EBITDA</span><span class="tag tag-fin">利润率</span><span class="tag tag-biz">盈利模式</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.5 dLocal</span><span class="kb-tag">3.1 收入模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q4 Net Take Rate（净费率）1.1%，低于前几季度；受更高交易量→更低费率、付款份额上升、新兴市场货币贬值影响<span class="src">来源：业绩新闻稿</span></div>
+    <div class="ip-col ip-analysis">Net Take Rate 1.1%是dLocal的核心盈利指标（不同于Wise的Gross Take Rate）。驱动Take Rate下降的三个因素中，"高量→低价"是结构性压力，货币贬值是外生变量，付款份额上升是业务mix转变——需持续监测哪个因素主导</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-biz">定价压力</span><span class="tag tag-mkt">新兴市场</span><span class="tag tag-fin">汇率</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.5 dLocal</span><span class="kb-tag">3.2 Take Rate</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FY2024 NRR（净收入留存率）113%；Q4 NRR 106%<span class="src">来源：业绩新闻稿</span></div>
+    <div class="ip-col ip-analysis">全年NRR 113%属于健康水平（>100%说明现有客户扩张贡献大于流失），但Q4下滑至106%值得警惕——可能反映部分大客户在Take Rate下行周期减少支出，或货币贬值压低了美元口径的Revenue留存</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">NRR</span><span class="tag tag-biz">客户留存</span><span class="tag tag-comp">竞争护城河</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.5 dLocal</span><span class="kb-tag">4.2 护城河</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Net Income to FCF转化率全年"exits above 100%"（净利润→FCF转化率超100%）<span class="src">来源：业绩新闻稿</span></div>
+    <div class="ip-col ip-analysis">FCF转化率>100%是极强的现金生成质量信号（少数科技公司能做到），说明dLocal的营运资本轻、资本支出极低。这支撑了其"强现金生成模型"的投资主题，是真实的护城河</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">FCF</span><span class="tag tag-fin">现金流</span><span class="tag tag-comp">竞争护城河</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.5 dLocal</span><span class="kb-tag">3.1 收入模式</span></div>
+  </div>
+
+  <!-- B. 运营与地理 -->
+  <div class="ip-row" style="background:#f8fafc; grid-column:1/-1; display:block; padding:6px 0 6px 0; font-size:11px; font-weight:800; color:#475569; letter-spacing:.06em; text-transform:uppercase; border-bottom:1px solid #e2e8f0;">▌ B. 运营与地理扩张</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q4增长亮点地区：阿根廷、埃及、其他拉美、其他非洲及亚洲；跨境量（cross-border volumes）持续增长，来自向更多前沿市场扩张<span class="src">来源：业绩新闻稿</span></div>
+    <div class="ip-col ip-analysis">dLocal的核心逻辑是"越偏远越有价值"——核心市场（巴西、墨西哥）竞争激烈，利润已被压缩；而非洲/中东等前沿市场Take Rate更高、竞争对手更少。这一扩张方向在逻辑上合理但执行风险更大</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">地理扩张</span><span class="tag tag-mkt">新兴市场</span><span class="tag tag-strat">前沿市场</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.5 dLocal</span><span class="kb-tag">7.2 新兴市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2024年新增9个支付牌照/注册，含英国FCA授权支付机构（Authorised Payment Institution）牌照<span class="src">来源：业绩新闻稿</span></div>
+    <div class="ip-col ip-analysis">FCA牌照是dLocal进入欧洲市场的监管通行证，也是服务全球大型电商（如向欧洲支付/收款）的必要条件。每年新增9个牌照说明监管基础设施建设持续投入，这是中小竞争对手难以快速复制的护城河</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">支付牌照</span><span class="tag tag-reg">FCA</span><span class="tag tag-comp">竞争护城河</span><span class="tag tag-strat">合规投入</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.5 dLocal</span><span class="kb-tag">6.1 监管环境</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">固定汇率下Q4营收增速约+40%（vs报告的+9%）；全年固定汇率增速约+45%（vs报告+15%）<span class="src">来源：业绩新闻稿（管理层表述）</span></div>
+    <div class="ip-col ip-analysis">汇率调整后的实际增速（+40-45%）与TPV增速接近，说明业务本身增长非常健康——货币贬值是最大的"会计扭曲"。分析dLocal时，固定汇率指标远比报告数字更能反映真实经营质量</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">固定汇率增速</span><span class="tag tag-fin">汇率影响</span><span class="tag tag-biz">分析框架</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.5 dLocal</span></div>
+  </div>
+
+  <!-- C. 战略与前景 -->
+  <div class="ip-row" style="background:#f8fafc; grid-column:1/-1; display:block; padding:6px 0 6px 0; font-size:11px; font-weight:800; color:#475569; letter-spacing:.06em; text-transform:uppercase; border-bottom:1px solid #e2e8f0;">▌ C. 战略与管理层观点</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">dLocal 5大投资主题：①大TAM（全球南方85%人口、2035年2/3增长来自新兴市场）②持续高增长③高利润率+运营杠杆④强现金流转化⑤产品研发与M&A<span class="src">来源：业绩新闻稿，CEO/管理层表述</span></div>
+    <div class="ip-col ip-analysis">管理层明确定义的投资主题是其对外叙事的核心框架。5个主题中最有争议的是③（利润率持续被压缩）和⑤（M&A至今较少），最强支撑的是①（TAM确实大）和④（FCF>100%已验证）</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">投资逻辑</span><span class="tag tag-mkt">TAM</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.5 dLocal</span><span class="kb-tag">4.2 护城河</span><span class="kb-tag">1.1 市场规模</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">2025年展望指引：TPV增速35%-45%，Revenue增速25%-35%，GP增速20%-25%，EBITDA增速20%-30%<span class="src">来源：业绩新闻稿</span></div>
+    <div class="ip-col ip-analysis">2025年指引中，Revenue增速（25-35%）高于FY2024实际（+15%），暗示管理层预期Take Rate压缩趋势将放缓——若兑现，将是最重要的估值重评催化剂。GP增速（20-25%）低于Revenue意味着毛利率仍承压</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">增长指引</span><span class="tag tag-fin">管理层预期</span><span class="tag tag-biz">Take Rate</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.5 dLocal</span><span class="kb-tag">4.1 竞争矩阵</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">管理层表述：处理商降本（processor/broker重谈）+ 对冲策略优化 + 向更高Take Rate市场和垂直行业扩张，以对抗Take Rate压缩<span class="src">来源：业绩新闻稿，管理层评述</span></div>
+    <div class="ip-col ip-analysis">这是dLocal应对其最大挑战（Take Rate持续下滑）的三层打法：①成本侧压缩COGS、②hedging降低货币损失、③mix改变（往高费率市场迁移）。三个方法都有执行不确定性，但逻辑合理</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">应对策略</span><span class="tag tag-biz">成本优化</span><span class="tag tag-fin">Take Rate</span><span class="tag tag-strat">市场mix</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.5 dLocal</span><span class="kb-tag">3.3 成本结构</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">管理层对全年节奏的描述："弱Q1 → 逐步更强的环比表现"，Q4 TPV环比+18%是全年最强季度<span class="src">来源：业绩新闻稿</span></div>
+    <div class="ip-col ip-analysis">全年呈现"前低后高"的改善曲线，这对2025年展望构成正向基数效应（Q1 2024相对较弱，同比增速有望更好看）。但"逐步改善"叙事是否可持续，需要对照2025年实际季报验证</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">季度节奏</span><span class="tag tag-fin">增长趋势</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.5 dLocal</span></div>
+  </div>
+
+  <!-- D. 市场背景 -->
+  <div class="ip-row" style="background:#f8fafc; grid-column:1/-1; display:block; padding:6px 0 6px 0; font-size:11px; font-weight:800; color:#475569; letter-spacing:.06em; text-transform:uppercase; border-bottom:1px solid #e2e8f0;">▌ D. 市场背景（管理层引用）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">管理层引用数据：全球南方（Global South）85%的世界人口居住于新兴市场；到2035年，全球2/3的增长来自新兴市场<span class="src">来源：业绩新闻稿，管理层TAM表述（未标注原始数据来源）</span></div>
+    <div class="ip-col ip-analysis">这是dLocal定义其TAM的核心论据。数据来自管理层表述，未标注原始引用来源（疑为世界银行/IMF数据），需注意可信度级别为L3-L4。但方向性正确——新兴市场确实是数字支付渗透的主战场</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">TAM</span><span class="tag tag-mkt">新兴市场</span><span class="tag tag-strat">增长逻辑</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.1 市场规模</span><span class="kb-tag">7.2 新兴市场</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Q4增长受益于商业季节性（commerce seasonality）+ 汇款（remittances）+ 网约车（ride-hailing）垂直行业强势<span class="src">来源：业绩新闻稿</span></div>
+    <div class="ip-col ip-analysis">dLocal的客户画像由此可见：全球大型电商/平台（Temu、Shein、Uber等）在新兴市场的支付/收款需求。季节性强（电商Q4旺季）说明收入存在一定波动性；汇款和网约车是更稳定的垂直行业</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">垂直行业</span><span class="tag tag-biz">客户结构</span><span class="tag tag-mkt">季节性</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.5 dLocal</span><span class="kb-tag">7.2 新兴市场</span></div>
+  </div>
+
+</div>
+
+<div class="footer">
+  数据来源：GlobeNewswire（dLocal Q4 2024 Financial Results）| web_fetch 成功获取原文 | 分析深度：摘要级（Tier 2，为业绩新闻稿，非完整SEC 20-F） | 生成时间：2026-03-23 | 信息点数：18条
+</div>
+
+</body>
+</html>

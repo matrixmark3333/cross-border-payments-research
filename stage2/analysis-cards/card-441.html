@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-441 | 人人都是产品经理：万字解析跨境支付全局 — 业务架构/产品架构/技术架构三层体系</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier2  { background: #e0f2fe; color: #0369a1; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .warn-badge { display: inline-block; background: #fef9c3; color: #854d0e; border: 1px solid #fde047; border-radius: 4px; padding: 1px 6px; font-size: 11px; font-weight: 700; margin-left: 4px; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 URL分析</span>
+    <span class="badge b-type">深度分析文章</span>
+    <span class="badge b-depth">全文提取（8000字）</span>
+    <span class="badge b-rel">相关度 95%</span>
+  </div>
+  <h1>人人都是产品经理：万字解析跨境支付全局 — 业务架构/产品架构/技术架构三层体系 </h1>
+  <div class="source-line">人人都是产品经理（陈天宇宙） | 索引：#441 | 原文：<a href="https://www.woshipm.com/pd/6067482.html" target="_blank">https://www.woshipm.com/pd/6067482.html</a></div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">7</div><div class="stat-label">信息点总数</div></div>
+</div>
+<div class="section">
+  <div class="section-title">信息点列表 <span class="count">7条</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">跨境支付全局体系：第一层按资金流向分为资金入境和资金出境；第二层按业务场景分类；第三层对应解决方案<span class="src">来源：<a href="https://www.woshipm.com/pd/6067482.html" target="_blank">#441</a></span></div>
+    <div class="ip-col ip-analysis">三层分类框架是理解跨境支付产品架构的最清晰结构，对应产品设计：入境（收款）+出境（付款）+双向（平台）。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">业务架构</span><span class="tag tag-strat">全局视角</span><span class="tag tag-tech">产品设计</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品架构/全局</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">Virtual Account（VA账户）：分VLA和VAV两类；VAV为主流形式，包含独立银行代码、收付款、余额查询功能<span class="src">来源：<a href="https://www.woshipm.com/pd/6067482.html" target="_blank">#441</a></span></div>
+    <div class="ip-col ip-analysis">VA账户是跨境收款的核心产品，让商家在海外拥有"本地账户"体验，是Airwallex、Wise Business等B2B产品的基础模块。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">VA账户</span><span class="tag tag-tech">虚拟账户</span><span class="tag tag-biz">B2B产品</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品架构/VA账户</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">跨境支付与国内支付五大区别：交易币种、监管要求、支付方式、结算场景、清算模式（各自复杂度远高于国内）<span class="src">来源：<a href="https://www.woshipm.com/pd/6067482.html" target="_blank">#441</a></span></div>
+    <div class="ip-col ip-analysis">五大区别系统解释了为什么跨境支付不能简单复制国内支付模式，也解释了为什么跨境支付机构的运营复杂度和成本远高于国内机构。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">跨境vs国内</span><span class="tag tag-tech">复杂度</span><span class="tag tag-reg">监管差异</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础知识/跨境</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">跨境支付机构内部业务架构：业务层→支付层→清算层→通道层→中台层（含外汇系统和资金调拨系统）<span class="src">来源：<a href="https://www.woshipm.com/pd/6067482.html" target="_blank">#441</a></span></div>
+    <div class="ip-col ip-analysis">外汇系统是跨境支付机构独有的中台，负责汇率报价、对冲策略和损益计算——这是国内支付机构没有的核心系统。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">业务架构</span><span class="tag tag-fin">外汇系统</span><span class="tag tag-tech">中台</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">技术架构/中台</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">收单与收款的关系：收单将资金结算到海外账户（结束），收款负责将资金跨境入境——是中国外汇管制造就的"最后一公里"<span class="src">来源：<a href="https://www.woshipm.com/pd/6067482.html" target="_blank">#441</a></span></div>
+    <div class="ip-col ip-analysis">这个关键区分解释了为什么中国跨境收款机构（连连、PingPong）的存在是外汇管制的产物，不同于无管制国家的直接结算。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">收单vs收款</span><span class="tag tag-reg">外汇管制</span><span class="tag tag-reg">中国特色</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">产品架构/中国</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">CIPS"资金流"与SWIFT"信息流"的本质区别：CIPS处理人民币资金清算，SWIFT只负责报文传递<span class="src">来源：<a href="https://www.woshipm.com/pd/6067482.html" target="_blank">#441</a></span></div>
+    <div class="ip-col ip-analysis">信息流vs资金流的区分是理解国际清算体系最重要的概念，直接影响支付路径设计——很多从业者混淆这两个概念。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">CIPS</span><span class="tag tag-tech">SWIFT</span><span class="tag tag-tech">信息流vs资金流</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">技术架构/清算</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">收汇/结汇/购汇/付汇四个概念：跨境支付资金出入境的完整流程，涉及外汇管制的核心操作环节<span class="src">来源：<a href="https://www.woshipm.com/pd/6067482.html" target="_blank">#441</a></span></div>
+    <div class="ip-col ip-analysis">四个环节是中国企业跨境资金管理的基础框架，理解这四个概念是任何跨境支付产品经理的必要背景知识。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">收结汇</span><span class="tag tag-reg">外汇管制</span><span class="tag tag-fin">资金流</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">基础知识/外汇</span></div>
+  </div>
+</div>
+<div class="footer">生成日期：2026-03-30 | 人人都是产品经理（陈天宇宙） | #441 | Tier 2</div>
+</body>
+</html>

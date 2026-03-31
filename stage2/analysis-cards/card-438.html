@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-438 | 36氪：2025年中国第三方支付行业研究报告 — 跨境支付成核心增长点</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier2  { background: #e0f2fe; color: #0369a1; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .warn-badge { display: inline-block; background: #fef9c3; color: #854d0e; border: 1px solid #fde047; border-radius: 4px; padding: 1px 6px; font-size: 11px; font-weight: 700; margin-left: 4px; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier2">Tier 2 URL分析</span>
+    <span class="badge b-type">行业研究报告</span>
+    <span class="badge b-depth">全文提取（报告精华）</span>
+    <span class="badge b-rel">相关度 95%</span>
+  </div>
+  <h1>36氪：2025年中国第三方支付行业研究报告 — 跨境支付成核心增长点 </h1>
+  <div class="source-line">36氪（艾瑞咨询报告） | 索引：#438 | 原文：<a href="https://36kr.com/p/3630018474230790" target="_blank">https://36kr.com/p/3630018474230790</a></div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="total-count">7</div><div class="stat-label">信息点总数</div></div>
+</div>
+<div class="section">
+  <div class="section-title">信息点列表 <span class="count">7条</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">2025年中国第三方综合支付交易规模预计达577万亿元（+3.0%）；个人支付渗透率已趋近饱和，企业支付增速高于个人<span class="src">来源：<a href="https://36kr.com/p/3630018474230790" target="_blank">#438</a></span></div>
+    <div class="ip-col ip-analysis">577万亿元规模下仅3%增速揭示国内市场饱和，这是所有支付机构转向跨境支付的核心宏观背景——国内没有增量。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">中国支付市场</span><span class="tag tag-fin">增速放缓</span><span class="tag tag-biz">企业支付</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">市场规模/中国</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">2025年第三方跨境支付市场规模预计达3.3万亿元，是企业支付市场中最强增长点<span class="src">来源：<a href="https://36kr.com/p/3630018474230790" target="_blank">#438</a></span></div>
+    <div class="ip-col ip-analysis">3.3万亿元跨境支付在577万亿综合支付中仅占0.57%，但增速最高，成为支付机构最重要的增量来源。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">跨境支付</span><span class="tag tag-mkt">增长点</span><span class="tag tag-fin">3.3万亿</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">市场规模/跨境</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">中国跨境支付核心竞争力五维：全球合规网络、智能风控体系、场景化产品矩阵、外汇成本控制、深度生态绑定<span class="src">来源：<a href="https://36kr.com/p/3630018474230790" target="_blank">#438</a></span></div>
+    <div class="ip-col ip-analysis">五维竞争力框架是评估中国跨境支付机构护城河深度的标准模型，头部机构（连连、PingPong）已构建多维复合壁垒。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-comp">竞争壁垒</span><span class="tag tag-strat">五维模型</span><span class="tag tag-biz">中国机构</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">竞争格局/框架</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">单纯依赖通道手续费的盈利模式已难以为继；深层服务价值（降本增效工具→行业一体化解决方案）是出路<span class="src">来源：<a href="https://36kr.com/p/3630018474230790" target="_blank">#438</a></span></div>
+    <div class="ip-col ip-analysis">三层递进价值路径（通道费→效率工具→行业解决方案）代表中国跨境支付商业模式升级路径，对应国际玩家（Airwallex、Wise）的产品扩展逻辑。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">商业模式升级</span><span class="tag tag-biz">增值服务</span><span class="tag tag-biz">行业解决方案</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">商业模式/价值升级</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">《非银行支付机构监督管理条例》2024年施行后合规整合加速：2025年上半年罚单数量直逼2024年全年<span class="src">来源：<a href="https://36kr.com/p/3630018474230790" target="_blank">#438</a></span></div>
+    <div class="ip-col ip-analysis">监管收紧加速行业整合出清，头部机构通过增资和技术升级巩固优势，中小机构面临生存压力——符合"强者愈强"预判。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">监管条例</span><span class="tag tag-strat">行业整合</span><span class="tag tag-reg">合规压力</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">监管/行业整合</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">支付行业AI布局加速：对内降本增效（智能风控/流程自动化）、对外赋能客户（个性化服务/跨境支付优化）<span class="src">来源：<a href="https://36kr.com/p/3630018474230790" target="_blank">#438</a></span></div>
+    <div class="ip-col ip-analysis">双轨AI布局（内部效率+外部赋能）是2025年中国支付机构的战略主题，但真正构建AI壁垒需要数据积累和算法深度。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">AI布局</span><span class="tag tag-tech">支付AI</span><span class="tag tag-comp">竞争壁垒</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">技术趋势/AI</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col ip-original">跨境支付新兴市场机会：东南亚、拉美、中东——支付生态碎片化高但潜力巨大，技术迭代和商业模式创新是关键<span class="src">来源：<a href="https://36kr.com/p/3630018474230790" target="_blank">#438</a></span></div>
+    <div class="ip-col ip-analysis">新兴市场碎片化是痛点也是护城河：率先构建本地化支付网络的机构（dLocal、Thunes）将获得难以复制的先发优势。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">新兴市场</span><span class="tag tag-tech">碎片化</span><span class="tag tag-comp">先发优势</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">市场机会/新兴市场</span></div>
+  </div>
+</div>
+<div class="footer">生成日期：2026-03-30 | 36氪（艾瑞咨询报告） | #438 | Tier 2</div>
+</body>
+</html>

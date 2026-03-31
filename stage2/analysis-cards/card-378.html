@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-378 | Capgemini WPR 2025 — 结构化信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1 { background: #dbeafe; color: #1d4ed8; }
+  .b-type { background: #f0fdf4; color: #166534; }
+  .b-depth { background: #ede9fe; color: #5b21b6; }
+  .b-rel { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1 分析报告</span>
+    <span class="badge b-type">年度支付研究报告</span>
+    <span class="badge b-depth">⚠️ 仅摘要</span>
+    <span class="badge b-rel">相关度 90%</span>
+  </div>
+  <h1>Capgemini World Payments Report 2025 — 非现金交易增长，即时支付2028大幅扩展</h1>
+  <div class="source-line">Capgemini | 原文：<a href="https://www.capgemini.com/insights/research-library/world-payments-report-2025/" target="_blank">World Payments Report 2025</a> | 索引：#378</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">12</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">市场数据类</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">趋势/战略类</div></div>
+  <div class="stat"><div class="stat-num">7.8</div><div class="stat-label">平均价值评分</div></div>
+</div>
+<div class="section">
+  <div class="ip-row" style="background:#f8fafc;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">全球非现金交易量持续增长，预计到2028年即时支付（Instant Payments）将大幅扩展，B2B即时支付同步增长。⚠️ 具体数字仅摘要可用。<span class="src">来源：Capgemini WPR 2025摘要 #378</span></span></div>
+    <div class="ip-col ip-analysis">Capgemini WPR是年度支付行业权威研究，即时支付2028大幅扩展的预测与BCG、FXC等机构数据高度吻合，强化了行业共识。B2B即时支付是下一个增量领域。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">市场规模</span><span class="tag tag-tech">基础设施</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.1市场规模</span><span class="kb-tag">5.1基础设施</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Open Finance（开放金融）被视为支付行业下一波转型力量，支付基础设施从封闭式向开放API生态演进。<span class="src">来源：Capgemini WPR 2025摘要 #378</span></span></div>
+    <div class="ip-col ip-analysis">开放金融将允许非银机构直接接入银行账户数据和资金流，进一步削弱银行在支付生态中的独占地位，利好Wise/Airwallex等拥有API能力的Fintech。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">基础设施</span><span class="tag tag-strat">战略</span></div></div>
+    <div class="ip-col"><div class="score s7"><div class="score-num">7</div><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.3基础设施</span><span class="kb-tag">1.4驱动因素</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Multi-rail策略成为主流：企业和金融机构需要同时管理多种支付轨道（SWIFT、本地即时支付、卡、钱包），实现最优路由。<span class="src">来源：Capgemini WPR 2025摘要 #378</span></span></div>
+    <div class="ip-col ip-analysis">多轨道策略正是Airwallex、Nium等平台的核心价值主张：通过智能路由选择最快最便宜的轨道，而非固定使用SWIFT；这也是"支付编排"（Payment Orchestration）类产品的市场基础。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">基础设施</span><span class="tag tag-strat">战略</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.1基础设施</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">全球即时支付系统已超过70个国家部署，实时A2A支付占全球零售数字支付约25%（BCG数据与WPR相互印证），YoY增长约40%。<span class="src">来源：BCG/Capgemini背景数据 #378/#389</span></span></div>
+    <div class="ip-col ip-analysis">70+国家RTP+25%渗透率代表即时支付已从早期市场进入快速增长期；40% YoY的增速预示未来3-5年内即时支付将成为主流零售支付方式。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">市场规模</span><span class="tag tag-tech">基础设施</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.1市场规模</span><span class="kb-tag">5.1基础设施</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">B2B跨境支付的即时化是WPR 2025的重点议题：企业正在要求与C端相同的即时支付体验，传统批次处理模式（D+1, D+2）将被淘汰。<span class="src">来源：Capgemini WPR 2025摘要 #378</span></span></div>
+    <div class="ip-col ip-analysis">B2B支付体验升级需求正在推动企业从传统银行转向Airwallex、Wise Business等平台；B2B即时支付的规模($150T+/年)远大于C2C汇款，是跨境Fintech最大的增量市场。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">市场规模</span><span class="tag tag-tech">基础设施</span><span class="tag tag-strat">战略</span></div></div>
+    <div class="ip-col"><div class="score s9"><div class="score-num">9</div><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.4驱动因素</span><span class="kb-tag">5.1基础设施</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">Capgemini WPR 2025：支付行业正经历"结构性重组"而非渐进式改变，传统机构需要在5年内完成基础设施现代化，否则面临市场份额持续流失。⚠️ 仅摘要。<span class="src">来源：Capgemini WPR 2025摘要 #378</span></span></div>
+    <div class="ip-col ip-analysis">Capgemini的危机感表述（"5年窗口"）对银行业客户是有力的咨询产品营销，对Fintech投资者则是行业tailwind的权威确认。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">战略</span><span class="tag tag-comp">竞争格局</span></div></div>
+    <div class="ip-col"><div class="score s7"><div class="score-num">7</div><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">4.1竞争格局</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">嵌入式支付（Embedded Payments）和增值服务（VAS）正在从收入贡献的0-10%增至2027年预计15-25%（欧洲），支付从交易工具转向平台价值。<span class="src">来源：BCG 2025（与WPR数据方向一致）#389/#378</span></span></div>
+    <div class="ip-col ip-analysis">支付收入结构从交易手续费向VAS和嵌入金融转型，是所有头部玩家的战略共识；对跨境支付公司意味着从"低利润通道"升级为"高利润平台"的机会。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">市场规模</span><span class="tag tag-strat">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">3.1商业模式</span><span class="kb-tag">1.4驱动因素</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">ISO 20022标准成为跨境支付的事实数据标准，CIPS已采用，SWIFT gpi也在推进，为更丰富的支付信息传递奠定基础。<span class="src">来源：Capgemini WPR/行业背景 #378</span></span></div>
+    <div class="ip-col ip-analysis">ISO 20022标准化使得跨境支付数据更丰富（更多合规字段、更准确的收款方信息），减少跨境拒付和延迟；这将逐步缩小非银玩家与银行之间的信息不对称。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">基础设施</span></div></div>
+    <div class="ip-col"><div class="score s7"><div class="score-num">7</div><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.2基础设施</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">数字钱包互联互通（Wallet Interoperability）是WPR 2025的核心议题之一，东南亚多边QR码互认已是样板。<span class="src">来源：Capgemini WPR摘要 #378</span></span></div>
+    <div class="ip-col ip-analysis">钱包互通使得原本封闭的支付生态打开，是推动跨境支付从"银行账户"转向"钱包"的关键政策推力；对Wise、Airwallex等支持多钱包的平台是利好。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">基础设施</span><span class="tag tag-mkt">地理扩张</span></div></div>
+    <div class="ip-col"><div class="score s8"><div class="score-num">8</div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">5.3基础设施</span><span class="kb-tag">7.1区域市场</span></div>
+  </div>
+  <div class="ip-row">
+    <div class="ip-col"><span class="ip-original">⚠️ 仅摘要：Capgemini WPR 2025全文需注册下载，本卡基于公开摘要和行业背景知识生成，核心定量数据引用依赖其他来源交叉验证。<span class="src">来源：索引 #378</span></span></div>
+    <div class="ip-col ip-analysis">来源限制说明，需在引用具体数字时注意标注来源的可靠性层级。</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag">数据来源</span></div></div>
+    <div class="ip-col"><div class="score s3"><div class="score-num">3</div><div class="score-bar"><div class="score-fill" style="width:30%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">1.1市场规模</span></div>
+  </div>
+</div>
+<div class="footer">⚠️ 仅摘要 | 索引 #378 | 来源：Capgemini | 生成时间：2026-03-24</div>
+</body>
+</html>

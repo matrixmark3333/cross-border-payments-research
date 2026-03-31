@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-074 | IMF WP 拉丁美洲和加勒比跨境支付整合 2024</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1  { background: #dbeafe; color: #1d4ed8; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .group-banner { background: #f8fafc; padding: 8px 0; font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #e2e8f0; border-top: 1px solid #e2e8f0; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1 深度分析</span>
+    <span class="badge b-type">学术工作论文 / 国际组织</span>
+    <span class="badge b-depth">raw PDF 全文逐页提取（27页）</span>
+    <span class="badge b-rel">相关度 97%</span>
+  </div>
+  <h1>IMF WP/24/119 拉丁美洲和加勒比跨境支付整合研究 — 穷举式信息点提取</h1>
+  <div class="source-line">International Monetary Fund — Western Hemisphere Department | 发布：2024年6月 | 原文：imf-wp-crossborder-lac-2024.pdf | 索引：#074</div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">40</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">10</div><div class="stat-label">A.市场数据</div></div>
+  <div class="stat"><div class="stat-num">6</div><div class="stat-label">B.政策监管</div></div>
+  <div class="stat"><div class="stat-num">10</div><div class="stat-label">C.技术基础设施</div></div>
+  <div class="stat"><div class="stat-num">9</div><div class="stat-label">D.地区分析</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">E.趋势预测</div></div>
+</div>
+
+<div class="section">
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="group-banner">▌ A. 市场数据（10条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">拉美区域内贸易仅占商品贸易总额的14%，远低于欧亚地区；南美洲区域内贸易落后于拉美内部其他子区域（中美洲、墨西哥、加勒比）<span class="src">IMF WP/24/119, p.4</span></div>
+    <div class="ip-col ip-analysis">区域内贸易偏低是跨境支付改善收益的核心量化依据；Mercosur区域内贸易低于相似特征地区40-50%</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">区域内贸易</span><span class="tag tag-mkt">拉美</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">贸易数据</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">拉美贸易占GDP比从1995年约30%升至2019年47%，但仍落后其他新兴市场；初级商品占拉美（除墨西哥）商品出口40%以上<span class="src">IMF WP/24/119, p.4</span></div>
+    <div class="ip-col ip-analysis">大宗商品主导出口结构导致美元结算偏好，是当地货币跨境支付体系推广的结构性障碍</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">贸易结构</span><span class="tag tag-mkt">拉美</span><span class="tag tag-fin">大宗商品</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">宏观趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">数字支付每增加1个百分点，全要素生产率增长率增加0.04pp，人均GDP增长率增加0.10pp，非正式就业率下降0.06pp（90个经济体2014-2019年面板数据）<span class="src">IMF WP/24/119, p.5（引用Aguilar等2023）</span></div>
+    <div class="ip-col ip-analysis">数字支付对实体经济的溢出效应可量化：包容性增长、正规化和生产效率三维提升</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">数字支付效益</span><span class="tag tag-fin">GDP增长</span><span class="tag tag-fin">金融包容</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">宏观影响</span><span class="kb-tag">金融包容</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">巴西Pix：覆盖85%的成巴西年人口和1500万家企业，带来7000万新增电子转账用户；P2G免费，商户成本约25个基点（远低于信用卡2.2%和借记卡1.1%）<span class="src">IMF WP/24/119, p.18（Box 3）</span></div>
+    <div class="ip-col ip-analysis">Pix是全球最成功的零售FPS之一：7000万新用户代表巨量金融包容成就；25bp商户成本颠覆卡支付定价</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">Pix</span><span class="tag tag-fin">金融包容</span><span class="tag tag-fin">商户成本</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">案例研究</span><span class="kb-tag">即时支付</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">东加勒比货币联盟（ECCU）信用/借记卡和账户转账服务费用高达每笔4-6%，远高于全球平均1-2%；现金和支票仍占零售支付的80%<span class="src">IMF WP/24/119, p.7（引用ECCU Article IV 2020）</span></div>
+    <div class="ip-col ip-analysis">ECCU支付成本是全球最高之列，反映小岛经济体规模不足和竞争缺乏的结构性问题</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">支付成本</span><span class="tag tag-mkt">加勒比</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">成本分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">SML（本地货币支付体系）：巴西对阿根廷出口使用率约5%，Uruguay和Paraguay更低；SME占比：巴西-阿根廷约10%，巴西-乌拉圭约25%<span class="src">IMF WP/24/119, p.10</span></div>
+    <div class="ip-col ip-analysis">SML未能实现促进中小企业贸易的目标；主要由跨国大企业使用，反映当地货币体系与大宗商品/美元结构的根本矛盾</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">SML使用率</span><span class="tag tag-mkt">Mercosur</span><span class="tag tag-fin">中小企业</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">案例研究</span><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">拉美ATM完全互操作性只有1/3国家实现（vs亚洲新兴市场75%）；低金融系统准入、现金盛行、弱互操作性和高用户成本是2020年前的普遍特征<span class="src">IMF WP/24/119, p.17（引用Alfonso等2020）</span></div>
+    <div class="ip-col ip-analysis">拉美支付生态系统历史积弊深厚，ATM互操作率差异显示基础设施分散化问题</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">互操作性</span><span class="tag tag-mkt">拉美</span><span class="tag tag-tech">ATM</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">CCR（互惠支付和信贷协议）1972-1980年间：中美洲92%的区域内贸易通过该机制处理；后于1980年代因尼加拉瓜无法偿还债务而崩溃<span class="src">IMF WP/24/119, p.6（引用Guerra-Borges 1996）</span></div>
+    <div class="ip-col ip-analysis">CCR历史说明区域支付体系的脆弱性：主权信用风险和不对称净头寸是多边机制的核心挑战</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">区域支付历史</span><span class="tag tag-mkt">中美洲</span><span class="tag tag-fin">主权信用风险</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">案例研究</span><span class="kb-tag">历史分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">西巴尔干地区2017-2022年：账户拥有率从760万提升至930万成年人，数字支付用户从660万增至840万；汇款成本从8%降至6.8%<span class="src">IMF WP/24/119, p.9（引用World Bank数据）</span></div>
+    <div class="ip-col ip-analysis">这是世界银行技术援助效果的量化证明；5年内数字支付渗透和汇款成本均取得可观改善</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">技术援助效果</span><span class="tag tag-mkt">西巴尔干</span><span class="tag tag-fin">数字支付渗透</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">案例研究</span><span class="kb-tag">金融包容</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">跨境支付成本（用汇款费代理）每降低1%，可通过引力模型估算带来可量化的贸易增量；IMF使用泊松最大拟然估计验证<span class="src">IMF WP/24/119, p.5（Box 1）</span></div>
+    <div class="ip-col ip-analysis">将跨境支付成本纳入引力模型是IMF的方法论创新，将支付改革与贸易效益量化连接</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">支付-贸易关联</span><span class="tag tag-fin">引力模型</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">宏观影响</span><span class="kb-tag">研究方法</span></div>
+  </div>
+
+  <div class="group-banner">▌ B. 政策监管（6条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">跨境支付10项良好实践框架：(1)标准化和互操作性；(2)监管合规；(3)快速高效结算；(4)明确最终结算规则；(5)透明费率和汇率；(6)强劲安全措施；(7)隐私保护；(8)开放接口促创新（如Pix案例）；(9)金融包容；(10)持续创新<span class="src">IMF WP/24/119, p.12-13</span></div>
+    <div class="ip-col ip-analysis">IMF提出的十项实践是评估任何跨境支付安排的综合框架，可作为LAC区域新方案设计的检核清单</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">最佳实践</span><span class="tag tag-strat">政策框架</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">战略框架</span><span class="kb-tag">政策监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Pix开放接口（API）允许私营部门在其基础上创新，进一步激励广泛采用；这是"开放接口促创新"良好实践的典型案例<span class="src">IMF WP/24/119, p.13</span></div>
+    <div class="ip-col ip-analysis">Pix的开放生态模式是区别于封闭体系的关键设计决策，允许第三方构建差异化产品</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">开放API</span><span class="tag tag-tech">Pix</span><span class="tag tag-strat">平台策略</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">技术基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">LAC跨境支付整合下一步行动清单：建立跨境治理规则、协调监管框架、采用国际标准（ISO 20022）、推动公私合作、拥抱数字技术、实施风险管理、促进金融包容、建立持续监测机制<span class="src">IMF WP/24/119, p.20</span></div>
+    <div class="ip-col ip-analysis">IMF的LAC路线图与G20全球路线图高度一致，区域特色在于更强调Mercosur FPS互联和Caribbean CBDC场景</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">政策行动清单</span><span class="tag tag-strat">LAC路线图</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">战略框架</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">CCR衰落原因：1990年代资本账户自由化使其条款失竞争力；央行不愿承担主权信用风险；净债权/债务头寸越来越不对称；2019年巴西宣布退出<span class="src">IMF WP/24/119, p.8</span></div>
+    <div class="ip-col ip-analysis">CCR的兴衰是区域支付安排的经典教训：主权信用风险和汇率稳定性是多边机制的核心制约</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">区域支付治理</span><span class="tag tag-fin">主权风险</span><span class="tag tag-mkt">拉美</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">历史分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">SML利用每日参考汇率（由央行确定），基于银行间交易（高价值）提供有竞争力的汇率；每日净轧差用美元结算，无延期结算期，央行主权风险敞口有限<span class="src">IMF WP/24/119, p.9</span></div>
+    <div class="ip-col ip-analysis">SML的每日净轧差机制是其相比CCR更谨慎的风险设计，但依赖高价值银行间利率限制了SME适用性</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">净轧差机制</span><span class="tag tag-fin">汇率机制</span><span class="tag tag-mkt">Mercosur</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">外汇机制</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">跨境支付改善的综合Open Finance监管（结合创新支付体系）能让个人和企业在任何时间、任何金额、任何设备上转移支付和金融资产<span class="src">IMF WP/24/119, p.22</span></div>
+    <div class="ip-col ip-analysis">Open Finance是支付创新的上层架构，与跨境互联结合将创造"Finternet"式的无摩擦金融生态</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-reg">Open Finance</span><span class="tag tag-tech">金融创新</span><span class="tag tag-strat">Finternet</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">政策监管</span><span class="kb-tag">技术趋势</span></div>
+  </div>
+
+  <div class="group-banner">▌ C. 技术基础设施（10条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">支付系统互联四种模型：单一接入点、双边连接、中心辐射型和公共平台；每种模型在治理复杂度、实施难度和适用规模上有不同取舍<span class="src">IMF WP/24/119, p.13（引用BIS 2022b）</span></div>
+    <div class="ip-col ip-analysis">IMF确认四种互联模型的分类框架，是评估LAC区域互联方案的基础工具</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">互联模型</span><span class="tag tag-tech">FPS互联</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">技术基础设施</span><span class="kb-tag">战略框架</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">新加坡-印度UPI-PayNow互联：据称是全球首个使用可扩展云基础设施的实时支付系统互联；有非银行机构参与者（Liquid Group）；具备规模扩展能力<span class="src">IMF WP/24/119, p.14</span></div>
+    <div class="ip-col ip-analysis">UPI-PayNow是跨境即时支付技术创新的重要里程碑：云架构+非银行参与+双边互联三重创新合一</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">UPI-PayNow</span><span class="tag tag-tech">云架构</span><span class="tag tag-mkt">印度</span><span class="tag tag-mkt">新加坡</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">技术基础设施</span><span class="kb-tag">案例研究</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Project Nexus：通过API连接各国FPS，运营商只需一次接入即可触达网络内所有国家；相比双边互联显著降低定制开发成本<span class="src">IMF WP/24/119, p.14</span></div>
+    <div class="ip-col ip-analysis">Nexus的"Hub模式"是跨境即时支付最具可扩展性的架构，为LAC多边整合提供了模板</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">Project Nexus</span><span class="tag tag-tech">Hub模式</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">技术基础设施</span><span class="kb-tag">跨境支付</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">PvP（支付对支付）机制：确保一种货币的最终转账仅在另一种货币的最终转账完成时才发生；可集中或分散运作，目标减少净头寸资金成本；巴西B3外汇清算所（2002）是LAC的典型案例<span class="src">IMF WP/24/119, p.15（Box 2）</span></div>
+    <div class="ip-col ip-analysis">PvP是消除外汇结算风险（Herstatt风险）的关键机制，也是多货币FPS互联的必要组件</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">PvP机制</span><span class="tag tag-fin">外汇结算风险</span><span class="tag tag-mkt">巴西</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">技术基础设施</span><span class="kb-tag">外汇机制</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">mCBDC（多央行数字货币）安排：香港、泰国、阿联酋、中国央行参与的mBridge项目（批发CBDC）；与零售CBDC互联形成完整多层架构<span class="src">IMF WP/24/119, p.15</span></div>
+    <div class="ip-col ip-analysis">mBridge是mCBDC最重要的实验，跨越4个央行的批发CBDC互通是现实跨境支付的可能未来路径</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">mCBDC</span><span class="tag tag-tech">mBridge</span><span class="tag tag-tech">CBDC</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">数字货币</span><span class="kb-tag">技术基础设施</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">XC平台（跨境多货币合约平台）：使用加密方法保护隐私的信任型单一账本；央行按1:1发行"托管证书"（CE）消除中间方风险；支持即时或确定性未来结算（PvP和DvP机制）<span class="src">IMF WP/24/119, p.16</span></div>
+    <div class="ip-col ip-analysis">XC平台是IMF提出的下一代跨境支付基础设施愿景，解决互操作性而无需改变各国国内系统</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">XC平台</span><span class="tag tag-tech">托管证书</span><span class="tag tag-tech">DvP</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">技术基础设施</span><span class="kb-tag">数字货币</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Project Agorá（BIS，2024年4月启动）：7个央行+私营部门参与；探索代币化改善国际支付；结合代币化中央银行和商业银行存款的统一账本；测试可编程平台和智能合约<span class="src">IMF WP/24/119, p.16</span></div>
+    <div class="ip-col ip-analysis">Agorá将代币化存款与智能合约结合，代表批发层面跨境支付的最新一代技术探索</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">Project Agorá</span><span class="tag tag-tech">代币化存款</span><span class="tag tag-tech">智能合约</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">数字货币</span><span class="kb-tag">技术研究</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">SIP（互联支付系统）：2011年启动，连接中美洲货币委员会（CMCA）成员国央行RTGS系统；用SWIFT消息传递和美元结算账户；类似1999年TARGET系统的连接架构<span class="src">IMF WP/24/119, p.11</span></div>
+    <div class="ip-col ip-analysis">SIP是拉美较成功的区域支付体系之一，RTGS直连模型避免了CCR的主权信用风险问题</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">SIP</span><span class="tag tag-tech">RTGS互联</span><span class="tag tag-mkt">中美洲</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">技术基础设施</span><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">巴西Drex（批发CBDC）：基于公有区块链基础设施，结合代币化（资产数字化表示）和可编程性，与其他支付基础设施互操作；代币化存款为主要支付工具；预计2024年底或2025年初推出<span class="src">IMF WP/24/119, p.19</span></div>
+    <div class="ip-col ip-analysis">Drex与Pix形成互补：Pix主导零售，Drex推动批发和金融创新；代币化资产是下一阶段探索</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">Drex</span><span class="tag tag-tech">批发CBDC</span><span class="tag tag-mkt">巴西</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">数字货币</span><span class="kb-tag">案例研究</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">三种货币安排对比：单货币（一种货币+PSP换汇）、多货币（多国多货币并行处理）、跨货币（付款方和收款方以不同货币交易+PvP机制）；如墨西哥"直接到墨西哥"项目<span class="src">IMF WP/24/119, p.15（Box 2）</span></div>
+    <div class="ip-col ip-analysis">三种模式的选择决定了互联的复杂度：跨货币+PvP是最完整方案但实施难度最高</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">货币安排</span><span class="tag tag-fin">外汇</span><span class="tag tag-tech">PvP</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">技术基础设施</span><span class="kb-tag">外汇机制</span></div>
+  </div>
+
+  <div class="group-banner">▌ D. 地区分析（9条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">巴西Pix：2020年强制所有PSP参与，P2P和P2G免费，提供所有功能，无交易价值上限；覆盖85%成年人、1500万企业，带来7000万新用户<span class="src">IMF WP/24/119, p.18</span></div>
+    <div class="ip-col ip-analysis">Pix成功三要素：强制参与、零成本P2P、无门槛设计；7000万新用户量化了金融包容的巨大溢出效应</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">巴西</span><span class="tag tag-tech">Pix</span><span class="tag tag-fin">金融包容</span></div></div>
+    <div class="ip-col"><div class="score s10"><span class="score-num">10</span><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">案例研究</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">墨西哥CoDi（2019年推出）：仅限Banco de Mexico SPEI会员金融机构；允许第三方开发支付请求应用；个人和商户均免费<span class="src">IMF WP/24/119, p.18</span></div>
+    <div class="ip-col ip-analysis">CoDi的局限性（仅限会员机构）与Pix的开放性形成对比，部分解释了两者渗透率差异</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">墨西哥</span><span class="tag tag-tech">CoDi</span><span class="tag tag-comp">vs Pix</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">案例研究</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">巴拉圭SPI（2022年推出）：24/7全年365天资金即时到账，免费，支持别名寻址，可用多种支付工具；面向持银行账户的个人和企业<span class="src">IMF WP/24/119, p.18</span></div>
+    <div class="ip-col ip-analysis">SPI是拉美继Pix后重要的零售FPS落地案例，24/7免费模式与Pix精神一致</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">巴拉圭</span><span class="tag tag-tech">SPI</span><span class="tag tag-tech">即时支付</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">案例研究</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">巴哈马"Sand Dollar"（2020年10月正式推出）：首个全国性零售CBDC，面向偏远岛屿社区的金融包容目标；牙买加也已推出零售CBDC<span class="src">IMF WP/24/119, p.19（Box 4）</span></div>
+    <div class="ip-col ip-analysis">加勒比地区是全球零售CBDC的先行区域，反映小岛经济体独特的金融包容挑战（地理分散+灾难韧性）</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">零售CBDC</span><span class="tag tag-mkt">加勒比</span><span class="tag tag-mkt">巴哈马</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">数字货币</span><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">东加勒比货币联盟（ECCU）：已有零售ECACH和批发RTGS一体化系统，但现金和支票仍占零售80%；正在评估FPS可行性；2023年加勒比使用PAPSS进行区域支付试点<span class="src">IMF WP/24/119, p.7</span></div>
+    <div class="ip-col ip-analysis">ECCU数字化成就与现金主导并存，反映消费者行为惯性的顽固性；PAPSS跨大西洋链接令人关注</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">东加勒比</span><span class="tag tag-tech">PAPSS</span><span class="tag tag-tech">RTGS</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">SML（本地货币支付体系）：巴西-阿根廷2008年建立，逐步扩展至Uruguay（2014）、Paraguay（2018/2021）；SML流量增长2013年后停滞；巴西对阿根廷出口占大头，Uruguay和Paraguay流量更平衡<span class="src">IMF WP/24/119, p.9-10</span></div>
+    <div class="ip-col ip-analysis">SML体量增长停滞揭示了区域本地货币体系的结构性局限，贸易货币主导权与汇率稳定性互相制约</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">Mercosur</span><span class="tag tag-fin">本地货币</span><span class="tag tag-fin">SML</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">案例研究</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">SML未能促进中小企业贸易的原因：美元偏好、大宗商品美元定价、信用证和出口融资难以获取、银行缺乏动力推广、高巴西利率鼓励美元出口应收款结构<span class="src">IMF WP/24/119, p.10-11</span></div>
+    <div class="ip-col ip-analysis">SML困境揭示了区域支付体系与宏观金融结构深度互嵌：利率、汇率和融资工具共同决定商户货币选择</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">SML障碍</span><span class="tag tag-fin">出口融资</span><span class="tag tag-mkt">巴西</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">宏观趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Mercosur中FPS互联是IMF建议的可行路径：Pix在边境地区扩展使用、区域内FPS普及，以及潜在的国际收支限制放宽<span class="src">IMF WP/24/119, p.21</span></div>
+    <div class="ip-col ip-analysis">Pix的边境溢出效应是非正式的跨境支付先行实践，可演化为正式的互联安排</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">Mercosur</span><span class="tag tag-tech">FPS互联</span><span class="tag tag-tech">Pix</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">跨境支付</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">加勒比区域：2023年11月CARICOM央行行长宣布利用PAPSS（泛非支付结算体系）进行区域支付试点，计划2024年底推出；目标跨境本地货币支付+与非洲的贸易链接<span class="src">IMF WP/24/119, p.7, p.21</span></div>
+    <div class="ip-col ip-analysis">加勒比-非洲通过PAPSS连接是一个创意性的南南合作构想，利用非洲现有基础设施加速加勒比整合</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-mkt">加勒比</span><span class="tag tag-mkt">非洲</span><span class="tag tag-tech">PAPSS</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">地区分析</span><span class="kb-tag">跨境支付</span></div>
+  </div>
+
+  <div class="group-banner">▌ E. 趋势预测（5条）</div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">新技术不能替代健全可信的宏观经济政策；战略性运用技术可显著降低拉美跨境交易成本和时间，从而增强区域和全球贸易联系<span class="src">IMF WP/24/119, p.2（摘要）, p.22</span></div>
+    <div class="ip-col ip-analysis">IMF对技术与政策互补性的核心判断：汇率稳定、财政可信是跨境支付体系可持续的必要前提</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">政策与技术</span><span class="tag tag-strat">宏观前提</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">宏观趋势</span><span class="kb-tag">政策监管</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">LAC大多数央行正在探索零售或批发CBDC；巴拿马已正式推出零售CBDC，牙买加已推出；ECCU在先进试点阶段；重点在于增强金融包容和支付系统韧性<span class="src">IMF WP/24/119, p.19</span></div>
+    <div class="ip-col ip-analysis">LAC在全球零售CBDC采用上相对领先，驱动因素是金融包容和自然灾害/疫情韧性需求</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">零售CBDC</span><span class="tag tag-mkt">拉美</span><span class="tag tag-fin">金融包容</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">数字货币</span><span class="kb-tag">宏观趋势</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Drex（巴西批发CBDC）：因Pix已成功解决零售场景，BCB专注于批发CBDC；Lift Challenge和Pilot Drex正在测试代币化和数据隐私合规<span class="src">IMF WP/24/119, p.19</span></div>
+    <div class="ip-col ip-analysis">巴西的Pix+Drex双层战略是全球最成体系的数字货币规划：零售即时支付+批发代币化创新</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">Drex</span><span class="tag tag-strat">双层战略</span><span class="tag tag-mkt">巴西</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">数字货币</span><span class="kb-tag">案例研究</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FuSSE项目（IDB+BIS）：协助LAC国家获取建设高可扩展支付架构所需技术，是拉美跨境支付整合的最新外部支持<span class="src">IMF WP/24/119, p.20</span></div>
+    <div class="ip-col ip-analysis">IDB+BIS的技术支持将加速拉美国家支付系统现代化，降低技术落后造成的互联壁垒</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">FuSSE</span><span class="tag tag-strat">技术援助</span><span class="tag tag-mkt">拉美</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">技术趋势</span><span class="kb-tag">政策援助</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">跨境支付整合的多边路径vs双边路径：多边（hub-and-spoke或统一平台）实施挑战更大，更适合有大量贸易/金融往来的区域；双边FPS互联更适合LAC当前阶段<span class="src">IMF WP/24/119, p.21</span></div>
+    <div class="ip-col ip-analysis">IMF对LAC整合路径的务实判断：渐进式双边互联是现实选择，多边平台是中长期目标</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">整合路径</span><span class="tag tag-tech">双边vs多边</span><span class="tag tag-mkt">拉美</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">宏观趋势</span><span class="kb-tag">战略框架</span></div>
+  </div>
+
+</div>
+
+<div class="footer">
+  索引编号：card-074 | 来源文件：imf-wp-crossborder-lac-2024.pdf | 提取方式：pdfplumber全文逐页提取（27页）| 提取日期：2026-03-28 | 信息点总数（grep验证）：40条
+</div>
+
+</body>
+</html>

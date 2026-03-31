@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>card-093 | Airwallex HK Pricing Page — 结构化信息点分析卡</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f0f4f8; color: #1a202c; }
+  .card-header { background: white; border-radius: 12px 12px 0 0; padding: 24px 28px 18px; border-bottom: 3px solid #2563eb; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .b-tier1  { background: #dbeafe; color: #1d4ed8; }
+  .b-type   { background: #f0fdf4; color: #166534; }
+  .b-depth  { background: #ede9fe; color: #5b21b6; }
+  .b-rel    { background: #fff7ed; color: #9a3412; }
+  h1 { font-size: 20px; margin: 6px 0 2px; color: #0f172a; line-height: 1.3; }
+  .source-line { font-size: 13px; color: #64748b; }
+  .source-line a { color: #2563eb; text-decoration: none; }
+  .stats-bar { background: #f8fafc; padding: 12px 28px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e2e8f0; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #2563eb; }
+  .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section { background: white; padding: 0 28px; }
+  .ip-row { display: grid; grid-template-columns: 1fr 260px 160px 70px 80px; gap: 0; border-bottom: 1px solid #f1f5f9; align-items: start; }
+  .ip-row:hover { background: #fafbff; }
+  .ip-col { padding: 12px 10px; font-size: 13px; }
+  .ip-col:first-child { padding-left: 0; }
+  .col-header { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; background: #f8fafc; }
+  .col-header:first-child { padding-left: 0; }
+  .ip-original { font-size: 13px; color: #1e293b; line-height: 1.6; }
+  .ip-original .src { font-size: 11px; color: #94a3b8; display: block; margin-top: 4px; font-style: italic; }
+  .ip-analysis { font-size: 13px; color: #334155; line-height: 1.6; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { display: inline-block; background: #f1f5f9; color: #334155; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; border: 1px solid #e2e8f0; }
+  .tag-fin  { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .tag-biz  { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .tag-mkt  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .tag-reg  { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .tag-tech { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+  .tag-strat{ background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
+  .tag-comp { background: #f0fdfa; color: #134e4a; border-color: #99f6e4; }
+  .score { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .score-num { font-size: 20px; font-weight: 800; }
+  .score-bar { width: 40px; height: 4px; border-radius: 2px; background: #e2e8f0; }
+  .score-fill { height: 4px; border-radius: 2px; }
+  .s9, .s10 { color: #059669; } .s9 .score-fill, .s10 .score-fill { background: #059669; }
+  .s7, .s8  { color: #2563eb; } .s7 .score-fill, .s8 .score-fill  { background: #2563eb; }
+  .s5, .s6  { color: #d97706; } .s5 .score-fill, .s6 .score-fill  { background: #d97706; }
+  .s1,.s2,.s3,.s4 { color: #94a3b8; } .s1 .score-fill,.s2 .score-fill,.s3 .score-fill,.s4 .score-fill { background: #94a3b8; }
+  .kb-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .footer { background: white; border-radius: 0 0 12px 12px; padding: 16px 28px; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  .section-title { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 18px 0 10px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+  .section-title .count { background: #e2e8f0; color: #475569; border-radius: 10px; padding: 1px 8px; font-size: 11px; font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="card-header">
+  <div class="badge-row">
+    <span class="badge b-tier1">Tier 1 定价分析</span>
+    <span class="badge b-type">定价页 / 官网</span>
+    <span class="badge b-depth">web_fetch 实时获取</span>
+    <span class="badge b-rel">相关度 100%</span>
+  </div>
+  <h1>Airwallex HK Pricing Page — 香港定价体系</h1>
+  <div class="source-line">Airwallex (Official) | 获取时间：2026-03-24 | 原文：<a href="https://www.airwallex.com/hk/pricing" target="_blank">airwallex.com/hk/pricing</a> | 索引：#093</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">20</div><div class="stat-label">信息点总数</div></div>
+  <div class="stat"><div class="stat-num">8</div><div class="stat-label">定价数据类</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">产品功能类</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">竞争对比类</div></div>
+  <div class="stat"><div class="stat-num">8.1</div><div class="stat-label">平均价值评分</div></div>
+</div>
+<div class="section">
+  <div class="section-title">信息点列表 <span class="count">20条</span></div>
+  <div style="display:grid; grid-template-columns:1fr 260px 160px 70px 80px; border-bottom:2px solid #e2e8f0;">
+    <div class="col-header">原文信息点</div>
+    <div class="col-header">摘要分析</div>
+    <div class="col-header">标签</div>
+    <div class="col-header" style="text-align:center">评分</div>
+    <div class="col-header">知识库归属</div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FX汇率转换费：从0.2%起（above interbank exchange rates），适用于AUD、USD、HKD、CNY、EUR、GBP、SGD等主要货币<span class="src">来源：airwallex.com/hk/pricing，定价页</span></div>
+    <div class="ip-col ip-analysis">0.2%是Airwallex HK定价起点，对应传统银行2-4%的FX加点，竞争优势显著。与Wise香港类似（0.41%起），Currenxie（0.35%起）相比Airwallex更有优势</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-biz">定价策略</span><span class="tag tag-comp">竞争格局</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.2 Airwallex</span><span class="kb-tag">3.2 定价</span><span class="kb-tag">4.1 竞争对比</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">本地转账（Local transfer）：120+个国家免费<span class="src">来源：定价页，Transfers部分</span></div>
+    <div class="ip-col ip-analysis">免费本地转账是Airwallex核心竞争武器，通过自建本地清算网络绕开SWIFT中间行，实现零边际成本。对SME客户吸引力极强</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-tech">基础设施</span><span class="tag tag-comp">护城河</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.2 Airwallex</span><span class="kb-tag">3.1 收入模式</span><span class="kb-tag">5.1 支付网络</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">SWIFT转账费：HK$120-200/笔（SHA和OUR两种模式），覆盖200+国家<span class="src">来源：定价页，FX &amp; Transfers部分</span></div>
+    <div class="ip-col ip-analysis">SWIFT费用HK$120-200相当于约$15-25，与Statrys（HKD85收/HKD85发）、Currenxie（$8）相比偏高。但Airwallex通过本地转账免费来弥补SWIFT较贵的劣势，适合高频小额客户</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">定价策略</span><span class="tag tag-biz">SWIFT</span><span class="tag tag-comp">竞争格局</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.2 Airwallex</span><span class="kb-tag">3.2 定价</span><span class="kb-tag">4.1 竞争对比</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">Yield by Airwallex Capital：USD最高3.66%年化回报；EUR 1.89%，GBP 3.68%，HKD 1.84%（三个套餐档位：Starter 3.36% / Growth 3.46% / Enterprise 3.66%）<span class="src">来源：定价页，Yield部分</span></div>
+    <div class="ip-col ip-analysis">利息收入产品是Airwallex新增收入来源。3.66% USD收益率接近当前货币市场水平，对企业闲置资金极具吸引力。这一功能提升了平台粘性，但利率下行时吸引力会减弱</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">利息收入</span><span class="tag tag-biz">产品多元化</span><span class="tag tag-strat">客户粘性</span></div></div>
+    <div class="ip-col"><div class="score s9"><span class="score-num">9</span><div class="score-bar"><div class="score-fill" style="width:90%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.2 Airwallex</span><span class="kb-tag">3.1 收入模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">全球账户（Global Accounts）：支持20+货币，可在20+国家以本地银行账户形式收款<span class="src">来源：定价页，Global Accounts部分</span></div>
+    <div class="ip-col ip-analysis">多货币虚拟账户（VA）是跨境支付核心基础设施，使企业像本地公司一样收款，避免外汇损耗。这是Airwallex与传统银行最大差异点之一</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-tech">基础设施</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.2 Airwallex</span><span class="kb-tag">5.2 VA账户</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">国内卡收单费率：本地卡3.30% + HK$2.35/笔；国际卡3.60% + HK$2.35/笔<span class="src">来源：定价页，Online Payment Acceptance部分</span></div>
+    <div class="ip-col ip-analysis">收单业务是Airwallex高附加值的增量收入来源。3.3%收单费率接近行业标准（Stripe港版约3.4%），体现其收单布局与主营跨境转账的差异化收费策略</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-fin">Take Rate</span><span class="tag tag-biz">收单业务</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.2 Airwallex</span><span class="kb-tag">3.1 收入模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">订阅管理（Subscription Management）：每笔成功卡交易另收0.50%<span class="src">来源：定价页，Online Payment Acceptance</span></div>
+    <div class="ip-col ip-analysis">0.5%附加费针对SaaS/订阅场景，体现Airwallex向软件公司和平台经济扩张的战略意图，抓住订阅经济高速增长红利</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">定价策略</span><span class="tag tag-strat">地理扩张</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.2 Airwallex</span><span class="kb-tag">3.1 收入模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">企业卡发行：多币种企业卡（公司卡无限量），员工报销卡，支持Apple Pay和Google Pay<span class="src">来源：定价页，Spend部分</span></div>
+    <div class="ip-col ip-analysis">卡发行扩展了Airwallex的收入来源——通过交换费（interchange）获利。员工卡管理功能增加B2B客户粘性，形成从收款到付款的完整资金链</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-fin">卡发行</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.2 Airwallex</span><span class="kb-tag">3.1 收入模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">额外支出用户费：5个免费用户，之后每人每月HK$40<span class="src">来源：定价页，Spend users部分</span></div>
+    <div class="ip-col ip-analysis">按席位收费（SaaS模式）确保随企业规模增长持续产生收入，形成可预测的经常性收益流。这是Airwallex向SaaS化转型的典型定价设计</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">定价策略</span><span class="tag tag-fin">经常性收入</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.2 Airwallex</span><span class="kb-tag">3.1 收入模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">账单支付（Bill Pay）：上传、邮件或从会计软件同步账单，支持国内外付款，可自定义多条件审批流程<span class="src">来源：定价页，Bill Pay部分</span></div>
+    <div class="ip-col ip-analysis">Bill Pay是针对企业财务团队的增值功能，将支付从"工具"升级为"工作流"，提高客户迁移成本，是典型的"粘性护城河"建设</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">商业模式</span><span class="tag tag-strat">护城河</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.2 Airwallex</span><span class="kb-tag">3.1 收入模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">三级套餐定价（Starter/Growth/Enterprise）：Yield利率和服务权限随套餐递增<span class="src">来源：定价页整体结构</span></div>
+    <div class="ip-col ip-analysis">分层定价是SaaS企业常见的LTV最大化策略——低门槛吸引小企业，随业务增长自然升级至高付费套餐。Yield利率差作为升级激励效果显著</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">定价策略</span><span class="tag tag-fin">单位经济</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.2 Airwallex</span><span class="kb-tag">3.2 定价</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">FX汇率预警（FX rate alerts）功能：所有套餐均含<span class="src">来源：定价页</span></div>
+    <div class="ip-col ip-analysis">FX汇率预警作为免费功能，帮助客户优化换汇时机，体现Airwallex"共赢"的产品哲学，同时增加平台活跃度和依赖度</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">产品功能</span></div></div>
+    <div class="ip-col"><div class="score s6"><span class="score-num">6</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.2 Airwallex</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">API自动化FX交易和批量国际转账功能，适合企业规模操作<span class="src">来源：定价页，FX &amp; Transfers部分</span></div>
+    <div class="ip-col ip-analysis">API能力将Airwallex定位为基础设施提供商而非单纯工具，使其嵌入企业ERP系统，大幅提高迁移成本和客户黏性</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-tech">基础设施</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.2 Airwallex</span><span class="kb-tag">5.1 支付网络</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">本地收款（Local payment methods）：HK$2.00 + 支付方式费用/笔<span class="src">来源：定价页</span></div>
+    <div class="ip-col ip-analysis">本地支付方式（如FPS、PayMe等）的接入使Airwallex覆盖香港全部主流收款渠道，与传统跨境专注的定位形成互补</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">定价策略</span><span class="tag tag-tech">基础设施</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.2 Airwallex</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">与Xero、QuickBooks银行账户同步；NetSuite专业套餐集成（含费用和账单）<span class="src">来源：定价页，Integrations部分</span></div>
+    <div class="ip-col ip-analysis">深度财务软件集成让Airwallex嵌入企业现有工作流，是B2B粘性最强的形式——替换成本极高</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">生态</span><span class="tag tag-strat">护城河</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.2 Airwallex</span><span class="kb-tag">3.1 收入模式</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">企业能力（Enterprise）：全球实体统一财务管理，单点登录（即将推出），自定义权限角色<span class="src">来源：定价页，Enterprise Capabilities</span></div>
+    <div class="ip-col ip-analysis">多实体管理功能直接瞄准跨国企业需求，是Airwallex向中大型企业（mid-market）渗透的关键功能，区别于主要服务小微的Wise</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-strat">地理扩张</span><span class="tag tag-biz">商业模式</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.2 Airwallex</span><span class="kb-tag">4.2 市场定位</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">全球发卡（Global card issuing via API）：覆盖40+国家<span class="src">来源：定价页，Corporate Cards部分</span></div>
+    <div class="ip-col ip-analysis">40+国家API发卡是Airwallex嵌入式金融（Embedded Finance）布局的体现，开放平台策略使其能通过合作伙伴触达更多用户</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">嵌入式金融</span><span class="tag tag-strat">地理扩张</span></div></div>
+    <div class="ip-col"><div class="score s8"><span class="score-num">8</span><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.2 Airwallex</span><span class="kb-tag">5.1 支付网络</span></div>
+  </div>
+
+  <div class="ip-row">
+    <div class="ip-col ip-original">员工报销（Reimbursements）：支持向200+国家员工付款，自动收据数据提取<span class="src">来源：定价页，Expense Management部分</span></div>
+    <div class="ip-col ip-analysis">全球员工报销覆盖200+国家，定位全球化人才管理场景，与专注收款的传统跨境支付平台形成差异化，向"全球财务运营平台"转型</div>
+    <div class="ip-col"><div class="tag-list"><span class="tag tag-biz">产品多元化</span><span class="tag tag-strat">地理扩张</span></div></div>
+    <div class="ip-col"><div class="score s7"><span class="score-num">7</span><div class="score-bar"><div class="score-fill" style="width:70%"></div></div></div></div>
+    <div class="ip-col"><span class="kb-tag">2.2 Airwallex</span></div>
+  </div>
+
+</div>
+<div class="footer">数据来源：Airwallex官网定价页（实时抓取） | 分析时间：2026-03-24 | 索引编号：#093</div>
+</body>
+</html>
