@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>跨境支付价值流图（VSM）— 行业分析</title>
 <style>
+  .lang-switcher { position: fixed; top: 16px; right: 20px; z-index: 1000; display: flex; gap: 4px; }
+  .lang-switcher button { padding: 4px 10px; border: 1px solid #e2e8f0; border-radius: 4px; font-size: 12px; cursor: pointer; background: white; color: #64748b; }
+  .lang-switcher button.active { background: #2563eb; color: white; border-color: #2563eb; }
   /* ── Reset & Base ── */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -758,19 +761,25 @@
 </head>
 <body>
 
+<!-- ══════════════════ LANG SWITCHER ══════════════════ -->
+<div class="lang-switcher">
+  <button id="btn-zh" onclick="switchLang('zh')">中文</button>
+  <button id="btn-en" onclick="switchLang('en')">EN</button>
+</div>
+
 <!-- ═══ PAGE HEADER ═══ -->
 <div class="page-header">
-  <h1>🌐 跨境支付价值流图（VSM）</h1>
-  <div class="subtitle">Value Stream Mapping — Cross-Border Payments Industry Analysis | 2024-2027</div>
+  <h1>🌐 <span data-zh>跨境支付价值流图（VSM）</span><span data-en>Cross-Border Payments Value Stream Map (VSM)</span></h1>
+  <div class="subtitle">Value Stream Mapping — <span data-zh>跨境支付行业研究</span><span data-en>Cross-Border Payments Research</span> | 2026 Q1 | 2024-2027</div>
   <div class="data-badge-row">
     <span class="data-badge">📊 FSB G20 2024 (card-066)</span>
     <span class="data-badge">🏦 BIS CPMI 2024 (card-071)</span>
-    <span class="data-badge">💰 世界银行 Q1 2024 (card-068)</span>
+    <span class="data-badge">💰 <span data-zh>世界银行</span><span data-en>World Bank</span> Q1 2024 (card-068)</span>
     <span class="data-badge">⚡ Wise FY2025 (card-001)</span>
     <span class="data-badge">🔗 SWIFT gpi 2024 (card-151)</span>
     <span class="data-badge">🌏 Project Nexus (card-139)</span>
     <span class="data-badge">🏛️ mBridge MVP (card-135)</span>
-    <span class="data-badge">₿ 稳定币 USDC (card-125)</span>
+    <span class="data-badge">₿ <span data-zh>稳定币</span><span data-en>Stablecoin</span> USDC (card-125)</span>
   </div>
 </div>
 
@@ -779,22 +788,22 @@
   <button class="tab-btn active" onclick="switchTab('tab1', this)">
     <span class="tab-icon">🏦</span>
     <span>
-      Tab 1：传统模式 VSM
+      <span data-zh>Tab 1：传统模式（现状）</span><span data-en>Tab 1: Traditional Model (Current State)</span>
       <span class="tab-sub">Current State — SWIFT Correspondent Banking</span>
     </span>
   </button>
   <button class="tab-btn" onclick="switchTab('tab2', this)">
     <span class="tab-icon">⚖️</span>
     <span>
-      Tab 2：三模式对比 VSM
-      <span class="tab-sub">Current State — 传统 vs Wise vs 稳定币</span>
+      <span data-zh>Tab 2：三模式对比</span><span data-en>Tab 2: Three-Model Comparison</span>
+      <span class="tab-sub"><span data-zh>传统</span><span data-en>Traditional</span> vs Wise vs <span data-zh>稳定币</span><span data-en>Stablecoin</span></span>
     </span>
   </button>
   <button class="tab-btn" onclick="switchTab('tab3', this)">
     <span class="tab-icon">🚀</span>
     <span>
-      Tab 3：未来态 VSM
-      <span class="tab-sub">Future State — G20 2027 目标</span>
+      <span data-zh>Tab 3：未来态（G20 2027）</span><span data-en>Tab 3: Future State (G20 2027)</span>
+      <span class="tab-sub">Future State — G20 2027 <span data-zh>目标</span><span data-en>Targets</span></span>
     </span>
   </button>
 </nav>
@@ -806,36 +815,36 @@
 
   <!-- Pain Point Summary -->
   <div class="pain-summary">
-    <h3>🚨 痛点摘要 — 传统银行跨境支付（SWIFT Correspondent Banking）</h3>
+    <h3>🚨 <span data-zh>痛点摘要 — 传统银行跨境支付（SWIFT Correspondent Banking）</span><span data-en>Key Pain Points — Traditional Bank Cross-Border Payments (SWIFT Correspondent Banking)</span></h3>
     <div class="pain-metrics">
       <div class="pain-metric">
-        <span class="num">2–5天</span>
-        <div class="lbl">全程到账时间</div>
-        <div class="src-ref">来源：BIS CPMI #071</div>
+        <span class="num">2–5<span data-zh>天</span><span data-en>days</span></span>
+        <div class="lbl"><span data-zh>全程到账时间</span><span data-en>Total Duration</span></div>
+        <div class="src-ref"><span data-zh>来源：</span>BIS CPMI #071</div>
       </div>
       <div class="pain-metric">
         <span class="num">6.35%</span>
-        <div class="lbl">汇款平均成本（$200）</div>
-        <div class="src-ref">世界银行 Q1 2024 #068</div>
+        <div class="lbl"><span data-zh>汇款平均成本（$200）</span><span data-en>Avg Remittance Cost ($200)</span></div>
+        <div class="src-ref"><span data-zh>世界银行</span><span data-en>World Bank</span> Q1 2024 #068</div>
       </div>
       <div class="pain-metric">
         <span class="num">&lt;3%</span>
-        <div class="lbl">增值时间占比</div>
-        <div class="src-ref">实际处理极短，等待为主</div>
+        <div class="lbl"><span data-zh>增值时间占比</span><span data-en>Value-Adding Ratio</span></div>
+        <div class="src-ref"><span data-zh>实际处理极短，等待为主</span><span data-en>Actual processing minimal, mostly waiting</span></div>
       </div>
       <div class="pain-metric">
         <span class="num">99%</span>
-        <div class="lbl">AML误报率</div>
+        <div class="lbl">AML<span data-zh>误报率</span><span data-en> False Positive Rate</span></div>
         <div class="src-ref">BIS CPMI #071 Box 1</div>
       </div>
       <div class="pain-metric">
-        <span class="num">2–5个</span>
-        <div class="lbl">中间代理行数量</div>
-        <div class="src-ref">SWIFT网络结构</div>
+        <span class="num">2–5</span>
+        <div class="lbl"><span data-zh>中间代理行数量</span><span data-en>Correspondent Banks</span></div>
+        <div class="src-ref">SWIFT<span data-zh>网络结构</span><span data-en> Network Structure</span></div>
       </div>
       <div class="pain-metric">
-        <span class="num">66hrs/周</span>
-        <div class="lbl">RTGS平均运营时长</div>
+        <span class="num">66hrs/<span data-zh>周</span><span data-en>wk</span></span>
+        <div class="lbl">RTGS<span data-zh>平均运营时长</span><span data-en> Avg Operating Hours</span></div>
         <div class="src-ref">BIS CPMI #071（24/7=168hrs）</div>
       </div>
     </div>
@@ -844,10 +853,10 @@
   <!-- VSM Flow -->
   <div class="section-header">
     <div class="section-title">
-      📋 价值流程图
-      <span class="section-badge" style="background:#fee2e2;color:#991b1b;">⚠️ 高浪费模式</span>
+      📋 <span data-zh>价值流程图</span><span data-en>Value Stream Map</span>
+      <span class="section-badge" style="background:#fee2e2;color:#991b1b;">⚠️ <span data-zh>高浪费模式</span><span data-en>High-Waste Mode</span></span>
     </div>
-    <div style="font-size:12px;color:#64748b;">← 资金流 &nbsp;&nbsp;⋯ 信息流（SWIFT报文）</div>
+    <div style="font-size:12px;color:#64748b;">← <span data-zh>资金流</span><span data-en>Fund Flow</span> &nbsp;&nbsp;⋯ <span data-zh>信息流（SWIFT报文）</span><span data-en>Info Flow (SWIFT Messages)</span></div>
   </div>
 
   <div class="vsm-flow">
@@ -855,260 +864,260 @@
 
       <!-- 节点1：发款方 -->
       <div class="vsm-node actor">
-        <div class="node-type-badge badge-actor">发起方</div>
-        <div class="node-name">👤 发款方</div>
+        <div class="node-type-badge badge-actor"><span data-zh>发起方</span><span data-en>Sender</span></div>
+        <div class="node-name">👤 <span data-zh>发款方</span><span data-en>Sender</span></div>
         <div class="node-metric">
           <div class="metric-dot dot-blue"></div>
-          <span class="metric-label">发起汇款指令</span>
+          <span class="metric-label"><span data-zh>发起汇款指令</span><span data-en>Initiate Transfer</span></span>
         </div>
         <div class="node-metric">
           <div class="metric-dot dot-green"></div>
-          <span class="metric-label">操作时间：</span>
-          <span class="metric-value green">5–15分钟</span>
+          <span class="metric-label"><span data-zh>操作时间：</span><span data-en>Processing Time:</span></span>
+          <span class="metric-value green">5–15<span data-zh>分钟</span><span data-en>min</span></span>
         </div>
-        <div class="node-va-label va-yes">✓ 增值</div>
+        <div class="node-va-label va-yes">✓ <span data-zh>增值</span><span data-en>Value-Adding</span></div>
       </div>
 
       <!-- Arrow 1 -->
       <div class="vsm-arrow">
-        <div class="arrow-label">汇款申请</div>
+        <div class="arrow-label"><span data-zh>汇款申请</span><span data-en>Transfer Request</span></div>
         <div class="arrow-line arrow-solid"><div class="arrow-head">▶</div></div>
-        <div class="arrow-type-label">实线=资金流</div>
+        <div class="arrow-type-label"><span data-zh>实线=资金流</span><span data-en>Solid=Fund Flow</span></div>
       </div>
 
       <!-- 节点2：发款行前台 -->
       <div class="vsm-node process-node">
         <div class="waste-badge">⚠</div>
-        <div class="node-type-badge badge-process">银行前台</div>
-        <div class="node-name">🏦 发款行前台</div>
+        <div class="node-type-badge badge-process"><span data-zh>银行前台</span><span data-en>Bank Frontend</span></div>
+        <div class="node-name">🏦 <span data-zh>发款行前台</span><span data-en>Sending Bank</span></div>
         <div class="node-metric">
           <div class="metric-dot dot-green"></div>
-          <span class="metric-label">处理时间：</span>
-          <span class="metric-value green">15–30分钟</span>
+          <span class="metric-label"><span data-zh>处理时间：</span><span data-en>Processing Time:</span></span>
+          <span class="metric-value green">15–30<span data-zh>分钟</span><span data-en>min</span></span>
         </div>
         <div class="node-metric">
           <div class="metric-dot dot-red"></div>
-          <span class="metric-label">等待时间：</span>
-          <span class="metric-value red">2–4小时</span>
+          <span class="metric-label"><span data-zh>等待时间：</span><span data-en>Wait Time:</span></span>
+          <span class="metric-value red">2–4<span data-zh>小时</span><span data-en>hrs</span></span>
         </div>
         <div class="node-metric">
           <div class="metric-dot dot-orange"></div>
-          <span class="metric-label">费用收取：</span>
+          <span class="metric-label"><span data-zh>费用收取：</span><span data-en>Cost Share:</span></span>
           <span class="metric-value orange">~1.5–2%</span>
         </div>
-        <div class="node-va-label va-partial">△ 部分增值</div>
+        <div class="node-va-label va-partial">△ <span data-zh>部分增值</span><span data-en>Partial Value-Adding</span></div>
       </div>
 
       <!-- Arrow 2 (dashed - info) -->
       <div class="vsm-arrow">
-        <div class="arrow-label">账户验证</div>
+        <div class="arrow-label"><span data-zh>账户验证</span><span data-en>Account Verify</span></div>
         <div class="arrow-line arrow-dashed"><div class="arrow-head" style="color:#6366f1">▶</div></div>
-        <div class="arrow-type-label">虚线=信息流</div>
+        <div class="arrow-type-label"><span data-zh>虚线=信息流</span><span data-en>Dashed=Info Flow</span></div>
       </div>
 
       <!-- 节点3：KYC/AML核查 -->
       <div class="vsm-node waste-node">
         <div class="waste-badge">✕</div>
-        <div class="node-type-badge badge-wait">主要浪费</div>
-        <div class="node-name">🔍 KYC/AML核查</div>
+        <div class="node-type-badge badge-wait"><span data-zh>主要浪费</span><span data-en>Main Waste</span></div>
+        <div class="node-name">🔍 KYC/AML <span data-zh>核查</span><span data-en>Check</span></div>
         <div class="node-metric">
           <div class="metric-dot dot-green"></div>
-          <span class="metric-label">处理：</span>
-          <span class="metric-value green">2–4小时</span>
+          <span class="metric-label"><span data-zh>处理：</span><span data-en>Processing Time:</span></span>
+          <span class="metric-value green">2–4<span data-zh>小时</span><span data-en>hrs</span></span>
         </div>
         <div class="node-metric">
           <div class="metric-dot dot-red"></div>
-          <span class="metric-label">等待：</span>
-          <span class="metric-value red">12–24小时</span>
+          <span class="metric-label"><span data-zh>等待：</span><span data-en>Wait Time:</span></span>
+          <span class="metric-value red">12–24<span data-zh>小时</span><span data-en>hrs</span></span>
         </div>
         <div class="node-metric">
           <div class="metric-dot dot-red"></div>
-          <span class="metric-label">误报率：</span>
-          <span class="metric-value red">5–10%触发，99%误报</span>
+          <span class="metric-label"><span data-zh>误报率：</span><span data-en>False Positive:</span></span>
+          <span class="metric-value red">5–10%<span data-zh>触发，</span><span data-en> trigger, </span>99%<span data-zh>误报</span><span data-en> false positive</span></span>
         </div>
         <div class="node-metric">
           <div class="metric-dot dot-orange"></div>
-          <span class="metric-label">成本占比：</span>
+          <span class="metric-label"><span data-zh>成本占比：</span><span data-en>Cost Share:</span></span>
           <span class="metric-value orange">~0.5%</span>
         </div>
-        <div style="font-size:10px;color:#dc2626;margin-top:6px;font-weight:600;">⚠ 每个代理行重复验证</div>
-        <div class="node-va-label va-no">✕ 非增值浪费</div>
+        <div style="font-size:10px;color:#dc2626;margin-top:6px;font-weight:600;">⚠ <span data-zh>每个代理行重复验证</span><span data-en>Repeated at each correspondent bank</span></div>
+        <div class="node-va-label va-no">✕ <span data-zh>非增值浪费</span><span data-en>Non-Value-Adding (Waste)</span></div>
       </div>
 
       <!-- Arrow 3 -->
       <div class="vsm-arrow">
-        <div class="arrow-label">合规通过</div>
+        <div class="arrow-label"><span data-zh>合规通过</span><span data-en>Compliance OK</span></div>
         <div class="arrow-line arrow-dashed"><div class="arrow-head" style="color:#6366f1">▶</div></div>
       </div>
 
       <!-- 节点4：FX报价 -->
       <div class="vsm-node process-node">
-        <div class="node-type-badge badge-process">外汇</div>
-        <div class="node-name">💱 FX报价与确认</div>
+        <div class="node-type-badge badge-process">FX</div>
+        <div class="node-name">💱 FX <span data-zh>报价确认</span><span data-en>Quote & Confirm</span></div>
         <div class="node-metric">
           <div class="metric-dot dot-green"></div>
-          <span class="metric-label">处理：</span>
-          <span class="metric-value green">5–15分钟</span>
+          <span class="metric-label"><span data-zh>处理：</span><span data-en>Processing Time:</span></span>
+          <span class="metric-value green">5–15<span data-zh>分钟</span><span data-en>min</span></span>
         </div>
         <div class="node-metric">
           <div class="metric-dot dot-red"></div>
-          <span class="metric-label">等待：</span>
-          <span class="metric-value red">1–3小时</span>
+          <span class="metric-label"><span data-zh>等待：</span><span data-en>Wait Time:</span></span>
+          <span class="metric-value red">1–3<span data-zh>小时</span><span data-en>hrs</span></span>
         </div>
         <div class="node-metric">
           <div class="metric-dot dot-orange"></div>
-          <span class="metric-label">外汇差价：</span>
+          <span class="metric-label"><span data-zh>外汇差价：</span><span data-en>FX Spread:</span></span>
           <span class="metric-value orange">1.5–3%</span>
         </div>
-        <div style="font-size:10px;color:#d97706;margin-top:6px;font-weight:600;">最大隐性成本</div>
-        <div class="node-va-label va-partial">△ 部分增值</div>
+        <div style="font-size:10px;color:#d97706;margin-top:6px;font-weight:600;"><span data-zh>最大隐性成本</span><span data-en>Largest hidden cost</span></div>
+        <div class="node-va-label va-partial">△ <span data-zh>部分增值</span><span data-en>Partial Value-Adding</span></div>
       </div>
 
       <!-- Arrow 4 -->
       <div class="vsm-arrow">
-        <div class="arrow-label">MT103报文</div>
+        <div class="arrow-label">MT103</div>
         <div class="arrow-line arrow-dashed"><div class="arrow-head" style="color:#6366f1">▶</div></div>
-        <div class="arrow-type-label">SWIFT信息流</div>
+        <div class="arrow-type-label">SWIFT</div>
       </div>
 
       <!-- 节点5：SWIFT MT报文发送 -->
       <div class="vsm-node waste-node">
         <div class="waste-badge">✕</div>
-        <div class="node-type-badge badge-wait">串行处理</div>
-        <div class="node-name">📡 SWIFT MT报文发送</div>
+        <div class="node-type-badge badge-wait"><span data-zh>串行处理</span><span data-en>Sequential</span></div>
+        <div class="node-name">📡 SWIFT <span data-zh>报文发送</span><span data-en>Message</span></div>
         <div class="node-metric">
           <div class="metric-dot dot-green"></div>
-          <span class="metric-label">传输：</span>
-          <span class="metric-value green">秒级</span>
+          <span class="metric-label"><span data-zh>传输：</span><span data-en>Processing Time:</span></span>
+          <span class="metric-value green"><span data-zh>秒级</span><span data-en>Seconds</span></span>
         </div>
         <div class="node-metric">
           <div class="metric-dot dot-red"></div>
-          <span class="metric-label">队列等待：</span>
-          <span class="metric-value red">1–4小时</span>
+          <span class="metric-label"><span data-zh>队列等待：</span><span data-en>Wait Time:</span></span>
+          <span class="metric-value red">1–4<span data-zh>小时</span><span data-en>hrs</span></span>
         </div>
         <div class="node-metric">
           <div class="metric-dot dot-orange"></div>
-          <span class="metric-label">RTGS窗口限制：</span>
-          <span class="metric-value orange">66hrs/周</span>
+          <span class="metric-label">RTGS<span data-zh>窗口限制：</span><span data-en> window:</span></span>
+          <span class="metric-value orange">66hrs/<span data-zh>周</span><span data-en>wk</span></span>
         </div>
-        <div style="font-size:10px;color:#dc2626;margin-top:6px;font-weight:600;">串行：下一步等上一步完成</div>
-        <div style="font-size:10px;color:#94a3b8;margin-top:2px;">gpi后：50%在30分钟到达</div>
-        <div class="node-va-label va-no">✕ 非增值（等待）</div>
+        <div style="font-size:10px;color:#dc2626;margin-top:6px;font-weight:600;"><span data-zh>串行：下一步等上一步完成</span><span data-en>Sequential: each step waits for prior</span></div>
+        <div style="font-size:10px;color:#94a3b8;margin-top:2px;">gpi: 50%<span data-zh>在30分钟到达</span><span data-en> in 30min</span></div>
+        <div class="node-va-label va-no">✕ <span data-zh>非增值（等待）</span><span data-en>Non-Value-Adding (Waste)</span></div>
       </div>
 
       <!-- Arrow 5 -->
       <div class="vsm-arrow">
-        <div class="arrow-label">转发指令</div>
+        <div class="arrow-label"><span data-zh>转发指令</span><span data-en>Forward</span></div>
         <div class="arrow-line arrow-solid"><div class="arrow-head">▶</div></div>
       </div>
 
       <!-- 节点6：代理行1 -->
       <div class="vsm-node waste-node">
         <div class="waste-badge">✕</div>
-        <div class="node-type-badge badge-wait">中间浪费</div>
-        <div class="node-name">🏛️ 代理行1（中转）</div>
+        <div class="node-type-badge badge-wait"><span data-zh>中间浪费</span><span data-en>Middle Waste</span></div>
+        <div class="node-name">🏛️ <span data-zh>代理行</span><span data-en>Correspondent Bank</span></div>
         <div class="node-metric">
           <div class="metric-dot dot-green"></div>
-          <span class="metric-label">处理：</span>
-          <span class="metric-value green">30–60分钟</span>
+          <span class="metric-label"><span data-zh>处理：</span><span data-en>Processing Time:</span></span>
+          <span class="metric-value green">30–60<span data-zh>分钟</span><span data-en>min</span></span>
         </div>
         <div class="node-metric">
           <div class="metric-dot dot-red"></div>
-          <span class="metric-label">夜间/周末等待：</span>
-          <span class="metric-value red">最多24–48小时</span>
+          <span class="metric-label"><span data-zh>夜间/周末等待：</span><span data-en>Wait Time:</span></span>
+          <span class="metric-value red"><span data-zh>最多</span><span data-en>up to </span>24–48<span data-zh>小时</span><span data-en>hrs</span></span>
         </div>
         <div class="node-metric">
           <div class="metric-dot dot-red"></div>
-          <span class="metric-label">重复KYC：</span>
-          <span class="metric-value red">是</span>
+          <span class="metric-label"><span data-zh>重复KYC：</span><span data-en>Repeat KYC:</span></span>
+          <span class="metric-value red"><span data-zh>是</span><span data-en>Yes</span></span>
         </div>
         <div class="node-metric">
           <div class="metric-dot dot-orange"></div>
-          <span class="metric-label">代理行费：</span>
+          <span class="metric-label"><span data-zh>代理行费：</span><span data-en>Cost Share:</span></span>
           <span class="metric-value orange">0.5–1%</span>
         </div>
-        <div class="node-va-label va-no">✕ 非增值浪费</div>
+        <div class="node-va-label va-no">✕ <span data-zh>非增值浪费</span><span data-en>Non-Value-Adding (Waste)</span></div>
       </div>
 
       <!-- Arrow 6 -->
       <div class="vsm-arrow">
-        <div class="arrow-label">MT202报文</div>
+        <div class="arrow-label">MT202</div>
         <div class="arrow-line arrow-dashed"><div class="arrow-head" style="color:#6366f1">▶</div></div>
       </div>
 
       <!-- 节点7：代理行2（可选） -->
       <div class="vsm-node waste-node">
         <div class="waste-badge">?</div>
-        <div class="node-type-badge badge-wait">可选中间行</div>
-        <div class="node-name">🏛️ 代理行2（可选）</div>
+        <div class="node-type-badge badge-wait"><span data-zh>可选中间行</span><span data-en>Optional Intermediary</span></div>
+        <div class="node-name">🏛️ <span data-zh>代理行2（可选）</span><span data-en>Correspondent Bank 2 (Optional)</span></div>
         <div class="node-metric">
           <div class="metric-dot dot-red"></div>
-          <span class="metric-label">等待：</span>
-          <span class="metric-value red">12–24小时</span>
+          <span class="metric-label"><span data-zh>等待：</span><span data-en>Wait Time:</span></span>
+          <span class="metric-value red">12–24<span data-zh>小时</span><span data-en>hrs</span></span>
         </div>
         <div class="node-metric">
           <div class="metric-dot dot-red"></div>
-          <span class="metric-label">额外费用：</span>
+          <span class="metric-label"><span data-zh>额外费用：</span><span data-en>Extra Cost:</span></span>
           <span class="metric-value red">0.3–0.8%</span>
         </div>
         <div class="node-metric">
           <div class="metric-dot dot-red"></div>
-          <span class="metric-label">透明度：</span>
-          <span class="metric-value red">极低</span>
+          <span class="metric-label"><span data-zh>透明度：</span><span data-en>Transparency:</span></span>
+          <span class="metric-value red"><span data-zh>极低</span><span data-en>Very Low</span></span>
         </div>
-        <div style="font-size:10px;color:#dc2626;margin-top:6px;font-weight:600;">复杂走廊可达3–5个代理行</div>
-        <div class="node-va-label va-no">✕ 纯浪费节点</div>
+        <div style="font-size:10px;color:#dc2626;margin-top:6px;font-weight:600;"><span data-zh>复杂走廊可达3–5个代理行</span><span data-en>Complex corridors: 3–5 correspondent banks</span></div>
+        <div class="node-va-label va-no">✕ <span data-zh>纯浪费节点</span><span data-en>Pure Waste Node</span></div>
       </div>
 
       <!-- Arrow 7 -->
       <div class="vsm-arrow">
-        <div class="arrow-label">转账指令</div>
+        <div class="arrow-label"><span data-zh>转账指令</span><span data-en>Transfer</span></div>
         <div class="arrow-line arrow-solid"><div class="arrow-head">▶</div></div>
       </div>
 
       <!-- 节点8：收款行 -->
       <div class="vsm-node process-node">
-        <div class="node-type-badge badge-process">收款银行</div>
-        <div class="node-name">🏦 收款行</div>
+        <div class="node-type-badge badge-process"><span data-zh>收款银行</span><span data-en>Receiving Bank</span></div>
+        <div class="node-name">🏦 <span data-zh>收款行</span><span data-en>Receiving Bank</span></div>
         <div class="node-metric">
           <div class="metric-dot dot-green"></div>
-          <span class="metric-label">处理：</span>
-          <span class="metric-value green">30–60分钟</span>
+          <span class="metric-label"><span data-zh>处理：</span><span data-en>Processing Time:</span></span>
+          <span class="metric-value green">30–60<span data-zh>分钟</span><span data-en>min</span></span>
         </div>
         <div class="node-metric">
           <div class="metric-dot dot-red"></div>
-          <span class="metric-label">核查等待：</span>
-          <span class="metric-value red">1–4小时</span>
+          <span class="metric-label"><span data-zh>核查等待：</span><span data-en>Wait Time:</span></span>
+          <span class="metric-value red">1–4<span data-zh>小时</span><span data-en>hrs</span></span>
         </div>
         <div class="node-metric">
           <div class="metric-dot dot-red"></div>
-          <span class="metric-label">入账手续费：</span>
+          <span class="metric-label"><span data-zh>入账手续费：</span><span data-en>Cost Share:</span></span>
           <span class="metric-value red">0.2–0.5%</span>
         </div>
-        <div class="node-va-label va-partial">△ 部分增值</div>
+        <div class="node-va-label va-partial">△ <span data-zh>部分增值</span><span data-en>Partial Value-Adding</span></div>
       </div>
 
       <!-- Arrow 8 -->
       <div class="vsm-arrow">
-        <div class="arrow-label">入账通知</div>
+        <div class="arrow-label"><span data-zh>入账通知</span><span data-en>Credit Notify</span></div>
         <div class="arrow-line arrow-solid"><div class="arrow-head">▶</div></div>
       </div>
 
       <!-- 节点9：收款方 -->
       <div class="vsm-node actor">
         <div class="value-badge">✓</div>
-        <div class="node-type-badge badge-actor">收款方</div>
-        <div class="node-name">👤 收款方入账</div>
+        <div class="node-type-badge badge-actor"><span data-zh>收款方</span><span data-en>Recipient</span></div>
+        <div class="node-name">👤 <span data-zh>收款方入账</span><span data-en>Recipient Credit</span></div>
         <div class="node-metric">
           <div class="metric-dot dot-green"></div>
-          <span class="metric-label">实际收到金额</span>
+          <span class="metric-label"><span data-zh>实际收到金额</span><span data-en>Actual amount received</span></span>
         </div>
         <div class="node-metric">
           <div class="metric-dot dot-red"></div>
-          <span class="metric-label">扣除总成本：</span>
+          <span class="metric-label"><span data-zh>扣除总成本：</span><span data-en>Total cost deducted:</span></span>
           <span class="metric-value red">~6.35%</span>
         </div>
-        <div class="node-va-label va-yes">✓ 最终增值</div>
+        <div class="node-va-label va-yes">✓ <span data-zh>最终增值</span><span data-en>Final Value-Adding</span></div>
       </div>
 
     </div><!-- end vsm-lane -->
@@ -1116,23 +1125,23 @@
 
   <!-- Timeline Section -->
   <div class="timeline-section">
-    <h3>⏱️ 时间流分析 — 增值 vs 浪费</h3>
+    <h3>⏱️ <span data-zh>时间流分析 — 增值 vs 浪费</span><span data-en>Time Flow Analysis — Value-Adding vs Waste</span></h3>
 
     <div class="timeline-row">
       <div class="timeline-row-label">
-        <span>总时长分布（2–5天典型跨境汇款）</span>
-        <span style="color:#dc2626;font-weight:700;">增值时间 &lt;3%，等待 &gt;97%</span>
+        <span><span data-zh>总时长分布（2–5天典型跨境汇款）</span><span data-en>Total Duration (2–5 days typical)</span></span>
+        <span style="color:#dc2626;font-weight:700;"><span data-zh>增值时间 &lt;3%，等待 &gt;97%</span><span data-en>Value-Adding Ratio &lt;3%, Wait &gt;97%</span></span>
       </div>
       <div class="timeline-bar">
         <div class="bar-value" style="width:3%">3%</div>
-        <div class="bar-wait" style="width:97%">等待 97%（夜间/周末/队列/代理行处理）</div>
+        <div class="bar-wait" style="width:97%"><span data-zh>等待 97%（夜间/周末/队列/代理行处理）</span><span data-en>Wait 97% (overnight/weekend/queue/correspondent processing)</span></div>
       </div>
     </div>
 
     <div class="timeline-row" style="margin-top:12px;">
       <div class="timeline-row-label">
-        <span>成本分布（总成本 6.35%，发送$200）</span>
-        <span style="color:#d97706;">来源：世界银行 Q1 2024 #068</span>
+        <span><span data-zh>成本分布（总成本 6.35%，发送$200）</span><span data-en>Cost Distribution (total 6.35%, sending $200)</span></span>
+        <span style="color:#d97706;"><span data-zh>来源：世界银行</span><span data-en>Source: World Bank</span> Q1 2024 #068</span>
       </div>
       <div class="timeline-bar">
         <div class="bar-value" style="width:28%;background:linear-gradient(90deg,#1d4ed8,#3b82f6);">FX 差价 ≈1.8%</div>
@@ -1143,36 +1152,38 @@
     </div>
 
     <div class="timeline-legend">
-      <div class="legend-item"><div class="legend-dot" style="background:#10b981"></div>增值处理时间（实际操作）</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#ef4444"></div>非增值等待（队列/夜间/周末/重复检查）</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#f59e0b"></div>部分增值（必要但可优化）</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#6b21a8"></div>收款行费用</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#10b981"></div><span data-zh>增值处理时间（实际操作）</span><span data-en>Value-Adding processing time (actual work)</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background:#ef4444"></div><span data-zh>非增值等待（队列/夜间/周末/重复检查）</span><span data-en>Non-Value-Adding wait (queue/overnight/weekend/repeat checks)</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background:#f59e0b"></div><span data-zh>部分增值（必要但可优化）</span><span data-en>Partial Value-Adding (necessary but optimizable)</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background:#6b21a8"></div><span data-zh>收款行费用</span><span data-en>Receiving bank fee</span></div>
     </div>
 
     <div class="timeline-summary">
-      📌 <strong>关键数据：</strong>
-      全程时间 2–5天（BIS CPMI #071）| 增值时间 ≈ 1–2小时 | 总成本 6.35%（世界银行 Q1 2024 #068）|
-      AML误报率 99%（BIS #071 Box 1）| RTGS运营覆盖率仅 39%（66/168小时）| 5–10%支付产生合规警报
+      📌 <strong><span data-zh>关键数据：</span><span data-en>Key Data:</span></strong>
+      <span data-zh>全程时间 2–5天（BIS CPMI #071）| 增值时间 ≈ 1–2小时 | 总成本 6.35%（世界银行 Q1 2024 #068）|
+      AML误报率 99%（BIS #071 Box 1）| RTGS运营覆盖率仅 39%（66/168小时）| 5–10%支付产生合规警报</span>
+      <span data-en>Total Duration 2–5 days (BIS CPMI #071) | Value-Adding ≈ 1–2hrs | Total Cost 6.35% (World Bank Q1 2024 #068) |
+      AML False Positive Rate 99% (BIS #071 Box 1) | RTGS coverage only 39% (66/168hrs) | 5–10% payments trigger compliance alerts</span>
     </div>
   </div>
 
   <!-- Key Wastes -->
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:20px;">
     <div style="background:white;border-radius:10px;padding:16px;border-left:4px solid #ef4444;">
-      <div style="font-size:13px;font-weight:700;color:#dc2626;margin-bottom:6px;">🔄 重复KYC浪费</div>
-      <div style="font-size:12px;color:#64748b;">每个代理行独立进行KYC/AML核查，同一笔支付被检查3–5次。ISO 20022迁移后可将误报率降低25–30%（BIS #071）</div>
+      <div style="font-size:13px;font-weight:700;color:#dc2626;margin-bottom:6px;">🔄 <span data-zh>重复KYC浪费</span><span data-en>Repeated KYC Waste</span></div>
+      <div style="font-size:12px;color:#64748b;"><span data-zh>每个代理行独立进行KYC/AML核查，同一笔支付被检查3–5次。ISO 20022迁移后可将误报率降低25–30%（BIS #071）</span><span data-en>Each correspondent bank performs independent KYC/AML checks; the same payment is verified 3–5 times. ISO 20022 migration can reduce false positive rate by 25–30% (BIS #071)</span></div>
     </div>
     <div style="background:white;border-radius:10px;padding:16px;border-left:4px solid #f59e0b;">
-      <div style="font-size:13px;font-weight:700;color:#d97706;margin-bottom:6px;">⏰ RTGS时间窗口</div>
-      <div style="font-size:12px;color:#64748b;">全球RTGS平均运营66小时/周，仅39%覆盖率。夜间/周末支付进入队列等待，是T+1/T+2的主因（BIS #071）</div>
+      <div style="font-size:13px;font-weight:700;color:#d97706;margin-bottom:6px;">⏰ <span data-zh>RTGS时间窗口</span><span data-en>RTGS Time Window</span></div>
+      <div style="font-size:12px;color:#64748b;"><span data-zh>全球RTGS平均运营66小时/周，仅39%覆盖率。夜间/周末支付进入队列等待，是T+1/T+2的主因（BIS #071）</span><span data-en>Global RTGS average 66hrs/week, only 39% coverage. Overnight/weekend payments queue up — the main cause of T+1/T+2 delays (BIS #071)</span></div>
     </div>
     <div style="background:white;border-radius:10px;padding:16px;border-left:4px solid #6366f1;">
-      <div style="font-size:13px;font-weight:700;color:#4f46e5;margin-bottom:6px;">📨 串行报文传递</div>
-      <div style="font-size:12px;color:#64748b;">SWIFT MT格式串行处理，每笔支付经历多个中间节点顺序转发。gpi引入UETR后90%可在30分钟内到达（card-151）</div>
+      <div style="font-size:13px;font-weight:700;color:#4f46e5;margin-bottom:6px;">📨 <span data-zh>串行报文传递</span><span data-en>Sequential Message Relay</span></div>
+      <div style="font-size:12px;color:#64748b;"><span data-zh>SWIFT MT格式串行处理，每笔支付经历多个中间节点顺序转发。gpi引入UETR后90%可在30分钟内到达（card-151）</span><span data-en>SWIFT MT format processed sequentially — each payment passes through multiple intermediary nodes in sequence. With gpi UETR, 90% can reach within 30 minutes (card-151)</span></div>
     </div>
     <div style="background:white;border-radius:10px;padding:16px;border-left:4px solid #3b82f6;">
-      <div style="font-size:13px;font-weight:700;color:#1d4ed8;margin-bottom:6px;">💸 隐性外汇差价</div>
-      <div style="font-size:12px;color:#64748b;">外汇差价约占总成本30–50%，且不透明。全球仅55.6%的PSP向用户提供速度和成本信息（FSB #066）</div>
+      <div style="font-size:13px;font-weight:700;color:#1d4ed8;margin-bottom:6px;">💸 <span data-zh>隐性外汇差价</span><span data-en>Hidden FX Spread</span></div>
+      <div style="font-size:12px;color:#64748b;"><span data-zh>外汇差价约占总成本30–50%，且不透明。全球仅55.6%的PSP向用户提供速度和成本信息（FSB #066）</span><span data-en>FX spread accounts for ~30–50% of total costs and is opaque. Only 55.6% of PSPs globally provide users with speed and cost information (FSB #066)</span></div>
     </div>
   </div>
 
@@ -1194,8 +1205,8 @@
 
   <div class="section-header">
     <div class="section-title">
-      ⚖️ 三种跨境支付模式 — 现状并排对比
-      <span class="section-badge" style="background:#dbeafe;color:#1d4ed8;">2024年现状</span>
+      ⚖️ <span data-zh>三种跨境支付模式 — 现状并排对比</span><span data-en>Three Cross-Border Payment Models — Side-by-Side Comparison</span>
+      <span class="section-badge" style="background:#dbeafe;color:#1d4ed8;"><span data-zh>2024年现状</span><span data-en>Current State 2024</span></span>
     </div>
   </div>
 
@@ -1205,229 +1216,229 @@
     <!-- Mode A: Traditional Bank -->
     <div class="mode-card mode-a">
       <div class="mode-card-header mode-a-header">
-        <div class="mode-label">模式 A</div>
-        <div class="mode-title">传统银行 + SWIFT</div>
-        <div class="mode-subtitle">代理行网络 Correspondent Banking</div>
+        <div class="mode-label"><span data-zh>模式 A</span><span data-en>Model A</span></div>
+        <div class="mode-title"><span data-zh>传统银行</span><span data-en>Traditional Banking</span> + SWIFT</div>
+        <div class="mode-subtitle"><span data-zh>代理行网络</span><span data-en>Correspondent Banking Network</span></div>
       </div>
 
       <div class="mode-flow">
         <div class="mode-step">
           <div class="step-icon" style="background:#dbeafe;color:#1d4ed8;">1</div>
           <div class="step-content">
-            <div class="step-name">发款方发起</div>
-            <div class="step-detail">网银/柜台提交汇款申请，填写收款信息</div>
+            <div class="step-name"><span data-zh>发款方发起</span><span data-en>Sender Initiates</span></div>
+            <div class="step-detail"><span data-zh>网银/柜台提交汇款申请，填写收款信息</span><span data-en>Submit via online banking/branch, fill recipient info</span></div>
           </div>
         </div>
         <div class="mode-step">
           <div class="step-icon" style="background:#fee2e2;color:#991b1b;">2</div>
           <div class="step-content">
-            <div class="step-name">发款行处理 + KYC</div>
-            <div class="step-detail">合规检查，外汇报价，手续费收取</div>
-            <span class="step-tag tag-waste">等待2–24小时</span>
+            <div class="step-name"><span data-zh>发款行处理 + KYC</span><span data-en>Sending Bank + KYC</span></div>
+            <div class="step-detail"><span data-zh>合规检查，外汇报价，手续费收取</span><span data-en>Compliance check, FX quote, fee collection</span></div>
+            <span class="step-tag tag-waste"><span data-zh>等待2–24小时</span><span data-en>Wait 2–24hrs</span></span>
           </div>
         </div>
         <div class="mode-step">
           <div class="step-icon" style="background:#fee2e2;color:#991b1b;">3</div>
           <div class="step-content">
-            <div class="step-name">SWIFT网络（2–5代理行）</div>
-            <div class="step-detail">MT103报文串行转发，每个节点等待处理</div>
-            <span class="step-tag tag-waste">串行，每步等待</span>
+            <div class="step-name">SWIFT<span data-zh>网络（2–5代理行）</span><span data-en> Network (2–5 Correspondent Banks)</span></div>
+            <div class="step-detail">MT103<span data-zh>报文串行转发，每个节点等待处理</span><span data-en> messages relayed sequentially, each node waits</span></div>
+            <span class="step-tag tag-waste"><span data-zh>串行，每步等待</span><span data-en>Sequential, wait at each step</span></span>
           </div>
         </div>
         <div class="mode-step">
           <div class="step-icon" style="background:#dbeafe;color:#1d4ed8;">4</div>
           <div class="step-content">
-            <div class="step-name">收款行入账</div>
-            <div class="step-detail">收款行验证并完成入账</div>
-            <span class="step-tag tag-waste">额外手续费</span>
+            <div class="step-name"><span data-zh>收款行入账</span><span data-en>Receiving Bank Credits</span></div>
+            <div class="step-detail"><span data-zh>收款行验证并完成入账</span><span data-en>Receiving bank verifies and completes credit</span></div>
+            <span class="step-tag tag-waste"><span data-zh>额外手续费</span><span data-en>Extra fee</span></span>
           </div>
         </div>
         <div class="mode-step">
           <div class="step-icon" style="background:#dcfce7;color:#166534;">5</div>
           <div class="step-content">
-            <div class="step-name">收款方收到资金</div>
-            <div class="step-detail">2–5个工作日后到账（T+2典型）</div>
+            <div class="step-name"><span data-zh>收款方收到资金</span><span data-en>Recipient Receives Funds</span></div>
+            <div class="step-detail"><span data-zh>2–5个工作日后到账（T+2典型）</span><span data-en>2–5 business days (T+2 typical)</span></div>
           </div>
         </div>
       </div>
 
       <div class="mode-metrics">
         <div class="mode-metric">
-          <span class="val val-bad">2–5天</span>
-          <div class="lbl">全程时间</div>
+          <span class="val val-bad">2–5<span data-zh>天</span><span data-en>days</span></span>
+          <div class="lbl"><span data-zh>全程时间</span><span data-en>Total Duration</span></div>
         </div>
         <div class="mode-metric">
           <span class="val val-bad">6.35%</span>
-          <div class="lbl">平均成本</div>
+          <div class="lbl"><span data-zh>平均成本</span><span data-en>Avg Cost</span></div>
         </div>
         <div class="mode-metric">
-          <span class="val val-bad">低</span>
-          <div class="lbl">透明度</div>
+          <span class="val val-bad"><span data-zh>低</span><span data-en>Low</span></span>
+          <div class="lbl"><span data-zh>透明度</span><span data-en>Transparency</span></div>
         </div>
         <div class="mode-metric">
           <span class="val val-bad">33.5%</span>
-          <div class="lbl">1小时内完成率</div>
+          <div class="lbl"><span data-zh>1小时内完成率</span><span data-en>Completed &lt;1hr</span></div>
         </div>
       </div>
 
       <div class="mode-pros-cons">
-        <div class="pros-cons-row"><span class="pc-icon">✅</span><span class="pc-text">监管合规完善，高额度支付</span></div>
-        <div class="pros-cons-row"><span class="pc-icon">✅</span><span class="pc-text">全球覆盖网络最广</span></div>
-        <div class="pros-cons-row"><span class="pc-icon">❌</span><span class="pc-text">成本高（FSB G20 3%目标2倍以上）</span></div>
-        <div class="pros-cons-row"><span class="pc-icon">❌</span><span class="pc-text">速度慢，透明度差</span></div>
+        <div class="pros-cons-row"><span class="pc-icon">✅</span><span class="pc-text"><span data-zh>监管合规完善，高额度支付</span><span data-en>Advantages: Full regulatory compliance, high-value payments</span></span></div>
+        <div class="pros-cons-row"><span class="pc-icon">✅</span><span class="pc-text"><span data-zh>全球覆盖网络最广</span><span data-en>Widest global coverage network</span></span></div>
+        <div class="pros-cons-row"><span class="pc-icon">❌</span><span class="pc-text"><span data-zh>成本高（FSB G20 3%目标2倍以上）</span><span data-en>Disadvantages: High cost (2× FSB G20 3% target)</span></span></div>
+        <div class="pros-cons-row"><span class="pc-icon">❌</span><span class="pc-text"><span data-zh>速度慢，透明度差</span><span data-en>Slow speed, poor transparency</span></span></div>
       </div>
     </div>
 
     <!-- Mode B: Wise -->
     <div class="mode-card mode-b">
       <div class="mode-card-header mode-b-header">
-        <div class="mode-label">模式 B</div>
-        <div class="mode-title">Wise — 预付资金池</div>
-        <div class="mode-subtitle">本地清算 + FX再平衡，无实际跨境流动</div>
+        <div class="mode-label"><span data-zh>模式 B</span><span data-en>Model B</span></div>
+        <div class="mode-title">Wise — <span data-zh>预付资金池</span><span data-en>Pre-funded Pool</span></div>
+        <div class="mode-subtitle"><span data-zh>本地清算 + FX再平衡，无实际跨境流动</span><span data-en>Local settlement + FX rebalancing, no actual cross-border transfer</span></div>
       </div>
 
       <div class="mode-flow">
         <div class="mode-step">
           <div class="step-icon" style="background:#dcfce7;color:#166534;">1</div>
           <div class="step-content">
-            <div class="step-name">发款方 → Wise App</div>
-            <div class="step-detail">一次性KYC完成，全球通用</div>
-            <span class="step-tag tag-good">KYC一次复用</span>
+            <div class="step-name"><span data-zh>发款方 → Wise App</span><span data-en>Sender → Wise App</span></div>
+            <div class="step-detail"><span data-zh>一次性KYC完成，全球通用</span><span data-en>One-time KYC completed, globally reusable</span></div>
+            <span class="step-tag tag-good"><span data-zh>KYC一次复用</span><span data-en>KYC reused globally</span></span>
           </div>
         </div>
         <div class="mode-step">
           <div class="step-icon" style="background:#dcfce7;color:#166534;">2</div>
           <div class="step-content">
-            <div class="step-name">Wise本地扣款</div>
-            <div class="step-detail">从发款方本地银行账户扣除（本地支付）</div>
-            <span class="step-tag tag-good">本地交易，快速</span>
+            <div class="step-name">Wise<span data-zh>本地扣款</span><span data-en> Local Debit</span></div>
+            <div class="step-detail"><span data-zh>从发款方本地银行账户扣除（本地支付）</span><span data-en>Debited from sender's local bank account (local payment)</span></div>
+            <span class="step-tag tag-good"><span data-zh>本地交易，快速</span><span data-en>Local transaction, fast</span></span>
           </div>
         </div>
         <div class="mode-step">
           <div class="step-icon" style="background:#fef3c7;color:#92400e;">3</div>
           <div class="step-content">
-            <div class="step-name">预付资金池匹配</div>
-            <div class="step-detail">Wise在目的国预先持有本地货币资金池</div>
-            <span class="step-tag tag-neutral">流动性管理成本</span>
+            <div class="step-name">Wise <span data-zh>预付资金池</span><span data-en>Pre-funded Pool</span></div>
+            <div class="step-detail">Wise<span data-zh>在目的国预先持有本地货币资金池</span><span data-en> pre-holds local currency pool in destination country</span></div>
+            <span class="step-tag tag-neutral"><span data-zh>流动性管理成本</span><span data-en>Liquidity management cost</span></span>
           </div>
         </div>
         <div class="mode-step">
           <div class="step-icon" style="background:#dcfce7;color:#166534;">4</div>
           <div class="step-content">
-            <div class="step-name">目的国本地出款</div>
-            <div class="step-detail">由目的国Wise资金池直接向收款方出款</div>
-            <span class="step-tag tag-good">无跨境资金实际流动</span>
+            <div class="step-name"><span data-zh>目的国本地出款</span><span data-en>Local Payout in Destination</span></div>
+            <div class="step-detail"><span data-zh>由目的国Wise资金池直接向收款方出款</span><span data-en>Wise's local pool pays recipient directly in destination country</span></div>
+            <span class="step-tag tag-good"><span data-zh>无跨境资金实际流动</span><span data-en>No actual cross-border fund movement</span></span>
           </div>
         </div>
         <div class="mode-step">
           <div class="step-icon" style="background:#dcfce7;color:#166534;">5</div>
           <div class="step-content">
-            <div class="step-name">收款方即时收到</div>
-            <div class="step-detail">约62%即时到账，全部&lt;2工作日</div>
+            <div class="step-name"><span data-zh>收款方即时收到</span><span data-en>Recipient Instantly Receives</span></div>
+            <div class="step-detail"><span data-zh>约62%即时到账，全部&lt;2工作日</span><span data-en>~62% instant, all &lt;2 business days</span></div>
           </div>
         </div>
       </div>
 
       <div class="mode-metrics">
         <div class="mode-metric">
-          <span class="val val-good">秒–分钟</span>
-          <div class="lbl">62%即时到账</div>
+          <span class="val val-good"><span data-zh>秒–分钟</span><span data-en>Sec–Min</span></span>
+          <div class="lbl">62%<span data-zh>即时到账</span><span data-en> instant</span></div>
         </div>
         <div class="mode-metric">
           <span class="val val-good">0.58%</span>
           <div class="lbl">FY2025 Take Rate</div>
         </div>
         <div class="mode-metric">
-          <span class="val val-good">高</span>
-          <div class="lbl">透明度（费率公示）</div>
+          <span class="val val-good"><span data-zh>高</span><span data-en>High</span></span>
+          <div class="lbl"><span data-zh>透明度（费率公示）</span><span data-en>Transparency</span></div>
         </div>
         <div class="mode-metric">
           <span class="val val-good">£145B</span>
-          <div class="lbl">FY2025交易量</div>
+          <div class="lbl">FY2025<span data-zh>交易量</span><span data-en> Volume</span></div>
         </div>
       </div>
 
       <div class="mode-pros-cons">
-        <div class="pros-cons-row"><span class="pc-icon">✅</span><span class="pc-text">成本极低（0.58% vs 6.35%）</span></div>
-        <div class="pros-cons-row"><span class="pc-icon">✅</span><span class="pc-text">62%即时到账，高透明度</span></div>
-        <div class="pros-cons-row"><span class="pc-icon">❌</span><span class="pc-text">需要在各国预存资金（流动性成本）</span></div>
-        <div class="pros-cons-row"><span class="pc-icon">❌</span><span class="pc-text">覆盖走廊有限（非所有货币对）</span></div>
+        <div class="pros-cons-row"><span class="pc-icon">✅</span><span class="pc-text"><span data-zh>成本极低（0.58% vs 6.35%）</span><span data-en>Advantages: Ultra-low cost (0.58% vs 6.35%)</span></span></div>
+        <div class="pros-cons-row"><span class="pc-icon">✅</span><span class="pc-text"><span data-zh>62%即时到账，高透明度</span><span data-en>62% instant arrival, high transparency</span></span></div>
+        <div class="pros-cons-row"><span class="pc-icon">❌</span><span class="pc-text"><span data-zh>需要在各国预存资金（流动性成本）</span><span data-en>Disadvantages: Requires pre-funded pools in each country (liquidity cost)</span></span></div>
+        <div class="pros-cons-row"><span class="pc-icon">❌</span><span class="pc-text"><span data-zh>覆盖走廊有限（非所有货币对）</span><span data-en>Limited corridor coverage (not all currency pairs)</span></span></div>
       </div>
     </div>
 
     <!-- Mode C: Stablecoin -->
     <div class="mode-card mode-c">
       <div class="mode-card-header mode-c-header">
-        <div class="mode-label">模式 C</div>
-        <div class="mode-title">稳定币 / 区块链</div>
-        <div class="mode-subtitle">USDC on-chain 结算，消除清算等待</div>
+        <div class="mode-label"><span data-zh>模式 C</span><span data-en>Model C</span></div>
+        <div class="mode-title"><span data-zh>稳定币结算</span><span data-en>Stablecoin Settlement</span></div>
+        <div class="mode-subtitle">USDC on-chain <span data-zh>结算，消除清算等待</span><span data-en>settlement, eliminating clearing wait</span></div>
       </div>
 
       <div class="mode-flow">
         <div class="mode-step">
           <div class="step-icon" style="background:#ede9fe;color:#6b21a8;">1</div>
           <div class="step-content">
-            <div class="step-name">发款方准备</div>
-            <div class="step-detail">钱包设置，KYC（在On-ramp端）</div>
+            <div class="step-name"><span data-zh>发款方准备</span><span data-en>Sender Setup</span></div>
+            <div class="step-detail"><span data-zh>钱包设置，KYC（在On-ramp端）</span><span data-en>Wallet setup, KYC (at on-ramp)</span></div>
           </div>
         </div>
         <div class="mode-step">
           <div class="step-icon" style="background:#fee2e2;color:#991b1b;">2</div>
           <div class="step-content">
-            <div class="step-name">On-ramp（法币→USDC）</div>
-            <div class="step-detail">通过交易所/钱包将法币兑换USDC</div>
-            <span class="step-tag tag-waste">合规复杂，1–2小时</span>
+            <div class="step-name">On-ramp（<span data-zh>法币→</span><span data-en>Fiat→</span>USDC）</div>
+            <div class="step-detail"><span data-zh>通过交易所/钱包将法币兑换USDC</span><span data-en>Exchange fiat to USDC via exchange/wallet</span></div>
+            <span class="step-tag tag-waste"><span data-zh>合规复杂，1–2小时</span><span data-en>Compliance complex, 1–2hrs</span></span>
           </div>
         </div>
         <div class="mode-step">
           <div class="step-icon" style="background:#dcfce7;color:#166534;">3</div>
           <div class="step-content">
-            <div class="step-name">区块链传输</div>
-            <div class="step-detail">链上结算，24/7，无中间行</div>
-            <span class="step-tag tag-good">分钟级，不停歇</span>
+            <div class="step-name"><span data-zh>区块链传输</span><span data-en>Blockchain Transfer</span></div>
+            <div class="step-detail"><span data-zh>链上结算，24/7，无中间行</span><span data-en>On-chain settlement, 24/7, no intermediary</span></div>
+            <span class="step-tag tag-good"><span data-zh>分钟级，不停歇</span><span data-en>Minutes, non-stop</span></span>
           </div>
         </div>
         <div class="mode-step">
           <div class="step-icon" style="background:#fee2e2;color:#991b1b;">4</div>
           <div class="step-content">
-            <div class="step-name">Off-ramp（USDC→法币）</div>
-            <div class="step-detail">收款方将USDC兑换为本地货币</div>
-            <span class="step-tag tag-waste">流动性+监管风险</span>
+            <div class="step-name">Off-ramp（USDC→<span data-zh>法币</span><span data-en>Fiat</span>）</div>
+            <div class="step-detail"><span data-zh>收款方将USDC兑换为本地货币</span><span data-en>Recipient exchanges USDC to local currency</span></div>
+            <span class="step-tag tag-waste"><span data-zh>流动性+监管风险</span><span data-en>Liquidity+regulatory risk</span></span>
           </div>
         </div>
         <div class="mode-step">
           <div class="step-icon" style="background:#dcfce7;color:#166534;">5</div>
           <div class="step-content">
-            <div class="step-name">收款方收到法币</div>
-            <div class="step-detail">USDC 2024年结算量$27.6T（card-125）</div>
+            <div class="step-name"><span data-zh>收款方收到法币</span><span data-en>Recipient Receives Fiat</span></div>
+            <div class="step-detail">USDC 2024<span data-zh>年结算量</span><span data-en> settlement volume</span>$27.6T（card-125）</div>
           </div>
         </div>
       </div>
 
       <div class="mode-metrics">
         <div class="mode-metric">
-          <span class="val val-good">分钟级</span>
-          <div class="lbl">链上传输时间</div>
+          <span class="val val-good"><span data-zh>分钟级</span><span data-en>Minutes</span></span>
+          <div class="lbl"><span data-zh>链上传输时间</span><span data-en>On-chain Processing Time</span></div>
         </div>
         <div class="mode-metric">
           <span class="val val-mid">0.1–1%</span>
-          <div class="lbl">链上成本（不含ramp）</div>
+          <div class="lbl"><span data-zh>链上成本（不含ramp）</span><span data-en>On-chain cost (ex-ramp)</span></div>
         </div>
         <div class="mode-metric">
           <span class="val val-good">24/7</span>
-          <div class="lbl">全天候可用</div>
+          <div class="lbl"><span data-zh>全天候可用</span><span data-en>Always Available</span></div>
         </div>
         <div class="mode-metric">
-          <span class="val val-bad">高</span>
-          <div class="lbl">Ramp合规复杂度</div>
+          <span class="val val-bad"><span data-zh>高</span><span data-en>High</span></span>
+          <div class="lbl">Ramp<span data-zh>合规复杂度</span><span data-en> Compliance Complexity</span></div>
         </div>
       </div>
 
       <div class="mode-pros-cons">
-        <div class="pros-cons-row"><span class="pc-icon">✅</span><span class="pc-text">链上结算快速低成本（$27.6T，card-125）</span></div>
-        <div class="pros-cons-row"><span class="pc-icon">✅</span><span class="pc-text">24/7不停歇，消除RTGS时间限制</span></div>
-        <div class="pros-cons-row"><span class="pc-icon">❌</span><span class="pc-text">On/Off ramp是最大瓶颈（合规+流动性）</span></div>
-        <div class="pros-cons-row"><span class="pc-icon">❌</span><span class="pc-text">监管框架仍在完善（MiCA/GENIUS Act）</span></div>
+        <div class="pros-cons-row"><span class="pc-icon">✅</span><span class="pc-text"><span data-zh>链上结算快速低成本（$27.6T，card-125）</span><span data-en>Advantages: Fast low-cost on-chain settlement ($27.6T, card-125)</span></span></div>
+        <div class="pros-cons-row"><span class="pc-icon">✅</span><span class="pc-text"><span data-zh>24/7不停歇，消除RTGS时间限制</span><span data-en>24/7 non-stop, eliminating RTGS time constraints</span></span></div>
+        <div class="pros-cons-row"><span class="pc-icon">❌</span><span class="pc-text"><span data-zh>On/Off ramp是最大瓶颈（合规+流动性）</span><span data-en>Disadvantages: On/Off ramp is the biggest bottleneck (compliance + liquidity)</span></span></div>
+        <div class="pros-cons-row"><span class="pc-icon">❌</span><span class="pc-text"><span data-zh>监管框架仍在完善（MiCA/GENIUS Act）</span><span data-en>Regulatory framework still evolving (MiCA/GENIUS Act)</span></span></div>
       </div>
     </div>
 
@@ -1435,16 +1446,16 @@
 
   <!-- Comparison Bar Charts -->
   <div class="bar-chart-section">
-    <h3>📊 三模式量化对比（2024年数据）</h3>
+    <h3>📊 <span data-zh>三模式量化对比（2024年数据）</span><span data-en>Three-Model Quantitative Comparison (2024 Data)</span></h3>
     <div class="chart-grid">
 
       <!-- Cost Comparison -->
       <div class="chart-item">
-        <h4>成本对比（发送$200，占比）</h4>
+        <h4><span data-zh>成本对比（发送$200，占比）</span><span data-en>Cost Comparison (sending $200)</span></h4>
         <div class="chart-bar-row">
-          <div class="chart-bar-label">传统银行</div>
+          <div class="chart-bar-label"><span data-zh>传统银行</span><span data-en>Traditional Banking</span></div>
           <div class="chart-bar-track">
-            <div class="chart-bar-fill bar-fill-a" style="width:100%">6.35% ← 世界银行 #068</div>
+            <div class="chart-bar-fill bar-fill-a" style="width:100%">6.35% ← <span data-zh>世界银行</span><span data-en>World Bank</span> #068</div>
           </div>
         </div>
         <div class="chart-bar-row">
@@ -1454,7 +1465,7 @@
           </div>
         </div>
         <div class="chart-bar-row">
-          <div class="chart-bar-label">稳定币链上</div>
+          <div class="chart-bar-label"><span data-zh>稳定币链上</span><span data-en>Stablecoin On-chain</span></div>
           <div class="chart-bar-track">
             <div class="chart-bar-fill bar-fill-c" style="width:16%">~1% (含ramp)</div>
           </div>
@@ -1469,7 +1480,7 @@
 
       <!-- Speed Comparison -->
       <div class="chart-item">
-        <h4>速度对比（1小时内完成率）</h4>
+        <h4><span data-zh>速度对比（1小时内完成率）</span><span data-en>Speed Comparison (% completed within 1 hour)</span></h4>
         <div class="chart-bar-row">
           <div class="chart-bar-label">传统银行</div>
           <div class="chart-bar-track">
@@ -1507,37 +1518,40 @@
 
   <!-- Bottom Timeline for Tab 2 -->
   <div class="timeline-section" style="margin-top:20px;">
-    <h3>⏱️ 三模式时间流对比</h3>
+    <h3>⏱️ <span data-zh>三模式时间流对比</span><span data-en>Three-Model Time Flow Comparison</span></h3>
 
     <div class="timeline-row">
-      <div class="timeline-row-label"><span>模式A：传统银行（典型2–5天）</span><span style="color:#dc2626;">增值 &lt;3%</span></div>
+      <div class="timeline-row-label"><span><span data-zh>模式A：传统银行（典型2–5天）</span><span data-en>Model A: Traditional Banking (typical 2–5 days)</span></span><span style="color:#dc2626;"><span data-zh>增值 &lt;3%</span><span data-en>Value-Adding Ratio &lt;3%</span></span></div>
       <div class="timeline-bar">
         <div class="bar-value" style="width:3%;font-size:9px;">3%</div>
-        <div class="bar-wait" style="width:97%;">等待97%（代理行/夜间/RTGS窗口）</div>
+        <div class="bar-wait" style="width:97%;"><span data-zh>等待97%（代理行/夜间/RTGS窗口）</span><span data-en>Wait 97% (correspondent/overnight/RTGS window)</span></div>
       </div>
     </div>
     <div class="timeline-row" style="margin-top:8px;">
-      <div class="timeline-row-label"><span>模式B：Wise（62%秒级，其余&lt;2天）</span><span style="color:#059669;">增值 ~62%</span></div>
+      <div class="timeline-row-label"><span><span data-zh>模式B：Wise（62%秒级，其余&lt;2天）</span><span data-en>Model B: Wise (62% instant, rest &lt;2 days)</span></span><span style="color:#059669;"><span data-zh>增值 ~62%</span><span data-en>Value-Adding ~62%</span></span></div>
       <div class="timeline-bar">
-        <div class="bar-value" style="width:62%;">即时62%</div>
-        <div class="bar-partial" style="width:25%;">2–24小时 35%</div>
-        <div class="bar-wait" style="width:13%;font-size:9px;">等待3%</div>
+        <div class="bar-value" style="width:62%;"><span data-zh>即时62%</span><span data-en>Instant 62%</span></div>
+        <div class="bar-partial" style="width:25%;">2–24<span data-zh>小时</span><span data-en>hrs</span> 35%</div>
+        <div class="bar-wait" style="width:13%;font-size:9px;"><span data-zh>等待3%</span><span data-en>Wait 3%</span></div>
       </div>
     </div>
     <div class="timeline-row" style="margin-top:8px;">
-      <div class="timeline-row-label"><span>模式C：稳定币（链上分钟级，但ramp耗时）</span><span style="color:#7c3aed;">链上即时，ramp慢</span></div>
+      <div class="timeline-row-label"><span><span data-zh>模式C：稳定币（链上分钟级，但ramp耗时）</span><span data-en>Model C: Stablecoin (on-chain minutes, but ramp is slow)</span></span><span style="color:#7c3aed;"><span data-zh>链上即时，ramp慢</span><span data-en>On-chain instant, ramp slow</span></span></div>
       <div class="timeline-bar">
-        <div class="bar-value" style="width:5%;font-size:9px;">链上</div>
-        <div class="bar-partial" style="width:45%;background:linear-gradient(90deg,#f59e0b,#fbbf24);">On-ramp等待 ≈1–2小时</div>
-        <div class="bar-wait" style="width:50%;background:linear-gradient(90deg,#7c3aed,#8b5cf6);">Off-ramp+合规</div>
+        <div class="bar-value" style="width:5%;font-size:9px;"><span data-zh>链上</span><span data-en>On-chain</span></div>
+        <div class="bar-partial" style="width:45%;background:linear-gradient(90deg,#f59e0b,#fbbf24);">On-ramp<span data-zh>等待</span><span data-en> wait</span> ≈1–2<span data-zh>小时</span><span data-en>hrs</span></div>
+        <div class="bar-wait" style="width:50%;background:linear-gradient(90deg,#7c3aed,#8b5cf6);">Off-ramp+<span data-zh>合规</span><span data-en>compliance</span></div>
       </div>
     </div>
 
     <div class="timeline-summary">
-      📌 <strong>对比结论：</strong>
-      Wise通过"本地换本地"模式绕过SWIFT网络，成本降至0.58%（FY2025年报 card-001），是传统模式的1/10。
+      📌 <strong><span data-zh>对比结论：</span><span data-en>Key Takeaways:</span></strong>
+      <span data-zh>Wise通过"本地换本地"模式绕过SWIFT网络，成本降至0.58%（FY2025年报 card-001），是传统模式的1/10。
       稳定币消除了链上结算等待，但On/Off ramp仍是瓶颈。
-      G20 2027目标：75%支付&lt;1小时（FSB card-066），三种模式均可达到，传统模式未改造前仅33.5%。
+      G20 2027目标：75%支付&lt;1小时（FSB card-066），三种模式均可达到，传统模式未改造前仅33.5%。</span>
+      <span data-en>Wise bypasses the SWIFT network through "local-for-local" model, reducing cost to 0.58% (FY2025 report card-001) — 1/10 of the traditional model.
+      Stablecoin eliminates on-chain settlement waiting, but On/Off ramp remains the bottleneck.
+      G20 2027 target: 75% of payments &lt;1 hour (FSB card-066) — all three models can achieve this; traditional model before reform is only 33.5%.</span>
     </div>
   </div>
 
@@ -1558,36 +1572,36 @@
 
   <!-- G20 2027 Targets -->
   <div class="future-intro">
-    <h3>🎯 G20 2027 目标 — 基于 FSB 综合进展报告（card-066）</h3>
+    <h3>🎯 G20 2027 <span data-zh>目标 — 基于 FSB 综合进展报告（card-066）</span><span data-en>Targets — Based on FSB Progress Report (card-066)</span></h3>
     <div class="g20-targets">
       <div class="g20-target">
         <span class="target-val">75%</span>
-        <div class="target-desc">支付&lt;1小时完成</div>
-        <div class="target-current">现状：零售33.5%（↓0.7pp）</div>
+        <div class="target-desc"><span data-zh>支付&lt;1小时完成</span><span data-en>Payments completed &lt;1 hour</span></div>
+        <div class="target-current"><span data-zh>现状：零售33.5%（↓0.7pp）</span><span data-en>Current: Retail 33.5% (↓0.7pp)</span></div>
         <div class="target-src">FSB G20 #066, p.11</div>
       </div>
       <div class="g20-target">
         <span class="target-val">100%</span>
-        <div class="target-desc">支付&lt;1个工作日</div>
-        <div class="target-current">现状：零售69%（↓5pp）</div>
+        <div class="target-desc"><span data-zh>支付&lt;1个工作日</span><span data-en>Payments &lt;1 business day</span></div>
+        <div class="target-current"><span data-zh>现状：零售69%（↓5pp）</span><span data-en>Current: Retail 69% (↓5pp)</span></div>
         <div class="target-src">FSB G20 #066, p.11</div>
       </div>
       <div class="g20-target">
         <span class="target-val">&lt;1%</span>
-        <div class="target-desc">25%支付成本低于1%</div>
-        <div class="target-current">现状：B2B 1.6%，P2P 2.6%</div>
+        <div class="target-desc"><span data-zh>25%支付成本低于1%</span><span data-en>25% of payments cost &lt;1%</span></div>
+        <div class="target-current"><span data-zh>现状：B2B 1.6%，P2P 2.6%</span><span data-en>Current: B2B 1.6%, P2P 2.6%</span></div>
         <div class="target-src">FSB G20 #066, p.11</div>
       </div>
       <div class="g20-target">
         <span class="target-val">&lt;3%</span>
-        <div class="target-desc">所有支付成本低于3%</div>
-        <div class="target-current">现状：汇款6.4%（↑0.1pp）</div>
+        <div class="target-desc"><span data-zh>所有支付成本低于3%</span><span data-en>All payments cost &lt;3%</span></div>
+        <div class="target-current"><span data-zh>现状：汇款6.4%（↑0.1pp）</span><span data-en>Current: Remittance 6.4% (↑0.1pp)</span></div>
         <div class="target-src">FSB G20 #066, p.12</div>
       </div>
       <div class="g20-target">
         <span class="target-val">100%</span>
-        <div class="target-desc">PSP提供费率/速度信息</div>
-        <div class="target-current">现状：55.6%（↑1.1pp）</div>
+        <div class="target-desc"><span data-zh>PSP提供费率/速度信息</span><span data-en>PSPs provide rate/speed info</span></div>
+        <div class="target-current"><span data-zh>现状：55.6%（↑1.1pp）</span><span data-en>Current: 55.6% (↑1.1pp)</span></div>
         <div class="target-src">FSB G20 #066, p.11</div>
       </div>
     </div>
@@ -1596,7 +1610,7 @@
   <!-- Future Infrastructure Cards -->
   <div class="section-header">
     <div class="section-title">
-      🏗️ 支撑未来态的三大基础设施
+      🏗️ <span data-zh>支撑未来态的三大基础设施</span><span data-en>Three Key Infrastructure Pillars for the Future State</span>
     </div>
   </div>
 
@@ -1653,8 +1667,8 @@
   <!-- Future State VSM Flow -->
   <div class="section-header" style="margin-top:24px;">
     <div class="section-title">
-      📋 未来态价值流程图（G20 2027愿景）
-      <span class="section-badge" style="background:#dcfce7;color:#166534;">🚀 高效精简</span>
+      📋 <span data-zh>未来态价值流程图（G20 2027愿景）</span><span data-en>Future State Value Stream Map (G20 2027 Vision)</span>
+      <span class="section-badge" style="background:#dcfce7;color:#166534;">🚀 <span data-zh>高效精简</span><span data-en>Highly Efficient</span></span>
     </div>
   </div>
 
@@ -1663,24 +1677,24 @@
 
       <!-- 节点1：发款方 -->
       <div class="vsm-node actor" style="border-color:#10b981;">
-        <div class="node-type-badge badge-actor">发起方</div>
-        <div class="node-name">👤 发款方</div>
+        <div class="node-type-badge badge-actor"><span data-zh>发起方</span><span data-en>Sender</span></div>
+        <div class="node-name">👤 <span data-zh>发款方</span><span data-en>Sender</span></div>
         <div class="node-metric">
           <div class="metric-dot dot-green"></div>
-          <span class="metric-label">数字钱包/银行App</span>
+          <span class="metric-label"><span data-zh>数字钱包/银行App</span><span data-en>Digital wallet/bank app</span></span>
         </div>
         <div class="node-metric">
           <div class="metric-dot dot-green"></div>
           <span class="metric-label">KYC：</span>
-          <span class="metric-value green">已验证数字身份</span>
+          <span class="metric-value green"><span data-zh>已验证数字身份</span><span data-en>Verified digital identity</span></span>
         </div>
-        <div style="font-size:10px;color:#059669;margin-top:6px;font-weight:600;">vs传统：每次重新验证</div>
-        <div class="node-va-label va-yes">✓ 增值</div>
+        <div style="font-size:10px;color:#059669;margin-top:6px;font-weight:600;"><span data-zh>vs传统：每次重新验证</span><span data-en>vs Traditional: re-verified each time</span></div>
+        <div class="node-va-label va-yes">✓ <span data-zh>增值</span><span data-en>Value-Adding</span></div>
       </div>
 
       <!-- Arrow 1 -->
       <div class="vsm-arrow">
-        <div class="arrow-label">发起指令</div>
+        <div class="arrow-label"><span data-zh>发起指令</span><span data-en>Initiate</span></div>
         <div class="arrow-line arrow-solid" style="background:#10b981;"><div class="arrow-head" style="color:#10b981;">▶</div></div>
         <div class="arrow-type-label" style="color:#059669;">ISO 20022</div>
       </div>
@@ -1688,30 +1702,30 @@
       <!-- 节点2：数字钱包/银行App -->
       <div class="vsm-node process-node" style="border-color:#10b981;background:linear-gradient(135deg,#f0fdf4,#fff);">
         <div class="value-badge">✓</div>
-        <div class="node-type-badge" style="background:#dcfce7;color:#166534;">一次验证</div>
-        <div class="node-name">📱 数字身份平台</div>
+        <div class="node-type-badge" style="background:#dcfce7;color:#166534;"><span data-zh>一次验证</span><span data-en>One-time Verify</span></div>
+        <div class="node-name">📱 <span data-zh>数字身份钱包</span><span data-en>Digital Identity Wallet</span></div>
         <div class="node-metric">
           <div class="metric-dot dot-green"></div>
           <span class="metric-label">KYC：</span>
-          <span class="metric-value green">全网复用</span>
+          <span class="metric-value green"><span data-zh>全网复用</span><span data-en>Reused globally</span></span>
         </div>
         <div class="node-metric">
           <div class="metric-dot dot-green"></div>
-          <span class="metric-label">FX报价：</span>
-          <span class="metric-value green">实时透明</span>
+          <span class="metric-label"><span data-zh>FX报价：</span><span data-en>FX Quote:</span></span>
+          <span class="metric-value green"><span data-zh>实时透明</span><span data-en>Real-time transparent</span></span>
         </div>
         <div class="node-metric">
           <div class="metric-dot dot-green"></div>
-          <span class="metric-label">处理时间：</span>
-          <span class="metric-value green">秒级</span>
+          <span class="metric-label"><span data-zh>处理时间：</span><span data-en>Processing Time:</span></span>
+          <span class="metric-value green"><span data-zh>秒级</span><span data-en>Seconds</span></span>
         </div>
-        <div style="font-size:10px;color:#059669;margin-top:4px;font-weight:600;">vs传统：重复KYC × 5节点</div>
-        <div class="node-va-label va-yes">✓ 增值（无等待浪费）</div>
+        <div style="font-size:10px;color:#059669;margin-top:4px;font-weight:600;"><span data-zh>vs传统：重复KYC × 5节点</span><span data-en>vs Traditional: repeated KYC × 5 nodes</span></div>
+        <div class="node-va-label va-yes">✓ <span data-zh>增值（无等待浪费）</span><span data-en>Value-Adding (no wait waste)</span></div>
       </div>
 
       <!-- Arrow 2 -->
       <div class="vsm-arrow">
-        <div class="arrow-label">统一报文</div>
+        <div class="arrow-label"><span data-zh>统一报文</span><span data-en>Unified Msg</span></div>
         <div class="arrow-line arrow-solid" style="background:#10b981;"><div class="arrow-head" style="color:#10b981;">▶</div></div>
         <div class="arrow-type-label" style="color:#059669;">ISO 20022</div>
       </div>
@@ -1719,81 +1733,81 @@
       <!-- 节点3：Nexus/mBridge网络 -->
       <div class="vsm-node process-node" style="border-color:#3b82f6;background:linear-gradient(135deg,#eff6ff,#fff);width:180px;">
         <div class="value-badge">✓</div>
-        <div class="node-type-badge" style="background:#dbeafe;color:#1d4ed8;">核心网络</div>
-        <div class="node-name">🌐 Nexus / mBridge<br>多边互联网络</div>
+        <div class="node-type-badge" style="background:#dbeafe;color:#1d4ed8;"><span data-zh>核心网络</span><span data-en>Core Network</span></div>
+        <div class="node-name">🌐 Nexus / mBridge<br><span data-zh>多边互联网络</span><span data-en>Multilateral Network</span></div>
         <div class="node-metric">
           <div class="metric-dot dot-green"></div>
-          <span class="metric-label">结算：</span>
-          <span class="metric-value green">T+0 实时</span>
+          <span class="metric-label"><span data-zh>结算：</span><span data-en>Settlement:</span></span>
+          <span class="metric-value green">T+0 <span data-zh>实时</span><span data-en>Real-time</span></span>
         </div>
         <div class="node-metric">
           <div class="metric-dot dot-green"></div>
-          <span class="metric-label">运营：</span>
-          <span class="metric-value green">24/7 不间断</span>
+          <span class="metric-label"><span data-zh>运营：</span><span data-en>Operations:</span></span>
+          <span class="metric-value green">24/7 <span data-zh>不间断</span><span data-en>Non-stop</span></span>
         </div>
         <div class="node-metric">
           <div class="metric-dot dot-green"></div>
-          <span class="metric-label">中间行：</span>
-          <span class="metric-value green">0个（直连）</span>
+          <span class="metric-label"><span data-zh>中间行：</span><span data-en>Intermediaries:</span></span>
+          <span class="metric-value green">0<span data-zh>个（直连）</span><span data-en> (direct)</span></span>
         </div>
         <div class="node-metric">
           <div class="metric-dot dot-blue"></div>
-          <span class="metric-label">标准：</span>
+          <span class="metric-label"><span data-zh>标准：</span><span data-en>Standard:</span></span>
           <span class="metric-value" style="color:#1d4ed8;">ISO 20022</span>
         </div>
-        <div style="font-size:10px;color:#1d4ed8;margin-top:4px;font-weight:600;">vs传统：2–5个代理行串行</div>
-        <div style="font-size:10px;color:#94a3b8;margin-top:2px;">Nexus覆盖17亿人 / mBridge 5大央行</div>
-        <div class="node-va-label va-yes">✓ 纯增值，无浪费</div>
+        <div style="font-size:10px;color:#1d4ed8;margin-top:4px;font-weight:600;"><span data-zh>vs传统：2–5个代理行串行</span><span data-en>vs Traditional: 2–5 correspondent banks sequential</span></div>
+        <div style="font-size:10px;color:#94a3b8;margin-top:2px;">Nexus<span data-zh>覆盖17亿人 / </span><span data-en> covers 1.7B people / </span>mBridge 5<span data-zh>大央行</span><span data-en> central banks</span></div>
+        <div class="node-va-label va-yes">✓ <span data-zh>纯增值，无浪费</span><span data-en>Pure Value-Adding, no waste</span></div>
       </div>
 
       <!-- Arrow 3 -->
       <div class="vsm-arrow">
-        <div class="arrow-label">实时清算</div>
+        <div class="arrow-label"><span data-zh>实时清算</span><span data-en>Real-time</span></div>
         <div class="arrow-line arrow-solid" style="background:#10b981;"><div class="arrow-head" style="color:#10b981;">▶</div></div>
-        <div class="arrow-type-label" style="color:#059669;">并行处理</div>
+        <div class="arrow-type-label" style="color:#059669;"><span data-zh>并行处理</span><span data-en>Parallel</span></div>
       </div>
 
       <!-- 节点4：收款行/收款平台 -->
       <div class="vsm-node process-node" style="border-color:#10b981;background:linear-gradient(135deg,#f0fdf4,#fff);">
         <div class="value-badge">✓</div>
-        <div class="node-type-badge" style="background:#dcfce7;color:#166534;">收款侧</div>
-        <div class="node-name">🏦 收款行/平台</div>
+        <div class="node-type-badge" style="background:#dcfce7;color:#166534;"><span data-zh>收款侧</span><span data-en>Receiving Side</span></div>
+        <div class="node-name">🏦 <span data-zh>收款行/平台</span><span data-en>Receiving Bank</span></div>
         <div class="node-metric">
           <div class="metric-dot dot-green"></div>
-          <span class="metric-label">收款：</span>
-          <span class="metric-value green">即时入账</span>
+          <span class="metric-label"><span data-zh>收款：</span><span data-en>Instant Credit:</span></span>
+          <span class="metric-value green"><span data-zh>即时入账</span><span data-en>Instant</span></span>
         </div>
         <div class="node-metric">
           <div class="metric-dot dot-green"></div>
-          <span class="metric-label">全程追踪：</span>
-          <span class="metric-value green">UETR实时可见</span>
+          <span class="metric-label"><span data-zh>全程追踪：</span><span data-en>Full Tracking:</span></span>
+          <span class="metric-value green">UETR<span data-zh>实时可见</span><span data-en> real-time visible</span></span>
         </div>
-        <div style="font-size:10px;color:#059669;margin-top:6px;font-weight:600;">vs传统：额外入账手续费</div>
-        <div class="node-va-label va-yes">✓ 增值</div>
+        <div style="font-size:10px;color:#059669;margin-top:6px;font-weight:600;"><span data-zh>vs传统：额外入账手续费</span><span data-en>vs Traditional: extra credit fee</span></div>
+        <div class="node-va-label va-yes">✓ <span data-zh>增值</span><span data-en>Value-Adding</span></div>
       </div>
 
       <!-- Arrow 4 -->
       <div class="vsm-arrow">
-        <div class="arrow-label">到账通知</div>
+        <div class="arrow-label"><span data-zh>到账通知</span><span data-en>Credit Notify</span></div>
         <div class="arrow-line arrow-solid" style="background:#10b981;"><div class="arrow-head" style="color:#10b981;">▶</div></div>
       </div>
 
       <!-- 节点5：收款方 -->
       <div class="vsm-node actor" style="border-color:#10b981;background:linear-gradient(135deg,#f0fdf4,#dbeafe);">
         <div class="value-badge">✓</div>
-        <div class="node-type-badge badge-actor">收款方</div>
-        <div class="node-name">👤 收款方入账</div>
+        <div class="node-type-badge badge-actor"><span data-zh>收款方</span><span data-en>Recipient</span></div>
+        <div class="node-name">👤 <span data-zh>收款方入账</span><span data-en>Instant Credit</span></div>
         <div class="node-metric">
           <div class="metric-dot dot-green"></div>
-          <span class="metric-label">到账时间：</span>
-          <span class="metric-value green">&lt;1小时 (75%)</span>
+          <span class="metric-label"><span data-zh>到账时间：</span><span data-en>Processing Time:</span></span>
+          <span class="metric-value green">&lt;1<span data-zh>小时</span><span data-en>hr</span> (75%)</span>
         </div>
         <div class="node-metric">
           <div class="metric-dot dot-green"></div>
-          <span class="metric-label">成本目标：</span>
+          <span class="metric-label"><span data-zh>成本目标：</span><span data-en>Cost Target:</span></span>
           <span class="metric-value green">&lt;1%</span>
         </div>
-        <div class="node-va-label va-yes">✓ 最终增值</div>
+        <div class="node-va-label va-yes">✓ <span data-zh>最终增值</span><span data-en>Final Value-Adding</span></div>
       </div>
 
     </div><!-- end vsm-lane -->
@@ -1801,43 +1815,45 @@
 
   <!-- Future State Timeline -->
   <div class="timeline-section">
-    <h3>⏱️ 未来态时间流 — 与传统模式对比</h3>
+    <h3>⏱️ <span data-zh>未来态时间流 — 与传统模式对比</span><span data-en>Future State Time Flow — vs Traditional Model</span></h3>
 
     <div class="timeline-row">
       <div class="timeline-row-label">
-        <span>传统模式（现状 2024）</span>
-        <span style="color:#dc2626;">增值 &lt;3%</span>
+        <span><span data-zh>传统模式（现状 2024）</span><span data-en>Traditional Model (Current 2024)</span></span>
+        <span style="color:#dc2626;"><span data-zh>增值 &lt;3%</span><span data-en>Value-Adding &lt;3%</span></span>
       </div>
       <div class="timeline-bar">
         <div class="bar-value" style="width:3%;font-size:9px;">3%</div>
-        <div class="bar-wait" style="width:97%;">等待 97%（2–5天）</div>
+        <div class="bar-wait" style="width:97%;"><span data-zh>等待 97%（2–5天）</span><span data-en>Wait 97% (2–5 days)</span></div>
       </div>
     </div>
     <div class="timeline-row" style="margin-top:8px;">
       <div class="timeline-row-label">
-        <span>G20 2027 目标（Nexus + mBridge + ISO 20022）</span>
-        <span style="color:#059669;">增值 &gt;90%</span>
+        <span>G20 2027 <span data-zh>目标（Nexus + mBridge + ISO 20022）</span><span data-en>Target (Nexus + mBridge + ISO 20022)</span></span>
+        <span style="color:#059669;"><span data-zh>增值 &gt;90%</span><span data-en>Value-Adding &gt;90%</span></span>
       </div>
       <div class="timeline-bar">
-        <div class="bar-value" style="width:75%;font-size:11px;">75%支付 &lt;1小时（G20目标）</div>
-        <div class="bar-partial" style="width:25%;font-size:11px;">所有支付 &lt;1天</div>
+        <div class="bar-value" style="width:75%;font-size:11px;">75%<span data-zh>支付</span><span data-en> payments</span> &lt;1<span data-zh>小时（G20目标）</span><span data-en>hr (G20 Target)</span></div>
+        <div class="bar-partial" style="width:25%;font-size:11px;"><span data-zh>所有支付 &lt;1天</span><span data-en>All payments &lt;1 day</span></div>
       </div>
     </div>
     <div class="timeline-row" style="margin-top:8px;">
       <div class="timeline-row-label">
-        <span>成本对比</span>
+        <span><span data-zh>成本对比</span><span data-en>Cost Comparison</span></span>
       </div>
       <div class="timeline-bar">
-        <div class="bar-value" style="width:15%;background:linear-gradient(90deg,#059669,#10b981);font-size:11px;">&lt;1%目标</div>
-        <div class="bar-partial" style="width:32%;background:linear-gradient(90deg,#f59e0b,#fbbf24);font-size:10px;">&lt;3%（所有支付）G20目标</div>
-        <div class="bar-wait" style="width:53%;font-size:10px;">现状6.35%（超目标2倍）</div>
+        <div class="bar-value" style="width:15%;background:linear-gradient(90deg,#059669,#10b981);font-size:11px;">&lt;1%<span data-zh>目标</span><span data-en> target</span></div>
+        <div class="bar-partial" style="width:32%;background:linear-gradient(90deg,#f59e0b,#fbbf24);font-size:10px;">&lt;3%<span data-zh>（所有支付）G20目标</span><span data-en> (all payments) G20</span></div>
+        <div class="bar-wait" style="width:53%;font-size:10px;"><span data-zh>现状6.35%（超目标2倍）</span><span data-en>Current 6.35% (2× target)</span></div>
       </div>
     </div>
 
     <div class="timeline-summary">
-      📌 <strong>未来态关键改变：</strong>
-      KYC一次验证全网复用（vs每节点重复）| 清算T+0实时（vs T+2）| 成本目标&lt;1%（vs 6.35%）|
-      ISO 20022统一标准（AML误报↓25–30%，节省$6亿/年）| UETR全程可追踪 | 24/7不停歇（vs RTGS 66小时/周）
+      📌 <strong><span data-zh>未来态关键改变：</span><span data-en>Future State Key Changes:</span></strong>
+      <span data-zh>KYC一次验证全网复用（vs每节点重复）| 清算T+0实时（vs T+2）| 成本目标&lt;1%（vs 6.35%）|
+      ISO 20022统一标准（AML误报↓25–30%，节省$6亿/年）| UETR全程可追踪 | 24/7不停歇（vs RTGS 66小时/周）</span>
+      <span data-en>KYC one-time verified globally (vs repeated at each node) | Settlement T+0 real-time (vs T+2) | Cost target &lt;1% (vs 6.35%) |
+      ISO 20022 unified standard (AML false positive ↓25–30%, saving $600M/year) | UETR end-to-end tracking | 24/7 non-stop (vs RTGS 66hrs/week)</span>
     </div>
   </div>
 
@@ -1854,45 +1870,45 @@
         <div class="ba-item">
           <div class="ba-item-icon">🔄</div>
           <div class="ba-item-content">
-            <div class="ba-item-title">KYC/AML 验证</div>
-            <div class="ba-item-detail">每个代理行独立验证，重复3–5次</div>
-            <div class="ba-item-metric metric-bad">99%误报率 | 5–10%触发警报（BIS #071）</div>
+            <div class="ba-item-title">KYC/AML <span data-zh>验证</span><span data-en>Verification</span></div>
+            <div class="ba-item-detail"><span data-zh>每个代理行独立验证，重复3–5次</span><span data-en>Each correspondent bank verifies independently, 3–5 repetitions</span></div>
+            <div class="ba-item-metric metric-bad">99%<span data-zh>误报率 | 5–10%触发警报（BIS #071）</span><span data-en> false positive rate | 5–10% trigger alerts (BIS #071)</span></div>
           </div>
         </div>
 
         <div class="ba-item">
           <div class="ba-item-icon">⏰</div>
           <div class="ba-item-content">
-            <div class="ba-item-title">清算结算时间</div>
-            <div class="ba-item-detail">RTGS仅66小时/周运营，夜间/周末排队</div>
-            <div class="ba-item-metric metric-bad">T+2，等待占97%时间</div>
+            <div class="ba-item-title"><span data-zh>清算结算时间</span><span data-en>Clearing & Settlement Time</span></div>
+            <div class="ba-item-detail">RTGS<span data-zh>仅66小时/周运营，夜间/周末排队</span><span data-en> only 66hrs/week, overnight/weekend queue</span></div>
+            <div class="ba-item-metric metric-bad">T+2，<span data-zh>等待占97%时间</span><span data-en>wait accounts for 97% of time</span></div>
           </div>
         </div>
 
         <div class="ba-item">
           <div class="ba-item-icon">💸</div>
           <div class="ba-item-content">
-            <div class="ba-item-title">总成本</div>
-            <div class="ba-item-detail">2–5个代理行逐级收费，外汇差价不透明</div>
-            <div class="ba-item-metric metric-bad">6.35%（世界银行Q1 2024 #068）</div>
+            <div class="ba-item-title"><span data-zh>总成本</span><span data-en>Total Cost</span></div>
+            <div class="ba-item-detail"><span data-zh>2–5个代理行逐级收费，外汇差价不透明</span><span data-en>2–5 correspondent banks each charging, FX spread opaque</span></div>
+            <div class="ba-item-metric metric-bad">6.35%（<span data-zh>世界银行</span><span data-en>World Bank</span> Q1 2024 #068）</div>
           </div>
         </div>
 
         <div class="ba-item">
           <div class="ba-item-icon">📨</div>
           <div class="ba-item-content">
-            <div class="ba-item-title">报文标准</div>
-            <div class="ba-item-detail">MT/MX混用，结构化数据不足</div>
-            <div class="ba-item-metric metric-bad">5%转账因信息问题被拒（BIS印尼案例）</div>
+            <div class="ba-item-title"><span data-zh>报文标准</span><span data-en>Message Standard</span></div>
+            <div class="ba-item-detail"><span data-zh>MT/MX混用，结构化数据不足</span><span data-en>MT/MX mixed use, insufficient structured data</span></div>
+            <div class="ba-item-metric metric-bad"><span data-zh>5%转账因信息问题被拒（BIS印尼案例）</span><span data-en>5% transfers rejected due to data issues (BIS Indonesia case)</span></div>
           </div>
         </div>
 
         <div class="ba-item">
           <div class="ba-item-icon">👁️</div>
           <div class="ba-item-content">
-            <div class="ba-item-title">透明度</div>
-            <div class="ba-item-detail">中间环节不可见，费用不确定</div>
-            <div class="ba-item-metric metric-bad">仅55.6%的PSP提供费率信息（FSB #066）</div>
+            <div class="ba-item-title"><span data-zh>透明度</span><span data-en>Transparency</span></div>
+            <div class="ba-item-detail"><span data-zh>中间环节不可见，费用不确定</span><span data-en>Intermediate steps invisible, fees uncertain</span></div>
+            <div class="ba-item-metric metric-bad"><span data-zh>仅55.6%的PSP提供费率信息（FSB #066）</span><span data-en>Only 55.6% of PSPs provide rate info (FSB #066)</span></div>
           </div>
         </div>
       </div>
@@ -1900,50 +1916,50 @@
       <div class="ba-col-divider">➜</div>
 
       <div class="ba-col ba-col-after">
-        <h4>✅ 未来态（G20 2027 目标）</h4>
+        <h4>✅ <span data-zh>未来态（G20 2027 目标）</span><span data-en>Future State (G20 2027 Target)</span></h4>
 
         <div class="ba-item">
           <div class="ba-item-icon">🆔</div>
           <div class="ba-item-content">
-            <div class="ba-item-title">数字身份 + KYC复用</div>
-            <div class="ba-item-detail">一次验证，全网通用，无需重复</div>
-            <div class="ba-item-metric metric-good">误报↓25–30% | STP率接近100%（ISO 20022）</div>
+            <div class="ba-item-title"><span data-zh>数字身份 + KYC复用</span><span data-en>Digital Identity + KYC Reuse</span></div>
+            <div class="ba-item-detail"><span data-zh>一次验证，全网通用，无需重复</span><span data-en>One-time verification, globally reusable, no repetition</span></div>
+            <div class="ba-item-metric metric-good"><span data-zh>误报↓25–30% | STP率接近100%（ISO 20022）</span><span data-en>False positive ↓25–30% | STP rate near 100% (ISO 20022)</span></div>
           </div>
         </div>
 
         <div class="ba-item">
           <div class="ba-item-icon">⚡</div>
           <div class="ba-item-content">
-            <div class="ba-item-title">T+0 实时结算</div>
-            <div class="ba-item-detail">Nexus/mBridge 24/7不间断，直连无等待</div>
-            <div class="ba-item-metric metric-good">75%支付&lt;1小时 | 100%支付&lt;1天（G20目标）</div>
+            <div class="ba-item-title"><span data-zh>统一清算层</span><span data-en>Unified Settlement Layer</span> (T+0)</div>
+            <div class="ba-item-detail">Nexus/mBridge 24/7<span data-zh>不间断，直连无等待</span><span data-en> non-stop, direct connection no waiting</span></div>
+            <div class="ba-item-metric metric-good">75%<span data-zh>支付&lt;1小时 | 100%支付&lt;1天（G20目标）</span><span data-en> payments &lt;1hr | 100% &lt;1 day (G20 target)</span></div>
           </div>
         </div>
 
         <div class="ba-item">
           <div class="ba-item-icon">💰</div>
           <div class="ba-item-content">
-            <div class="ba-item-title">成本目标达成</div>
-            <div class="ba-item-detail">消除代理行层级，降低流动性成本</div>
-            <div class="ba-item-metric metric-good">&lt;1%（25%支付）| &lt;3%（所有支付）G20 #066</div>
+            <div class="ba-item-title"><span data-zh>成本目标达成</span><span data-en>Cost Target Achieved</span></div>
+            <div class="ba-item-detail"><span data-zh>消除代理行层级，降低流动性成本</span><span data-en>Eliminating correspondent bank layers, reducing liquidity cost</span></div>
+            <div class="ba-item-metric metric-good">&lt;1%（25%<span data-zh>支付</span><span data-en> payments</span>）| &lt;3%（<span data-zh>所有支付</span><span data-en>all payments</span>）G20 #066</div>
           </div>
         </div>
 
         <div class="ba-item">
           <div class="ba-item-icon">📋</div>
           <div class="ba-item-content">
-            <div class="ba-item-title">ISO 20022 统一标准</div>
-            <div class="ba-item-detail">结构化数据，富文本，全球通用</div>
-            <div class="ba-item-metric metric-good">节省$3.32亿运营成本+$2.7亿流动性成本/年</div>
+            <div class="ba-item-title">ISO 20022 <span data-zh>统一标准</span><span data-en>Unified Standard</span></div>
+            <div class="ba-item-detail"><span data-zh>结构化数据，富文本，全球通用</span><span data-en>Structured data, rich text, globally compatible</span></div>
+            <div class="ba-item-metric metric-good"><span data-zh>节省$3.32亿运营成本+$2.7亿流动性成本/年</span><span data-en>Saves $332M operational + $270M liquidity cost/year</span></div>
           </div>
         </div>
 
         <div class="ba-item">
           <div class="ba-item-icon">🔍</div>
           <div class="ba-item-content">
-            <div class="ba-item-title">全程可追踪</div>
-            <div class="ba-item-detail">UETR端到端唯一标识，全程状态可见</div>
-            <div class="ba-item-metric metric-good">100%费率披露目标 | gpi已4000+机构接入</div>
+            <div class="ba-item-title"><span data-zh>全程可追踪</span><span data-en>End-to-End Trackable</span></div>
+            <div class="ba-item-detail">UETR<span data-zh>端到端唯一标识，全程状态可见</span><span data-en> end-to-end unique ID, full status visibility</span></div>
+            <div class="ba-item-metric metric-good">100%<span data-zh>费率披露目标 | gpi已4000+机构接入</span><span data-en> rate disclosure target | gpi: 4000+ institutions</span></div>
           </div>
         </div>
       </div>
@@ -1952,43 +1968,47 @@
 
   <!-- Progress Status -->
   <div style="background:white;border-radius:12px;padding:20px 24px;border:1px solid #e2e8f0;margin-top:20px;">
-    <h3 style="font-size:14px;font-weight:700;color:#374151;margin-bottom:16px;">📈 G20 2027路线图进展状态（截至2024年末）</h3>
+    <h3 style="font-size:14px;font-weight:700;color:#374151;margin-bottom:16px;">📈 G20 2027<span data-zh>路线图进展状态（截至2024年末）</span><span data-en> Roadmap Progress Status (as of end 2024)</span></h3>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;">
 
       <div style="padding:14px;border-radius:8px;background:#fff8f8;border:1px solid #fecaca;">
-        <div style="font-size:12px;font-weight:700;color:#dc2626;margin-bottom:4px;">🔴 速度 — 进展受阻</div>
-        <div style="font-size:12px;color:#64748b;">零售1小时达到率：33.5%（↓0.7pp）<br>目标：75% | 差距：41.5个百分点</div>
+        <div style="font-size:12px;font-weight:700;color:#dc2626;margin-bottom:4px;">🔴 <span data-zh>速度 — 进展受阻</span><span data-en>Speed — Stalled</span></div>
+        <div style="font-size:12px;color:#64748b;"><span data-zh>零售1小时达到率：33.5%（↓0.7pp）<br>目标：75% | 差距：41.5个百分点</span><span data-en>Retail 1-hour rate: 33.5% (↓0.7pp)<br>Target: 75% | Gap: 41.5pp</span></div>
       </div>
 
       <div style="padding:14px;border-radius:8px;background:#fff8f8;border:1px solid #fecaca;">
-        <div style="font-size:12px;font-weight:700;color:#dc2626;margin-bottom:4px;">🔴 成本 — 远未达标</div>
-        <div style="font-size:12px;color:#64748b;">汇款成本：6.4%（↑0.1pp）<br>目标：&lt;3% | 差距：3.4个百分点</div>
+        <div style="font-size:12px;font-weight:700;color:#dc2626;margin-bottom:4px;">🔴 <span data-zh>成本 — 远未达标</span><span data-en>Cost — Far from Target</span></div>
+        <div style="font-size:12px;color:#64748b;"><span data-zh>汇款成本：6.4%（↑0.1pp）<br>目标：&lt;3% | 差距：3.4个百分点</span><span data-en>Remittance cost: 6.4% (↑0.1pp)<br>Target: &lt;3% | Gap: 3.4pp</span></div>
       </div>
 
       <div style="padding:14px;border-radius:8px;background:#fefce8;border:1px solid #fde68a;">
-        <div style="font-size:12px;font-weight:700;color:#92400e;margin-bottom:4px;">🟡 透明度 — 进展最好</div>
-        <div style="font-size:12px;color:#64748b;">PSP费率披露：55.6%（↑1.1pp）<br>汇款透明度：98–99%（接近100%目标）</div>
+        <div style="font-size:12px;font-weight:700;color:#92400e;margin-bottom:4px;">🟡 <span data-zh>透明度 — 进展最好</span><span data-en>Transparency — Best Progress</span></div>
+        <div style="font-size:12px;color:#64748b;"><span data-zh>PSP费率披露：55.6%（↑1.1pp）<br>汇款透明度：98–99%（接近100%目标）</span><span data-en>PSP rate disclosure: 55.6% (↑1.1pp)<br>Remittance transparency: 98–99% (near 100% target)</span></div>
       </div>
 
       <div style="padding:14px;border-radius:8px;background:#f0fdf4;border:1px solid #bbf7d0;">
-        <div style="font-size:12px;font-weight:700;color:#166534;margin-bottom:4px;">🟢 基础设施 — 快速推进</div>
-        <div style="font-size:12px;color:#64748b;">Nexus蓝图完成 ✓ | mBridge MVP ✓<br>ISO 20022迁移2025年11月完成 ✓</div>
+        <div style="font-size:12px;font-weight:700;color:#166534;margin-bottom:4px;">🟢 <span data-zh>基础设施 — 快速推进</span><span data-en>Infrastructure — Rapid Progress</span></div>
+        <div style="font-size:12px;color:#64748b;">Nexus<span data-zh>蓝图完成</span><span data-en> blueprint complete</span> ✓ | mBridge MVP ✓<br>ISO 20022<span data-zh>迁移2025年11月完成</span><span data-en> migration Nov 2025</span> ✓</div>
       </div>
 
     </div>
   </div>
 
   <div class="source-footer">
-    <strong>数据来源：</strong>
-    FSB G20跨境支付路线图2024年综合进展报告（card-066）— G20目标KPI、现状数据；
-    BIS CPMI Brief No.10（card-071）— RTGS运营时间、ISO 20022效益量化；
-    MAS Project Nexus（card-139）— 蓝图完成、17亿覆盖、5国央行参与；
-    HKMA mBridge（card-135）— MVP里程碑、沙特加入、BOCHK接入；
-    SWIFT gpi（card-151）— 90%/30分钟速度、UETR追踪。
+    <strong><span data-zh>数据来源：</span><span data-en>Sources:</span></strong>
+    FSB G20<span data-zh>跨境支付路线图2024年综合进展报告</span><span data-en> Cross-Border Payments Roadmap 2024 Progress Report</span>（card-066）;
+    BIS CPMI Brief No.10（card-071）;
+    MAS Project Nexus（card-139）;
+    HKMA mBridge（card-135）;
+    SWIFT gpi（card-151）.
   </div>
 
 </div><!-- end tab3 -->
 
+<!-- ════ 导航 ════ -->
+<div style="background:white;padding:16px 40px;border-top:1px solid #e2e8f0;display:flex;justify-content:flex-start;align-items:center;">
+  <a href="index.html" style="font-size:13px;color:#2563eb;font-weight:600;text-decoration:none;">← <span data-zh>返回首页</span><span data-en>Back to Home</span></a>
+</div>
 
 <!-- ═══ JAVASCRIPT ═══ -->
 <script>
@@ -2004,6 +2024,25 @@ function switchTab(tabId, btn) {
   // Scroll to top of content
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+// ── Language Switcher ──
+let lang = localStorage.getItem('lang') || 'zh';
+
+function switchLang(l) {
+  lang = l;
+  localStorage.setItem('lang', l);
+  document.querySelectorAll('[data-zh]').forEach(el => {
+    el.style.display = (l === 'zh') ? '' : 'none';
+  });
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.style.display = (l === 'en') ? '' : 'none';
+  });
+  document.getElementById('btn-zh').classList.toggle('active', l === 'zh');
+  document.getElementById('btn-en').classList.toggle('active', l === 'en');
+}
+
+// Initialize on page load
+switchLang(lang);
 </script>
 
 </body>

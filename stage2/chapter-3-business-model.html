@@ -109,15 +109,26 @@
   .risk-med { background: #f59e0b; }
   .risk-low { background: #10b981; }
   .risk-pct { font-size: 12px; font-weight: 700; color: #475569; width: 40px; text-align: right; }
+
+  /* ── Language Switcher ── */
+  .lang-switcher { position: fixed; top: 16px; right: 20px; z-index: 1000; display: flex; gap: 4px; }
+  .lang-switcher button { padding: 4px 10px; border: 1px solid #e2e8f0; border-radius: 4px; font-size: 12px; cursor: pointer; background: white; color: #64748b; }
+  .lang-switcher button.active { background: #2563eb; color: white; border-color: #2563eb; }
 </style>
 </head>
 <body>
 
+<!-- ══════════════════ LANG SWITCHER ══════════════════ -->
+<div class="lang-switcher">
+  <button id="btn-zh" onclick="switchLang('zh')">中文</button>
+  <button id="btn-en" onclick="switchLang('en')">EN</button>
+</div>
+
 <!-- ════ 章节头 ════ -->
 <div class="chapter-header">
-  <div class="chapter-label">知识库 · 第3章</div>
-  <div class="chapter-title">跨境支付行业商业模式分析</div>
-  <div class="chapter-subtitle">基于商业模式画布（BMC）9模块的综合框架分析 — 覆盖7家主要公司真实财报数据</div>
+  <div class="chapter-label"><span data-zh>知识库 · 第3章</span><span data-en>Knowledge Base · Chapter 3</span></div>
+  <div class="chapter-title"><span data-zh>跨境支付行业商业模式分析</span><span data-en>Cross-Border Payments: Business Model Analysis</span></div>
+  <div class="chapter-subtitle"><span data-zh>基于商业模式画布（BMC）9模块的综合框架分析 — 覆盖7家主要公司真实财报数据</span><span data-en>Business Model Canvas (BMC) Analysis Across 9 Modules — Real Financial Data from 7 Major Companies</span></div>
   <div class="chapter-meta">
     <div class="meta-item"><strong>覆盖公司：</strong>Wise · Remitly · Payoneer · dLocal · Western Union · OFX · Revolut</div>
     <div class="meta-item"><strong>数据截止：</strong>2024/2025财年</div>
@@ -128,24 +139,24 @@
 
 <!-- ════ 目录 ════ -->
 <div class="toc-box">
-  <div class="toc-title">📋 章节目录</div>
+  <div class="toc-title">📋 <span data-zh>章节目录</span><span data-en>Table of Contents</span></div>
   <div class="toc-grid">
-    <a class="toc-item" href="#cs"><div class="toc-num">①</div>客户细分 — 行业客群分层逻辑</a>
-    <a class="toc-item" href="#vp"><div class="toc-num">②</div>价值主张 — 痛点与差异化边界</a>
-    <a class="toc-item" href="#ch"><div class="toc-num">③</div>渠道 — 获客路径与规模效应</a>
-    <a class="toc-item" href="#cr"><div class="toc-num">④</div>客户关系 — 留存机制与转换成本</a>
-    <a class="toc-item" href="#rs"><div class="toc-num">⑤</div>收入来源 — Take Rate与利息收入</a>
-    <a class="toc-item" href="#kr"><div class="toc-num">⑥</div>核心资源 — 难以复制的关键资产</a>
-    <a class="toc-item" href="#ka"><div class="toc-num">⑦</div>关键活动 — 运营核心与规模效应</a>
-    <a class="toc-item" href="#kp"><div class="toc-num">⑧</div>重要合作 — 银行关系与平台逻辑</a>
-    <a class="toc-item" href="#cs2"><div class="toc-num">⑨</div>成本结构 — 成本构成与利润率基准</a>
+    <a class="toc-item" href="#cs"><div class="toc-num">①</div><span data-zh>客户细分 — 行业客群分层逻辑</span><span data-en>Customer Segments — Industry Segmentation Logic</span></a>
+    <a class="toc-item" href="#vp"><div class="toc-num">②</div><span data-zh>价值主张 — 痛点与差异化边界</span><span data-en>Value Propositions — Pain Points & Differentiation</span></a>
+    <a class="toc-item" href="#ch"><div class="toc-num">③</div><span data-zh>渠道 — 获客路径与规模效应</span><span data-en>Channels — Acquisition Paths & Scale Effects</span></a>
+    <a class="toc-item" href="#cr"><div class="toc-num">④</div><span data-zh>客户关系 — 留存机制与转换成本</span><span data-en>Customer Relationships — Retention & Switching Costs</span></a>
+    <a class="toc-item" href="#rs"><div class="toc-num">⑤</div><span data-zh>收入来源 — Take Rate与利息收入</span><span data-en>Revenue Streams — Take Rate & Interest Income</span></a>
+    <a class="toc-item" href="#kr"><div class="toc-num">⑥</div><span data-zh>核心资源 — 难以复制的关键资产</span><span data-en>Key Resources — Hard-to-Replicate Assets</span></a>
+    <a class="toc-item" href="#ka"><div class="toc-num">⑦</div><span data-zh>关键活动 — 运营核心与规模效应</span><span data-en>Key Activities — Operations Core & Scale Effects</span></a>
+    <a class="toc-item" href="#kp"><div class="toc-num">⑧</div><span data-zh>重要合作 — 银行关系与平台逻辑</span><span data-en>Key Partnerships — Bank Relations & Platform Logic</span></a>
+    <a class="toc-item" href="#cs2"><div class="toc-num">⑨</div><span data-zh>成本结构 — 成本构成与利润率基准</span><span data-en>Cost Structure — Cost Breakdown & Margin Benchmarks</span></a>
   </div>
 </div>
 
 <!-- ════ 引言 ════ -->
 <div class="module">
-  <div class="module-label">执行摘要</div>
-  <div class="module-title">跨境支付行业：商业模式正在分叉</div>
+  <div class="module-label"><span data-zh>执行摘要</span><span data-en>Executive Summary</span></div>
+  <div class="module-title"><span data-zh>跨境支付行业：商业模式正在分叉</span><span data-en>Cross-Border Payments: Business Models Diverging</span></div>
   <div class="body-text">
     <p>跨境支付行业正处于深刻的商业模式分叉期。以<strong>BCG 2024全球支付报告</strong>为背景，全球支付收入2023年达$1.8万亿，2028年预计增至$2.3万亿（CAGR 5%），但增速从2018-2023年的9%显著放缓。与整体行业放缓形成对比的是，头部数字原生公司（Wise、Remitly、Revolut）仍保持20-70%的年增速，正在系统性抢夺传统银行和汇款公司的份额。</p>
     <p>本章通过商业模式画布（BMC）九模块，横向比较7家代表性公司，揭示跨境支付行业的商业模式差异、护城河逻辑与演化趋势。核心结论是：<strong>跨境支付行业的商业模式正在分化为三条路径——①账户化生态（Wise/Revolut）、②移民汇款专项（Remitly/WU）、③跨境基础设施（Payoneer/dLocal/Wise Platform）</strong>，三条路径在Take Rate、客群、成本结构上差异显著，且很难相互模仿。</p>
@@ -154,8 +165,8 @@
 
 <!-- ════ 模块① 客户细分 ════ -->
 <div class="module" id="cs">
-  <div class="module-label">模块 ① / 9</div>
-  <div class="module-title"><span class="num">① </span>客户细分 — 行业客群如何分层</div>
+  <div class="module-label"><span data-zh>模块 ① / 9</span><span data-en>Module ① / 9</span></div>
+  <div class="module-title"><span class="num">① </span><span data-zh>客户细分</span><span data-en>① Customer Segments</span><span data-zh> — 行业客群如何分层</span><span data-en> — How the Industry Segments Its Customers</span></div>
   <div class="core-conclusion">
     跨境支付行业客群已形成三层结构：C端移民汇款（高频低额）、SMB/企业跨境（中频中高额）、跨国企业基础设施（低频超高额），三者对价格、速度、合规的需求完全不同，这决定了各公司的定价空间和竞争护城河高度。
   </div>
@@ -176,11 +187,11 @@
   <table class="data-table">
     <thead>
       <tr>
-        <th>公司</th>
-        <th>核心客群</th>
-        <th>客户规模</th>
-        <th>主要市场</th>
-        <th>典型交易场景</th>
+        <th><span data-zh>公司</span><span data-en>Company</span></th>
+        <th><span data-zh>核心客群</span><span data-en>Core Customers</span></th>
+        <th><span data-zh>客户规模</span><span data-en>Customer Scale</span></th>
+        <th><span data-zh>主要市场</span><span data-en>Key Markets</span></th>
+        <th><span data-zh>典型交易场景</span><span data-en>Typical Use Cases</span></th>
       </tr>
     </thead>
     <tbody>
@@ -237,20 +248,20 @@
   </table>
 
   <div class="insight-box">
-    <div class="insight-title">💡 关键洞察</div>
+    <div class="insight-title">💡 <span data-zh>关键洞察</span><span data-en>Key Insights</span></div>
     <ul class="insight-list">
       <li>客群选择决定定价上限：移民汇款客群（Remitly）Take Rate 2.32%，大额B2B（OFX）Take Rate 0.59%，规模越大、客户越专业，定价空间越低但交易额越高。</li>
       <li>Payoneer的"大中华区依赖"是双刃剑：中国跨境卖家贡献了最大收入，但地缘政治风险集中度高，2024年B2B量+42%验证了多元化正在提速。</li>
       <li>Wise的"三层跨越"策略是最难复制的客群模式，Platform使其收入边际成本趋近于零，而服务Morgan Stanley等机构的客户获取成本也是一次性的。</li>
     </ul>
   </div>
-  <div class="source-row"><span class="source-label">数据来源：</span><span class="source-tag">card-001</span><span class="source-tag">card-002</span><span class="source-tag">card-045</span><span class="source-tag">card-047</span><span class="source-tag">card-036</span><span class="source-tag">card-051</span><span class="source-tag">card-081</span><span class="source-tag">card-032</span></div>
+  <div class="source-row"><span class="source-label"><span data-zh>数据来源：</span><span data-en>Sources: </span></span><span class="source-tag">card-001</span><span class="source-tag">card-002</span><span class="source-tag">card-045</span><span class="source-tag">card-047</span><span class="source-tag">card-036</span><span class="source-tag">card-051</span><span class="source-tag">card-081</span><span class="source-tag">card-032</span></div>
 </div>
 
 <!-- ════ 模块② 价值主张 ════ -->
 <div class="module module-green" id="vp">
-  <div class="module-label">模块 ② / 9</div>
-  <div class="module-title"><span class="num">② </span>价值主张 — 核心痛点与差异化边界</div>
+  <div class="module-label"><span data-zh>模块 ② / 9</span><span data-en>Module ② / 9</span></div>
+  <div class="module-title"><span class="num">② </span><span data-zh>价值主张 — 核心痛点与差异化边界</span><span data-en>② Value Propositions — Core Pain Points & Differentiation</span></div>
   <div class="core-conclusion" style="background:#f0fdf4; border-color:#059669;">
     "更便宜、更快、更透明"已是行业标配，真正构成差异化护城河的只有三类：①Wise/Revolut的账户生态（持有余额带来的粘性）；②Remitly的移民信任体系（24小时赔付+本地语言）；③dLocal的新兴市场合规基础设施（无法在6个月内复制）。
   </div>
@@ -273,7 +284,7 @@
 
   <table class="data-table">
     <thead>
-      <tr><th>公司</th><th>核心价值主张</th><th>行业标配部分</th><th>差异化部分（护城河）</th></tr>
+      <tr><th><span data-zh>公司</span><span data-en>Company</span></th><th><span data-zh>核心价值主张</span><span data-en>Core Value Proposition</span></th><th><span data-zh>行业标配部分</span><span data-en>Industry Standard</span></th><th><span data-zh>差异化部分（护城河）</span><span data-en>Differentiation (Moat)</span></th></tr>
     </thead>
     <tbody>
       <tr><td><strong>Wise</strong></td><td>真实汇率 + 国际账户生态</td><td>低费率、快速到账</td><td>9货币账户、账户生态、Platform API</td></tr>
@@ -287,20 +298,20 @@
   </table>
 
   <div class="insight-box">
-    <div class="insight-title">💡 关键洞察</div>
+    <div class="insight-title">💡 <span data-zh>关键洞察</span><span data-en>Key Insights</span></div>
     <ul class="insight-list">
       <li>Wise的账户化战略使其从"交易型收入"（每次转账收费）向"存量型收入"（余额利息+账户订阅）转型，客户持仓£215亿产生的利息£594亿是商业模式升级的核心证据。</li>
       <li>价值主张同质化正在加速：2024年已有6家公司提供"真实汇率"，竞争正在从价格转向生态深度和地理覆盖宽度。</li>
       <li>现金代取是Remitly/WU的护城河，也是其包袱：无银行账户人群（全球约14亿）是需求来源，但代理网络维护成本极高，数字化进程会逐渐蚕食这一优势。</li>
     </ul>
   </div>
-  <div class="source-row"><span class="source-label">数据来源：</span><span class="source-tag">card-001</span><span class="source-tag">card-036</span><span class="source-tag">card-047</span><span class="source-tag">card-081</span><span class="source-tag">card-032</span></div>
+  <div class="source-row"><span class="source-label"><span data-zh>数据来源：</span><span data-en>Sources: </span></span><span class="source-tag">card-001</span><span class="source-tag">card-036</span><span class="source-tag">card-047</span><span class="source-tag">card-081</span><span class="source-tag">card-032</span></div>
 </div>
 
 <!-- ════ 模块③ 渠道 ════ -->
 <div class="module module-purple" id="ch">
-  <div class="module-label">模块 ③ / 9</div>
-  <div class="module-title"><span class="num">③ </span>渠道 — 获客路径与规模效应比较</div>
+  <div class="module-label"><span data-zh>模块 ③ / 9</span><span data-en>Module ③ / 9</span></div>
+  <div class="module-title"><span class="num">③ </span><span data-zh>渠道 — 获客路径与规模效应</span><span data-en>Channels — Acquisition Paths & Scale Effects</span>比较</div>
   <div class="core-conclusion" style="background:#f5f3ff; border-color:#7c3aed;">
     平台嵌入比直客更有规模效应：Wise Platform的API渠道使Morgan Stanley、渣打、Nubank等合作伙伴的3亿+终端用户成为潜在客户，且边际获客成本几乎为零；而Remitly的24%营销费率揭示纯直客模式的高昂获客代价。
   </div>
@@ -351,20 +362,20 @@
   </div>
 
   <div class="insight-box">
-    <div class="insight-title">💡 关键洞察</div>
+    <div class="insight-title">💡 <span data-zh>关键洞察</span><span data-en>Key Insights</span></div>
     <ul class="insight-list">
       <li>平台渠道（API嵌入）是跨境支付行业获客效率最高的模式：一次性集成Morgan Stanley可触达数十万企业客户，边际获客成本几乎为零。Wise Platform的Morgan Stanley合作是FY2025最重要的战略事件之一。</li>
       <li>Remitly 24%营销费率是阶段性必要成本，但也揭示了其利润率天花板：在EBITDA仅10.7%的情况下，不能大幅压缩营销，否则增长停滞；若继续高营销，盈利路径延迟。</li>
       <li>口碑获客需要产品具备"值得推荐"的特性：Wise的多货币账户、Revolut的加密/股票投资功能都具备"让朋友惊呼"的产品力，而Western Union和OFX的产品很难形成口碑传播。</li>
     </ul>
   </div>
-  <div class="source-row"><span class="source-label">数据来源：</span><span class="source-tag">card-001</span><span class="source-tag">card-036</span><span class="source-tag">card-047</span><span class="source-tag">card-051</span></div>
+  <div class="source-row"><span class="source-label"><span data-zh>数据来源：</span><span data-en>Sources: </span></span><span class="source-tag">card-001</span><span class="source-tag">card-036</span><span class="source-tag">card-047</span><span class="source-tag">card-051</span></div>
 </div>
 
 <!-- ════ 模块④ 客户关系 ════ -->
 <div class="module" id="cr">
-  <div class="module-label">模块 ④ / 9</div>
-  <div class="module-title"><span class="num">④ </span>客户关系 — 留存机制与转换成本</div>
+  <div class="module-label"><span data-zh>模块 ④ / 9</span><span data-en>Module ④ / 9</span></div>
+  <div class="module-title"><span class="num">④ </span><span data-zh>客户关系 — 留存机制与转换成本</span><span data-en>Customer Relationships — Retention & Switching Costs</span></div>
   <div class="core-conclusion">
     跨境支付行业的真正护城河不是技术，而是"账户+余额+功能积累"构建的转换成本：一旦客户将工资收入Wise账户、在Revolut持有加密资产、在Payoneer绑定三个电商平台，转走的摩擦力已不亚于更换银行账户。
   </div>
@@ -383,7 +394,7 @@
 
   <table class="data-table">
     <thead>
-      <tr><th>公司</th><th>主要留存机制</th><th>转换成本类型</th><th>留存质量</th></tr>
+      <tr><th><span data-zh>公司</span><span data-en>Company</span></th><th><span data-zh>主要留存机制</span><span data-en>Primary Retention Mechanism</span></th><th><span data-zh>转换成本类型</span><span data-en>Switching Cost Type</span></th><th><span data-zh>留存质量</span><span data-en>Retention Quality</span></th></tr>
     </thead>
     <tbody>
       <tr class="leader"><td><strong>Wise</strong></td><td>多货币账户 + 余额 + Platform生态</td><td>数据迁移 + 习惯惯性 + 账户功能</td><td>⭐⭐⭐⭐⭐ 极强</td></tr>
@@ -397,20 +408,20 @@
   </table>
 
   <div class="insight-box">
-    <div class="insight-title">💡 关键洞察</div>
+    <div class="insight-title">💡 <span data-zh>关键洞察</span><span data-en>Key Insights</span></div>
     <ul class="insight-list">
       <li>余额留存是跨境支付公司护城河的最高层级：Wise客户余额£170亿、Revolut客户余额$380亿，这些资金的"离开成本"远超一次汇款的手续费差异。</li>
       <li>Remitly的24%营销费率背后是弱留存机制的代价：没有账户余额和多功能依赖，只能不断用广告召回客户。如果能成功推广"金融服务套件"战略，留存成本将大幅下降。</li>
       <li>订阅模式是最高质量的留存：Revolut订阅收入$5.41亿，毛利率接近100%，且付费用户+45%，这是SaaS级别的收入质量，与汇款公司的单次交易模式有本质区别。</li>
     </ul>
   </div>
-  <div class="source-row"><span class="source-label">数据来源：</span><span class="source-tag">card-001</span><span class="source-tag">card-032</span><span class="source-tag">card-036</span><span class="source-tag">card-045</span><span class="source-tag">card-047</span></div>
+  <div class="source-row"><span class="source-label"><span data-zh>数据来源：</span><span data-en>Sources: </span></span><span class="source-tag">card-001</span><span class="source-tag">card-032</span><span class="source-tag">card-036</span><span class="source-tag">card-045</span><span class="source-tag">card-047</span></div>
 </div>
 
 <!-- ════ 模块⑤ 收入来源 ════ -->
 <div class="module module-orange" id="rs">
-  <div class="module-label">模块 ⑤ / 9</div>
-  <div class="module-title"><span class="num">⑤ </span>收入来源 — Take Rate横向对比与利息收入脆弱度</div>
+  <div class="module-label"><span data-zh>模块 ⑤ / 9</span><span data-en>Module ⑤ / 9</span></div>
+  <div class="module-title"><span class="num">⑤ </span><span data-zh>收入来源 — Take Rate横向对比与利息收入脆弱度</span><span data-en>⑤ Revenue Streams — Take Rate Comparison & Interest Income Vulnerability</span></div>
   <div class="core-conclusion" style="background:#fffbeb; border-color:#d97706;">
     Take Rate横向差距高达7倍（Wise 0.58% vs Western Union ~4.1%），这不是定价策略差异，而是客群结构差异：低费率对应大额高频专业客户，高费率对应小额低频普通消费者。利息收入是当前周期红利而非永久优势——利率下行100bps将使Wise损失约£86亿利息收入，Payoneer减少约$50亿。
   </div>
@@ -429,12 +440,12 @@
   <table class="data-table">
     <thead>
       <tr>
-        <th>公司</th>
+        <th><span data-zh>公司</span><span data-en>Company</span></th>
         <th>Take Rate</th>
-        <th>TPV/收入规模</th>
-        <th>核心客群</th>
-        <th>利息收入占比</th>
-        <th>利率下行风险</th>
+        <th><span data-zh>TPV/收入规模</span><span data-en>TPV / Revenue</span></th>
+        <th><span data-zh>核心客群</span><span data-en>Core Customers</span></th>
+        <th><span data-zh>利息收入占比</span><span data-en>Interest Income %</span></th>
+        <th><span data-zh>利率下行风险</span><span data-en>Rate Cut Risk</span></th>
       </tr>
     </thead>
     <tbody>
@@ -500,20 +511,20 @@
   <div class="warn-box">⚠️ <strong>利率风险提示：</strong>Wise和Payoneer的利息收入占比（分别约44%和26%）在当前高利率环境下显著提升了利润率。当联储/欧央行开始降息周期，这部分收入将实质性下降。Wise通过"底层收入"概念（只计前1%收益率为经常性收入）对此有清醒认知，但市场可能低估了实际利率敏感性。</div>
 
   <div class="insight-box">
-    <div class="insight-title">💡 关键洞察</div>
+    <div class="insight-title">💡 <span data-zh>关键洞察</span><span data-en>Key Insights</span></div>
     <ul class="insight-list">
       <li>Wise的Take Rate持续下降是战略选择，不是竞争失败：Q4 FY2025已降至0.53%，FY2026均值将进一步下移。CEO的逻辑是"最低成本基础设施将赢得全球货币移动"——先降价建壁垒，再在规模上找利润。</li>
       <li>Payoneer是行业中利息收入依赖度最高的公司（26%占比），且SMB Take Rate逆势上升4bps，说明SMB客群定价能力在增强——这是正向信号，但利率下行时将承受双重压力。</li>
       <li>Take Rate 0.58%（Wise）vs 4.09%（WU）的7倍差距，反映的是商业模式的本质差异：Wise是基础设施服务，WU是零售汇款服务，两者的单位成本和客群支付意愿差距，注定了这个Take Rate差距将长期存在。</li>
     </ul>
   </div>
-  <div class="source-row"><span class="source-label">数据来源：</span><span class="source-tag">card-001</span><span class="source-tag">card-002</span><span class="source-tag">card-032</span><span class="source-tag">card-036</span><span class="source-tag">card-045</span><span class="source-tag">card-047</span><span class="source-tag">card-051</span><span class="source-tag">card-081</span></div>
+  <div class="source-row"><span class="source-label"><span data-zh>数据来源：</span><span data-en>Sources: </span></span><span class="source-tag">card-001</span><span class="source-tag">card-002</span><span class="source-tag">card-032</span><span class="source-tag">card-036</span><span class="source-tag">card-045</span><span class="source-tag">card-047</span><span class="source-tag">card-051</span><span class="source-tag">card-081</span></div>
 </div>
 
 <!-- ════ 模块⑥ 核心资源 ════ -->
 <div class="module module-red" id="kr">
-  <div class="module-label">模块 ⑥ / 9</div>
-  <div class="module-title" style="border-color:#ef4444;"><span class="num">⑥ </span>核心资源 — 关键资产与护城河深度</div>
+  <div class="module-label"><span data-zh>模块 ⑥ / 9</span><span data-en>Module ⑥ / 9</span></div>
+  <div class="module-title" style="border-color:#ef4444;"><span class="num">⑥ </span><span data-zh>核心资源 — 关键资产与护城河深度</span><span data-en>⑥ Key Resources — Key Assets & Moat Depth</span></div>
   <div class="core-conclusion" style="background:#fef2f2; border-color:#ef4444;">
     跨境支付行业最难复制的核心资源不是技术代码，而是三类：①直连支付系统网络（需要数年+监管关系）；②全球牌照矩阵（需要5-10年合规投入）；③规模化口碑品牌（需要10年+产品信誉）。技术可以购买，这三者不能。
   </div>
@@ -537,7 +548,7 @@
 
   <table class="data-table">
     <thead>
-      <tr><th>核心资源类型</th><th>代表公司</th><th>竞争壁垒高度</th><th>建立时间</th></tr>
+      <tr><th><span data-zh>核心资源类型</span><span data-en>Resource Type</span></th><th><span data-zh>代表公司</span><span data-en>Representative Companies</span></th><th><span data-zh>竞争壁垒高度</span><span data-en>Barrier Height</span></th><th><span data-zh>建立时间</span><span data-en>Time to Build</span></th></tr>
     </thead>
     <tbody>
       <tr><td>直连支付系统网络</td><td>Wise（6+个直连）</td><td>⭐⭐⭐⭐⭐ 极高</td><td>5-10年/每个市场</td></tr>
@@ -551,20 +562,20 @@
   </table>
 
   <div class="insight-box">
-    <div class="insight-title">💡 关键洞察</div>
+    <div class="insight-title">💡 <span data-zh>关键洞察</span><span data-en>Key Insights</span></div>
     <ul class="insight-list">
       <li>菲律宾直连后"成本降低8倍"是最有说服力的基础设施护城河量化证明：Wise每进入一个直连市场，就建立起新竞争者需要数年才能匹配的成本优势。</li>
       <li>牌照是护城河但也是限制：Wise印度牌照FY2025移除$5,000单笔上限，解锁了全球最大汇款接收市场的大额场景——每一个监管突破都是增量收入的开关。</li>
       <li>WU的实体网络正在从资产变为负债：500,000个代理点的维护成本在数字化时代越来越难以通过收益覆盖，这解释了为何WU股东回报占利润83%而非再投资——管理层知道这是收割阶段。</li>
     </ul>
   </div>
-  <div class="source-row"><span class="source-label">数据来源：</span><span class="source-tag">card-001</span><span class="source-tag">card-032</span><span class="source-tag">card-036</span><span class="source-tag">card-045</span><span class="source-tag">card-051</span></div>
+  <div class="source-row"><span class="source-label"><span data-zh>数据来源：</span><span data-en>Sources: </span></span><span class="source-tag">card-001</span><span class="source-tag">card-032</span><span class="source-tag">card-036</span><span class="source-tag">card-045</span><span class="source-tag">card-051</span></div>
 </div>
 
 <!-- ════ 模块⑦ 关键活动 ════ -->
 <div class="module" id="ka">
-  <div class="module-label">模块 ⑦ / 9</div>
-  <div class="module-title"><span class="num">⑦ </span>关键活动 — 运营核心与规模化摊薄</div>
+  <div class="module-label"><span data-zh>模块 ⑦ / 9</span><span data-en>Module ⑦ / 9</span></div>
+  <div class="module-title"><span class="num">⑦ </span><span data-zh>关键活动 — 运营核心与规模化摊薄</span><span data-en>⑦ Key Activities — Operations Core & Scale Dilution</span></div>
   <div class="core-conclusion">
     跨境支付公司的关键活动不是技术开发，而是"合规运营+欺诈控制+资金结算"三位一体的持续运营。规模化后，销售成本（交易处理）边际递减，而合规成本（牌照+反洗钱）相对固定——这使得规模领先者拥有永久性的单位成本优势。
   </div>
@@ -591,20 +602,20 @@
   </div>
 
   <div class="insight-box">
-    <div class="insight-title">💡 关键洞察</div>
+    <div class="insight-title">💡 <span data-zh>关键洞察</span><span data-en>Key Insights</span></div>
     <ul class="insight-list">
       <li>Wise FY2025销售成本+5% vs 收入+15%是最直接的规模效应量化：每1英镑新收入只需要0.33英镑新成本，毛利率持续扩张（75%，同比+2ppts）。</li>
       <li>Remitly FY2024客服费用+1.7% vs 活跃客户+32%是AI自动化成功的证明：在客户量翻倍的情况下，客服成本几乎零增长，说明自动化客服系统投入开始产生回报。</li>
       <li>资金预充（Remitly $289M）vs净额结算（Wise）的运营模式差异，本质上是Wise更深的双边流量积累——只有当买家和卖家都在Wise平台上交易，才能实现真正的净额结算降本。</li>
     </ul>
   </div>
-  <div class="source-row"><span class="source-label">数据来源：</span><span class="source-tag">card-001</span><span class="source-tag">card-047</span><span class="source-tag">card-045</span><span class="source-tag">card-081</span></div>
+  <div class="source-row"><span class="source-label"><span data-zh>数据来源：</span><span data-en>Sources: </span></span><span class="source-tag">card-001</span><span class="source-tag">card-047</span><span class="source-tag">card-045</span><span class="source-tag">card-081</span></div>
 </div>
 
 <!-- ════ 模块⑧ 重要合作 ════ -->
 <div class="module module-green" id="kp">
-  <div class="module-label">模块 ⑧ / 9</div>
-  <div class="module-title" style="border-color:#059669;"><span class="num">⑧ </span>重要合作 — 银行关系与平台逻辑</div>
+  <div class="module-label"><span data-zh>模块 ⑧ / 9</span><span data-en>Module ⑧ / 9</span></div>
+  <div class="module-title" style="border-color:#059669;"><span class="num">⑧ </span><span data-zh>重要合作 — 银行关系与平台逻辑</span><span data-en>Key Partnerships — Bank Relations & Platform Logic</span></div>
   <div class="core-conclusion" style="background:#f0fdf4; border-color:#059669;">
     传统银行与数字跨境支付公司的关系正从"竞争"转向"合作基础设施"：Morgan Stanley和渣打选择Wise Platform不是因为无法自建，而是因为"外包比自建更经济"——Wise让他们削减了资本支出、缩短了上市时间。这是金融基础设施层面的平台革命，比支付宝/微信支付的C端革命更深远。
   </div>
@@ -624,7 +635,7 @@
 
   <table class="data-table">
     <thead>
-      <tr><th>公司</th><th>重要合作类型</th><th>代表合作方</th><th>商业逻辑</th></tr>
+      <tr><th><span data-zh>公司</span><span data-en>Company</span></th><th><span data-zh>重要合作类型</span><span data-en>Partnership Type</span></th><th><span data-zh>代表合作方</span><span data-en>Key Partners</span></th><th><span data-zh>商业逻辑</span><span data-en>Business Logic</span></th></tr>
     </thead>
     <tbody>
       <tr><td><strong>Wise Platform</strong></td><td>金融机构基础设施外包</td><td>Morgan Stanley、渣打、Nubank、Itaú</td><td>银行削减CapEx，Wise收取Platform收入</td></tr>
@@ -637,20 +648,20 @@
   </table>
 
   <div class="insight-box">
-    <div class="insight-title">💡 关键洞察</div>
+    <div class="insight-title">💡 <span data-zh>关键洞察</span><span data-en>Key Insights</span></div>
     <ul class="insight-list">
       <li>Wise Platform吸引Morgan Stanley说明跨境支付的基础设施博弈已进入机构层：不再是哪个App更好用，而是哪家公司能成为银行的"支付基础设施云"。这是比C端竞争更高价值、更持久的竞争维度。</li>
       <li>dLocal与MoneyGram的合作揭示了"垂直专注的平台效应"：在新兴市场，监管复杂性使得汇款巨头宁愿支付dLocal的1.2%费率，也不愿意花5年时间建立自己的本地合规体系。这是护城河的最直接证明。</li>
       <li>Payoneer电商平台嵌入的风险：平台规则改变（如亚马逊推出自己的收款工具）可能大幅影响其客户获取。Payoneer FY2024 B2B量+42%是多元化努力的体现，但平台客户仍是收入基盘。</li>
     </ul>
   </div>
-  <div class="source-row"><span class="source-label">数据来源：</span><span class="source-tag">card-001</span><span class="source-tag">card-036</span><span class="source-tag">card-045</span><span class="source-tag">card-057</span></div>
+  <div class="source-row"><span class="source-label"><span data-zh>数据来源：</span><span data-en>Sources: </span></span><span class="source-tag">card-001</span><span class="source-tag">card-036</span><span class="source-tag">card-045</span><span class="source-tag">card-057</span></div>
 </div>
 
 <!-- ════ 模块⑨ 成本结构 ════ -->
 <div class="module module-orange" id="cs2">
-  <div class="module-label">模块 ⑨ / 9</div>
-  <div class="module-title" style="border-color:#d97706;"><span class="num">⑨ </span>成本结构 — 成本构成与EBITDA基准</div>
+  <div class="module-label"><span data-zh>模块 ⑨ / 9</span><span data-en>Module ⑨ / 9</span></div>
+  <div class="module-title" style="border-color:#d97706;"><span class="num">⑨ </span><span data-zh>成本结构 — 成本构成与EBITDA基准</span><span data-en>⑨ Cost Structure — Cost Breakdown & EBITDA Benchmarks</span></div>
   <div class="core-conclusion" style="background:#fffbeb; border-color:#d97706;">
     Remitly 24% vs Wise 3.5%的营销费率差异，揭示了跨境支付行业利润率分化的核心逻辑：口碑品牌（Wise）vs 付费获客（Remitly）背后，是10年产品积累和移民社群文化的不可复制性。EBITDA利润率分布从10%（Remitly）到35%（Revolut），差距源于客群、商业模式成熟度和营销策略的综合差异。
   </div>
@@ -676,12 +687,12 @@
   <table class="data-table">
     <thead>
       <tr>
-        <th>公司</th>
-        <th>营销费率</th>
-        <th>交易成本率</th>
-        <th>研发/技术费率</th>
-        <th>调整后EBITDA利润率</th>
-        <th>利润率驱动因素</th>
+        <th><span data-zh>公司</span><span data-en>Company</span></th>
+        <th><span data-zh>营销费率</span><span data-en>Marketing Rate</span></th>
+        <th><span data-zh>交易成本率</span><span data-en>Transaction Cost Rate</span></th>
+        <th><span data-zh>研发/技术费率</span><span data-en>R&D Rate</span></th>
+        <th><span data-zh>调整后EBITDA利润率</span><span data-en>EBITDA Margin</span></th>
+        <th><span data-zh>利润率驱动因素</span><span data-en>Profitability Driver</span></th>
       </tr>
     </thead>
     <tbody>
@@ -780,20 +791,20 @@
   </div>
 
   <div class="insight-box">
-    <div class="insight-title">💡 关键洞察</div>
+    <div class="insight-title">💡 <span data-zh>关键洞察</span><span data-en>Key Insights</span></div>
     <ul class="insight-list">
       <li>OFX的28.4% EBITDA利润率与Wise完全相同，但路径截然不同——一家是口碑驱动的大规模数字平台，一家是专业顾问驱动的中型B2B公司。这说明跨境支付行业有多条"高利润率之路"，但规模化潜力不同。</li>
       <li>Revolut的35%税前利润率是行业最高，但其中加密/财富产品（$6.47亿，+298%）高度依赖2024年牛市环境——2025年若加密熊市来袭，利润率可能大幅回落。高利润率≠高质量利润。</li>
       <li>Wise"中期运营支出翻倍"计划意味着FY2025的21%利润率是暂时高点：管理层主动选择在利润率超目标（13-16%）时加大投资，这是难得的战略自律——不被短期利润绑架，优先建立长期壁垒。</li>
     </ul>
   </div>
-  <div class="source-row"><span class="source-label">数据来源：</span><span class="source-tag">card-001</span><span class="source-tag">card-002</span><span class="source-tag">card-032</span><span class="source-tag">card-036</span><span class="source-tag">card-045</span><span class="source-tag">card-047</span><span class="source-tag">card-051</span><span class="source-tag">card-081</span></div>
+  <div class="source-row"><span class="source-label"><span data-zh>数据来源：</span><span data-en>Sources: </span></span><span class="source-tag">card-001</span><span class="source-tag">card-002</span><span class="source-tag">card-032</span><span class="source-tag">card-036</span><span class="source-tag">card-045</span><span class="source-tag">card-047</span><span class="source-tag">card-051</span><span class="source-tag">card-081</span></div>
 </div>
 
 <!-- ════ 综合结论 ════ -->
 <div class="module" style="background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%); border: none; margin-top: 32px;">
-  <div class="module-label" style="color: rgba(255,255,255,0.5);">第3章综合结论</div>
-  <div class="module-title" style="color: white; border-color: #60a5fa;">跨境支付商业模式：三条路径的最终分野</div>
+  <div class="module-label" style="color: rgba(255,255,255,0.5);"><span data-zh>第3章综合结论</span><span data-en>Chapter 3 Summary</span></div>
+  <div class="module-title" style="color: white; border-color: #60a5fa;"><span data-zh>跨境支付商业模式：三条路径的最终分野</span><span data-en>Cross-Border Payments Business Models: Three Diverging Paths</span></div>
 
   <div class="body-text" style="color: rgba(255,255,255,0.85);">
     <p>通过九模块分析，跨境支付行业的商业模式已清晰分化为三条可持续路径：</p>
@@ -814,12 +825,47 @@
 <!-- ════ 页脚 ════ -->
 <div style="background: white; border-radius: 12px; padding: 20px 28px; margin-top: 24px; font-size: 12px; color: #94a3b8; border: 1px solid #e2e8f0; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
   <div>
-    <strong style="color: #475569;">数据来源</strong>：Wise FY2025 [card-001] · Wise FY2024 [card-002] · Revolut FY2024 [card-032] · dLocal Q3 2024 [card-036] · Payoneer FY2024 [card-045] · Remitly FY2024 [card-047] · Western Union FY2024 [card-051] · BCG Global Payments 2024 [card-057] · Stripe Annual Letter [card-079] · OFX FY2024 [card-081] · Checkout.com [card-174]
+    <strong style="color: #475569;"><span data-zh>数据来源</span><span data-en>Sources</span></strong>：Wise FY2025 [card-001] · Wise FY2024 [card-002] · Revolut FY2024 [card-032] · dLocal Q3 2024 [card-036] · Payoneer FY2024 [card-045] · Remitly FY2024 [card-047] · Western Union FY2024 [card-051] · BCG Global Payments 2024 [card-057] · Stripe Annual Letter [card-079] · OFX FY2024 [card-081] · Checkout.com [card-174]
   </div>
   <div>
-    <strong style="color: #475569;">知识库归属</strong>：第3章 商业模式 · 跨境支付行业研究 v2
+    <strong style="color: #475569;"><span data-zh>知识库归属</span><span data-en>Chapter</span></strong>：<span data-zh>第3章 商业模式 · 跨境支付行业研究 v2</span><span data-en>Chapter 3: Business Model · Cross-Border Payments Research v2</span>
   </div>
 </div>
+
+<!-- ════ 章节导航 ════ -->
+<div style="background: white; border-radius: 12px; padding: 16px 28px; margin-top: 16px; border: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+  <a href="chapter-2-company-profiles.html" style="display:inline-flex; align-items:center; gap:6px; font-size:13px; color:#475569; text-decoration:none; padding:8px 16px; border:1px solid #e2e8f0; border-radius:8px; background:#f8fafc;">
+    ← <span data-zh>上一章</span><span data-en>Previous Chapter</span>
+  </a>
+  <a href="index.html" style="display:inline-flex; align-items:center; gap:6px; font-size:13px; color:#2563eb; text-decoration:none; padding:8px 16px; border:1px solid #bfdbfe; border-radius:8px; background:#eff6ff;">
+    <span data-zh>返回首页</span><span data-en>Back to Home</span>
+  </a>
+  <a href="chapter-4-competitive-landscape.html" style="display:inline-flex; align-items:center; gap:6px; font-size:13px; color:#475569; text-decoration:none; padding:8px 16px; border:1px solid #e2e8f0; border-radius:8px; background:#f8fafc;">
+    <span data-zh>下一章</span><span data-en>Next Chapter</span> →
+  </a>
+</div>
+
+
+<script>
+  // ── Language Switcher ──
+  let lang = localStorage.getItem('lang') || 'zh';
+
+  function switchLang(l) {
+    lang = l;
+    localStorage.setItem('lang', l);
+    document.querySelectorAll('[data-zh]').forEach(el => {
+      el.style.display = (l === 'zh') ? '' : 'none';
+    });
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.style.display = (l === 'en') ? '' : 'none';
+    });
+    document.getElementById('btn-zh').classList.toggle('active', l === 'zh');
+    document.getElementById('btn-en').classList.toggle('active', l === 'en');
+  }
+
+  // Initialize on page load
+  switchLang(lang);
+</script>
 
 </body>
 </html>

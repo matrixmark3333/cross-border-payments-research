@@ -138,57 +138,65 @@
 
   /* ── 比较徽章 ── */
   .vs-tag { display: inline-block; background: #fef3c7; color: #92400e; border: 1px solid #fde68a; border-radius: 4px; padding: 1px 6px; font-size: 11px; font-weight: 600; }
+  /* ── Language Switcher ── */
+  .lang-switcher { position: fixed; top: 16px; right: 20px; z-index: 1000; display: flex; gap: 4px; }
+  .lang-switcher button { padding: 4px 10px; border: 1px solid #e2e8f0; border-radius: 4px; font-size: 12px; cursor: pointer; background: white; color: #64748b; }
+  .lang-switcher button.active { background: #2563eb; color: white; border-color: #2563eb; }
 </style>
 </head>
 <body>
+<div class="lang-switcher">
+  <button id="btn-zh" onclick="switchLang('zh')">中文</button>
+  <button id="btn-en" onclick="switchLang('en')">EN</button>
+</div>
 
 <!-- ════ 章节头 ════ -->
 <div class="chapter-header">
-  <div class="chapter-label">知识库 · 第2章</div>
-  <div class="chapter-title">跨境支付公司档案</div>
-  <div class="chapter-subtitle">8家核心公司深度分析 — 基于最新财报、融资新闻、监管文件的结构化档案</div>
+  <div class="chapter-label"><span data-zh>知识库 · 第2章</span><span data-en>Knowledge Base · Chapter 2</span></div>
+  <div class="chapter-title"><span data-zh>跨境支付公司档案</span><span data-en>Cross-Border Payments Company Profiles</span></div>
+  <div class="chapter-subtitle"><span data-zh>8家核心公司深度分析 — 基于最新财报、融资新闻、监管文件的结构化档案</span><span data-en>Deep analysis of 8 core companies — structured profiles based on latest earnings, funding news, and regulatory filings</span></div>
   <div class="chapter-meta">
-    <div class="meta-item"><strong>覆盖公司</strong> 8家（Wise · Airwallex · Revolut · Payoneer · dLocal · Remitly · Western Union · OFX）</div>
-    <div class="meta-item"><strong>数据来源</strong> FY2024–FY2025财报 / 融资新闻稿</div>
-    <div class="meta-item"><strong>更新日期</strong> 2026年3月</div>
-    <div class="meta-item"><strong>分析卡引用</strong> card-001, 002, 032, 036, 045, 047, 051, 081, 095, 096</div>
+    <div class="meta-item"><strong><span data-zh>覆盖公司</span><span data-en>Companies Covered</span></strong> 8家（Wise · Airwallex · Revolut · Payoneer · dLocal · Remitly · Western Union · OFX）</div>
+    <div class="meta-item"><strong><span data-zh>数据来源</span><span data-en>Data Sources</span></strong> FY2024–FY2025财报 / 融资新闻稿</div>
+    <div class="meta-item"><strong><span data-zh>更新日期</span><span data-en>Last Updated</span></strong> 2026年3月</div>
+    <div class="meta-item"><strong><span data-zh>分析卡引用</span><span data-en>Analysis Cards</span></strong> card-001, 002, 032, 036, 045, 047, 051, 081, 095, 096</div>
   </div>
 </div>
 
 <!-- ════ 目录 ════ -->
 <div class="toc-box">
-  <div class="toc-title">📋 本章目录</div>
+  <div class="toc-title">📋 <span data-zh>本章目录</span><span data-en>Chapter Contents</span></div>
   <div class="toc-grid">
-    <a href="#overview" class="toc-item"><div class="toc-num">导</div> 8家公司核心指标横向对比总表</a>
-    <a href="#wise" class="toc-item"><div class="toc-num">2.1</div> Wise — 价格领导者与平台基础设施</a>
-    <a href="#airwallex" class="toc-item"><div class="toc-num">2.2</div> Airwallex — 企业全球银行基础设施</a>
-    <a href="#revolut" class="toc-item"><div class="toc-num">2.3</div> Revolut — 超级应用式金融超市</a>
-    <a href="#payoneer" class="toc-item"><div class="toc-num">2.4</div> Payoneer — 跨境电商与SMB首选收款平台</a>
-    <a href="#dlocal" class="toc-item"><div class="toc-num">2.5</div> dLocal — 新兴市场支付基础设施专家</a>
-    <a href="#remitly" class="toc-item"><div class="toc-num">2.6</div> Remitly — 移民汇款数字化颠覆者</a>
-    <a href="#wu" class="toc-item"><div class="toc-num">2.7</div> Western Union — 传统汇款巨头的数字转型</a>
-    <a href="#ofx" class="toc-item"><div class="toc-num">2.8</div> OFX — 高价值B2B外汇专家</a>
+    <a href="#overview" class="toc-item"><div class="toc-num"><span data-zh>导</span><span data-en>Intro</span></div> <span data-zh>8家公司核心指标横向对比总表</span><span data-en>8-Company Key Metrics Comparison Table</span></a>
+    <a href="#wise" class="toc-item"><div class="toc-num">2.1</div> Wise — <span data-zh>价格领导者与平台基础设施</span><span data-en>Price Leader & Platform Infrastructure</span></a>
+    <a href="#airwallex" class="toc-item"><div class="toc-num">2.2</div> Airwallex — <span data-zh>企业全球银行基础设施</span><span data-en>Enterprise Global Banking Infrastructure</span></a>
+    <a href="#revolut" class="toc-item"><div class="toc-num">2.3</div> Revolut — <span data-zh>超级应用式金融超市</span><span data-en>Super-App Financial Hypermarket</span></a>
+    <a href="#payoneer" class="toc-item"><div class="toc-num">2.4</div> Payoneer — <span data-zh>跨境电商与SMB首选收款平台</span><span data-en>Preferred Collection Platform for Cross-Border E-commerce & SMB</span></a>
+    <a href="#dlocal" class="toc-item"><div class="toc-num">2.5</div> dLocal — <span data-zh>新兴市场支付基础设施专家</span><span data-en>Emerging Markets Payment Infrastructure Expert</span></a>
+    <a href="#remitly" class="toc-item"><div class="toc-num">2.6</div> Remitly — <span data-zh>移民汇款数字化颠覆者</span><span data-en>Digital Disruptor in Immigrant Remittances</span></a>
+    <a href="#wu" class="toc-item"><div class="toc-num">2.7</div> Western Union — <span data-zh>传统汇款巨头的数字转型</span><span data-en>Digital Transformation of a Traditional Remittance Giant</span></a>
+    <a href="#ofx" class="toc-item"><div class="toc-num">2.8</div> OFX — <span data-zh>高价值B2B外汇专家</span><span data-en>High-Value B2B FX Specialist</span></a>
   </div>
 </div>
 
 <!-- ════ 导读：横向对比总表 ════ -->
 <div class="module" id="overview">
-  <div class="module-label">导读 · 横向对比</div>
-  <div class="module-title">8家公司核心指标对比总表</div>
+  <div class="module-label"><span data-zh>导读 · 横向对比</span><span data-en>Introduction · Cross-Comparison</span></div>
+  <div class="module-title"><span data-zh>8家公司核心指标对比总表</span><span data-en>8-Company Key Metrics Comparison Table</span></div>
   <div class="core-conclusion">
-    跨境支付行业分化明显：Wise、Airwallex、Revolut代表高增速新兴力量；Payoneer、Remitly在细分市场稳健扩张；Western Union守住规模优势但面临停滞；OFX、dLocal凭借差异化定位维持高利润率。Take Rate从dLocal的1.2%到Remitly的2.3%，反映客群与市场复杂度的本质差异。
+    <span data-zh>跨境支付行业分化明显</span><span data-en>The cross-border payments industry shows clear divergence</span>：Wise、Airwallex、Revolut代表高增速新兴力量；Payoneer、Remitly在细分市场稳健扩张；Western Union守住规模优势但面临停滞；OFX、dLocal凭借差异化定位维持高利润率。Take Rate从dLocal的1.2%到Remitly的2.3%，反映客群与市场复杂度的本质差异。
   </div>
 
   <table class="overview-table">
     <tr>
-      <th>公司</th>
-      <th>TPV / 交易量</th>
-      <th>营收（年化）</th>
-      <th>EBITDA利润率</th>
+      <th><span data-zh>公司</span><span data-en>Company</span></th>
+      <th><span data-zh>TPV / 交易量</span><span data-en>TPV / Volume</span></th>
+      <th><span data-zh>营收（年化）</span><span data-en>Revenue (Annualized)</span></th>
+      <th><span data-zh>EBITDA利润率</span><span data-en>EBITDA Margin</span></th>
       <th>Take Rate</th>
-      <th>核心客群</th>
-      <th>上市 / 估值</th>
-      <th>数据期间</th>
+      <th><span data-zh>核心客群</span><span data-en>Core Customers</span></th>
+      <th><span data-zh>上市 / 估值</span><span data-en>Listed / Valuation</span></th>
+      <th><span data-zh>数据期间</span><span data-en>Period</span></th>
     </tr>
     <tr class="highlight-row">
       <td class="company-col">🔵 Wise</td>
@@ -273,7 +281,7 @@
   </table>
 
   <div class="insight-box">
-    <div class="insight-title">📊 横向对比四大核心发现</div>
+    <div class="insight-title">📊 <span data-zh>横向对比四大核心发现</span><span data-en>4 Core Findings from Cross-Company Comparison</span></div>
     <ul class="insight-list">
       <li><strong>规模两极分化：</strong>Revolut交易量$1.3万亿 vs OFX $38B，差距35倍。但规模≠盈利，OFX利润率（28.4%）与Wise底层EBITDA（28.4%）完全一致，说明"大客户高接触"模式能追平"规模低费率"模式的盈利水平。</li>
       <li><strong>Take Rate揭示客群本质：</strong>Remitly 2.32%（移民零售汇款）vs Wise 0.58%（大额+企业+平台混合）vs dLocal 1.2%（新兴市场复杂性溢价）。费率不是高低优劣，是客群定位的映射。</li>
@@ -283,7 +291,7 @@
   </div>
 
   <div class="source-row">
-    <span class="source-label">数据来源：</span>
+    <span class="source-label"><span data-zh>数据来源：</span><span data-en>Data Sources:</span></span>
     <span class="source-tag">card-001 Wise FY2025</span>
     <span class="source-tag">card-002 Wise FY2024</span>
     <span class="source-tag">card-032 Revolut FY2024</span>
@@ -301,7 +309,7 @@
 
 <!-- ════ 2.1 Wise ════ -->
 <div class="module" id="wise">
-  <div class="module-label">2.1 · 公司档案</div>
+  <div class="module-label">2.1 · <span data-zh>公司档案</span><span data-en>Company Profile</span></div>
   <div class="company-header">
     <div>
       <div class="company-name">🔵 Wise</div>
@@ -314,14 +322,14 @@
     </div>
   </div>
 
-  <div class="subsection-title">核心财务指标</div>
+  <div class="subsection-title"><span data-zh>核心财务指标</span><span data-en>Key Financial Metrics</span></div>
   <table class="data-table">
     <tr>
-      <th>指标</th>
-      <th>FY2025数值</th>
-      <th>同比</th>
-      <th>FY2024数值</th>
-      <th>备注</th>
+      <th><span data-zh>指标</span><span data-en>Metric</span></th>
+      <th><span data-zh>FY2025数值</span><span data-en>FY2025 Value</span></th>
+      <th><span data-zh>同比</span><span data-en>YoY</span></th>
+      <th><span data-zh>FY2024数值</span><span data-en>FY2024 Value</span></th>
+      <th><span data-zh>备注</span><span data-en>Notes</span></th>
     </tr>
     <tr class="highlight">
       <td>跨境交易量（TPV）</td>
@@ -395,7 +403,7 @@
     </tr>
   </table>
 
-  <div class="subsection-title">商业模式摘要</div>
+  <div class="subsection-title"><span data-zh>商业模式摘要</span><span data-en>Business Model Summary</span></div>
   <ul class="point-list">
     <li><strong>三层收入结构：</strong>跨境转账费（£840M，+6%）+ 卡片交换费（£220M，+31%）+ 其他/账户功能费（£152M，+71%）。跨境收入增速仅6%（因取费率连续下降），但非跨境收入高速增长正在补偿收入总量，这是"以量换价"战略的关键支撑。[card-001]</li>
     <li><strong>利息收入是当前利润的隐形引擎：</strong>FY2025客户余额利息£594M，但超过1%收益率的"超额利息"（£444M）带来巨额报告利润（税前34%利润率 vs 底层21%）。这取决于高利率环境，一旦降息将大幅收窄。利率1%下行 = -£86M净利息收入。[card-001]</li>
@@ -404,14 +412,14 @@
     <li><strong>菲律宾直连案例量化了基础设施价值：</strong>FY2025接入菲律宾InstaPay，90%转账立即到达，成本降低8倍。计划FY2026再接入巴西PIX和日本Zengin，这是全球直连战略持续降本的可量化体现。[card-001]</li>
   </ul>
 
-  <div class="subsection-title">战略方向</div>
+  <div class="subsection-title"><span data-zh>战略方向</span><span data-en>Strategic Direction</span></div>
   <ul class="point-list">
     <li><strong>美国上市迁移（2026年）：</strong>Wise计划从伦敦证交所迁主要上市地至美国。美国市场通常给科技/金融科技公司更高估值溢价，且主要竞争对手（Remitly、PayPal等）均在美国上市。这将显著提升机构投资者参与度，并提高Wise的国际知名度。[card-001]</li>
     <li><strong>中期"三倍投入"承诺：</strong>新CFO（来自Delivery Hero）明确表态将三倍营销投入，同时加大技术和人才投入。当前利润率21%远超中期目标13–16%，意味着将把超额利润主动再投入到增长，维持竞争壁垒而非提前"躺平"收割。[card-001]</li>
     <li><strong>印度、巴西双市场突破：</strong>印度移除USD 5,000单笔交易上限，解锁全球最大汇款接收市场（约$111B/年）；巴西通过Itaú Platform合作和PIX直连双轨渗透。这两个市场FY2026将贡献显著的交易量增量。[card-001]</li>
   </ul>
 
-  <div class="subsection-title">风险与挑战</div>
+  <div class="subsection-title"><span data-zh>风险与挑战</span><span data-en>Risks & Challenges</span></div>
   <ul class="risk-list">
     <li><strong>利率风险是最大的盈利隐患：</strong>当前高利率环境贡献了巨额报告利润，但底层利润（21%）才是可持续标准。若全球降息，利息收入将显著缩水，但Wise的定价逻辑（降低Take Rate以抢量）需要持续利润支撑投资——这个平衡点是最大的不确定性。[card-001]</li>
     <li><strong>CFPB同意令与监管拨备激增：</strong>FY2025法律监管拨备从£2.2M跳升至£13.6M（+519%），与美国CFPB同意令相关。全球监管收紧（美国、英国Consumer Duty、欧盟等）将持续抬高合规成本。[card-001]</li>
@@ -419,7 +427,7 @@
   </ul>
 
   <div class="source-row">
-    <span class="source-label">数据来源：</span>
+    <span class="source-label"><span data-zh>数据来源：</span><span data-en>Data Sources:</span></span>
     <span class="source-tag">card-001 Wise FY2025年报（164条信息点）</span>
     <span class="source-tag">card-002 Wise FY2024年报（148条信息点）</span>
   </div>
@@ -427,7 +435,7 @@
 
 <!-- ════ 2.2 Airwallex ════ -->
 <div class="module module-purple" id="airwallex">
-  <div class="module-label">2.2 · 公司档案</div>
+  <div class="module-label">2.2 · <span data-zh>公司档案</span><span data-en>Company Profile</span></div>
   <div class="company-header">
     <div>
       <div class="company-name">🟣 Airwallex</div>
@@ -442,7 +450,7 @@
 
   <div class="warn-box">⚠️ <strong>数据说明：</strong>Airwallex未上市，无公开财报。以下数据均来自官方融资新闻稿（card-095, card-096），为公司自我披露数据，需注意选择性披露风险。未提及盈利细节（EBITDA、利润率等），仅确认2023年末现金流转正。</div>
 
-  <div class="subsection-title">核心财务指标（来自融资新闻稿，为估算数据）</div>
+  <div class="subsection-title"><span data-zh>核心财务指标（来自融资新闻稿，为估算数据）</span><span data-en>Key Financial Metrics (from funding press releases, estimated figures)</span></div>
   <div class="metric-grid">
     <div class="metric-card">
       <div class="metric-label">年化营收（2025年10月）</div>
@@ -482,7 +490,7 @@
     </div>
   </div>
 
-  <div class="subsection-title">商业模式摘要</div>
+  <div class="subsection-title"><span data-zh>商业模式摘要</span><span data-en>Business Model Summary</span></div>
   <ul class="point-list">
     <li><strong>四大产品线覆盖企业全金融需求：</strong>全球商业账户 + 跨境支付 + 支出管理（企业卡）+ Platform API/嵌入式金融。50%客户使用多产品，交叉销售深度持续提升，ARPU和LTV增长。对比Wise的"个人+企业"双轮模式，Airwallex是纯B端深度整合型路径。[card-096]</li>
     <li><strong>自建基础设施是最难复制的护城河：</strong>直接接入60+国本地清算网络 + 80个全球监管牌照。CEO Jack Zhang的核心判断："AI时代软件商品化，基础设施+交易数据才是真正护城河"。95%交易当日到达、68%即时结算，技术性能媲美国内快捷支付。[card-095] [card-096]</li>
@@ -490,13 +498,13 @@
     <li><strong>Visa入股是战略背书而非竞争关系：</strong>Visa Ventures参与Series F投资，标志着Visa认可Airwallex对其支付网络的补充性——Airwallex在C端几乎无存在，与Visa的直接竞争面极小，但在B端合规、清算领域形成互补。[card-095]</li>
   </ul>
 
-  <div class="subsection-title">战略方向</div>
+  <div class="subsection-title"><span data-zh>战略方向</span><span data-en>Strategic Direction</span></div>
   <ul class="point-list">
     <li><strong>AI Agent金融：</strong>已上线"费用提交智能体"（Expense Submission Agent），正在研发"费用政策智能体"，目标是AI自主执行财务工作流（从费用审批到端到端任务编排）。这是下一代嵌入式金融的方向，将Airwallex从工具转变为自主代理。[card-096]</li>
     <li><strong>团队规模目标：</strong>当前2,000+人，计划2026年末扩至3,000+（+50%），美国人数翻倍至400+。这一人才布局规模与Wise FY2024的5,500人相比仍有较大差距，快速扩张能否维持组织质量是执行风险。[card-096]</li>
   </ul>
 
-  <div class="subsection-title">风险与挑战</div>
+  <div class="subsection-title"><span data-zh>风险与挑战</span><span data-en>Risks & Challenges</span></div>
   <ul class="risk-list">
     <li><strong>数据不透明度高：</strong>无公开财报，所有数据来自融资新闻稿。披露的都是最亮眼的指标（+90%营收增速、$1B里程碑），不披露实际净利润、EBITDA利润率、获客成本等关键数据。与Wise（上市公司，全面披露）相比，Airwallex的真实商业健康度存在信息不对称。[card-095] [card-096]</li>
     <li><strong>客户规模仍显著小于Wise：</strong>20万企业客户 vs Wise 69万企业客户，差距3.4倍；年化营收$1B vs Wise底层收入£1.36B（约$1.7B），差距约40%。$80亿估值 vs Wise市值约£110亿（约$140亿），Airwallex的估值溢价需要更快的规模化增长来兑现。[card-096]</li>
@@ -504,7 +512,7 @@
   </ul>
 
   <div class="source-row">
-    <span class="source-label">数据来源：</span>
+    <span class="source-label"><span data-zh>数据来源：</span><span data-en>Data Sources:</span></span>
     <span class="source-tag">card-095 Airwallex Series F新闻稿（2025-04）</span>
     <span class="source-tag">card-096 Airwallex Series G新闻稿（2025-11）</span>
   </div>
@@ -512,7 +520,7 @@
 
 <!-- ════ 2.3 Revolut ════ -->
 <div class="module module-purple" id="revolut">
-  <div class="module-label">2.3 · 公司档案</div>
+  <div class="module-label">2.3 · <span data-zh>公司档案</span><span data-en>Company Profile</span></div>
   <div class="company-header">
     <div>
       <div class="company-name">⚡ Revolut</div>
@@ -527,13 +535,13 @@
 
   <div class="warn-box">⚠️ <strong>数据可信度说明：</strong>本条目数据来源于Revolut.com官方新闻稿和UKTN媒体报道（FY2024年报摘要）。Revolut官网完整年报PDF访问受403限制，未经独立核实的完整财报文本。数据均为公开披露，可信度较高，但细分数据（各项营收分拆）来自媒体整理，需注意可能存在的口径差异。[card-032]</div>
 
-  <div class="subsection-title">核心财务指标（FY2024，截至2024年12月31日）</div>
+  <div class="subsection-title"><span data-zh>核心财务指标（FY2024，截至2024年12月31日）</span><span data-en>Key Financial Metrics (FY2024, as of Dec 31, 2024)</span></div>
   <table class="data-table">
     <tr>
-      <th>指标</th>
-      <th>FY2024数值</th>
-      <th>同比</th>
-      <th>备注</th>
+      <th><span data-zh>指标</span><span data-en>Metric</span></th>
+      <th><span data-zh>FY2024数值</span><span data-en>FY2024 Value</span></th>
+      <th><span data-zh>同比</span><span data-en>YoY</span></th>
+      <th><span data-zh>备注</span><span data-en>Notes</span></th>
     </tr>
     <tr class="highlight">
       <td>集团营收</td>
@@ -609,7 +617,7 @@
     </tr>
   </table>
 
-  <div class="subsection-title">商业模式摘要</div>
+  <div class="subsection-title"><span data-zh>商业模式摘要</span><span data-en>Business Model Summary</span></div>
   <ul class="point-list">
     <li><strong>五大收入来源高度均衡：</strong>卡支付（22%）、企业板块（15%）、订阅（13.5%）、外汇（13.5%）、财富产品（16%），无单一来源超过25%。这与Western Union（汇款占85%+）、Wise（跨境收入65%+）形成鲜明对比，抗周期能力最强。但财富收入（+298%）对加密市场的依赖是双刃剑。[card-032]</li>
     <li><strong>交易量极大但Take Rate极低：</strong>$1.3万亿交易量，隐含Take Rate约0.03%。Revolut的交易量主要来自欧洲日常消费（受监管interchange限制，欧盟单笔上限0.3%），而非高价值跨境汇款。这意味着即使交易量媲美PayPal，收入结构与Wise、Payoneer等汇款平台完全不同。[card-032]</li>
@@ -617,13 +625,13 @@
     <li><strong>超级应用的交叉销售飞轮：</strong>从旅行外汇切入用户，再向股票交易、加密资产、保险、贷款扩展。与Airwallex（深耕单一企业客群）不同，Revolut的扩张逻辑是横向覆盖同一用户的更多金融需求，提升ARPU。[card-032]</li>
   </ul>
 
-  <div class="subsection-title">战略方向</div>
+  <div class="subsection-title"><span data-zh>战略方向</span><span data-en>Strategic Direction</span></div>
   <ul class="point-list">
     <li><strong>IPO预期（2025–2026）：</strong>$450亿估值、持续盈利、银行牌照资质——各方面已达IPO条件。若顺利上市，将是欧洲最大金融科技IPO之一。PE约45倍是合理溢价，若FY2025净利润增至$14–18亿，上市时倍数将自然压缩。[card-032]</li>
     <li><strong>企业板块（Revolut Business）加速：</strong>月活企业+56%、企业ARPU远高于个人，已明确为下一个增长重心。对比Wise企业客户增速+11%，Revolut的企业扩张势头更猛，但企业功能深度（API能力、ERP集成等）可能不及专注企业的Airwallex。[card-032]</li>
   </ul>
 
-  <div class="subsection-title">风险与挑战</div>
+  <div class="subsection-title"><span data-zh>风险与挑战</span><span data-en>Risks & Challenges</span></div>
   <ul class="risk-list">
     <li><strong>财富收入的周期性风险不可忽视：</strong>$647M财富收入（+298%）高度依赖2024年加密牛市。一旦市场转熊，这部分收入将显著缩水，可能导致FY2025整体营收增速大幅放缓。[card-032]</li>
     <li><strong>监管合规压力随规模提升：</strong>银行牌照带来更严格的资本金要求、存款保险义务和持续监管审查。欧美监管对数字银行的审查正在加强（AML、数据隐私等），合规成本将持续上升。[card-032]</li>
@@ -631,14 +639,14 @@
   </ul>
 
   <div class="source-row">
-    <span class="source-label">数据来源：</span>
+    <span class="source-label"><span data-zh>数据来源：</span><span data-en>Data Sources:</span></span>
     <span class="source-tag">card-032 Revolut FY2024（⚠️年报摘要+UKTN媒体报道，来源受限）</span>
   </div>
 </div>
 
 <!-- ════ 2.4 Payoneer ════ -->
 <div class="module module-orange" id="payoneer">
-  <div class="module-label">2.4 · 公司档案</div>
+  <div class="module-label">2.4 · <span data-zh>公司档案</span><span data-en>Company Profile</span></div>
   <div class="company-header">
     <div>
       <div class="company-name">🟠 Payoneer</div>
@@ -651,13 +659,13 @@
     </div>
   </div>
 
-  <div class="subsection-title">核心财务指标（FY2024，截至2024年12月31日）</div>
+  <div class="subsection-title"><span data-zh>核心财务指标（FY2024，截至2024年12月31日）</span><span data-en>Key Financial Metrics (FY2024, as of Dec 31, 2024)</span></div>
   <table class="data-table">
     <tr>
-      <th>指标</th>
-      <th>FY2024数值</th>
-      <th>同比</th>
-      <th>备注</th>
+      <th><span data-zh>指标</span><span data-en>Metric</span></th>
+      <th><span data-zh>FY2024数值</span><span data-en>FY2024 Value</span></th>
+      <th><span data-zh>同比</span><span data-en>YoY</span></th>
+      <th><span data-zh>备注</span><span data-en>Notes</span></th>
     </tr>
     <tr class="highlight">
       <td>总营收</td>
@@ -721,7 +729,7 @@
     </tr>
   </table>
 
-  <div class="subsection-title">商业模式摘要</div>
+  <div class="subsection-title"><span data-zh>商业模式摘要</span><span data-en>Business Model Summary</span></div>
   <ul class="point-list">
     <li><strong>Take Rate 122bps是Wise（58bps）的2.1倍，背后是客群差异：</strong>Payoneer服务的是新兴市场SMB（大中华区是最大市场），这类客群信用风险较高（交易成本+24%，含拒付损失），复杂度更高（190+国家，多货币收款），因此可以维持更高的价格。高Take Rate不是低效，是风险定价的体现。[card-045]</li>
     <li><strong>ICP是Payoneer最核心的运营指标：</strong>560,000个ICP（月处理>$500的活跃客户）贡献绝大部分营收，其中月处理>$10,000的子集增速超20%，优于整体。这说明高价值客户的飞轮正在转动——产品越成熟，越能吸引更大额客户，进一步提升人均收入。[card-045]</li>
@@ -729,13 +737,13 @@
     <li><strong>大中华区集中度：最大市场，也是最大风险：</strong>中国跨境电商卖家（亚马逊、Shopify卖家等）是最大单一客群。地缘政治风险（中美贸易摩擦）、平台政策变化（亚马逊暂停账号潮）都会直接影响这一市场的健康度。Payoneer正在积极多元化，但短期内大中华区优势不可替代。[card-045]</li>
   </ul>
 
-  <div class="subsection-title">战略方向</div>
+  <div class="subsection-title"><span data-zh>战略方向</span><span data-en>Strategic Direction</span></div>
   <ul class="point-list">
     <li><strong>利息收入多元化：</strong>$257M利息收入占总营收26%，是比Wise更高的比例。随着利率下行预期，Payoneer需要加速主业（非利息）收入增速（已在+20%），以对冲利息收入的周期性风险。[card-045]</li>
     <li><strong>Checkout整合释放Merchant Services潜力：</strong>2022年收购的Checkout.com（支付收单业务）带来的Merchant Services +114%是FY2024最大增速亮点，说明收购整合已开始释放协同效应，B2B收单将成为下一个主要营收增量。[card-045]</li>
   </ul>
 
-  <div class="subsection-title">风险与挑战</div>
+  <div class="subsection-title"><span data-zh>风险与挑战</span><span data-en>Risks & Challenges</span></div>
   <ul class="risk-list">
     <li><strong>地缘政治和大客户集中风险：</strong>大中华区占比最高，一旦中美贸易摩擦加剧或亚马逊等平台政策收紧，核心收入将直接受损。这一风险在Wise（分散于欧、亚太、北美）和Revolut（欧洲为主）的档案中不存在类似程度的集中度风险。[card-045]</li>
     <li><strong>利率下行将侵蚀约1/4的营收：</strong>利息收入$257M占总营收26%，若基准利率下降200bps，利息收入可能缩减$50–100M，对利润率的冲击高于绝对金额，因为这部分收入成本极低。[card-045]</li>
@@ -743,14 +751,14 @@
   </ul>
 
   <div class="source-row">
-    <span class="source-label">数据来源：</span>
+    <span class="source-label"><span data-zh>数据来源：</span><span data-en>Data Sources:</span></span>
     <span class="source-tag">card-045 Payoneer FY2024年报 10-K（28条信息点）</span>
   </div>
 </div>
 
 <!-- ════ 2.5 dLocal ════ -->
 <div class="module module-green" id="dlocal">
-  <div class="module-label">2.5 · 公司档案</div>
+  <div class="module-label">2.5 · <span data-zh>公司档案</span><span data-en>Company Profile</span></div>
   <div class="company-header">
     <div>
       <div class="company-name">🟢 dLocal</div>
@@ -763,7 +771,7 @@
     </div>
   </div>
 
-  <div class="subsection-title">核心财务指标（Q3 2024，截至2024年9月30日）</div>
+  <div class="subsection-title"><span data-zh>核心财务指标（Q3 2024，截至2024年9月30日）</span><span data-en>Key Financial Metrics (Q3 2024, as of Sep 30, 2024)</span></div>
   <div class="metric-grid">
     <div class="metric-card">
       <div class="metric-label">Q3 TPV（创历史新高）</div>
@@ -803,7 +811,7 @@
     </div>
   </div>
 
-  <div class="subsection-title">商业模式摘要</div>
+  <div class="subsection-title"><span data-zh>商业模式摘要</span><span data-en>Business Model Summary</span></div>
   <ul class="point-list">
     <li><strong>新兴市场复杂性是最真实的护城河：</strong>dLocal的1.2%净取费率（是发达市场同类产品3–5倍）不是定价强势，而是市场准入门槛的体现。接入巴西Pix、印度UPI、阿根廷PSP等本地支付方式，需要在每个国家单独获取监管许可、建立本地银行关系、处理外汇管制。这种复杂性本身就是护城河，不会因为价格战消失。[card-036]</li>
     <li><strong>One dLocal单一API降低商户切换成本：</strong>商户通过一个API接口即可覆盖30+国家的支付收款与付款，新增市场几乎是边际成本为零。一旦商户深度集成，切换成本（重新对接多个本地支付商、重建合规体系）极高。MoneyGram接入dLocal证明了即使是汇款巨头，在拓展新兴市场时也优先选择dLocal平台。[card-036]</li>
@@ -811,13 +819,13 @@
     <li><strong>跨境（XB）业务是高利润率引擎：</strong>XB业务（资金从新兴市场流出到发达市场，或反向）的取费率高于本地支付，Q3首破$30B是重要里程碑。XB比例提升将驱动整体净取费率上行，是未来利润率改善的核心驱动因素。[card-036]</li>
   </ul>
 
-  <div class="subsection-title">战略方向</div>
+  <div class="subsection-title"><span data-zh>战略方向</span><span data-en>Strategic Direction</span></div>
   <ul class="point-list">
     <li><strong>地理多元化持续推进：</strong>南非、埃及表现强劲，非洲市场正在成熟。继续跟进巴西（Nupay/Nubank集成）、印度（UPI扩展）等本地新兴APM。TAM预测2030年零售跨境支付达$65万亿，dLocal在新兴市场的份额仍有巨大空间。[card-036]</li>
     <li><strong>AI驱动的实时成本优化：</strong>Smart Requests功能（提升转化率）+ 实时成本计算模型（维持1.2%净取费率稳定）是技术护城河的持续深化，这类模型积累的新兴市场支付数据是竞争对手难以快速复制的。[card-036]</li>
   </ul>
 
-  <div class="subsection-title">风险与挑战</div>
+  <div class="subsection-title"><span data-zh>风险与挑战</span><span data-en>Risks & Challenges</span></div>
   <ul class="risk-list">
     <li><strong>新兴市场本身是高风险区域：</strong>阿根廷外汇管制、巴西监管变化、非洲政治不稳定——这些市场的系统性风险超过任何单一商业判断。与Wise（主要在欧美稳定市场运营）相比，dLocal承担了更高的政治和货币风险，需要持续的风险监控。[card-036]</li>
     <li><strong>大客户集中度的双面性：</strong>头部10个客户可能贡献50%+收入，一旦任一大客户在某市场战略调整（如Netflix缩减拉美内容投入），dLocal在该市场的收入可能显著下滑。多元化客户群是必要的但执行进展慢。[card-036]</li>
@@ -825,14 +833,14 @@
   </ul>
 
   <div class="source-row">
-    <span class="source-label">数据来源：</span>
+    <span class="source-label"><span data-zh>数据来源：</span><span data-en>Data Sources:</span></span>
     <span class="source-tag">card-036 dLocal Q3 2024季报（32条信息点）</span>
   </div>
 </div>
 
 <!-- ════ 2.6 Remitly ════ -->
 <div class="module module-orange" id="remitly">
-  <div class="module-label">2.6 · 公司档案</div>
+  <div class="module-label">2.6 · <span data-zh>公司档案</span><span data-en>Company Profile</span></div>
   <div class="company-header">
     <div>
       <div class="company-name">🟡 Remitly</div>
@@ -845,13 +853,13 @@
     </div>
   </div>
 
-  <div class="subsection-title">核心财务指标（FY2024，截至2024年12月31日）</div>
+  <div class="subsection-title"><span data-zh>核心财务指标（FY2024，截至2024年12月31日）</span><span data-en>Key Financial Metrics (FY2024, as of Dec 31, 2024)</span></div>
   <table class="data-table">
     <tr>
-      <th>指标</th>
-      <th>FY2024数值</th>
-      <th>同比</th>
-      <th>与Wise比较</th>
+      <th><span data-zh>指标</span><span data-en>Metric</span></th>
+      <th><span data-zh>FY2024数值</span><span data-en>FY2024 Value</span></th>
+      <th><span data-zh>同比</span><span data-en>YoY</span></th>
+      <th><span data-zh>与Wise比较</span><span data-en>vs. Wise</span></th>
     </tr>
     <tr class="highlight">
       <td>总营收</td>
@@ -915,7 +923,7 @@
     </tr>
   </table>
 
-  <div class="subsection-title">商业模式摘要</div>
+  <div class="subsection-title"><span data-zh>商业模式摘要</span><span data-en>Business Model Summary</span></div>
   <ul class="point-list">
     <li><strong>2.32%的Take Rate揭示了Remitly的商业逻辑：</strong>服务的是移民汇款（emotional remittance）——向家人汇款的移民对价格敏感度远低于企业资金管理。这与Wise的大额/企业交易（价格极敏感）形成鲜明对比。正是因此，Remitly在降价后仍能维持2%+的Take Rate，而Wise已降至0.58%。高Take Rate支撑高营销投入的飞轮。[card-047]</li>
     <li><strong>营销费用24%是最核心的结构性劣势：</strong>Remitly每获取一个新客，需要支付大量营销费用（付费广告、返利）。而Wise 70%+新客通过口碑免费获取。这一差距在规模扩大后不会自动收窄——这意味着Remitly的利润率天花板比Wise低，除非能建立口碑传播飞轮。[card-047]</li>
@@ -923,13 +931,13 @@
     <li><strong>SBC 113%的EBITDA意味着真实盈利仍为负数：</strong>$152.1M SBC超过Adj.EBITDA $134.8M，如果考虑实际股权成本，Remitly的"真实"利润仍为负。对比Wise（SBC £58M约占EBITDA 13%），Remitly的商业模式成熟度差距显著，但改善轨迹良好。[card-047]</li>
   </ul>
 
-  <div class="subsection-title">战略方向</div>
+  <div class="subsection-title"><span data-zh>战略方向</span><span data-en>Strategic Direction</span></div>
   <ul class="point-list">
     <li><strong>2025年GAAP盈亏平衡：</strong>净亏损从-$117.8M→-$37.0M→预计2025年转正。Q4净亏损仅$5.7M，距盈亏平衡仅一步之遥。若2025年如期实现GAAP净利润，将是重要心理里程碑，可能显著改善股价表现。[card-047]</li>
     <li><strong>运营效率大幅提升：</strong>客服成本+1.7%（客户量+32%），G&A+9.2%（营收+34%），说明自动化能力在提升。若能将营销费用/收入比从24%降至20%以下，利润率将非线性改善。[card-047]</li>
   </ul>
 
-  <div class="subsection-title">风险与挑战</div>
+  <div class="subsection-title"><span data-zh>风险与挑战</span><span data-en>Risks & Challenges</span></div>
   <ul class="risk-list">
     <li><strong>营销飞轮依赖：</strong>停止营销投入将直接导致新客获取骤降，Remitly尚未建立起Wise式的口碑飞轮。这意味着Remitly在利润与增长之间的权衡比Wise更为两难——多花钱才能保增速，不花钱增速立刻下滑。[card-047]</li>
     <li><strong>Take Rate下行压力：</strong>2.32%已在小幅下降，Wise（0.58%）的价格压力正在向移民汇款市场渗透。若未来Take Rate继续承压，营销费用比率改善带来的利润率提升将被部分对冲。[card-047]</li>
@@ -937,14 +945,14 @@
   </ul>
 
   <div class="source-row">
-    <span class="source-label">数据来源：</span>
+    <span class="source-label"><span data-zh>数据来源：</span><span data-en>Data Sources:</span></span>
     <span class="source-tag">card-047 Remitly FY2024年报（52条信息点）</span>
   </div>
 </div>
 
 <!-- ════ 2.7 Western Union ════ -->
 <div class="module module-red" id="wu">
-  <div class="module-label">2.7 · 公司档案</div>
+  <div class="module-label">2.7 · <span data-zh>公司档案</span><span data-en>Company Profile</span></div>
   <div class="company-header">
     <div>
       <div class="company-name">🔴 Western Union</div>
@@ -957,13 +965,13 @@
     </div>
   </div>
 
-  <div class="subsection-title">核心财务指标（FY2024，截至2024年12月31日）</div>
+  <div class="subsection-title"><span data-zh>核心财务指标（FY2024，截至2024年12月31日）</span><span data-en>Key Financial Metrics (FY2024, as of Dec 31, 2024)</span></div>
   <table class="data-table">
     <tr>
-      <th>指标</th>
-      <th>FY2024数值</th>
-      <th>同比</th>
-      <th>备注</th>
+      <th><span data-zh>指标</span><span data-en>Metric</span></th>
+      <th><span data-zh>FY2024数值</span><span data-en>FY2024 Value</span></th>
+      <th><span data-zh>同比</span><span data-en>YoY</span></th>
+      <th><span data-zh>备注</span><span data-en>Notes</span></th>
     </tr>
     <tr class="highlight">
       <td>GAAP总收入</td>
@@ -1027,7 +1035,7 @@
     </tr>
   </table>
 
-  <div class="subsection-title">商业模式摘要</div>
+  <div class="subsection-title"><span data-zh>商业模式摘要</span><span data-en>Business Model Summary</span></div>
   <ul class="point-list">
     <li><strong>全球57万+代理网点是双刃剑：</strong>覆盖200+国家、170年积累的代理网络使Western Union能服务"无银行账户"（unbanked）人群，这是Wise等纯数字产品无法覆盖的场景（如向农村地区的线下取款）。但这个网络的维护成本极高，且随数字化渗透，使用率正在下降——从护城河变成包袱。[card-051]</li>
     <li><strong>数字渠道+7%是唯一的增长引擎：</strong>品牌数字业务（wu.com/app）连续7季度双位数交易量增长，是WU内部唯一健康增长的业务线。数字渠道交易量占比32%、收入占25%（数字每笔交易价值低于线下）。若维持13%/年的数字交易量增速，5年内数字将超50%，或将重塑整体商业模式。[card-051]</li>
@@ -1035,13 +1043,13 @@
     <li><strong>高分红是"成熟收割"而非增长投资：</strong>$496M股东回报（占净利润83%）体现了管理层对核心业务增长前景的保守预期。WU现在更像一个"现金奶牛"而非"高增长科技公司"，对比Remitly（全部利润再投入增长）和Wise（不分红持续降价投资），WU的资本配置策略折射出战略选择的根本差异。[card-051]</li>
   </ul>
 
-  <div class="subsection-title">战略方向</div>
+  <div class="subsection-title"><span data-zh>战略方向</span><span data-en>Strategic Direction</span></div>
   <ul class="point-list">
     <li><strong>转型聚焦"Evolve 2025"战略：</strong>持续将资源向数字渠道倾斜，同时维护高价值线下市场（中东、南亚等unbanked密集区域）。媒体网络业务（Media Network）是新尝试的多元化方向，Q4消费者服务+56%部分来源于此。[card-051]</li>
     <li><strong>伊拉克问题的隐含意义：</strong>伊拉克监管变化导致一次性收入损失，剔除后全年-0.5%（接近持平）。这说明WU对单一市场的政策依赖风险客观存在，地理多元化是风险管理的核心。[card-051]</li>
   </ul>
 
-  <div class="subsection-title">风险与挑战</div>
+  <div class="subsection-title"><span data-zh>风险与挑战</span><span data-en>Risks & Challenges</span></div>
   <ul class="risk-list">
     <li><strong>结构性衰退风险：</strong>2025年营收展望持平，意味着WU的核心汇款业务已进入"成熟期"甚至"衰退期"。与Wise（+15%收入增速）的差距每年在扩大，若数字化转型速度慢于竞争对手渗透速度，长期份额流失难以逆转。[card-051]</li>
     <li><strong>代理网络的维护成本不断上升：</strong>实体代理网络在交易量下滑时，固定成本不减反增（每个代理点都有维护成本），边际效益递减。如何管理代理网络收缩而不引发品牌形象损害，是复杂的执行挑战。[card-051]</li>
@@ -1049,14 +1057,14 @@
   </ul>
 
   <div class="source-row">
-    <span class="source-label">数据来源：</span>
+    <span class="source-label"><span data-zh>数据来源：</span><span data-en>Data Sources:</span></span>
     <span class="source-tag">card-051 Western Union Q4/FY2024业绩报告（35条信息点）</span>
   </div>
 </div>
 
 <!-- ════ 2.8 OFX ════ -->
 <div class="module module-teal" id="ofx">
-  <div class="module-label">2.8 · 公司档案</div>
+  <div class="module-label">2.8 · <span data-zh>公司档案</span><span data-en>Company Profile</span></div>
   <div class="company-header">
     <div>
       <div class="company-name">🔷 OFX</div>
@@ -1069,13 +1077,13 @@
     </div>
   </div>
 
-  <div class="subsection-title">核心财务指标（FY2024，截至2024年3月31日）</div>
+  <div class="subsection-title"><span data-zh>核心财务指标（FY2024，截至2024年3月31日）</span><span data-en>Key Financial Metrics (FY2024, as of Mar 31, 2024)</span></div>
   <table class="data-table">
     <tr>
-      <th>指标</th>
-      <th>FY2024数值</th>
-      <th>同比</th>
-      <th>对比Wise FY2024</th>
+      <th><span data-zh>指标</span><span data-en>Metric</span></th>
+      <th><span data-zh>FY2024数值</span><span data-en>FY2024 Value</span></th>
+      <th><span data-zh>同比</span><span data-en>YoY</span></th>
+      <th><span data-zh>对比Wise FY2024</span><span data-en>vs. Wise FY2024</span></th>
     </tr>
     <tr class="highlight">
       <td>净营业收入（NOI）</td>
@@ -1139,7 +1147,7 @@
     </tr>
   </table>
 
-  <div class="subsection-title">商业模式摘要</div>
+  <div class="subsection-title"><span data-zh>商业模式摘要</span><span data-en>Business Model Summary</span></div>
   <ul class="point-list">
     <li><strong>"相同利润率，不同模式"是OFX最值得深思的竞争启示：</strong>OFX底层EBITDA利润率28.4%与Wise完全相同，但OFX靠690人的"数字+人工"（Digital+Human）高接触服务模式达到，而Wise靠6,000人的纯技术平台达到。这说明在跨境支付行业，"高接触人工服务高价值大额客户"与"低费率平台大量小额客户"是两条均可行的路径，关键在于客群定位的精准性。[card-081]</li>
     <li><strong>B2B 64%是OFX最重要的差异化特征：</strong>OFX服务中型企业（forward contracts外汇远期合约、FX hedging对冲、大额企业转账），这类客户ARPU极高（每笔交易金额大，人均年处理量$55M），对价格敏感度低于大量小额交易的C端，愿意为专业顾问服务支付溢价。对比Wise Business（企业客户占Wise收入约27%），OFX的B2B深度是显著优势。[card-081]</li>
@@ -1147,13 +1155,13 @@
     <li><strong>人效是OFX真正的护城河：</strong>人均处理量$55M（vs Wise $21M，是2.6倍）。OFX靠高客单价B2B交易、而非大量交易量，维持了极高的人效比。这一商业模式在规模有限的情况下仍能保持高利润率，是中小型竞争者的可借鉴路径。[card-081]</li>
   </ul>
 
-  <div class="subsection-title">战略方向</div>
+  <div class="subsection-title"><span data-zh>战略方向</span><span data-en>Strategic Direction</span></div>
   <ul class="point-list">
     <li><strong>专注Corporate和Enterprise高端客户：</strong>Corporate新收入+26.5%、Enterprise+32.8%是FY2024增速最快的细分市场，表明OFX在高价值客户获取上已建立势头。这类客户留存率高、ARPU高、对价格不敏感，是比大量SMB客户更优质的增长路径。[card-081]</li>
     <li><strong>澳大利亚市场基本盘稳固，北美拓展是增量：</strong>OFX根植澳大利亚，但Firma收购（北美外汇中介）带来了北美客户基础。北美企业FX市场是最大市场之一，若整合顺利将成为第二个增长极。北美欺诈损失（$3.7M）是短期风险，已加强控制。[card-081]</li>
   </ul>
 
-  <div class="subsection-title">风险与挑战</div>
+  <div class="subsection-title"><span data-zh>风险与挑战</span><span data-en>Risks & Challenges</span></div>
   <ul class="risk-list">
     <li><strong>规模劣势制约品牌知名度和技术投入：</strong>市值AUD $3亿 vs Wise £110亿，规模差距近40倍。技术投入（虽已耗资$100M+升级平台）和品牌营销能力都受规模制约，很难在数字渠道与Wise正面竞争，只能依靠细分市场（高价值B2B）的差异化竞争。[card-081]</li>
     <li><strong>增速6.3%意味着激进竞争中的份额压力：</strong>对比Wise（+24–31%）、Airwallex（+90%）等高增速竞争对手，OFX的6.3%增速在绝对意义上是"低增长"。若无法在B2B细分市场持续提升份额，可能面临更大竞争对手（Wise Business、Airwallex）在企业市场的蚕食。[card-081]</li>
@@ -1161,45 +1169,45 @@
   </ul>
 
   <div class="source-row">
-    <span class="source-label">数据来源：</span>
+    <span class="source-label"><span data-zh>数据来源：</span><span data-en>Data Sources:</span></span>
     <span class="source-tag">card-081 OFX FY2024年报（52条信息点）</span>
   </div>
 </div>
 
 <!-- ════ 附录：Wise深度飞轮分析 ════ -->
 <div class="module" id="wise-flywheel">
-  <div class="module-label">附录 2.1-A · 深度分析</div>
-  <div class="module-title"><span class="num">Wise</span> 战略飞轮与护城河体系全图</div>
+  <div class="module-label"><span data-zh>附录 2.1-A · 深度分析</span><span data-en>Appendix 2.1-A · Deep Dive</span></div>
+  <div class="module-title"><span class="num">Wise</span> <span data-zh>战略飞轮与护城河体系全图</span><span data-en>Strategic Flywheel & Moat System Overview</span></div>
   <div class="core-conclusion">
     Wise的竞争优势不是单一要素，而是多个强化循环（Flywheel）叠加的系统：降价→更多量→更低成本→可以再降价，同时口碑→低CAC→高利润→再投入降价。理解这一系统是理解Wise长期竞争力的关键。
   </div>
 
-  <div class="subsection-title">核心飞轮：价格-规模-基础设施三角</div>
+  <div class="subsection-title"><span data-zh>核心飞轮：价格-规模-基础设施三角</span><span data-en>Core Flywheel: Price–Scale–Infrastructure Triangle</span></div>
   <div class="body-text">
     <p><strong>降价是战略，不是让步。</strong>FY2025 Take Rate降至0.58%，Q4已达0.53%。5年连续降价（70bps→58bps），但利润率反而从7%提升至21%。原因：<strong>每降1bps费率，触发更多大额转账用户选择Wise，TPV增速（+23%）持续高于收入增速（+15%），而底层成本增速（COGS +5%）被远远甩在后面。</strong>[card-001]</p>
     <p><strong>即时到账率：FY2025 62%交易即时完成</strong>（速度+价格双重优势）。菲律宾直连后90%即时，成本降低8倍。计划FY2026接入巴西PIX和日本Zengin，直连网络从6个扩至8个。每一个新的直连系统，既降低了该国的处理成本，又提升了该国的即时到账率，形成"基础设施投资→客户体验改善→更多量涌入→直连ROI提升→可投资更多直连"的正向循环。[card-001]</p>
     <p><strong>Platform战略是飞轮的第三个轮子。</strong>FY2025新增摩根士丹利、渣打银行、Nubank、Itaú Unibanco——每一个银行合作伙伴背后是数千万潜在用户。银行"外包跨境基础设施"的逻辑：自建需数年+巨额资本支出，用Wise Platform几个月集成完毕。随Platform合作伙伴增加，Wise的技术基础设施在更大的交易量上摊薄，成本进一步降低，再度支撑降价空间。[card-001]</p>
   </div>
 
-  <div class="subsection-title">口碑飞轮：营销效率护城河</div>
+  <div class="subsection-title"><span data-zh>口碑飞轮：营销效率护城河</span><span data-en>Word-of-Mouth Flywheel: Marketing Efficiency Moat</span></div>
   <div class="body-text">
     <p>70%+新客来自口碑推荐（vs Remitly依赖24%收入的付费营销）。口碑的驱动力是：<strong>用户真实体验了"比银行便宜5–8倍"的服务</strong>，自然推荐给有同样需求的朋友。这个飞轮一旦建立，几乎不可打断——因为它依赖于真实的产品力，而非营销预算。</p>
     <p>FY2025营销费用£53.8M（占收入4.4%），CFO承诺三倍化至约£160M（约占收入13%）。这一转变不是口碑飞轮失效，而是在口碑飞轮基础上叠加主动品牌建设，加速渗透澳大利亚、美国等尚未充分渗透的市场。澳大利亚首次品牌活动覆盖400万人、品牌认知度+11ppt，证明了主动营销的有效性。[card-001]</p>
   </div>
 
-  <div class="subsection-title">利息收入的战略重塑</div>
+  <div class="subsection-title"><span data-zh>利息收入的战略重塑</span><span data-en>Strategic Repositioning of Interest Income</span></div>
   <div class="body-text">
     <p>FY2025客户余额£17.1B，利息收入£594.3M。底层利息（前1%收益率留存）£150.4M是管理层认为"可持续"的部分，超额利息（£443.9M）则是高利率环境的红利。<strong>关键风险：若政策利率下降200bps，净利息收入减少约£172M，相当于底层PBT的61%。</strong></p>
     <p>但这不意味着灾难性风险，原因是：①底层PBT仍由£1,212M GAAP收入支撑（利息收入仅占12%），②随客户余额持续增长（+29%/年），即使收益率下降，余额增长可部分对冲。③Wise的核心商业逻辑（汇款+账户功能）不依赖利率环境，利率下行更多是"利润超额消失"而非"商业模式崩溃"。[card-001]</p>
   </div>
 
-  <div class="subsection-title">Wise FY2025–FY2026关键数据桥接</div>
+  <div class="subsection-title"><span data-zh>Wise FY2025–FY2026关键数据桥接</span><span data-en>Wise FY2025–FY2026 Key Data Bridge</span></div>
   <table class="data-table">
     <tr>
-      <th>关键指标</th>
-      <th>FY2024实际</th>
-      <th>FY2025实际</th>
-      <th>FY2026隐含预期（LTIP指引）</th>
+      <th><span data-zh>关键指标</span><span data-en>Key Metric</span></th>
+      <th><span data-zh>FY2024实际</span><span data-en>FY2024 Actual</span></th>
+      <th><span data-zh>FY2025实际</span><span data-en>FY2025 Actual</span></th>
+      <th><span data-zh>FY2026隐含预期（LTIP指引）</span><span data-en>FY2026 Implied Outlook (LTIP Guidance)</span></th>
     </tr>
     <tr>
       <td>交易量增速</td>
@@ -1248,18 +1256,18 @@
 
 <!-- ════ 附录：行业对比深度分析 ════ -->
 <div class="module module-slate" id="industry-comparison">
-  <div class="module-label">附录 · 跨公司深度对比</div>
-  <div class="module-title">四个关键维度的横向竞争分析</div>
+  <div class="module-label"><span data-zh>附录 · 跨公司深度对比</span><span data-en>Appendix · Cross-Company Deep Comparison</span></div>
+  <div class="module-title"><span data-zh>四个关键维度的横向竞争分析</span><span data-en>Cross-Competitor Analysis on Four Key Dimensions</span></div>
 
-  <div class="subsection-title">维度一：营销效率对比（CAC代理指标）</div>
+  <div class="subsection-title"><span data-zh>维度一：营销效率对比（CAC代理指标）</span><span data-en>Dimension 1: Marketing Efficiency Comparison (CAC Proxy)</span></div>
   <table class="data-table">
     <tr>
-      <th>公司</th>
-      <th>营销费用</th>
-      <th>占营收比例</th>
-      <th>新增活跃客户</th>
-      <th>隐含CAC效率</th>
-      <th>结论</th>
+      <th><span data-zh>公司</span><span data-en>Company</span></th>
+      <th><span data-zh>营销费用</span><span data-en>Marketing Spend</span></th>
+      <th><span data-zh>占营收比例</span><span data-en>% of Revenue</span></th>
+      <th><span data-zh>新增活跃客户</span><span data-en>New Active Customers</span></th>
+      <th><span data-zh>隐含CAC效率</span><span data-en>Implied CAC Efficiency</span></th>
+      <th><span data-zh>结论</span><span data-en>Conclusion</span></th>
     </tr>
     <tr class="highlight">
       <td>Wise</td>
@@ -1296,14 +1304,14 @@
   </table>
   <div class="body-text"><p><strong>结论：</strong>营销效率是Wise与其他汇款平台最大的结构性差距。Remitly每获取一个新客的成本约是Wise的8倍，这一差距在规模化过程中不会自动消失，除非Remitly能建立类似的口碑飞轮——但口碑需要真正的价格优势来驱动，而Wise的2.32% vs 0.58%的Take Rate差距意味着Remitly的产品在同类比较中不具价格优势。[card-001] [card-047]</p></div>
 
-  <div class="subsection-title">维度二：利润率路径对比</div>
+  <div class="subsection-title"><span data-zh>维度二：利润率路径对比</span><span data-en>Dimension 2: Profitability Path Comparison</span></div>
   <table class="data-table">
     <tr>
-      <th>公司</th>
-      <th>EBITDA利润率</th>
-      <th>SBC占EBITDA比例</th>
-      <th>是否GAAP盈利</th>
-      <th>利润质量</th>
+      <th><span data-zh>公司</span><span data-en>Company</span></th>
+      <th><span data-zh>EBITDA利润率</span><span data-en>EBITDA Margin</span></th>
+      <th><span data-zh>SBC占EBITDA比例</span><span data-en>SBC / EBITDA</span></th>
+      <th><span data-zh>是否GAAP盈利</span><span data-en>GAAP Profitable?</span></th>
+      <th><span data-zh>利润质量</span><span data-en>Profit Quality</span></th>
     </tr>
     <tr class="highlight">
       <td>Wise（FY2025）</td>
@@ -1364,14 +1372,14 @@
   </table>
   <div class="body-text"><p><strong>结论：</strong>2024–2025年的跨境支付行业，主流参与者已从"烧钱增长期"转向"规模化盈利期"，唯有Remitly仍处于过渡阶段（GAAP亏损，但SBC主导的亏损），预计2025年GAAP盈亏平衡。利润率20–35%的区间已成为主流，dLocal的67% EBITDA/毛利率是新兴市场高复杂度的溢价体现。</p></div>
 
-  <div class="subsection-title">维度三：交易量结构与增长潜力</div>
+  <div class="subsection-title"><span data-zh>维度三：交易量结构与增长潜力</span><span data-en>Dimension 3: Volume Structure & Growth Potential</span></div>
   <table class="data-table">
     <tr>
-      <th>公司</th>
-      <th>年化TPV</th>
-      <th>增速</th>
-      <th>市场份额（估计）</th>
-      <th>增长天花板</th>
+      <th><span data-zh>公司</span><span data-en>Company</span></th>
+      <th><span data-zh>年化TPV</span><span data-en>Annualized TPV</span></th>
+      <th><span data-zh>增速</span><span data-en>Growth Rate</span></th>
+      <th><span data-zh>市场份额（估计）</span><span data-en>Market Share (Est.)</span></th>
+      <th><span data-zh>增长天花板</span><span data-en>Growth Ceiling</span></th>
     </tr>
     <tr>
       <td>Wise</td>
@@ -1431,7 +1439,7 @@
     </tr>
   </table>
 
-  <div class="subsection-title">维度四：监管护城河深度对比</div>
+  <div class="subsection-title"><span data-zh>维度四：监管护城河深度对比</span><span data-en>Dimension 4: Regulatory Moat Depth Comparison</span></div>
   <div class="body-text">
     <p><strong>监管许可的积累时间是衡量护城河深度的替代指标。</strong>Wise用15年时间在42个法律实体、23+国家建立了合规体系；Airwallex在约8年内积累了80个全球牌照、覆盖200+国家；Western Union用170年在200+国家建立了代理网络和合规体系。</p>
     <p>关键洞察：<strong>监管护城河是"时间+资本"双重密集型资产</strong>，任何新进入者想要在3–5年内复制Wise的监管体系几乎不可能。这也是为什么即使有充足的资金，很多有支付野心的科技公司（Uber、Grab等）最终选择与持牌机构合作而非自建。</p>
@@ -1439,7 +1447,7 @@
   </div>
 
   <div class="insight-box">
-    <div class="insight-title">🔍 四维分析综合结论</div>
+    <div class="insight-title">🔍 <span data-zh>四维分析综合结论</span><span data-en>4-Dimension Analysis: Comprehensive Conclusions</span></div>
     <ul class="insight-list">
       <li><strong>营销效率最优：</strong>Wise（£20/新客）→ 建立了口碑飞轮，是最难复制的软护城河</li>
       <li><strong>利润质量最优：</strong>Wise（底层21%）+ OFX（28.4%）+ dLocal（67% EBITDA/毛利率）——三者用不同路径达到同等水平</li>
@@ -1449,7 +1457,7 @@
   </div>
 
   <div class="source-row">
-    <span class="source-label">综合分析依据：</span>
+    <span class="source-label"><span data-zh>综合分析依据：</span><span data-en>Composite Analysis Sources:</span></span>
     <span class="source-tag">card-001</span>
     <span class="source-tag">card-032</span>
     <span class="source-tag">card-036</span>
@@ -1464,14 +1472,14 @@
 
 <!-- ════ 本章总结 ════ -->
 <div class="module module-green">
-  <div class="module-label">本章总结</div>
-  <div class="module-title">第2章 · 八家公司档案核心结论</div>
+  <div class="module-label"><span data-zh>本章总结</span><span data-en>Chapter Summary</span></div>
+  <div class="module-title"><span data-zh>第2章 · 八家公司档案核心结论</span><span data-en>Chapter 2 · Core Conclusions from Eight Company Profiles</span></div>
 
   <div class="core-conclusion">
     跨境支付行业不存在统一的"最优商业模式"——Wise用技术规模化赢利润、OFX用高接触服务同样赢利润；Revolut靠收入多元化赢规模、dLocal靠市场专业化赢定价权。竞争的本质是"在正确的市场，用正确的服务模式，服务正确的客群"。
   </div>
 
-  <div class="subsection-title">五大跨行业洞察</div>
+  <div class="subsection-title"><span data-zh>五大跨行业洞察</span><span data-en>Five Cross-Industry Insights</span></div>
   <ul class="point-list">
     <li><strong>规模不等于护城河：</strong>Western Union $4.2B收入远超Wise $1.5B，但WU零增长而Wise +15%。规模在存量竞争中是优势，在增量市场中反而因组织惰性成为劣势。</li>
     <li><strong>Take Rate是客群定位的镜像，不是竞争力的直接指标：</strong>Remitly 2.32% vs Wise 0.58%，相差4倍，但两者都有合理的商业逻辑。前者服务情感汇款、后者拼价格锁定大额转账。Take Rate高低的评判前提是客群定位。</li>
@@ -1481,7 +1489,7 @@
   </ul>
 
   <div class="source-row">
-    <span class="source-label">本章引用分析卡：</span>
+    <span class="source-label"><span data-zh>本章引用分析卡：</span><span data-en>Chapter Analysis Cards Cited:</span></span>
     <span class="source-tag">card-001</span>
     <span class="source-tag">card-002</span>
     <span class="source-tag">card-032</span>
@@ -1495,5 +1503,25 @@
   </div>
 </div>
 
+<script>
+  // ── Language Switcher ──
+  let lang = localStorage.getItem('lang') || 'zh';
+
+  function switchLang(l) {
+    lang = l;
+    localStorage.setItem('lang', l);
+    document.querySelectorAll('[data-zh]').forEach(el => {
+      el.style.display = (l === 'zh') ? '' : 'none';
+    });
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.style.display = (l === 'en') ? '' : 'none';
+    });
+    document.getElementById('btn-zh').classList.toggle('active', l === 'zh');
+    document.getElementById('btn-en').classList.toggle('active', l === 'en');
+  }
+
+  // Initialize on page load
+  switchLang(lang);
+</script>
 </body>
 </html>

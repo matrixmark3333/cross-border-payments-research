@@ -155,42 +155,53 @@
   .status-done { display: inline-block; background: #dcfce7; color: #166534; border-radius: 4px; padding: 2px 8px; font-size: 10px; font-weight: 700; }
   .status-progress { display: inline-block; background: #fef3c7; color: #92400e; border-radius: 4px; padding: 2px 8px; font-size: 10px; font-weight: 700; }
   .status-early { display: inline-block; background: #fee2e2; color: #991b1b; border-radius: 4px; padding: 2px 8px; font-size: 10px; font-weight: 700; }
+
+  /* ── Language Switcher ── */
+  .lang-switcher { position: fixed; top: 16px; right: 20px; z-index: 1000; display: flex; gap: 4px; }
+  .lang-switcher button { padding: 4px 10px; border: 1px solid #e2e8f0; border-radius: 4px; font-size: 12px; cursor: pointer; background: white; color: #64748b; }
+  .lang-switcher button.active { background: #2563eb; color: white; border-color: #2563eb; }
 </style>
 </head>
 <body>
 
+<!-- ══════════════════ LANG SWITCHER ══════════════════ -->
+<div class="lang-switcher">
+  <button id="btn-zh" onclick="switchLang('zh')">中文</button>
+  <button id="btn-en" onclick="switchLang('en')">EN</button>
+</div>
+
 <!-- ════ 章节头 ════ -->
 <div class="chapter-header">
-  <div class="chapter-label">知识库 · 第6章</div>
-  <div class="chapter-title">跨境支付监管环境综合分析</div>
-  <div class="chapter-subtitle">主要司法管辖区监管态度 · 牌照体系与护城河 · AML/CFT合规成本 · G20跨境支付路线图进展</div>
+  <div class="chapter-label"><span data-zh>知识库 · 第6章</span><span data-en>Knowledge Base · Chapter 6</span></div>
+  <div class="chapter-title"><span data-zh>跨境支付监管环境综合分析</span><span data-en>Regulatory Environment</span></div>
+  <div class="chapter-subtitle"><span data-zh>主要司法管辖区监管态度 · 牌照体系与护城河 · AML/CFT合规成本 · G20跨境支付路线图进展</span><span data-en>Regulatory Attitudes · Licensing Frameworks · AML/CFT Compliance · G20 Roadmap Progress</span></div>
   <div class="chapter-meta">
-    <div class="meta-item"><strong>核心数据源</strong> FSB 2024进展报告 · HKMA · MAS · 香港MSO指引</div>
-    <div class="meta-item"><strong>覆盖市场</strong> 7个主要司法管辖区</div>
-    <div class="meta-item"><strong>更新时间</strong> 2026年3月</div>
-    <div class="meta-item"><strong>章节数</strong> 4个子节</div>
+    <div class="meta-item"><strong><span data-zh>核心数据源</span><span data-en>Key Sources</span></strong> FSB 2024 · HKMA · MAS · <span data-zh>香港MSO指引</span><span data-en>HK MSO Guidelines</span></div>
+    <div class="meta-item"><strong><span data-zh>覆盖市场</span><span data-en>Markets Covered</span></strong> <span data-zh>7个主要司法管辖区</span><span data-en>7 Key Jurisdictions</span></div>
+    <div class="meta-item"><strong><span data-zh>更新时间</span><span data-en>Updated</span></strong> <span data-zh>2026年3月</span><span data-en>March 2026</span></div>
+    <div class="meta-item"><strong><span data-zh>章节数</span><span data-en>Sections</span></strong> <span data-zh>4个子节</span><span data-en>4 Sub-sections</span></div>
   </div>
 </div>
 
 <!-- ════ TOC ════ -->
 <div class="toc-box">
-  <div class="toc-title">本章目录</div>
+  <div class="toc-title"><span data-zh>本章目录</span><span data-en>Contents</span></div>
   <div class="toc-grid">
     <a href="#sec-6-1" class="toc-item">
       <div class="toc-num">6.1</div>
-      主要司法管辖区 — 监管态度与准入难度对比
+      <span data-zh>主要司法管辖区 — 监管态度与准入难度对比</span><span data-en>6.1 Key Jurisdictions — Regulatory Stance & Market Access</span>
     </a>
     <a href="#sec-6-2" class="toc-item">
       <div class="toc-num">6.2</div>
-      牌照体系 — 类型、取牌路径与护城河高度
+      <span data-zh>牌照体系 — 类型、取牌路径与护城河高度</span><span data-en>6.2 Licensing Framework — Types, Paths & Moat Height</span>
     </a>
     <a href="#sec-6-3" class="toc-item">
       <div class="toc-num">6.3</div>
-      AML / CFT 合规 — 成本、技术与差异化
+      <span data-zh>AML / CFT 合规 — 成本、技术与差异化</span><span data-en>6.3 AML / CFT Compliance — Cost, Technology & Differentiation</span>
     </a>
     <a href="#sec-6-4" class="toc-item">
       <div class="toc-num">6.4</div>
-      G20跨境支付路线图 — 进展、目标与展望
+      <span data-zh>G20跨境支付路线图 — 进展、目标与展望</span><span data-en>6.4 G20 Cross-Border Payments Roadmap — Progress & Outlook</span>
     </a>
   </div>
 </div>
@@ -199,11 +210,11 @@
 <!-- 6.1 主要司法管辖区 -->
 <!-- ════════════════════════════════════════ -->
 <div id="sec-6-1" class="module">
-  <div class="module-label">第6章 · 第1节</div>
-  <div class="module-title"><span class="num">6.1</span> 主要司法管辖区 — 监管态度与市场准入难度</div>
+  <div class="module-label"><span data-zh>第6章 · 第1节</span><span data-en>Chapter 6 · Section 1</span></div>
+  <div class="module-title"><span class="num">6.1</span> <span data-zh>主要司法管辖区 — 监管态度与市场准入难度</span><span data-en>6.1 Key Jurisdictions — Regulatory Stance & Market Access</span></div>
 
   <div class="core-conclusion">
-    🏆 <strong>核心结论：</strong>对Fintech最友好的司法管辖区排序为 <strong>新加坡 &gt; 香港 &gt; 英国 &gt; 欧盟 &gt; 美国 &gt; 日本 &gt; 中国</strong>。新加坡以明确的牌照路径、积极的监管沙箱和数字资产友好政策居首；香港凭借快速审批（MSO 2-3个月）和无最低资本要求紧随其后，并以"离岸人民币+稳定币监管"的独特三重布局构建独特战略地位；中国市场因外资限制严格、本土支付牌照门槛极高（注册资本5,000万元人民币以上）居末，但大湾区FPS-IBPS互联（预计2025年中落地）正在开放一个新的合法通道。
+    🏆 <strong><span data-zh>核心结论：</span><span data-en>Key Conclusion: </span></strong><span data-zh>对Fintech最友好的司法管辖区排序为</span><span data-en>Fintech-friendliest jurisdictions ranked as</span> <strong>新加坡 &gt; 香港 &gt; 英国 &gt; 欧盟 &gt; 美国 &gt; 日本 &gt; 中国</strong>。新加坡以明确的牌照路径、积极的监管沙箱和数字资产友好政策居首；香港凭借快速审批（MSO 2-3个月）和无最低资本要求紧随其后，并以"离岸人民币+稳定币监管"的独特三重布局构建独特战略地位；中国市场因外资限制严格、本土支付牌照门槛极高（注册资本5,000万元人民币以上）居末，但大湾区FPS-IBPS互联（预计2025年中落地）正在开放一个新的合法通道。
   </div>
 
   <div class="body-text">
@@ -214,12 +225,12 @@
   <table class="data-table">
     <thead>
       <tr>
-        <th>司法管辖区</th>
-        <th>主要监管机构</th>
-        <th>核心牌照类型</th>
-        <th>监管态度</th>
-        <th>市场准入难度</th>
-        <th>核心监管逻辑</th>
+        <th><span data-zh>司法管辖区</span><span data-en>Jurisdiction</span></th>
+        <th><span data-zh>主要监管机构</span><span data-en>Regulator</span></th>
+        <th><span data-zh>核心牌照类型</span><span data-en>Key Licenses</span></th>
+        <th><span data-zh>监管态度</span><span data-en>Regulatory Stance</span></th>
+        <th><span data-zh>市场准入难度</span><span data-en>Market Access</span></th>
+        <th><span data-zh>核心监管逻辑</span><span data-en>Key Logic</span></th>
       </tr>
     </thead>
     <tbody>
@@ -283,7 +294,7 @@
   </table>
 
   <div class="insight-box">
-    <div class="insight-title">🌏 亚太区监管格局的战略意义</div>
+    <div class="insight-title">🌏 <span data-zh>亚太区监管格局的战略意义</span><span data-en>Strategic Significance of Asia-Pacific Regulatory Landscape</span></div>
     <ul class="insight-list">
       <li><strong>新加坡-香港双枢纽格局正在强化：</strong>两地监管互补性强——新加坡偏重东南亚和数字资产合规；香港聚焦大中华区人民币跨境。Project Nexus（2024年7月完成蓝图）以新加坡为核心，将5国FPS互联扩展至印度UPI，覆盖17亿人潜在用户。[card-139]</li>
       <li><strong>香港的窗口期：</strong>稳定币法案2024年12月刊宪，2025年申请窗口开放，先行布局者将获监管优势。香港正成为全球首个对法币参考稳定币设立完整监管框架的主要金融中心。[card-137]</li>
@@ -292,7 +303,7 @@
   </div>
 
   <div class="source-row">
-    <span class="source-label">数据来源：</span>
+    <span class="source-label"><span data-zh>数据来源：</span><span data-en>Sources: </span></span>
     <span class="source-tag">[card-137] HKMA稳定币法案</span>
     <span class="source-tag">[card-138] HKMA-PBOC MOU</span>
     <span class="source-tag">[card-139] MAS Project Nexus</span>
@@ -308,11 +319,11 @@
 <!-- 6.2 牌照体系 -->
 <!-- ════════════════════════════════════════ -->
 <div id="sec-6-2" class="module module-purple">
-  <div class="module-label">第6章 · 第2节</div>
-  <div class="module-title"><span class="num">6.2</span> 牌照体系 — 类型、取牌路径与护城河高度</div>
+  <div class="module-label"><span data-zh>第6章 · 第2节</span><span data-en>Chapter 6 · Section 2</span></div>
+  <div class="module-title"><span class="num">6.2</span> <span data-zh>牌照体系 — 类型、取牌路径与护城河高度</span><span data-en>6.2 Licensing Framework — Types, Paths & Moat Height</span></div>
 
   <div class="core-conclusion" style="background:#f5f3ff; border-color:#7c3aed;">
-    🏰 <strong>核心结论：</strong>牌照体系对跨境支付公司的护城河作用是<strong>真实的但被高估的</strong>。取牌本身（香港MSO 2-3个月，成本约HK$30-50万）是可克服的门槛，真正的护城河在于<strong>多司法区牌照组合的协同成本</strong>——覆盖50个国家需要的法律+运营投入远非初创公司所能承担（Payoneer全球牌照体系建设历时超20年，是其明确的战略护城河）。美国全州MTL牌照是迄今最难复制的单一合规资产：逐州申请、审批时间1-3年、全套合规成本估计超500万美元。
+    🏰 <strong><span data-zh>核心结论：</span><span data-en>Key Conclusion: </span></strong><span data-zh>牌照体系对跨境支付公司的护城河作用是</span><span data-en>The moat effect of licensing on cross-border payment companies is</span><strong>真实的但被高估的</strong>。取牌本身（香港MSO 2-3个月，成本约HK$30-50万）是可克服的门槛，真正的护城河在于<strong>多司法区牌照组合的协同成本</strong>——覆盖50个国家需要的法律+运营投入远非初创公司所能承担（Payoneer全球牌照体系建设历时超20年，是其明确的战略护城河）。美国全州MTL牌照是迄今最难复制的单一合规资产：逐州申请、审批时间1-3年、全套合规成本估计超500万美元。
   </div>
 
   <!-- 主要牌照类型说明 -->
@@ -323,7 +334,7 @@
   <div class="license-grid">
     <div class="license-card">
       <div class="license-name">MSO</div>
-      <div class="license-full">货币服务经营者</div>
+      <div class="license-full"><span data-zh>货币服务经营者</span><span data-en>Money Service Operator</span></div>
       <div class="license-desc">覆盖货币兑换和汇款服务。香港由C&amp;ED（海关）监管，是最低门槛的跨境支付基础牌照。无最低资本要求，加密货币不在范围内，需有实体办公场所。</div>
       <div class="license-where">
         <span>香港</span>
@@ -331,7 +342,7 @@
     </div>
     <div class="license-card">
       <div class="license-name">SVF</div>
-      <div class="license-full">储值设施</div>
+      <div class="license-full"><span data-zh>储值设施</span><span data-en>Stored Value Facility</span></div>
       <div class="license-desc">可持有客户资金余额（区别于MSO只处理即时转账）。由HKMA监管，资本要求更高但允许提供多币种账户、支付卡等增值服务。Airwallex选择SVF而非MSO。</div>
       <div class="license-where">
         <span>香港</span>
@@ -339,7 +350,7 @@
     </div>
     <div class="license-card">
       <div class="license-name">EMI</div>
-      <div class="license-full">电子货币机构</div>
+      <div class="license-full"><span data-zh>电子货币机构</span><span data-en>Electronic Money Institution</span></div>
       <div class="license-desc">欧盟/英国核心支付牌照，允许发行电子货币、持有客户资金、提供支付服务。单一护照可通行欧盟27国（英国脱欧后需独立UK EMI）。Wise、Payoneer Europe均持有此照。</div>
       <div class="license-where">
         <span>欧盟</span><span>英国</span>
@@ -347,7 +358,7 @@
     </div>
     <div class="license-card">
       <div class="license-name">PI</div>
-      <div class="license-full">支付机构</div>
+      <div class="license-full"><span data-zh>支付机构</span><span data-en>Payment Institution</span></div>
       <div class="license-desc">比EMI权限更窄，不能发行电子货币，但可提供支付服务。成本和资本要求低于EMI，适合专注单一支付服务的公司。MAS的PSA也在此框架下，分为标准PI（100万新元资本）和主要PI。</div>
       <div class="license-where">
         <span>新加坡</span><span>欧盟</span>
@@ -355,7 +366,7 @@
     </div>
     <div class="license-card">
       <div class="license-name">MTL</div>
-      <div class="license-full">货币转账牌照</div>
+      <div class="license-full"><span data-zh>货币转账牌照</span><span data-en>Money Transmitter License</span></div>
       <div class="license-desc">美国逐州发放，每个州独立申请，要求不同。全套50州MTL的申请是跨境支付公司最昂贵的合规建设工程，Payoneer耗时超5年、成本估计超500万美元，是行业公认的最高护城河之一。</div>
       <div class="license-where">
         <span>美国</span>
@@ -363,7 +374,7 @@
     </div>
     <div class="license-card">
       <div class="license-name">MSB</div>
-      <div class="license-full">货币服务业务</div>
+      <div class="license-full"><span data-zh>货币服务业务</span><span data-en>Money Services Business</span></div>
       <div class="license-desc">美国联邦层面向FinCEN注册，要求有BSA合规计划、AML政策、可疑交易报告。MSB是在美运营的必要条件，但仅有MSB不够——还需要在各州持有MTL。两者并行构成美国合规双轨。</div>
       <div class="license-where">
         <span>美国</span>
@@ -376,12 +387,12 @@
   <table class="data-table">
     <thead>
       <tr>
-        <th>司法管辖区</th>
-        <th>核心牌照</th>
-        <th>最低资本</th>
-        <th>审批周期</th>
-        <th>关键要求</th>
-        <th>对业务的实质影响</th>
+        <th><span data-zh>司法管辖区</span><span data-en>Jurisdiction</span></th>
+        <th><span data-zh>核心牌照</span><span data-en>Key Licenses</span></th>
+        <th><span data-zh>最低资本</span><span data-en>Min Capital</span></th>
+        <th><span data-zh>审批周期</span><span data-en>Approval Time</span></th>
+        <th><span data-zh>关键要求</span><span data-en>Key Requirements</span></th>
+        <th><span data-zh>对业务的实质影响</span><span data-en>Business Impact</span></th>
       </tr>
     </thead>
     <tbody>
@@ -450,7 +461,7 @@
   </div>
 
   <div class="source-row">
-    <span class="source-label">数据来源：</span>
+    <span class="source-label"><span data-zh>数据来源：</span><span data-en>Sources: </span></span>
     <span class="source-tag">[card-153] 香港MSO攻略</span>
     <span class="source-tag">[card-307] 香港MSO指引</span>
     <span class="source-tag">[card-140] MAS PSA扩展</span>
@@ -465,11 +476,11 @@
 <!-- 6.3 AML / CFT 合规 -->
 <!-- ════════════════════════════════════════ -->
 <div id="sec-6-3" class="module module-red">
-  <div class="module-label">第6章 · 第3节</div>
-  <div class="module-title"><span class="num">6.3</span> AML / CFT 合规 — 成本、技术路径与差异化条件</div>
+  <div class="module-label"><span data-zh>第6章 · 第3节</span><span data-en>Chapter 6 · Section 3</span></div>
+  <div class="module-title"><span class="num">6.3</span> <span data-zh>AML / CFT 合规 — 成本、技术路径与差异化条件</span><span data-en>6.3 AML / CFT Compliance — Cost, Technology & Differentiation</span></div>
 
   <div class="core-conclusion" style="background:#fef2f2; border-color:#ef4444;">
-    💸 <strong>核心结论：</strong>AML/CFT合规是跨境支付行业<strong>最大的隐性成本中心</strong>，也是最难量化的竞争壁垒。行业普遍问题是"过度合规"——全球AML系统的误报率高达<strong>99%</strong>，意味着每100笔被标记的可疑交易中只有1笔是真实问题，其余99笔都是"误杀"，浪费了大量合规资源并损害用户体验。真正将合规转化为竞争优势的条件只有一个：<strong>用技术将误报率系统性降低</strong>——Wise通过AI处理每月100万+份文件，自动化率30%；Payoneer通过20年新兴市场数据积累构建风险模型。合规能力是将"成本中心"转化为"竞争壁垒"的关键。
+    💸 <strong><span data-zh>核心结论：</span><span data-en>Key Conclusion: </span></strong><span data-zh>AML/CFT合规是跨境支付行业</span><span data-en>AML/CFT compliance is the cross-border payments industry's</span><strong>最大的隐性成本中心</strong>，也是最难量化的竞争壁垒。行业普遍问题是"过度合规"——全球AML系统的误报率高达<strong>99%</strong>，意味着每100笔被标记的可疑交易中只有1笔是真实问题，其余99笔都是"误杀"，浪费了大量合规资源并损害用户体验。真正将合规转化为竞争优势的条件只有一个：<strong>用技术将误报率系统性降低</strong>——Wise通过AI处理每月100万+份文件，自动化率30%；Payoneer通过20年新兴市场数据积累构建风险模型。合规能力是将"成本中心"转化为"竞争壁垒"的关键。
   </div>
 
   <!-- FATF旅行规则 -->
@@ -487,10 +498,10 @@
   <table class="data-table">
     <thead>
       <tr>
-        <th>维度</th>
-        <th>传统人工模式</th>
-        <th>自动化/AI模式（领先企业）</th>
-        <th>业务影响</th>
+        <th><span data-zh>维度</span><span data-en>Dimension</span></th>
+        <th><span data-zh>传统人工模式</span><span data-en>Traditional Manual Approach</span></th>
+        <th><span data-zh>自动化/AI模式（领先企业）</span><span data-en>Automated / AI Approach (Leaders)</span></th>
+        <th><span data-zh>业务影响</span><span data-en>Business Impact</span></th>
       </tr>
     </thead>
     <tbody>
@@ -617,7 +628,7 @@
   </div>
 
   <div class="source-row">
-    <span class="source-label">数据来源：</span>
+    <span class="source-label"><span data-zh>数据来源：</span><span data-en>Sources: </span></span>
     <span class="source-tag">[card-066] FSB G20进展报告</span>
     <span class="source-tag">[card-001] Wise FY2025合规章节</span>
     <span class="source-tag">[card-045] Payoneer合规护城河</span>
@@ -632,20 +643,20 @@
 <!-- 6.4 G20 跨境支付路线图 -->
 <!-- ════════════════════════════════════════ -->
 <div id="sec-6-4" class="module module-green">
-  <div class="module-label">第6章 · 第4节</div>
-  <div class="module-title"><span class="num">6.4</span> G20跨境支付路线图 — 不是空话，但也难如期实现</div>
+  <div class="module-label"><span data-zh>第6章 · 第4节</span><span data-en>Chapter 6 · Section 4</span></div>
+  <div class="module-title"><span class="num">6.4</span> <span data-zh>G20跨境支付路线图 — 不是空话，但也难如期实现</span><span data-en>6.4 G20 Cross-Border Payments Roadmap — Progress and Challenges</span></div>
 
   <div class="core-conclusion" style="background:#f0fdf4; border-color:#059669;">
-    🌐 <strong>核心结论：</strong>G20路线图<strong>不是空话</strong>——超过一半的15项优先行动已完成，ISO 20022全球迁移进入收官阶段，Project Nexus多边互联蓝图已完成。但<strong>2027年量化目标整体不乐观</strong>：KPI层面4个核心指标（成本/速度/透明度/覆盖）均未实现，多数甚至在小幅恶化。<strong>最可能实现的目标</strong>是汇款透明度（已达98-99%，接近100%目标）和ISO 20022标准普及；<strong>最难实现的目标</strong>是零售支付成本降至1%（目前B2B为1.6%，P2P为2.6%，最乐观情景下2027年前无法达标）和全球覆盖（最薄弱地区的中小企业访问甚至在下降）。[card-066]
+    🌐 <strong><span data-zh>核心结论：</span><span data-en>Key Conclusion: </span></strong>G20<span data-zh>路线图</span><span data-en>Roadmap</span> <strong><span data-zh>不是空话</span><span data-en>is not empty talk</span></strong>——超过一半的15项优先行动已完成，ISO 20022全球迁移进入收官阶段，Project Nexus多边互联蓝图已完成。但<strong>2027年量化目标整体不乐观</strong>：KPI层面4个核心指标（成本/速度/透明度/覆盖）均未实现，多数甚至在小幅恶化。<strong>最可能实现的目标</strong>是汇款透明度（已达98-99%，接近100%目标）和ISO 20022标准普及；<strong>最难实现的目标</strong>是零售支付成本降至1%（目前B2B为1.6%，P2P为2.6%，最乐观情景下2027年前无法达标）和全球覆盖（最薄弱地区的中小企业访问甚至在下降）。[card-066]
   </div>
 
   <!-- FSB四大挑战基准数据 -->
-  <h3 style="font-size:15px; font-weight:800; color:#0f172a; margin:20px 0 12px;">6.4.1 FSB四大挑战当前基准数据（2024年）</h3>
+  <h3 style="font-size:15px; font-weight:800; color:#0f172a; margin:20px 0 12px;">6.4.1 <span data-zh>FSB四大挑战当前基准数据（2024年）</span><span data-en>FSB Four Key Challenges: Current Baseline (2024)</span></h3>
 
   <div class="kpi-grid">
     <div class="kpi-card miss">
-      <div class="kpi-label">💰 挑战一：高成本</div>
-      <div class="kpi-target">目标：零售支付成本 ≤ 1%</div>
+      <div class="kpi-label">💰 <span data-zh>挑战一：高成本</span><span data-en>Challenge 1: High Cost</span></div>
+      <div class="kpi-target"><span data-zh>目标：零售支付成本 ≤ 1%</span><span data-en>Target: Retail payment cost ≤ 1%</span></div>
       <div class="kpi-current">
         当前：B2B成本 <strong>1.6%</strong>（目标1.6倍）/ P2P成本 <strong>2.6%</strong>（目标2.6倍）<br>
         汇款（发送$200）：平均 <strong>6.4%</strong>（+0.1pp，小幅恶化）/ G20汇款目标3%
@@ -653,8 +664,8 @@
       <span class="kpi-status miss">❌ 严重偏离目标</span>
     </div>
     <div class="kpi-card miss">
-      <div class="kpi-label">⚡ 挑战二：速度慢</div>
-      <div class="kpi-target">目标：零售支付75%在1小时内完成</div>
+      <div class="kpi-label">⚡ <span data-zh>挑战二：速度慢</span><span data-en>Challenge 2: Slow Speed</span></div>
+      <div class="kpi-target"><span data-zh>目标：零售支付75%在1小时内完成</span><span data-en>Target: 75% of retail payments completed within 1 hour</span></div>
       <div class="kpi-current">
         零售：<strong>33.5%</strong>在1小时内（-0.7pp，小幅恶化）/ <strong>69%</strong>在1个工作日内（-5pp）<br>
         汇款：<strong>54%</strong>在1小时内 / 批发：<strong>50.6%</strong>在1小时内（-3.2pp）
@@ -662,8 +673,8 @@
       <span class="kpi-status miss">❌ 偏离目标且小幅恶化</span>
     </div>
     <div class="kpi-card near">
-      <div class="kpi-label">🔍 挑战三：透明度低</div>
-      <div class="kpi-target">目标：100%提供费用和汇率信息</div>
+      <div class="kpi-label">🔍 <span data-zh>挑战三：透明度低</span><span data-en>Challenge 3: Low Transparency</span></div>
+      <div class="kpi-target"><span data-zh>目标：100%提供费用和汇率信息</span><span data-en>Target: 100% provide fee and FX rate disclosure</span></div>
       <div class="kpi-current">
         PSP向终端用户提供速度/成本信息：<strong>55.6%</strong>（+1.1pp，持续改善）<br>
         汇款透明度：<strong>98-99%</strong>（接近目标，是表现最好的KPI）
@@ -671,8 +682,8 @@
       <span class="kpi-status near">⚠️ 汇款接近达标，零售仍差距大</span>
     </div>
     <div class="kpi-card miss">
-      <div class="kpi-label">🌍 挑战四：覆盖不足</div>
-      <div class="kpi-target">目标：金融普惠，扩大跨境支付可及性</div>
+      <div class="kpi-label">🌍 <span data-zh>挑战四：覆盖不足</span><span data-en>Challenge 4: Insufficient Coverage</span></div>
+      <div class="kpi-target"><span data-zh>目标：金融普惠，扩大跨境支付可及性</span><span data-en>Target: Financial inclusion, expand cross-border payment access</span></div>
       <div class="kpi-current">
         亚太区中等偏上收入司法区访问改善；但<strong>中等偏下收入国家中小企业访问略有下降</strong><br>
         最需要改善的人群反而没有受益
@@ -686,54 +697,54 @@
   </div>
 
   <!-- 2027量化目标及当前达成率 -->
-  <h3 style="font-size:15px; font-weight:800; color:#0f172a; margin:24px 0 12px;">6.4.2 G20 2027年量化目标达成率评估</h3>
+  <h3 style="font-size:15px; font-weight:800; color:#0f172a; margin:24px 0 12px;">6.4.2 <span data-zh>G20 2027年量化目标达成率评估</span><span data-en>G20 2027 Quantitative Target Achievement Assessment</span></h3>
 
   <div class="progress-bar">
-    <div class="progress-label">汇款透明度（目标100%）</div>
+    <div class="progress-label"><span data-zh>汇款透明度（目标100%）</span><span data-en>Remittance Transparency (Target 100%)</span></div>
     <div class="progress-track"><div class="progress-fill progress-green" style="width:98%"></div></div>
     <div class="progress-pct">98-99%</div>
   </div>
   <div class="progress-bar">
-    <div class="progress-label">ISO 20022迁移（目标全球普及）</div>
+    <div class="progress-label"><span data-zh>ISO 20022迁移（目标全球普及）</span><span data-en>ISO 20022 Migration (Target: Global Adoption)</span></div>
     <div class="progress-track"><div class="progress-fill progress-green" style="width:85%"></div></div>
     <div class="progress-pct">140+司法区</div>
   </div>
   <div class="progress-bar">
-    <div class="progress-label">FPS路线图优先行动（91%已计划）</div>
+    <div class="progress-label"><span data-zh>FPS路线图优先行动（91%已计划）</span><span data-en>FPS Roadmap Priority Actions (91% Planned)</span></div>
     <div class="progress-track"><div class="progress-fill progress-green" style="width:91%"></div></div>
     <div class="progress-pct">91%</div>
   </div>
   <div class="progress-bar">
-    <div class="progress-label">零售支付速度（目标75%≤1小时）</div>
+    <div class="progress-label"><span data-zh>零售支付速度（目标75%≤1小时）</span><span data-en>Retail Payment Speed (Target 75% ≤1 hour)</span></div>
     <div class="progress-track"><div class="progress-fill progress-yellow" style="width:33%"></div></div>
     <div class="progress-pct">33.5%</div>
   </div>
   <div class="progress-bar">
-    <div class="progress-label">PSP透明度披露（目标100%）</div>
+    <div class="progress-label"><span data-zh>PSP透明度披露（目标100%）</span><span data-en>PSP Transparency Disclosure (Target 100%)</span></div>
     <div class="progress-track"><div class="progress-fill progress-yellow" style="width:56%"></div></div>
     <div class="progress-pct">55.6%</div>
   </div>
   <div class="progress-bar">
-    <div class="progress-label">B2B零售成本（目标≤1%）</div>
+    <div class="progress-label"><span data-zh>B2B零售成本（目标≤1%）</span><span data-en>B2B Retail Cost (Target ≤1%)</span></div>
     <div class="progress-track"><div class="progress-fill progress-red" style="width:38%"></div></div>
     <div class="progress-pct">1.6%</div>
   </div>
   <div class="progress-bar">
-    <div class="progress-label">汇款成本（目标≤3%，当前6.4%）</div>
+    <div class="progress-label"><span data-zh>汇款成本（目标≤3%，当前6.4%）</span><span data-en>Remittance Cost (Target ≤3%, Current 6.4%)</span></div>
     <div class="progress-track"><div class="progress-fill progress-red" style="width:20%"></div></div>
     <div class="progress-pct">6.4%</div>
   </div>
 
   <!-- 15项优先行动实施进展 -->
-  <h3 style="font-size:15px; font-weight:800; color:#0f172a; margin:24px 0 12px;">6.4.3 G20 15项优先行动实施进展概览</h3>
+  <h3 style="font-size:15px; font-weight:800; color:#0f172a; margin:24px 0 12px;">6.4.3 <span data-zh>G20 15项优先行动实施进展概览</span><span data-en>G20 15 Priority Actions Implementation Overview</span></h3>
   <table class="action-table">
     <thead>
       <tr>
         <th style="width:40px;">#</th>
-        <th>行动领域</th>
-        <th style="width:100px;">责任方</th>
-        <th style="width:80px;">状态</th>
-        <th>业务影响</th>
+        <th><span data-zh>行动领域</span><span data-en>Action Area</span></th>
+        <th style="width:100px;"><span data-zh>责任方</span><span data-en>Owner</span></th>
+        <th style="width:80px;"><span data-zh>状态</span><span data-en>Status</span></th>
+        <th><span data-zh>业务影响</span><span data-en>Business Impact</span></th>
       </tr>
     </thead>
     <tbody>
@@ -846,11 +857,11 @@
   </table>
 
   <!-- 最终评估 -->
-  <h3 style="font-size:15px; font-weight:800; color:#0f172a; margin:24px 0 12px;">6.4.4 G20路线图综合评估：最可能 vs 最难实现</h3>
+  <h3 style="font-size:15px; font-weight:800; color:#0f172a; margin:24px 0 12px;">6.4.4 <span data-zh>G20路线图综合评估：最可能 vs 最难实现</span><span data-en>G20 Roadmap Assessment: Most Likely vs. Hardest to Achieve</span></h3>
 
   <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:20px 0;">
     <div class="insight-box">
-      <div class="insight-title" style="color:#166534;">✅ 最可能在2027年前实现的目标</div>
+      <div class="insight-title" style="color:#166534;">✅ <span data-zh>最可能在2027年前实现的目标</span><span data-en>Most Likely to Achieve by 2027</span></div>
       <ul class="insight-list">
         <li><strong>汇款透明度达100%：</strong>已在98-99%，消费者保护导向的汇款监管见效，最后一公里清晰</li>
         <li><strong>ISO 20022全球普及：</strong>140+司法区已实施，2025年11月Swift截止日推动收官</li>
@@ -859,7 +870,7 @@
       </ul>
     </div>
     <div style="background:#fef2f2; border: 1px solid #fca5a5; border-radius: 8px; padding: 16px 20px;">
-      <div style="font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:#991b1b; margin-bottom:10px; display:flex; align-items:center; gap:6px;">❌ 2027年前最难实现的目标</div>
+      <div style="font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:#991b1b; margin-bottom:10px; display:flex; align-items:center; gap:6px;"><span data-zh>❌ 2027年前最难实现的目标</span><span data-en>❌ Hardest to Achieve by 2027</span></div>
       <ul style="margin:0; padding-left:0; list-style:none;">
         <li style="font-size:13px; color:#991b1b; padding:4px 0 4px 18px; position:relative; line-height:1.6;">
           <span style="position:absolute; left:0;">🔴</span>
@@ -882,7 +893,7 @@
   </div>
 
   <div class="insight-box">
-    <div class="insight-title">📊 对跨境支付公司的战略含义</div>
+    <div class="insight-title">📊 <span data-zh>对跨境支付公司的战略含义</span><span data-en>Strategic Implications for Cross-Border Payment Companies</span></div>
     <ul class="insight-list">
       <li><strong>G20路线图是顺风，不是确定性：</strong>路线图的推进方向（透明度、互操作、标准化）与领先公司的战略方向高度一致，但速度比预期慢。先行者已建立竞争优势。</li>
       <li><strong>ISO 20022迁移是即时机会：</strong>2025年11月Swift截止日是行业关键节点，已完成迁移的公司（Wise等）将在合规成本和支付速度上获得显著优势。</li>
@@ -892,7 +903,7 @@
   </div>
 
   <div class="source-row">
-    <span class="source-label">数据来源：</span>
+    <span class="source-label"><span data-zh>数据来源：</span><span data-en>Sources: </span></span>
     <span class="source-tag">[card-066] FSB G20 2024年综合进展报告（52条信息点）</span>
     <span class="source-tag">[card-139] MAS Project Nexus蓝图</span>
     <span class="source-tag">[card-137] HKMA稳定币法案2024</span>
@@ -902,11 +913,11 @@
 
 <!-- ════ 章节总结 ════ -->
 <div class="module module-orange">
-  <div class="module-label">第6章 · 综合结论</div>
-  <div class="module-title">监管环境的战略地图：监管态度决定扩张路径，合规能力决定竞争高度</div>
+  <div class="module-label"><span data-zh>第6章 · 综合结论</span><span data-en>Chapter 6 · Overall Conclusion</span></div>
+  <div class="module-title"><span data-zh>监管环境的战略地图：监管态度决定扩张路径，合规能力决定竞争高度</span><span data-en>Regulatory Strategy Map: Stance Determines Expansion Path, Compliance Determines Competitive Height</span></div>
 
   <div class="core-conclusion" style="background:#fffbeb; border-color:#d97706;">
-    🗺️ <strong>本章核心洞察：</strong>监管环境对跨境支付公司的影响通过三个层次叠加：① <strong>牌照准入层</strong>——决定能不能进入某市场；② <strong>合规成本层</strong>——决定单位经济的可持续性；③ <strong>基础设施层（G20路线图）</strong>——决定行业的长期成本结构。领先公司（Wise、Payoneer）的战略本质是：先用牌照多元化打开市场访问，再用技术化合规降低运营成本，最后在G20推动的基础设施改革中比竞争对手更早受益。
+    🗺️ <strong><span data-zh>本章核心洞察：</span><span data-en>💡 Key Insights: </span></strong><span data-zh>监管环境对跨境支付公司的影响通过三个层次叠加</span><span data-en>The regulatory environment impacts cross-border payment companies through three stacked layers</span>：① <strong>牌照准入层</strong>——决定能不能进入某市场；② <strong>合规成本层</strong>——决定单位经济的可持续性；③ <strong>基础设施层（G20路线图）</strong>——决定行业的长期成本结构。领先公司（Wise、Payoneer）的战略本质是：先用牌照多元化打开市场访问，再用技术化合规降低运营成本，最后在G20推动的基础设施改革中比竞争对手更早受益。
   </div>
 
   <div class="body-text">
@@ -919,11 +930,32 @@
 
 <!-- 页脚 -->
 <div style="background:white; border-radius:12px; padding:16px 28px; border:1px solid #e2e8f0; font-size:12px; color:#94a3b8; margin-top:8px;">
-  <strong>第6章 · 跨境支付监管环境综合分析</strong> | 
+  <strong><span data-zh>第6章 · 跨境支付监管环境综合分析</span><span data-en>Chapter 6 · Cross-Border Payments Regulatory Environment</span></strong> | 
   知识库版本 v2 | 
   数据来源：FSB G20进展报告(card-066) · HKMA文件(card-137/138) · MAS文件(card-139/140) · 香港MSO指引(card-153/307) · Wise FY2025(card-001) · Payoneer FY2024(card-045) | 
   分析截止：2026年3月30日
 </div>
+
+<script>
+  // ── Language Switcher ──
+  let lang = localStorage.getItem('lang') || 'zh';
+
+  function switchLang(l) {
+    lang = l;
+    localStorage.setItem('lang', l);
+    document.querySelectorAll('[data-zh]').forEach(el => {
+      el.style.display = (l === 'zh') ? '' : 'none';
+    });
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.style.display = (l === 'en') ? '' : 'none';
+    });
+    document.getElementById('btn-zh').classList.toggle('active', l === 'zh');
+    document.getElementById('btn-en').classList.toggle('active', l === 'en');
+  }
+
+  // Initialize on page load
+  switchLang(lang);
+</script>
 
 </body>
 </html>

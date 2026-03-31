@@ -264,15 +264,26 @@
   .wta-points { margin: 12px 0 0; padding-left: 0; list-style: none; }
   .wta-points li { font-size: 13px; color: rgba(255,255,255,0.9); padding: 4px 0 4px 20px; position: relative; }
   .wta-points li::before { content: "→"; position: absolute; left: 0; color: rgba(255,255,255,0.5); }
+
+  /* ── Language Switcher ── */
+  .lang-switcher { position: fixed; top: 16px; right: 20px; z-index: 1000; display: flex; gap: 4px; }
+  .lang-switcher button { padding: 4px 10px; border: 1px solid #e2e8f0; border-radius: 4px; font-size: 12px; cursor: pointer; background: white; color: #64748b; }
+  .lang-switcher button.active { background: #2563eb; color: white; border-color: #2563eb; }
 </style>
 </head>
 <body>
 
+<!-- ══════════════════ LANG SWITCHER ══════════════════ -->
+<div class="lang-switcher">
+  <button id="btn-zh" onclick="switchLang('zh')">中文</button>
+  <button id="btn-en" onclick="switchLang('en')">EN</button>
+</div>
+
 <!-- ════ 章节头 ════ -->
 <div class="chapter-header">
-  <div class="chapter-label">知识库 · 第4章</div>
-  <div class="chapter-title">跨境支付行业竞争格局分析</div>
-  <div class="chapter-subtitle">谁是真正的对手？护城河深在哪里？未来18个月谁在做什么？— 8家核心公司深度竞争扫描</div>
+  <div class="chapter-label"><span data-zh>知识库 · 第4章</span><span data-en>Knowledge Base · Chapter 4</span></div>
+  <div class="chapter-title"><span data-zh>跨境支付行业竞争格局分析</span><span data-en>Cross-Border Payments: Competitive Landscape Analysis</span></div>
+  <div class="chapter-subtitle"><span data-zh>谁是真正的对手？护城河深在哪里？未来18个月谁在做什么？— 8家核心公司深度竞争扫描</span><span data-en>Who are the real rivals? Where are the moats? What will happen in 18 months? — Deep scan of 8 core companies</span></div>
   <div class="chapter-meta">
     <div class="meta-item"><strong>覆盖公司</strong> 8家（Wise/Revolut/Payoneer/Remitly/OFX/Airwallex/dLocal/Western Union）</div>
     <div class="meta-item"><strong>数据基准</strong> FY2024–FY2025财报</div>
@@ -283,12 +294,12 @@
 
 <!-- ════ TOC ════ -->
 <div class="toc-box">
-  <div class="toc-title">本章目录</div>
+  <div class="toc-title"><span data-zh>本章目录</span><span data-en>Table of Contents</span></div>
   <div class="toc-grid">
-    <a href="#section-41" class="toc-item"><span class="toc-num">4.1</span> 竞争矩阵：谁和谁真正在争</a>
-    <a href="#section-42" class="toc-item"><span class="toc-num">4.2</span> 护城河评分：真正的壁垒在哪里</a>
-    <a href="#section-43" class="toc-item"><span class="toc-num">4.3</span> 战略动态：未来18个月看点</a>
-    <a href="#section-conclusion" class="toc-item"><span class="toc-num">综合</span> 章节综合结论</a>
+    <a href="#section-41" class="toc-item"><span class="toc-num">4.1</span> <span data-zh>竞争矩阵：谁和谁真正在争</span><span data-en>4.1 Competitive Matrix: Who Competes with Whom</span></a>
+    <a href="#section-42" class="toc-item"><span class="toc-num">4.2</span> <span data-zh>护城河评分：真正的壁垒在哪里</span><span data-en>4.2 Moat Scoring: Where Are the Real Barriers?</span></a>
+    <a href="#section-43" class="toc-item"><span class="toc-num">4.3</span> <span data-zh>战略动态：未来18个月看点</span><span data-en>4.3 Strategic Dynamics: 18-Month Outlook</span></a>
+    <a href="#section-conclusion" class="toc-item"><span class="toc-num"><span data-zh>综合</span><span data-en>Summary</span></span> <span data-zh>章节综合结论</span><span data-en>Chapter Summary</span></a>
   </div>
 </div>
 
@@ -296,8 +307,8 @@
      4.1 竞争矩阵
 ════════════════════════════════════════ -->
 <div id="section-41" class="module">
-  <div class="module-label">4.1 · Competitive Matrix</div>
-  <div class="module-title"><span class="num">4.1</span> 竞争矩阵：谁在哪里战斗？</div>
+  <div class="module-label">4.1 · <span data-zh>竞争矩阵</span><span data-en>Competitive Matrix</span></div>
+  <div class="module-title"><span class="num">4.1</span> <span data-zh>竞争矩阵：谁在哪里战斗？</span><span data-en>Competitive Matrix: Who Competes Where?</span></div>
 
   <div class="core-conclusion">
     🎯 <strong>核心结论：</strong>跨境支付市场已形成明显的"分层竞争"格局——C端汇款、SMB全球收款、企业级金融基础设施三条赛道基本分离，正面战场主要集中在 Wise vs Airwallex（SMB中间地带）和 Wise vs Revolut（C端与个人账户）。行业整体已进入"强者恒强"的加速分化阶段：规模优势、牌照壁垒和数据飞轮共同推动头部集中。[card-001, card-057, card-126, card-127]
@@ -316,10 +327,10 @@
     <div class="quadrant-br"></div>
 
     <!-- 象限文字 -->
-    <div class="quadrant-text" style="left:130px; top:28px; color:#3b82f6; font-size:10px;">全球C端汇款</div>
-    <div class="quadrant-text" style="right:16px; top:28px; color:#059669; font-size:10px;">全球企业金融</div>
-    <div class="quadrant-text" style="left:130px; bottom:60px; color:#d97706; font-size:10px;">本地C端</div>
-    <div class="quadrant-text" style="right:16px; bottom:60px; color:#7c3aed; font-size:10px;">区域B2B专家</div>
+    <div class="quadrant-text" style="left:130px; top:28px; color:#3b82f6; font-size:10px;"><span data-zh>全球C端汇款</span><span data-en>Global Consumer Remittance</span></div>
+    <div class="quadrant-text" style="right:16px; top:28px; color:#059669; font-size:10px;"><span data-zh>全球企业金融</span><span data-en>Global Enterprise Finance</span></div>
+    <div class="quadrant-text" style="left:130px; bottom:60px; color:#d97706; font-size:10px;"><span data-zh>本地C端</span><span data-en>Local Consumer</span></div>
+    <div class="quadrant-text" style="right:16px; bottom:60px; color:#7c3aed; font-size:10px;"><span data-zh>区域B2B专家</span><span data-en>Regional B2B Expert</span></div>
 
     <!-- 坐标轴 -->
     <div class="matrix-axis-h"></div>
@@ -328,8 +339,8 @@
     <div class="matrix-arrow-up">↑</div>
 
     <!-- 轴标签 -->
-    <div style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); font-size:11px; font-weight:700; color:#475569;">← C端消费者 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 企业端 →</div>
-    <div style="position:absolute; left:6px; top:50%; transform:translateY(-50%) rotate(-90deg); font-size:11px; font-weight:700; color:#475569; white-space:nowrap;">本地→全球覆盖</div>
+    <div style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); font-size:11px; font-weight:700; color:#475569;">← <span data-zh>C端消费者</span><span data-en>Consumer/Individual</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-zh>企业端</span><span data-en>Enterprise/Institutional</span> →</div>
+    <div style="position:absolute; left:6px; top:50%; transform:translateY(-50%) rotate(-90deg); font-size:11px; font-weight:700; color:#475569; white-space:nowrap;"><span data-zh>本地→全球覆盖</span><span data-en>Local → Global</span></div>
 
     <!-- 公司点：Wise (中偏右C端，全球顶部) -->
     <!-- X: 40%, Y: 88% from top -->
@@ -372,7 +383,7 @@
   <p style="font-size:11px; color:#94a3b8; text-align:center; margin-top:4px;">⚠ 矩阵为示意性定位，基于各公司财报披露的客群结构和地域覆盖综合判断。气泡大小未等比表示市值。</p>
 
   <!-- 竞争交叉点分析 -->
-  <h3 style="font-size:16px; font-weight:800; color:#1e293b; margin: 28px 0 16px; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px;">⚡ 三大高强度竞争交叉点</h3>
+  <h3 style="font-size:16px; font-weight:800; color:#1e293b; margin: 28px 0 16px; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px;">⚡ <span data-zh>三大高强度竞争交叉点</span><span data-en>Three High-Intensity Competitive Overlap Zones</span></h3>
 
   <div class="crosspoint-grid">
     <!-- Wise vs Airwallex -->
@@ -411,7 +422,7 @@
 
   <!-- 强者恒强结论 -->
   <div class="winner-takes-all">
-    <div class="wta-title">📊 行业判断：已进入"强者恒强"阶段</div>
+    <div class="wta-title">📊 <span data-zh>行业判断：已进入"强者恒强"阶段</span><span data-en>Industry Verdict: Winner-Takes-All Phase Underway</span></div>
     <div class="wta-content">
       跨境支付行业正在经历从"蓝海混战"到"定型寡头"的关键转型。BCG数据显示，金融科技在跨境支付领域抢占银行份额的速度加快，Wise/Remitly/Ebury等专业玩家已实现两位数收入增长 [card-057]。规模化效应体现在三个层面：
     </div>
@@ -423,7 +434,7 @@
   </div>
 
   <div class="source-row">
-    <span class="source-label">数据来源：</span>
+    <span class="source-label"><span data-zh>数据来源：</span><span data-en>Sources: </span></span>
     <span class="source-tag">card-001 Wise FY2025</span>
     <span class="source-tag">card-032 Revolut FY2024</span>
     <span class="source-tag">card-045 Payoneer FY2024</span>
@@ -439,8 +450,8 @@
      4.2 护城河评分
 ════════════════════════════════════════ -->
 <div id="section-42" class="module module-purple">
-  <div class="module-label">4.2 · Moat Scoring</div>
-  <div class="module-title"><span class="num">4.2</span> 护城河评分：谁的壁垒真正难以攻克？</div>
+  <div class="module-label">4.2 · <span data-zh>护城河评分</span><span data-en>Moat Scoring</span></div>
+  <div class="module-title"><span class="num">4.2</span> <span data-zh>护城河评分：谁的壁垒真正难以攻克？</span><span data-en>Moat Scoring: Whose Barriers Are Truly Unassailable?</span></div>
 
   <div class="core-conclusion" style="background:#f5f3ff; border-color:#7c3aed; color:#3b0764;">
     🏰 <strong>核心结论：</strong>Wise与Airwallex在"综合护城河深度"上并列第一（各26/30分），但护城河类型截然不同——Wise的护城河是<strong>品牌+数据+价格壁垒</strong>，Airwallex是<strong>牌照+技术+API嵌入</strong>。最可持续的护城河类型是"牌照网络×技术基础设施"的组合，因为两者均需要大量时间和资本投入，且监管壁垒在全球趋严背景下只会越来越高。[card-001, card-032, card-045, card-057, card-127]
@@ -455,14 +466,14 @@
   <table class="moat-table">
     <thead>
       <tr>
-        <th class="company-col" style="text-align:left; min-width:110px;">公司</th>
-        <th style="min-width:110px;">① 牌照网络<br><span style="font-weight:400; font-size:10px;">监管护城河</span></th>
-        <th style="min-width:110px;">② 技术自建<br><span style="font-weight:400; font-size:10px;">基础设施</span></th>
-        <th style="min-width:110px;">③ 客户粘性<br><span style="font-weight:400; font-size:10px;">转换成本</span></th>
-        <th style="min-width:110px;">④ 网络效应<br><span style="font-weight:400; font-size:10px;">平台效应</span></th>
-        <th style="min-width:110px;">⑤ 品牌/口碑<br><span style="font-weight:400; font-size:10px;">获客效率</span></th>
-        <th style="min-width:110px;">⑥ 数据资产<br><span style="font-weight:400; font-size:10px;">数据壁垒</span></th>
-        <th style="min-width:60px;">总分<br><span style="font-weight:400; font-size:10px;">/30</span></th>
+        <th class="company-col" style="text-align:left; min-width:110px;"><span data-zh>公司</span><span data-en>Company</span></th>
+        <th style="min-width:110px;"><span data-zh>① 牌照网络</span><span data-en>① License Network</span><br><span style="font-weight:400; font-size:10px;"><span data-zh>监管护城河</span><span data-en>Regulatory Moat</span></span></th>
+        <th style="min-width:110px;"><span data-zh>② 技术自建</span><span data-en>② Proprietary Tech</span><br><span style="font-weight:400; font-size:10px;"><span data-zh>基础设施</span><span data-en>Infrastructure</span></span></th>
+        <th style="min-width:110px;"><span data-zh>③ 客户粘性</span><span data-en>③ Customer Stickiness</span><br><span style="font-weight:400; font-size:10px;"><span data-zh>转换成本</span><span data-en>Switching Costs</span></span></th>
+        <th style="min-width:110px;"><span data-zh>④ 网络效应</span><span data-en>④ Network Effects</span><br><span style="font-weight:400; font-size:10px;"><span data-zh>平台效应</span><span data-en>Platform Effect</span></span></th>
+        <th style="min-width:110px;"><span data-zh>⑤ 品牌/口碑</span><span data-en>⑤ Brand</span><br><span style="font-weight:400; font-size:10px;"><span data-zh>获客效率</span><span data-en>Acquisition Efficiency</span></span></th>
+        <th style="min-width:110px;"><span data-zh>⑥ 数据资产</span><span data-en>⑥ Data Assets</span><br><span style="font-weight:400; font-size:10px;"><span data-zh>数据壁垒</span><span data-en>Data Barrier</span></span></th>
+        <th style="min-width:60px;"><span data-zh>总分</span><span data-en>Total Score</span><br><span style="font-weight:400; font-size:10px;">/30</span></th>
       </tr>
     </thead>
     <tbody>
@@ -734,7 +745,7 @@
 
   <!-- 护城河深度排序 -->
   <div class="rank-box">
-    <div class="rank-title">🏆 护城河深度综合排序（总分/30）</div>
+    <div class="rank-title">🏆 <span data-zh>护城河深度综合排序（总分/30）</span><span data-en>Moat Depth Ranking (Total Score /30)</span></div>
     <div class="rank-row">
       <div class="rank-num">1</div>
       <div class="rank-company">Revolut</div>
@@ -787,7 +798,7 @@
 
   <!-- 护城河类型分析 -->
   <div class="insight-box">
-    <div class="insight-title">💡 最可持续的护城河类型分析</div>
+    <div class="insight-title">💡 <span data-zh>最可持续的护城河类型分析</span><span data-en>Analysis of the Most Sustainable Moat Types</span></div>
     <ul class="insight-list">
       <li><strong>牌照×技术组合（Wise/Airwallex）：</strong>监管护城河在全球合规收紧背景下只会越来越高（BCG：BaaS监管审查加强 [card-057]），叠加技术基础设施投资的沉没成本，是最难被攻克的护城河组合</li>
       <li><strong>超级App粘性（Revolut）：</strong>多产品交叉销售创造的转换成本最难量化但也最难打破——用户不会因为"某一项功能略差"而迁移整个金融生活</li>
@@ -797,7 +808,7 @@
   </div>
 
   <div class="source-row">
-    <span class="source-label">数据来源：</span>
+    <span class="source-label"><span data-zh>数据来源：</span><span data-en>Sources: </span></span>
     <span class="source-tag">card-001 Wise FY2025</span>
     <span class="source-tag">card-032 Revolut FY2024</span>
     <span class="source-tag">card-045 Payoneer FY2024</span>
@@ -814,15 +825,15 @@
      4.3 战略动态
 ════════════════════════════════════════ -->
 <div id="section-43" class="module module-green">
-  <div class="module-label">4.3 · Strategic Dynamics</div>
-  <div class="module-title"><span class="num">4.3</span> 战略动态：未来18个月谁在做什么？</div>
+  <div class="module-label">4.3 · <span data-zh>战略动态</span><span data-en>Strategic Dynamics</span></div>
+  <div class="module-title"><span class="num">4.3</span> <span data-zh>战略动态：未来18个月谁在做什么？</span><span data-en>Strategic Dynamics: What Will Each Player Do in the Next 18 Months?</span></div>
 
   <div class="core-conclusion" style="background:#f0fdf4; border-color:#059669; color:#064e3b;">
     🚀 <strong>核心结论：</strong><strong>Airwallex是当前战略执行力最强的公司</strong>（$1B年化收入目标提前达成 [card-127]，通过收购快速布局新兴市场牌照）；<strong>Revolut面临最大战略选择压力</strong>（银行化转型 vs 超级App扩张路径的取舍，以及加密/财富收入的周期波动性）。未来18个月最值得关注的三大趋势：平台化/嵌入式金融加速、稳定币/CBDC布局启动、AI降本竞赛升级。[card-057, card-127, card-032]
   </div>
 
   <!-- 各公司近期战略动作 -->
-  <h3 style="font-size:16px; font-weight:800; color:#1e293b; margin: 24px 0 16px; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px;">📋 各公司近期重大战略动作（2024-2025）</h3>
+  <h3 style="font-size:16px; font-weight:800; color:#1e293b; margin: 24px 0 16px; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px;">📋 <span data-zh>各公司近期重大战略动作（2024-2025）</span><span data-en>Major Strategic Moves by Company (2024–2025)</span></h3>
 
   <div class="strategy-grid">
     <!-- Wise -->
@@ -896,10 +907,10 @@
   </div>
 
   <!-- 三大趋势 -->
-  <h3 style="font-size:16px; font-weight:800; color:#1e293b; margin: 32px 0 16px; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px;">🔮 未来18个月：三大值得关注的趋势</h3>
+  <h3 style="font-size:16px; font-weight:800; color:#1e293b; margin: 32px 0 16px; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px;">🔮 <span data-zh>未来18个月：三大值得关注的趋势</span><span data-en>Three Industry Trends to Watch in the Next 18 Months</span></h3>
 
   <div class="trend-box">
-    <div class="trend-title">🏗️ 趋势一：平台化/嵌入式金融加速</div>
+    <div class="trend-title">🏗️ <span data-zh>趋势一：平台化/嵌入式金融加速</span><span data-en>Trend 1: Platformization / Embedded Finance Acceleration</span></div>
     <div class="trend-content">
       <strong>信号：</strong>Airwallex通过API嵌入Shopify/Xero/QuickBooks，BILL合作触达45万SMB [card-127]；Wise Platform向合作银行开放基础设施；Payoneer深化电商平台内嵌；OFX推进Paytron企业卡自动化。<br><br>
       <strong>逻辑：</strong>BCG指出嵌入式金融（ISV/Payfac模式）将引领收单量增长，同样逻辑适用于跨境支付——<em>谁能嵌入到企业财务工作流的关键节点，谁就获得粘性最高、切换成本最大的客户</em> [card-057]。<br><br>
@@ -908,7 +919,7 @@
   </div>
 
   <div class="trend-box">
-    <div class="trend-title">₿ 趋势二：稳定币/CBDC布局的战略窗口</div>
+    <div class="trend-title">₿ <span data-zh>趋势二：稳定币/CBDC布局的战略窗口</span><span data-en>Trend 2: Stablecoin / CBDC Strategic Window</span></div>
     <div class="trend-content">
       <strong>信号：</strong>BCG报告显示超过90%的全球央行正在开发CBDC [card-057]；即时支付跨境互联方案（IXB/Nexus/APN）正在推进；60+个国家已上线即时支付系统。Revolut财富产品中加密货币贡献收入+298%（2024年牛市）[card-032]。<br><br>
       <strong>逻辑：</strong>稳定币和CBDC一旦成熟，将直接威胁传统跨境支付的套利空间（SWIFT费用、汇率加点、T+2结算时间）。<em>最先建立稳定币跨境支付能力的玩家将占据下一阶段的战略高地</em>。<br><br>
@@ -917,7 +928,7 @@
   </div>
 
   <div class="trend-box">
-    <div class="trend-title">🤖 趋势三：AI降本竞赛升级</div>
+    <div class="trend-title">🤖 <span data-zh>趋势三：AI降本竞赛升级</span><span data-en>Trend 3: AI Cost-Reduction Race Escalates</span></div>
     <div class="trend-content">
       <strong>信号：</strong>BCG指出GenAI最多可将服务成本降低70% [card-057]；Airwallex AI KYC减少50%误报、提升20%自动通过率、10秒内完成风险检测 [card-127]；Remitly客服费用仅+1.7%而客户量+32% [card-047]；Wise营销费用低效率下的快速增长。<br><br>
       <strong>逻辑：</strong>合规KYC、欺诈检测、客服三大成本中心均可通过AI大幅压缩。<em>能最快落地AI运营效率的公司，将获得更大的定价压缩空间来挤压竞争对手</em>。<br><br>
@@ -926,16 +937,16 @@
   </div>
 
   <!-- 战略压力/优势总结 -->
-  <h3 style="font-size:16px; font-weight:800; color:#1e293b; margin: 32px 0 16px; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px;">⚖️ 战略执行力与战略压力评估</h3>
+  <h3 style="font-size:16px; font-weight:800; color:#1e293b; margin: 32px 0 16px; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px;">⚖️ <span data-zh>战略执行力与战略压力评估</span><span data-en>Strategic Execution Rating & Pressure Assessment</span></h3>
 
   <table class="data-table">
     <thead>
       <tr>
-        <th>公司</th>
-        <th>战略执行力</th>
-        <th>核心战略机遇</th>
-        <th>最大战略压力</th>
-        <th>18个月关键观察点</th>
+        <th><span data-zh>公司</span><span data-en>Company</span></th>
+        <th><span data-zh>战略执行力</span><span data-en>Strategic Execution Rating</span></th>
+        <th><span data-zh>核心战略机遇</span><span data-en>Key Strategic Opportunity</span></th>
+        <th><span data-zh>最大战略压力</span><span data-en>Biggest Strategic Pressure</span></th>
+        <th><span data-zh>18个月关键观察点</span><span data-en>Key Metrics to Watch (18 Months)</span></th>
       </tr>
     </thead>
     <tbody>
@@ -999,7 +1010,7 @@
   </table>
 
   <div class="source-row">
-    <span class="source-label">数据来源：</span>
+    <span class="source-label"><span data-zh>数据来源：</span><span data-en>Sources: </span></span>
     <span class="source-tag">card-001 Wise FY2025</span>
     <span class="source-tag">card-032 Revolut FY2024</span>
     <span class="source-tag">card-045 Payoneer FY2024</span>
@@ -1016,8 +1027,8 @@
      综合结论
 ════════════════════════════════════════ -->
 <div id="section-conclusion" class="module module-orange">
-  <div class="module-label">综合结论 · Chapter Summary</div>
-  <div class="module-title"><span class="num">综合</span> 第4章核心结论汇总</div>
+  <div class="module-label"><span data-zh>综合结论</span><span data-en>Chapter Summary</span> · Chapter Summary</div>
+  <div class="module-title"><span class="num"><span data-zh>综合</span><span data-en>Summary</span></span> <span data-zh>第4章核心结论汇总</span><span data-en>Chapter 4: Key Conclusions</span></div>
 
   <div class="core-conclusion" style="background:#fffbeb; border-color:#d97706; color:#451a03;">
     📌 <strong>三点章节级结论：</strong><br>
@@ -1029,57 +1040,57 @@
   <table class="data-table" style="margin-top:20px;">
     <thead>
       <tr>
-        <th>维度</th>
-        <th>领先者</th>
-        <th>关键数据</th>
-        <th>主要来源</th>
+        <th><span data-zh>维度</span><span data-en>Dimension</span></th>
+        <th><span data-zh>领先者</span><span data-en>Leader</span></th>
+        <th><span data-zh>关键数据</span><span data-en>Key Data</span></th>
+        <th><span data-zh>主要来源</span><span data-en>Sources</span></th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><strong>交易规模</strong></td>
+        <td><strong><span data-zh>交易规模</span><span data-en>Transaction Volume</span></strong></td>
         <td>Revolut ($1.3T) > Wise ($190B) > Payoneer ($80B)</td>
         <td>Revolut FY2024交易量$1.3万亿</td>
         <td><span class="source-tag">card-032</span></td>
       </tr>
       <tr>
-        <td><strong>营收规模</strong></td>
+        <td><strong><span data-zh>营收规模</span><span data-en>Revenue Scale</span></strong></td>
         <td>Revolut ($4B) > Wise (£1.2B) > Remitly ($1.26B)</td>
         <td>Revolut营收+72% YoY至$40亿</td>
         <td><span class="source-tag">card-032</span></td>
       </tr>
       <tr>
-        <td><strong>增速</strong></td>
+        <td><strong><span data-zh>增速</span><span data-en>Growth Rate</span></strong></td>
         <td>Airwallex (+90%) > Revolut (+72%) > Remitly (+34%)</td>
         <td>Airwallex年化收入+90% YoY</td>
         <td><span class="source-tag">card-126</span></td>
       </tr>
       <tr>
-        <td><strong>利润率</strong></td>
+        <td><strong><span data-zh>利润率</span><span data-en>Profit Margin</span></strong></td>
         <td>Revolut (35% PBT) > OFX (28.4% EBITDA) = Wise (28.4%)</td>
         <td>OFX/Wise EBITDA利润率完全一致（28.4%）</td>
         <td><span class="source-tag">card-081</span></td>
       </tr>
       <tr>
-        <td><strong>护城河深度</strong></td>
+        <td><strong><span data-zh>护城河深度</span><span data-en>Moat Depth</span></strong></td>
         <td>Revolut (28/30) > Wise (26/30) > Airwallex (24/30)</td>
         <td>多维度综合评分</td>
         <td><span class="source-tag">本章综合</span></td>
       </tr>
       <tr>
-        <td><strong>牌照覆盖</strong></td>
+        <td><strong><span data-zh>牌照覆盖</span><span data-en>License Coverage</span></strong></td>
         <td>Western Union (200+) > Payoneer (190+) > Wise (65) ≈ Airwallex (60+)</td>
         <td>Airwallex中国大陆牌照具有稀缺性</td>
         <td><span class="source-tag">card-127</span></td>
       </tr>
       <tr>
-        <td><strong>取费率（费率竞争力）</strong></td>
+        <td><strong><span data-zh>取费率（费率竞争力）</span><span data-en>Take Rate (Price Competitiveness)</span></strong></td>
         <td>Wise (0.58%) < Airwallex (0.4-0.5% FX) < Payoneer (109bps) < Remitly (2.3%)</td>
         <td>Wise Q4 FY2025 take rate降至历史低点0.53%</td>
         <td><span class="source-tag">card-001</span></td>
       </tr>
       <tr>
-        <td><strong>战略执行力</strong></td>
+        <td><strong><span data-zh>战略执行力</span><span data-en>Strategic Execution</span></strong></td>
         <td>Airwallex > Wise > Revolut > Payoneer</td>
         <td>Airwallex $1B年化收入目标提前达成</td>
         <td><span class="source-tag">card-127</span></td>
@@ -1088,7 +1099,7 @@
   </table>
 
   <div class="insight-box" style="margin-top: 20px;">
-    <div class="insight-title">💡 对投资者/研究者的核心洞察</div>
+    <div class="insight-title">💡 <span data-zh>对投资者/研究者的核心洞察</span><span data-en>Key Insights for Investors / Researchers</span></div>
     <ul class="insight-list">
       <li>行业竞争进入"马太效应"阶段：头部公司的飞轮越转越快（Wise降价→量增→成本降→再降价），中长尾玩家面临份额被持续侵蚀的压力 [card-057]</li>
       <li>Airwallex是最值得关注的"黑马"：$60亿估值+$1B+营收+全球最广牌照+AI能力，一旦上市将重塑行业估值体系 [card-127]</li>
@@ -1098,7 +1109,7 @@
   </div>
 
   <div class="source-row">
-    <span class="source-label">章节综合来源：</span>
+    <span class="source-label"><span data-zh>章节综合来源：</span><span data-en>Chapter Sources: </span></span>
     <span class="source-tag">card-001 Wise FY2025</span>
     <span class="source-tag">card-002 Wise FY2024</span>
     <span class="source-tag">card-032 Revolut FY2024</span>
@@ -1113,9 +1124,44 @@
 
 <!-- ════ 页脚 ════ -->
 <div style="text-align:center; padding:32px 0 16px; font-size:12px; color:#94a3b8;">
-  跨境支付行业知识库 · 第4章：竞争格局分析 · 数据基准：FY2024–FY2025 · 生成日期：2025-03-30<br>
-  数据来源均标注 [card-xxx]，基于公开财报、监管文件及行业报告，不构成投资建议
+  <span data-zh>跨境支付行业知识库 · 第4章：竞争格局分析 · 数据基准：FY2024–FY2025 · 生成日期：2025-03-30</span><span data-en>Cross-Border Payments Research · Chapter 4: Competitive Landscape · Data as of FY2024–FY2025 · Generated: 2025-03-30</span><br>
+  <span data-zh>数据来源均标注 [card-xxx]，基于公开财报、监管文件及行业报告，不构成投资建议</span><span data-en>Sources are tagged [card-xxx], based on public filings, regulatory documents and industry reports. Not investment advice.</span>
 </div>
+
+<!-- ════ 章节导航 ════ -->
+<div style="background: white; border-radius: 12px; padding: 16px 28px; margin-top: 16px; border: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+  <a href="chapter-3-business-model.html" style="display:inline-flex; align-items:center; gap:6px; font-size:13px; color:#475569; text-decoration:none; padding:8px 16px; border:1px solid #e2e8f0; border-radius:8px; background:#f8fafc;">
+    ← <span data-zh>上一章</span><span data-en>Previous Chapter</span>
+  </a>
+  <a href="index.html" style="display:inline-flex; align-items:center; gap:6px; font-size:13px; color:#2563eb; text-decoration:none; padding:8px 16px; border:1px solid #bfdbfe; border-radius:8px; background:#eff6ff;">
+    <span data-zh>返回首页</span><span data-en>Back to Home</span>
+  </a>
+  <a href="chapter-5-infrastructure.html" style="display:inline-flex; align-items:center; gap:6px; font-size:13px; color:#475569; text-decoration:none; padding:8px 16px; border:1px solid #e2e8f0; border-radius:8px; background:#f8fafc;">
+    <span data-zh>下一章</span><span data-en>Next Chapter</span> →
+  </a>
+</div>
+
+
+<script>
+  // ── Language Switcher ──
+  let lang = localStorage.getItem('lang') || 'zh';
+
+  function switchLang(l) {
+    lang = l;
+    localStorage.setItem('lang', l);
+    document.querySelectorAll('[data-zh]').forEach(el => {
+      el.style.display = (l === 'zh') ? '' : 'none';
+    });
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.style.display = (l === 'en') ? '' : 'none';
+    });
+    document.getElementById('btn-zh').classList.toggle('active', l === 'zh');
+    document.getElementById('btn-en').classList.toggle('active', l === 'en');
+  }
+
+  // Initialize on page load
+  switchLang(lang);
+</script>
 
 </body>
 </html>

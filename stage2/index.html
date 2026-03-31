@@ -593,22 +593,33 @@
     transform: translateY(0);
   }
   #scrollTop:hover { background: var(--accent-hover); }
+
+  /* ── Language Switcher ── */
+  .lang-switcher { position: fixed; top: 16px; right: 20px; z-index: 1000; display: flex; gap: 4px; }
+  .lang-switcher button { padding: 4px 10px; border: 1px solid #e2e8f0; border-radius: 4px; font-size: 12px; cursor: pointer; background: white; color: #64748b; }
+  .lang-switcher button.active { background: #2563eb; color: white; border-color: #2563eb; }
 </style>
 </head>
 <body>
+
+<!-- ══════════════════ LANG SWITCHER ══════════════════ -->
+<div class="lang-switcher">
+  <button id="btn-zh" onclick="switchLang('zh')">中文</button>
+  <button id="btn-en" onclick="switchLang('en')">EN</button>
+</div>
 
 <!-- ══════════════════ NAV ══════════════════ -->
 <nav class="nav">
   <div class="nav-inner">
     <div class="nav-brand">
       <div class="nav-brand-dot"></div>
-      跨境支付研究 2026 Q1
+      <span data-zh>跨境支付研究 2026 Q1</span><span data-en>Cross-Border Payments Research 2026 Q1</span>
     </div>
     <ul class="nav-links">
-      <li><a href="#knowledge-base">知识库</a></li>
-      <li><a href="#special-topics">专题分析</a></li>
-      <li><a href="#research-data">研究数据</a></li>
-      <li><a href="#raw-kb">知识点库</a></li>
+      <li><a href="#knowledge-base"><span data-zh>行业知识库</span><span data-en>Knowledge Base</span></a></li>
+      <li><a href="#special-topics"><span data-zh>专题分析</span><span data-en>Special Topics</span></a></li>
+      <li><a href="#research-data"><span data-zh>研究数据</span><span data-en>Research Data</span></a></li>
+      <li><a href="#raw-kb"><span data-zh>知识点库</span><span data-en>Knowledge Points</span></a></li>
     </ul>
   </div>
 </nav>
@@ -618,11 +629,15 @@
   <div class="container">
     <div class="hero-tag">
       <div class="hero-tag-dot"></div>
-      系统性行业研究 · 2026 Q1
+      <span data-zh>系统性行业研究 · 2026 Q1</span><span data-en>Systematic Industry Research · 2026 Q1</span>
     </div>
-    <h1>跨境支付行业研究<br><span>2026 Q1</span></h1>
+    <h1>
+      <span data-zh>跨境支付行业研究<br><span>2026 Q1</span></span>
+      <span data-en>Cross-Border Payments<br><span>Industry Research 2026 Q1</span></span>
+    </h1>
     <p class="hero-subtitle">
-      基于 459 份来源文件的系统性行业研究，覆盖市场总览、公司档案、商业模式、竞争格局、基础设施、监管环境、区域市场，构建完整的跨境支付行业认知体系。
+      <span data-zh>基于 459 份来源文件的系统性行业研究，覆盖市场总览、公司档案、商业模式、竞争格局、基础设施、监管环境、区域市场，构建完整的跨境支付行业认知体系。</span>
+      <span data-en>Systematic industry research based on 459 source documents. Covering market overview, company profiles, business model, competitive landscape, infrastructure, regulatory environment, and regional markets.</span>
     </p>
 
     <!-- Stat Cards -->
@@ -630,22 +645,22 @@
       <div class="stat-card">
         <div class="stat-icon">📂</div>
         <div class="stat-number">459</div>
-        <div class="stat-label">份索引来源</div>
+        <div class="stat-label"><span data-zh>份索引来源</span><span data-en>Source Documents</span></div>
       </div>
       <div class="stat-card">
         <div class="stat-icon">📚</div>
         <div class="stat-number">7</div>
-        <div class="stat-label">章综合分析</div>
+        <div class="stat-label"><span data-zh>章综合分析</span><span data-en>Chapters</span></div>
       </div>
       <div class="stat-card">
         <div class="stat-icon">🏢</div>
         <div class="stat-number">8</div>
-        <div class="stat-label">家公司档案</div>
+        <div class="stat-label"><span data-zh>家公司档案</span><span data-en>Company Profiles</span></div>
       </div>
       <div class="stat-card">
         <div class="stat-icon">💡</div>
         <div class="stat-number">474</div>
-        <div class="stat-label">条原子知识点</div>
+        <div class="stat-label"><span data-zh>条原子知识点</span><span data-en>Knowledge Points</span></div>
       </div>
     </div>
   </div>
@@ -656,94 +671,118 @@
   <div class="container">
     <div class="section-header">
       <div class="section-label">📚 Section 1</div>
-      <h2 class="section-title">行业知识库</h2>
-      <p class="section-desc">7 章系统性综合分析，从宏观市场到微观运营，全面覆盖跨境支付行业核心知识域。</p>
+      <h2 class="section-title"><span data-zh>行业知识库</span><span data-en>Knowledge Base</span></h2>
+      <p class="section-desc">
+        <span data-zh>7 章系统性综合分析，从宏观市场到微观运营，全面覆盖跨境支付行业核心知识域。</span>
+        <span data-en>7 chapters of systematic analysis covering the full spectrum of cross-border payments industry knowledge.</span>
+      </p>
     </div>
 
     <div class="chapter-grid">
 
       <!-- 第1章 -->
       <div class="chapter-card">
-        <div class="chapter-num">第 1 章</div>
-        <div class="chapter-title">市场总览</div>
-        <div class="chapter-desc">跨境支付全球市场规模、增长驱动力、主要参与者格局及行业演进趋势的宏观全景图。</div>
+        <div class="chapter-num"><span data-zh>第 1 章</span><span data-en>Chapter 1</span></div>
+        <div class="chapter-title"><span data-zh>市场总览</span><span data-en>Market Overview</span></div>
+        <div class="chapter-desc">
+          <span data-zh>跨境支付全球市场规模、增长驱动力、主要参与者格局及行业演进趋势的宏观全景图。</span>
+          <span data-en>Multi-institution size comparison, value chain, growth drivers — a macro view of the global cross-border payments market.</span>
+        </div>
         <div class="chapter-meta">
-          <span class="badge badge-blue">全球市场规模</span>
+          <span class="badge badge-blue"><span data-zh>全球市场规模</span><span data-en>Global Market Size</span></span>
           <span class="badge badge-gray">48 KB</span>
         </div>
-        <a href="chapter-1-market-overview.html" class="btn btn-primary">阅读 →</a>
+        <a href="chapter-1-market-overview.html" class="btn btn-primary"><span data-zh>阅读 →</span><span data-en>Read →</span></a>
       </div>
 
       <!-- 第2章 -->
       <div class="chapter-card">
-        <div class="chapter-num">第 2 章</div>
-        <div class="chapter-title">公司档案</div>
-        <div class="chapter-desc">8 家核心跨境支付公司深度档案，涵盖 Wise、Airwallex、PayPal、Western Union 等，横向对比分析。</div>
+        <div class="chapter-num"><span data-zh>第 2 章</span><span data-en>Chapter 2</span></div>
+        <div class="chapter-title"><span data-zh>公司档案</span><span data-en>Company Profiles</span></div>
+        <div class="chapter-desc">
+          <span data-zh>8 家核心跨境支付公司深度档案，涵盖 Wise、Airwallex、PayPal、Western Union 等，横向对比分析。</span>
+          <span data-en>8 companies compared, Wise flywheel deep-dive — covering Wise, Airwallex, PayPal, Western Union and more.</span>
+        </div>
         <div class="chapter-meta">
-          <span class="badge badge-blue">8家公司 · 横向对比</span>
+          <span class="badge badge-blue"><span data-zh>8家公司 · 横向对比</span><span data-en>8 Companies · Cross-comparison</span></span>
           <span class="badge badge-gray">84 KB</span>
         </div>
-        <a href="chapter-2-company-profiles.html" class="btn btn-primary">阅读 →</a>
+        <a href="chapter-2-company-profiles.html" class="btn btn-primary"><span data-zh>阅读 →</span><span data-en>Read →</span></a>
       </div>
 
       <!-- 第3章 -->
       <div class="chapter-card">
-        <div class="chapter-num">第 3 章</div>
-        <div class="chapter-title">商业模式</div>
-        <div class="chapter-desc">基于 BMC 9 模块框架的商业模式系统解析，收入结构、成本驱动与价值主张深度拆解。</div>
+        <div class="chapter-num"><span data-zh>第 3 章</span><span data-en>Chapter 3</span></div>
+        <div class="chapter-title"><span data-zh>商业模式</span><span data-en>Business Model</span></div>
+        <div class="chapter-desc">
+          <span data-zh>基于 BMC 9 模块框架的商业模式系统解析，收入结构、成本驱动与价值主张深度拆解。</span>
+          <span data-en>BMC 9 modules, Take Rate comparison across 7 companies — systematic analysis of revenue and cost structure.</span>
+        </div>
         <div class="chapter-meta">
-          <span class="badge badge-blue">BMC 9模块</span>
+          <span class="badge badge-blue"><span data-zh>BMC 9模块</span><span data-en>BMC 9 Modules</span></span>
           <span class="badge badge-gray">64 KB</span>
         </div>
-        <a href="chapter-3-business-model.html" class="btn btn-primary">阅读 →</a>
+        <a href="chapter-3-business-model.html" class="btn btn-primary"><span data-zh>阅读 →</span><span data-en>Read →</span></a>
       </div>
 
       <!-- 第4章 -->
       <div class="chapter-card">
-        <div class="chapter-num">第 4 章</div>
-        <div class="chapter-title">竞争格局</div>
-        <div class="chapter-desc">市场竞争态势、护城河分析、波特五力模型与差异化竞争策略，明确各玩家的战略定位。</div>
+        <div class="chapter-num"><span data-zh>第 4 章</span><span data-en>Chapter 4</span></div>
+        <div class="chapter-title"><span data-zh>竞争格局</span><span data-en>Competitive Landscape</span></div>
+        <div class="chapter-desc">
+          <span data-zh>市场竞争态势、护城河分析、波特五力模型与差异化竞争策略，明确各玩家的战略定位。</span>
+          <span data-en>Competitive positioning matrix, moat scoring — Porter's Five Forces and differentiation strategies.</span>
+        </div>
         <div class="chapter-meta">
-          <span class="badge badge-blue">护城河 · 波特五力</span>
+          <span class="badge badge-blue"><span data-zh>护城河 · 波特五力</span><span data-en>Moat · Porter's Five Forces</span></span>
           <span class="badge badge-gray">67 KB</span>
         </div>
-        <a href="chapter-4-competitive-landscape.html" class="btn btn-primary">阅读 →</a>
+        <a href="chapter-4-competitive-landscape.html" class="btn btn-primary"><span data-zh>阅读 →</span><span data-en>Read →</span></a>
       </div>
 
       <!-- 第5章 -->
       <div class="chapter-card">
-        <div class="chapter-num">第 5 章</div>
-        <div class="chapter-title">基础设施</div>
-        <div class="chapter-desc">SWIFT、本地清算网络、API 架构、流动性管理等核心基础设施的技术架构与演进路径。</div>
+        <div class="chapter-num"><span data-zh>第 5 章</span><span data-en>Chapter 5</span></div>
+        <div class="chapter-title"><span data-zh>基础设施</span><span data-en>Infrastructure</span></div>
+        <div class="chapter-desc">
+          <span data-zh>SWIFT、本地清算网络、API 架构、流动性管理等核心基础设施的技术架构与演进路径。</span>
+          <span data-en>SWIFT/CIPS/Nexus/mBridge/Stablecoin — technical architecture and evolution of core payment infrastructure.</span>
+        </div>
         <div class="chapter-meta">
-          <span class="badge badge-blue">SWIFT · 清算网络</span>
+          <span class="badge badge-blue">SWIFT · CIPS · mBridge</span>
           <span class="badge badge-gray">57 KB</span>
         </div>
-        <a href="chapter-5-infrastructure.html" class="btn btn-primary">阅读 →</a>
+        <a href="chapter-5-infrastructure.html" class="btn btn-primary"><span data-zh>阅读 →</span><span data-en>Read →</span></a>
       </div>
 
       <!-- 第6章 -->
       <div class="chapter-card">
-        <div class="chapter-num">第 6 章</div>
-        <div class="chapter-title">监管环境</div>
-        <div class="chapter-desc">全球主要司法管辖区的合规框架、牌照体系、反洗钱要求，及监管科技应对策略。</div>
+        <div class="chapter-num"><span data-zh>第 6 章</span><span data-en>Chapter 6</span></div>
+        <div class="chapter-title"><span data-zh>监管环境</span><span data-en>Regulatory Environment</span></div>
+        <div class="chapter-desc">
+          <span data-zh>全球主要司法管辖区的合规框架、牌照体系、反洗钱要求，及监管科技应对策略。</span>
+          <span data-en>7 jurisdictions compared, G20 roadmap progress — AML requirements, licensing frameworks and RegTech strategies.</span>
+        </div>
         <div class="chapter-meta">
-          <span class="badge badge-blue">合规 · AML · 牌照</span>
+          <span class="badge badge-blue"><span data-zh>合规 · AML · 牌照</span><span data-en>Compliance · AML · Licensing</span></span>
           <span class="badge badge-gray">57 KB</span>
         </div>
-        <a href="chapter-6-regulatory.html" class="btn btn-primary">阅读 →</a>
+        <a href="chapter-6-regulatory.html" class="btn btn-primary"><span data-zh>阅读 →</span><span data-en>Read →</span></a>
       </div>
 
       <!-- 第7章 -->
       <div class="chapter-card">
-        <div class="chapter-num">第 7 章</div>
-        <div class="chapter-title">区域市场</div>
-        <div class="chapter-desc">亚太、欧洲、北美、新兴市场的区域特性分析，本地化运营策略与市场进入机会识别。</div>
+        <div class="chapter-num"><span data-zh>第 7 章</span><span data-en>Chapter 7</span></div>
+        <div class="chapter-title"><span data-zh>区域市场</span><span data-en>Regional Markets</span></div>
+        <div class="chapter-desc">
+          <span data-zh>亚太、欧洲、北美、新兴市场的区域特性分析，本地化运营策略与市场进入机会识别。</span>
+          <span data-en>APAC/Emerging Markets/Europe entry logic — regional analysis, localization strategies and market entry opportunities.</span>
+        </div>
         <div class="chapter-meta">
-          <span class="badge badge-blue">亚太 · 欧洲 · 新兴市场</span>
+          <span class="badge badge-blue"><span data-zh>亚太 · 欧洲 · 新兴市场</span><span data-en>APAC · Europe · Emerging Markets</span></span>
           <span class="badge badge-gray">53 KB</span>
         </div>
-        <a href="chapter-7-regional-markets.html" class="btn btn-primary">阅读 →</a>
+        <a href="chapter-7-regional-markets.html" class="btn btn-primary"><span data-zh>阅读 →</span><span data-en>Read →</span></a>
       </div>
 
     </div>
@@ -755,23 +794,33 @@
   <div class="container">
     <div class="section-header">
       <div class="section-label">🗺️ Section 2</div>
-      <h2 class="section-title">专题分析</h2>
-      <p class="section-desc">专项深度分析工具，可视化呈现跨境支付全链路价值流动。</p>
+      <h2 class="section-title"><span data-zh>专题分析</span><span data-en>Special Topics</span></h2>
+      <p class="section-desc">
+        <span data-zh>专项深度分析工具，可视化呈现跨境支付全链路价值流动。</span>
+        <span data-en>Deep-dive analytical tools for visualizing cross-border payment value flows end-to-end.</span>
+      </p>
     </div>
 
     <div class="feature-card">
       <div class="feature-icon-wrap">🗺️</div>
       <div class="feature-content">
-        <div class="feature-title">价值流图（VSM）— 跨境支付全链路分析</div>
+        <div class="feature-title">
+          <span data-zh>价值流图（VSM）— 跨境支付全链路分析</span>
+          <span data-en>Value Stream Map (VSM) — Cross-Border Payments Full-Chain Analysis</span>
+        </div>
         <div class="feature-desc">
-          通过价值流图（Value Stream Map）系统化呈现跨境支付的完整流程，识别效率瓶颈、成本节点与优化机会。三个视角对比传统与未来形态，揭示行业演进方向。
+          <span data-zh>通过价值流图（Value Stream Map）系统化呈现跨境支付的完整流程，识别效率瓶颈、成本节点与优化机会。三个视角对比传统与未来形态，揭示行业演进方向。</span>
+          <span data-en>Cross-border payment value stream visualization: Traditional banking, Three-model comparison, G20 2027 future state — identifying bottlenecks, cost nodes and optimization opportunities.</span>
         </div>
         <div class="feature-tabs">
-          <div class="tab-pill">📍 Tab 1：传统跨境支付流程</div>
-          <div class="tab-pill">⚖️ Tab 2：传统 vs 现代对比</div>
-          <div class="tab-pill">🔮 Tab 3：未来态架构</div>
+          <div class="tab-pill"><span data-zh>📍 Tab 1：传统跨境支付流程</span><span data-en>📍 Tab 1: Traditional Payment Flow</span></div>
+          <div class="tab-pill"><span data-zh>⚖️ Tab 2：传统 vs 现代对比</span><span data-en>⚖️ Tab 2: Traditional vs Modern</span></div>
+          <div class="tab-pill"><span data-zh>🔮 Tab 3：未来态架构</span><span data-en>🔮 Tab 3: Future State Architecture</span></div>
         </div>
-        <a href="vsm-cross-border-payments.html" class="btn btn-primary">查看价值流图 →</a>
+        <a href="vsm-cross-border-payments.html" class="btn btn-primary">
+          <span data-zh>查看价值流图 →</span>
+          <span data-en>View VSM →</span>
+        </a>
       </div>
     </div>
   </div>
@@ -782,8 +831,11 @@
   <div class="container">
     <div class="section-header">
       <div class="section-label">🔬 Section 3</div>
-      <h2 class="section-title">研究数据层</h2>
-      <p class="section-desc">支撑行业知识库的原始数据基础，包含完整索引库与逐条来源分析卡。</p>
+      <h2 class="section-title"><span data-zh>研究数据层</span><span data-en>Research Data Layer</span></h2>
+      <p class="section-desc">
+        <span data-zh>支撑行业知识库的原始数据基础，包含完整索引库与逐条来源分析卡。</span>
+        <span data-en>The raw data foundation underlying the knowledge base, including the full source index and per-document analysis cards.</span>
+      </p>
     </div>
 
     <div class="data-grid">
@@ -793,26 +845,39 @@
         <div class="data-card-header">
           <div class="data-card-icon">📑</div>
           <div>
-            <div class="data-card-title">跨境支付研究索引库 v4</div>
-            <div class="data-card-subtitle">Stage 1 核心产出</div>
+            <div class="data-card-title">
+              <span data-zh>跨境支付研究索引库 v4</span>
+              <span data-en>Source Index v4</span>
+            </div>
+            <div class="data-card-subtitle">
+              <span data-zh>Stage 1 核心产出</span>
+              <span data-en>Stage 1 Core Output</span>
+            </div>
           </div>
         </div>
         <div class="data-stats">
           <div class="data-stat">
             <div class="data-stat-num">459</div>
-            <div class="data-stat-label">条索引来源</div>
+            <div class="data-stat-label"><span data-zh>条索引来源</span><span data-en>Sources</span></div>
           </div>
           <div class="data-stat">
             <div class="data-stat-num">402</div>
-            <div class="data-stat-label">个分析卡链接</div>
+            <div class="data-stat-label"><span data-zh>个分析卡链接</span><span data-en>Analysis Card Links</span></div>
           </div>
         </div>
         <div class="data-card-desc">
-          覆盖公开财报、监管文件、行业报告、学术论文等多类型来源，每条记录含作者、日期、来源机构、相关性评分与分析卡链接。支持按领域、类型、Tier 级别筛选。
+          <span data-zh>覆盖公开财报、监管文件、行业报告、学术论文等多类型来源，每条记录含作者、日期、来源机构、相关性评分与分析卡链接。支持按领域、类型、Tier 级别筛选。</span>
+          <span data-en>459 sources, 402 with analysis card links — covering financial reports, regulatory documents, industry reports, and academic papers, with relevance scores and multi-dimensional filtering.</span>
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap;">
-          <a href="../stage1/index-v4.html" class="btn btn-primary">浏览索引库 →</a>
-          <a href="../stage1/keywords-v3.html" class="btn btn-outline">关键词库（50条）</a>
+          <a href="../stage1/index-v4.html" class="btn btn-primary">
+            <span data-zh>浏览索引库 →</span>
+            <span data-en>Browse Index →</span>
+          </a>
+          <a href="../stage1/keywords-v3.html" class="btn btn-outline">
+            <span data-zh>关键词库（50条）</span>
+            <span data-en>Keyword Library (50)</span>
+          </a>
         </div>
       </div>
 
@@ -821,25 +886,35 @@
         <div class="data-card-header">
           <div class="data-card-icon">🃏</div>
           <div>
-            <div class="data-card-title">来源分析卡</div>
-            <div class="data-card-subtitle">逐条信息点提取</div>
+            <div class="data-card-title">
+              <span data-zh>来源分析卡</span>
+              <span data-en>Structured Analysis Cards</span>
+            </div>
+            <div class="data-card-subtitle">
+              <span data-zh>逐条信息点提取</span>
+              <span data-en>Per-document extraction</span>
+            </div>
           </div>
         </div>
         <div class="data-stats">
           <div class="data-stat">
             <div class="data-stat-num">459</div>
-            <div class="data-stat-label">张分析卡</div>
+            <div class="data-stat-label"><span data-zh>张分析卡</span><span data-en>Analysis Cards</span></div>
           </div>
           <div class="data-stat">
             <div class="data-stat-num">164</div>
-            <div class="data-stat-label">条（Wise FY2025 Tier 1 示例）</div>
+            <div class="data-stat-label"><span data-zh>条（Wise FY2025 Tier 1 示例）</span><span data-en>points (Wise FY2025 Tier 1)</span></div>
           </div>
         </div>
         <div class="data-card-desc">
-          每张分析卡对应一份来源文件，系统性提取所有关键信息点。Tier 1 为穷举版，Wise FY2025 年报卡包含 164 条信息点，覆盖财务数据、战略动向、产品更新等维度。
+          <span data-zh>每张分析卡对应一份来源文件，系统性提取所有关键信息点。Tier 1 为穷举版，Wise FY2025 年报卡包含 164 条信息点，覆盖财务数据、战略动向、产品更新等维度。</span>
+          <span data-en>459 cards, exhaustive Tier 1 extraction, Tier 2 URL fetch — each card maps to one source document with all key data points systematically extracted.</span>
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap;">
-          <a href="analysis-cards/card-001.html" class="btn btn-primary">查看示例卡 (Wise) →</a>
+          <a href="analysis-cards/card-001.html" class="btn btn-primary">
+            <span data-zh>查看示例卡 (Wise) →</span>
+            <span data-en>View Sample Card (Wise) →</span>
+          </a>
         </div>
       </div>
 
@@ -849,10 +924,19 @@
     <div class="qc-banner">
       <div class="qc-icon">✅</div>
       <div class="qc-text">
-        <div class="qc-title">Stage 2 验收报告已通过 QC</div>
-        <div class="qc-desc">完整质量验收报告见 <code>qc-report-stage2-v2.md</code>，涵盖内容完整性、数据一致性、链接有效性等维度的全面核查。</div>
+        <div class="qc-title">
+          <span data-zh>Stage 2 验收报告已通过 QC</span>
+          <span data-en>Stage 2 QC Report — Passed</span>
+        </div>
+        <div class="qc-desc">
+          <span data-zh>完整质量验收报告见 <code>qc-report-stage2-v2.md</code>，涵盖内容完整性、数据一致性、链接有效性等维度的全面核查。</span>
+          <span data-en>Full quality assurance report at <code>qc-report-stage2-v2.md</code>, covering content completeness, data consistency, and link validity.</span>
+        </div>
       </div>
-      <a href="qc-report-stage2-v2.md" class="btn btn-outline" style="flex-shrink:0;">查看报告</a>
+      <a href="qc-report-stage2-v2.md" class="btn btn-outline" style="flex-shrink:0;">
+        <span data-zh>查看报告</span>
+        <span data-en>QC Report</span>
+      </a>
     </div>
   </div>
 </section>
@@ -862,33 +946,46 @@
   <div class="container">
     <div class="section-header">
       <div class="section-label">📊 Section 4</div>
-      <h2 class="section-title">原始知识点库</h2>
-      <p class="section-desc">474 条可搜索的原子化知识点，支持多维度过滤与全文检索，是知识库的底层数据基础。</p>
+      <h2 class="section-title"><span data-zh>原始知识点库</span><span data-en>Raw Knowledge Point Library</span></h2>
+      <p class="section-desc">
+        <span data-zh>474 条可搜索的原子化知识点，支持多维度过滤与全文检索，是知识库的底层数据基础。</span>
+        <span data-en>474 atomic knowledge points, full-text searchable, each traceable to source card — the foundational data layer of the knowledge base.</span>
+      </p>
     </div>
 
     <div class="kb-card">
       <div class="kb-card-content">
-        <div class="kb-card-title">信息点知识库 — 474 条原子知识点</div>
+        <div class="kb-card-title">
+          <span data-zh>信息点知识库 — 474 条原子知识点</span>
+          <span data-en>Knowledge Point Library — 474 Atomic Knowledge Points</span>
+        </div>
         <div class="kb-card-desc">
-          将来源文件中的每一个有价值信息点原子化存储，支持按公司、主题、来源类型、时间段进行多维筛选，并提供全文搜索能力。是生成知识库各章节内容的直接数据来源。
+          <span data-zh>将来源文件中的每一个有价值信息点原子化存储，支持按公司、主题、来源类型、时间段进行多维筛选，并提供全文搜索能力。是生成知识库各章节内容的直接数据来源。</span>
+          <span data-en>474 atomic knowledge points, full-text searchable, each traceable to source card — supporting multi-dimensional filtering by company, topic, source type, and time period.</span>
         </div>
         <div class="kb-stats">
           <div>
             <div class="kb-stat-num">474</div>
-            <div class="kb-stat-label">条原子知识点</div>
+            <div class="kb-stat-label"><span data-zh>条原子知识点</span><span data-en>Knowledge Points</span></div>
           </div>
           <div>
             <div class="kb-stat-num">8+</div>
-            <div class="kb-stat-label">分类维度</div>
+            <div class="kb-stat-label"><span data-zh>分类维度</span><span data-en>Filter Dimensions</span></div>
           </div>
           <div>
-            <div class="kb-stat-num">全文</div>
-            <div class="kb-stat-label">搜索支持</div>
+            <div class="kb-stat-num"><span data-zh>全文</span><span data-en>Full</span></div>
+            <div class="kb-stat-label"><span data-zh>搜索支持</span><span data-en>Text Search</span></div>
           </div>
         </div>
         <div style="display:flex;gap:12px;flex-wrap:wrap;">
-          <a href="knowledge-base.html" class="btn btn-primary" style="font-size:0.95rem;padding:10px 20px;">进入知识库 →</a>
-          <a href="knowledge-base-template.html" class="btn btn-outline">知识库模板（备用）</a>
+          <a href="knowledge-base.html" class="btn btn-primary" style="font-size:0.95rem;padding:10px 20px;">
+            <span data-zh>进入知识库 →</span>
+            <span data-en>Enter Knowledge Base →</span>
+          </a>
+          <a href="knowledge-base-template.html" class="btn btn-outline">
+            <span data-zh>知识库模板（备用）</span>
+            <span data-en>KB Template (Backup)</span>
+          </a>
         </div>
       </div>
       <div class="kb-card-visual">💡</div>
@@ -900,23 +997,25 @@
 <footer class="footer">
   <div class="footer-inner">
     <div>
-      <div class="footer-brand">跨境支付行业研究 2026 Q1</div>
+      <div class="footer-brand">
+        <span data-zh>跨境支付行业研究 2026 Q1</span>
+        <span data-en>Cross-Border Payments Industry Research 2026 Q1</span>
+      </div>
       <div class="footer-meta">
-        数据截止：2026 Q1<br>
-        数据来源：基于公开财报、监管文件、行业报告<br>
-        最后更新：2026-03-30
+        <span data-zh>数据截止：2026 Q1<br>数据来源：基于公开财报、监管文件、行业报告<br>最后更新：2026-03-30</span>
+        <span data-en>Data as of: 2026 Q1<br>Based on public financial reports, regulatory documents, industry reports<br>Last updated: 2026-03-30</span>
       </div>
     </div>
     <div class="footer-links">
-      <a href="chapter-1-market-overview.html">第1章</a>
-      <a href="chapter-2-company-profiles.html">第2章</a>
-      <a href="chapter-3-business-model.html">第3章</a>
-      <a href="chapter-4-competitive-landscape.html">第4章</a>
-      <a href="chapter-5-infrastructure.html">第5章</a>
-      <a href="chapter-6-regulatory.html">第6章</a>
-      <a href="chapter-7-regional-markets.html">第7章</a>
-      <a href="knowledge-base.html">知识库</a>
-      <a href="../stage1/index-v4.html">索引库</a>
+      <a href="chapter-1-market-overview.html"><span data-zh>第1章</span><span data-en>Ch.1</span></a>
+      <a href="chapter-2-company-profiles.html"><span data-zh>第2章</span><span data-en>Ch.2</span></a>
+      <a href="chapter-3-business-model.html"><span data-zh>第3章</span><span data-en>Ch.3</span></a>
+      <a href="chapter-4-competitive-landscape.html"><span data-zh>第4章</span><span data-en>Ch.4</span></a>
+      <a href="chapter-5-infrastructure.html"><span data-zh>第5章</span><span data-en>Ch.5</span></a>
+      <a href="chapter-6-regulatory.html"><span data-zh>第6章</span><span data-en>Ch.6</span></a>
+      <a href="chapter-7-regional-markets.html"><span data-zh>第7章</span><span data-en>Ch.7</span></a>
+      <a href="knowledge-base.html"><span data-zh>知识库</span><span data-en>KB</span></a>
+      <a href="../stage1/index-v4.html"><span data-zh>索引库</span><span data-en>Index</span></a>
     </div>
   </div>
 </footer>
@@ -951,6 +1050,25 @@
     });
   }, { rootMargin: '-40% 0px -55% 0px' });
   sections.forEach(s => observer.observe(s));
+
+  // ── Language Switcher ──
+  let lang = localStorage.getItem('lang') || 'zh';
+
+  function switchLang(l) {
+    lang = l;
+    localStorage.setItem('lang', l);
+    document.querySelectorAll('[data-zh]').forEach(el => {
+      el.style.display = (l === 'zh') ? '' : 'none';
+    });
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.style.display = (l === 'en') ? '' : 'none';
+    });
+    document.getElementById('btn-zh').classList.toggle('active', l === 'zh');
+    document.getElementById('btn-en').classList.toggle('active', l === 'en');
+  }
+
+  // Initialize on page load
+  switchLang(lang);
 </script>
 
 </body>

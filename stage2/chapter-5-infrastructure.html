@@ -153,50 +153,61 @@
   .arch-layer-4 { background: #ede9fe; }
   .arch-layer-label { font-size: 11px; font-weight: 800; color: #475569; min-width: 90px; }
   .arch-layer-content { font-size: 12px; color: #334155; flex: 1; }
+
+  /* ── Language Switcher ── */
+  .lang-switcher { position: fixed; top: 16px; right: 20px; z-index: 1000; display: flex; gap: 4px; }
+  .lang-switcher button { padding: 4px 10px; border: 1px solid #e2e8f0; border-radius: 4px; font-size: 12px; cursor: pointer; background: white; color: #64748b; }
+  .lang-switcher button.active { background: #2563eb; color: white; border-color: #2563eb; }
 </style>
 </head>
 <body>
 
+<!-- ══════════════════ LANG SWITCHER ══════════════════ -->
+<div class="lang-switcher">
+  <button id="btn-zh" onclick="switchLang('zh')">中文</button>
+  <button id="btn-en" onclick="switchLang('en')">EN</button>
+</div>
+
 <!-- ════ 章节头 ════ -->
 <div class="chapter-header">
-  <div class="chapter-label">知识库 · 第5章</div>
-  <div class="chapter-title">跨境支付基础设施与技术</div>
-  <div class="chapter-subtitle">从代理行网络到即时互联：清算结算体系的现代化进程 — 覆盖SWIFT/CIPS/Project Nexus/mBridge/稳定币全景</div>
+  <div class="chapter-label"><span data-zh>知识库 · 第5章</span><span data-en>Knowledge Base · Chapter 5</span></div>
+  <div class="chapter-title"><span data-zh>跨境支付基础设施与技术</span><span data-en>Infrastructure & Technology</span></div>
+  <div class="chapter-subtitle"><span data-zh>从代理行网络到即时互联：清算结算体系的现代化进程 — 覆盖SWIFT/CIPS/Project Nexus/mBridge/稳定币全景</span><span data-en>From Correspondent Networks to Instant Connectivity: Clearing & Settlement Modernization — SWIFT / CIPS / Project Nexus / mBridge / Stablecoins</span></div>
   <div class="chapter-meta">
-    <div class="meta-item"><strong>章节覆盖</strong> 3个子节</div>
-    <div class="meta-item"><strong>核心数据来源</strong> FSB、BIS CPMI、SWIFT、MAS、HKMA</div>
-    <div class="meta-item"><strong>数据截止</strong> 2024年末 / 2025年Q1</div>
-    <div class="meta-item"><strong>分析卡索引</strong> card-066 / 071 / 086 / 091 / 125 / 135 / 136 / 139 / 151 / 152 / 407</div>
+    <div class="meta-item"><strong><span data-zh>章节覆盖</span><span data-en>Coverage</span></strong> <span data-zh>3个子节</span><span data-en>3 Sections</span></div>
+    <div class="meta-item"><strong><span data-zh>核心数据来源</span><span data-en>Key Sources</span></strong> FSB / BIS CPMI / SWIFT / MAS / HKMA</div>
+    <div class="meta-item"><strong><span data-zh>数据截止</span><span data-en>Data As Of</span></strong> <span data-zh>2024年末 / 2025年Q1</span><span data-en>End-2024 / 2025 Q1</span></div>
+    <div class="meta-item"><strong><span data-zh>分析卡索引</span><span data-en>Card Index</span></strong> card-066 / 071 / 086 / 091 / 125 / 135 / 136 / 139 / 151 / 152 / 407</div>
   </div>
 </div>
 
 <!-- ════ 目录 ════ -->
 <div class="toc-box">
-  <div class="toc-title">📋 本章目录</div>
+  <div class="toc-title">📋 <span data-zh>本章目录</span><span data-en>Contents</span></div>
   <div class="toc-grid">
     <a href="#section-51" class="toc-item">
       <div class="toc-num">5.1</div>
-      清算结算网络：SWIFT / CIPS / 代理行体系
+      <span data-zh>清算结算网络：SWIFT / CIPS / 代理行体系</span><span data-en>5.1 Clearing & Settlement Networks</span>
     </a>
     <a href="#section-52" class="toc-item">
       <div class="toc-num">5.2</div>
-      即时跨境支付：FPS互联与Nexus
+      <span data-zh>即时跨境支付：FPS互联与Nexus</span><span data-en>5.2 Instant Cross-Border Payments</span>
     </a>
     <a href="#section-53" class="toc-item">
       <div class="toc-num">5.3</div>
-      稳定币 / CBDC / mBridge：数字货币时代的基础设施
+      <span data-zh>稳定币 / CBDC / mBridge：数字货币时代的基础设施</span><span data-en>5.3 Stablecoins / CBDC / mBridge</span>
     </a>
     <a href="#summary" class="toc-item">
       <div class="toc-num">总结</div>
-      五年内基础设施格局展望
+      <span data-zh>五年内基础设施格局展望</span><span data-en>5-Year Infrastructure Outlook</span>
     </a>
   </div>
 </div>
 
 <!-- ════ 导言 ════ -->
 <div class="module">
-  <div class="module-label">第5章导言</div>
-  <div class="module-title">为什么基础设施是跨境支付成本与速度的根本决定因素？</div>
+  <div class="module-label"><span data-zh>第5章导言</span><span data-en>Chapter 5 Introduction</span></div>
+  <div class="module-title"><span data-zh>为什么基础设施是跨境支付成本与速度的根本决定因素？</span><span data-en>Why Infrastructure Determines Cross-Border Payment Cost & Speed</span></div>
   <div class="body-text">
     <p>当你通过银行向海外汇款时，这笔钱并不是像电子邮件一样"直接发过去"的。它要经过一条由多家银行组成的链条——每一个环节都可能扣费、等待、甚至拒绝。这条链条，就是<strong>代理行网络（Correspondent Banking Network）</strong>，它是过去50年跨境支付的核心基础设施。</p>
     <p>代理行模式的核心逻辑是：A国银行在B国没有直接运营资质，就必须委托一家在B国有账户的银行（代理行）来完成支付。一笔跨境支付通常要经过2到5家中间银行，每家都要检查合规、收取费用、等待结算窗口。这就是为什么跨境支付"慢而贵"的根本原因。</p>
@@ -228,10 +239,10 @@
 <!-- ════ 5.1 清算结算网络 ════ -->
 <div class="module" id="section-51">
   <div class="module-label">5.1</div>
-  <div class="module-title"><span class="num">5.1</span> 清算结算网络：SWIFT / CIPS / 代理行体系如何运作</div>
+  <div class="module-title"><span class="num">5.1</span> <span data-zh>清算结算网络：SWIFT / CIPS / 代理行体系如何运作</span><span data-en>5.1 Clearing & Settlement Networks: How SWIFT / CIPS / Correspondent Banking Works</span></div>
 
   <div class="core-conclusion">
-    🔵 <strong>核心结论：</strong>现有清算网络的技术现代化进展显著（SWIFT gpi使90%支付在30分钟内到达），但成本居高不下的根本原因是<strong>代理行体系的结构性问题</strong>——预资金要求、合规成本分摊、运营时间错位——这些不是升级消息格式就能解决的。CIPS的快速增长（2024年金额+43%）代表另一条路：为特定货币建立主权清算渠道。
+    🔵 <strong><span data-zh>核心结论：</span><span data-en>Key Conclusion: </span></strong><span data-zh>现有清算网络的技术现代化进展显著</span><span data-en>Existing clearing networks have made significant technical modernization progress</span>（SWIFT gpi使90%支付在30分钟内到达），但成本居高不下的根本原因是<strong>代理行体系的结构性问题</strong>——预资金要求、合规成本分摊、运营时间错位——这些不是升级消息格式就能解决的。CIPS的快速增长（2024年金额+43%）代表另一条路：为特定货币建立主权清算渠道。
   </div>
 
   <div class="body-text">
@@ -241,17 +252,17 @@
 
   <!-- 主要清算网络对比表 -->
   <div style="margin: 24px 0;">
-    <div style="font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.06em;">📊 主要跨境/批发清算网络对比（2024年数据）</div>
+    <div style="font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.06em;">📊 <span data-zh>主要跨境/批发清算网络对比（2024年数据）</span><span data-en>Major Cross-Border Wholesale Clearing Networks Comparison (2024)</span></div>
     <table class="data-table">
       <thead>
         <tr>
-          <th>网络</th>
-          <th>主要货币/覆盖</th>
-          <th>日均处理量</th>
-          <th>速度（机构间）</th>
-          <th>典型成本</th>
-          <th>现代化状态</th>
-          <th>来源</th>
+          <th><span data-zh>网络名称</span><span data-en>Network Name</span></th>
+          <th><span data-zh>主要货币/覆盖</span><span data-en>Jurisdiction / Coverage</span></th>
+          <th><span data-zh>日均处理量</span><span data-en>Daily Volume</span></th>
+          <th><span data-zh>速度（机构间）</span><span data-en>Settlement Speed</span></th>
+          <th><span data-zh>典型成本</span><span data-en>Typical Cost</span></th>
+          <th><span data-zh>现代化状态</span><span data-en>Modernization Status</span></th>
+          <th><span data-zh>来源</span><span data-en>Sources</span></th>
         </tr>
       </thead>
       <tbody>
@@ -333,22 +344,22 @@
 
   <!-- CIPS专项分析 -->
   <div class="arch-diagram">
-    <div class="arch-title">🏛️ CIPS（跨境银行间支付系统）2024 关键数据解读</div>
+    <div class="arch-title">🏛️ <span data-zh>CIPS（跨境银行间支付系统）2024 关键数据解读</span><span data-en>CIPS (Cross-Border Interbank Payment System) 2024 Key Data</span></div>
     <div class="arch-layers">
       <div class="arch-layer arch-layer-1">
-        <div class="arch-layer-label">📊 规模数据</div>
+        <div class="arch-layer-label">📊 <span data-zh>规模数据</span><span data-en>Scale Data</span></div>
         <div class="arch-layer-content">2024年处理820万笔（+24% YoY）/ 金额175.5万亿元（+43% YoY）/ 日均$900亿 / 176直接参与 + 1514间接参与 / 覆盖121国 [card-407]</div>
       </div>
       <div class="arch-layer arch-layer-2">
-        <div class="arch-layer-label">🌐 覆盖网络</div>
+        <div class="arch-layer-label">🌐 <span data-zh>覆盖网络</span><span data-en>Network Coverage</span></div>
         <div class="arch-layer-content">通过4900+家银行机构延伸覆盖189个国家和地区；间接参与中1102家在亚洲（含565境内），261家在欧洲 [card-407]</div>
       </div>
       <div class="arch-layer arch-layer-3">
-        <div class="arch-layer-label">⚠️ 关键依赖</div>
+        <div class="arch-layer-label">⚠️ <span data-zh>关键依赖</span><span data-en>Key Dependency</span></div>
         <div class="arch-layer-content"><strong>CIPS超过80%的交易仍依赖SWIFT报文传输</strong>——CIPS替代的是资金清算层，而非完整的通信层。"CIPS完全替代SWIFT"是误解。[card-407]</div>
       </div>
       <div class="arch-layer arch-layer-4">
-        <div class="arch-layer-label">🔗 与SWIFT关系</div>
+        <div class="arch-layer-label">🔗 <span data-zh>与SWIFT关系</span><span data-en>Relationship with SWIFT</span></div>
         <div class="arch-layer-content">2016年签署MOU，均采用ISO 20022；2022年SWIFT SWIFTRef月度发布CIPS参与行信息（BIC/LEI/CNAPS码）——从竞争走向互补整合 [card-407]</div>
       </div>
     </div>
@@ -368,7 +379,7 @@
   </div>
 
   <div class="insight-box">
-    <div class="insight-title">🔍 主要结构性障碍（非技术问题）</div>
+    <div class="insight-title">🔍 <span data-zh>主要结构性障碍（非技术问题）</span><span data-en>Key Structural Barriers (Non-Technical)</span></div>
     <ul class="insight-list">
       <li><strong>预资金（Prefunding）锁定：</strong>代理行在各市场需要维持大量nostro账户余额，这些沉淀资金的机会成本最终转化为手续费。</li>
       <li><strong>AML/CFT碎片化：</strong>不同司法区的反洗钱规则不一致，导致每笔支付需要在多个节点重复筛查，不统一的制裁名单执行使成本上升、速度降低。[card-066]</li>
@@ -379,16 +390,16 @@
   </div>
 
   <div style="margin-top: 20px;">
-    <div style="font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 12px;">📈 RTGS运营时间现状（2024年，68个央行调查）[card-071]</div>
-    <div class="risk-bar"><div class="risk-label">24/7运营系统</div><div class="risk-track"><div class="risk-fill risk-low" style="width:7%"></div></div><div class="risk-pct">5个</div></div>
-    <div class="risk-bar"><div class="risk-label">已/计划延长运营时间</div><div class="risk-track"><div class="risk-fill risk-med" style="width:53%"></div></div><div class="risk-pct">53%</div></div>
-    <div class="risk-bar"><div class="risk-label">FPS提供非银行直接接入</div><div class="risk-track"><div class="risk-fill risk-low" style="width:33%"></div></div><div class="risk-pct">~1/3</div></div>
-    <div class="risk-bar"><div class="risk-label">2025年底FPS非银行接入预期</div><div class="risk-track"><div class="risk-fill risk-low" style="width:50%"></div></div><div class="risk-pct">~50%</div></div>
+    <div style="font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 12px;">📈 <span data-zh>RTGS运营时间现状（2024年，68个央行调查）</span><span data-en>RTGS Operating Hours Status (2024, 68 Central Bank Survey)</span></div>
+    <div class="risk-bar"><div class="risk-label"><span data-zh>24/7运营系统</span><span data-en>24/7 Operating Systems</span></div><div class="risk-track"><div class="risk-fill risk-low" style="width:7%"></div></div><div class="risk-pct">5个</div></div>
+    <div class="risk-bar"><div class="risk-label"><span data-zh>已/计划延长运营时间</span><span data-en>Extended / Planned Extended Hours</span></div><div class="risk-track"><div class="risk-fill risk-med" style="width:53%"></div></div><div class="risk-pct">53%</div></div>
+    <div class="risk-bar"><div class="risk-label"><span data-zh>FPS提供非银行直接接入</span><span data-en>FPS Non-Bank Direct Access</span></div><div class="risk-track"><div class="risk-fill risk-low" style="width:33%"></div></div><div class="risk-pct">~1/3</div></div>
+    <div class="risk-bar"><div class="risk-label"><span data-zh>2025年底FPS非银行接入预期</span><span data-en>FPS Non-Bank Access Expected by End-2025</span></div><div class="risk-track"><div class="risk-fill risk-low" style="width:50%"></div></div><div class="risk-pct">~50%</div></div>
     <div style="font-size: 11px; color: #94a3b8; margin-top: 4px;">注：全球结算窗口仅06:00-11:00 UTC，超60%时间无法进行国际批发结算 [card-071]</div>
   </div>
 
   <div class="source-row">
-    <span class="source-label">数据来源：</span>
+    <span class="source-label"><span data-zh>数据来源：</span><span data-en>Sources: </span></span>
     <span class="source-tag">card-066 FSB G20路线图2024</span>
     <span class="source-tag">card-071 BIS CPMI监测2024</span>
     <span class="source-tag">card-151 SWIFT gpi</span>
@@ -402,10 +413,10 @@
 <!-- ════ 5.2 即时跨境支付 ════ -->
 <div class="module module-green" id="section-52">
   <div class="module-label">5.2</div>
-  <div class="module-title"><span class="num">5.2</span> 即时跨境支付：FPS互联、Project Nexus与Fintech路径</div>
+  <div class="module-title"><span class="num">5.2</span> <span data-zh>即时跨境支付：FPS互联、Project Nexus与Fintech路径</span><span data-en>5.2 Instant Cross-Border Payments: FPS Linkage, Project Nexus & Fintech</span></div>
 
   <div class="core-conclusion" style="background: #f0fdf4; border-color: #059669;">
-    🟢 <strong>核心结论：</strong>即时跨境支付<strong>技术上已经可行</strong>，亚洲多个走廊已实现实时互联（PayNow-PromptPay、UPI-PayNow）。Project Nexus 2024年完成蓝图设计，目标是通过"单次接入"连接17亿人的FPS网络，预计2026-2027年进入商业运营。Fintech（Nium、Airwallex等）通过自建流动性网络+银行账户体系，在部分走廊已实现比银行更快的到账速度。<strong>主要障碍不是技术，而是治理协调和监管互认。</strong>
+    🟢 <strong><span data-zh>核心结论：</span><span data-en>Key Conclusion: </span></strong><span data-zh>即时跨境支付</span><span data-en>Instant cross-border payment is</span> <strong><span data-zh>技术上已经可行</span><span data-en>technically feasible</span></strong>，亚洲多个走廊已实现实时互联（PayNow-PromptPay、UPI-PayNow）。Project Nexus 2024年完成蓝图设计，目标是通过"单次接入"连接17亿人的FPS网络，预计2026-2027年进入商业运营。Fintech（Nium、Airwallex等）通过自建流动性网络+银行账户体系，在部分走廊已实现比银行更快的到账速度。<strong>主要障碍不是技术，而是治理协调和监管互认。</strong>
   </div>
 
   <div class="body-text">
@@ -416,16 +427,16 @@
 
   <!-- 已有双边互联案例 -->
   <div style="margin: 24px 0;">
-    <div style="font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.06em;">🌐 已落地的FPS跨境互联案例（2024年末）</div>
+    <div style="font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.06em;">🌐 <span data-zh>已落地的FPS跨境互联案例（2024年末）</span><span data-en>Live FPS Cross-Border Linkage Cases (End-2024)</span></div>
     <table class="data-table">
       <thead>
         <tr>
-          <th>走廊</th>
-          <th>系统</th>
-          <th>状态</th>
-          <th>技术架构</th>
-          <th>限额/范围</th>
-          <th>来源</th>
+          <th><span data-zh>走廊</span><span data-en>Corridor</span></th>
+          <th><span data-zh>系统</span><span data-en>System</span></th>
+          <th><span data-zh>状态</span><span data-en>Current Status</span></th>
+          <th><span data-zh>技术架构</span><span data-en>Architecture</span></th>
+          <th><span data-zh>限额/范围</span><span data-en>Limits / Scope</span></th>
+          <th><span data-zh>来源</span><span data-en>Sources</span></th>
         </tr>
       </thead>
       <tbody>
@@ -483,7 +494,7 @@
 
   <!-- Project Nexus详细分析 -->
   <div class="flywheel">
-    <div class="flywheel-title">🏗️ Project Nexus（MAS/BIS主导）：即时跨境支付的多边基础设施</div>
+    <div class="flywheel-title">🏗️ <span data-zh>Project Nexus（MAS/BIS主导）：即时跨境支付的多边基础设施</span><span data-en>Project Nexus (MAS/BIS Led): Multilateral Instant Cross-Border Payment Infrastructure</span></div>
     <div style="font-size: 13px; color: #1e293b; line-height: 1.8; margin-bottom: 16px;">
       Project Nexus是由新加坡金融管理局（MAS）和国际清算银行（BIS）联合主导的多边FPS互联项目。其核心创新是<strong>"单次接入，全网互联"</strong>——任何国家的即时支付系统只需接入Nexus一次，就能与网络内所有成员国进行实时跨境支付，无需逐一建立双边连接。
     </div>
@@ -502,9 +513,9 @@
     <table class="data-table">
       <thead>
         <tr>
-          <th>Project Nexus 关键要素</th>
-          <th>详情</th>
-          <th>来源</th>
+          <th><span data-zh>Project Nexus 关键要素</span><span data-en>Key Elements</span></th>
+          <th><span data-zh>详情</span><span data-en>Details</span></th>
+          <th><span data-zh>来源</span><span data-en>Sources</span></th>
         </tr>
       </thead>
       <tbody>
@@ -551,22 +562,22 @@
 
   <!-- Nium模型vs传统SWIFT -->
   <div class="arch-diagram">
-    <div class="arch-title">⚡ Nium通过SWIFT接入的技术路径：绕开代理行链的智慧 [card-086]</div>
+    <div class="arch-title">⚡ <span data-zh>Nium通过SWIFT接入的技术路径：绕开代理行链的智慧</span><span data-en>Nium SWIFT Access Path: Bypassing the Correspondent Banking Chain</span> [card-086]</div>
     <div class="arch-layers">
       <div class="arch-layer arch-layer-1">
-        <div class="arch-layer-label">① 发起方银行</div>
+        <div class="arch-layer-label">① <span data-zh>发起方银行</span><span data-en>Sending Bank</span></div>
         <div class="arch-layer-content">通过现有SWIFT MT/ISO 20022报文发送支付指令 → 无需新的API集成，复用已有基础设施</div>
       </div>
       <div class="arch-layer arch-layer-2">
-        <div class="arch-layer-label">② Nium网关</div>
+        <div class="arch-layer-label">② <span data-zh>Nium网关</span><span data-en>Nium Gateway</span></div>
         <div class="arch-layer-content">接收SWIFT指令后路由到Nium全球实时支付网络；覆盖全球100+市场本地实时轨道；保持GPI追踪器实时同步</div>
       </div>
       <div class="arch-layer arch-layer-3">
-        <div class="arch-layer-label">③ 本地交付</div>
+        <div class="arch-layer-label">③ <span data-zh>本地交付</span><span data-en>Local Delivery</span></div>
         <div class="arch-layer-content">目标国通过本地FPS/RTGS直接到账；零扣费承诺（收款方到账金额=发送金额）；80%在15分钟内完成 [card-086]</div>
       </div>
       <div class="arch-layer arch-layer-4">
-        <div class="arch-layer-label">④ 对比传统</div>
+        <div class="arch-layer-label">④ <span data-zh>对比传统</span><span data-en>vs. Traditional</span></div>
         <div class="arch-layer-content">传统SWIFT代理行链：2-5中间行 → 每行扣费 → 受款行内部延迟 → 最终T+1至T+3；Nium路径：T+0（同日），单一结算节点</div>
       </div>
     </div>
@@ -579,7 +590,7 @@
   </div>
 
   <div class="source-row">
-    <span class="source-label">数据来源：</span>
+    <span class="source-label"><span data-zh>数据来源：</span><span data-en>Sources: </span></span>
     <span class="source-tag">card-139 MAS Project Nexus</span>
     <span class="source-tag">card-066 FSB G20路线图</span>
     <span class="source-tag">card-086 Nium SWIFT接入</span>
@@ -593,10 +604,10 @@
 <!-- ════ 5.3 稳定币/CBDC/mBridge ════ -->
 <div class="module module-purple" id="section-53">
   <div class="module-label">5.3</div>
-  <div class="module-title"><span class="num">5.3</span> 稳定币 / CBDC / mBridge：新型数字货币基础设施</div>
+  <div class="module-title"><span class="num">5.3</span> <span data-zh>稳定币 / CBDC / mBridge：新型数字货币基础设施</span><span data-en>5.3 Stablecoins / CBDC / mBridge: New Digital Currency Infrastructure</span></div>
 
   <div class="core-conclusion" style="background: #f5f3ff; border-color: #7c3aed;">
-    🟣 <strong>核心结论：</strong>稳定币（以USDC为代表）已完成规模化验证，2024年结算量达$27.6万亿，与Visa+Mastercard合计量级相当；批发型CBDC（mBridge）在5个央行层面完成MVP，商业银行开始接入，但距大规模商业化仍有距离。<strong>5年内最可能规模化的路径是稳定币</strong>——监管框架（MiCA、GENIUS Act）正在成熟，企业级采用已在加速（Thunes、Visa、PayPal）。零售CBDC推进谨慎，批发CBDC在特定走廊（中东-亚洲贸易）最有潜力。
+    🟣 <strong><span data-zh>核心结论：</span><span data-en>Key Conclusion: </span></strong><span data-zh>稳定币（以USDC为代表）已完成规模化验证</span><span data-en>Stablecoins (USDC) have achieved scale validation</span>，2024年结算量达$27.6万亿，与Visa+Mastercard合计量级相当；批发型CBDC（mBridge）在5个央行层面完成MVP，商业银行开始接入，但距大规模商业化仍有距离。<strong>5年内最可能规模化的路径是稳定币</strong>——监管框架（MiCA、GENIUS Act）正在成熟，企业级采用已在加速（Thunes、Visa、PayPal）。零售CBDC推进谨慎，批发CBDC在特定走廊（中东-亚洲贸易）最有潜力。
   </div>
 
   <div class="body-text">
@@ -610,7 +621,7 @@
   <!-- 三路径定位对比 -->
   <div class="three-col">
     <div class="path-card wholesale">
-      <div class="path-title">🏦 批发CBDC</div>
+      <div class="path-title">🏦 <span data-zh>批发CBDC</span><span data-en>Wholesale CBDC</span></div>
       <div class="path-list">
         <strong>服务对象：</strong>银行、金融机构<br>
         <strong>解决问题：</strong>机构间结算延迟、代理行成本<br>
@@ -621,7 +632,7 @@
       <div class="path-score">⭐ 中期：特定走廊高潜力</div>
     </div>
     <div class="path-card retail">
-      <div class="path-title">👤 零售CBDC</div>
+      <div class="path-title">👤 <span data-zh>零售CBDC</span><span data-en>Retail CBDC</span></div>
       <div class="path-list">
         <strong>服务对象：</strong>企业、个人消费者<br>
         <strong>解决问题：</strong>金融包容、现金替代<br>
@@ -632,7 +643,7 @@
       <div class="path-score">⚠️ 中期：谨慎推进</div>
     </div>
     <div class="path-card stable">
-      <div class="path-title">🪙 稳定币（私人）</div>
+      <div class="path-title">🪙 <span data-zh>稳定币（私人）</span><span data-en>Stablecoins (Private)</span></div>
       <div class="path-list">
         <strong>服务对象：</strong>企业、Fintech、个人<br>
         <strong>解决问题：</strong>跨境流动性、实时结算<br>
@@ -657,10 +668,10 @@
     <table class="data-table">
       <thead>
         <tr>
-          <th>mBridge 关键要素</th>
-          <th>2024年状态</th>
-          <th>战略意义</th>
-          <th>来源</th>
+          <th><span data-zh>mBridge 关键要素</span><span data-en>Key Elements</span></th>
+          <th><span data-zh>2024年状态</span><span data-en>2024 Status</span></th>
+          <th><span data-zh>战略意义</span><span data-en>Strategic Significance</span></th>
+          <th><span data-zh>来源</span><span data-en>Sources</span></th>
         </tr>
       </thead>
       <tbody>
@@ -734,15 +745,15 @@
 
   <!-- 稳定币监管全球矩阵 -->
   <div style="margin: 24px 0;">
-    <div style="font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.06em;">📜 全球稳定币监管框架进展（2024-2025年）[card-125, card-091]</div>
+    <div style="font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.06em;">📜 <span data-zh>全球稳定币监管框架进展（2024-2025年）</span><span data-en>Global Stablecoin Regulatory Framework Progress (2024-2025)</span> [card-125, card-091]</div>
     <table class="data-table">
       <thead>
         <tr>
-          <th>司法管辖区</th>
-          <th>框架名称</th>
-          <th>状态</th>
-          <th>核心内容</th>
-          <th>对跨境支付影响</th>
+          <th><span data-zh>司法管辖区</span><span data-en>Jurisdiction</span></th>
+          <th><span data-zh>框架名称</span><span data-en>Framework</span></th>
+          <th><span data-zh>状态</span><span data-en>Current Status</span></th>
+          <th><span data-zh>核心内容</span><span data-en>Key Content</span></th>
+          <th><span data-zh>对跨境支付影响</span><span data-en>Impact on Cross-Border Payments</span></th>
         </tr>
       </thead>
       <tbody>
@@ -827,7 +838,7 @@
   </div>
 
   <div class="insight-box">
-    <div class="insight-title">🔮 5年内规模化可能性评估</div>
+    <div class="insight-title">🔮 <span data-zh>5年内规模化可能性评估</span><span data-en>5-Year Scaling Probability Assessment</span></div>
     <ul class="insight-list">
       <li><strong>稳定币（高可能性）：</strong>技术已成熟，商业采用已发生（Thunes、Visa、PayPal），监管框架正在成型（MiCA已生效，GENIUS Act推进中）。主要变量是美国立法时间。</li>
       <li><strong>Project Nexus / FPS互联（高可能性）：</strong>央行主导、技术路径清晰、政治阻力低。东南亚+印度走廊2026-2027年商业运营基本确定。扩展至全球需要更长时间。</li>
@@ -837,7 +848,7 @@
   </div>
 
   <div class="source-row">
-    <span class="source-label">数据来源：</span>
+    <span class="source-label"><span data-zh>数据来源：</span><span data-en>Sources: </span></span>
     <span class="source-tag">card-135 HKMA mBridge MVP</span>
     <span class="source-tag">card-136 HKMA BDF批发CBDC</span>
     <span class="source-tag">card-125 稳定币跨境支付</span>
@@ -848,48 +859,48 @@
 
 <!-- ════ 综合总结 ════ -->
 <div class="module" id="summary">
-  <div class="module-label">第5章综合总结</div>
-  <div class="module-title">跨境支付基础设施：分层重构而非一次性颠覆</div>
+  <div class="module-label"><span data-zh>第5章综合总结</span><span data-en>Chapter 5 Summary</span></div>
+  <div class="module-title"><span data-zh>跨境支付基础设施：分层重构而非一次性颠覆</span><span data-en>Cross-Border Payment Infrastructure: Layered Reconstruction, Not One-Time Disruption</span></div>
 
   <div class="core-conclusion">
-    🔵 <strong>全章核心结论：</strong>全球跨境支付基础设施正在经历<strong>分层重构</strong>——不是一场革命性颠覆，而是在消息标准、清算渠道、流动性网络三个层面同步推进的现代化进程。2025-2027年是关键窗口期：ISO 20022强制切换（2025年11月）、Project Nexus商业运营（2026-2027年）、稳定币监管成熟（2025-2026年）三件大事同时发生，将共同塑造未来十年跨境支付的底层架构。
+    🔵 <strong><span data-zh>全章核心结论：</span><span data-en>Chapter Key Conclusion: </span></strong><span data-zh>全球跨境支付基础设施正在经历</span><span data-en>Global cross-border payment infrastructure is undergoing</span><strong>分层重构</strong>——不是一场革命性颠覆，而是在消息标准、清算渠道、流动性网络三个层面同步推进的现代化进程。2025-2027年是关键窗口期：ISO 20022强制切换（2025年11月）、Project Nexus商业运营（2026-2027年）、稳定币监管成熟（2025-2026年）三件大事同时发生，将共同塑造未来十年跨境支付的底层架构。
   </div>
 
   <!-- 三层架构示意 -->
   <div class="arch-diagram">
-    <div class="arch-title">🏗️ 跨境支付现代化三层架构（ISO 20022 + gpi + 实时轨道）[card-152综合]</div>
+    <div class="arch-title">🏗️ <span data-zh>跨境支付现代化三层架构（ISO 20022 + gpi + 实时轨道）</span><span data-en>Three-Layer Modernization Architecture (ISO 20022 + gpi + Real-Time Rails)</span> [card-152综合]</div>
     <div class="arch-layers">
       <div class="arch-layer arch-layer-4">
-        <div class="arch-layer-label">消息标准层</div>
+        <div class="arch-layer-label"><span data-zh>消息标准层</span><span data-en>Messaging Layer</span></div>
         <div class="arch-layer-content"><strong>ISO 20022：</strong>统一结构化数据格式；SWIFT 2025年11月强制切换；已覆盖140+司法区；年化节省6亿美元+运营成本；降低AML误报25-30%</div>
       </div>
       <div class="arch-layer arch-layer-2">
-        <div class="arch-layer-label">追踪透明层</div>
+        <div class="arch-layer-label"><span data-zh>追踪透明层</span><span data-en>Tracking & Transparency</span></div>
         <div class="arch-layer-content"><strong>SWIFT gpi：</strong>UETR全程追踪；90%在30分钟内到账（机构间）；4000+机构参与；CBPR+日均140万条报文</div>
       </div>
       <div class="arch-layer arch-layer-1">
-        <div class="arch-layer-label">结算速度层</div>
+        <div class="arch-layer-label"><span data-zh>结算速度层</span><span data-en>Settlement Speed</span></div>
         <div class="arch-layer-content"><strong>FPS互联（Nexus）+ 稳定币（USDC）+ 批发CBDC（mBridge）：</strong>三条并行路径，覆盖不同场景；不互相取代，而是互补分工</div>
       </div>
       <div class="arch-layer arch-layer-3">
-        <div class="arch-layer-label">合规治理层</div>
+        <div class="arch-layer-label"><span data-zh>合规治理层</span><span data-en>Compliance & Governance</span></div>
         <div class="arch-layer-content"><strong>AML/KYC 统一标准 + FATF Travel Rule + LEI推广 + 数据框架协调：</strong>底层治理是速度和成本改善的最终瓶颈，技术升级无法绕开</div>
       </div>
     </div>
   </div>
 
   <div style="margin: 28px 0;">
-    <div style="font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.06em;">📊 三大技术路径综合评估矩阵</div>
+    <div style="font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.06em;">📊 <span data-zh>三大技术路径综合评估矩阵</span><span data-en>Three Technology Pathway Assessment Matrix</span></div>
     <table class="data-table">
       <thead>
         <tr>
-          <th>路径</th>
-          <th>代表项目</th>
-          <th>技术成熟度</th>
-          <th>商业采用速度</th>
-          <th>监管障碍</th>
-          <th>5年规模化概率</th>
-          <th>最适合场景</th>
+          <th><span data-zh>路径</span><span data-en>Pathway</span></th>
+          <th><span data-zh>代表项目</span><span data-en>Key Projects</span></th>
+          <th><span data-zh>技术成熟度</span><span data-en>Tech Maturity</span></th>
+          <th><span data-zh>商业采用速度</span><span data-en>Commercial Adoption</span></th>
+          <th><span data-zh>监管障碍</span><span data-en>Regulatory Barrier</span></th>
+          <th><span data-zh>5年规模化概率</span><span data-en>5-Year Scale Probability</span></th>
+          <th><span data-zh>最适合场景</span><span data-en>Best Use Case</span></th>
         </tr>
       </thead>
       <tbody>
@@ -951,7 +962,7 @@
   </div>
 
   <div class="source-row">
-    <span class="source-label">本章全部数据来源：</span>
+    <span class="source-label"><span data-zh>本章全部数据来源：</span><span data-en>All Chapter Sources: </span></span>
     <span class="source-tag">card-066 FSB G20路线图2024</span>
     <span class="source-tag">card-071 BIS CPMI监测2024</span>
     <span class="source-tag">card-151 SWIFT gpi 2024</span>
@@ -968,8 +979,29 @@
 
 <!-- ════ 页脚 ════ -->
 <div style="text-align: center; padding: 24px 0; color: #94a3b8; font-size: 12px; border-top: 1px solid #e2e8f0; margin-top: 16px;">
-  跨境支付行业知识库 · 第5章 | 基础设施与技术 | 数据截止：2024年末 / 2025年Q1 | 分析卡来源：FSB、BIS CPMI、MAS、HKMA、Circle、SWIFT
+  <span data-zh>跨境支付行业知识库 · 第5章 | 基础设施与技术</span><span data-en>Cross-Border Payments Industry Research · Chapter 5 | Infrastructure & Technology</span> | <span data-zh>数据截止：2024年末 / 2025年Q1</span><span data-en>Data As Of: End-2024 / 2025 Q1</span> | <span data-zh>分析卡来源：FSB、BIS CPMI、MAS、HKMA、Circle、SWIFT</span><span data-en>Sources: FSB / BIS CPMI / MAS / HKMA / Circle / SWIFT</span>
 </div>
+
+<script>
+  // ── Language Switcher ──
+  let lang = localStorage.getItem('lang') || 'zh';
+
+  function switchLang(l) {
+    lang = l;
+    localStorage.setItem('lang', l);
+    document.querySelectorAll('[data-zh]').forEach(el => {
+      el.style.display = (l === 'zh') ? '' : 'none';
+    });
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.style.display = (l === 'en') ? '' : 'none';
+    });
+    document.getElementById('btn-zh').classList.toggle('active', l === 'zh');
+    document.getElementById('btn-en').classList.toggle('active', l === 'en');
+  }
+
+  // Initialize on page load
+  switchLang(lang);
+</script>
 
 </body>
 </html>

@@ -137,41 +137,49 @@
   .eco-node.highlight { background: #eff6ff; border-color: #bfdbfe; color: #1d4ed8; }
   .eco-node.em { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
   .eco-node.reg { background: #fef3c7; border-color: #fde68a; color: #92400e; }
+  /* ── Language Switcher ── */
+  .lang-switcher { position: fixed; top: 16px; right: 20px; z-index: 1000; display: flex; gap: 4px; }
+  .lang-switcher button { padding: 4px 10px; border: 1px solid #e2e8f0; border-radius: 4px; font-size: 12px; cursor: pointer; background: white; color: #64748b; }
+  .lang-switcher button.active { background: #2563eb; color: white; border-color: #2563eb; }
 </style>
 </head>
 <body>
+<div class="lang-switcher">
+  <button id="btn-zh" onclick="switchLang('zh')">中文</button>
+  <button id="btn-en" onclick="switchLang('en')">EN</button>
+</div>
 
 <!-- ════ 章节头 ════ -->
 <div class="chapter-header">
-  <div class="chapter-label">知识库 · 第1章</div>
-  <div class="chapter-title">跨境支付市场总览</div>
-  <div class="chapter-subtitle">市场规模 · 生态分层 · 生命周期 · 驱动因素与风险 — 基于BCG/McKinsey/BIS/FSB/世界银行等7份权威报告</div>
+  <div class="chapter-label"><span data-zh>知识库 · 第1章</span><span data-en>Knowledge Base · Chapter 1</span></div>
+  <div class="chapter-title"><span data-zh>跨境支付市场总览</span><span data-en>Cross-Border Payments Market Overview</span></div>
+  <div class="chapter-subtitle"><span data-zh>市场规模 · 生态分层 · 生命周期 · 驱动因素与风险 — 基于BCG/McKinsey/BIS/FSB/世界银行等7份权威报告</span><span data-en>Market Size · Ecosystem Layers · Life Cycle · Drivers & Risks — Based on 7 authoritative reports from BCG/McKinsey/BIS/FSB/World Bank</span></div>
   <div class="chapter-meta">
-    <div class="meta-item">来源卡片：<strong>card-057 / 060 / 066 / 068 / 071 / 074 / 248</strong></div>
-    <div class="meta-item">最后更新：<strong>2026-03-30</strong></div>
-    <div class="meta-item">涵盖数据年份：<strong>2023–2024</strong></div>
-    <div class="meta-item">信息点总数：<strong>200+</strong></div>
+    <div class="meta-item"><span data-zh>来源卡片：</span><span data-en>Data Sources:</span> <strong>card-057 / 060 / 066 / 068 / 071 / 074 / 248</strong></div>
+    <div class="meta-item"><span data-zh>最后更新：</span><span data-en>Last Updated:</span> <strong>2026-03-30</strong></div>
+    <div class="meta-item"><span data-zh>涵盖数据年份：</span><span data-en>Data Years:</span> <strong>2023–2024</strong></div>
+    <div class="meta-item"><span data-zh>信息点总数：</span><span data-en>Total Data Points:</span> <strong>200+</strong></div>
   </div>
 </div>
 
 <!-- ════ 目录 ════ -->
 <div class="toc-box">
-  <div class="toc-title">本章目录</div>
+  <div class="toc-title"><span data-zh>本章目录</span><span data-en>Chapter Contents</span></div>
   <div class="toc-grid">
-    <a href="#s11" class="toc-item"><span class="toc-num">1.1</span>市场规模与增速</a>
-    <a href="#s12" class="toc-item"><span class="toc-num">1.2</span>市场分层与生态图</a>
-    <a href="#s13" class="toc-item"><span class="toc-num">1.3</span>行业生命周期判断</a>
-    <a href="#s14" class="toc-item"><span class="toc-num">1.4</span>核心驱动因素与风险</a>
+    <a href="#s11" class="toc-item"><span class="toc-num">1.1</span><span data-zh>市场规模与增速</span><span data-en>Market Size & Growth</span></a>
+    <a href="#s12" class="toc-item"><span class="toc-num">1.2</span><span data-zh>市场分层与生态图</span><span data-en>Market Layers & Ecosystem</span></a>
+    <a href="#s13" class="toc-item"><span class="toc-num">1.3</span><span data-zh>行业生命周期判断</span><span data-en>Industry Life Cycle Assessment</span></a>
+    <a href="#s14" class="toc-item"><span class="toc-num">1.4</span><span data-zh>核心驱动因素与风险</span><span data-en>Key Drivers & Risks</span></a>
   </div>
 </div>
 
 <!-- ════ 1.1 市场规模与增速 ════ -->
 <div class="module" id="s11">
-  <div class="module-label">第1.1节</div>
-  <div class="module-title"><span class="num">1.1</span> 市场规模与增速</div>
+  <div class="module-label"><span data-zh>第1.1节</span><span data-en>Section 1.1</span></div>
+  <div class="module-title"><span class="num">1.1</span> <span data-zh>市场规模与增速</span><span data-en>Market Size & Growth</span></div>
 
   <div class="core-conclusion">
-    📌 <strong>核心结论：</strong>跨境支付是全球金融业最大的单一子市场。以交易流量口径，2023年跨境支付总量约 <strong>$190-250T</strong>（各机构口径不同）；以收入池口径，BCG估算 <strong>$1.8T</strong>、McKinsey估算 <strong>$2.4T</strong>——差异源于统计边界。2023-2028年行业整体 CAGR 约 <strong>5%</strong>，较前五年明显放缓，但新兴市场（亚太 +6.3%、拉美 +8.6%）将显著跑赢成熟市场（欧美 +3%）。
+    📌 <strong><span data-zh>核心结论：</span><span data-en>Key Conclusion:</span></strong>跨境支付是全球金融业最大的单一子市场。以交易流量口径，2023年跨境支付总量约 <strong>$190-250T</strong>（各机构口径不同）；以收入池口径，BCG估算 <strong>$1.8T</strong>、McKinsey估算 <strong>$2.4T</strong>——差异源于统计边界。2023-2028年行业整体 CAGR 约 <strong>5%</strong>，较前五年明显放缓，但新兴市场（亚太 +6.3%、拉美 +8.6%）将显著跑赢成熟市场（欧美 +3%）。
   </div>
 
   <div class="body-text">
@@ -188,12 +196,12 @@
   <table class="data-table">
     <thead>
       <tr>
-        <th>发布机构</th>
-        <th>数据口径</th>
-        <th>2023年规模</th>
-        <th>2028年预测</th>
-        <th>CAGR预测</th>
-        <th>数据年份 / 来源</th>
+        <th><span data-zh>发布机构</span><span data-en>Institution</span></th>
+        <th><span data-zh>数据口径</span><span data-en>Scope</span></th>
+        <th><span data-zh>2023年规模</span><span data-en>2023 Market Size</span></th>
+        <th><span data-zh>2028年预测</span><span data-en>2028 Forecast</span></th>
+        <th><span data-zh>CAGR预测</span><span data-en>Forecast CAGR</span></th>
+        <th><span data-zh>数据年份 / 来源</span><span data-en>Data Year / Source</span></th>
       </tr>
     </thead>
     <tbody>
@@ -293,7 +301,7 @@
   <p style="font-size:13px; font-weight:700; color:#475569; margin:16px 0 8px; text-transform:uppercase; letter-spacing:0.06em;">▌ 各地区支付收入增速对比（BCG 2023-2028 CAGR）</p>
   <table class="data-table">
     <thead>
-      <tr><th>地区</th><th>交易收入 CAGR</th><th>非交易收入 CAGR</th><th>总体 CAGR</th><th>核心驱动</th></tr>
+      <tr><th><span data-zh>地区</span><span data-en>Region</span></th><th><span data-zh>交易收入 CAGR</span><span data-en>Transaction Revenue CAGR</span></th><th><span data-zh>非交易收入 CAGR</span><span data-en>Non-Transaction Revenue CAGR</span></th><th><span data-zh>总体 CAGR</span><span data-en>Overall CAGR</span></th><th><span data-zh>核心驱动</span><span data-en>Key Driver</span></th></tr>
     </thead>
     <tbody>
       <tr class="leader"><td><strong>拉丁美洲 🚀</strong></td><td>9.3%</td><td>8.3%</td><td><strong>8.6%</strong></td><td>Pix即时支付、数字化</td></tr>
@@ -305,7 +313,7 @@
     </tbody>
   </table>
   <div class="source-row">
-    <span class="source-label">来源：</span>
+    <span class="source-label"><span data-zh>来源：</span><span data-en>Sources:</span></span>
     <a class="source-tag" href="../analysis-cards/card-057.html">[card-057 BCG]</a>
     <a class="source-tag" href="../analysis-cards/card-060.html">[card-060 McKinsey]</a>
     <a class="source-tag" href="../analysis-cards/card-074.html">[card-074 IMF拉美]</a>
@@ -316,11 +324,11 @@
 
 <!-- ════ 1.2 市场分层与生态图 ════ -->
 <div class="module module-green" id="s12">
-  <div class="module-label">第1.2节</div>
-  <div class="module-title"><span class="num">1.2</span> 市场分层与生态图</div>
+  <div class="module-label"><span data-zh>第1.2节</span><span data-en>Section 1.2</span></div>
+  <div class="module-title"><span class="num">1.2</span> <span data-zh>市场分层与生态图</span><span data-en>Market Layers & Ecosystem</span></div>
 
   <div class="core-conclusion">
-    📌 <strong>核心结论：</strong>跨境支付价值链由四层参与方构成——清算网络（护城河最深、TSR最高）、传统银行（收入最大但份额受蚕食）、新兴Fintech（增速最快）、基础设施层（监管机构+国际组织）。6%的汇款成本中，<strong>银行代理行体系拿走最大份额（约12.66%用于汇款），而新兴数字渠道可将成本压缩至3.87%-4.96%</strong>。价值链中最有机会的层级是"中间件/连接层"——提供互联互通、合规自动化和数据服务。
+    📌 <strong><span data-zh>核心结论：</span><span data-en>Key Conclusion:</span></strong>跨境支付价值链由四层参与方构成——清算网络（护城河最深、TSR最高）、传统银行（收入最大但份额受蚕食）、新兴Fintech（增速最快）、基础设施层（监管机构+国际组织）。6%的汇款成本中，<strong>银行代理行体系拿走最大份额（约12.66%用于汇款），而新兴数字渠道可将成本压缩至3.87%-4.96%</strong>。价值链中最有机会的层级是"中间件/连接层"——提供互联互通、合规自动化和数据服务。
   </div>
 
   <div class="body-text">
@@ -330,7 +338,7 @@
 
   <!-- 生态层级 -->
   <div class="eco-layer">
-    <div class="eco-layer-header">🏛️ 第一层：基础设施 / 监管层（定规则者）</div>
+    <div class="eco-layer-header">🏛️ <span data-zh>第一层：基础设施 / 监管层（定规则者）</span><span data-en>Layer 1: Infrastructure / Regulatory (Rule Makers)</span></div>
     <div class="eco-layer-body">
       <div class="eco-node reg">G20 / FSB</div>
       <div class="eco-node reg">BIS / CPMI</div>
@@ -341,7 +349,7 @@
     </div>
   </div>
   <div class="eco-layer">
-    <div class="eco-layer-header">🌐 第二层：清算网络层（护城河最深）</div>
+    <div class="eco-layer-header">🌐 <span data-zh>第二层：清算网络层（护城河最深）</span><span data-en>Layer 2: Clearing Networks (Deepest Moat)</span></div>
     <div class="eco-layer-body">
       <div class="eco-node highlight">Visa / Mastercard（TSR均15%，10年）</div>
       <div class="eco-node highlight">Swift（批发跨境消息网络）</div>
@@ -351,7 +359,7 @@
     </div>
   </div>
   <div class="eco-layer">
-    <div class="eco-layer-header">🏦 第三层：传统金融机构层（收入最大但受挑战）</div>
+    <div class="eco-layer-header">🏦 <span data-zh>第三层：传统金融机构层（收入最大但受挑战）</span><span data-en>Layer 3: Traditional FIs (Largest Revenue, Under Challenge)</span></div>
     <div class="eco-layer-body">
       <div class="eco-node">全球大行（JPMorgan / HSBC / Citi）</div>
       <div class="eco-node">区域银行（代理行体系）</div>
@@ -361,7 +369,7 @@
     </div>
   </div>
   <div class="eco-layer">
-    <div class="eco-layer-header">🚀 第四层：新兴Fintech层（增速最快）</div>
+    <div class="eco-layer-header">🚀 <span data-zh>第四层：新兴Fintech层（增速最快）</span><span data-en>Layer 4: Emerging Fintech (Fastest Growing)</span></div>
     <div class="eco-layer-body">
       <div class="eco-node em">Wise（数字专属MTO）</div>
       <div class="eco-node em">Remitly（移民汇款）</div>
@@ -374,7 +382,7 @@
   </div>
 
   <div class="source-row">
-    <span class="source-label">来源：</span>
+    <span class="source-label"><span data-zh>来源：</span><span data-en>Sources:</span></span>
     <a class="source-tag" href="../analysis-cards/card-057.html">[card-057 BCG]</a>
     <a class="source-tag" href="../analysis-cards/card-068.html">[card-068 世界银行]</a>
     <a class="source-tag" href="../analysis-cards/card-248.html">[card-248 a16z]</a>
@@ -394,7 +402,7 @@
   <p style="font-size:13px; font-weight:700; color:#475569; margin:16px 0 8px; text-transform:uppercase; letter-spacing:0.06em;">▌ 价值链成本分布：各渠道/环节均成本对比（发送$200，C2C汇款）</p>
   <table class="data-table">
     <thead>
-      <tr><th>渠道 / 环节</th><th>均成本（$200）</th><th>受益方</th><th>主要成本构成</th><th>可压缩性</th></tr>
+      <tr><th><span data-zh>渠道 / 环节</span><span data-en>Channel / Layer</span></th><th><span data-zh>均成本（$200）</span><span data-en>Avg. Cost ($200)</span></th><th><span data-zh>受益方</span><span data-en>Beneficiary</span></th><th><span data-zh>主要成本构成</span><span data-en>Cost Components</span></th><th><span data-zh>可压缩性</span><span data-en>Compressibility</span></th></tr>
     </thead>
     <tbody>
       <tr><td><strong>银行汇款</strong></td><td style="color:#dc2626;font-weight:700">12.66%</td><td>银行（代理行体系）</td><td>合规+流动性+手续费</td><td>⚠️ 低（结构性）</td></tr>
@@ -408,7 +416,7 @@
     </tbody>
   </table>
   <div class="source-row">
-    <span class="source-label">来源：</span>
+    <span class="source-label"><span data-zh>来源：</span><span data-en>Sources:</span></span>
     <a class="source-tag" href="../analysis-cards/card-068.html">[card-068 世界银行Q1 2024]</a>
     <a class="source-tag" href="../analysis-cards/card-066.html">[card-066 FSB G20]</a>
   </div>
@@ -423,7 +431,7 @@
   </div>
 
   <div class="insight-box">
-    <div class="insight-title">💡 价值链机会层分析</div>
+    <div class="insight-title">💡 <span data-zh>价值链机会层分析</span><span data-en>Value Chain Opportunity Analysis</span></div>
     <ul class="insight-list">
       <li><strong>护城河最深（现有赢家）：</strong>清算网络（Visa/Mastercard），网络效应+增值服务多元化，TSR 15%（10年均）</li>
       <li><strong>增速最快（新进入者机会）：</strong>数字MTO（Wise/Remitly两位数增长）、嵌入式支付（McKinsey预测2026年嵌入式支付市场>$1380亿）</li>
@@ -432,7 +440,7 @@
     </ul>
   </div>
   <div class="source-row">
-    <span class="source-label">来源：</span>
+    <span class="source-label"><span data-zh>来源：</span><span data-en>Sources:</span></span>
     <a class="source-tag" href="../analysis-cards/card-057.html">[card-057 BCG]</a>
     <a class="source-tag" href="../analysis-cards/card-071.html">[card-071 BIS]</a>
     <a class="source-tag" href="../analysis-cards/card-060.html">[card-060 McKinsey]</a>
@@ -443,20 +451,20 @@
 
 <!-- ════ 1.3 行业生命周期判断 ════ -->
 <div class="module module-purple" id="s13">
-  <div class="module-label">第1.3节</div>
-  <div class="module-title"><span class="num">1.3</span> 行业生命周期判断</div>
+  <div class="module-label"><span data-zh>第1.3节</span><span data-en>Section 1.3</span></div>
+  <div class="module-title"><span class="num">1.3</span> <span data-zh>行业生命周期判断</span><span data-en>Industry Life Cycle Assessment</span></div>
 
   <div class="core-conclusion">
-    📌 <strong>核心结论：</strong>全球支付行业整体处于"成熟期向成熟末期过渡"阶段（BCG CAGR从9%→5%是核心证据），但<strong>跨境支付内部正在经历结构性重组</strong>——旧基础设施（代理行、传统MTO）处于衰退期，新生态（FPS互联、嵌入式支付、数字MTO）仍在高速成长期。当前窗口期（2024-2027年）是关键：G20路线图2027年截止、Swift ISO 20022 2025年11月全切换、Nexus东南亚即将商用，格局将在此期间基本确定。
+    📌 <strong><span data-zh>核心结论：</span><span data-en>Key Conclusion:</span></strong>全球支付行业整体处于"成熟期向成熟末期过渡"阶段（BCG CAGR从9%→5%是核心证据），但<strong>跨境支付内部正在经历结构性重组</strong>——旧基础设施（代理行、传统MTO）处于衰退期，新生态（FPS互联、嵌入式支付、数字MTO）仍在高速成长期。当前窗口期（2024-2027年）是关键：G20路线图2027年截止、Swift ISO 20022 2025年11月全切换、Nexus东南亚即将商用，格局将在此期间基本确定。
   </div>
 
   <!-- 生命周期图示 -->
   <div class="lifecycle-bar">
-    <div class="lc-stage lc-intro">导入期</div>
-    <div class="lc-stage lc-growth">成长期</div>
-    <div class="lc-stage lc-growth-bold">⬅ 跨境支付新生态</div>
-    <div class="lc-stage lc-mature">成熟期 ⬅ 全球支付整体</div>
-    <div class="lc-stage lc-decline">衰退期<br>传统渠道</div>
+    <div class="lc-stage lc-intro"><span data-zh>导入期</span><span data-en>Introduction</span></div>
+    <div class="lc-stage lc-growth"><span data-zh>成长期</span><span data-en>Growth</span></div>
+    <div class="lc-stage lc-growth-bold">⬅ <span data-zh>跨境支付新生态</span><span data-en>New Cross-Border Ecosystem</span></div>
+    <div class="lc-stage lc-mature"><span data-zh>成熟期</span><span data-en>Maturity</span> ⬅ <span data-zh>全球支付整体</span><span data-en>Global Payments Overall</span></div>
+    <div class="lc-stage lc-decline"><span data-zh>衰退期</span><span data-en>Decline</span><br><span data-zh>传统渠道</span><span data-en>Traditional Channels</span></div>
   </div>
   <p style="font-size:11px;color:#94a3b8;text-align:center;margin-top:4px;">注：行业内部处于不同阶段，整体增速放缓不等于所有细分均成熟</p>
 
@@ -480,7 +488,7 @@
 
   <table class="data-table">
     <thead>
-      <tr><th>领域</th><th>发展阶段</th><th>标志性指标</th><th>格局状态</th><th>跨境支付差异</th></tr>
+      <tr><th><span data-zh>领域</span><span data-en>Segment</span></th><th><span data-zh>发展阶段</span><span data-en>Stage</span></th><th><span data-zh>标志性指标</span><span data-en>Key Metric</span></th><th><span data-zh>格局状态</span><span data-en>Competitive State</span></th><th><span data-zh>跨境支付差异</span><span data-en>Cross-Border Difference</span></th></tr>
     </thead>
     <tbody>
       <tr><td><strong>国内即时支付（Pix/UPI）</strong></td><td><span class="badge-tag badge-sup">高速成长期</span></td><td>Pix覆盖85%成年人</td><td>少数头部主导</td><td>跨境互联仍是空白</td></tr>
@@ -508,7 +516,7 @@
   </div>
 
   <div class="flywheel">
-    <div class="flywheel-title">⚡ 窗口期飞轮：2024-2027年格局重塑路径</div>
+    <div class="flywheel-title">⚡ <span data-zh>窗口期飞轮：2024-2027年格局重塑路径</span><span data-en>Window Period Flywheel: 2024–2027 Landscape Reshaping</span></div>
     <div class="flywheel-steps">
       <div class="fw-step">ISO 20022<br>全面迁移<br>（2025年11月）</div>
       <span class="fw-arrow">→</span>
@@ -522,7 +530,7 @@
     </div>
   </div>
   <div class="source-row">
-    <span class="source-label">来源：</span>
+    <span class="source-label"><span data-zh>来源：</span><span data-en>Sources:</span></span>
     <a class="source-tag" href="../analysis-cards/card-057.html">[card-057]</a>
     <a class="source-tag" href="../analysis-cards/card-066.html">[card-066]</a>
     <a class="source-tag" href="../analysis-cards/card-071.html">[card-071]</a>
@@ -534,11 +542,11 @@
 
 <!-- ════ 1.4 核心驱动因素与风险 ════ -->
 <div class="module module-orange" id="s14">
-  <div class="module-label">第1.4节</div>
-  <div class="module-title"><span class="num">1.4</span> 核心驱动因素与风险</div>
+  <div class="module-label"><span data-zh>第1.4节</span><span data-en>Section 1.4</span></div>
+  <div class="module-title"><span class="num">1.4</span> <span data-zh>核心驱动因素与风险</span><span data-en>Key Drivers & Risks</span></div>
 
   <div class="core-conclusion">
-    📌 <strong>核心结论：</strong>最可靠的增长驱动是<strong>跨境电商的数字化渗透</strong>（每年20%+增速，嵌入式支付2026年市场>$1380亿）和<strong>移民汇款的数字化替代</strong>（数字渠道均成本4.96% vs 传统6.94%，2个百分点差价是结构性迁移动力）。<strong>最被低估的风险是监管碎片化</strong>——不是单一监管收紧，而是全球40+司法区AML/CFT规则实施不一致，每年造成数十亿美元无效合规成本，且无法通过技术单独解决。
+    📌 <strong><span data-zh>核心结论：</span><span data-en>Key Conclusion:</span></strong>最可靠的增长驱动是<strong>跨境电商的数字化渗透</strong>（每年20%+增速，嵌入式支付2026年市场>$1380亿）和<strong>移民汇款的数字化替代</strong>（数字渠道均成本4.96% vs 传统6.94%，2个百分点差价是结构性迁移动力）。<strong>最被低估的风险是监管碎片化</strong>——不是单一监管收紧，而是全球40+司法区AML/CFT规则实施不一致，每年造成数十亿美元无效合规成本，且无法通过技术单独解决。
   </div>
 
   <div class="body-text">
@@ -591,7 +599,7 @@
   <!-- 风险评估表 -->
   <table class="data-table">
     <thead>
-      <tr><th>风险类别</th><th>具体表现</th><th>量化证据</th><th>影响程度</th><th>低估程度</th></tr>
+      <tr><th><span data-zh>风险类别</span><span data-en>Risk Type</span></th><th><span data-zh>具体表现</span><span data-en>Risk Description</span></th><th><span data-zh>量化证据</span><span data-en>Quantitative Evidence</span></th><th><span data-zh>影响程度</span><span data-en>Impact Level</span></th><th><span data-zh>低估程度</span><span data-en>Underestimation Level</span></th></tr>
     </thead>
     <tbody>
       <tr>
@@ -643,7 +651,7 @@
   </table>
 
   <div class="source-row">
-    <span class="source-label">来源：</span>
+    <span class="source-label"><span data-zh>来源：</span><span data-en>Sources:</span></span>
     <a class="source-tag" href="../analysis-cards/card-057.html">[card-057 BCG]</a>
     <a class="source-tag" href="../analysis-cards/card-066.html">[card-066 FSB]</a>
     <a class="source-tag" href="../analysis-cards/card-068.html">[card-068 世界银行]</a>
@@ -663,7 +671,7 @@
   </div>
 
   <div class="insight-box">
-    <div class="insight-title">💡 第1章核心战略推论</div>
+    <div class="insight-title">💡 <span data-zh>第1章核心战略推论</span><span data-en>Chapter 1 Core Strategic Insights</span></div>
     <ul class="insight-list">
       <li><strong>市场很大但口径要对齐：</strong>跨境支付$190T+流量、$1.8-2.4T收入池，两种口径服务不同决策需求，混用会造成战略误判</li>
       <li><strong>成长在边缘，不在中心：</strong>欧美成熟市场CAGR 3%，亚太/拉美 6-8.6%，新生态（FPS互联、嵌入式）仍在高速成长期</li>
@@ -674,7 +682,7 @@
   </div>
 
   <div class="source-row">
-    <span class="source-label">本章全部来源：</span>
+    <span class="source-label"><span data-zh>本章全部来源：</span><span data-en>All Chapter Sources:</span></span>
     <a class="source-tag" href="../analysis-cards/card-057.html">[card-057 BCG 2024]</a>
     <a class="source-tag" href="../analysis-cards/card-060.html">[card-060 McKinsey 2024]</a>
     <a class="source-tag" href="../analysis-cards/card-066.html">[card-066 FSB G20]</a>
@@ -687,11 +695,31 @@
 
 <!-- ════ 章节尾注 ════ -->
 <div style="background:white; border-radius:12px; padding:20px 28px; border:1px solid #e2e8f0; margin-top:28px; font-size:12px; color:#94a3b8;">
-  <strong style="color:#475569;">第1章 · 跨境支付市场总览</strong> | 知识库版本 v1.0 | 生成时间：2026-03-30 | 
+  <strong style="color:#475569;"><span data-zh>第1章 · 跨境支付市场总览</span><span data-en>Chapter 1 · Cross-Border Payments Market Overview</span></strong> | 知识库版本 v1.0 | 生成时间：2026-03-30 | 
   数据来源：BCG Global Payments Report 2024、McKinsey Global Payments 2024、FSB G20 进展报告 2024、世界银行 RPW Q1 2024、BIS CPMI 监测报告 2024、IMF WP/24/119、a16z Global Payments Research |
-  <strong>下一章 →</strong> <a href="chapter-2-competitive-landscape.html" style="color:#2563eb;">第2章：竞争格局分析</a> | 
-  <a href="chapter-3-business-model.html" style="color:#2563eb;">第3章：商业模式分析</a>
+  <strong><span data-zh>下一章 →</span><span data-en>Next Chapter →</span></strong> <a href="chapter-2-competitive-landscape.html" style="color:#2563eb;"><span data-zh>第2章：竞争格局分析</span><span data-en>Chapter 2: Competitive Landscape</span></a> | 
+  <a href="chapter-3-business-model.html" style="color:#2563eb;"><span data-zh>第3章：商业模式分析</span><span data-en>Chapter 3: Business Model Analysis</span></a>
 </div>
 
+<script>
+  // ── Language Switcher ──
+  let lang = localStorage.getItem('lang') || 'zh';
+
+  function switchLang(l) {
+    lang = l;
+    localStorage.setItem('lang', l);
+    document.querySelectorAll('[data-zh]').forEach(el => {
+      el.style.display = (l === 'zh') ? '' : 'none';
+    });
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.style.display = (l === 'en') ? '' : 'none';
+    });
+    document.getElementById('btn-zh').classList.toggle('active', l === 'zh');
+    document.getElementById('btn-en').classList.toggle('active', l === 'en');
+  }
+
+  // Initialize on page load
+  switchLang(lang);
+</script>
 </body>
 </html>
